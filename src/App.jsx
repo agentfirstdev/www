@@ -99,7 +99,7 @@ export default function App() {
       </Box>
       <Flex w='100%' h='50vh' alignItems='center'>
         <Box p='10%' w='50%'>
-          <Heading as='h1' color='accent.secondary'>
+          <Heading as='h1' color='accent.primary'>
             <ui.Tagline />
           </Heading>
           <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
@@ -110,33 +110,26 @@ export default function App() {
         <Box />
       </Flex>
       <Box px='10%'>
-        <Heading as='h2' textAlign='left' color='accent.secondary'>
-          1. Search the web
+        <Heading as='h2' textAlign='left' color='accent.primary'>
+          1. Google-like search
         </Heading>
         <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
         </Text>
-        <Heading as='h2' mt='10' textAlign='left' color='accent.secondary'>
-          2. Browse uncaptcha’d pages
+        <Heading as='h2' mt='10' textAlign='left' color='accent.primary'>
+          2. Uncaptcha’d browsing
         </Heading>
         <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
         </Text>
-        <Heading as='h2' mt='10' textAlign='left' color='accent.secondary'>
-          3. [Coming soon] Interact with pages
+        <Heading as='h2' mt='10' textAlign='left' color='accent.primary'>
+          … From anywhere
         </Heading>
         <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </Text>
-        <Heading as='h2' mt='10' textAlign='left' color='accent.secondary'>
-          4. [Coming soon] Access personal data
-        </Heading>
-        <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
+          All <strong>Agent First</strong> requests can be geotargeted to any of 195 countries in
+          our proxy network to get localized results or content:
         </Text>
       </Box>
     </Flex>
