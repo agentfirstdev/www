@@ -33,10 +33,9 @@ export default function App() {
         {
           stroke: '#3057e1',
           fill: '#4a6de5',
-          strokeWidth: 4,
-          bowing: 2,
-          roughness: 2,
-          hachureAngle: -40
+          strokeWidth: ui.logoStroke,
+          roughness: ui.logoRoughness,
+          hachureAngle: ui.logoAngle
         }
       );
     }, ui.logoRefreshMs);
@@ -61,13 +60,15 @@ export default function App() {
   }, [colorMode]);
 
   return (
-    <Flex mx='auto' w={ui.scrollingWidth} minH='100vh'>
-      <Box w='100%' maxW='100%'>
+    <Flex w='100%' minH='100vh'>
+      <Box mt='2'>
         <canvas
           ref={logotype}
           width='1760'
           height='352'
           style={{ width: '25%', minWidth: '256px' }}
+          role='img'
+          aria-label={ui.logoLabel}
         />
         <Flex
           pos='absolute'

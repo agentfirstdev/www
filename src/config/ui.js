@@ -1,14 +1,19 @@
 import markdown from 'markdown-it';
 import highlights from 'markdown-it-highlightjs';
 
+// Strings
+export const logoLabel = 'Agent First';
+
 // Typography
 export const controlFontWeight = 'semibold';
 
 // Animation
+export const logoStroke = 4;
+export const logoRoughness = 2;
+export const logoAngle = -40;
 export const logoRefreshMs = 250;
 
 // Other shared styles
-export const scrollingWidth = '96vw';
 export const linkPadding = '2px';
 export const outlineStyle = 'none';
 export const outlineRadius = '2px';
