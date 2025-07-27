@@ -6,7 +6,7 @@ export const logoLabel = 'Agent First';
 export const Tagline = () => {
   return (
     <>
-      The missing services for
+      Missing services for
       <br />
       agent-first development
     </>

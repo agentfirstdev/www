@@ -102,7 +102,7 @@ export default function App() {
           <Heading
             as='h1'
             fontSize={{ base: '3xl', md: '2xl', lg: '3xl' }}
-            color='accent.secondary'
+            color='accent.primary'
           >
             <ui.Tagline />
           </Heading>
@@ -111,7 +111,7 @@ export default function App() {
             incididunt ut labore et dolore magna aliqua.
           </Text>
         </Box>
-        <Box w='50%'></Box>
+        <Box />
       </Flex>
     </Flex>
   );
