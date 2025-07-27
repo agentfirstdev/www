@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Box, Flex, IconButton, Tooltip, useColorMode } from '@chakra-ui/react';
+import { Box, Flex, IconButton, Tooltip, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 
@@ -10,6 +10,8 @@ import './App.css';
 export default function App() {
   const logotype = useRef();
   const { colorMode, toggleColorMode } = useColorMode();
+  const strokeColor = useColorModeValue(ui.creativeBlue, ui.royalBlue);
+  const fillColor = useColorModeValue(ui.royalBlue, ui.creativeBlue);
   const isLightMode = colorMode == 'light';
   const modeId = 'mode';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
@@ -24,26 +26,6 @@ export default function App() {
   };
 
   useEffect(() => {
-    const canvas = logotype.current;
-    const context = canvas.getContext('2d');
-    const roughCanvas = rough.canvas(canvas);
-    const id = setInterval(() => {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      roughCanvas.path(AgentFirst(), {
-        stroke: '#3057e1',
-        fill: '#4a6de5',
-        strokeWidth: ui.logoStroke,
-        roughness: ui.logoRoughness,
-        hachureAngle: ui.logoAngle
-      });
-    }, ui.logoRefreshMs);
-
-    return () => {
-      clearInterval(id);
-    };
-  }, []);
-
-  useEffect(() => {
     let link = document.getElementById(modeId);
 
     if (!link) {
@@ -56,6 +38,26 @@ export default function App() {
 
     link.href = `atom-one-${colorMode}${import.meta.env.PROD ? '.min' : ''}.css`;
   }, [colorMode]);
+
+  useEffect(() => {
+    const canvas = logotype.current;
+    const context = canvas.getContext('2d');
+    const roughCanvas = rough.canvas(canvas);
+    const id = setInterval(() => {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      roughCanvas.path(AgentFirst(), {
+        stroke: strokeColor,
+        fill: fillColor,
+        strokeWidth: ui.logoStroke,
+        roughness: ui.logoRoughness,
+        hachureAngle: ui.logoAngle
+      });
+    }, ui.logoRefreshMs);
+
+    return () => {
+      clearInterval(id);
+    };
+  }, [fillColor, strokeColor]);
 
   return (
     <Flex w='100%' minH='100vh'>

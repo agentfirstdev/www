@@ -4,6 +4,11 @@ import highlights from 'markdown-it-highlightjs';
 // Strings
 export const logoLabel = 'Agent First';
 
+// Colors
+export const royalBlue = '#485cc7';
+export const creativeBlue = '#307fe2';
+export const resolutionBlue = '#002677';
+
 // Typography
 export const controlFontWeight = 'semibold';
 

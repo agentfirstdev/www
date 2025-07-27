@@ -15,8 +15,8 @@ export default extendTheme({
     }
   },
   colors: {
-    brand: { primary: '#4a6de5', secondary: '#3057e1' },
-    accent: { primary: '#002082', secondary: 'red' }
+    brand: { primary: ui.royalBlue, secondary: ui.creativeBlue },
+    accent: { primary: ui.resolutionBlue, secondary: 'red' }
   },
   components: {
     Link: {
