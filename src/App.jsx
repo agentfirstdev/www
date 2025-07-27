@@ -124,6 +124,20 @@ export default function App() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
         </Text>
+        <Heading as='h2' mt='10' textAlign='left' color='accent.secondary'>
+          3. [Coming soon] Interact with pages
+        </Heading>
+        <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </Text>
+        <Heading as='h2' mt='10' textAlign='left' color='accent.secondary'>
+          4. [Coming soon] Access personal data
+        </Heading>
+        <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </Text>
       </Box>
     </Flex>
   );
