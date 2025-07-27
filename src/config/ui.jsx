@@ -3,6 +3,15 @@ import highlights from 'markdown-it-highlightjs';
 
 // Strings
 export const logoLabel = 'Agent First';
+export const Tagline = () => {
+  return (
+    <>
+      The missing services for
+      <br />
+      agent-first development
+    </>
+  );
+};
 
 // Colors
 export const royalBlue = '#4a6de5';

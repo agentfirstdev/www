@@ -16,8 +16,9 @@ export default extendTheme({
   },
   colors: {
     brand: { primary: ui.royalBlue, secondary: ui.creativeBlue },
-    accent: { primary: ui.resolutionBlue, secondary: 'red' }
+    accent: { primary: ui.resolutionBlue, secondary: '#ff8840' }
   },
+  fonts: { heading: '"Indie Flower", cursive', body: '"PT Sans", sans-serif' },
   components: {
     Link: {
       baseStyle: {

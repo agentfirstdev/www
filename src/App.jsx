@@ -1,5 +1,14 @@
 import { useRef, useEffect } from 'react';
-import { Box, Flex, IconButton, Tooltip, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Text,
+  IconButton,
+  Tooltip,
+  useColorMode,
+  useColorModeValue
+} from '@chakra-ui/react';
 import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 
@@ -60,13 +69,13 @@ export default function App() {
   }, [fillColor, strokeColor]);
 
   return (
-    <Flex w='100%' minH='100vh'>
-      <Box mt='2'>
+    <Flex w='100%' minH='100vh' direction='column'>
+      <Box>
         <canvas
           ref={logotype}
           width='1760'
           height='352'
-          style={{ width: '25%', minWidth: '256px' }}
+          style={{ marginTop: '8px', width: '25%', minWidth: '256px' }}
           role='img'
           aria-label={ui.logoLabel}
         />
@@ -88,6 +97,22 @@ export default function App() {
           </Tooltip>
         </Flex>
       </Box>
+      <Flex w='100%' h='50vh' alignItems='center'>
+        <Box p='10%' w='50%'>
+          <Heading
+            as='h1'
+            fontSize={{ base: '3xl', md: '2xl', lg: '3xl' }}
+            color='accent.secondary'
+          >
+            <ui.Tagline />
+          </Heading>
+          <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua.
+          </Text>
+        </Box>
+        <Box w='50%'></Box>
+      </Flex>
     </Flex>
   );
 }
