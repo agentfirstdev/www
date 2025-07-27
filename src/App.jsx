@@ -128,8 +128,8 @@ export default function App() {
           … From anywhere
         </Heading>
         <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
-          All <strong>Agent First</strong> requests can be geotargeted to any of 195 countries in
-          our proxy network to get localized results or content:
+          All <strong>Agent First</strong> requests can be geotargeted to among 195 countries in our
+          global proxy network for local results and content:
         </Text>
       </Box>
     </Flex>
