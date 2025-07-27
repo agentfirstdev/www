@@ -100,8 +100,8 @@ export default function App() {
       <Flex w='100%' h='50vh' alignItems='center'>
         <Box p='10%' w='50%'>
           <Flex
-            border={`1px solid ${ui.indianKhaki}`}
-            bg={ui.eggWhite}
+            border={`1px solid ${ui.roti}`}
+            bg={ui.portica}
             px={ui.postItPadding}
             w={ui.postItDimension}
             h={ui.postItDimension}
@@ -124,7 +124,7 @@ export default function App() {
               fontFamily='"Indie Flower", cursive'
               fontSize={{ base: '28px', md: '22px', lg: '28px' }}
             >
-              Give your agent state-of-the-art data-extraction & -input abilities in minutes …
+              Enhance your agent w/ world-class research & assistant abilities in mins …
             </Text>
           </Flex>
         </Box>
@@ -155,8 +155,8 @@ export default function App() {
           <Text as='strong' fontFamily='"Indie Flower", cursive'>
             Agent First
           </Text>
-          {' maintains a supercluster of real, well-behaved browsers to automatically bypass or '}
-          solve captchas like reCAPTCHA, hCaptcha, Cloudflare Turnstile, and more:
+          {' manages a supercluster of real, well-behaved browsers to automatically bypass or '}
+          solve reCAPTCHA, hCaptcha, Cloudflare Turnstile, and other captchas:
         </Text>
         <Heading as='h2' mt='10' textAlign='left' color='accent.primary'>
           … From anywhere

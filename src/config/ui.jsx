@@ -14,11 +14,11 @@ export const Tagline = () => {
 };
 
 // Colors
-export const eggWhite = '#fef4c1';
-export const indianKhaki = '#bfb791';
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
 export const resolutionBlue = '#002082';
+export const portica = '#fbe364';
+export const roti = '#bcaa4b';
 
 // Typography
 export const controlFontWeight = 'semibold';
