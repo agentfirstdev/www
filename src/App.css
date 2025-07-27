@@ -1,0 +1,48 @@
+html {
+  background: var(--chakra-colors-body-bg) !important;
+  overflow-y: scroll;
+}
+
+#root {
+  width: 100%;
+  text-align: center;
+}
+
+[data-popper-placement="right-start" i] .chakra-tooltip__arrow-wrapper {
+  top: -3px !important;
+}
+
+[data-popper-placement="right-start" i]
+.chakra-tooltip__arrow-wrapper[style*="translate3d(0px, 8px, 0px)" i] {
+  top: 3px !important;
+}
+
+[data-popper-placement="right-end" i] .chakra-tooltip__arrow-wrapper {
+  top: 3px !important;
+}
+
+[data-popper-placement="right-start" i] .verbose .chakra-tooltip__arrow-wrapper {
+  top: -14px !important;
+}
+
+[data-popper-placement="right-start" i]
+.verbose
+.chakra-tooltip__arrow-wrapper[style*="translate3d(0px, 8px, 0px)" i] {
+  top: 14px !important;
+}
+
+[data-popper-placement="right-start" i]
+.verbose
+.chakra-tooltip__arrow-wrapper[style*="translate3d(0px, 9px, 0px)" i] {
+  top: 14px !important;
+}
+
+[data-popper-placement="right-start" i]
+.verbose
+.chakra-tooltip__arrow-wrapper[style*="translate3d(0px, 19px, 0px)" i] {
+  top: 3px !important;
+}
+
+[data-popper-placement="right-end" i] .verbose .chakra-tooltip__arrow-wrapper {
+  top: 14px !important;
+}
