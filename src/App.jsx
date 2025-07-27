@@ -99,13 +99,34 @@ export default function App() {
       </Box>
       <Flex w='100%' h='50vh' alignItems='center'>
         <Box p='10%' w='50%'>
-          <Heading as='h1' color='accent.primary'>
-            <ui.Tagline />
-          </Heading>
-          <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua …
-          </Text>
+          <Flex
+            border={`1px solid ${ui.indianKhaki}`}
+            bg={ui.eggWhite}
+            px={ui.postItPadding}
+            w={ui.postItDimension}
+            h={ui.postItDimension}
+            direction='column'
+            alignItems='center'
+            justifyContent='center'
+            boxShadow={ui.postItShadow}
+            transform={`rotate(${ui.postItRotation})`}
+          >
+            <Heading
+              as='h1'
+              fontFamily='"Permanent Marker", cursive'
+              fontSize={{ base: '28px', md: '22px', lg: '28px' }}
+            >
+              <ui.Tagline />
+            </Heading>
+            <Text
+              my='5'
+              textAlign='left'
+              fontFamily='"Indie Flower", cursive'
+              fontSize={{ base: '28px', md: '22px', lg: '28px' }}
+            >
+              Give your agent state-of-the-art data-extraction & -input abilities in minutes …
+            </Text>
+          </Flex>
         </Box>
         <Box />
       </Flex>
@@ -113,23 +134,48 @@ export default function App() {
         <Heading as='h2' textAlign='left' color='accent.primary'>
           1. Google-like search
         </Heading>
-        <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
+        <Text
+          mt='2'
+          textAlign='left'
+          fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
+          fontWeight='300'
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
         </Text>
         <Heading as='h2' mt='10' textAlign='left' color='accent.primary'>
           2. Uncaptcha’d browsing
         </Heading>
-        <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
+        <Text
+          mt='2'
+          textAlign='left'
+          fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
+          fontWeight='300'
+        >
+          <Text as='strong' fontFamily='"Indie Flower", cursive'>
+            Agent First
+          </Text>
+          {' maintains a supercluster of real, well-behaved browsers to automatically bypass or '}
+          solve captchas like reCAPTCHA, hCaptcha, Cloudflare Turnstile, and more:
         </Text>
         <Heading as='h2' mt='10' textAlign='left' color='accent.primary'>
           … From anywhere
         </Heading>
-        <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
-          All <strong>Agent First</strong> requests can be geotargeted to among 195 countries in our
-          global proxy network for local results and content:
+        <Text
+          mt='2'
+          textAlign='left'
+          fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
+          fontWeight='300'
+        >
+          {'All '}
+          <Text as='strong' fontFamily='"Indie Flower", cursive'>
+            Agent First
+          </Text>
+          {' requests can be geotargeted to among '}
+          <Text as='strong' fontWeight='500'>
+            190+ countries
+          </Text>
+          {' in our proxy network for local results and content:'}
         </Text>
       </Box>
     </Flex>

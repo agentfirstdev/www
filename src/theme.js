@@ -18,7 +18,7 @@ export default extendTheme({
     brand: { primary: ui.royalBlue, secondary: ui.creativeBlue },
     accent: { primary: ui.resolutionBlue, secondary: '#ff8840' }
   },
-  fonts: { heading: '"Indie Flower", cursive', body: '"PT Sans", sans-serif' },
+  fonts: { heading: '"Indie Flower", cursive', body: '"Source Sans 3", sans-serif' },
   components: {
     Link: {
       baseStyle: {

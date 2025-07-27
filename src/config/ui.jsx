@@ -14,6 +14,8 @@ export const Tagline = () => {
 };
 
 // Colors
+export const eggWhite = '#fef4c1';
+export const indianKhaki = '#bfb791';
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
 export const resolutionBlue = '#002082';
@@ -39,6 +41,12 @@ export const tooltipPadding = '6px 10px';
 
 // Header
 export const navPosition = 6;
+
+// Hero
+export const postItPadding = 4;
+export const postItDimension = '380px';
+export const postItShadow = '5px 5px 15px rgba(0, 0, 0, .3)';
+export const postItRotation = '-3deg';
 
 // Secondary pages
 export const secondaryStyle = {
