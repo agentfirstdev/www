@@ -6,7 +6,7 @@ export const logoLabel = 'Agent First';
 export const Tagline = () => {
   return (
     <>
-      Missing services for
+      Tools & services for
       <br />
       agent-first development
     </>
@@ -16,7 +16,7 @@ export const Tagline = () => {
 // Colors
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
-export const resolutionBlue = '#002677';
+export const resolutionBlue = '#002082';
 
 // Typography
 export const controlFontWeight = 'semibold';
