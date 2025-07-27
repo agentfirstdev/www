@@ -99,20 +99,32 @@ export default function App() {
       </Box>
       <Flex w='100%' h='50vh' alignItems='center'>
         <Box p='10%' w='50%'>
-          <Heading
-            as='h1'
-            fontSize={{ base: '3xl', md: '2xl', lg: '3xl' }}
-            color='accent.primary'
-          >
+          <Heading as='h1' color='accent.secondary'>
             <ui.Tagline />
           </Heading>
           <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
+            incididunt ut labore et dolore magna aliqua …
           </Text>
         </Box>
         <Box />
       </Flex>
+      <Box px='10%'>
+        <Heading as='h2' textAlign='left' color='accent.secondary'>
+          1. Search the web
+        </Heading>
+        <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </Text>
+        <Heading as='h2' mt='10' textAlign='left' color='accent.secondary'>
+          2. Browse uncaptcha’d pages
+        </Heading>
+        <Text mt='2' textAlign='left' fontSize={{ base: 'lg', md: 'md', lg: 'lg' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </Text>
+      </Box>
     </Flex>
   );
 }
