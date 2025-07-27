@@ -124,7 +124,7 @@ export default function App() {
               fontFamily='"Indie Flower", cursive'
               fontSize={{ base: '28px', md: '22px', lg: '28px' }}
             >
-              Enhance your agent w/ world-class research & assistant abilities in mins …
+              Enhance your agent w/ world-class research & assistant abilities in minutes …
             </Text>
           </Flex>
         </Box>
@@ -155,8 +155,8 @@ export default function App() {
           <Text as='strong' fontFamily='"Indie Flower", cursive'>
             Agent First
           </Text>
-          {' manages a supercluster of real, well-behaved browsers to automatically bypass or '}
-          solve reCAPTCHA, hCaptcha, Cloudflare Turnstile, and other captchas:
+          {'’s supercluster of real, well-behaved browsers bypasses or solves reCAPTCHA, '}
+          Cloudflare Turnstile, and other captchas for you:
         </Text>
         <Heading as='h2' mt='10' textAlign='left' color='accent.primary'>
           … From anywhere
