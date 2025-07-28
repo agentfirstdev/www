@@ -120,7 +120,10 @@ export default function App() {
         <Flex w='50%' justifyContent='center' alignItems='center'>
           <Flex
             border={`1px solid ${ui.postItColors[0].border}`}
-            bg={ui.postItColors[0].background}
+            bgGradient={
+              `linear(${ui.gradientAngle}deg, ` +
+              `${ui.postItColors[0].background.from}, ${ui.postItColors[0].background.to})`
+            }
             px={ui.postItPadding}
             w={ui.postItDimension}
             h={ui.postItDimension}
@@ -152,7 +155,7 @@ export default function App() {
       <Box
         m={ui.sectionMargin}
         borderRadius='3xl'
-        bgGradient={`linear(45deg, ${ui.wildSand}, ${ui.cararra})`}
+        bgGradient={`linear(${ui.gradientAngle}deg, ${ui.wildSand}, ${ui.cararra})`}
         px={ui.sectionPadding}
         py={ui.sectionMargin}
       >

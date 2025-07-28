@@ -17,16 +17,20 @@ export const demoUrl = 'https://llamapile.com/';
 // Colors
 export const wildSand = '#f6f5f4';
 export const cararra = '#efedeb';
+export const bonJour = '#e4dfdd';
+export const timberwolf = '#d9d2ce';
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
 export const resolutionBlue = '#002082';
+export const sweetCorn = '#fcea8b';
 export const portica = '#fbe364';
 export const roti = '#bcaa4b';
+export const shilo = '#eaabb0';
 export const ruddyPink = '#e38f95';
 export const coralTree = '#aa6b70';
 export const postItColors = [
-  { background: portica, border: roti },
-  { background: ruddyPink, border: coralTree }
+  { background: { from: sweetCorn, to: portica }, border: roti },
+  { background: { from: shilo, to: ruddyPink }, border: coralTree }
 ];
 
 // Typography
@@ -46,6 +50,7 @@ export const shadowStyle = 'outline';
 export const transition = 'all var(--chakra-transition-duration-normal)';
 export const sectionMargin = 8;
 export const sectionPadding = 24;
+export const gradientAngle = 140;
 
 // Controls
 export const tooltipPadding = '6px 10px';
@@ -58,7 +63,7 @@ export const itemMargin = 6;
 export const postItPadding = 4;
 export const postItDimension = '4in';
 export const postItShadow = '5px 5px 15px rgba(0, 0, 0, .3)';
-export const postItRotation = '-3deg';
+export const postItRotation = '-1.5deg';
 
 // Secondary pages
 export const secondaryStyle = {
