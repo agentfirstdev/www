@@ -149,8 +149,7 @@ export default function App() {
         <Flex w='50%' />
       </Flex>
       <Box
-        mt={ui.sectionMargin}
-        mx={ui.sectionMargin}
+        m={ui.sectionMargin}
         borderRadius='3xl'
         bgGradient={`linear(45deg, ${ui.wildSand}, ${ui.cararra})`}
         px={ui.sectionPadding}
