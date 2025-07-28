@@ -19,6 +19,12 @@ export const creativeBlue = '#3057e1';
 export const resolutionBlue = '#002082';
 export const portica = '#fbe364';
 export const roti = '#bcaa4b';
+export const ruddyPink = '#e38f95';
+export const coralTree = '#aa6b70';
+export const postItColors = [
+  { background: portica, border: roti },
+  { background: ruddyPink, border: coralTree }
+];
 
 // Typography
 export const controlFontWeight = 'semibold';

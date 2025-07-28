@@ -24,6 +24,7 @@ export default function App() {
   const isLightMode = colorMode == 'light';
   const modeId = 'mode';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
+  const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
   const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
       event.preventDefault();
@@ -100,8 +101,8 @@ export default function App() {
       <Flex mt={ui.sectionMargin} px={ui.sectionPadding} w='100%' h='50vh'>
         <Flex w='50%' justifyContent='center' alignItems='center'>
           <Flex
-            border={`1px solid ${ui.roti}`}
-            bg={ui.portica}
+            border={`1px solid ${postItColors.border}`}
+            bg={postItColors.background}
             px={ui.postItPadding}
             w={ui.postItDimension}
             h={ui.postItDimension}
