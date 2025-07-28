@@ -180,11 +180,11 @@ export default function App() {
           <Text as='strong' fontFamily='"Indie Flower", cursive'>
             Agent First
           </Text>
-          {' gives you real-time Google results, including '}
+          {' lets you ingest live, reliable Google results, including '}
           <Text as='strong' fontWeight='500'>
-            AI Overviews, search ads, & other result types
+            organic & paid result types
           </Text>
-          {', as structured JSON or their original HTML:'}
+          {', as structured data or raw HTML:'}
         </Text>
         <Heading
           as='h2'
