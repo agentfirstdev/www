@@ -177,8 +177,14 @@ export default function App() {
           fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
           fontWeight='300'
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua:
+          <Text as='strong' fontFamily='"Indie Flower", cursive'>
+            Agent First
+          </Text>
+          {' gives you real-time Google results, including '}
+          <Text as='strong' fontWeight='500'>
+            AI Overviews, search ads, & other result types
+          </Text>
+          {', as structured JSON or their original HTML:'}
         </Text>
         <Heading
           as='h2'
