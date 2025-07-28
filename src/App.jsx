@@ -6,6 +6,7 @@ import {
   Text,
   Link,
   IconButton,
+  Badge,
   Tooltip,
   useColorMode,
   useColorModeValue
@@ -209,6 +210,33 @@ export default function App() {
             real, well-behaved browsers
           </Text>
           {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
+        </Text>
+        <Heading
+          as='h2'
+          mt={ui.sectionMargin}
+          textAlign='left'
+          fontFamily='"Indie Flower", cursive'
+          color='accent.primary'
+        >
+          {'3. '}
+          <Badge>Coming soon</Badge>
+          {' Webpage interaction'}
+        </Heading>
+        <Text
+          mt='2'
+          textAlign='left'
+          fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
+          fontWeight='300'
+        >
+          {'Next, '}
+          <Text as='strong' fontFamily='"Indie Flower", cursive'>
+            Agent First
+          </Text>
+          {' browsers will accept '}
+          <Text as='strong' fontWeight='500'>
+            CDP commands
+          </Text>
+          {' (Chrome DevTools Protocol) to support activities like shopping on behalf of users.'}
         </Text>
         <Heading
           as='h2'
