@@ -131,6 +131,9 @@ export default function App() {
         <Box />
       </Flex>
       <Box px='10%'>
+        <Heading as='h1' fontFamily='"Permanent Marker", cursive' color='accent.primary'>
+          Services
+        </Heading>
         <Heading as='h2' textAlign='left' color='accent.primary'>
           1. Google-like search
         </Heading>
@@ -155,8 +158,11 @@ export default function App() {
           <Text as='strong' fontFamily='"Indie Flower", cursive'>
             Agent First
           </Text>
-          {'’s supercluster of real, well-behaved browsers bypasses or solves reCAPTCHA, '}
-          Cloudflare Turnstile, and other captchas for you:
+          {'’s supercluster of '}
+          <Text as='strong' fontWeight='500'>
+            real, well-behaved browsers
+          </Text>
+          {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
         </Text>
         <Heading as='h2' mt='10' textAlign='left' color='accent.primary'>
           … From anywhere
@@ -173,9 +179,9 @@ export default function App() {
           </Text>
           {' requests can be geotargeted to among '}
           <Text as='strong' fontWeight='500'>
-            190+ countries
+            190+ countries & their regions
           </Text>
-          {' in our proxy network for local results and content:'}
+          {' within our proxy network for local results & content:'}
         </Text>
       </Box>
     </Flex>
