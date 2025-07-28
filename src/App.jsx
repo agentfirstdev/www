@@ -97,8 +97,8 @@ export default function App() {
           </Tooltip>
         </Flex>
       </Box>
-      <Flex w='100%' h='50vh' alignItems='center'>
-        <Box p='10%' w='50%'>
+      <Flex mt={ui.sectionMargin} px={ui.sectionPadding} w='100%' h='50vh'>
+        <Flex w='50%' justifyContent='center' alignItems='center'>
           <Flex
             border={`1px solid ${ui.roti}`}
             bg={ui.portica}
@@ -127,11 +127,16 @@ export default function App() {
               Enhance your agent w/ world-class research & assistant abilities in minutes …
             </Text>
           </Flex>
-        </Box>
-        <Box />
+        </Flex>
+        <Flex w='50%' />
       </Flex>
-      <Box px='10%'>
-        <Heading as='h1' fontFamily='"Permanent Marker", cursive' color='accent.primary'>
+      <Box mt={ui.sectionMargin} px={ui.sectionPadding}>
+        <Heading
+          as='h1'
+          mt={ui.sectionMargin}
+          fontFamily='"Permanent Marker", cursive'
+          color='accent.primary'
+        >
           Services
         </Heading>
         <Heading as='h2' textAlign='left' color='accent.primary'>
@@ -146,7 +151,7 @@ export default function App() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
         </Text>
-        <Heading as='h2' mt='10' textAlign='left' color='accent.primary'>
+        <Heading as='h2' mt={ui.sectionMargin} textAlign='left' color='accent.primary'>
           2. Uncaptcha’d browsing
         </Heading>
         <Text
@@ -164,7 +169,7 @@ export default function App() {
           </Text>
           {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
         </Text>
-        <Heading as='h2' mt='10' textAlign='left' color='accent.primary'>
+        <Heading as='h2' mt={ui.sectionMargin} textAlign='left' color='accent.primary'>
           … From anywhere
         </Heading>
         <Text

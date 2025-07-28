@@ -35,6 +35,8 @@ export const outlineStyle = 'none';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
 export const transition = 'all var(--chakra-transition-duration-normal)';
+export const sectionMargin = 8;
+export const sectionPadding = 24;
 
 // Controls
 export const tooltipPadding = '6px 10px';
