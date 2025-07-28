@@ -164,7 +164,12 @@ export default function App() {
         >
           Services
         </Heading>
-        <Heading as='h2' textAlign='left' color='accent.primary'>
+        <Heading
+          as='h2'
+          textAlign='left'
+          fontFamily='"Indie Flower", cursive'
+          color='accent.primary'
+        >
           1. Google-like search
         </Heading>
         <Text
@@ -174,9 +179,15 @@ export default function App() {
           fontWeight='300'
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
+          ut labore et dolore magna aliqua:
         </Text>
-        <Heading as='h2' mt={ui.sectionMargin} textAlign='left' color='accent.primary'>
+        <Heading
+          as='h2'
+          mt={ui.sectionMargin}
+          textAlign='left'
+          fontFamily='"Indie Flower", cursive'
+          color='accent.primary'
+        >
           2. Uncaptcha’d browsing
         </Heading>
         <Text
@@ -194,7 +205,13 @@ export default function App() {
           </Text>
           {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
         </Text>
-        <Heading as='h2' mt={ui.sectionMargin} textAlign='left' color='accent.primary'>
+        <Heading
+          as='h2'
+          mt={ui.sectionMargin}
+          textAlign='left'
+          fontFamily='"Indie Flower", cursive'
+          color='accent.primary'
+        >
           … From anywhere
         </Heading>
         <Text
