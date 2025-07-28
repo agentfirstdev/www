@@ -182,7 +182,7 @@ export default function App() {
           </Text>
           {' lets you reliably integrate live Google results, including '}
           <Text as='strong' fontWeight='500'>
-            organic & paid result types
+            all organic & paid result types
           </Text>
           {', as structured data or raw HTML:'}
         </Text>
@@ -225,11 +225,11 @@ export default function App() {
           fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
           fontWeight='300'
         >
-          {'All '}
+          {'Every '}
           <Text as='strong' fontFamily='"Indie Flower", cursive'>
             Agent First
           </Text>
-          {' requests can be geotargeted to among '}
+          {' request can be geotargeted to one of '}
           <Text as='strong' fontWeight='500'>
             190+ countries & their regions
           </Text>
