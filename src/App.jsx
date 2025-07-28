@@ -138,12 +138,12 @@ export default function App() {
               <ui.Tagline />
             </Heading>
             <Text
-              my='5'
+              my='6'
               textAlign='left'
               fontFamily='"Indie Flower", cursive'
-              fontSize={{ base: '28px', md: '22px', lg: '28px' }}
+              fontSize={{ base: '26px', md: 'xl', lg: '26px' }}
             >
-              Enhance your agent w/ world-class research & interaction abilities in minutes …
+              Enhance your agent with world-class research & browsing abilities in minutes …
             </Text>
           </Flex>
         </Flex>
@@ -232,12 +232,11 @@ export default function App() {
           <Text as='strong' fontFamily='"Indie Flower", cursive'>
             Agent First
           </Text>
-          {' browsers will accept '}
+          {' will accept '}
           <Text as='strong' fontWeight='500'>
             CDP commands
           </Text>
-          {' (Chrome DevTools Protocol–compatible instructions) to support completing tasks on '}
-          behalf of users.
+          {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf of users.'}
         </Text>
         <Heading
           as='h2'
