@@ -180,7 +180,7 @@ export default function App() {
           <Text as='strong' fontFamily='"Indie Flower", cursive'>
             Agent First
           </Text>
-          {' lets you ingest live, reliable Google results, including '}
+          {' lets you reliably incorporate live Google results, including '}
           <Text as='strong' fontWeight='500'>
             organic & paid result types
           </Text>
