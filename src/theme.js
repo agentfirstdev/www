@@ -18,7 +18,7 @@ export default extendTheme({
     brand: { primary: ui.royalBlue, secondary: ui.creativeBlue },
     accent: { primary: ui.resolutionBlue, secondary: '#ff8840' }
   },
-  fonts: { heading: '"Indie Flower", cursive', body: '"Source Sans 3", sans-serif' },
+  fonts: { heading: '"Permanent Marker", cursive', body: '"Source Sans 3", sans-serif' },
   components: {
     Link: {
       baseStyle: {
@@ -30,7 +30,7 @@ export default extendTheme({
       },
       variants: {
         ghost: { display: 'inline-block', color: 'inherit', _hover: { color: 'inherit' } },
-        nav: { color: 'accent.primary', _hover: { color: 'brand.primary' } }
+        nav: { fontFamily: 'heading', color: 'accent.primary', _hover: { color: 'brand.primary' } }
       }
     },
     Button: {

@@ -12,8 +12,11 @@ export const Tagline = () => {
     </>
   );
 };
+export const demoUrl = 'https://llamapile.com/';
 
 // Colors
+export const wildSand = '#f6f5f4';
+export const cararra = '#efedeb';
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
 export const resolutionBlue = '#002082';
@@ -49,10 +52,11 @@ export const tooltipPadding = '6px 10px';
 
 // Header
 export const navPosition = 6;
+export const itemMargin = 6;
 
 // Hero
 export const postItPadding = 4;
-export const postItDimension = '380px';
+export const postItDimension = '4in';
 export const postItShadow = '5px 5px 15px rgba(0, 0, 0, .3)';
 export const postItRotation = '-3deg';
 

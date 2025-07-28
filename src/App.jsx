@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Text,
+  Link,
   IconButton,
   Tooltip,
   useColorMode,
@@ -87,9 +88,22 @@ export default function App() {
           align='center'
           fontWeight={ui.controlFontWeight}
         >
+          <Link variant='nav' ml={ui.itemMargin} href='#services'>
+            Services
+          </Link>
+          <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
+            Pricing
+          </Link>
+          <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
+            Live demo
+          </Link>
+          <Link variant='nav' ml={ui.itemMargin} href='#about'>
+            About & contacts
+          </Link>
           <Tooltip mr='1' p={ui.tooltipPadding} label={modeLabel} hasArrow>
             <IconButton
               variant='monochrome'
+              ml={ui.itemMargin}
               icon={isLightMode ? <MoonIcon /> : <SunIcon sx={{ g: { strokeWidth: 3 } }} />}
               fontSize='sm'
               aria-label={modeLabel}
@@ -125,16 +139,23 @@ export default function App() {
               fontFamily='"Indie Flower", cursive'
               fontSize={{ base: '28px', md: '22px', lg: '28px' }}
             >
-              Enhance your agent w/ world-class research & assistant abilities in minutes …
+              Enhance your agent w/ world-class research & interaction abilities in minutes …
             </Text>
           </Flex>
         </Flex>
         <Flex w='50%' />
       </Flex>
-      <Box mt={ui.sectionMargin} px={ui.sectionPadding}>
+      <Box
+        mt={ui.sectionMargin}
+        mx={ui.sectionMargin}
+        borderRadius='3xl'
+        bgGradient={`linear(45deg, ${ui.wildSand}, ${ui.cararra})`}
+        px={ui.sectionPadding}
+        py={ui.sectionMargin}
+      >
         <Heading
           as='h1'
-          mt={ui.sectionMargin}
+          id='services'
           fontFamily='"Permanent Marker", cursive'
           color='accent.primary'
         >
