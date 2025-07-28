@@ -97,8 +97,8 @@ export default function App() {
           <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
             Live demo
           </Link>
-          <Link variant='nav' ml={ui.itemMargin} href='#about'>
-            About & contacts
+          <Link variant='nav' ml={ui.itemMargin} href='#team'>
+            Team & contacts
           </Link>
           <Tooltip mr='1' p={ui.tooltipPadding} label={modeLabel} hasArrow>
             <IconButton
