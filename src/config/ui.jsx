@@ -15,10 +15,6 @@ export const Tagline = () => {
 export const demoUrl = 'https://llamapile.com/';
 
 // Colors
-export const wildSand = '#f6f5f4';
-export const cararra = '#efedeb';
-export const bonJour = '#e4dfdd';
-export const timberwolf = '#d9d2ce';
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
 export const resolutionBlue = '#002082';
@@ -28,6 +24,7 @@ export const roti = '#bcaa4b';
 export const shilo = '#eaabb0';
 export const ruddyPink = '#e38f95';
 export const coralTree = '#aa6b70';
+export const jaffa = '#ff8840';
 export const postItColors = [
   { background: { from: sweetCorn, to: portica }, border: roti },
   { background: { from: shilo, to: ruddyPink }, border: coralTree }

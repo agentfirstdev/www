@@ -7,16 +7,19 @@ export default extendTheme({
   cssVarPrefix: 'chakra',
   semanticTokens: {
     colors: {
-      'chakra-body-bg': { _light: '#fbfaf9', _dark: 'gray.800' },
+      'chakra-body-bg': { _light: '#f9fafc', _dark: 'gray.800' },
+      'chakra-subtle-bg': { _light: 'gray.100', _dark: 'whiteAlpha.50' },
       'chakra-accent-bg': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
       'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' },
-      'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
-      'chakra-shadow-color': { _light: 'gray.400', _dark: 'whiteAlpha.400' }
+      'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
+      'chakra-shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
+      'chakra-button-color': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
+      'chakra-label-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' }
     }
   },
   colors: {
     brand: { primary: ui.royalBlue, secondary: ui.resolutionBlue },
-    accent: { primary: ui.creativeBlue, secondary: '#ff8840' }
+    accent: { primary: ui.creativeBlue }
   },
   fonts: {
     heading: '"Permanent Marker", cursive',
@@ -44,8 +47,7 @@ export default extendTheme({
           mt: 2,
           textAlign: 'left',
           fontSize: { base: 'xl', md: 'lg', lg: 'xl' },
-          fontWeight: 300,
-          color: 'gray.800'
+          fontWeight: 300
         },
         co: { fontFamily: 'subheading' }
       }
@@ -76,7 +78,7 @@ export default extendTheme({
       variants: {
         solid: { bg: 'accent.primary', color: 'white', _hover: { bg: 'brand.secondary' } },
         monochrome: {
-          bg: 'chakra-border-color',
+          bg: 'chakra-button-color',
           color: 'brand.secondary',
           _hover: { bg: 'chakra-accent-bg', color: 'accent.primary' },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
@@ -94,11 +96,11 @@ export default extendTheme({
     },
     Badge: {
       baseStyle: {
-        border: '1px solid var(--chakra-colors-brand-secondary)',
-        bg: 'accent.primary',
+        border: '1px solid var(--chakra-colors-chakra-label-color)',
+        bg: 'chakra-accent-bg',
         pt: '2px',
         fontFamily: 'body',
-        color: 'white'
+        color: 'chakra-label-color'
       }
     }
   },

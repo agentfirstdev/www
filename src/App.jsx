@@ -148,8 +148,9 @@ export default function App() {
       <Box
         id='services'
         m={ui.sectionMargin}
+        border='1px solid var(--chakra-colors-chakra-border-color)'
         borderRadius='3xl'
-        bgGradient={`linear(${ui.gradientAngle}deg, ${ui.wildSand}, ${ui.cararra})`}
+        bg='chakra-subtle-bg'
         px={ui.sectionPadding}
         py={ui.sectionMargin}
       >
@@ -180,9 +181,8 @@ export default function App() {
           {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
         </Text>
         <Heading as='h2' variant='service' mt={ui.sectionMargin}>
-          {'3. '}
+          {'3. Webpage interaction '}
           <Badge>Coming soon</Badge>
-          {' Webpage interaction'}
         </Heading>
         <Text variant='service'>
           <Text as='strong' variant='co'>
