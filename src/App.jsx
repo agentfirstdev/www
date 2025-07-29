@@ -78,7 +78,7 @@ export default function App() {
           ref={logotype}
           width='1760'
           height='352'
-          style={{ marginTop: '8px', width: '25%', minWidth: '256px' }}
+          style={{ marginTop: '8px', marginLeft: '4px', width: '25%', minWidth: '256px' }}
           role='img'
           aria-label={ui.logoLabel}
         />
@@ -133,19 +133,10 @@ export default function App() {
             boxShadow={ui.postItShadow}
             transform={`rotate(${ui.postItRotation})`}
           >
-            <Heading
-              as='h1'
-              fontFamily='"Permanent Marker", cursive'
-              fontSize={{ base: '28px', md: '22px', lg: '28px' }}
-            >
+            <Heading as='h1' variant='post-it'>
               <ui.Tagline />
             </Heading>
-            <Text
-              my='6'
-              textAlign='left'
-              fontFamily='"Indie Flower", cursive'
-              fontSize={{ base: '26px', md: 'xl', lg: '26px' }}
-            >
+            <Text variant='post-it'>
               Enhance your agent with world-class research & browsing abilities in minutes …
             </Text>
           </Flex>
@@ -160,102 +151,58 @@ export default function App() {
         px={ui.sectionPadding}
         py={ui.sectionMargin}
       >
-        <Heading
-          as='h2'
-          textAlign='left'
-          fontFamily='"Indie Flower", cursive'
-          color='accent.primary'
-        >
+        <Heading as='h2' variant='service'>
           1. Google-like search
         </Heading>
-        <Text
-          mt='2'
-          textAlign='left'
-          fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
-          fontWeight='300'
-        >
-          <Text as='strong' fontFamily='"Indie Flower", cursive'>
+        <Text variant='service'>
+          <Text as='strong' variant='co'>
             Agent First
           </Text>
           {' lets you reliably integrate live Google results, including '}
-          <Text as='strong' fontWeight='500'>
+          <Text as='strong' variant='bold'>
             all organic & paid result types
           </Text>
           {', as structured data or raw HTML:'}
         </Text>
-        <Heading
-          as='h2'
-          mt={ui.sectionMargin}
-          textAlign='left'
-          fontFamily='"Indie Flower", cursive'
-          color='accent.primary'
-        >
+        <Heading as='h2' variant='service' mt={ui.sectionMargin}>
           2. Uncaptcha’d browsing
         </Heading>
-        <Text
-          mt='2'
-          textAlign='left'
-          fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
-          fontWeight='300'
-        >
-          <Text as='strong' fontFamily='"Indie Flower", cursive'>
+        <Text variant='service'>
+          <Text as='strong' variant='co'>
             Agent First
           </Text>
           {'’s supercluster of '}
-          <Text as='strong' fontWeight='500'>
+          <Text as='strong' variant='bold'>
             real, well-behaved browsers
           </Text>
           {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
         </Text>
-        <Heading
-          as='h2'
-          mt={ui.sectionMargin}
-          textAlign='left'
-          fontFamily='"Indie Flower", cursive'
-          color='accent.primary'
-        >
+        <Heading as='h2' variant='service' mt={ui.sectionMargin}>
           {'3. '}
           <Badge>Coming soon</Badge>
           {' Webpage interaction'}
         </Heading>
-        <Text
-          mt='2'
-          textAlign='left'
-          fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
-          fontWeight='300'
-        >
-          {'Next, '}
-          <Text as='strong' fontFamily='"Indie Flower", cursive'>
+        <Text variant='service'>
+          <Text as='strong' variant='co'>
             Agent First
           </Text>
-          {' will accept '}
-          <Text as='strong' fontWeight='500'>
+          {' will soon accept '}
+          <Text as='strong' variant='bold'>
             CDP commands
           </Text>
           {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf of '}
           users.
         </Text>
-        <Heading
-          as='h2'
-          mt={ui.sectionMargin}
-          textAlign='left'
-          fontFamily='"Indie Flower", cursive'
-          color='accent.primary'
-        >
+        <Heading as='h2' variant='service' mt={ui.sectionMargin}>
           … From anywhere
         </Heading>
-        <Text
-          mt='2'
-          textAlign='left'
-          fontSize={{ base: 'xl', md: 'lg', lg: 'xl' }}
-          fontWeight='300'
-        >
+        <Text variant='service'>
           {'Every '}
-          <Text as='strong' fontFamily='"Indie Flower", cursive'>
+          <Text as='strong' variant='co'>
             Agent First
           </Text>
           {' request can be geotargeted to one of '}
-          <Text as='strong' fontWeight='500'>
+          <Text as='strong' variant='bold'>
             190+ countries & their regions
           </Text>
           {' within our proxy network for local results & content:'}
