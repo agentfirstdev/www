@@ -153,20 +153,13 @@ export default function App() {
         <Flex w='50%' />
       </Flex>
       <Box
+        id='services'
         m={ui.sectionMargin}
         borderRadius='3xl'
         bgGradient={`linear(${ui.gradientAngle}deg, ${ui.wildSand}, ${ui.cararra})`}
         px={ui.sectionPadding}
         py={ui.sectionMargin}
       >
-        <Heading
-          as='h1'
-          id='services'
-          fontFamily='"Permanent Marker", cursive'
-          color='accent.primary'
-        >
-          Services
-        </Heading>
         <Heading
           as='h2'
           textAlign='left'
