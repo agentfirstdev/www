@@ -62,7 +62,7 @@ export const itemMargin = 6;
 // Hero
 export const postItPadding = 4;
 export const postItDimension = '4in';
-export const postItShadow = '5px 5px 15px rgba(0, 0, 0, .3)';
+export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-color)';
 export const postItRotation = '-1.5deg';
 
 // Secondary pages

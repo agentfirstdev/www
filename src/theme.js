@@ -11,23 +11,23 @@ export default extendTheme({
       'chakra-accent-bg': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
       'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' },
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
-      'chakra-placeholder-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' }
+      'chakra-shadow-color': { _light: 'gray.400', _dark: 'whiteAlpha.400' }
     }
   },
   colors: {
     brand: { primary: ui.royalBlue, secondary: ui.resolutionBlue },
     accent: { primary: ui.creativeBlue, secondary: '#ff8840' }
   },
-  fonts: { heading: '"Permanent Marker", cursive', body: '"Source Sans 3", sans-serif' },
+  fonts: {
+    heading: '"Permanent Marker", cursive',
+    subheading: '"Indie Flower", cursive',
+    body: '"Source Sans 3", sans-serif'
+  },
   components: {
     Heading: {
       variants: {
-        'post-it': { fontSize: ['28px', '22px', '28px'] },
-        service: {
-          textAlign: 'left',
-          fontFamily: '"Indie Flower", cursive',
-          color: 'accent.primary'
-        }
+        'post-it': { fontSize: ['28px', '22px', '28px'], color: 'gray.800' },
+        service: { textAlign: 'left', fontFamily: 'subheading', color: 'accent.primary' }
       }
     },
     Text: {
@@ -36,8 +36,9 @@ export default extendTheme({
         'post-it': {
           my: 6,
           textAlign: 'left',
-          fontFamily: '"Indie Flower", cursive',
-          fontSize: ['26px', 'xl', '26px']
+          fontFamily: 'subheading',
+          fontSize: ['26px', 'xl', '26px'],
+          color: 'gray.800'
         },
         service: {
           mt: 2,
@@ -46,7 +47,7 @@ export default extendTheme({
           fontWeight: 300,
           color: 'gray.800'
         },
-        co: { fontFamily: '"Indie Flower", cursive' }
+        co: { fontFamily: 'subheading' }
       }
     },
     Link: {
