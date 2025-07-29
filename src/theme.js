@@ -30,7 +30,12 @@ export default extendTheme({
     Heading: {
       variants: {
         'post-it': { fontSize: ['28px', '22px', '28px'], color: 'gray.800' },
-        service: { textAlign: 'left', fontFamily: 'subheading', color: 'accent.primary' }
+        service: {
+          mt: ui.sectionMargin,
+          textAlign: 'left',
+          fontFamily: 'subheading',
+          color: 'accent.primary'
+        }
       }
     },
     Text: {

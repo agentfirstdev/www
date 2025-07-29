@@ -153,12 +153,7 @@ export default function App() {
         px={ui.sectionPadding}
         py={ui.sectionMargin}
       >
-        <Heading
-          as='h1'
-          id='services'
-          fontFamily='"Permanent Marker", cursive'
-          color='accent.primary'
-        >
+        <Heading as='h1' id='services' color='accent.primary'>
           Services
         </Heading>
         <Heading as='h2' variant='service'>
@@ -174,7 +169,7 @@ export default function App() {
           </Text>
           {', as structured data or raw HTML:'}
         </Text>
-        <Heading as='h2' variant='service' mt={ui.sectionMargin}>
+        <Heading as='h2' variant='service'>
           2. Uncaptcha’d browsing
         </Heading>
         <Text variant='service'>
@@ -187,7 +182,7 @@ export default function App() {
           </Text>
           {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
         </Text>
-        <Heading as='h2' variant='service' mt={ui.sectionMargin}>
+        <Heading as='h2' variant='service'>
           {'3. Webpage interaction '}
           <Badge>Coming soon</Badge>
         </Heading>
@@ -202,7 +197,7 @@ export default function App() {
           {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf of '}
           users.
         </Text>
-        <Heading as='h2' variant='service' mt={ui.sectionMargin}>
+        <Heading as='h2' variant='service'>
           … From anywhere
         </Heading>
         <Text variant='service'>
