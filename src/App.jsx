@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Text,
+  Code,
   Link,
   IconButton,
   Badge,
@@ -16,6 +17,10 @@ import rough from 'roughjs/bin/rough';
 
 import * as ui from './config/ui';
 import AgentFirst from './assets/AgentFirst';
+import search from './markdown/SEARCH.md?raw';
+import browsing from './markdown/BROWSING.md?raw';
+import searchGeotargeting from './markdown/GEOTARGETING-SEARCH.md?raw';
+import browsingGeotargeting from './markdown/GEOTARGETING-BROWSING.md?raw';
 import './App.css';
 
 export default function App() {
@@ -152,8 +157,9 @@ export default function App() {
         bg='chakra-subtle-bg'
         px={ui.sectionPadding}
         py={ui.sectionMargin}
+        textAlign='left'
       >
-        <Heading as='h1' id='services' color='accent.primary'>
+        <Heading as='h1' id='services' textAlign='center' color='accent.primary'>
           Services
         </Heading>
         <Heading as='h2' variant='service'>
@@ -169,6 +175,7 @@ export default function App() {
           </Text>
           {', as structured data or raw HTML:'}
         </Text>
+        <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
         <Heading as='h2' variant='service'>
           2. Uncaptcha’d browsing
         </Heading>
@@ -182,6 +189,7 @@ export default function App() {
           </Text>
           {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
         </Text>
+        <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
         <Heading as='h2' variant='service'>
           {'3. Webpage interaction '}
           <Badge>Coming soon</Badge>
@@ -211,6 +219,9 @@ export default function App() {
           </Text>
           {' within our proxy network for local results & content:'}
         </Text>
+        <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(searchGeotargeting) }} />
+        <Box clear='both' />
+        <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }} />
       </Box>
     </Flex>
   );

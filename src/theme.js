@@ -30,12 +30,7 @@ export default extendTheme({
     Heading: {
       variants: {
         'post-it': { fontSize: ['28px', '22px', '28px'], color: 'gray.800' },
-        service: {
-          mt: ui.sectionMargin,
-          textAlign: 'left',
-          fontFamily: 'subheading',
-          color: 'accent.primary'
-        }
+        service: { mt: ui.sectionMargin, fontFamily: 'subheading', color: 'accent.primary' }
       }
     },
     Text: {
@@ -48,13 +43,17 @@ export default extendTheme({
           fontSize: ['26px', 'xl', '26px'],
           color: 'gray.800'
         },
-        service: {
-          mt: 2,
-          textAlign: 'left',
-          fontSize: { base: 'xl', md: 'lg', lg: 'xl' },
-          fontWeight: 300
-        },
+        service: { mt: 2, fontSize: ['xl', 'lg', 'xl'], fontWeight: 300 },
         co: { fontFamily: 'subheading' }
+      }
+    },
+    Code: {
+      baseStyle: {
+        mt: 4,
+        border: '1px solid var(--chakra-colors-chakra-border-color)',
+        borderRadius: 'md',
+        bg: 'chakra-body-bg',
+        fontSize: 'md'
       }
     },
     Link: {
