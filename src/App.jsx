@@ -146,7 +146,6 @@ export default function App() {
         <Flex w='50%' />
       </Flex>
       <Box
-        id='services'
         m={ui.sectionMargin}
         border='1px solid var(--chakra-colors-chakra-border-color)'
         borderRadius='3xl'
@@ -154,6 +153,14 @@ export default function App() {
         px={ui.sectionPadding}
         py={ui.sectionMargin}
       >
+        <Heading
+          as='h1'
+          id='services'
+          fontFamily='"Permanent Marker", cursive'
+          color='accent.primary'
+        >
+          Services
+        </Heading>
         <Heading as='h2' variant='service'>
           1. Google-like search
         </Heading>
