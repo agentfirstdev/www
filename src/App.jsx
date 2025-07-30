@@ -262,8 +262,8 @@ export default function App() {
               <Text as='strong' variant='bold'>
                 CDP commands
               </Text>
-              {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf of '}
-              users.
+              {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf '}
+              of users.
             </Text>
           </CardBody>
           <CardFooter>
