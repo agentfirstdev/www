@@ -319,13 +319,13 @@ export default function App() {
                 <Link href='https://disconnect.me/' isExternal>
                   Disconnect
                 </Link>
-                , which makes privacy software that’s been integrated into most popular web browsers
-                and has been used by 100,000,000+ people, and
+                , which makes privacy software that ships with most popular browsers and has amassed
+                100,000,000+ users, and
                 <Link href='https://joinmassive.com/' isExternal>
                   Massive
                 </Link>
-                , which is an alternative to ads and paywalls for monetizing spare computing
-                {' capacity and was named Proxyway’s “Newcomer of the Year” for 2025. '}
+                , which is developing an alternative to ads and paywalls for monetizing spare
+                {' computing resources and was named Proxyway’s 2025 “Newcomer of the Year”. '}
                 <Text as='strong' variant='co'>
                   Agent First
                 </Text>
@@ -353,17 +353,20 @@ export default function App() {
                 <Text as='strong' variant='name'>
                   Brain
                 </Text>
-                {' is an internal founder agent that we’re developing to help run '}
+                {' is a cofounder agent that we’re creating to help run '}
                 <Text as='strong' variant='co'>
                   Agent First
                 </Text>
-                {' and to dogfood our own services. You can try another agent that we’re using'}
-                {' for '}
+                {' and to dogfood our services. Although '}
+                <Text as='strong' variant='name'>
+                  Brain
+                </Text>
+                {' is currently an internal project, you can try another agent that we’re '}
                 <Text as='span' textDecoration='line-through'>
                   dog
                 </Text>
-                llamafooding and have made publicly available, a “meta-LLM” that combines responses
-                {' from popular large language models, called '}
+                llamafooding with and have made publicly available, a “meta-LLM” that combines
+                {' responses from popular large language models, called '}
                 <Link href={ui.demoUrl} isExternal>
                   Llamapile
                 </Link>
