@@ -46,7 +46,7 @@ export default extendTheme({
           color: 'gray.800'
         },
         service: { mt: 4, fontSize: ['lg', 'xl'], fontWeight: 300 },
-        member: { mt: 2, fontSize: 'lg', fontWeight: 300, color: 'accent.primary' },
+        teammate: { mt: 2, fontSize: 'lg', fontWeight: 300, color: 'accent.primary' },
         bold: { fontWeight: 600 },
         co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
         name: { fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
@@ -78,7 +78,8 @@ export default extendTheme({
           color: 'brand.secondary',
           _hover: { color: 'accent.primary' },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
-        }
+        },
+        team: { borderBottom: '2px solid var(--chakra-colors-accent-primary)', p: 0 }
       }
     },
     Button: {

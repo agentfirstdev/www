@@ -311,17 +311,17 @@ export default function App() {
                 aria-label={ui.hedcutLabel}
               />
               <Heading variant='name'>Brian Kennish</Heading>
-              <Text variant='member'>
+              <Text variant='teammate'>
                 <Text as='strong' variant='name'>
                   Brian
                 </Text>
                 {' cofounded '}
-                <Link href='https://disconnect.me/' isExternal>
+                <Link variant='team' href='https://disconnect.me/' isExternal>
                   Disconnect
                 </Link>
                 , which makes privacy software that ships with most modern browsers and has helped
-                protect the personal info of 100,000,000+ users, and
-                <Link href='https://joinmassive.com/' isExternal>
+                {' protect the data of 100,000,000+ users, and '}
+                <Link variant='team' href='https://joinmassive.com/' isExternal>
                   Massive
                 </Link>
                 , which is developing an alternative to ads and paywalls for monetizing spare
@@ -349,15 +349,16 @@ export default function App() {
                 aria-label={ui.agentLabel}
               />
               <Heading variant='name'>Brain</Heading>
-              <Text variant='member'>
+              <Text variant='teammate'>
                 <Text as='strong' variant='name'>
                   Brain
                 </Text>
-                {' is a cofounder agent we’re creating to run the tedious parts of '}
+                {' is a cofounder agent we’re creating to dogfood our services and run the boring'}
+                {' parts of '}
                 <Text as='strong' variant='co'>
                   Agent First
                 </Text>
-                {' and dogfood our services. Although '}
+                {'. Although '}
                 <Text as='strong' variant='name'>
                   Brain
                 </Text>
@@ -367,7 +368,7 @@ export default function App() {
                 </Text>
                 llamafooding, a “meta-LLM” that combines responses from popular large language
                 {' models, called '}
-                <Link href={ui.demoUrl} isExternal>
+                <Link variant='team' href={ui.demoUrl} isExternal>
                   Llamapile
                 </Link>
                 .
