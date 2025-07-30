@@ -3,6 +3,7 @@ import highlights from 'markdown-it-highlightjs';
 
 // Strings
 export const logoLabel = 'Agent First';
+export const hedcutLabel = 'Brian Kennish hedcut';
 export const demoUrl = 'https://llamapile.com/';
 
 // Colors
@@ -25,10 +26,13 @@ export const postItColors = [
 export const controlFontWeight = 'semibold';
 
 // Animation
-export const logoStroke = 4;
-export const logoRoughness = 2;
-export const logoAngle = -40;
-export const logoRefreshMs = 250;
+export const logoFill = 'hachure';
+export const hedStroke = 'transparent';
+export const hedFill = 'solid';
+export const blueprintStroke = 4;
+export const blueprintAngle = -40;
+export const blueprintRoughness = 2;
+export const blueprintRefreshMs = 250;
 
 // Other shared styles
 export const linkPadding = '2px';

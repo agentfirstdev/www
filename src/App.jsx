@@ -2,10 +2,14 @@ import { useRef, useEffect } from 'react';
 import {
   Box,
   Flex,
+  Card,
+  CardBody,
+  CardFooter,
   Heading,
   Text,
   Code,
   Link,
+  Button,
   IconButton,
   Badge,
   Tooltip,
@@ -18,6 +22,7 @@ import rough from 'roughjs/bin/rough';
 import * as ui from './config/ui';
 import * as uix from './config/uix';
 import Logotype from './assets/Logotype';
+import Hedcut from './assets/Hedcut';
 import search from './markdown/SEARCH.md?raw';
 import browsing from './markdown/BROWSING.md?raw';
 import searchGeotargeting from './markdown/GEOTARGETING-SEARCH.md?raw';
@@ -26,6 +31,7 @@ import './App.css';
 
 export default function App() {
   const logotype = useRef();
+  const hedcut = useRef();
   const { colorMode, toggleColorMode } = useColorMode();
   const strokeColor = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const fillColor = useColorModeValue(ui.royalBlue, ui.creativeBlue);
@@ -59,19 +65,32 @@ export default function App() {
   }, [colorMode]);
 
   useEffect(() => {
-    const canvas = logotype.current;
-    const context = canvas.getContext('2d');
-    const roughCanvas = rough.canvas(canvas);
+    const logoCanvas = logotype.current;
+    const logoContext = logoCanvas.getContext('2d');
+    const logoRough = rough.canvas(logoCanvas);
+    const hedCanvas = hedcut.current;
+    const hedContext = hedCanvas.getContext('2d');
+    const hedRough = rough.canvas(hedCanvas);
     const id = setInterval(() => {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      roughCanvas.path(Logotype(), {
+      logoContext.clearRect(0, 0, logoCanvas.width, logoCanvas.height);
+      logoRough.path(Logotype(), {
         stroke: strokeColor,
+        strokeWidth: ui.blueprintStroke,
         fill: fillColor,
-        strokeWidth: ui.logoStroke,
-        roughness: ui.logoRoughness,
-        hachureAngle: ui.logoAngle
+        fillStyle: ui.logoFill,
+        hachureAngle: ui.blueprintAngle,
+        roughness: ui.blueprintRoughness
       });
-    }, ui.logoRefreshMs);
+      hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
+      hedRough.path(Hedcut(), {
+        stroke: ui.hedStroke,
+        strokeWidth: ui.blueprintStroke,
+        fill: fillColor,
+        fillStyle: ui.hedFill,
+        hachureAngle: ui.blueprintAngle,
+        roughness: ui.blueprintRoughness
+      });
+    }, ui.blueprintRefreshMs);
 
     return () => {
       clearInterval(id);
