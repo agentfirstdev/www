@@ -333,7 +333,7 @@ export default function App() {
                 <Text as='strong' variant='bold'>
                   Massive
                 </Text>
-                {' that’s focused on supporting AI agents.'}
+                {' that’s focused on serving AI agents.'}
               </Text>
             </CardBody>
             <CardFooter>{/* TODO: Add social icons. */}</CardFooter>
