@@ -319,8 +319,8 @@ export default function App() {
                 <Link href='https://disconnect.me/' isExternal>
                   Disconnect
                 </Link>
-                , which makes privacy software that ships with most popular browsers and has amassed
-                100,000,000+ users, and
+                , which makes privacy software that ships with most modern browsers and has helped
+                protect the personal info of 100,000,000+ users, and
                 <Link href='https://joinmassive.com/' isExternal>
                   Massive
                 </Link>
@@ -353,20 +353,20 @@ export default function App() {
                 <Text as='strong' variant='name'>
                   Brain
                 </Text>
-                {' is a cofounder agent that we’re creating to help run '}
+                {' is a cofounder agent we’re creating to run the tedious parts of '}
                 <Text as='strong' variant='co'>
                   Agent First
                 </Text>
-                {' and to dogfood our services. Although '}
+                {' and dogfood our services. Although '}
                 <Text as='strong' variant='name'>
                   Brain
                 </Text>
-                {' is currently an internal project, you can try another agent that we’re '}
+                {' isn’t publicly available yet, you can try another agent we’re '}
                 <Text as='span' textDecoration='line-through'>
                   dog
                 </Text>
-                llamafooding with and have made publicly available, a “meta-LLM” that combines
-                {' responses from popular large language models, called '}
+                llamafooding, a “meta-LLM” that combines responses from popular large language
+                {' models, called '}
                 <Link href={ui.demoUrl} isExternal>
                   Llamapile
                 </Link>
