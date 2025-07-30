@@ -79,7 +79,11 @@ export default extendTheme({
           _hover: { color: 'accent.primary' },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
         },
-        team: { borderBottom: '2px solid var(--chakra-colors-accent-primary)', p: 0 }
+        team: {
+          borderBottom: '2px solid var(--chakra-colors-accent-primary)',
+          p: 0,
+          _hover: { borderColor: 'brand.secondary' }
+        }
       }
     },
     Button: {
