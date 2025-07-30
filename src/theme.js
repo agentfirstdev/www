@@ -49,7 +49,7 @@ export default extendTheme({
         teammate: { mt: 2, fontSize: 'lg', fontWeight: 300, color: 'accent.primary' },
         bold: { fontWeight: 600 },
         co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
-        name: { fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
+        name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
       }
     },
     Code: {
@@ -80,8 +80,10 @@ export default extendTheme({
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
         },
         team: {
+          display: 'inline-block',
           borderBottom: '2px solid var(--chakra-colors-accent-primary)',
           p: 0,
+          h: '25px',
           _hover: { borderColor: 'brand.secondary' }
         }
       }
