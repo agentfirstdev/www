@@ -295,6 +295,85 @@ export default function App() {
           </CardFooter>
         </Card>
       </Box>
+      <Box id='team' py={ui.mdMargin}>
+        <Heading as='h1' variant='section'>
+          Our team
+        </Heading>
+        <Flex m={ui.smMargin} px={ui.lgMargin} direction={{ base: 'column', md: 'row' }}>
+          <Card mx={ui.mdMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
+            <CardBody textAlign='left'>
+              <canvas
+                ref={hedcut}
+                width='473'
+                height='789'
+                style={{ width: '112px' }}
+                role='img'
+                aria-label={ui.hedcutLabel}
+              />
+              <Heading variant='name'>Brian Kennish</Heading>
+              <Text variant='member'>
+                <Text as='strong' variant='name'>
+                  Brian
+                </Text>
+                {' cofounded '}
+                <Link href='https://disconnect.me/' isExternal>
+                  Disconnect
+                </Link>
+                , which makes privacy software that’s been integrated into most popular web browsers
+                and has been used by 100,000,000+ people, and
+                <Link href='https://joinmassive.com/' isExternal>
+                  Massive
+                </Link>
+                , which is an alternative to ads and paywalls for monetizing spare computing
+                {' capacity and was named Proxyway’s “Newcomer of the Year” for 2025. '}
+                <Text as='strong' variant='co'>
+                  Agent First
+                </Text>
+                {' is a spinoff of '}
+                <Text as='strong' variant='bold'>
+                  Massive
+                </Text>
+                {' that’s focused on accelerating the utility of AI agents.'}
+              </Text>
+            </CardBody>
+            <CardFooter>{/* TODO: Add social icons. */}</CardFooter>
+          </Card>
+          <Card mx={ui.mdMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
+            <CardBody textAlign='left'>
+              <canvas
+                ref={agent}
+                width='1024'
+                height='1536'
+                style={{ width: '144px' }}
+                role='img'
+                aria-label={ui.agentLabel}
+              />
+              <Heading variant='name'>Brain</Heading>
+              <Text variant='member'>
+                <Text as='strong' variant='name'>
+                  Brain
+                </Text>
+                {' is an internal founder agent that we’re developing to help run '}
+                <Text as='strong' variant='co'>
+                  Agent First
+                </Text>
+                {' and to dogfood our own services. You can try another agent that we’re using'}
+                {' for '}
+                <Text as='span' textDecoration='line-through'>
+                  dog
+                </Text>
+                llamafooding and have made publicly available, a “meta-LLM” that combines responses
+                {' from popular large language models, called '}
+                <Link href={ui.demoUrl} isExternal>
+                  Llamapile
+                </Link>
+                .
+              </Text>
+            </CardBody>
+            <CardFooter>{/* TODO: Add social icons. */}</CardFooter>
+          </Card>
+        </Flex>
+      </Box>
     </Flex>
   );
 }
