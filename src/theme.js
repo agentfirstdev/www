@@ -29,9 +29,10 @@ export default extendTheme({
   components: {
     Heading: {
       variants: {
+        section: { textAlign: 'center', color: 'accent.primary' },
         'post-it': { fontSize: '28px', color: 'gray.800' },
-        service: { mt: ui.sectionMargin, fontFamily: 'subheading', color: 'accent.primary' },
-        name: { fontFamily: 'subheading' }
+        service: { fontFamily: 'subheading', color: 'accent.primary' },
+        name: { mt: 4, fontFamily: 'subheading', fontSize: '3xl', color: 'brand.primary' }
       }
     },
     Text: {
@@ -43,7 +44,8 @@ export default extendTheme({
           fontSize: '26px',
           color: 'gray.800'
         },
-        service: { mt: 2, fontSize: ['xl', 'lg', 'xl'], fontWeight: 300 },
+        service: { mt: 4, fontSize: ['lg', 'xl'], fontWeight: 300 },
+        member: { mt: 2, fontSize: 'lg', fontWeight: 300, color: 'accent.primary' },
         bold: { fontWeight: 600 },
         co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
         name: { fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
@@ -62,6 +64,7 @@ export default extendTheme({
       baseStyle: {
         borderRadius: ui.outlineRadius,
         p: ui.linkPadding,
+        fontWeight: 600,
         color: 'accent.primary',
         transition: ui.transition,
         _hover: { color: 'brand.secondary', textDecoration: 'none' }
@@ -70,6 +73,7 @@ export default extendTheme({
         ghost: { display: 'inline-block', color: 'inherit', _hover: { color: 'inherit' } },
         nav: {
           fontFamily: 'heading',
+          fontWeight: 'normal',
           color: 'brand.secondary',
           _hover: { color: 'accent.primary' },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }

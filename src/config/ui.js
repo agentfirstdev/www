@@ -4,6 +4,7 @@ import highlights from 'markdown-it-highlightjs';
 // Strings
 export const logoLabel = 'Agent First';
 export const hedcutLabel = 'Brian Kennish hedcut';
+export const agentLabel = 'Brain agent';
 export const demoUrl = 'https://llamapile.com/';
 
 // Colors
@@ -29,6 +30,8 @@ export const controlFontWeight = 'semibold';
 export const logoFill = 'hachure';
 export const hedStroke = 'transparent';
 export const hedFill = 'solid';
+export const agentStroke = 'transparent';
+export const agentFill = 'solid';
 export const blueprintStroke = 4;
 export const blueprintAngle = -40;
 export const blueprintRoughness = 2;
@@ -40,8 +43,9 @@ export const outlineStyle = 'none';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
 export const transition = 'all var(--chakra-transition-duration-normal)';
-export const sectionMargin = 8;
-export const sectionPadding = 24;
+export const smMargin = 8;
+export const mdMargin = 14;
+export const lgMargin = 24;
 export const gradientAngle = 140;
 
 // Controls

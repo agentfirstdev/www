@@ -23,6 +23,7 @@ import * as ui from './config/ui';
 import * as uix from './config/uix';
 import Logotype from './assets/Logotype';
 import Hedcut from './assets/Hedcut';
+import Agent from './assets/Agent';
 import search from './markdown/SEARCH.md?raw';
 import browsing from './markdown/BROWSING.md?raw';
 import searchGeotargeting from './markdown/GEOTARGETING-SEARCH.md?raw';
@@ -32,6 +33,7 @@ import './App.css';
 export default function App() {
   const logotype = useRef();
   const hedcut = useRef();
+  const agent = useRef();
   const { colorMode, toggleColorMode } = useColorMode();
   const strokeColor = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const fillColor = useColorModeValue(ui.royalBlue, ui.creativeBlue);
@@ -71,6 +73,9 @@ export default function App() {
     const hedCanvas = hedcut.current;
     const hedContext = hedCanvas.getContext('2d');
     const hedRough = rough.canvas(hedCanvas);
+    const agentCanvas = agent.current;
+    const agentContext = agentCanvas.getContext('2d');
+    const agentRough = rough.canvas(agentCanvas);
     const id = setInterval(() => {
       logoContext.clearRect(0, 0, logoCanvas.width, logoCanvas.height);
       logoRough.path(Logotype(), {
@@ -87,6 +92,15 @@ export default function App() {
         strokeWidth: ui.blueprintStroke,
         fill: fillColor,
         fillStyle: ui.hedFill,
+        hachureAngle: ui.blueprintAngle,
+        roughness: ui.blueprintRoughness
+      });
+      agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
+      agentRough.path(Agent(), {
+        stroke: ui.agentStroke,
+        strokeWidth: ui.blueprintStroke,
+        fill: fillColor,
+        fillStyle: ui.agentFill,
         hachureAngle: ui.blueprintAngle,
         roughness: ui.blueprintRoughness
       });
@@ -142,8 +156,15 @@ export default function App() {
           </Tooltip>
         </Flex>
       </Box>
-      <Flex mt={ui.sectionMargin} px={ui.sectionPadding} w='100%' h='50vh'>
-        <Flex w='50%' justifyContent='center' alignItems='center'>
+      <Flex
+        id='hero'
+        mt={ui.smMargin}
+        px={{ base: ui.smMargin, md: ui.lgMargin }}
+        w='100%'
+        h={{ base: 'auto', md: '50vh' }}
+        direction={{ base: 'column', md: 'row' }}
+      >
+        <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
           <Flex
             border={`1px solid ${ui.postItColors[postItColorIndex].border}`}
             bgGradient={
@@ -153,10 +174,11 @@ export default function App() {
             }
             px={ui.postItPadding}
             w={ui.postItDimension}
-            h={ui.postItDimension}
+            minW={ui.postItDimension}
+            minH={ui.postItDimension}
             direction='column'
-            alignItems='center'
-            justifyContent='center'
+            justify='center'
+            align='center'
             boxShadow={ui.postItShadow}
             transform={`rotate(${ui.postItRotation})`}
           >
@@ -168,18 +190,20 @@ export default function App() {
             </Text>
           </Flex>
         </Flex>
-        <Flex w='50%' />
+        <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
+          {/* TODO: Add timeline. */}
+        </Flex>
       </Flex>
       <Box
-        m={ui.sectionMargin}
+        id='services'
+        mt={ui.smMargin}
         border='1px solid var(--chakra-colors-chakra-border-color)'
-        borderRadius='3xl'
         bg='chakra-subtle-bg'
-        px={ui.sectionPadding}
-        py={ui.sectionMargin}
+        px={ui.lgMargin}
+        py={ui.mdMargin}
         textAlign='left'
       >
-        <Heading as='h1' id='services' textAlign='center' color='accent.primary'>
+        <Heading as='h1' variant='section'>
           Services
         </Heading>
         <Heading as='h2' variant='service'>
