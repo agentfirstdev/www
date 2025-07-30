@@ -16,7 +16,7 @@ import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 
 import * as ui from './config/ui';
-import AgentFirst from './assets/AgentFirst';
+import Logotype from './assets/Logotype';
 import search from './markdown/SEARCH.md?raw';
 import browsing from './markdown/BROWSING.md?raw';
 import searchGeotargeting from './markdown/GEOTARGETING-SEARCH.md?raw';
@@ -63,7 +63,7 @@ export default function App() {
     const roughCanvas = rough.canvas(canvas);
     const id = setInterval(() => {
       context.clearRect(0, 0, canvas.width, canvas.height);
-      roughCanvas.path(AgentFirst(), {
+      roughCanvas.path(Logotype(), {
         stroke: strokeColor,
         fill: fillColor,
         strokeWidth: ui.logoStroke,
