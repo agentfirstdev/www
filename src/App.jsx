@@ -299,7 +299,12 @@ export default function App() {
         <Heading as='h1' variant='section'>
           Our team
         </Heading>
-        <Flex m={ui.smMargin} px={ui.lgMargin} direction={{ base: 'column', md: 'row' }}>
+        <Flex
+          mx={ui.smMargin}
+          mt={ui.smMargin}
+          px={ui.lgMargin}
+          direction={{ base: 'column', md: 'row' }}
+        >
           <Card mx={ui.mdMargin} px={ui.smMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
             <CardBody textAlign='left'>
               <canvas
@@ -336,7 +341,7 @@ export default function App() {
                 {' that’s focused on serving AI agents.'}
               </Text>
             </CardBody>
-            <CardFooter>{/* TODO: Add social icons. */}</CardFooter>
+            <CardFooter display='none'>{/* TODO: Add social icons. */}</CardFooter>
           </Card>
           <Card mx={ui.mdMargin} px={ui.smMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
             <CardBody textAlign='left'>
@@ -373,7 +378,7 @@ export default function App() {
                 .
               </Text>
             </CardBody>
-            <CardFooter>{/* TODO: Add social icons. */}</CardFooter>
+            <CardFooter display='none'>{/* TODO: Add social icons. */}</CardFooter>
           </Card>
         </Flex>
       </Box>

@@ -90,12 +90,16 @@ export default extendTheme({
     },
     Button: {
       baseStyle: {
+        fontFamily: 'body',
         _hover: { borderColor: 'transparent' },
         _focus: { outline: ui.outlineStyle, shadow: ui.shadowStyle }
       },
       variants: {
         solid: {
           bg: 'accent.primary',
+          w: ui.buttonWidth,
+          h: ui.buttonHeight,
+          fontSize: 'xl',
           color: 'white',
           _hover: { bg: 'brand.secondary' },
           _active: { bg: 'brand.secondary' }
