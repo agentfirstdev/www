@@ -353,12 +353,11 @@ export default function App() {
                 <Text as='strong' variant='name'>
                   Brain
                 </Text>
-                {' is a cofounder agent we’re creating to dogfood our services and run the boring'}
-                {' parts of '}
+                {' is a cofounder agent we’re creating to run the boring parts of '}
                 <Text as='strong' variant='co'>
                   Agent First
                 </Text>
-                {'. Although '}
+                {' and to dogfood our services. Although '}
                 <Text as='strong' variant='name'>
                   Brain
                 </Text>
@@ -366,8 +365,8 @@ export default function App() {
                 <Text as='span' textDecoration='line-through'>
                   dog
                 </Text>
-                llamafooding, a “meta-LLM” that combines responses from popular large language
-                {' models, called '}
+                llamafooding that is, a “meta-LLM” that combines responses from popular large
+                {' language models in one interface, called '}
                 <Link variant='team' href={ui.demoUrl} isExternal>
                   Llamapile
                 </Link>
