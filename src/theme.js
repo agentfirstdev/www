@@ -29,22 +29,24 @@ export default extendTheme({
   components: {
     Heading: {
       variants: {
-        'post-it': { fontSize: ['28px', '22px', '28px'], color: 'gray.800' },
-        service: { mt: ui.sectionMargin, fontFamily: 'subheading', color: 'accent.primary' }
+        'post-it': { fontSize: '28px', color: 'gray.800' },
+        service: { mt: ui.sectionMargin, fontFamily: 'subheading', color: 'accent.primary' },
+        name: { fontFamily: 'subheading' }
       }
     },
     Text: {
       variants: {
-        bold: { fontWeight: 500 },
         'post-it': {
           my: 6,
           textAlign: 'left',
           fontFamily: 'subheading',
-          fontSize: ['26px', 'xl', '26px'],
+          fontSize: '26px',
           color: 'gray.800'
         },
         service: { mt: 2, fontSize: ['xl', 'lg', 'xl'], fontWeight: 300 },
-        co: { fontFamily: 'subheading' }
+        bold: { fontWeight: 600 },
+        co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
+        name: { fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
       }
     },
     Code: {
@@ -100,11 +102,11 @@ export default extendTheme({
     },
     Badge: {
       baseStyle: {
-        border: '1px solid var(--chakra-colors-chakra-label-color)',
+        border: '1px solid var(--chakra-colors-accent-primary)',
         bg: 'chakra-accent-bg',
         pt: '2px',
         fontFamily: 'body',
-        color: 'chakra-label-color'
+        color: 'accent.primary'
       }
     }
   },
