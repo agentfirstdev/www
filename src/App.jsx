@@ -16,7 +16,7 @@ import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 
 import * as ui from './config/ui';
-import * as uix from './config/ui.jsx';
+import * as uix from './config/uix';
 import Logotype from './assets/Logotype';
 import search from './markdown/SEARCH.md?raw';
 import browsing from './markdown/BROWSING.md?raw';
