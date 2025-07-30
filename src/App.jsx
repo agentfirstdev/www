@@ -206,66 +206,94 @@ export default function App() {
         <Heading as='h1' variant='section'>
           Services
         </Heading>
-        <Heading as='h2' variant='service'>
-          1. Google-like search
-        </Heading>
-        <Text variant='service'>
-          <Text as='strong' variant='co'>
-            Agent First
-          </Text>
-          {' lets you reliably integrate live Google results, including '}
-          <Text as='strong' variant='bold'>
-            all organic & paid result types
-          </Text>
-          {', as structured data or raw HTML:'}
-        </Text>
-        <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
-        <Heading as='h2' variant='service'>
-          2. Uncaptcha’d browsing
-        </Heading>
-        <Text variant='service'>
-          <Text as='strong' variant='co'>
-            Agent First
-          </Text>
-          {'’s supercluster of '}
-          <Text as='strong' variant='bold'>
-            real, well-behaved browsers
-          </Text>
-          {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
-        </Text>
-        <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
-        <Heading as='h2' variant='service'>
-          {'3. Webpage interaction '}
-          <Badge>Coming soon</Badge>
-        </Heading>
-        <Text variant='service'>
-          <Text as='strong' variant='co'>
-            Agent First
-          </Text>
-          {' will soon accept '}
-          <Text as='strong' variant='bold'>
-            CDP commands
-          </Text>
-          {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf of '}
-          users.
-        </Text>
-        <Heading as='h2' variant='service'>
-          … From anywhere
-        </Heading>
-        <Text variant='service'>
-          {'Every '}
-          <Text as='strong' variant='co'>
-            Agent First
-          </Text>
-          {' request can be geotargeted to one of '}
-          <Text as='strong' variant='bold'>
-            190+ countries & their regions
-          </Text>
-          {' within our proxy network for local results & content:'}
-        </Text>
-        <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(searchGeotargeting) }} />
-        <Box clear='both' />
-        <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }} />
+        <Card mt={ui.smMargin} boxShadow='md'>
+          <CardBody>
+            <Heading as='h2' variant='service'>
+              1. Google-like search
+            </Heading>
+            <Text variant='service'>
+              <Text as='strong' variant='co'>
+                Agent First
+              </Text>
+              {' lets you reliably integrate live Google results, including '}
+              <Text as='strong' variant='bold'>
+                all organic & paid result types
+              </Text>
+              {', as structured data or raw HTML:'}
+            </Text>
+            <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
+          </CardBody>
+          <CardFooter>
+            <Button>Get started</Button>
+          </CardFooter>
+        </Card>
+        <Card mt={ui.smMargin} boxShadow='md'>
+          <CardBody>
+            <Heading as='h2' variant='service'>
+              2. Uncaptcha’d browsing
+            </Heading>
+            <Text variant='service'>
+              <Text as='strong' variant='co'>
+                Agent First
+              </Text>
+              {'’s supercluster of '}
+              <Text as='strong' variant='bold'>
+                real, well-behaved browsers
+              </Text>
+              {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
+            </Text>
+            <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
+          </CardBody>
+          <CardFooter>
+            <Button>Get started</Button>
+          </CardFooter>
+        </Card>
+        <Card mt={ui.smMargin} boxShadow='md'>
+          <CardBody>
+            <Heading as='h2' variant='service'>
+              {'3. Webpage interaction '}
+              <Badge>Coming soon</Badge>
+            </Heading>
+            <Text variant='service'>
+              <Text as='strong' variant='co'>
+                Agent First
+              </Text>
+              {' will soon accept '}
+              <Text as='strong' variant='bold'>
+                CDP commands
+              </Text>
+              {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf of '}
+              users.
+            </Text>
+          </CardBody>
+          <CardFooter>
+            <Button>Join waitlist</Button>
+          </CardFooter>
+        </Card>
+        <Card mt={ui.smMargin} boxShadow='md'>
+          <CardBody>
+            <Heading as='h2' variant='service'>
+              … From anywhere
+            </Heading>
+            <Text variant='service'>
+              {'Every '}
+              <Text as='strong' variant='co'>
+                Agent First
+              </Text>
+              {' request can be geotargeted to one of '}
+              <Text as='strong' variant='bold'>
+                190+ countries & their regions
+              </Text>
+              {' within our proxy network for local results & content:'}
+            </Text>
+            <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(searchGeotargeting) }} />
+            <Box clear='both' />
+            <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }} />
+          </CardBody>
+          <CardFooter>
+            <Button>Get started</Button>
+          </CardFooter>
+        </Card>
       </Box>
     </Flex>
   );
