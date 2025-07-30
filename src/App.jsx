@@ -300,7 +300,7 @@ export default function App() {
           Our team
         </Heading>
         <Flex m={ui.smMargin} px={ui.lgMargin} direction={{ base: 'column', md: 'row' }}>
-          <Card mx={ui.mdMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
+          <Card mx={ui.mdMargin} px={ui.smMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
             <CardBody textAlign='left'>
               <canvas
                 ref={hedcut}
@@ -333,12 +333,12 @@ export default function App() {
                 <Text as='strong' variant='bold'>
                   Massive
                 </Text>
-                {' that’s focused on accelerating the utility of AI agents.'}
+                {' that’s focused on supporting AI agents.'}
               </Text>
             </CardBody>
             <CardFooter>{/* TODO: Add social icons. */}</CardFooter>
           </Card>
-          <Card mx={ui.mdMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
+          <Card mx={ui.mdMargin} px={ui.smMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
             <CardBody textAlign='left'>
               <canvas
                 ref={agent}
