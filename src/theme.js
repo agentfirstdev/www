@@ -28,10 +28,11 @@ export default extendTheme({
   },
   components: {
     Heading: {
+      baseStyle: { color: 'accent.primary' },
       variants: {
-        section: { textAlign: 'center', color: 'accent.primary' },
+        section: { textAlign: 'center' },
         'post-it': { fontSize: '28px', color: 'gray.800' },
-        service: { fontFamily: 'subheading', color: 'accent.primary' },
+        service: { fontFamily: 'subheading' },
         name: { mt: 4, fontFamily: 'subheading', fontSize: '3xl', color: 'brand.primary' }
       }
     },
