@@ -94,7 +94,12 @@ export default extendTheme({
         _focus: { outline: ui.outlineStyle, shadow: ui.shadowStyle }
       },
       variants: {
-        solid: { bg: 'accent.primary', color: 'white', _hover: { bg: 'brand.secondary' } },
+        solid: {
+          bg: 'accent.primary',
+          color: 'white',
+          _hover: { bg: 'brand.secondary' },
+          _active: { bg: 'brand.secondary' }
+        },
         monochrome: {
           bg: 'chakra-button-color',
           color: 'brand.secondary',
