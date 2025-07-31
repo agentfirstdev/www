@@ -331,9 +331,9 @@ export default function App() {
             <CardBody textAlign='left'>
               <canvas
                 ref={hedcut}
-                width='473'
-                height='789'
-                style={{ width: '112px' }}
+                width='608'
+                height='912'
+                style={{ marginTop: '-16px', marginLeft: '-16px', width: '160px' }}
                 role='img'
                 aria-label={ui.hedcutLabel}
               />
