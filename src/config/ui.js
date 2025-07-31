@@ -70,6 +70,10 @@ export const postItDimension = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-color)';
 export const postItRotation = '-1.5deg';
 
+// Team
+export const cardWidth = { base: '100%', lg: '410px' };
+export const nameFont = { base: '2xl', md: '3xl' };
+
 // Secondary pages
 export const secondaryStyle = {
   h3: { mt: '1.5rem', fontWeight: 'bold', color: 'brand.secondary' },

@@ -318,16 +318,10 @@ export default function App() {
         <Flex
           mx={ui.smMargin}
           mt={ui.smMargin}
-          px={ui.xlMargin}
-          direction={{ base: 'column', md: 'row' }}
+          direction={{ base: 'column', lg: 'row' }}
+          justify='space-evenly'
         >
-          <Card
-            mx={ui.mdMargin}
-            bg='transparent'
-            px={ui.smMargin}
-            w={{ base: '100%', md: '50%' }}
-            boxShadow='none'
-          >
+          <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
               <canvas
                 ref={hedcut}
@@ -337,7 +331,9 @@ export default function App() {
                 role='img'
                 aria-label={ui.hedcutLabel}
               />
-              <Heading variant='name'>Brian Kennish</Heading>
+              <Heading variant='name' fontSize={ui.nameFont}>
+                Brian Kennish
+              </Heading>
               <Text variant='teammate'>
                 <Text as='strong' variant='name'>
                   Brian
@@ -366,13 +362,7 @@ export default function App() {
             </CardBody>
             <CardFooter display='none'>{/* TODO: Add social icons. */}</CardFooter>
           </Card>
-          <Card
-            mx={ui.mdMargin}
-            bg='transparent'
-            px={ui.smMargin}
-            w={{ base: '100%', md: '50%' }}
-            boxShadow='none'
-          >
+          <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
               <canvas
                 ref={agent}
@@ -382,7 +372,9 @@ export default function App() {
                 role='img'
                 aria-label={ui.agentLabel}
               />
-              <Heading variant='name'>Brain</Heading>
+              <Heading variant='name' fontSize={ui.nameFont}>
+                Brain
+              </Heading>
               <Text variant='teammate'>
                 <Text as='strong' variant='name'>
                   Brain
