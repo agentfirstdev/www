@@ -28,8 +28,8 @@ export const postItColors = [
 ];
 
 // Controls
-export const controlHeight = '48px';
-export const buttonWidth = '176px';
+export const controlHeight = { base: '48px', md: '56px' };
+export const buttonWidth = { base: '160px', md: '176px' };
 export const tooltipPadding = '6px 10px';
 
 // Animation
