@@ -138,13 +138,7 @@ export default function App() {
           role='img'
           aria-label={ui.logoLabel}
         />
-        <Flex
-          pos='absolute'
-          top={ui.navPosition}
-          right={ui.navPosition}
-          align='center'
-          fontWeight={ui.controlFontWeight}
-        >
+        <Flex pos='absolute' top={ui.navPosition} right={ui.navPosition} align='center'>
           <Link variant='nav' ml={ui.itemMargin} href='#services'>
             Services
           </Link>
@@ -327,7 +321,13 @@ export default function App() {
           px={ui.xlMargin}
           direction={{ base: 'column', md: 'row' }}
         >
-          <Card mx={ui.mdMargin} px={ui.smMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
+          <Card
+            mx={ui.mdMargin}
+            bg='transparent'
+            px={ui.smMargin}
+            w={{ base: '100%', md: '50%' }}
+            boxShadow='none'
+          >
             <CardBody textAlign='left'>
               <canvas
                 ref={hedcut}
@@ -365,7 +365,13 @@ export default function App() {
             </CardBody>
             <CardFooter display='none'>{/* TODO: Add social icons. */}</CardFooter>
           </Card>
-          <Card mx={ui.mdMargin} px={ui.smMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
+          <Card
+            mx={ui.mdMargin}
+            bg='transparent'
+            px={ui.smMargin}
+            w={{ base: '100%', md: '50%' }}
+            boxShadow='none'
+          >
             <CardBody textAlign='left'>
               <canvas
                 ref={agent}

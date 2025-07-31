@@ -38,6 +38,7 @@ export default extendTheme({
       }
     },
     Text: {
+      baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
         'post-it': {
           my: 6,
@@ -46,8 +47,13 @@ export default extendTheme({
           fontSize: '26px',
           color: 'gray.800'
         },
-        service: { mt: 4, fontSize: ['lg', 'xl'], fontWeight: 300 },
-        teammate: { mt: 2, fontSize: 'lg', fontWeight: 300, color: 'accent.primary' },
+        service: { mt: 4, fontWeight: 300 },
+        teammate: {
+          mt: 2,
+          fontWeight: 300,
+          color: 'accent.primary',
+          _dark: { fontWeight: 'normal', color: 'brand.primary' }
+        },
         bold: { fontWeight: 'bold' },
         co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
@@ -91,8 +97,8 @@ export default extendTheme({
     },
     Button: {
       baseStyle: {
-        border: '1px solid transparent',
         fontFamily: 'body',
+        fontWeight: 'bold',
         _hover: { borderColor: 'transparent' },
         _focus: { outline: ui.outlineStyle, shadow: ui.shadowStyle }
       },
@@ -101,7 +107,7 @@ export default extendTheme({
           bg: 'accent.primary',
           w: ui.buttonWidth,
           h: ui.controlHeight,
-          fontSize: 'xl',
+          fontSize: 'lg',
           color: 'white',
           _hover: { bg: 'brand.secondary' },
           _active: { bg: 'brand.secondary' }
