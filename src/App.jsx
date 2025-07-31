@@ -324,9 +324,10 @@ export default function App() {
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
               <Box
-                mt={{ base: '-4.5%', md: '-16px' }}
-                ml={{ base: '-4.5%', md: '-16px' }}
-                w={{ base: '45%', md: '160px' }}
+                mt={{ base: '-4.5%', lg: '-16px' }}
+                ml={{ base: '-4.5%', lg: '-16px' }}
+                w={{ base: '45%', lg: '160px' }}
+                maxW='240px'
               >
                 <canvas
                   ref={hedcut}
@@ -370,7 +371,7 @@ export default function App() {
           </Card>
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
-              <Box w={{ base: '40%', md: '144px' }}>
+              <Box w={{ base: '40%', lg: '144px' }} maxW='216px'>
                 <canvas
                   ref={agent}
                   width='1024'
