@@ -20,7 +20,7 @@ export default extendTheme({
   },
   colors: {
     brand: { primary: ui.royalBlue, secondary: ui.resolutionBlue },
-    accent: { primary: ui.creativeBlue }
+    accent: { primary: ui.tropicalBlue, secondary: ui.creativeBlue }
   },
   fonts: {
     heading: '"Permanent Marker", cursive',
@@ -29,12 +29,12 @@ export default extendTheme({
   },
   components: {
     Heading: {
-      baseStyle: { color: 'accent.primary' },
+      baseStyle: { color: 'accent.secondary', _dark: { color: 'brand.primary' } },
       variants: {
         section: { textAlign: 'center' },
-        'post-it': { fontSize: '28px', color: 'gray.800' },
+        'post-it': { fontSize: '28px', color: 'gray.800', _dark: { color: 'gray.800' } },
         service: { fontFamily: 'subheading' },
-        name: { fontFamily: 'subheading', fontSize: '3xl', color: 'brand.primary' }
+        name: { fontFamily: 'subheading', fontSize: '3xl' }
       }
     },
     Text: {
@@ -47,11 +47,15 @@ export default extendTheme({
           fontSize: '26px',
           color: 'gray.800'
         },
-        service: { mt: 4, fontWeight: 300 },
+        service: {
+          mt: 4,
+          fontWeight: 300,
+          _dark: { fontWeight: 'normal', color: 'whiteAlpha.700' }
+        },
         teammate: {
           mt: 2,
           fontWeight: 300,
-          color: 'accent.primary',
+          color: 'accent.secondary',
           _dark: { fontWeight: 'normal', color: 'brand.primary' }
         },
         bold: { fontWeight: 'bold' },
@@ -75,7 +79,7 @@ export default extendTheme({
         borderRadius: ui.outlineRadius,
         p: ui.linkPadding,
         fontWeight: 'bold',
-        color: 'accent.primary',
+        color: 'accent.secondary',
         _hover: { color: 'brand.secondary', textDecoration: 'none' }
       },
       variants: {
@@ -84,12 +88,12 @@ export default extendTheme({
           fontFamily: 'heading',
           fontWeight: 'normal',
           color: 'brand.secondary',
-          _hover: { color: 'accent.primary' },
-          _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
+          _hover: { color: 'accent.secondary' },
+          _dark: { color: 'brand.primary', _hover: { color: 'accent.secondary' } }
         },
         team: {
           display: 'inline-block',
-          borderBottom: '2px solid var(--chakra-colors-accent-primary)',
+          borderBottom: '2px solid var(--chakra-colors-accent-secondary)',
           p: 0,
           h: '25px',
           _hover: { borderColor: 'brand.secondary' }
@@ -105,19 +109,20 @@ export default extendTheme({
       },
       variants: {
         solid: {
-          bg: 'accent.primary',
+          bg: 'accent.secondary',
           w: ui.buttonWidth,
           h: ui.controlHeight,
-          fontSize: 'lg',
+          fontSize: { base: 'md', md: 'lg' },
           color: 'white',
           _hover: { bg: 'brand.secondary' },
-          _active: { bg: 'brand.secondary' }
+          _active: { bg: 'brand.secondary' },
+          _dark: { bg: 'brand.primary', color: 'whiteAlpha.800', _hover: { bg: 'accent.primary' } }
         },
         monochrome: {
           bg: 'chakra-button-color',
           color: 'brand.secondary',
-          _hover: { bg: 'chakra-accent-bg', color: 'accent.primary' },
-          _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
+          _hover: { bg: 'chakra-accent-bg', color: 'accent.secondary' },
+          _dark: { color: 'brand.primary', _hover: { color: 'accent.secondary' } }
         }
       }
     },
@@ -132,11 +137,11 @@ export default extendTheme({
     },
     Badge: {
       baseStyle: {
-        border: '1px solid var(--chakra-colors-accent-primary)',
+        border: '1px solid var(--chakra-colors-accent-secondary)',
         bg: 'chakra-accent-bg',
         pt: '2px',
         fontFamily: 'body',
-        color: 'accent.primary'
+        color: 'accent.secondary'
       }
     }
   },
