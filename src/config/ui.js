@@ -6,7 +6,7 @@ export const logoLabel = 'Agent First';
 export const servicesLabel = 'Services';
 export const hedcutLabel = 'Brian Kennish hedcut';
 export const agentLabel = 'Brain agent';
-export const demoUrl = 'https://llamapile.com/';
+export const demoUrl = 'https://dev.llamapile.com/';
 
 // Colors
 export const blackLightAlpha = 'rgba(0, 0, 0, .24)';
@@ -26,8 +26,10 @@ export const postItColors = [
   { background: { from: shilo, to: ruddyPink }, border: coralTree }
 ];
 
-// Typography
-export const controlFontWeight = 'semibold';
+// Controls
+export const controlHeight = '56px';
+export const buttonWidth = '208px';
+export const tooltipPadding = '6px 10px';
 
 // Animation
 export const logoFill = 'hachure';
@@ -50,16 +52,11 @@ export const outlineStyle = 'none';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
 export const transition = 'all var(--chakra-transition-duration-normal)';
-export const buttonWidth = '208px';
-export const buttonHeight = '56px';
 export const smMargin = 8;
 export const mdMargin = 14;
 export const lgMargin = 20;
 export const xlMargin = 24;
 export const gradientAngle = 140;
-
-// Controls
-export const tooltipPadding = '6px 10px';
 
 // Header
 export const navPosition = 6;

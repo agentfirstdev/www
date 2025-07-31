@@ -98,7 +98,7 @@ export default extendTheme({
         solid: {
           bg: 'accent.primary',
           w: ui.buttonWidth,
-          h: ui.buttonHeight,
+          h: ui.controlHeight,
           fontSize: 'xl',
           color: 'white',
           _hover: { bg: 'brand.secondary' },
