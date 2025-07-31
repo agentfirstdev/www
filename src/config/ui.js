@@ -59,6 +59,8 @@ export const xlMargin = 24;
 export const gradientAngle = 140;
 
 // Header
+export const menuTopBorder = '5px 5px 0 0';
+export const menuBottomBorder = '0 0 5px 5px';
 export const navPosition = 6;
 export const itemMargin = 6;
 

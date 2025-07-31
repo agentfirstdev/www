@@ -91,6 +91,7 @@ export default extendTheme({
     },
     Button: {
       baseStyle: {
+        border: '1px solid transparent',
         fontFamily: 'body',
         _hover: { borderColor: 'transparent' },
         _focus: { outline: ui.outlineStyle, shadow: ui.shadowStyle }
