@@ -20,7 +20,7 @@ export default extendTheme({
   },
   colors: {
     brand: { primary: ui.royalBlue, secondary: ui.resolutionBlue },
-    accent: { primary: ui.tropicalBlue, secondary: ui.creativeBlue }
+    accent: { primary: ui.cornflowerBlue, secondary: ui.creativeBlue }
   },
   fonts: {
     heading: '"Permanent Marker", cursive',

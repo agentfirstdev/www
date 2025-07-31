@@ -13,18 +13,18 @@ export const blackLightAlpha = 'rgba(0, 0, 0, .24)';
 export const blackDarkAlpha = 'rgba(0, 0, 0, .64)';
 export const royalBlue = '#4a6de5';
 export const resolutionBlue = '#002082';
-export const tropicalBlue = '#ced8f7';
+export const cornflowerBlue = '#7999f7';
 export const creativeBlue = '#3057e1';
 export const pastelYellow = '#fcea8b';
 export const naplesYellow = '#fbe364';
-export const cressGreen = '#bcaa4b';
+export const vegasGold = '#bcaa4b';
 export const prettyPink = '#eaabb0';
 export const ruddyPink = '#e38f95';
-export const softRed = '#aa6b70';
-export const brightOrange = '#ff8840';
+export const turkishRose = '#aa6b70';
+export const royalOrange = '#f99245';
 export const postItColors = [
-  { background: { from: pastelYellow, to: naplesYellow }, border: cressGreen },
-  { background: { from: prettyPink, to: ruddyPink }, border: softRed }
+  { background: { from: pastelYellow, to: naplesYellow }, border: vegasGold },
+  { background: { from: prettyPink, to: ruddyPink }, border: turkishRose }
 ];
 
 // Controls
