@@ -84,7 +84,7 @@ export default function App() {
         fill: fillColor,
         fillStyle: ui.logoFill,
         hachureAngle: ui.blueprintAngle,
-        roughness: ui.blueprintRoughness
+        roughness: ui.logoRoughness
       });
       hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
       hedRough.path(Hedcut(), {
@@ -93,7 +93,7 @@ export default function App() {
         fill: fillColor,
         fillStyle: ui.hedFill,
         hachureAngle: ui.blueprintAngle,
-        roughness: ui.blueprintRoughness
+        roughness: ui.hedRoughness
       });
       agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
       agentRough.path(Agent(), {
@@ -102,7 +102,7 @@ export default function App() {
         fill: fillColor,
         fillStyle: ui.agentFill,
         hachureAngle: ui.blueprintAngle,
-        roughness: ui.blueprintRoughness
+        roughness: ui.agentRoughness
       });
     }, ui.blueprintRefreshMs);
 
@@ -159,6 +159,7 @@ export default function App() {
       <Flex
         id='hero'
         mt={ui.smMargin}
+        mb={ui.mdMargin}
         px={{ base: ui.smMargin, md: ui.lgMargin }}
         w='100%'
         h={{ base: 'auto', md: '50vh' }}
@@ -196,11 +197,11 @@ export default function App() {
       </Flex>
       <Box
         id='services'
-        mt={ui.smMargin}
         border='1px solid var(--chakra-colors-chakra-border-color)'
         bg='chakra-subtle-bg'
         px={ui.lgMargin}
-        py={ui.mdMargin}
+        pt={ui.mdMargin}
+        pb='20'
         textAlign='left'
       >
         <Heading as='h1' variant='section'>

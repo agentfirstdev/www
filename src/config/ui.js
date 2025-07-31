@@ -34,8 +34,10 @@ export const agentStroke = 'transparent';
 export const agentFill = 'solid';
 export const blueprintStroke = 4;
 export const blueprintAngle = -40;
-export const blueprintRoughness = 2;
 export const blueprintRefreshMs = 250;
+export const logoRoughness = 2;
+export const hedRoughness = 2;
+export const agentRoughness = 3;
 
 // Other shared styles
 export const linkPadding = '2px';

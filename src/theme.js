@@ -33,7 +33,7 @@ export default extendTheme({
         section: { textAlign: 'center' },
         'post-it': { fontSize: '28px', color: 'gray.800' },
         service: { fontFamily: 'subheading' },
-        name: { mt: 4, fontFamily: 'subheading', fontSize: '3xl', color: 'brand.primary' }
+        name: { fontFamily: 'subheading', fontSize: '3xl', color: 'brand.primary' }
       }
     },
     Text: {
