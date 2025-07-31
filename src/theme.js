@@ -24,7 +24,7 @@ export default extendTheme({
   fonts: {
     heading: '"Permanent Marker", cursive',
     subheading: '"Indie Flower", cursive',
-    body: '"Source Sans 3", sans-serif'
+    body: 'Lato, sans-serif'
   },
   components: {
     Heading: {
@@ -47,7 +47,7 @@ export default extendTheme({
         },
         service: { mt: 4, fontSize: ['lg', 'xl'], fontWeight: 300 },
         teammate: { mt: 2, fontSize: 'lg', fontWeight: 300, color: 'accent.primary' },
-        bold: { fontWeight: 600 },
+        bold: { fontWeight: 'bold' },
         co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
       }
@@ -65,7 +65,7 @@ export default extendTheme({
       baseStyle: {
         borderRadius: ui.outlineRadius,
         p: ui.linkPadding,
-        fontWeight: 600,
+        fontWeight: 'bold',
         color: 'accent.primary',
         transition: ui.transition,
         _hover: { color: 'brand.secondary', textDecoration: 'none' }
