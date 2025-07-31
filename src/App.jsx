@@ -323,14 +323,20 @@ export default function App() {
         >
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
-              <canvas
-                ref={hedcut}
-                width='608'
-                height='912'
-                style={{ marginTop: '-16px', marginLeft: '-16px', width: '160px' }}
-                role='img'
-                aria-label={ui.hedcutLabel}
-              />
+              <Box
+                mt={{ base: '-4.5%', md: '-16px' }}
+                ml={{ base: '-4.5%', md: '-16px' }}
+                w={{ base: '45%', md: '160px' }}
+              >
+                <canvas
+                  ref={hedcut}
+                  width='608'
+                  height='912'
+                  style={{ width: '100%' }}
+                  role='img'
+                  aria-label={ui.hedcutLabel}
+                />
+              </Box>
               <Heading variant='name' fontSize={ui.nameFont}>
                 Brian Kennish
               </Heading>
@@ -364,14 +370,16 @@ export default function App() {
           </Card>
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
-              <canvas
-                ref={agent}
-                width='1024'
-                height='1536'
-                style={{ width: '144px' }}
-                role='img'
-                aria-label={ui.agentLabel}
-              />
+              <Box w={{ base: '40%', md: '144px' }}>
+                <canvas
+                  ref={agent}
+                  width='1024'
+                  height='1536'
+                  style={{ width: '100%' }}
+                  role='img'
+                  aria-label={ui.agentLabel}
+                />
+              </Box>
               <Heading variant='name' fontSize={ui.nameFont}>
                 Brain
               </Heading>
