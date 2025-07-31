@@ -392,8 +392,8 @@ export default function App() {
                 <Text as='span' textDecoration='line-through'>
                   dog
                 </Text>
-                llamafooding that is, a “meta-LLM” that combines responses from popular large
-                {' language models in one interface, called '}
+                llamafooding that is, a “meta-LLM” that evaluates and merges responses from popular
+                {' large language models, called '}
                 <Link variant='team' href={ui.demoUrl} isExternal>
                   Llamapile
                 </Link>
