@@ -9,8 +9,8 @@ export const agentLabel = 'Brain agent';
 export const demoUrl = 'https://llamapile.com/';
 
 // Colors
-export const blackLightAlpha = 'rgba(0, 0, 0, 0.24)';
-export const blackDarkAlpha = 'rgba(0, 0, 0, 0.64)';
+export const blackLightAlpha = 'rgba(0, 0, 0, .24)';
+export const blackDarkAlpha = 'rgba(0, 0, 0, .64)';
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
 export const resolutionBlue = '#002082';

@@ -39,7 +39,7 @@ export default function App() {
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
-  const servicesStroke = useColorModeValue(ui.blackDarkAlpha, ui.royalBlue);
+  const servicesStroke = useColorModeValue(ui.blackLightAlpha, ui.creativeBlue);
   const servicesFill = useColorModeValue(ui.blackLightAlpha, ui.creativeBlue);
   const isLightMode = colorMode == 'light';
   const modeId = 'mode';
