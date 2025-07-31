@@ -51,7 +51,6 @@ export const linkPadding = '2px';
 export const outlineStyle = 'none';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
-export const transition = 'all var(--chakra-transition-duration-normal)';
 export const smMargin = 8;
 export const mdMargin = 14;
 export const lgMargin = 20;

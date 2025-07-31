@@ -61,11 +61,13 @@ export default extendTheme({
     },
     Code: {
       baseStyle: {
+        display: 'block',
         mt: 4,
         border: '1px solid var(--chakra-colors-chakra-border-color)',
         borderRadius: 'md',
         bg: 'chakra-body-bg',
-        fontSize: 'md'
+        maxW: '100%',
+        fontSize: { base: 'sm', md: 'md' }
       }
     },
     Link: {
@@ -74,7 +76,6 @@ export default extendTheme({
         p: ui.linkPadding,
         fontWeight: 'bold',
         color: 'accent.primary',
-        transition: ui.transition,
         _hover: { color: 'brand.secondary', textDecoration: 'none' }
       },
       variants: {
@@ -139,5 +140,10 @@ export default extendTheme({
       }
     }
   },
-  styles: { global: { '.hljs': { bg: 'none !important' } } }
+  styles: {
+    global: {
+      '*': { transition: 'all var(--chakra-transition-duration-normal)' },
+      '.hljs': { bg: 'none !important' }
+    }
+  }
 });

@@ -209,7 +209,7 @@ export default function App() {
         id='services'
         border='1px solid var(--chakra-colors-chakra-border-color)'
         bg='chakra-subtle-bg'
-        px={ui.xlMargin}
+        px={{ base: ui.smMargin, md: ui.xlMargin }}
         pt={ui.mdMargin}
         pb={ui.lgMargin}
         textAlign='left'
