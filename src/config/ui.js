@@ -54,7 +54,8 @@ export const buttonWidth = '208px';
 export const buttonHeight = '56px';
 export const smMargin = 8;
 export const mdMargin = 14;
-export const lgMargin = 24;
+export const lgMargin = 20;
+export const xlMargin = 24;
 export const gradientAngle = 140;
 
 // Controls

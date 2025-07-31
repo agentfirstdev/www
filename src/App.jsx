@@ -176,7 +176,7 @@ export default function App() {
         id='hero'
         mt={ui.smMargin}
         mb={ui.mdMargin}
-        px={{ base: ui.smMargin, md: ui.lgMargin }}
+        px={{ base: ui.smMargin, md: ui.xlMargin }}
         w='100%'
         h={{ base: 'auto', md: '50vh' }}
         direction={{ base: 'column', md: 'row' }}
@@ -215,9 +215,9 @@ export default function App() {
         id='services'
         border='1px solid var(--chakra-colors-chakra-border-color)'
         bg='chakra-subtle-bg'
-        px={ui.lgMargin}
+        px={ui.xlMargin}
         pt={ui.mdMargin}
-        pb='20'
+        pb={ui.lgMargin}
         textAlign='left'
       >
         <canvas
@@ -324,7 +324,7 @@ export default function App() {
         <Flex
           mx={ui.smMargin}
           mt={ui.smMargin}
-          px={ui.lgMargin}
+          px={ui.xlMargin}
           direction={{ base: 'column', md: 'row' }}
         >
           <Card mx={ui.mdMargin} px={ui.smMargin} w={{ base: '100%', md: '50%' }} boxShadow='none'>
