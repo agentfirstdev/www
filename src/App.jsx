@@ -22,6 +22,7 @@ import rough from 'roughjs/bin/rough';
 import * as ui from './config/ui';
 import * as uix from './config/uix';
 import Logotype from './assets/Logotype';
+import Services from './assets/Services';
 import Hedcut from './assets/Hedcut';
 import Agent from './assets/Agent';
 import search from './markdown/SEARCH.md?raw';
@@ -32,11 +33,14 @@ import './App.css';
 
 export default function App() {
   const logotype = useRef();
+  const services = useRef();
   const hedcut = useRef();
   const agent = useRef();
   const { colorMode, toggleColorMode } = useColorMode();
-  const strokeColor = useColorModeValue(ui.creativeBlue, ui.royalBlue);
-  const fillColor = useColorModeValue(ui.royalBlue, ui.creativeBlue);
+  const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
+  const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
+  const servicesStroke = useColorModeValue(ui.blackDarkAlpha, ui.royalBlue);
+  const servicesFill = useColorModeValue(ui.blackLightAlpha, ui.creativeBlue);
   const isLightMode = colorMode == 'light';
   const modeId = 'mode';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
@@ -70,6 +74,9 @@ export default function App() {
     const logoCanvas = logotype.current;
     const logoContext = logoCanvas.getContext('2d');
     const logoRough = rough.canvas(logoCanvas);
+    const servicesCanvas = services.current;
+    const servicesContext = servicesCanvas.getContext('2d');
+    const servicesRough = rough.canvas(servicesCanvas);
     const hedCanvas = hedcut.current;
     const hedContext = hedCanvas.getContext('2d');
     const hedRough = rough.canvas(hedCanvas);
@@ -79,18 +86,27 @@ export default function App() {
     const id = setInterval(() => {
       logoContext.clearRect(0, 0, logoCanvas.width, logoCanvas.height);
       logoRough.path(Logotype(), {
-        stroke: strokeColor,
+        stroke: blueprintStroke,
         strokeWidth: ui.blueprintStroke,
-        fill: fillColor,
+        fill: blueprintFill,
         fillStyle: ui.logoFill,
         hachureAngle: ui.blueprintAngle,
         roughness: ui.logoRoughness
+      });
+      servicesContext.clearRect(0, 0, servicesCanvas.width, servicesCanvas.height);
+      servicesRough.path(Services(), {
+        stroke: servicesStroke,
+        strokeWidth: ui.blueprintStroke,
+        fill: servicesFill,
+        fillStyle: ui.servicesFill,
+        hachureAngle: ui.blueprintAngle,
+        roughness: ui.servicesRoughness
       });
       hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
       hedRough.path(Hedcut(), {
         stroke: ui.hedStroke,
         strokeWidth: ui.blueprintStroke,
-        fill: fillColor,
+        fill: blueprintFill,
         fillStyle: ui.hedFill,
         hachureAngle: ui.blueprintAngle,
         roughness: ui.hedRoughness
@@ -99,7 +115,7 @@ export default function App() {
       agentRough.path(Agent(), {
         stroke: ui.agentStroke,
         strokeWidth: ui.blueprintStroke,
-        fill: fillColor,
+        fill: blueprintFill,
         fillStyle: ui.agentFill,
         hachureAngle: ui.blueprintAngle,
         roughness: ui.agentRoughness
@@ -109,7 +125,7 @@ export default function App() {
     return () => {
       clearInterval(id);
     };
-  }, [fillColor, strokeColor]);
+  }, [blueprintFill, blueprintStroke, servicesStroke, servicesFill]);
 
   return (
     <Flex w='100%' minH='100vh' direction='column'>
@@ -204,9 +220,14 @@ export default function App() {
         pb='20'
         textAlign='left'
       >
-        <Heading as='h1' variant='section'>
-          Services
-        </Heading>
+        <canvas
+          ref={services}
+          width='1024'
+          height='264'
+          style={{ marginRight: 'auto', marginLeft: 'auto', width: '15%', minWidth: '160px' }}
+          role='img'
+          aria-label={ui.servicesLabel}
+        />
         <Card mt={ui.smMargin} boxShadow='md'>
           <CardBody>
             <Heading as='h2' variant='service'>

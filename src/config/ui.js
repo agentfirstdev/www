@@ -3,11 +3,14 @@ import highlights from 'markdown-it-highlightjs';
 
 // Strings
 export const logoLabel = 'Agent First';
+export const servicesLabel = 'Services';
 export const hedcutLabel = 'Brian Kennish hedcut';
 export const agentLabel = 'Brain agent';
 export const demoUrl = 'https://llamapile.com/';
 
 // Colors
+export const blackLightAlpha = 'rgba(0, 0, 0, 0.24)';
+export const blackDarkAlpha = 'rgba(0, 0, 0, 0.64)';
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
 export const resolutionBlue = '#002082';
@@ -28,6 +31,7 @@ export const controlFontWeight = 'semibold';
 
 // Animation
 export const logoFill = 'hachure';
+export const servicesFill = 'solid';
 export const hedStroke = 'transparent';
 export const hedFill = 'solid';
 export const agentStroke = 'transparent';
@@ -36,6 +40,7 @@ export const blueprintStroke = 4;
 export const blueprintAngle = -40;
 export const blueprintRefreshMs = 250;
 export const logoRoughness = 2;
+export const servicesRoughness = 3;
 export const hedRoughness = 2;
 export const agentRoughness = 3;
 
