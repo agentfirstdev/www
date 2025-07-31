@@ -10,6 +10,7 @@ export default extendTheme({
       'chakra-body-bg': { _light: '#f9fafc', _dark: 'gray.800' },
       'chakra-subtle-bg': { _light: 'gray.100', _dark: 'whiteAlpha.50' },
       'chakra-accent-bg': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
+      'chakra-inverse-bg': { _light: 'gray.800', _dark: '#f9fafc' },
       'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' },
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
       'chakra-shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
