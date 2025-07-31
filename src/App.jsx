@@ -352,7 +352,8 @@ export default function App() {
                   Massive
                 </Link>
                 , which is developing an alternative to ads and paywalls for monetizing spare
-                {' computing resources and was named Proxyway’s 2025 “Newcomer of the Year”. '}
+                computing resources and was named Proxyway’s 2025 “Newcomer of the Year” for its
+                {' bandwidth monetization. '}
                 <Text as='strong' variant='co'>
                   Agent First
                 </Text>
