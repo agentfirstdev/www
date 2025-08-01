@@ -76,9 +76,10 @@ export const hedMaxWidth = '240px';
 export const agentMaxWidth = '216px';
 export const cardWidth = { base: '100%', lg: '410px' };
 export const nameFont = { base: '2xl', md: '3xl' };
-export const hedMargin = { base: '-4.5%', lg: '-16px' };
-export const hedWidth = { base: '45%', lg: '160px' };
-export const agentWidth = { base: '40%', lg: '144px' };
+export const hedMargin = { base: '-5.5%', lg: '-16px' };
+export const hedWidth = { base: '55%', lg: '160px' };
+export const hedTransform = { base: 'translateX(-11%)', lg: 'translateX(-16px)' };
+export const agentWidth = { base: '50%', lg: '144px' };
 
 // Secondary pages
 export const secondaryStyle = {

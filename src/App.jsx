@@ -323,7 +323,12 @@ export default function App() {
         >
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
-              <Box mt={ui.hedMargin} ml={ui.hedMargin} w={ui.hedWidth} maxW={ui.hedMaxWidth}>
+              <Box
+                mt={ui.hedMargin}
+                w={ui.hedWidth}
+                maxW={ui.hedMaxWidth}
+                transform={ui.hedTransform}
+              >
                 <canvas
                   ref={hedcut}
                   width='608'
