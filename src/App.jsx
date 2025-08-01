@@ -197,7 +197,7 @@ export default function App() {
               <uix.Tagline />
             </Heading>
             <Text variant='post-it'>
-              Enhance your agent with world-class research & browsing abilities in minutes …
+              Enhance your agent instantly with world-class research & browsing abilities …
             </Text>
           </Flex>
         </Flex>
