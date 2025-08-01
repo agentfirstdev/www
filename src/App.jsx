@@ -59,11 +59,8 @@ export default function App() {
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
-    const tempContext = tempCanvas.getContext('2d');
-    const tempRough = rough.canvas(tempCanvas);
 
-    tempContext.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
-    tempRough.path(path, roughParams);
+    rough.canvas(tempCanvas).path(path, roughParams);
 
     return tempCanvas;
   };
