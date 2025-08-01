@@ -21,7 +21,7 @@ export default extendTheme({
   colors: {
     brand: { primary: ui.royalBlue, secondary: ui.resolutionBlue },
     accent: { primary: ui.cornflowerBlue, secondary: ui.creativeBlue },
-    outline: 'rgba(66, 153, 225, .6)'
+    outline: ui.royalOrange
   },
   shadows: { outline: '0 0 0 3px var(--chakra-colors-outline)' },
   fonts: {
@@ -133,9 +133,6 @@ export default extendTheme({
         item: {
           fontFamily: 'heading',
           color: 'brand.secondary',
-          _hover: { bg: 'outline' },
-          _focus: { bg: 'inherit' },
-          _active: { bg: 'outline' },
           _dark: { color: 'whiteAlpha.800' }
         }
       }
@@ -146,7 +143,8 @@ export default extendTheme({
         bg: 'chakra-accent-bg',
         pt: '2px',
         fontFamily: 'body',
-        color: 'accent.secondary'
+        color: 'accent.secondary',
+        _dark: { borderColor: 'whiteAlpha.700', color: 'whiteAlpha.700' }
       }
     }
   },
