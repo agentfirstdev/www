@@ -33,12 +33,15 @@ export const controlDimension = '48px';
 export const menuTopBorder = '5px 5px 0 0';
 export const menuBottomBorder = '0 0 5px 5px';
 export const tooltipPadding = '6px 10px';
-export const navPosition = 6;
 export const itemMargin = 6;
-export const hamburgerXMargin = 3;
-export const hamburgerYMargin = -1;
+export const tooltipMargin = 1;
+export const hamburgerTopMargin = -1;
+export const hamburgerLeftMargin = 4;
+export const sunStroke = 3;
 export const buttonWidth = { base: '160px', md: '176px' };
 export const buttonHeight = { base: controlDimension, md: '56px' };
+export const navTopPosition = { base: 4, lg: 6 };
+export const navRightPosition = { base: 4, lg: 6 };
 
 // Animation
 export const logoFill = 'hachure';
@@ -68,21 +71,38 @@ export const xlMargin = 24;
 export const gradientAngle = 140;
 
 // Hero
+export const logoMargin = '8px';
+export const logoNewWidth = '25%';
+export const logoMinWidth = '256px';
 export const postItDimension = '4in';
 export const postItFont = '28px';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-color)';
 export const postItRotation = '-1.5deg';
+export const logoOldWidth = 1760;
+export const logoOldHeight = 352;
 export const postItPadding = 4;
+export const heroHeight = { base: 'auto', md: '50vh' };
+
+// Services
+export const servicesBorder = '1px solid var(--chakra-colors-chakra-border-color)';
+export const servicesNewWidth = '15%';
+export const servicesMinWidth = '160px';
+export const servicesOldWidth = 1024;
+export const servicesOldHeight = 264;
 
 // Team
 export const hedMaxWidth = '240px';
 export const agentMaxWidth = '216px';
+export const hedOldWidth = 608;
+export const hedOldHeight = 912;
+export const agentOldWidth = 1024;
+export const agentOldHeight = 1536;
 export const cardWidth = { base: '100%', lg: '410px' };
 export const nameFont = { base: '2xl', md: '3xl' };
 export const hedMargin = { base: '-5.5%', lg: '-16px' };
-export const hedWidth = { base: '55%', lg: '160px' };
+export const hedNewWidth = { base: '55%', lg: '160px' };
 export const hedTransform = { base: 'translateX(-11%)', lg: 'translateX(-16px)' };
-export const agentWidth = { base: '50%', lg: '144px' };
+export const agentNewWidth = { base: '50%', lg: '144px' };
 
 // Secondary pages
 export const secondaryStyle = {

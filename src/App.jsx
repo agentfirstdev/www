@@ -193,13 +193,13 @@ export default function App() {
       <Box>
         <canvas
           ref={logotype}
-          width='1760'
-          height='352'
-          style={{ marginTop: '8px', marginLeft: '4px', width: '25%', minWidth: '256px' }}
+          width={ui.logoOldWidth}
+          height={ui.logoOldHeight}
+          style={{ marginTop: ui.logoMargin, width: ui.logoNewWidth, minWidth: ui.logoMinWidth }}
           role='img'
           aria-label={ui.logoLabel}
         />
-        <Flex pos='absolute' top={ui.navPosition} right={ui.navPosition}>
+        <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition}>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
             <Link variant='nav' ml={ui.itemMargin} href='#services'>
               Services
@@ -217,11 +217,13 @@ export default function App() {
               Contact info
             </Link>
           </Flex>
-          <Tooltip mr='1' p={ui.tooltipPadding} label={modeLabel} hasArrow>
+          <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={modeLabel} hasArrow>
             <IconButton
               variant='monochrome'
               ml={ui.itemMargin}
-              icon={isLightMode ? <MoonIcon /> : <SunIcon sx={{ g: { strokeWidth: 3 } }} />}
+              icon={
+                isLightMode ? <MoonIcon /> : <SunIcon sx={{ g: { strokeWidth: ui.sunStroke } }} />
+              }
               fontSize='sm'
               aria-label={modeLabel}
               onClick={toggleColorMode}
@@ -266,7 +268,7 @@ export default function App() {
         mb={ui.mdMargin}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
         w='100%'
-        h={{ base: 'auto', md: '50vh' }}
+        h={ui.heroHeight}
         direction={{ base: 'column', md: 'row' }}
       >
         <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
@@ -301,7 +303,7 @@ export default function App() {
       </Flex>
       <Box
         id='services'
-        border='1px solid var(--chakra-colors-chakra-border-color)'
+        border={ui.servicesBorder}
         bg='chakra-subtle-bg'
         px={{ base: ui.smMargin, md: ui.xlMargin }}
         pt={ui.mdMargin}
@@ -310,9 +312,14 @@ export default function App() {
       >
         <canvas
           ref={services}
-          width='1024'
-          height='264'
-          style={{ marginRight: 'auto', marginLeft: 'auto', width: '15%', minWidth: '160px' }}
+          width={ui.servicesOldWidth}
+          height={ui.servicesOldHeight}
+          style={{
+            marginRight: 'auto',
+            marginLeft: 'auto',
+            width: ui.servicesNewWidth,
+            minWidth: ui.servicesMinWidth
+          }}
           role='img'
           aria-label={ui.servicesLabel}
         />
@@ -427,14 +434,14 @@ export default function App() {
             <CardBody textAlign='left'>
               <Box
                 mt={ui.hedMargin}
-                w={ui.hedWidth}
+                w={ui.hedNewWidth}
                 maxW={ui.hedMaxWidth}
                 transform={ui.hedTransform}
               >
                 <canvas
                   ref={hedcut}
-                  width='608'
-                  height='912'
+                  width={ui.hedOldWidth}
+                  height={ui.hedOldHeight}
                   style={{ width: '100%' }}
                   role='img'
                   aria-label={ui.hedLabel}
@@ -473,11 +480,11 @@ export default function App() {
           </Card>
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
-              <Box w={ui.agentWidth} maxW={ui.agentMaxWidth}>
+              <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
                 <canvas
                   ref={agent}
-                  width='1024'
-                  height='1536'
+                  width={ui.agentOldWidth}
+                  height={ui.agentOldHeight}
                   style={{ width: '100%' }}
                   role='img'
                   aria-label={ui.agentLabel}
