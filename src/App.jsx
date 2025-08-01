@@ -102,7 +102,7 @@ export default function App() {
     const hedContext = hedCanvas.getContext('2d');
     const agentCanvas = agent.current;
     const agentContext = agentCanvas.getContext('2d');
-    const id = setInterval(() => {
+    const renderFrames = () => {
       let frame;
 
       if (logoFrames.current[frameIndex.current]) {
@@ -178,7 +178,10 @@ export default function App() {
       agentContext.drawImage(frame, 0, 0);
 
       frameIndex.current = ++frameIndex.current % ui.frameCount;
-    }, ui.blueprintRefreshMs);
+    };
+    const id = setInterval(renderFrames, ui.blueprintRefreshMs);
+
+    renderFrames();
 
     return () => {
       clearInterval(id);
