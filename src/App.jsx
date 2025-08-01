@@ -323,19 +323,14 @@ export default function App() {
         >
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
-              <Box
-                mt={{ base: '-4.5%', lg: '-16px' }}
-                ml={{ base: '-4.5%', lg: '-16px' }}
-                w={{ base: '45%', lg: '160px' }}
-                maxW='240px'
-              >
+              <Box mt={ui.hedMargin} ml={ui.hedMargin} w={ui.hedWidth} maxW={ui.hedMaxWidth}>
                 <canvas
                   ref={hedcut}
                   width='608'
                   height='912'
                   style={{ width: '100%' }}
                   role='img'
-                  aria-label={ui.hedcutLabel}
+                  aria-label={ui.hedLabel}
                 />
               </Box>
               <Heading variant='name' fontSize={ui.nameFont}>
@@ -371,7 +366,7 @@ export default function App() {
           </Card>
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
-              <Box w={{ base: '40%', lg: '144px' }} maxW='216px'>
+              <Box w={ui.agentWidth} maxW={ui.agentMaxWidth}>
                 <canvas
                   ref={agent}
                   width='1024'
