@@ -277,7 +277,9 @@ export default function App() {
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
           </CardBody>
           <CardFooter>
-            <Button w={ui.buttonWidth} h={ui.buttonHeight}>Get started</Button>
+            <Button w={ui.buttonWidth} h={ui.buttonHeight}>
+              Get started
+            </Button>
           </CardFooter>
         </Card>
         <Card mt={ui.smMargin} boxShadow='md'>
@@ -298,7 +300,9 @@ export default function App() {
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
           </CardBody>
           <CardFooter>
-            <Button w={ui.buttonWidth} h={ui.buttonHeight}>Get started</Button>
+            <Button w={ui.buttonWidth} h={ui.buttonHeight}>
+              Get started
+            </Button>
           </CardFooter>
         </Card>
         <Card mt={ui.smMargin} boxShadow='md'>
@@ -320,7 +324,9 @@ export default function App() {
             </Text>
           </CardBody>
           <CardFooter>
-            <Button w={ui.buttonWidth} h={ui.buttonHeight}>Join waitlist</Button>
+            <Button w={ui.buttonWidth} h={ui.buttonHeight}>
+              Join waitlist
+            </Button>
           </CardFooter>
         </Card>
         <Card mt={ui.smMargin} boxShadow='md'>
@@ -344,7 +350,9 @@ export default function App() {
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }} />
           </CardBody>
           <CardFooter>
-            <Button w={ui.buttonWidth} h={ui.buttonHeight}>Get started</Button>
+            <Button w={ui.buttonWidth} h={ui.buttonHeight}>
+              Get started
+            </Button>
           </CardFooter>
         </Card>
       </Box>
