@@ -130,7 +130,14 @@ export default extendTheme({
     },
     Menu: {
       baseStyle: {
-        item: { _hover: { bg: 'outline' }, _focus: { bg: 'inherit' }, _active: { bg: 'outline' } }
+        item: {
+          fontFamily: 'heading',
+          color: 'brand.secondary',
+          _hover: { bg: 'outline' },
+          _focus: { bg: 'inherit' },
+          _active: { bg: 'outline' },
+          _dark: { color: 'whiteAlpha.800' }
+        }
       }
     },
     Badge: {
