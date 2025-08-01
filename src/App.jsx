@@ -11,12 +11,16 @@ import {
   Link,
   Button,
   IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
   Badge,
   Tooltip,
   useColorMode,
   useColorModeValue
 } from '@chakra-ui/react';
-import { SunIcon, MoonIcon } from '@chakra-ui/icons';
+import { SunIcon, MoonIcon, HamburgerIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 
 import * as ui from './config/ui';
@@ -138,22 +142,24 @@ export default function App() {
           role='img'
           aria-label={ui.logoLabel}
         />
-        <Flex pos='absolute' top={ui.navPosition} right={ui.navPosition} align='center'>
-          <Link variant='nav' ml={ui.itemMargin} href='#services'>
-            Services
-          </Link>
-          <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
-            Pricing
-          </Link>
-          <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
-            Live demo
-          </Link>
-          <Link variant='nav' ml={ui.itemMargin} href='#team'>
-            Our team
-          </Link>
-          <Link variant='nav' ml={ui.itemMargin} href='#contact'>
-            Contact info
-          </Link>
+        <Flex pos='absolute' top={ui.navPosition} right={ui.navPosition}>
+          <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
+            <Link variant='nav' ml={ui.itemMargin} href='#services'>
+              Services
+            </Link>
+            <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
+              Pricing
+            </Link>
+            <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
+              Live demo
+            </Link>
+            <Link variant='nav' ml={ui.itemMargin} href='#team'>
+              Our team
+            </Link>
+            <Link variant='nav' ml={ui.itemMargin} href='#contact'>
+              Contact info
+            </Link>
+          </Flex>
           <Tooltip mr='1' p={ui.tooltipPadding} label={modeLabel} hasArrow>
             <IconButton
               variant='monochrome'
@@ -164,6 +170,37 @@ export default function App() {
               onClick={toggleColorMode}
             />
           </Tooltip>
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              display={{ base: 'inline-flex', lg: 'none' }}
+              mt={ui.hamburgerYMargin}
+              ml={ui.hamburgerXMargin}
+              borderRadius='50%'
+              w={ui.controlDimension}
+              h={ui.controlDimension}
+              fontSize='xl'
+              icon={<HamburgerIcon />}
+              aria-label={ui.menuLabel}
+            />
+            <MenuList p='0'>
+              <MenuItem as='a' borderRadius={ui.menuTopBorder} href='#services'>
+                Services
+              </MenuItem>
+              <MenuItem as='a' borderRadius='0' href='#pricing'>
+                Pricing
+              </MenuItem>
+              <MenuItem as='a' borderRadius='0' href={ui.demoUrl} target='_blank' rel='noopener'>
+                Live demo
+              </MenuItem>
+              <MenuItem as='a' borderRadius='0' href='#team'>
+                Our team
+              </MenuItem>
+              <MenuItem as='a' borderRadius={ui.menuBottomBorder} href='#contact'>
+                Contact info
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </Flex>
       </Box>
       <Flex
@@ -240,7 +277,7 @@ export default function App() {
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
           </CardBody>
           <CardFooter>
-            <Button>Get started</Button>
+            <Button w={ui.buttonWidth} h={ui.buttonHeight}>Get started</Button>
           </CardFooter>
         </Card>
         <Card mt={ui.smMargin} boxShadow='md'>
@@ -261,7 +298,7 @@ export default function App() {
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
           </CardBody>
           <CardFooter>
-            <Button>Get started</Button>
+            <Button w={ui.buttonWidth} h={ui.buttonHeight}>Get started</Button>
           </CardFooter>
         </Card>
         <Card mt={ui.smMargin} boxShadow='md'>
@@ -283,7 +320,7 @@ export default function App() {
             </Text>
           </CardBody>
           <CardFooter>
-            <Button>Join waitlist</Button>
+            <Button w={ui.buttonWidth} h={ui.buttonHeight}>Join waitlist</Button>
           </CardFooter>
         </Card>
         <Card mt={ui.smMargin} boxShadow='md'>
@@ -307,7 +344,7 @@ export default function App() {
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }} />
           </CardBody>
           <CardFooter>
-            <Button>Get started</Button>
+            <Button w={ui.buttonWidth} h={ui.buttonHeight}>Get started</Button>
           </CardFooter>
         </Card>
       </Box>

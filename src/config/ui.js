@@ -3,6 +3,7 @@ import highlights from 'markdown-it-highlightjs';
 
 // Strings
 export const logoLabel = 'Agent First';
+export const menuLabel = 'View site content';
 export const servicesLabel = 'Services';
 export const hedLabel = 'Brian Kennish hedcut';
 export const agentLabel = 'Brain agent';
@@ -28,9 +29,16 @@ export const postItColors = [
 ];
 
 // Controls
+export const controlDimension = '48px';
+export const menuTopBorder = '5px 5px 0 0';
+export const menuBottomBorder = '0 0 5px 5px';
 export const tooltipPadding = '6px 10px';
-export const controlHeight = { base: '48px', md: '56px' };
+export const navPosition = 6;
+export const itemMargin = 6;
+export const hamburgerXMargin = 3;
+export const hamburgerYMargin = -1;
 export const buttonWidth = { base: '160px', md: '176px' };
+export const buttonHeight = { base: controlDimension, md: '56px' };
 
 // Animation
 export const logoFill = 'hachure';
@@ -57,12 +65,6 @@ export const mdMargin = 14;
 export const lgMargin = 20;
 export const xlMargin = 24;
 export const gradientAngle = 140;
-
-// Header
-export const menuTopBorder = '5px 5px 0 0';
-export const menuBottomBorder = '0 0 5px 5px';
-export const navPosition = 6;
-export const itemMargin = 6;
 
 // Hero
 export const postItDimension = '4in';

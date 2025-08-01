@@ -22,6 +22,7 @@ export default extendTheme({
     brand: { primary: ui.royalBlue, secondary: ui.resolutionBlue },
     accent: { primary: ui.cornflowerBlue, secondary: ui.creativeBlue }
   },
+  shadows: { outline: '0 0 0 3px var(--chakra-colors-accent-primary)' },
   fonts: {
     heading: '"Permanent Marker", cursive',
     subheading: '"Indie Flower", cursive',
@@ -80,7 +81,8 @@ export default extendTheme({
         p: ui.linkPadding,
         fontWeight: 'bold',
         color: 'accent.secondary',
-        _hover: { color: 'brand.secondary', textDecoration: 'none' }
+        _hover: { color: 'brand.secondary', textDecoration: 'none' },
+        _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
       },
       variants: {
         ghost: { display: 'inline-block', color: 'inherit', _hover: { color: 'inherit' } },
@@ -96,7 +98,8 @@ export default extendTheme({
           borderBottom: '2px solid var(--chakra-colors-accent-secondary)',
           p: 0,
           h: '25px',
-          _hover: { borderColor: 'brand.secondary' }
+          _hover: { borderColor: 'brand.secondary' },
+          _dark: { borderColor: 'brand.primary', _hover: { borderColor: 'accent.primary' } }
         }
       }
     },
@@ -110,8 +113,6 @@ export default extendTheme({
       variants: {
         solid: {
           bg: 'accent.secondary',
-          w: ui.buttonWidth,
-          h: ui.controlHeight,
           fontSize: { base: 'md', md: 'lg' },
           color: 'white',
           _hover: { bg: 'brand.secondary' },
@@ -129,9 +130,9 @@ export default extendTheme({
     Menu: {
       baseStyle: {
         item: {
-          _hover: { borderColor: 'transparent', bg: 'outline' },
+          _hover: { borderColor: 'transparent', bg: 'accent.primary' },
           _focus: { bg: 'inherit', outline: ui.outlineStyle },
-          _active: { bg: 'outline' }
+          _active: { bg: 'accent.primary' }
         }
       }
     },
