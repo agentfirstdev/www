@@ -20,9 +20,10 @@ export default extendTheme({
   },
   colors: {
     brand: { primary: ui.royalBlue, secondary: ui.resolutionBlue },
-    accent: { primary: ui.cornflowerBlue, secondary: ui.creativeBlue }
+    accent: { primary: ui.cornflowerBlue, secondary: ui.creativeBlue },
+    outline: 'rgba(66, 153, 225, .6)'
   },
-  shadows: { outline: '0 0 0 3px var(--chakra-colors-accent-primary)' },
+  shadows: { outline: '0 0 0 3px var(--chakra-colors-outline)' },
   fonts: {
     heading: '"Permanent Marker", cursive',
     subheading: '"Indie Flower", cursive',
@@ -129,11 +130,7 @@ export default extendTheme({
     },
     Menu: {
       baseStyle: {
-        item: {
-          _hover: { bg: 'accent.primary' },
-          _focus: { bg: 'inherit' },
-          _active: { bg: 'accent.primary' }
-        }
+        item: { _hover: { bg: 'outline' }, _focus: { bg: 'inherit' }, _active: { bg: 'outline' } }
       }
     },
     Badge: {
