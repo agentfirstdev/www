@@ -40,16 +40,33 @@ export default function App() {
   const services = useRef();
   const hedcut = useRef();
   const agent = useRef();
+  const logoFrames = useRef();
+  const servicesFrames = useRef();
+  const hedFrames = useRef();
+  const agentFrames = useRef();
+  const frameIndex = useRef();
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
   const servicesStroke = useColorModeValue(ui.blackLightAlpha, ui.creativeBlue);
   const servicesFill = useColorModeValue(ui.blackLightAlpha, ui.creativeBlue);
+  const postItColorIndex = useColorModeValue(0, 1);
+  // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
   const isLightMode = colorMode == 'light';
   const modeId = 'mode';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
-  // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
-  const postItColorIndex = useColorModeValue(0, 1);
+  const generateFrame = (canvas, path, roughParams) => {
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = canvas.width;
+    tempCanvas.height = canvas.height;
+    const tempContext = tempCanvas.getContext('2d');
+    const tempRough = rough.canvas(tempCanvas);
+
+    tempContext.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
+    tempRough.path(path, roughParams);
+
+    return tempCanvas;
+  };
   const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
       event.preventDefault();
@@ -75,55 +92,95 @@ export default function App() {
   }, [colorMode]);
 
   useEffect(() => {
+    logoFrames.current = [];
+    servicesFrames.current = [];
+    hedFrames.current = [];
+    agentFrames.current = [];
+    frameIndex.current = 0;
     const logoCanvas = logotype.current;
     const logoContext = logoCanvas.getContext('2d');
-    const logoRough = rough.canvas(logoCanvas);
     const servicesCanvas = services.current;
     const servicesContext = servicesCanvas.getContext('2d');
-    const servicesRough = rough.canvas(servicesCanvas);
     const hedCanvas = hedcut.current;
     const hedContext = hedCanvas.getContext('2d');
-    const hedRough = rough.canvas(hedCanvas);
     const agentCanvas = agent.current;
     const agentContext = agentCanvas.getContext('2d');
-    const agentRough = rough.canvas(agentCanvas);
     const id = setInterval(() => {
+      let frame;
+
+      if (logoFrames.current[frameIndex.current]) {
+        frame = logoFrames.current[frameIndex.current];
+      } else {
+        frame = generateFrame(logoCanvas, Logotype(), {
+          stroke: blueprintStroke,
+          strokeWidth: ui.blueprintStroke,
+          fill: blueprintFill,
+          fillStyle: ui.logoFill,
+          hachureAngle: ui.blueprintAngle,
+          roughness: ui.logoRoughness
+        });
+
+        logoFrames.current.push(frame);
+      }
+
       logoContext.clearRect(0, 0, logoCanvas.width, logoCanvas.height);
-      logoRough.path(Logotype(), {
-        stroke: blueprintStroke,
-        strokeWidth: ui.blueprintStroke,
-        fill: blueprintFill,
-        fillStyle: ui.logoFill,
-        hachureAngle: ui.blueprintAngle,
-        roughness: ui.logoRoughness
-      });
+      logoContext.drawImage(frame, 0, 0);
+
+      if (servicesFrames.current[frameIndex.current]) {
+        frame = servicesFrames.current[frameIndex.current];
+      } else {
+        frame = generateFrame(servicesCanvas, Services(), {
+          stroke: servicesStroke,
+          strokeWidth: ui.blueprintStroke,
+          fill: servicesFill,
+          fillStyle: ui.servicesFill,
+          hachureAngle: ui.blueprintAngle,
+          roughness: ui.servicesRoughness
+        });
+
+        servicesFrames.current.push(frame);
+      }
+
       servicesContext.clearRect(0, 0, servicesCanvas.width, servicesCanvas.height);
-      servicesRough.path(Services(), {
-        stroke: servicesStroke,
-        strokeWidth: ui.blueprintStroke,
-        fill: servicesFill,
-        fillStyle: ui.servicesFill,
-        hachureAngle: ui.blueprintAngle,
-        roughness: ui.servicesRoughness
-      });
+      servicesContext.drawImage(frame, 0, 0);
+
+      if (hedFrames.current[frameIndex.current]) {
+        frame = hedFrames.current[frameIndex.current];
+      } else {
+        frame = generateFrame(hedCanvas, Hedcut(), {
+          stroke: ui.hedStroke,
+          strokeWidth: ui.blueprintStroke,
+          fill: blueprintFill,
+          fillStyle: ui.hedFill,
+          hachureAngle: ui.blueprintAngle,
+          roughness: ui.hedRoughness
+        });
+
+        hedFrames.current.push(frame);
+      }
+
       hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
-      hedRough.path(Hedcut(), {
-        stroke: ui.hedStroke,
-        strokeWidth: ui.blueprintStroke,
-        fill: blueprintFill,
-        fillStyle: ui.hedFill,
-        hachureAngle: ui.blueprintAngle,
-        roughness: ui.hedRoughness
-      });
+      hedContext.drawImage(frame, 0, 0);
+
+      if (agentFrames.current[frameIndex.current]) {
+        frame = agentFrames.current[frameIndex.current];
+      } else {
+        frame = generateFrame(agentCanvas, Agent(), {
+          stroke: ui.agentStroke,
+          strokeWidth: ui.blueprintStroke,
+          fill: blueprintFill,
+          fillStyle: ui.agentFill,
+          hachureAngle: ui.blueprintAngle,
+          roughness: ui.agentRoughness
+        });
+
+        agentFrames.current.push(frame);
+      }
+
       agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
-      agentRough.path(Agent(), {
-        stroke: ui.agentStroke,
-        strokeWidth: ui.blueprintStroke,
-        fill: blueprintFill,
-        fillStyle: ui.agentFill,
-        hachureAngle: ui.blueprintAngle,
-        roughness: ui.agentRoughness
-      });
+      agentContext.drawImage(frame, 0, 0);
+
+      frameIndex.current = ++frameIndex.current % ui.frameCount;
     }, ui.blueprintRefreshMs);
 
     return () => {

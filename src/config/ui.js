@@ -47,6 +47,7 @@ export const hedStroke = 'transparent';
 export const hedFill = 'solid';
 export const agentStroke = 'transparent';
 export const agentFill = 'solid';
+export const frameCount = 12;
 export const blueprintStroke = 4;
 export const blueprintAngle = -40;
 export const blueprintRefreshMs = 250;
