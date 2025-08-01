@@ -128,7 +128,13 @@ export default extendTheme({
       }
     },
     Menu: {
-      baseStyle: { item: { _hover: { bg: 'accent.primary' }, _active: { bg: 'accent.primary' } } }
+      baseStyle: {
+        item: {
+          _hover: { bg: 'accent.primary' },
+          _focus: { bg: 'inherit' },
+          _active: { bg: 'accent.primary' }
+        }
+      }
     },
     Badge: {
       baseStyle: {
