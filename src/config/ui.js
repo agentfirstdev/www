@@ -7,7 +7,7 @@ export const menuLabel = 'View site contents';
 export const servicesLabel = 'Services';
 export const hedLabel = 'Brian Kennish hedcut';
 export const agentLabel = 'Brain agent';
-export const demoUrl = 'https://llamapile.com/';
+export const demoUrl = 'https://dev.llamapile.com/';
 
 // Colors
 export const blackAlpha = 'rgba(0, 0, 0, 0.48)';
