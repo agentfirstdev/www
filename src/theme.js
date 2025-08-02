@@ -144,7 +144,7 @@ export default extendTheme({
         pt: '2px',
         fontFamily: 'body',
         color: 'accent.secondary',
-        _dark: { borderColor: 'whiteAlpha.700', color: 'whiteAlpha.700' }
+        _dark: { borderColor: 'whiteAlpha.600', color: 'whiteAlpha.600' }
       }
     }
   },
