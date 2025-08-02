@@ -3,7 +3,6 @@ import { extendTheme } from '@chakra-ui/react';
 import * as ui from './config/ui';
 
 export default extendTheme({
-  config: { useSystemColorMode: true },
   cssVarPrefix: 'chakra',
   semanticTokens: {
     colors: {
