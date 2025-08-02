@@ -19,12 +19,15 @@ export const resolutionBlue = '#002082';
 export const pastelYellow = '#fcea8b';
 export const naplesYellow = '#fbe364';
 export const vegasGold = '#bcaa4b';
+export const asagiYellow = '#ffc876';
+export const yellowOrange = '#ff9d48';
+export const burntSienna = '#bf6436';
 export const prettyPink = '#eaabb0';
 export const ruddyPink = '#e38f95';
 export const turkishRose = '#aa6b70';
-export const royalOrange = '#f99245';
 export const postItColors = [
   { background: { from: pastelYellow, to: naplesYellow }, border: vegasGold },
+  { background: { from: asagiYellow, to: yellowOrange }, border: burntSienna },
   { background: { from: prettyPink, to: ruddyPink }, border: turkishRose }
 ];
 

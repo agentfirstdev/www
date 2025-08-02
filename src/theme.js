@@ -21,7 +21,7 @@ export default extendTheme({
   colors: {
     brand: { primary: ui.royalBlue, secondary: ui.resolutionBlue },
     accent: { primary: ui.cornflowerBlue, secondary: ui.creativeBlue },
-    outline: ui.royalOrange
+    outline: ui.yellowOrange
   },
   shadows: { outline: '0 0 0 3px var(--chakra-colors-outline)' },
   fonts: {
