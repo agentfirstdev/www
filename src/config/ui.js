@@ -3,7 +3,7 @@ import highlights from 'markdown-it-highlightjs';
 
 // Strings
 export const logoLabel = 'Agent First';
-export const menuLabel = 'View site content';
+export const menuLabel = 'View site contents';
 export const servicesLabel = 'Services';
 export const hedLabel = 'Brian Kennish hedcut';
 export const agentLabel = 'Brain agent';
