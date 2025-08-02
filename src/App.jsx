@@ -18,7 +18,8 @@ import {
   Badge,
   Tooltip,
   useColorMode,
-  useColorModeValue
+  useColorModeValue,
+  useDisclosure
 } from '@chakra-ui/react';
 import { SunIcon, MoonIcon, HamburgerIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
@@ -51,10 +52,11 @@ export default function App() {
   const servicesStroke = useColorModeValue(ui.blackLightAlpha, ui.creativeBlue);
   const servicesFill = useColorModeValue(ui.blackLightAlpha, ui.creativeBlue);
   const postItColorIndex = useColorModeValue(0, 1);
-  // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const isLightMode = colorMode == 'light';
   const modeId = 'mode';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
+  // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
   const generateFrame = (canvas, path, roughParams) => {
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = canvas.width;
@@ -64,7 +66,7 @@ export default function App() {
 
     return tempCanvas;
   };
-  const handleKeyPress = (event, commitAction, cancelAction) => {
+  /* const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
       event.preventDefault();
       commitAction(event);
@@ -72,7 +74,7 @@ export default function App() {
       event.preventDefault();
       cancelAction(event);
     }
-  };
+  }; */
 
   useEffect(() => {
     let link = document.getElementById(modeId);
@@ -229,19 +231,30 @@ export default function App() {
               onClick={toggleColorMode}
             />
           </Tooltip>
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              display={{ base: 'inline-flex', lg: 'none' }}
-              mt={ui.hamburgerYMargin}
-              ml={ui.hamburgerXMargin}
-              borderRadius='50%'
-              w={ui.controlDimension}
-              h={ui.controlDimension}
-              fontSize='xl'
-              icon={<HamburgerIcon />}
-              aria-label={ui.menuLabel}
-            />
+          <Menu isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
+            <Tooltip
+              mr={ui.tooltipMargin}
+              p={ui.tooltipPadding}
+              label={ui.menuLabel}
+              isDisabled={isOpen}
+              hasArrow
+            >
+              <MenuButton
+                as={IconButton}
+                display={{ base: 'inline-flex', lg: 'none' }}
+                mt={ui.hamburgerTopMargin}
+                ml={ui.hamburgerLeftMargin}
+                borderRadius='50%'
+                bg='brand.secondary'
+                w={ui.controlDimension}
+                h={ui.controlDimension}
+                fontSize='xl'
+                icon={<HamburgerIcon />}
+                aria-label={ui.menuLabel}
+                _hover={{ bg: 'accent.secondary' }}
+                _dark={{ bg: 'brand.primary', color: 'whiteAlpha.800' }}
+              />
+            </Tooltip>
             <MenuList p='0'>
               <MenuItem as='a' borderRadius={ui.menuTopBorder} href='#services'>
                 Services
