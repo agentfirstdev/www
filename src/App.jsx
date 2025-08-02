@@ -49,8 +49,8 @@ export default function App() {
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
-  const servicesStroke = useColorModeValue(ui.blackLightAlpha, ui.creativeBlue);
-  const servicesFill = useColorModeValue(ui.blackLightAlpha, ui.creativeBlue);
+  const servicesStroke = useColorModeValue(ui.blackAlpha, ui.creativeBlue);
+  const servicesFill = useColorModeValue(ui.blackAlpha, ui.creativeBlue);
   const postItColorIndex = useColorModeValue(0, 1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isLightMode = colorMode == 'light';

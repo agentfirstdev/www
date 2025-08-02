@@ -10,8 +10,7 @@ export const agentLabel = 'Brain agent';
 export const demoUrl = 'https://llamapile.com/';
 
 // Colors
-export const blackLightAlpha = 'rgba(0, 0, 0, .24)';
-export const blackDarkAlpha = 'rgba(0, 0, 0, .64)';
+export const blackAlpha = 'rgba(0, 0, 0, 0.48)';
 export const cornflowerBlue = '#7999f7';
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
@@ -88,10 +87,10 @@ export const heroHeight = { base: 'auto', md: '50vh' };
 
 // Services
 export const servicesBorder = '1px solid var(--chakra-colors-chakra-border-color)';
-export const servicesNewWidth = '15%';
-export const servicesMinWidth = '160px';
-export const servicesOldWidth = 1024;
-export const servicesOldHeight = 264;
+export const servicesNewWidth = '20%';
+export const servicesMinWidth = '204px';
+export const servicesOldWidth = 1376;
+export const servicesOldHeight = 320;
 
 // Team
 export const hedMaxWidth = '240px';
