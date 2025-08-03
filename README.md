@@ -6,8 +6,8 @@
 
 The site is developed using [Node.js 22.x](https://nodejs.org/en/download) (due to Amazon Linux 2023
 availability), [Yarn](https://yarnpkg.com/), [React](https://react.dev/),
-[Chakra UI](https://chakra-ui.com/), and [Vite](https://vite.dev/). Follow the steps below to
-configure and run the site on Amazon Linux or macOS.
+[Chakra UI](https://chakra-ui.com/), and [Vite](https://vite.dev/). Follow the steps below to run
+the site on Amazon Linux or macOS.
 
 #### Amazon Linux prerequisites
 
@@ -78,8 +78,8 @@ even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
 The Agent First logos, trademarks, domain names, and other brand features used in this program
 cannot be reused without permission and no license is granted thereto.
 
-Further, the following third-party portions of the program and any use thereof are subject to their
-own licensing terms:
+Further, these third-party portions of the program and any use thereof are subject to their own
+licensing terms:
 
 * [Permanent Marker](https://fonts.google.com/specimen/Permanent+Marker)
 * [Indie Flower](https://fonts.google.com/specimen/Indie+Flower)
