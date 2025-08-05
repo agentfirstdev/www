@@ -76,14 +76,15 @@ export const gradientAngle = 140;
 export const logoMargin = '8px';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
-export const postItDimension = '4in';
-export const postItFont = '28px';
+export const postItMaxWidth = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-color)';
 export const postItRotation = '-1.5deg';
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
 export const postItPadding = 4;
-export const heroHeight = { base: 'auto', md: '50vh' };
+export const postItWidth = { base: '100%', md: postItMaxWidth };
+export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
+export const postItFont = { base: '2xl', md: '28px' };
 
 // Services
 export const servicesBorder = '1px solid var(--chakra-colors-chakra-border-color)';

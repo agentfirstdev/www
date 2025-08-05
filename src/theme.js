@@ -33,7 +33,7 @@ export default extendTheme({
       baseStyle: { color: 'accent.secondary', _dark: { color: 'brand.primary' } },
       variants: {
         section: { textAlign: 'center' },
-        'post-it': { fontSize: ui.postItFont, color: 'gray.800', _dark: { color: 'gray.800' } },
+        'post-it': { color: 'gray.800', _dark: { color: 'gray.800' } },
         service: { fontFamily: 'subheading' },
         name: { fontFamily: 'subheading' }
       }
@@ -131,6 +131,7 @@ export default extendTheme({
       baseStyle: {
         item: {
           fontFamily: 'heading',
+          fontSize: '3xl',
           color: 'brand.secondary',
           _dark: { color: 'whiteAlpha.800' }
         }
