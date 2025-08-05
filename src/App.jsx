@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import {
   Box,
   Flex,
@@ -26,10 +26,6 @@ import rough from 'roughjs/bin/rough';
 
 import * as ui from './config/ui';
 import * as uix from './config/uix';
-import Logotype from './assets/Logotype';
-import Services from './assets/Services';
-import Hedcut from './assets/Hedcut';
-import Agent from './assets/Agent';
 import search from './markdown/SEARCH.md?raw';
 import browsing from './markdown/BROWSING.md?raw';
 import searchGeotargeting from './markdown/GEOTARGETING-SEARCH.md?raw';
@@ -41,6 +37,10 @@ export default function App() {
   const services = useRef();
   const hedcut = useRef();
   const agent = useRef();
+  const [logoPath, setLogoPath] = useState(null);
+  const [servicesPath, setServicesPath] = useState(null);
+  const [hedPath, setHedPath] = useState(null);
+  const [agentPath, setAgentPath] = useState(null);
   const logoFrames = useRef();
   const servicesFrames = useRef();
   const hedFrames = useRef();
@@ -77,6 +77,21 @@ export default function App() {
   }; */
 
   useEffect(() => {
+    import('./paths/LOGOTYPE.txt?raw').then((module) => {
+      setLogoPath(module.default);
+    });
+    import('./paths/SERVICES.txt?raw').then((module) => {
+      setServicesPath(module.default);
+    });
+    import('./paths/HEDCUT.txt?raw').then((module) => {
+      setHedPath(module.default);
+    });
+    import('./paths/AGENT.txt?raw').then((module) => {
+      setAgentPath(module.default);
+    });
+  }, []);
+
+  useEffect(() => {
     let link = document.getElementById(modeId);
 
     if (!link) {
@@ -91,104 +106,124 @@ export default function App() {
   }, [colorMode]);
 
   useEffect(() => {
-    logoFrames.current = [];
-    servicesFrames.current = [];
-    hedFrames.current = [];
-    agentFrames.current = [];
-    frameIndex.current = 0;
-    const logoCanvas = logotype.current;
-    const logoContext = logoCanvas.getContext('2d');
-    const servicesCanvas = services.current;
-    const servicesContext = servicesCanvas.getContext('2d');
-    const hedCanvas = hedcut.current;
-    const hedContext = hedCanvas.getContext('2d');
-    const agentCanvas = agent.current;
-    const agentContext = agentCanvas.getContext('2d');
-    const renderFrames = () => {
-      let frame;
+    if (
+      logoPath &&
+      servicesPath &&
+      hedPath &&
+      agentPath &&
+      blueprintStroke &&
+      blueprintFill &&
+      servicesStroke &&
+      servicesFill
+    ) {
+      logoFrames.current = [];
+      servicesFrames.current = [];
+      hedFrames.current = [];
+      agentFrames.current = [];
+      frameIndex.current = 0;
+      const logoCanvas = logotype.current;
+      const logoContext = logoCanvas.getContext('2d');
+      const servicesCanvas = services.current;
+      const servicesContext = servicesCanvas.getContext('2d');
+      const hedCanvas = hedcut.current;
+      const hedContext = hedCanvas.getContext('2d');
+      const agentCanvas = agent.current;
+      const agentContext = agentCanvas.getContext('2d');
+      const renderFrames = () => {
+        let frame;
 
-      if (logoFrames.current[frameIndex.current]) {
-        frame = logoFrames.current[frameIndex.current];
-      } else {
-        frame = generateFrame(logoCanvas, Logotype(), {
-          stroke: blueprintStroke,
-          strokeWidth: ui.blueprintStroke,
-          fill: blueprintFill,
-          fillStyle: ui.logoFill,
-          hachureAngle: ui.blueprintAngle,
-          roughness: ui.logoRoughness
-        });
+        if (logoFrames.current[frameIndex.current]) {
+          frame = logoFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(logoCanvas, logoPath, {
+            stroke: blueprintStroke,
+            strokeWidth: ui.blueprintStroke,
+            fill: blueprintFill,
+            fillStyle: ui.logoFill,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.logoRoughness
+          });
 
-        logoFrames.current.push(frame);
-      }
+          logoFrames.current.push(frame);
+        }
 
-      logoContext.clearRect(0, 0, logoCanvas.width, logoCanvas.height);
-      logoContext.drawImage(frame, 0, 0);
+        logoContext.clearRect(0, 0, logoCanvas.width, logoCanvas.height);
+        logoContext.drawImage(frame, 0, 0);
 
-      if (servicesFrames.current[frameIndex.current]) {
-        frame = servicesFrames.current[frameIndex.current];
-      } else {
-        frame = generateFrame(servicesCanvas, Services(), {
-          stroke: servicesStroke,
-          strokeWidth: ui.blueprintStroke,
-          fill: servicesFill,
-          fillStyle: ui.servicesFill,
-          hachureAngle: ui.blueprintAngle,
-          roughness: ui.servicesRoughness
-        });
+        if (servicesFrames.current[frameIndex.current]) {
+          frame = servicesFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(servicesCanvas, servicesPath, {
+            stroke: servicesStroke,
+            strokeWidth: ui.blueprintStroke,
+            fill: servicesFill,
+            fillStyle: ui.servicesFill,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.servicesRoughness
+          });
 
-        servicesFrames.current.push(frame);
-      }
+          servicesFrames.current.push(frame);
+        }
 
-      servicesContext.clearRect(0, 0, servicesCanvas.width, servicesCanvas.height);
-      servicesContext.drawImage(frame, 0, 0);
+        servicesContext.clearRect(0, 0, servicesCanvas.width, servicesCanvas.height);
+        servicesContext.drawImage(frame, 0, 0);
 
-      if (hedFrames.current[frameIndex.current]) {
-        frame = hedFrames.current[frameIndex.current];
-      } else {
-        frame = generateFrame(hedCanvas, Hedcut(), {
-          stroke: ui.hedStroke,
-          strokeWidth: ui.blueprintStroke,
-          fill: blueprintFill,
-          fillStyle: ui.hedFill,
-          hachureAngle: ui.blueprintAngle,
-          roughness: ui.hedRoughness
-        });
+        if (hedFrames.current[frameIndex.current]) {
+          frame = hedFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(hedCanvas, hedPath, {
+            stroke: ui.hedStroke,
+            strokeWidth: ui.blueprintStroke,
+            fill: blueprintFill,
+            fillStyle: ui.hedFill,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.hedRoughness
+          });
 
-        hedFrames.current.push(frame);
-      }
+          hedFrames.current.push(frame);
+        }
 
-      hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
-      hedContext.drawImage(frame, 0, 0);
+        hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
+        hedContext.drawImage(frame, 0, 0);
 
-      if (agentFrames.current[frameIndex.current]) {
-        frame = agentFrames.current[frameIndex.current];
-      } else {
-        frame = generateFrame(agentCanvas, Agent(), {
-          stroke: ui.agentStroke,
-          strokeWidth: ui.blueprintStroke,
-          fill: blueprintFill,
-          fillStyle: ui.agentFill,
-          hachureAngle: ui.blueprintAngle,
-          roughness: ui.agentRoughness
-        });
+        if (agentFrames.current[frameIndex.current]) {
+          frame = agentFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(agentCanvas, agentPath, {
+            stroke: ui.agentStroke,
+            strokeWidth: ui.blueprintStroke,
+            fill: blueprintFill,
+            fillStyle: ui.agentFill,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.agentRoughness
+          });
 
-        agentFrames.current.push(frame);
-      }
+          agentFrames.current.push(frame);
+        }
 
-      agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
-      agentContext.drawImage(frame, 0, 0);
+        agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
+        agentContext.drawImage(frame, 0, 0);
 
-      frameIndex.current = ++frameIndex.current % ui.frameCount;
-    };
-    const id = setInterval(renderFrames, ui.blueprintRefreshMs);
+        frameIndex.current = ++frameIndex.current % ui.frameCount;
+      };
+      const id = setInterval(renderFrames, ui.blueprintRefreshMs);
 
-    renderFrames();
+      renderFrames();
 
-    return () => {
-      clearInterval(id);
-    };
-  }, [blueprintFill, blueprintStroke, servicesStroke, servicesFill]);
+      return () => {
+        clearInterval(id);
+      };
+    }
+  }, [
+    logoPath,
+    servicesPath,
+    hedPath,
+    agentPath,
+    blueprintStroke,
+    blueprintFill,
+    servicesStroke,
+    servicesFill
+  ]);
 
   return (
     <Flex w='100%' minH='100vh' direction='column'>
