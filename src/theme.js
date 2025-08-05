@@ -131,7 +131,7 @@ export default extendTheme({
       baseStyle: {
         item: {
           fontFamily: 'heading',
-          fontSize: '3xl',
+          fontSize: '2xl',
           color: 'brand.secondary',
           _dark: { color: 'whiteAlpha.800' }
         }
