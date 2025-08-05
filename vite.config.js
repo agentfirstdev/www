@@ -7,5 +7,32 @@ export default defineConfig({
   plugins: [
     react(),
     visualizer({ filename: 'dist/stats.html', open: true, gzipSize: true, brotliSize: true })
-  ]
+  ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          let name;
+
+          if (id.includes('node_modules')) {
+            if (id.includes('react')) {
+              name = 'react';
+            } else if (id.includes('chakra')) {
+              name = 'chakra';
+            } else if (id.includes('framer')) {
+              name = 'framer';
+            } else if (id.includes('markdown')) {
+              name = 'markdown';
+            } else if (id.includes('highlight')) {
+              name = 'highlight';
+            } else {
+              name = 'vendor';
+            }
+
+            return name;
+          }
+        }
+      }
+    }
+  }
 });
