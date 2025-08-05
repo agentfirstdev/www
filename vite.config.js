@@ -17,12 +17,6 @@ export default defineConfig({
           if (id.includes('node_modules')) {
             if (id.includes('react')) {
               name = 'react';
-            } else if (id.includes('chakra')) {
-              name = 'chakra';
-            } else if (id.includes('framer')) {
-              name = 'framer';
-            } else if (id.includes('markdown')) {
-              name = 'markdown';
             } else if (id.includes('highlight')) {
               name = 'highlight';
             } else {
