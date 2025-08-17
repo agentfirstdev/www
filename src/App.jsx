@@ -77,16 +77,16 @@ export default function App() {
   }; */
 
   useEffect(() => {
-    import('./paths/LOGOTYPE.txt?raw').then((module) => {
+    import('./paths/logotype.txt?raw').then((module) => {
       setLogoPath(module.default);
     });
-    import('./paths/SERVICES.txt?raw').then((module) => {
+    import('./paths/services.txt?raw').then((module) => {
       setServicesPath(module.default);
     });
-    import('./paths/HEDCUT.txt?raw').then((module) => {
+    import('./paths/hedcut.txt?raw').then((module) => {
       setHedPath(module.default);
     });
-    import('./paths/AGENT.txt?raw').then((module) => {
+    import('./paths/agent.txt?raw').then((module) => {
       setAgentPath(module.default);
     });
   }, []);
