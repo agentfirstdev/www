@@ -505,7 +505,7 @@ export default function App() {
                 />
               </Box>
               <Heading variant='name' fontSize={ui.nameFont}>
-                Brian Kennish
+                Brian
               </Heading>
               <Text variant='teammate'>
                 <Text as='strong' variant='name'>
