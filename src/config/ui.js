@@ -7,6 +7,10 @@ export const menuLabel = 'View site contents';
 export const servicesLabel = 'Services';
 export const hedLabel = 'Brian Kennish hedcut';
 export const agentLabel = 'Brain agent';
+export const siteLabel = 'Website';
+export const githubLabel = 'GitHub';
+export const linkedinLabel = 'LinkedIn';
+export const xLabel = 'X';
 export const demoUrl = 'https://dev.llamapile.com/';
 
 // Colors
@@ -32,10 +36,12 @@ export const postItColors = [
 
 // Controls
 export const controlDimension = '48px';
+export const iconDimension = '24px';
 export const menuTopBorder = '5px 5px 0 0';
 export const menuBottomBorder = '0 0 5px 5px';
 export const tooltipPadding = '6px 10px';
 export const itemMargin = 6;
+export const iconMargin = 2;
 export const tooltipMargin = 1;
 export const hamburgerTopMargin = -1;
 export const hamburgerLeftMargin = 4;
@@ -46,20 +52,24 @@ export const navTopPosition = { base: 4, lg: 6 };
 export const navRightPosition = { base: 4, lg: 6 };
 
 // Animation
-export const logoFill = 'hachure';
-export const servicesFill = 'solid';
+export const logoFillStyle = 'hachure';
+export const servicesFillStyle = 'solid';
 export const hedStroke = 'transparent';
-export const hedFill = 'solid';
+export const hedFillStyle = 'solid';
 export const agentStroke = 'transparent';
-export const agentFill = 'solid';
+export const agentFillStyle = 'solid';
+export const iconStroke = 'transparent';
+export const iconFillStyle = 'dots';
 export const frameCount = 12;
-export const blueprintStroke = 4;
+export const blueprintStrokeWidth = 4;
 export const blueprintAngle = -40;
 export const blueprintRefreshMs = 250;
 export const logoRoughness = 2;
 export const servicesRoughness = 3;
 export const hedRoughness = 2;
 export const agentRoughness = 3;
+export const iconStrokeWidth = 3;
+export const iconRoughness = 5;
 
 // Other shared styles
 export const linkPadding = '2px';
@@ -100,6 +110,10 @@ export const hedOldWidth = 608;
 export const hedOldHeight = 912;
 export const agentOldWidth = 1024;
 export const agentOldHeight = 1536;
+export const siteOldDimension = 640;
+export const githubOldDimension = 640;
+export const linkedinOldDimension = 640;
+export const xOldDimension = 640;
 export const cardWidth = { base: '100%', lg: '420px' };
 export const nameFont = { base: '2xl', md: '3xl' };
 export const hedMargin = { base: '-5.5%', lg: '-16px' };

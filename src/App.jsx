@@ -37,14 +37,26 @@ export default function App() {
   const services = useRef();
   const hedcut = useRef();
   const agent = useRef();
+  const siteIcon = useRef();
+  const githubIcon = useRef();
+  const linkedinIcon = useRef();
+  const xIcon = useRef();
   const [logoPath, setLogoPath] = useState(null);
   const [servicesPath, setServicesPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
   const [agentPath, setAgentPath] = useState(null);
+  const [sitePath, setSitePath] = useState(null);
+  const [githubPath, setGithubPath] = useState(null);
+  const [linkedinPath, setLinkedinPath] = useState(null);
+  const [xPath, setXPath] = useState(null);
   const logoFrames = useRef();
   const servicesFrames = useRef();
   const hedFrames = useRef();
   const agentFrames = useRef();
+  const siteFrames = useRef();
+  const githubFrames = useRef();
+  const linkedinFrames = useRef();
+  const xFrames = useRef();
   const frameIndex = useRef();
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
@@ -89,6 +101,18 @@ export default function App() {
     import('./paths/agent.txt?raw').then((module) => {
       setAgentPath(module.default);
     });
+    import('./paths/globe.txt?raw').then((module) => {
+      setSitePath(module.default);
+    });
+    import('./paths/github.txt?raw').then((module) => {
+      setGithubPath(module.default);
+    });
+    import('./paths/linkedin.txt?raw').then((module) => {
+      setLinkedinPath(module.default);
+    });
+    import('./paths/x.txt?raw').then((module) => {
+      setXPath(module.default);
+    });
   }, []);
 
   useEffect(() => {
@@ -111,6 +135,10 @@ export default function App() {
       servicesPath &&
       hedPath &&
       agentPath &&
+      sitePath &&
+      githubPath &&
+      linkedinPath &&
+      xPath &&
       blueprintStroke &&
       blueprintFill &&
       servicesStroke &&
@@ -120,6 +148,10 @@ export default function App() {
       servicesFrames.current = [];
       hedFrames.current = [];
       agentFrames.current = [];
+      siteFrames.current = [];
+      githubFrames.current = [];
+      linkedinFrames.current = [];
+      xFrames.current = [];
       frameIndex.current = 0;
       const logoCanvas = logotype.current;
       const logoContext = logoCanvas.getContext('2d');
@@ -129,6 +161,14 @@ export default function App() {
       const hedContext = hedCanvas.getContext('2d');
       const agentCanvas = agent.current;
       const agentContext = agentCanvas.getContext('2d');
+      const siteCanvas = siteIcon.current;
+      const siteContext = siteCanvas.getContext('2d');
+      const githubCanvas = githubIcon.current;
+      const githubContext = githubCanvas.getContext('2d');
+      const linkedinCanvas = linkedinIcon.current;
+      const linkedinContext = linkedinCanvas.getContext('2d');
+      const xCanvas = xIcon.current;
+      const xContext = xCanvas.getContext('2d');
       const renderFrames = () => {
         let frame;
 
@@ -137,9 +177,9 @@ export default function App() {
         } else {
           frame = generateFrame(logoCanvas, logoPath, {
             stroke: blueprintStroke,
-            strokeWidth: ui.blueprintStroke,
+            strokeWidth: ui.blueprintStrokeWidth,
             fill: blueprintFill,
-            fillStyle: ui.logoFill,
+            fillStyle: ui.logoFillStyle,
             hachureAngle: ui.blueprintAngle,
             roughness: ui.logoRoughness
           });
@@ -155,9 +195,9 @@ export default function App() {
         } else {
           frame = generateFrame(servicesCanvas, servicesPath, {
             stroke: servicesStroke,
-            strokeWidth: ui.blueprintStroke,
+            strokeWidth: ui.blueprintStrokeWidth,
             fill: servicesFill,
-            fillStyle: ui.servicesFill,
+            fillStyle: ui.servicesFillStyle,
             hachureAngle: ui.blueprintAngle,
             roughness: ui.servicesRoughness
           });
@@ -173,9 +213,9 @@ export default function App() {
         } else {
           frame = generateFrame(hedCanvas, hedPath, {
             stroke: ui.hedStroke,
-            strokeWidth: ui.blueprintStroke,
+            strokeWidth: ui.blueprintStrokeWidth,
             fill: blueprintFill,
-            fillStyle: ui.hedFill,
+            fillStyle: ui.hedFillStyle,
             hachureAngle: ui.blueprintAngle,
             roughness: ui.hedRoughness
           });
@@ -191,9 +231,9 @@ export default function App() {
         } else {
           frame = generateFrame(agentCanvas, agentPath, {
             stroke: ui.agentStroke,
-            strokeWidth: ui.blueprintStroke,
+            strokeWidth: ui.blueprintStrokeWidth,
             fill: blueprintFill,
-            fillStyle: ui.agentFill,
+            fillStyle: ui.agentFillStyle,
             hachureAngle: ui.blueprintAngle,
             roughness: ui.agentRoughness
           });
@@ -203,6 +243,78 @@ export default function App() {
 
         agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
         agentContext.drawImage(frame, 0, 0);
+
+        if (siteFrames.current[frameIndex.current]) {
+          frame = siteFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(siteCanvas, sitePath, {
+            stroke: ui.iconStroke,
+            strokeWidth: ui.iconStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.iconFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.iconRoughness
+          });
+
+          siteFrames.current.push(frame);
+        }
+
+        siteContext.clearRect(0, 0, siteCanvas.width, siteCanvas.height);
+        siteContext.drawImage(frame, 0, 0);
+
+        if (githubFrames.current[frameIndex.current]) {
+          frame = githubFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(githubCanvas, githubPath, {
+            stroke: ui.iconStroke,
+            strokeWidth: ui.iconStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.iconFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.iconRoughness
+          });
+
+          githubFrames.current.push(frame);
+        }
+
+        githubContext.clearRect(0, 0, githubCanvas.width, githubCanvas.height);
+        githubContext.drawImage(frame, 0, 0);
+
+        if (linkedinFrames.current[frameIndex.current]) {
+          frame = linkedinFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(linkedinCanvas, linkedinPath, {
+            stroke: ui.iconStroke,
+            strokeWidth: ui.iconStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.iconFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.iconRoughness
+          });
+
+          linkedinFrames.current.push(frame);
+        }
+
+        linkedinContext.clearRect(0, 0, linkedinCanvas.width, linkedinCanvas.height);
+        linkedinContext.drawImage(frame, 0, 0);
+
+        if (xFrames.current[frameIndex.current]) {
+          frame = xFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(xCanvas, xPath, {
+            stroke: ui.iconStroke,
+            strokeWidth: ui.iconStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.iconFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.iconRoughness
+          });
+
+          xFrames.current.push(frame);
+        }
+
+        xContext.clearRect(0, 0, xCanvas.width, xCanvas.height);
+        xContext.drawImage(frame, 0, 0);
 
         frameIndex.current = ++frameIndex.current % ui.frameCount;
       };
@@ -219,6 +331,10 @@ export default function App() {
     servicesPath,
     hedPath,
     agentPath,
+    sitePath,
+    githubPath,
+    linkedinPath,
+    xPath,
     blueprintStroke,
     blueprintFill,
     servicesStroke,
@@ -533,7 +649,53 @@ export default function App() {
                 {' that’s focused on serving AI agents and their developers.'}
               </Text>
             </CardBody>
-            <CardFooter display='none'>{/* TODO: Add social icons. */}</CardFooter>
+            <CardFooter pt='0'>
+              <Link p='0' href='https://oldestlivingboy.com/' isExternal>
+                <canvas
+                  ref={siteIcon}
+                  width={ui.siteOldDimension}
+                  height={ui.siteOldDimension}
+                  style={{ width: ui.iconDimension, height: ui.iconDimension }}
+                  role='img'
+                  aria-label={ui.siteLabel}
+                />
+              </Link>
+              <Link ml={ui.iconMargin} p='0' href='https://github.com/oldestlivingboy' isExternal>
+                <canvas
+                  ref={githubIcon}
+                  width={ui.githubOldDimension}
+                  height={ui.githubOldDimension}
+                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                  role='img'
+                  aria-label={ui.githubLabel}
+                />
+              </Link>
+              <Link
+                ml={ui.iconMargin}
+                p='0'
+                href='https://www.linkedin.com/in/oldestlivingboy/'
+                isExternal
+              >
+                <canvas
+                  ref={linkedinIcon}
+                  width={ui.linkedinOldDimension}
+                  height={ui.linkedinOldDimension}
+                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                  role='img'
+                  aria-label={ui.linkedinLabel}
+                />
+              </Link>
+              <Link ml={ui.iconMargin} p='0' href='https://x.com/oldestlivingboy' isExternal>
+                <canvas
+                  ref={xIcon}
+                  width={ui.xOldDimension}
+                  height={ui.xOldDimension}
+                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                  role='img'
+                  aria-label={ui.xLabel}
+                />
+              </Link>
+            </CardFooter>
           </Card>
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
             <CardBody textAlign='left'>
