@@ -5,12 +5,12 @@ import highlights from 'markdown-it-highlightjs';
 export const logoLabel = 'Agent First';
 export const menuLabel = 'View site contents';
 export const servicesLabel = 'Services';
-export const hedLabel = 'Brian Kennish hedcut';
+export const hedLabel = 'Brian hedcut';
 export const agentLabel = 'Brain agent';
-export const siteLabel = 'Website';
-export const githubLabel = 'GitHub';
-export const linkedinLabel = 'LinkedIn';
-export const xLabel = 'X';
+export const siteLabel = 'Go to Brian’s site';
+export const githubLabel = 'Go to Brian’s GitHub';
+export const linkedinLabel = 'Go to Brian’s LinkedIn';
+export const xLabel = 'Go to Brian’s X';
 export const demoUrl = 'https://dev.llamapile.com/';
 
 // Colors

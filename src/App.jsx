@@ -650,51 +650,64 @@ export default function App() {
               </Text>
             </CardBody>
             <CardFooter pt='0'>
-              <Link p='0' href='https://oldestlivingboy.com/' isExternal>
-                <canvas
-                  ref={siteIcon}
-                  width={ui.siteOldDimension}
-                  height={ui.siteOldDimension}
-                  style={{ width: ui.iconDimension, height: ui.iconDimension }}
-                  role='img'
-                  aria-label={ui.siteLabel}
-                />
-              </Link>
-              <Link ml={ui.iconMargin} p='0' href='https://github.com/oldestlivingboy' isExternal>
-                <canvas
-                  ref={githubIcon}
-                  width={ui.githubOldDimension}
-                  height={ui.githubOldDimension}
-                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
-                  role='img'
-                  aria-label={ui.githubLabel}
-                />
-              </Link>
-              <Link
-                ml={ui.iconMargin}
-                p='0'
-                href='https://www.linkedin.com/in/oldestlivingboy/'
-                isExternal
+              <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
+                <Link p='0' href='https://oldestlivingboy.com/' isExternal>
+                  <canvas
+                    ref={siteIcon}
+                    width={ui.siteOldDimension}
+                    height={ui.siteOldDimension}
+                    style={{ width: ui.iconDimension, height: ui.iconDimension }}
+                    role='img'
+                    aria-label={ui.siteLabel}
+                  />
+                </Link>
+              </Tooltip>
+              <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.githubLabel} hasArrow>
+                <Link ml={ui.iconMargin} p='0' href='https://github.com/oldestlivingboy' isExternal>
+                  <canvas
+                    ref={githubIcon}
+                    width={ui.githubOldDimension}
+                    height={ui.githubOldDimension}
+                    style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                    role='img'
+                    aria-label={ui.githubLabel}
+                  />
+                </Link>
+              </Tooltip>
+              <Tooltip
+                mr={ui.tooltipMargin}
+                p={ui.tooltipPadding}
+                label={ui.linkedinLabel}
+                hasArrow
               >
-                <canvas
-                  ref={linkedinIcon}
-                  width={ui.linkedinOldDimension}
-                  height={ui.linkedinOldDimension}
-                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
-                  role='img'
-                  aria-label={ui.linkedinLabel}
-                />
-              </Link>
-              <Link ml={ui.iconMargin} p='0' href='https://x.com/oldestlivingboy' isExternal>
-                <canvas
-                  ref={xIcon}
-                  width={ui.xOldDimension}
-                  height={ui.xOldDimension}
-                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
-                  role='img'
-                  aria-label={ui.xLabel}
-                />
-              </Link>
+                <Link
+                  ml={ui.iconMargin}
+                  p='0'
+                  href='https://www.linkedin.com/in/oldestlivingboy/'
+                  isExternal
+                >
+                  <canvas
+                    ref={linkedinIcon}
+                    width={ui.linkedinOldDimension}
+                    height={ui.linkedinOldDimension}
+                    style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                    role='img'
+                    aria-label={ui.linkedinLabel}
+                  />
+                </Link>
+              </Tooltip>
+              <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.xLabel} hasArrow>
+                <Link ml={ui.iconMargin} p='0' href='https://x.com/oldestlivingboy' isExternal>
+                  <canvas
+                    ref={xIcon}
+                    width={ui.xOldDimension}
+                    height={ui.xOldDimension}
+                    style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                    role='img'
+                    aria-label={ui.xLabel}
+                  />
+                </Link>
+              </Tooltip>
             </CardFooter>
           </Card>
           <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
