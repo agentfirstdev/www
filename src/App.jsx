@@ -656,7 +656,7 @@ export default function App() {
                     ref={siteIcon}
                     width={ui.siteOldDimension}
                     height={ui.siteOldDimension}
-                    style={{ width: ui.iconDimension, height: ui.iconDimension }}
+                    style={{ width: ui.socialDimension, height: ui.socialDimension }}
                     role='img'
                     aria-label={ui.siteLabel}
                   />
@@ -668,7 +668,7 @@ export default function App() {
                     ref={githubIcon}
                     width={ui.githubOldDimension}
                     height={ui.githubOldDimension}
-                    style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                    style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
                     role='img'
                     aria-label={ui.githubLabel}
                   />
@@ -690,7 +690,7 @@ export default function App() {
                     ref={linkedinIcon}
                     width={ui.linkedinOldDimension}
                     height={ui.linkedinOldDimension}
-                    style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                    style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
                     role='img'
                     aria-label={ui.linkedinLabel}
                   />
@@ -702,7 +702,7 @@ export default function App() {
                     ref={xIcon}
                     width={ui.xOldDimension}
                     height={ui.xOldDimension}
-                    style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                    style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
                     role='img'
                     aria-label={ui.xLabel}
                   />

@@ -36,7 +36,8 @@ export const postItColors = [
 
 // Controls
 export const controlDimension = '48px';
-export const iconDimension = '24px';
+export const iconDimension = '32px';
+export const socialDimension = '24px';
 export const menuTopBorder = '5px 5px 0 0';
 export const menuBottomBorder = '0 0 5px 5px';
 export const tooltipPadding = '6px 10px';
