@@ -530,7 +530,7 @@ export default function App() {
                 <Text as='strong' variant='bold'>
                   Massive
                 </Text>
-                {' that’s focused on serving AI agents.'}
+                {' that’s focused on serving AI agents and their developers.'}
               </Text>
             </CardBody>
             <CardFooter display='none'>{/* TODO: Add social icons. */}</CardFooter>
@@ -554,7 +554,19 @@ export default function App() {
                 <Text as='strong' variant='name'>
                   Brain
                 </Text>
-                {' is a cofounder agent we’re creating to run the boring parts of '}
+                {' is a cofounder agent we’re creating in collaboration with '}
+                <Link variant='team' href='https://www.linkedin.com/in/francknouyrigat/' isExternal>
+                  Franck
+                </Link>
+                {', who cofounded the startup community '}
+                <Text as='strong' variant='bold'>
+                  Startup Weekend
+                </Text>
+                {' and AI investor '}
+                <Text as='strong' variant='bold'>
+                  No Cap
+                </Text>
+                {', to run the boring parts of '}
                 <Text as='strong' variant='co'>
                   Agent First
                 </Text>
