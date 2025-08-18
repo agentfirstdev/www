@@ -160,7 +160,10 @@ export default extendTheme({
   },
   styles: {
     global: {
-      '*': { transition: 'all var(--chakra-transition-duration-normal)' },
+      '*': {
+        transition:
+          'top, right, bottom, left, border-color, background-color, background-image, background-position, width, height, color, stroke, fill, opacity, box-shadow var(--chakra-transition-duration-normal)'
+      },
       '.hljs': { bg: 'none !important' }
     }
   }
