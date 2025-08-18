@@ -101,7 +101,7 @@ export const logoOldHeight = 352;
 export const postItPadding = 4;
 export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
-export const postItFont = { base: '2xl', md: '28px' };
+export const postItFont = { base: '22px', md: '28px' };
 
 // Services
 export const servicesBorder = '1px solid var(--chakra-colors-chakra-border-color)';

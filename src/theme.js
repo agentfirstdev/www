@@ -33,7 +33,11 @@ export default extendTheme({
       baseStyle: { borderColor: 'accent.secondary', _dark: { borderColor: 'brand.primary' } }
     },
     Heading: {
-      baseStyle: { color: 'accent.secondary', _dark: { color: 'brand.primary' } },
+      baseStyle: {
+        fontSize: { base: '26px', md: '4xl' },
+        color: 'accent.secondary',
+        _dark: { color: 'brand.primary' }
+      },
       variants: {
         section: { textAlign: 'center' },
         'post-it': { color: 'gray.800', _dark: { color: 'gray.800' } },
@@ -162,7 +166,7 @@ export default extendTheme({
     global: {
       '*': {
         transition:
-          'top, right, bottom, left, border-color, background-color, background-image, background-position, width, height, color, stroke, fill, opacity, box-shadow var(--chakra-transition-duration-normal)'
+          'top, right, bottom, left, border-color, background-color, background-image, background-position, width, height, font-size, color, stroke, fill, opacity, box-shadow var(--chakra-transition-duration-normal)'
       },
       '.hljs': { bg: 'none !important' }
     }
