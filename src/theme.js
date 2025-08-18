@@ -162,7 +162,7 @@ export default extendTheme({
     global: {
       '*': {
         transition:
-          'top, right, bottom, left, margin, border-color, background-color, background-image, background-position, padding, width, height, color, stroke, fill, opacity, box-shadow var(--chakra-transition-duration-normal)'
+          'top, right, bottom, left, border-color, background-color, background-image, background-position, width, height, color, stroke, fill, opacity, box-shadow var(--chakra-transition-duration-normal)'
       },
       '.hljs': { bg: 'none !important' }
     }
