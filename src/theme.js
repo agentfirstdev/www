@@ -63,9 +63,7 @@ export default extendTheme({
           _dark: { fontWeight: 'normal', color: 'brand.primary' }
         },
         attribution: {
-          mt: 2,
-          textAlign: 'right',
-          fontSize: { base: 'sm', md: 'md' },
+          fontSize: 'md',
           fontWeight: 300,
           color: 'accent.secondary',
           _dark: { fontWeight: 'normal', color: 'brand.primary' }
@@ -111,7 +109,8 @@ export default extendTheme({
           h: '25px',
           _hover: { borderColor: 'brand.secondary' },
           _dark: { borderColor: 'brand.primary', _hover: { borderColor: 'accent.primary' } }
-        }
+        },
+        footer: { display: 'inline-block', p: 0 }
       }
     },
     Button: {

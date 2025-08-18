@@ -38,26 +38,29 @@ export default function App() {
   const services = useRef();
   const hedcut = useRef();
   const agent = useRef();
-  const siteIcon = useRef();
   const githubIcon = useRef();
   const linkedinIcon = useRef();
   const xIcon = useRef();
+  const siteIcon = useRef();
+  const brianGithubIcon = useRef();
+  const brianLinkedinIcon = useRef();
+  const brianXIcon = useRef();
   const [logoPath, setLogoPath] = useState(null);
   const [servicesPath, setServicesPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
   const [agentPath, setAgentPath] = useState(null);
-  const [sitePath, setSitePath] = useState(null);
   const [githubPath, setGithubPath] = useState(null);
   const [linkedinPath, setLinkedinPath] = useState(null);
   const [xPath, setXPath] = useState(null);
+  const [sitePath, setSitePath] = useState(null);
   const logoFrames = useRef();
   const servicesFrames = useRef();
   const hedFrames = useRef();
   const agentFrames = useRef();
-  const siteFrames = useRef();
   const githubFrames = useRef();
   const linkedinFrames = useRef();
   const xFrames = useRef();
+  const siteFrames = useRef();
   const frameIndex = useRef();
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
@@ -102,9 +105,6 @@ export default function App() {
     import('./paths/agent.txt?raw').then((module) => {
       setAgentPath(module.default);
     });
-    import('./paths/globe.txt?raw').then((module) => {
-      setSitePath(module.default);
-    });
     import('./paths/github.txt?raw').then((module) => {
       setGithubPath(module.default);
     });
@@ -113,6 +113,9 @@ export default function App() {
     });
     import('./paths/x.txt?raw').then((module) => {
       setXPath(module.default);
+    });
+    import('./paths/globe.txt?raw').then((module) => {
+      setSitePath(module.default);
     });
   }, []);
 
@@ -136,10 +139,10 @@ export default function App() {
       servicesPath &&
       hedPath &&
       agentPath &&
-      sitePath &&
       githubPath &&
       linkedinPath &&
       xPath &&
+      sitePath &&
       blueprintStroke &&
       blueprintFill &&
       servicesStroke &&
@@ -149,10 +152,10 @@ export default function App() {
       servicesFrames.current = [];
       hedFrames.current = [];
       agentFrames.current = [];
-      siteFrames.current = [];
       githubFrames.current = [];
       linkedinFrames.current = [];
       xFrames.current = [];
+      siteFrames.current = [];
       frameIndex.current = 0;
       const logoCanvas = logotype.current;
       const logoContext = logoCanvas.getContext('2d');
@@ -162,14 +165,20 @@ export default function App() {
       const hedContext = hedCanvas.getContext('2d');
       const agentCanvas = agent.current;
       const agentContext = agentCanvas.getContext('2d');
-      const siteCanvas = siteIcon.current;
-      const siteContext = siteCanvas.getContext('2d');
       const githubCanvas = githubIcon.current;
       const githubContext = githubCanvas.getContext('2d');
       const linkedinCanvas = linkedinIcon.current;
       const linkedinContext = linkedinCanvas.getContext('2d');
       const xCanvas = xIcon.current;
       const xContext = xCanvas.getContext('2d');
+      const siteCanvas = siteIcon.current;
+      const siteContext = siteCanvas.getContext('2d');
+      const brianGithubCanvas = brianGithubIcon.current;
+      const brianGithubContext = brianGithubCanvas.getContext('2d');
+      const brianLinkedinCanvas = brianLinkedinIcon.current;
+      const brianLinkedinContext = brianLinkedinCanvas.getContext('2d');
+      const brianXCanvas = brianXIcon.current;
+      const brianXContext = brianXCanvas.getContext('2d');
       const renderFrames = () => {
         let frame;
 
@@ -245,24 +254,6 @@ export default function App() {
         agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
         agentContext.drawImage(frame, 0, 0);
 
-        if (siteFrames.current[frameIndex.current]) {
-          frame = siteFrames.current[frameIndex.current];
-        } else {
-          frame = generateFrame(siteCanvas, sitePath, {
-            stroke: ui.iconStroke,
-            strokeWidth: ui.iconStrokeWidth,
-            fill: blueprintFill,
-            fillStyle: ui.iconFillStyle,
-            hachureAngle: ui.blueprintAngle,
-            roughness: ui.iconRoughness
-          });
-
-          siteFrames.current.push(frame);
-        }
-
-        siteContext.clearRect(0, 0, siteCanvas.width, siteCanvas.height);
-        siteContext.drawImage(frame, 0, 0);
-
         if (githubFrames.current[frameIndex.current]) {
           frame = githubFrames.current[frameIndex.current];
         } else {
@@ -280,6 +271,8 @@ export default function App() {
 
         githubContext.clearRect(0, 0, githubCanvas.width, githubCanvas.height);
         githubContext.drawImage(frame, 0, 0);
+        brianGithubContext.clearRect(0, 0, brianGithubCanvas.width, brianGithubCanvas.height);
+        brianGithubContext.drawImage(frame, 0, 0);
 
         if (linkedinFrames.current[frameIndex.current]) {
           frame = linkedinFrames.current[frameIndex.current];
@@ -298,6 +291,8 @@ export default function App() {
 
         linkedinContext.clearRect(0, 0, linkedinCanvas.width, linkedinCanvas.height);
         linkedinContext.drawImage(frame, 0, 0);
+        brianLinkedinContext.clearRect(0, 0, brianLinkedinCanvas.width, brianLinkedinCanvas.height);
+        brianLinkedinContext.drawImage(frame, 0, 0);
 
         if (xFrames.current[frameIndex.current]) {
           frame = xFrames.current[frameIndex.current];
@@ -316,6 +311,26 @@ export default function App() {
 
         xContext.clearRect(0, 0, xCanvas.width, xCanvas.height);
         xContext.drawImage(frame, 0, 0);
+        brianXContext.clearRect(0, 0, brianXCanvas.width, brianXCanvas.height);
+        brianXContext.drawImage(frame, 0, 0);
+
+        if (siteFrames.current[frameIndex.current]) {
+          frame = siteFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(siteCanvas, sitePath, {
+            stroke: ui.iconStroke,
+            strokeWidth: ui.iconStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.iconFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.iconRoughness
+          });
+
+          siteFrames.current.push(frame);
+        }
+
+        siteContext.clearRect(0, 0, siteCanvas.width, siteCanvas.height);
+        siteContext.drawImage(frame, 0, 0);
 
         frameIndex.current = ++frameIndex.current % ui.frameCount;
       };
@@ -332,10 +347,10 @@ export default function App() {
     servicesPath,
     hedPath,
     agentPath,
-    sitePath,
     githubPath,
     linkedinPath,
     xPath,
+    sitePath,
     blueprintStroke,
     blueprintFill,
     servicesStroke,
@@ -663,49 +678,59 @@ export default function App() {
                   />
                 </Link>
               </Tooltip>
-              <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.githubLabel} hasArrow>
-                <Link ml={ui.iconMargin} p='0' href='https://github.com/oldestlivingboy' isExternal>
+              <Tooltip
+                mr={ui.tooltipMargin}
+                p={ui.tooltipPadding}
+                label={ui.brianGithubLabel}
+                hasArrow
+              >
+                <Link
+                  ml={ui.socialMargin}
+                  p='0'
+                  href='https://github.com/oldestlivingboy'
+                  isExternal
+                >
                   <canvas
-                    ref={githubIcon}
+                    ref={brianGithubIcon}
                     width={ui.githubOldDimension}
                     height={ui.githubOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
                     role='img'
-                    aria-label={ui.githubLabel}
+                    aria-label={ui.brianGithubLabel}
                   />
                 </Link>
               </Tooltip>
               <Tooltip
                 mr={ui.tooltipMargin}
                 p={ui.tooltipPadding}
-                label={ui.linkedinLabel}
+                label={ui.brianLinkedinLabel}
                 hasArrow
               >
                 <Link
-                  ml={ui.iconMargin}
+                  ml={ui.socialMargin}
                   p='0'
                   href='https://www.linkedin.com/in/oldestlivingboy/'
                   isExternal
                 >
                   <canvas
-                    ref={linkedinIcon}
+                    ref={brianLinkedinIcon}
                     width={ui.linkedinOldDimension}
                     height={ui.linkedinOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
                     role='img'
-                    aria-label={ui.linkedinLabel}
+                    aria-label={ui.brianLinkedinLabel}
                   />
                 </Link>
               </Tooltip>
-              <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.xLabel} hasArrow>
-                <Link ml={ui.iconMargin} p='0' href='https://x.com/oldestlivingboy' isExternal>
+              <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.brianXLabel} hasArrow>
+                <Link ml={ui.socialMargin} p='0' href='https://x.com/oldestlivingboy' isExternal>
                   <canvas
-                    ref={xIcon}
+                    ref={brianXIcon}
                     width={ui.xOldDimension}
                     height={ui.xOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
                     role='img'
-                    aria-label={ui.xLabel}
+                    aria-label={ui.brianXLabel}
                   />
                 </Link>
               </Tooltip>
@@ -762,13 +787,67 @@ export default function App() {
                 .
               </Text>
             </CardBody>
-            <CardFooter display='none'>{/* TODO: Add social icons. */}</CardFooter>
           </Card>
         </Flex>
       </Box>
-      <Box id='contact' mx={{ base: ui.smMargin, lg: ui.xlMargin }} my={ui.smMargin}>
+      <Box
+        id='contact'
+        mx={{ base: ui.smMargin, lg: ui.xlMargin }}
+        mt={ui.smMargin}
+        mb={ui.xsMargin}
+      >
         <Divider />
-        <Text variant='attribution'>© Agent First Dev, LLC.</Text>
+        <Flex mt={ui.iconVerticalMargin} direction='row' justify='space-between' align='center'>
+          <Box lineHeight='0'>
+            <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.githubLabel} hasArrow>
+              <Link variant='footer' href='https://github.com/agentfirstdev' isExternal>
+                <canvas
+                  ref={githubIcon}
+                  width={ui.githubOldDimension}
+                  height={ui.githubOldDimension}
+                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                  role='img'
+                  aria-label={ui.githubLabel}
+                />
+              </Link>
+            </Tooltip>
+            <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.linkedinLabel} hasArrow>
+              <Link
+                variant='footer'
+                ml={ui.iconHorizontalMargin}
+                href='https://www.linkedin.com/company/agentfirstdev/'
+                isExternal
+              >
+                <canvas
+                  ref={linkedinIcon}
+                  width={ui.linkedinOldDimension}
+                  height={ui.linkedinOldDimension}
+                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                  role='img'
+                  aria-label={ui.linkedinLabel}
+                />
+              </Link>
+            </Tooltip>
+            <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.xLabel} hasArrow>
+              <Link
+                variant='footer'
+                ml={ui.iconHorizontalMargin}
+                href='https://x.com/agentfirstdev'
+                isExternal
+              >
+                <canvas
+                  ref={xIcon}
+                  width={ui.xOldDimension}
+                  height={ui.xOldDimension}
+                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                  role='img'
+                  aria-label={ui.xLabel}
+                />
+              </Link>
+            </Tooltip>
+          </Box>
+          <Text variant='attribution'>© Agent First Dev, LLC.</Text>
+        </Flex>
       </Box>
     </Flex>
   );
