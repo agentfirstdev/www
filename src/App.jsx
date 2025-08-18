@@ -5,6 +5,7 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Divider,
   Heading,
   Text,
   Code,
@@ -593,7 +594,7 @@ export default function App() {
           </CardFooter>
         </Card>
       </Box>
-      <Box id='team' py={ui.mdMargin}>
+      <Box id='team' pt={ui.mdMargin}>
         <Heading as='h1' variant='section'>
           Our team
         </Heading>
@@ -764,6 +765,10 @@ export default function App() {
             <CardFooter display='none'>{/* TODO: Add social icons. */}</CardFooter>
           </Card>
         </Flex>
+      </Box>
+      <Box id='contact' mx={{ base: ui.smMargin, lg: ui.xlMargin }} my={ui.smMargin}>
+        <Divider />
+        <Text variant='attribution'>© Agent First Dev, LLC.</Text>
       </Box>
     </Flex>
   );

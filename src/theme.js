@@ -29,6 +29,9 @@ export default extendTheme({
     body: 'Lato, sans-serif'
   },
   components: {
+    Divider: {
+      baseStyle: { borderColor: 'accent.secondary', _dark: { borderColor: 'brand.primary' } }
+    },
     Heading: {
       baseStyle: { color: 'accent.secondary', _dark: { color: 'brand.primary' } },
       variants: {
@@ -55,6 +58,14 @@ export default extendTheme({
         },
         teammate: {
           mt: 2,
+          fontWeight: 300,
+          color: 'accent.secondary',
+          _dark: { fontWeight: 'normal', color: 'brand.primary' }
+        },
+        attribution: {
+          mt: 2,
+          textAlign: 'right',
+          fontSize: { base: 'sm', md: 'md' },
           fontWeight: 300,
           color: 'accent.secondary',
           _dark: { fontWeight: 'normal', color: 'brand.primary' }
