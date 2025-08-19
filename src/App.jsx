@@ -662,7 +662,7 @@ export default function App() {
                 <Text as='strong' variant='bold'>
                   Massive
                 </Text>
-                {' that’s focused on serving AI agents and their developers.'}
+                {' that’s focused on serving AI agents.'}
               </Text>
             </CardBody>
             <CardFooter pt='0'>
@@ -755,7 +755,7 @@ export default function App() {
                 <Text as='strong' variant='name'>
                   Brain
                 </Text>
-                {' is a cofounder agent we’re creating in collaboration with '}
+                {' is a cofounder agent we’re collaborating on with '}
                 <Link variant='team' href='https://www.linkedin.com/in/francknouyrigat/' isExternal>
                   Franck
                 </Link>
