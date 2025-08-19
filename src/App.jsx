@@ -398,7 +398,7 @@ export default function App() {
               onClick={toggleColorMode}
             />
           </Tooltip>
-          <Menu isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
+          <Menu lazyBehavior='unmount' isLazy isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
             <Tooltip
               mr={ui.tooltipMargin}
               p={ui.tooltipPadding}
