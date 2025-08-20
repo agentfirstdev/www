@@ -14,9 +14,9 @@ export const siteLabel = 'Go to Brian’s site';
 export const brianGithubLabel = 'Go to Brian’s GitHub';
 export const brianLinkedinLabel = 'Go to Brian’s LinkedIn';
 export const brianXLabel = 'Go to Brian’s X';
-export const docUrl = 'https://doc.agentfirst.dev/';
 export const demoUrl = 'https://dev.llamapile.com/';
 export const llmsTxtUrl = 'llms.txt';
+export const docUrl = 'https://doc.agentfirst.dev/';
 
 // Colors
 export const blackAlpha = 'rgba(0, 0, 0, .56)';

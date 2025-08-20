@@ -373,9 +373,6 @@ export default function App() {
             <Link variant='nav' ml={ui.itemMargin} href='#services'>
               Services
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
-              Documentation
-            </Link>
             <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
               Pricing
             </Link>
