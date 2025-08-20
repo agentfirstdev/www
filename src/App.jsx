@@ -373,6 +373,9 @@ export default function App() {
             <Link variant='nav' ml={ui.itemMargin} href='#services'>
               Services
             </Link>
+            <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
+              Documentation
+            </Link>
             <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
               Pricing
             </Link>
@@ -382,8 +385,8 @@ export default function App() {
             <Link variant='nav' ml={ui.itemMargin} href='#team'>
               Our team
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href='#contact'>
-              Contact info
+            <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
+              llms.txt
             </Link>
           </Flex>
           <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={modeLabel} hasArrow>
