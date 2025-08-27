@@ -711,7 +711,7 @@ export default function App() {
               <Text as='strong' variant='bold'>
                 190+ countries & their regions
               </Text>
-              {' within our proxy network for local results & content:'}
+              {' within our proxy network for local results or content:'}
             </Text>
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(searchGeotargeting) }} />
             <Box clear='both' />
