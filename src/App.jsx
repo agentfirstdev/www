@@ -197,9 +197,8 @@ export default function App() {
         year.setAttribute('text-anchor', 'middle');
         year.setAttribute(
           'style',
-          `font-family: ${ui.subheadingFont};` +
+          `font-family: ${ui.headingFont};` +
             ` font-size: ${ui.timelineFontSize};` +
-            ` font-weight: ${ui.timelineFontWeight};` +
             ` fill: ${ui.blackAlpha};`
         );
 
