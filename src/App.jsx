@@ -69,8 +69,8 @@ export default function App() {
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
-  const servicesStroke = useColorModeValue(ui.blackAlpha, ui.creativeBlue);
-  const servicesFill = useColorModeValue(ui.blackAlpha, ui.creativeBlue);
+  const servicesStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
+  const servicesFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
   const postItColorIndex = useColorModeValue(0, 1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isLightMode = colorMode == 'light';
@@ -609,11 +609,9 @@ export default function App() {
       </Flex>
       <Box
         id='services'
-        border={ui.servicesBorder}
-        bg='chakra-subtle-bg'
         px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.mdMargin}
-        pb={ui.lgMargin}
+        pt={ui.xsMargin}
+        pb={ui.smMargin}
         textAlign='left'
       >
         <canvas
@@ -629,7 +627,7 @@ export default function App() {
           role='img'
           aria-label={ui.servicesLabel}
         />
-        <Card mt={ui.smMargin} boxShadow='md'>
+        <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='md'>
           <CardBody>
             <Heading as='h2' variant='service'>
               1. Google-like search
@@ -652,7 +650,7 @@ export default function App() {
             </Button>
           </CardFooter>
         </Card>
-        <Card mt={ui.smMargin} boxShadow='md'>
+        <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='md'>
           <CardBody>
             <Heading as='h2' variant='service'>
               2. Uncaptcha’d browsing
@@ -675,7 +673,7 @@ export default function App() {
             </Button>
           </CardFooter>
         </Card>
-        <Card mt={ui.smMargin} boxShadow='md'>
+        <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='md'>
           <CardBody>
             <Heading as='h2' variant='service'>
               {'3. Webpage interaction '}
@@ -699,7 +697,7 @@ export default function App() {
             </Button>
           </CardFooter>
         </Card>
-        <Card mt={ui.smMargin} boxShadow='md'>
+        <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='md'>
           <CardBody>
             <Heading as='h2' variant='service'>
               … From anywhere
