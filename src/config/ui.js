@@ -17,6 +17,14 @@ export const brianXLabel = 'Go to Brian’s X';
 export const demoUrl = 'https://dev.llamapile.com/';
 export const llmsTxtUrl = 'llms.txt';
 export const docUrl = 'https://doc.agentfirst.dev/';
+export const timelineLabels = [
+  { year: 1984, paradigm: 'Desktop first' },
+  { year: 2000, paradigm: 'Web first' },
+  { year: 2008, paradigm: 'Mobile first' },
+  { year: 2012, paradigm: 'Cloud first' },
+  { year: 2022, paradigm: 'AI first' },
+  { year: 2026, paradigm: 'Agent first' }
+];
 
 // Colors
 export const blackAlpha = 'rgba(0, 0, 0, .56)';
@@ -38,6 +46,11 @@ export const postItColors = [
   { background: { from: asagiYellow, to: yellowOrange }, border: burntSienna },
   { background: { from: prettyPink, to: ruddyPink }, border: turkishRose }
 ];
+
+// Typography
+export const headingFont = '"Permanent Marker", cursive';
+export const subheadingFont = '"Indie Flower", cursive';
+export const bodyFont = 'Lato, sans-serif';
 
 // Controls
 export const controlDimension = '48px';
@@ -73,6 +86,9 @@ export const blueprintStrokeWidth = 4;
 export const blueprintAngle = -40;
 export const blueprintRefreshMs = 250;
 export const logoRoughness = 2;
+export const timelineStrokeWidth = 4;
+export const timelineTransitionMs = 400;
+export const timelineDelayMs = 1000;
 export const servicesRoughness = 3;
 export const hedRoughness = 2;
 export const agentRoughness = 3;
@@ -98,9 +114,16 @@ export const logoMinWidth = '256px';
 export const postItMaxWidth = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-color)';
 export const postItRotation = '-1.5deg';
+export const timelineFontWeight = 'bold';
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
 export const postItPadding = 4;
+export const timelineFontSize = 30;
+export const timelineClearance = 20;
+export const tickLength = 20;
+export const tickDistance = 400;
+export const tickOffset = 60;
+
 export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
 export const postItFont = { base: '22px', md: '28px' };

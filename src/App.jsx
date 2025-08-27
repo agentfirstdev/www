@@ -24,6 +24,7 @@ import {
 } from '@chakra-ui/react';
 import { SunIcon, MoonIcon, HamburgerIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
+import { createTimeline } from 'animejs';
 
 import * as ui from './config/ui';
 import * as uix from './config/uix';
@@ -35,6 +36,8 @@ import './App.css';
 
 export default function App() {
   const logotype = useRef();
+  const timeline = useRef();
+  const timelineParts = useRef();
   const services = useRef();
   const hedcut = useRef();
   const agent = useRef();
@@ -45,14 +48,6 @@ export default function App() {
   const brianGithubIcon = useRef();
   const brianLinkedinIcon = useRef();
   const brianXIcon = useRef();
-  const [logoPath, setLogoPath] = useState(null);
-  const [servicesPath, setServicesPath] = useState(null);
-  const [hedPath, setHedPath] = useState(null);
-  const [agentPath, setAgentPath] = useState(null);
-  const [githubPath, setGithubPath] = useState(null);
-  const [linkedinPath, setLinkedinPath] = useState(null);
-  const [xPath, setXPath] = useState(null);
-  const [sitePath, setSitePath] = useState(null);
   const logoFrames = useRef();
   const servicesFrames = useRef();
   const hedFrames = useRef();
@@ -62,6 +57,15 @@ export default function App() {
   const xFrames = useRef();
   const siteFrames = useRef();
   const frameIndex = useRef();
+  const hasDrawnTimeline = useRef(false);
+  const [logoPath, setLogoPath] = useState(null);
+  const [servicesPath, setServicesPath] = useState(null);
+  const [hedPath, setHedPath] = useState(null);
+  const [agentPath, setAgentPath] = useState(null);
+  const [githubPath, setGithubPath] = useState(null);
+  const [linkedinPath, setLinkedinPath] = useState(null);
+  const [xPath, setXPath] = useState(null);
+  const [sitePath, setSitePath] = useState(null);
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
@@ -93,6 +97,8 @@ export default function App() {
   }; */
 
   useEffect(() => {
+    const timelineAnimation = createTimeline({ autoplay: false });
+
     import('./paths/logotype.txt?raw').then((module) => {
       setLogoPath(module.default);
     });
@@ -117,6 +123,115 @@ export default function App() {
     import('./paths/globe.txt?raw').then((module) => {
       setSitePath(module.default);
     });
+
+    if (!hasDrawnTimeline.current) {
+      hasDrawnTimeline.current = true;
+      const roughTimeline = rough.svg(timeline.current);
+      const timelineVerticalAxis = ui.timelineFontSize + ui.timelineClearance;
+      const timelineDestination = ui.tickOffset + ui.timelineLabels.length * ui.tickDistance;
+      const pointDiameter = 0.75 * ui.tickLength;
+      const arrowLength = ui.tickLength / Math.sqrt(2);
+      const arrowOrigin = timelineDestination - arrowLength;
+      const tickSubsegment = ui.tickLength / 2;
+      const tickOrigin = timelineVerticalAxis - tickSubsegment;
+      const tickDestination = timelineVerticalAxis + tickSubsegment;
+      const tickMidpoint = ui.tickDistance / 2;
+      const paradigmOrigin = timelineVerticalAxis + 2 * ui.timelineClearance;
+
+      timelineParts.current.appendChild(
+        roughTimeline.line(
+          ui.tickOffset,
+          timelineVerticalAxis,
+          timelineDestination,
+          timelineVerticalAxis,
+          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+        )
+      );
+      timelineParts.current.appendChild(
+        roughTimeline.circle(
+          ui.tickOffset + pointDiameter / 2,
+          timelineVerticalAxis,
+          pointDiameter,
+          {
+            stroke: ui.blackAlpha,
+            strokeWidth: ui.timelineStrokeWidth,
+            fill: ui.blackAlpha,
+            fillStyle: 'solid',
+            disableMultiStroke: true
+          }
+        )
+      );
+      timelineParts.current.appendChild(
+        roughTimeline.line(
+          arrowOrigin,
+          timelineVerticalAxis - arrowLength,
+          timelineDestination,
+          timelineVerticalAxis,
+          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+        )
+      );
+      timelineParts.current.appendChild(
+        roughTimeline.line(
+          arrowOrigin,
+          timelineVerticalAxis + arrowLength,
+          timelineDestination,
+          timelineVerticalAxis,
+          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+        )
+      );
+
+      ui.timelineLabels.forEach((label, i) => {
+        const horizontalAxis = ui.tickOffset + i * ui.tickDistance;
+        const year = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+
+        if (i) {
+          timelineParts.current.appendChild(
+            roughTimeline.line(horizontalAxis, tickOrigin, horizontalAxis, tickDestination, {
+              stroke: ui.blackAlpha,
+              strokeWidth: ui.timelineStrokeWidth,
+              disableMultiStroke: true
+            })
+          );
+        }
+
+        year.setAttribute('text-anchor', 'middle');
+        year.setAttribute(
+          'style',
+          `font-family: ${ui.subheadingFont};` +
+            ` font-size: ${ui.timelineFontSize};` +
+            ` font-weight: ${ui.timelineFontWeight};` +
+            ` fill: ${ui.blackAlpha};`
+        );
+
+        const paradigm = year.cloneNode(true);
+        year.textContent = label.year;
+
+        year.setAttribute('x', horizontalAxis);
+        year.setAttribute('y', ui.timelineFontSize);
+        timelineParts.current.appendChild(year);
+
+        paradigm.textContent = label.paradigm;
+
+        paradigm.setAttribute('x', horizontalAxis + tickMidpoint);
+        paradigm.setAttribute('y', paradigmOrigin);
+        timelineParts.current.appendChild(paradigm);
+      });
+    }
+
+    for (let i = 1; i < ui.timelineLabels.length; i++) {
+      timelineAnimation.add({ duration: ui.timelineDelayMs });
+      timelineAnimation.add(timelineParts.current, {
+        x: i * -ui.tickDistance,
+        duration: ui.timelineTransitionMs,
+        ease: 'outBack'
+      });
+    }
+
+    timelineAnimation.play();
+
+    return () => {
+      timelineAnimation.cancel();
+    };
   }, []);
 
   useEffect(() => {
@@ -487,7 +602,9 @@ export default function App() {
           </Box>
         </Flex>
         <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
-          {/* TODO: Add timeline. */}
+          <svg ref={timeline} width='100%'>
+            <g ref={timelineParts} />
+          </svg>
         </Flex>
       </Flex>
       <Box

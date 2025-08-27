@@ -23,11 +23,7 @@ export default extendTheme({
     outline: ui.yellowOrange
   },
   shadows: { outline: '0 0 0 3px var(--chakra-colors-outline)' },
-  fonts: {
-    heading: '"Permanent Marker", cursive',
-    subheading: '"Indie Flower", cursive',
-    body: 'Lato, sans-serif'
-  },
+  fonts: { heading: ui.headingFont, subheading: ui.subheadingFont, body: ui.bodyFont },
   components: {
     Divider: {
       baseStyle: { borderColor: 'accent.secondary', _dark: { borderColor: 'brand.primary' } }
