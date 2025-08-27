@@ -149,7 +149,7 @@ export default function App() {
       );
       timelineParts.current.appendChild(
         roughTimeline.circle(
-          ui.tickOffset + pointDiameter / 2,
+          ui.tickOffset,
           timelineVerticalAxis,
           pointDiameter,
           {
