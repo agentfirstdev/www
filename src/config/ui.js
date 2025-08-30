@@ -17,6 +17,9 @@ export const brianXLabel = 'Go to Brian’s X';
 export const docUrl = 'https://doc.agentfirst.dev/';
 export const demoUrl = 'https://dev.llamapile.com/';
 export const llmsTxtUrl = 'llms.txt';
+export const searchUrl = 'https://doc.agentfirst.dev/search';
+export const browsingUrl = 'https://doc.agentfirst.dev/browser';
+export const geotargetingUrl = 'https://doc.agentfirst.dev/geotargeting';
 export const timelineLabels = [
   { year: 1984, paradigm: 'Desktop first' },
   { year: 2000, paradigm: 'Web first' },
@@ -110,6 +113,7 @@ export const xlMargin = 24;
 export const gradientAngle = 140;
 
 // Hero
+export const heroHeight = '60vh';
 export const logoMargin = '8px';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';

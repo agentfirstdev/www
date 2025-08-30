@@ -32,18 +32,25 @@ export default extendTheme({
   },
   components: {
     Divider: {
-      baseStyle: { borderColor: 'accent.secondary', _dark: { borderColor: 'brand.primary' } }
+      baseStyle: {
+        _light: { borderColor: 'accent.secondary' },
+        _dark: { borderColor: 'brand.primary' }
+      }
     },
     Heading: {
       baseStyle: {
         fontSize: { base: '26px', md: '4xl' },
-        color: 'accent.secondary',
+        _light: { color: 'accent.secondary' },
         _dark: { color: 'brand.primary' }
       },
       variants: {
         section: { textAlign: 'center' },
-        tagline: { fontFamily: 'tagline', color: 'gray.600', _dark: { color: 'whiteAlpha.600' } },
-        'post-it': { color: 'gray.800', _dark: { color: 'gray.800' } },
+        tagline: {
+          fontFamily: 'tagline',
+          _light: { color: 'gray.800' },
+          _dark: { color: 'whiteAlpha.800' }
+        },
+        'post-it': { _light: { color: 'gray.800' }, _dark: { color: 'gray.800' } },
         service: { fontFamily: 'subheading' },
         name: { fontFamily: 'subheading' }
       }
@@ -51,11 +58,18 @@ export default extendTheme({
     Text: {
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
+        chrome: {
+          fontFamily: 'tagline',
+          fontSize: { base: 'xs', md: 'sm' },
+          _light: { fontWeight: 300, color: 'accent.secondary' },
+          _dark: { color: 'brand.primary' }
+        },
         cta: {
           my: 2,
           fontFamily: 'tagline',
           fontSize: ui.ctaFontSize,
-          color: ui.blackAlpha
+          _light: { color: 'gray.500' },
+          _dark: { color: 'whiteAlpha.500' }
         },
         'post-it': {
           my: 6,
@@ -66,20 +80,13 @@ export default extendTheme({
         },
         service: {
           mt: 4,
-          fontWeight: 300,
-          _dark: { fontWeight: 'normal', color: 'whiteAlpha.700' }
+          _light: { fontWeight: 300 },
+          _dark: { color: 'whiteAlpha.700' }
         },
         teammate: {
           mt: 2,
-          fontWeight: 300,
-          color: 'accent.secondary',
-          _dark: { fontWeight: 'normal', color: 'brand.primary' }
-        },
-        attribution: {
-          fontSize: 'md',
-          fontWeight: 300,
-          color: 'accent.secondary',
-          _dark: { fontWeight: 'normal', color: 'brand.primary' }
+          _light: { fontWeight: 300, color: 'accent.secondary' },
+          _dark: { color: 'brand.primary' }
         },
         bold: { fontWeight: 'bold' },
         co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
@@ -108,12 +115,11 @@ export default extendTheme({
       },
       variants: {
         ghost: { display: 'inline-block', color: 'inherit', _hover: { color: 'inherit' } },
-        nav: {
+        chrome: {
           fontFamily: 'tagline',
           fontSize: { base: 'xs', md: 'sm' },
           fontWeight: 600,
-          color: 'brand.secondary',
-          _hover: { color: 'accent.secondary' },
+          _light: { color: 'brand.secondary', _hover: { color: 'accent.secondary' } },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.secondary' } }
         },
         team: {
@@ -121,7 +127,7 @@ export default extendTheme({
           borderBottom: '2px solid var(--chakra-colors-accent-secondary)',
           p: 0,
           h: '25px',
-          _hover: { borderColor: 'brand.secondary' },
+          _light: { _hover: { borderColor: 'brand.secondary' } },
           _dark: { borderColor: 'brand.primary', _hover: { borderColor: 'accent.primary' } }
         },
         footer: { display: 'inline-block', p: 0 }
@@ -136,17 +142,17 @@ export default extendTheme({
       },
       variants: {
         solid: {
-          bg: 'accent.secondary',
           fontSize: { base: 'md', md: 'lg' },
-          color: 'white',
-          _hover: { bg: 'brand.secondary' },
           _active: { bg: 'brand.secondary' },
+          _light: { bg: 'accent.secondary', color: 'white', _hover: { bg: 'brand.secondary' } },
           _dark: { bg: 'brand.primary', color: 'whiteAlpha.800', _hover: { bg: 'accent.primary' } }
         },
         monochrome: {
           bg: 'chakra-button-color',
-          color: 'brand.secondary',
-          _hover: { bg: 'chakra-accent-bg', color: 'accent.secondary' },
+          _light: {
+            color: 'brand.secondary',
+            _hover: { bg: 'chakra-accent-bg', color: 'accent.secondary' }
+          },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.secondary' } }
         }
       }
@@ -156,18 +162,19 @@ export default extendTheme({
         item: {
           fontFamily: 'heading',
           fontSize: '2xl',
-          color: 'brand.secondary',
+          _light: { color: 'brand.secondary' },
           _dark: { color: 'whiteAlpha.800' }
         }
       }
     },
     Badge: {
       baseStyle: {
-        border: '1px solid var(--chakra-colors-accent-secondary)',
+        borderWidth: '1px',
+        borderStyle: 'solid',
         bg: 'chakra-accent-bg',
         pt: '2px',
         fontFamily: 'body',
-        color: 'accent.secondary',
+        _light: { borderColor: 'accent.secondary', color: 'accent.secondary' },
         _dark: { borderColor: 'whiteAlpha.600', color: 'whiteAlpha.600' }
       }
     }

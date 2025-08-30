@@ -71,7 +71,7 @@ export default function App() {
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
   const servicesStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
   const servicesFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
-  const postItColorIndex = useColorModeValue(0, 1);
+  // const postItColorIndex = useColorModeValue(0, 1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isLightMode = colorMode == 'light';
   const modeId = 'mode';
@@ -148,18 +148,13 @@ export default function App() {
         )
       );
       timelineParts.current.appendChild(
-        roughTimeline.circle(
-          ui.tickOffset,
-          timelineVerticalAxis,
-          pointDiameter,
-          {
-            stroke: ui.blackAlpha,
-            strokeWidth: ui.timelineStrokeWidth,
-            fill: ui.blackAlpha,
-            fillStyle: 'solid',
-            disableMultiStroke: true
-          }
-        )
+        roughTimeline.circle(ui.tickOffset, timelineVerticalAxis, pointDiameter, {
+          stroke: ui.blackAlpha,
+          strokeWidth: ui.timelineStrokeWidth,
+          fill: ui.blackAlpha,
+          fillStyle: 'solid',
+          disableMultiStroke: true
+        })
       );
       timelineParts.current.appendChild(
         roughTimeline.line(
@@ -484,19 +479,19 @@ export default function App() {
         />
         <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition}>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
-            <Link variant='nav' ml={ui.itemMargin} href='#services'>
+            <Link variant='chrome' ml={ui.itemMargin} href='#services'>
               Services
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
+            <Link variant='chrome' ml={ui.itemMargin} href={ui.docUrl}>
               Documentation
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
+            <Link variant='chrome' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
               Live demo
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href='#team'>
+            <Link variant='chrome' ml={ui.itemMargin} href='#team'>
               Our team
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
+            <Link variant='chrome' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
               llms.txt
             </Link>
           </Flex>
@@ -558,16 +553,15 @@ export default function App() {
       </Box>
       <Flex
         id='hero'
-        mt={ui.mdMargin}
-        mb={ui.lgMargin}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
         w='100%'
+        h={ui.heroHeight}
         direction={{ base: 'column', md: 'row' }}
       >
-        <Box w={{ base: '100%', md: '50%' }}>
+        <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
           <uix.Tagline />
-        </Box>
-        <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
+        </Flex>
+        <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
           <svg ref={timeline} width='100%'>
             <g ref={timelineParts} />
           </svg>
@@ -611,7 +605,7 @@ export default function App() {
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
           </CardBody>
           <CardFooter>
-            <Button w={ui.buttonWidth} h={ui.buttonHeight}>
+            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href={ui.searchUrl}>
               Get started
             </Button>
           </CardFooter>
@@ -634,7 +628,7 @@ export default function App() {
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
           </CardBody>
           <CardFooter>
-            <Button w={ui.buttonWidth} h={ui.buttonHeight}>
+            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href={ui.browsingUrl}>
               Get started
             </Button>
           </CardFooter>
@@ -658,7 +652,7 @@ export default function App() {
             </Text>
           </CardBody>
           <CardFooter>
-            <Button w={ui.buttonWidth} h={ui.buttonHeight}>
+            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight}>
               Join waitlist
             </Button>
           </CardFooter>
@@ -684,7 +678,7 @@ export default function App() {
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }} />
           </CardBody>
           <CardFooter>
-            <Button w={ui.buttonWidth} h={ui.buttonHeight}>
+            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href={ui.geotargetingUrl}>
               Get started
             </Button>
           </CardFooter>
@@ -927,7 +921,7 @@ export default function App() {
               </Link>
             </Tooltip>
           </Box>
-          <Text variant='attribution'>© Agent First Dev, LLC.</Text>
+          <Text variant='chrome'>© Agent First Dev, LLC.</Text>
         </Flex>
       </Box>
     </Flex>
