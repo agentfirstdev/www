@@ -109,8 +109,8 @@ export default extendTheme({
       variants: {
         ghost: { display: 'inline-block', color: 'inherit', _hover: { color: 'inherit' } },
         nav: {
-          fontFamily: 'chrome',
-          fontSize: { base: '13px', md: '15px' },
+          fontFamily: 'tagline',
+          fontSize: { base: 'xs', md: 'sm' },
           fontWeight: 600,
           color: 'brand.secondary',
           _hover: { color: 'accent.secondary' },
