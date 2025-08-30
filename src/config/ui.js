@@ -48,9 +48,11 @@ export const postItColors = [
 ];
 
 // Typography
+export const taglineFont = 'Inter, sans-serif';
 export const headingFont = '"Permanent Marker", cursive';
 export const subheadingFont = '"Indie Flower", cursive';
 export const bodyFont = 'Lato, sans-serif';
+export const chromeFont = '"Inter Tight", sans-serif';
 
 // Controls
 export const controlDimension = '48px';
@@ -122,9 +124,11 @@ export const timelineClearance = 20;
 export const tickLength = 20;
 export const tickDistance = 400;
 export const tickOffset = 60;
+export const taglineFontSize = { base: '36px', md: '52px' };
+export const ctaFontSize = { base: '24px', md: '20px' };
 export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
-export const postItFont = { base: '22px', md: '28px' };
+export const postItFontSize = { base: '22px', md: '28px' };
 
 // Services
 export const servicesBorder = '1px solid var(--chakra-colors-chakra-border-color)';

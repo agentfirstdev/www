@@ -567,42 +567,9 @@ export default function App() {
         w='100%'
         direction={{ base: 'column', md: 'row' }}
       >
-        <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
-          <Box
-            position='relative'
-            w={ui.postItWidth}
-            minW={ui.postItMinWidth}
-            maxW={ui.postItMaxWidth}
-            _before={{ display: 'block', pt: '100%', content: '""' }}
-          >
-            <Flex
-              position='absolute'
-              top='0'
-              left='0'
-              border={`1px solid ${ui.postItColors[postItColorIndex].border}`}
-              bgGradient={
-                `linear(${ui.gradientAngle}deg, ` +
-                `${ui.postItColors[postItColorIndex].background.from}, ` +
-                `${ui.postItColors[postItColorIndex].background.to})`
-              }
-              px={ui.postItPadding}
-              w='100%'
-              h='100%'
-              direction='column'
-              justify='center'
-              align='center'
-              boxShadow={ui.postItShadow}
-              transform={`rotate(${ui.postItRotation})`}
-            >
-              <Heading as='h1' variant='post-it' fontSize={ui.postItFont}>
-                <uix.Tagline />
-              </Heading>
-              <Text variant='post-it' textAlign='center'>
-                Enhance your agent instantly with world-class research & browsing abilities …
-              </Text>
-            </Flex>
-          </Box>
-        </Flex>
+        <Box w={{ base: '100%', md: '50%' }}>
+          <uix.Tagline />
+        </Box>
         <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
           <svg ref={timeline} width='100%'>
             <g ref={timelineParts} />

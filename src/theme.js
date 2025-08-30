@@ -23,7 +23,13 @@ export default extendTheme({
     outline: ui.yellowOrange
   },
   shadows: { outline: '0 0 0 3px var(--chakra-colors-outline)' },
-  fonts: { heading: ui.headingFont, subheading: ui.subheadingFont, body: ui.bodyFont },
+  fonts: {
+    tagline: ui.taglineFont,
+    heading: ui.headingFont,
+    subheading: ui.subheadingFont,
+    body: ui.bodyFont,
+    chrome: ui.chromeFont
+  },
   components: {
     Divider: {
       baseStyle: { borderColor: 'accent.secondary', _dark: { borderColor: 'brand.primary' } }
@@ -36,6 +42,7 @@ export default extendTheme({
       },
       variants: {
         section: { textAlign: 'center' },
+        tagline: { fontFamily: 'tagline', color: 'gray.600', _dark: { color: 'whiteAlpha.600' } },
         'post-it': { color: 'gray.800', _dark: { color: 'gray.800' } },
         service: { fontFamily: 'subheading' },
         name: { fontFamily: 'subheading' }
@@ -44,11 +51,17 @@ export default extendTheme({
     Text: {
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
+        cta: {
+          my: 2,
+          fontFamily: 'tagline',
+          fontSize: ui.ctaFontSize,
+          color: ui.blackAlpha
+        },
         'post-it': {
           my: 6,
           textAlign: 'left',
           fontFamily: 'subheading',
-          fontSize: ui.postItFont,
+          fontSize: ui.postItFontSize,
           color: 'gray.800'
         },
         service: {
@@ -96,8 +109,9 @@ export default extendTheme({
       variants: {
         ghost: { display: 'inline-block', color: 'inherit', _hover: { color: 'inherit' } },
         nav: {
-          fontFamily: 'heading',
-          fontWeight: 'normal',
+          fontFamily: 'chrome',
+          fontSize: { base: '13px', md: '15px' },
+          fontWeight: 600,
           color: 'brand.secondary',
           _hover: { color: 'accent.secondary' },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.secondary' } }
