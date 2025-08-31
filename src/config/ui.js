@@ -120,6 +120,7 @@ export const logoMinWidth = '256px';
 export const postItMaxWidth = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-color)';
 export const postItRotation = '-1.5deg';
+export const gradientWidth = '10%';
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
 export const postItPadding = 4;

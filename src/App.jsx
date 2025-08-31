@@ -137,6 +137,7 @@ export default function App() {
       const tickDestination = timelineVerticalAxis + tickSubsegment;
       const tickMidpoint = ui.tickDistance / 2;
       const paradigmOrigin = timelineVerticalAxis + 2 * ui.timelineClearance;
+      timeline.current.setAttribute('height', `${paradigmOrigin}px`);
 
       timelineParts.current.appendChild(
         roughTimeline.line(
@@ -561,7 +562,29 @@ export default function App() {
         <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
           <uix.Tagline />
         </Flex>
-        <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
+        <Flex
+          position='relative'
+          w={{ base: '100%', md: '50%' }}
+          direction='column'
+          justify='center'
+          align='center'
+        >
+          <Box
+            position='absolute'
+            top='0'
+            left='0'
+            bgGradient='linear(to-r, chakra-body-bg, transparent)'
+            w={ui.gradientWidth}
+            h='100%'
+          />
+          <Box
+            position='absolute'
+            top='0'
+            right='0'
+            bgGradient='linear(to-l, chakra-body-bg, transparent)'
+            w={ui.gradientWidth}
+            h='100%'
+          />
           <svg ref={timeline} width='100%'>
             <g ref={timelineParts} />
           </svg>
