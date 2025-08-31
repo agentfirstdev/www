@@ -8,6 +8,11 @@ html {
   text-align: center;
 }
 
+.animated text:last-of-type {
+  fill: #4a6de5 !important;
+  transition: fill 2s ease-out;
+}
+
 [data-popper-placement="right-start" i] .chakra-tooltip__arrow-wrapper {
   top: -3px !important;
 }

@@ -43,8 +43,8 @@ export const burntSienna = '#bf6436';
 export const prettyPink = '#eaabb0';
 export const ruddyPink = '#e38f95';
 export const turkishRose = '#aa6b70';
-export const blueAlpha = 'rgba(74, 109, 229, .8)';
-export const blackAlpha = 'rgba(0, 0, 0, .56)';
+export const blackAlpha = 'rgba(0, 0, 0, .48)';
+export const blueAlpha = 'rgba(74, 109, 229, .64)';
 export const postItColors = [
   { background: { from: pastelYellow, to: naplesYellow }, border: vegasGold },
   { background: { from: asagiYellow, to: yellowOrange }, border: burntSienna },
@@ -120,7 +120,7 @@ export const logoMinWidth = '256px';
 export const postItMaxWidth = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-color)';
 export const postItRotation = '-1.5deg';
-export const gradientWidth = '10%';
+export const gradientWidth = '15%';
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
 export const postItPadding = 4;

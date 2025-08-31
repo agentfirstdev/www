@@ -102,6 +102,8 @@ export default function App() {
       autoplay: false,
       onComplete: () => {
         hasAnimatedTimeline.current = true;
+
+        timeline.current.classList.add('animated');
       }
     });
 
