@@ -68,8 +68,7 @@ export default extendTheme({
           my: 2,
           fontFamily: 'tagline',
           fontSize: ui.ctaFontSize,
-          _light: { color: 'gray.500' },
-          _dark: { color: 'whiteAlpha.500' }
+          color: 'chakra-label-color'
         },
         'post-it': {
           my: 6,
@@ -78,11 +77,7 @@ export default extendTheme({
           fontSize: ui.postItFontSize,
           color: 'gray.800'
         },
-        service: {
-          mt: 4,
-          _light: { fontWeight: 300 },
-          _dark: { color: 'whiteAlpha.700' }
-        },
+        service: { mt: 4, _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
         teammate: {
           mt: 2,
           _light: { fontWeight: 300, color: 'accent.secondary' },
