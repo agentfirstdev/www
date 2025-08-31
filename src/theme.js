@@ -27,8 +27,7 @@ export default extendTheme({
     tagline: ui.taglineFont,
     heading: ui.headingFont,
     subheading: ui.subheadingFont,
-    body: ui.bodyFont,
-    chrome: ui.chromeFont
+    body: ui.bodyFont
   },
   components: {
     Divider: {
@@ -58,12 +57,6 @@ export default extendTheme({
     Text: {
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
-        chrome: {
-          fontFamily: 'tagline',
-          fontSize: { base: 'xs', md: 'sm' },
-          _light: { fontWeight: 300, color: 'accent.secondary' },
-          _dark: { color: 'brand.primary' }
-        },
         cta: {
           my: 2,
           fontFamily: 'tagline',
@@ -80,6 +73,11 @@ export default extendTheme({
         service: { mt: 4, _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
         teammate: {
           mt: 2,
+          _light: { fontWeight: 300, color: 'accent.secondary' },
+          _dark: { color: 'brand.primary' }
+        },
+        attribution: {
+          fontSize: { base: 'xs', md: 'sm' },
           _light: { fontWeight: 300, color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
@@ -110,12 +108,11 @@ export default extendTheme({
       },
       variants: {
         ghost: { display: 'inline-block', color: 'inherit', _hover: { color: 'inherit' } },
-        chrome: {
-          fontFamily: 'tagline',
-          fontSize: { base: 'xs', md: 'sm' },
-          fontWeight: 600,
-          _light: { color: 'brand.secondary', _hover: { color: 'accent.secondary' } },
-          _dark: { color: 'brand.primary', _hover: { color: 'accent.secondary' } }
+        nav: {
+          fontFamily: 'heading',
+          fontWeight: 'normal',
+          _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
+          _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
         },
         team: {
           display: 'inline-block',

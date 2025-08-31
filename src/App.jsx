@@ -35,9 +35,9 @@ import browsingGeotargeting from './markdown/GEOTARGETING-BROWSING.md?raw';
 import './App.css';
 
 export default function App() {
-  const logotype = useRef();
   const timeline = useRef();
   const timelineParts = useRef();
+  // const logotype = useRef();
   const services = useRef();
   const hedcut = useRef();
   const agent = useRef();
@@ -48,7 +48,7 @@ export default function App() {
   const brianGithubIcon = useRef();
   const brianLinkedinIcon = useRef();
   const brianXIcon = useRef();
-  const logoFrames = useRef();
+  // const logoFrames = useRef();
   const servicesFrames = useRef();
   const hedFrames = useRef();
   const agentFrames = useRef();
@@ -58,7 +58,8 @@ export default function App() {
   const siteFrames = useRef();
   const frameIndex = useRef();
   const hasDrawnTimeline = useRef(false);
-  const [logoPath, setLogoPath] = useState(null);
+  const hasAnimatedTimeline = useRef(false);
+  // const [logoPath, setLogoPath] = useState(null);
   const [servicesPath, setServicesPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
   const [agentPath, setAgentPath] = useState(null);
@@ -97,11 +98,16 @@ export default function App() {
   }; */
 
   useEffect(() => {
-    const timelineAnimation = createTimeline({ autoplay: false });
-
-    import('./paths/logotype.txt?raw').then((module) => {
-      setLogoPath(module.default);
+    const timelineAnimation = createTimeline({
+      autoplay: false,
+      onComplete: () => {
+        hasAnimatedTimeline.current = true;
+      }
     });
+
+    /* import('./paths/logotype.txt?raw').then((module) => {
+      setLogoPath(module.default);
+    }); */
     import('./paths/services.txt?raw').then((module) => {
       setServicesPath(module.default);
     });
@@ -136,7 +142,7 @@ export default function App() {
       const tickOrigin = timelineVerticalAxis - tickSubsegment;
       const tickDestination = timelineVerticalAxis + tickSubsegment;
       const tickMidpoint = ui.tickDistance / 2;
-      const paradigmOrigin = timelineVerticalAxis + 2 * ui.timelineClearance;
+      const paradigmOrigin = timelineVerticalAxis + 1.75 * ui.timelineClearance;
       timeline.current.setAttribute('height', `${paradigmOrigin}px`);
 
       timelineParts.current.appendChild(
@@ -145,14 +151,14 @@ export default function App() {
           timelineVerticalAxis,
           timelineDestination,
           timelineVerticalAxis,
-          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          { stroke: ui.blueAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
         )
       );
       timelineParts.current.appendChild(
         roughTimeline.circle(ui.tickOffset, timelineVerticalAxis, pointDiameter, {
-          stroke: ui.blackAlpha,
+          stroke: ui.blueAlpha,
           strokeWidth: ui.timelineStrokeWidth,
-          fill: ui.blackAlpha,
+          fill: ui.blueAlpha,
           fillStyle: 'solid',
           disableMultiStroke: true
         })
@@ -163,7 +169,7 @@ export default function App() {
           timelineVerticalAxis - arrowLength,
           timelineDestination,
           timelineVerticalAxis,
-          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          { stroke: ui.blueAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
         )
       );
       timelineParts.current.appendChild(
@@ -172,7 +178,7 @@ export default function App() {
           timelineVerticalAxis + arrowLength,
           timelineDestination,
           timelineVerticalAxis,
-          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          { stroke: ui.blueAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
         )
       );
 
@@ -183,7 +189,7 @@ export default function App() {
         if (i) {
           timelineParts.current.appendChild(
             roughTimeline.line(horizontalAxis, tickOrigin, horizontalAxis, tickDestination, {
-              stroke: ui.blackAlpha,
+              stroke: ui.blueAlpha,
               strokeWidth: ui.timelineStrokeWidth,
               disableMultiStroke: true
             })
@@ -195,7 +201,7 @@ export default function App() {
           'style',
           `font-family: ${ui.headingFont};` +
             ` font-size: ${ui.timelineFontSize};` +
-            ` fill: ${ui.blackAlpha};`
+            ` fill: ${ui.blueAlpha};`
         );
 
         const paradigm = year.cloneNode(true);
@@ -245,7 +251,7 @@ export default function App() {
 
   useEffect(() => {
     if (
-      logoPath &&
+      // logoPath &&
       servicesPath &&
       hedPath &&
       agentPath &&
@@ -258,7 +264,7 @@ export default function App() {
       servicesStroke &&
       servicesFill
     ) {
-      logoFrames.current = [];
+      // logoFrames.current = [];
       servicesFrames.current = [];
       hedFrames.current = [];
       agentFrames.current = [];
@@ -267,8 +273,8 @@ export default function App() {
       xFrames.current = [];
       siteFrames.current = [];
       frameIndex.current = 0;
-      const logoCanvas = logotype.current;
-      const logoContext = logoCanvas.getContext('2d');
+      // const logoCanvas = logotype.current;
+      // const logoContext = logoCanvas.getContext('2d');
       const servicesCanvas = services.current;
       const servicesContext = servicesCanvas.getContext('2d');
       const hedCanvas = hedcut.current;
@@ -292,7 +298,7 @@ export default function App() {
       const renderFrames = () => {
         let frame;
 
-        if (logoFrames.current[frameIndex.current]) {
+        /* if (logoFrames.current[frameIndex.current]) {
           frame = logoFrames.current[frameIndex.current];
         } else {
           frame = generateFrame(logoCanvas, logoPath, {
@@ -308,7 +314,7 @@ export default function App() {
         }
 
         logoContext.clearRect(0, 0, logoCanvas.width, logoCanvas.height);
-        logoContext.drawImage(frame, 0, 0);
+        logoContext.drawImage(frame, 0, 0); */
 
         if (servicesFrames.current[frameIndex.current]) {
           frame = servicesFrames.current[frameIndex.current];
@@ -328,119 +334,126 @@ export default function App() {
         servicesContext.clearRect(0, 0, servicesCanvas.width, servicesCanvas.height);
         servicesContext.drawImage(frame, 0, 0);
 
-        if (hedFrames.current[frameIndex.current]) {
-          frame = hedFrames.current[frameIndex.current];
-        } else {
-          frame = generateFrame(hedCanvas, hedPath, {
-            stroke: ui.hedStroke,
-            strokeWidth: ui.blueprintStrokeWidth,
-            fill: blueprintFill,
-            fillStyle: ui.hedFillStyle,
-            hachureAngle: ui.blueprintAngle,
-            roughness: ui.hedRoughness
-          });
+        if (hasAnimatedTimeline.current) {
+          if (hedFrames.current[frameIndex.current]) {
+            frame = hedFrames.current[frameIndex.current];
+          } else {
+            frame = generateFrame(hedCanvas, hedPath, {
+              stroke: ui.hedStroke,
+              strokeWidth: ui.blueprintStrokeWidth,
+              fill: blueprintFill,
+              fillStyle: ui.hedFillStyle,
+              hachureAngle: ui.blueprintAngle,
+              roughness: ui.hedRoughness
+            });
 
-          hedFrames.current.push(frame);
+            hedFrames.current.push(frame);
+          }
+
+          hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
+          hedContext.drawImage(frame, 0, 0);
+
+          if (agentFrames.current[frameIndex.current]) {
+            frame = agentFrames.current[frameIndex.current];
+          } else {
+            frame = generateFrame(agentCanvas, agentPath, {
+              stroke: ui.agentStroke,
+              strokeWidth: ui.blueprintStrokeWidth,
+              fill: blueprintFill,
+              fillStyle: ui.agentFillStyle,
+              hachureAngle: ui.blueprintAngle,
+              roughness: ui.agentRoughness
+            });
+
+            agentFrames.current.push(frame);
+          }
+
+          agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
+          agentContext.drawImage(frame, 0, 0);
+
+          if (githubFrames.current[frameIndex.current]) {
+            frame = githubFrames.current[frameIndex.current];
+          } else {
+            frame = generateFrame(githubCanvas, githubPath, {
+              stroke: ui.iconStroke,
+              strokeWidth: ui.iconStrokeWidth,
+              fill: blueprintFill,
+              fillStyle: ui.iconFillStyle,
+              hachureAngle: ui.blueprintAngle,
+              roughness: ui.iconRoughness
+            });
+
+            githubFrames.current.push(frame);
+          }
+
+          githubContext.clearRect(0, 0, githubCanvas.width, githubCanvas.height);
+          githubContext.drawImage(frame, 0, 0);
+          brianGithubContext.clearRect(0, 0, brianGithubCanvas.width, brianGithubCanvas.height);
+          brianGithubContext.drawImage(frame, 0, 0);
+
+          if (linkedinFrames.current[frameIndex.current]) {
+            frame = linkedinFrames.current[frameIndex.current];
+          } else {
+            frame = generateFrame(linkedinCanvas, linkedinPath, {
+              stroke: ui.iconStroke,
+              strokeWidth: ui.iconStrokeWidth,
+              fill: blueprintFill,
+              fillStyle: ui.iconFillStyle,
+              hachureAngle: ui.blueprintAngle,
+              roughness: ui.iconRoughness
+            });
+
+            linkedinFrames.current.push(frame);
+          }
+
+          linkedinContext.clearRect(0, 0, linkedinCanvas.width, linkedinCanvas.height);
+          linkedinContext.drawImage(frame, 0, 0);
+          brianLinkedinContext.clearRect(
+            0,
+            0,
+            brianLinkedinCanvas.width,
+            brianLinkedinCanvas.height
+          );
+          brianLinkedinContext.drawImage(frame, 0, 0);
+
+          if (xFrames.current[frameIndex.current]) {
+            frame = xFrames.current[frameIndex.current];
+          } else {
+            frame = generateFrame(xCanvas, xPath, {
+              stroke: ui.iconStroke,
+              strokeWidth: ui.iconStrokeWidth,
+              fill: blueprintFill,
+              fillStyle: ui.iconFillStyle,
+              hachureAngle: ui.blueprintAngle,
+              roughness: ui.iconRoughness
+            });
+
+            xFrames.current.push(frame);
+          }
+
+          xContext.clearRect(0, 0, xCanvas.width, xCanvas.height);
+          xContext.drawImage(frame, 0, 0);
+          brianXContext.clearRect(0, 0, brianXCanvas.width, brianXCanvas.height);
+          brianXContext.drawImage(frame, 0, 0);
+
+          if (siteFrames.current[frameIndex.current]) {
+            frame = siteFrames.current[frameIndex.current];
+          } else {
+            frame = generateFrame(siteCanvas, sitePath, {
+              stroke: ui.iconStroke,
+              strokeWidth: ui.iconStrokeWidth,
+              fill: blueprintFill,
+              fillStyle: ui.iconFillStyle,
+              hachureAngle: ui.blueprintAngle,
+              roughness: ui.iconRoughness
+            });
+
+            siteFrames.current.push(frame);
+          }
+
+          siteContext.clearRect(0, 0, siteCanvas.width, siteCanvas.height);
+          siteContext.drawImage(frame, 0, 0);
         }
-
-        hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
-        hedContext.drawImage(frame, 0, 0);
-
-        if (agentFrames.current[frameIndex.current]) {
-          frame = agentFrames.current[frameIndex.current];
-        } else {
-          frame = generateFrame(agentCanvas, agentPath, {
-            stroke: ui.agentStroke,
-            strokeWidth: ui.blueprintStrokeWidth,
-            fill: blueprintFill,
-            fillStyle: ui.agentFillStyle,
-            hachureAngle: ui.blueprintAngle,
-            roughness: ui.agentRoughness
-          });
-
-          agentFrames.current.push(frame);
-        }
-
-        agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
-        agentContext.drawImage(frame, 0, 0);
-
-        if (githubFrames.current[frameIndex.current]) {
-          frame = githubFrames.current[frameIndex.current];
-        } else {
-          frame = generateFrame(githubCanvas, githubPath, {
-            stroke: ui.iconStroke,
-            strokeWidth: ui.iconStrokeWidth,
-            fill: blueprintFill,
-            fillStyle: ui.iconFillStyle,
-            hachureAngle: ui.blueprintAngle,
-            roughness: ui.iconRoughness
-          });
-
-          githubFrames.current.push(frame);
-        }
-
-        githubContext.clearRect(0, 0, githubCanvas.width, githubCanvas.height);
-        githubContext.drawImage(frame, 0, 0);
-        brianGithubContext.clearRect(0, 0, brianGithubCanvas.width, brianGithubCanvas.height);
-        brianGithubContext.drawImage(frame, 0, 0);
-
-        if (linkedinFrames.current[frameIndex.current]) {
-          frame = linkedinFrames.current[frameIndex.current];
-        } else {
-          frame = generateFrame(linkedinCanvas, linkedinPath, {
-            stroke: ui.iconStroke,
-            strokeWidth: ui.iconStrokeWidth,
-            fill: blueprintFill,
-            fillStyle: ui.iconFillStyle,
-            hachureAngle: ui.blueprintAngle,
-            roughness: ui.iconRoughness
-          });
-
-          linkedinFrames.current.push(frame);
-        }
-
-        linkedinContext.clearRect(0, 0, linkedinCanvas.width, linkedinCanvas.height);
-        linkedinContext.drawImage(frame, 0, 0);
-        brianLinkedinContext.clearRect(0, 0, brianLinkedinCanvas.width, brianLinkedinCanvas.height);
-        brianLinkedinContext.drawImage(frame, 0, 0);
-
-        if (xFrames.current[frameIndex.current]) {
-          frame = xFrames.current[frameIndex.current];
-        } else {
-          frame = generateFrame(xCanvas, xPath, {
-            stroke: ui.iconStroke,
-            strokeWidth: ui.iconStrokeWidth,
-            fill: blueprintFill,
-            fillStyle: ui.iconFillStyle,
-            hachureAngle: ui.blueprintAngle,
-            roughness: ui.iconRoughness
-          });
-
-          xFrames.current.push(frame);
-        }
-
-        xContext.clearRect(0, 0, xCanvas.width, xCanvas.height);
-        xContext.drawImage(frame, 0, 0);
-        brianXContext.clearRect(0, 0, brianXCanvas.width, brianXCanvas.height);
-        brianXContext.drawImage(frame, 0, 0);
-
-        if (siteFrames.current[frameIndex.current]) {
-          frame = siteFrames.current[frameIndex.current];
-        } else {
-          frame = generateFrame(siteCanvas, sitePath, {
-            stroke: ui.iconStroke,
-            strokeWidth: ui.iconStrokeWidth,
-            fill: blueprintFill,
-            fillStyle: ui.iconFillStyle,
-            hachureAngle: ui.blueprintAngle,
-            roughness: ui.iconRoughness
-          });
-
-          siteFrames.current.push(frame);
-        }
-
-        siteContext.clearRect(0, 0, siteCanvas.width, siteCanvas.height);
-        siteContext.drawImage(frame, 0, 0);
 
         frameIndex.current = ++frameIndex.current % ui.frameCount;
       };
@@ -453,7 +466,8 @@ export default function App() {
       };
     }
   }, [
-    logoPath,
+    hasAnimatedTimeline,
+    // logoPath,
     servicesPath,
     hedPath,
     agentPath,
@@ -470,29 +484,50 @@ export default function App() {
   return (
     <Flex w='100%' minH='100vh' direction='column'>
       <Box>
-        <canvas
-          ref={logotype}
-          width={ui.logoOldWidth}
-          height={ui.logoOldHeight}
-          style={{ marginTop: ui.logoMargin, width: ui.logoNewWidth, minWidth: ui.logoMinWidth }}
-          role='img'
-          aria-label={ui.logoLabel}
-        />
+        <Box position='relative' pt='1' w='33%'>
+          <svg ref={timeline} width='100%'>
+            <g ref={timelineParts} />
+          </svg>
+          {/* <canvas
+            ref={logotype}
+            width={ui.logoOldWidth}
+            height={ui.logoOldHeight}
+            style={{ marginTop: ui.logoMargin, width: ui.logoNewWidth, minWidth: ui.logoMinWidth }}
+            role='img'
+            aria-label={ui.logoLabel}
+          /> */}
+          <Box
+            position='absolute'
+            top='0'
+            left='0'
+            bgGradient='linear(to-r, chakra-body-bg, transparent)'
+            w={ui.gradientWidth}
+            h='100%'
+          />
+          <Box
+            position='absolute'
+            top='0'
+            right='0'
+            bgGradient='linear(to-l, chakra-body-bg, transparent)'
+            w={ui.gradientWidth}
+            h='100%'
+          />
+        </Box>
         <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition}>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
-            <Link variant='chrome' ml={ui.itemMargin} href='#services'>
+            <Link variant='nav' ml={ui.itemMargin} href='#services'>
               Services
             </Link>
-            <Link variant='chrome' ml={ui.itemMargin} href={ui.docUrl}>
+            <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
               Documentation
             </Link>
-            <Link variant='chrome' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
+            <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
               Live demo
             </Link>
-            <Link variant='chrome' ml={ui.itemMargin} href='#team'>
+            <Link variant='nav' ml={ui.itemMargin} href='#team'>
               Our team
             </Link>
-            <Link variant='chrome' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
+            <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
               llms.txt
             </Link>
           </Flex>
@@ -562,32 +597,8 @@ export default function App() {
         <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
           <uix.Tagline />
         </Flex>
-        <Flex
-          position='relative'
-          w={{ base: '100%', md: '50%' }}
-          direction='column'
-          justify='center'
-          align='center'
-        >
-          <Box
-            position='absolute'
-            top='0'
-            left='0'
-            bgGradient='linear(to-r, chakra-body-bg, transparent)'
-            w={ui.gradientWidth}
-            h='100%'
-          />
-          <Box
-            position='absolute'
-            top='0'
-            right='0'
-            bgGradient='linear(to-l, chakra-body-bg, transparent)'
-            w={ui.gradientWidth}
-            h='100%'
-          />
-          <svg ref={timeline} width='100%'>
-            <g ref={timelineParts} />
-          </svg>
+        <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
+          {/* TODO: Add prompt box. */}
         </Flex>
       </Flex>
       <Box
@@ -944,7 +955,7 @@ export default function App() {
               </Link>
             </Tooltip>
           </Box>
-          <Text variant='chrome'>© Agent First Dev, LLC.</Text>
+          <Text variant='attribution'>© Agent First Dev, LLC.</Text>
         </Flex>
       </Box>
     </Flex>

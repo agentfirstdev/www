@@ -30,7 +30,6 @@ export const timelineLabels = [
 ];
 
 // Colors
-export const blackAlpha = 'rgba(0, 0, 0, .56)';
 export const cornflowerBlue = '#7999f7';
 export const royalBlue = '#4a6de5';
 export const creativeBlue = '#3057e1';
@@ -44,6 +43,8 @@ export const burntSienna = '#bf6436';
 export const prettyPink = '#eaabb0';
 export const ruddyPink = '#e38f95';
 export const turkishRose = '#aa6b70';
+export const blueAlpha = 'rgba(74, 109, 229, .8)';
+export const blackAlpha = 'rgba(0, 0, 0, .56)';
 export const postItColors = [
   { background: { from: pastelYellow, to: naplesYellow }, border: vegasGold },
   { background: { from: asagiYellow, to: yellowOrange }, border: burntSienna },
@@ -55,7 +56,6 @@ export const taglineFont = 'Inter, sans-serif';
 export const headingFont = '"Permanent Marker", cursive';
 export const subheadingFont = '"Indie Flower", cursive';
 export const bodyFont = 'Lato, sans-serif';
-export const chromeFont = '"Inter Tight", sans-serif';
 
 // Controls
 export const controlDimension = '48px';
@@ -91,9 +91,9 @@ export const blueprintStrokeWidth = 4;
 export const blueprintAngle = -40;
 export const blueprintRefreshMs = 250;
 export const logoRoughness = 2;
-export const timelineStrokeWidth = 5;
+export const timelineStrokeWidth = 4;
 export const timelineTransitionMs = 400;
-export const timelineDelayMs = 1000;
+export const timelineDelayMs = 600;
 export const servicesRoughness = 2;
 export const hedRoughness = 2;
 export const agentRoughness = 3;
@@ -124,11 +124,11 @@ export const gradientWidth = '10%';
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
 export const postItPadding = 4;
-export const timelineFontSize = 28;
+export const timelineFontSize = 24;
 export const timelineClearance = 20;
-export const tickLength = 20;
-export const tickDistance = 400;
-export const tickOffset = 60;
+export const tickLength = 16;
+export const tickDistance = 320;
+export const tickOffset = 48;
 export const taglineFontSize = { base: '36px', md: '52px' };
 export const ctaFontSize = { base: '24px', md: '20px' };
 export const postItWidth = { base: '100%', md: postItMaxWidth };
