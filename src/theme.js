@@ -167,7 +167,7 @@ export default extendTheme({
             bg: 'accent.secondary',
             color: 'white',
             _hover: { bg: 'brand.secondary' },
-            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-gray-400)` }
+            _focus: { boxShadow: `${ui.outlineStyle} ${ui.blackAlpha}` }
           },
           _dark: {
             bg: 'brand.primary',
