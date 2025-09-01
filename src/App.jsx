@@ -851,7 +851,7 @@ export default function App() {
             </CardBody>
             <CardFooter pt='0'>
               <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
-                <Link p='0' href='https://oldestlivingboy.com/' isExternal>
+                <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
                   <canvas
                     ref={siteIcon}
                     width={ui.siteOldDimension}
@@ -869,8 +869,8 @@ export default function App() {
                 hasArrow
               >
                 <Link
+                  variant='social'
                   ml={ui.socialMargin}
-                  p='0'
                   href='https://github.com/oldestlivingboy'
                   isExternal
                 >
@@ -891,8 +891,8 @@ export default function App() {
                 hasArrow
               >
                 <Link
+                  variant='social'
                   ml={ui.socialMargin}
-                  p='0'
                   href='https://www.linkedin.com/in/oldestlivingboy/'
                   isExternal
                 >
@@ -907,7 +907,12 @@ export default function App() {
                 </Link>
               </Tooltip>
               <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.brianXLabel} hasArrow>
-                <Link ml={ui.socialMargin} p='0' href='https://x.com/oldestlivingboy' isExternal>
+                <Link
+                  variant='social'
+                  ml={ui.socialMargin}
+                  href='https://x.com/oldestlivingboy'
+                  isExternal
+                >
                   <canvas
                     ref={brianXIcon}
                     width={ui.xOldDimension}
@@ -984,7 +989,7 @@ export default function App() {
         <Flex mt={ui.iconVerticalMargin} direction='row' justify='space-between' align='center'>
           <Box lineHeight='0'>
             <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.githubLabel} hasArrow>
-              <Link variant='footer' href='https://github.com/agentfirstdev' isExternal>
+              <Link variant='social' href='https://github.com/agentfirstdev' isExternal>
                 <canvas
                   ref={githubIcon}
                   width={ui.githubOldDimension}
@@ -997,7 +1002,7 @@ export default function App() {
             </Tooltip>
             <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.linkedinLabel} hasArrow>
               <Link
-                variant='footer'
+                variant='social'
                 ml={ui.iconHorizontalMargin}
                 href='https://www.linkedin.com/company/agentfirstdev/'
                 isExternal
@@ -1014,7 +1019,7 @@ export default function App() {
             </Tooltip>
             <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.xLabel} hasArrow>
               <Link
-                variant='footer'
+                variant='social'
                 ml={ui.iconHorizontalMargin}
                 href='https://x.com/agentfirstdev'
                 isExternal

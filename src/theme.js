@@ -20,9 +20,9 @@ export default extendTheme({
   colors: {
     brand: { primary: ui.royalBlue, secondary: ui.resolutionBlue },
     accent: { primary: ui.cornflowerBlue, secondary: ui.creativeBlue },
-    outline: ui.yellowOrange
+    outline: ui.royalBlue
   },
-  shadows: { outline: '0 0 0 3px var(--chakra-colors-outline)' },
+  shadows: { outline: `${ui.outlineStyle} var(--chakra-colors-outline)` },
   fonts: {
     tagline: ui.taglineFont,
     heading: ui.headingFont,
@@ -102,8 +102,8 @@ export default extendTheme({
         borderRadius: ui.outlineRadius,
         p: ui.linkPadding,
         fontWeight: 'bold',
-        color: 'accent.secondary',
-        _hover: { color: 'brand.secondary', textDecoration: 'none' },
+        _hover: { textDecoration: 'none' },
+        _light: { color: 'accent.secondary', _hover: { color: 'brand.secondary' } },
         _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
       },
       variants: {
@@ -116,17 +116,32 @@ export default extendTheme({
         },
         team: {
           display: 'inline-block',
-          borderBottom: '2px solid var(--chakra-colors-accent-secondary)',
+          borderBottomWidth: '2px',
           p: 0,
           h: '25px',
-          _light: { _hover: { borderColor: 'brand.secondary' } },
-          _dark: { borderColor: 'brand.primary', _hover: { borderColor: 'accent.primary' } }
+          _light: {
+            borderBottomColor: 'accent.secondary',
+            _hover: { borderColor: 'brand.secondary' },
+            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-accent-secondary)` }
+          },
+          _dark: {
+            borderBottomColor: 'brand.primary',
+            _hover: { borderColor: 'accent.primary' },
+            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` }
+          }
         },
-        footer: { display: 'inline-block', p: 0 }
+        social: {
+          display: 'inline-block',
+          p: 0,
+          _light: {
+            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-accent-secondary)` }
+          },
+          _dark: { _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` } }
+        }
       }
     },
     Textarea: {
-      defaultProps: { focusBorderColor: 'accent.secondary' },
+      defaultProps: { focusBorderColor: 'brand.primary' },
       baseStyle: {
         p: ui.turnPadding,
         lineHeight: 'base',
@@ -142,14 +157,24 @@ export default extendTheme({
         fontFamily: 'body',
         fontWeight: 'bold',
         _hover: { borderColor: 'transparent' },
-        _focus: { outline: ui.outlineStyle, shadow: ui.shadowStyle }
+        _focus: { outline: 'none', shadow: ui.shadowStyle }
       },
       variants: {
         solid: {
           fontSize: { base: 'md', md: 'lg' },
           _active: { bg: 'brand.secondary' },
-          _light: { bg: 'accent.secondary', color: 'white', _hover: { bg: 'brand.secondary' } },
-          _dark: { bg: 'brand.primary', color: 'whiteAlpha.800', _hover: { bg: 'accent.primary' } }
+          _light: {
+            bg: 'accent.secondary',
+            color: 'white',
+            _hover: { bg: 'brand.secondary' },
+            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-gray-400)` }
+          },
+          _dark: {
+            bg: 'brand.primary',
+            color: 'whiteAlpha.800',
+            _hover: { bg: 'accent.primary' },
+            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-whiteAlpha-800)` }
+          }
         },
         monochrome: {
           bg: 'chakra-button-color',
@@ -172,7 +197,6 @@ export default extendTheme({
     Badge: {
       baseStyle: {
         borderWidth: '1px',
-        borderStyle: 'solid',
         bg: 'chakra-accent-bg',
         pt: '2px',
         fontFamily: 'body',

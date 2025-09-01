@@ -112,7 +112,7 @@ export const iconRoughness = 5;
 
 // Other shared styles
 export const linkPadding = '2px';
-export const outlineStyle = 'none';
+export const outlineStyle = '0 0 0 3px';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
 export const xsMargin = 4;
@@ -182,7 +182,7 @@ export const secondaryStyle = {
     padding: '1px',
     color: 'accent.secondary',
     ':hover': { color: 'brand.secondary' },
-    ':focus': { outline: outlineStyle, shadow: shadowStyle }
+    ':focus': { outline: 'none', shadow: shadowStyle }
   }
 };
 
