@@ -10,6 +10,7 @@ import {
   Text,
   Code,
   Link,
+  Textarea,
   Button,
   IconButton,
   Menu,
@@ -22,7 +23,7 @@ import {
   useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react';
-import { SunIcon, MoonIcon, HamburgerIcon } from '@chakra-ui/icons';
+import { SunIcon, MoonIcon, HamburgerIcon, AddIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 import { createTimeline } from 'animejs';
 
@@ -38,6 +39,7 @@ export default function App() {
   const timeline = useRef();
   const timelineParts = useRef();
   // const logotype = useRef();
+  const promptBox = useRef();
   const services = useRef();
   const hedcut = useRef();
   const agent = useRef();
@@ -57,6 +59,8 @@ export default function App() {
   const xFrames = useRef();
   const siteFrames = useRef();
   const frameIndex = useRef();
+  const promptInterval = useRef();
+  const candidatePrompt = useRef();
   const hasDrawnTimeline = useRef(false);
   const hasAnimatedTimeline = useRef(false);
   // const [logoPath, setLogoPath] = useState(null);
@@ -67,6 +71,7 @@ export default function App() {
   const [linkedinPath, setLinkedinPath] = useState(null);
   const [xPath, setXPath] = useState(null);
   const [sitePath, setSitePath] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
@@ -87,6 +92,15 @@ export default function App() {
 
     return tempCanvas;
   };
+  const animatePromptBox = () => {
+    let index = 0;
+    promptBox.current.placeholder = ui.initialPlaceholders[index];
+
+    promptInterval.current = setInterval(() => {
+      index = (index + 1) % ui.initialPlaceholders.length;
+      promptBox.current.placeholder = ui.initialPlaceholders[index];
+    }, ui.promptRefreshMs);
+  };
   /* const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
       event.preventDefault();
@@ -96,6 +110,35 @@ export default function App() {
       cancelAction(event);
     }
   }; */
+  const handlePromptKeyPress = (event) => {
+    if (event.key == 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      handlePromptSubmit();
+    }
+  };
+  const handlePromptChange = (event) => {
+    promptBox.current.style.height = 0;
+    promptBox.current.style.height = `${promptBox.current.scrollHeight + 2}px`;
+    candidatePrompt.current = event.target.value;
+  };
+  const handleResetPress = () => {
+    /* completionsController.current?.abort();
+    replayTimeouts.current?.forEach(clearTimeout);
+
+    candidatePrompt.current = '';
+    conversationBuffer.current = {};
+    completionsController.current = null;
+    replayTimeouts.current = [];
+    promptBox.current.placeholder = ui.initialPlaceholder;
+    promptBox.current.value = '';
+    promptBox.current.style.height = promptBoxHeight.current;
+
+    clearInterval(promptInterval.current);
+    setIsLoading(false);
+    setConversation(conversationBuffer.current);
+    setError('');
+    promptBox.current.focus(); */
+  };
 
   useEffect(() => {
     const timelineAnimation = createTimeline({
@@ -231,25 +274,12 @@ export default function App() {
     }
 
     timelineAnimation.play();
+    animatePromptBox();
 
     return () => {
       timelineAnimation.cancel();
     };
   }, []);
-
-  useEffect(() => {
-    let link = document.getElementById(modeId);
-
-    if (!link) {
-      link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.id = modeId;
-
-      document.head.appendChild(link);
-    }
-
-    link.href = `atom-one-${colorMode}${import.meta.env.PROD ? '.min' : ''}.css`;
-  }, [colorMode]);
 
   useEffect(() => {
     if (
@@ -468,7 +498,6 @@ export default function App() {
       };
     }
   }, [
-    hasAnimatedTimeline,
     // logoPath,
     servicesPath,
     hedPath,
@@ -482,6 +511,24 @@ export default function App() {
     servicesStroke,
     servicesFill
   ]);
+
+  useEffect(() => {
+    if (!isLoading && promptBox.current) promptBox.current.focus();
+  }, [isLoading]);
+
+  useEffect(() => {
+    let link = document.getElementById(modeId);
+
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.id = modeId;
+
+      document.head.appendChild(link);
+    }
+
+    link.href = `atom-one-${colorMode}${import.meta.env.PROD ? '.min' : ''}.css`;
+  }, [colorMode]);
 
   return (
     <Flex w='100%' minH='100vh' direction='column'>
@@ -533,7 +580,7 @@ export default function App() {
               llms.txt
             </Link>
           </Flex>
-          <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={modeLabel} hasArrow>
+          <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={modeLabel} hasArrow>
             <IconButton
               variant='monochrome'
               ml={ui.itemMargin}
@@ -547,7 +594,7 @@ export default function App() {
           </Tooltip>
           <Menu strategy='fixed' isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
             <Tooltip
-              mr={ui.tooltipMargin}
+              mx={ui.tooltipMargin}
               p={ui.tooltipPadding}
               label={ui.menuLabel}
               isDisabled={isOpen}
@@ -595,12 +642,35 @@ export default function App() {
         w='100%'
         h={ui.heroHeight}
         direction={{ base: 'column', md: 'row' }}
+        gap='8'
       >
         <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
           <uix.Tagline />
         </Flex>
-        <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
-          {/* TODO: Add prompt box. */}
+        <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
+          <Textarea
+            ref={promptBox}
+            rows='1'
+            minH={ui.promptMinHeight}
+            maxH={ui.promptMaxHeight}
+            isDisabled={isLoading}
+            onKeyDown={handlePromptKeyPress}
+            onChange={handlePromptChange}
+          />
+          <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.resetHint} hasArrow>
+            <IconButton
+              ml='4'
+              borderRadius='full'
+              size='lg'
+              icon={<AddIcon boxSize='4' />}
+              boxShadow='lg'
+              aria-label={ui.resetHint}
+              onClick={handleResetPress}
+              onKeyDown={(event) => {
+                handleKeyPress(event, handleResetPress);
+              }}
+            />
+          </Tooltip>
         </Flex>
       </Flex>
       <Box
@@ -777,7 +847,7 @@ export default function App() {
               </Text>
             </CardBody>
             <CardFooter pt='0'>
-              <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
+              <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
                 <Link p='0' href='https://oldestlivingboy.com/' isExternal>
                   <canvas
                     ref={siteIcon}
@@ -790,7 +860,7 @@ export default function App() {
                 </Link>
               </Tooltip>
               <Tooltip
-                mr={ui.tooltipMargin}
+                mx={ui.tooltipMargin}
                 p={ui.tooltipPadding}
                 label={ui.brianGithubLabel}
                 hasArrow
@@ -812,7 +882,7 @@ export default function App() {
                 </Link>
               </Tooltip>
               <Tooltip
-                mr={ui.tooltipMargin}
+                mx={ui.tooltipMargin}
                 p={ui.tooltipPadding}
                 label={ui.brianLinkedinLabel}
                 hasArrow
@@ -833,7 +903,7 @@ export default function App() {
                   />
                 </Link>
               </Tooltip>
-              <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.brianXLabel} hasArrow>
+              <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.brianXLabel} hasArrow>
                 <Link ml={ui.socialMargin} p='0' href='https://x.com/oldestlivingboy' isExternal>
                   <canvas
                     ref={brianXIcon}
@@ -910,7 +980,7 @@ export default function App() {
         <Divider />
         <Flex mt={ui.iconVerticalMargin} direction='row' justify='space-between' align='center'>
           <Box lineHeight='0'>
-            <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.githubLabel} hasArrow>
+            <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.githubLabel} hasArrow>
               <Link variant='footer' href='https://github.com/agentfirstdev' isExternal>
                 <canvas
                   ref={githubIcon}
@@ -922,7 +992,7 @@ export default function App() {
                 />
               </Link>
             </Tooltip>
-            <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.linkedinLabel} hasArrow>
+            <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.linkedinLabel} hasArrow>
               <Link
                 variant='footer'
                 ml={ui.iconHorizontalMargin}
@@ -939,7 +1009,7 @@ export default function App() {
                 />
               </Link>
             </Tooltip>
-            <Tooltip mr={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.xLabel} hasArrow>
+            <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.xLabel} hasArrow>
               <Link
                 variant='footer'
                 ml={ui.iconHorizontalMargin}

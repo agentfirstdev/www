@@ -14,6 +14,9 @@ export const siteLabel = 'Go to Brian’s site';
 export const brianGithubLabel = 'Go to Brian’s GitHub';
 export const brianLinkedinLabel = 'Go to Brian’s LinkedIn';
 export const brianXLabel = 'Go to Brian’s X';
+export const generatingPlaceholder = 'Generating an answer';
+export const updatePlaceholder = 'Your reply to the answer above ...';
+export const resetHint = 'Start a new conversation';
 export const docUrl = 'https://doc.agentfirst.dev/';
 export const demoUrl = 'https://dev.llamapile.com/';
 export const llmsTxtUrl = 'llms.txt';
@@ -27,6 +30,10 @@ export const timelineLabels = [
   { year: 2012, paradigm: 'Cloud first' },
   { year: 2022, paradigm: 'AI first' },
   { year: 2026, paradigm: 'Agent first' }
+];
+export const initialPlaceholders = [
+  `Ask me how to integrate ${logoLabel} into your to agent ...`,
+  'Or ask me to research something to show what I can do ...'
 ];
 
 // Colors
@@ -86,14 +93,15 @@ export const agentStroke = 'transparent';
 export const agentFillStyle = 'solid';
 export const iconStroke = 'transparent';
 export const iconFillStyle = 'dots';
+export const timelineStrokeWidth = 4;
+export const timelineTransitionMs = 400;
+export const timelineDelayMs = 600;
 export const frameCount = 12;
 export const blueprintStrokeWidth = 4;
 export const blueprintAngle = -40;
 export const blueprintRefreshMs = 250;
 export const logoRoughness = 2;
-export const timelineStrokeWidth = 4;
-export const timelineTransitionMs = 400;
-export const timelineDelayMs = 600;
+export const promptRefreshMs = 3000;
 export const servicesRoughness = 2;
 export const hedRoughness = 2;
 export const agentRoughness = 3;
@@ -114,26 +122,29 @@ export const gradientAngle = 140;
 
 // Hero
 export const heroHeight = '60vh';
+export const gradientWidth = '15%';
 export const logoMargin = '8px';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
 export const postItMaxWidth = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-color)';
 export const postItRotation = '-1.5deg';
-export const gradientWidth = '15%';
-export const logoOldWidth = 1760;
-export const logoOldHeight = 352;
-export const postItPadding = 4;
+export const promptMinHeight = '108px';
+export const promptMaxHeight = '180px';
 export const timelineFontSize = 24;
 export const timelineClearance = 20;
 export const tickLength = 16;
 export const tickDistance = 320;
 export const tickOffset = 48;
+export const logoOldWidth = 1760;
+export const logoOldHeight = 352;
+export const postItPadding = 4;
 export const taglineFontSize = { base: '36px', md: '52px' };
 export const ctaFontSize = { base: '24px', md: '20px' };
 export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
 export const postItFontSize = { base: '22px', md: '28px' };
+export const promptFontSize = { base: '22px', md: '18px' };
 
 // Services
 export const servicesBorder = '1px solid var(--chakra-colors-chakra-border-color)';

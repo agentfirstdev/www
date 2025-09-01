@@ -125,6 +125,18 @@ export default extendTheme({
         footer: { display: 'inline-block', p: 0 }
       }
     },
+    Textarea: {
+      defaultProps: { focusBorderColor: 'accent.secondary' },
+      baseStyle: {
+        p: ui.turnPadding,
+        lineHeight: 'base',
+        fontFamily: 'tagline',
+        fontSize: ui.promptFontSize,
+        _placeholder: { color: 'chakra-placeholder-color' },
+        _light: { fontWeight: 300 }
+      },
+      variants: { outline: { bg: 'chakra-subtle-bg' } }
+    },
     Button: {
       baseStyle: {
         fontFamily: 'body',
@@ -141,11 +153,9 @@ export default extendTheme({
         },
         monochrome: {
           bg: 'chakra-button-color',
-          _light: {
-            color: 'brand.secondary',
-            _hover: { bg: 'chakra-accent-bg', color: 'accent.secondary' }
-          },
-          _dark: { color: 'brand.primary', _hover: { color: 'accent.secondary' } }
+          _hover: { bg: 'chakra-accent-bg' },
+          _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
+          _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
         }
       }
     },
