@@ -32,8 +32,9 @@ export const timelineLabels = [
   { year: 2026, paradigm: 'Agent first' }
 ];
 export const initialPlaceholders = [
-  `Ask me how to integrate ${logoLabel} into your to agent ...`,
-  'Or ask me to research something to show what I can do ...'
+  `Ask me how to add ${logoLabel} to your agent ...`,
+  'Or ask me what I can do ...',
+  'Or let me show you by researching something for you ...'
 ];
 
 // Colors

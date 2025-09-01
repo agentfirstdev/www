@@ -93,13 +93,15 @@ export default function App() {
     return tempCanvas;
   };
   const animatePromptBox = () => {
-    let index = 0;
-    promptBox.current.placeholder = ui.initialPlaceholders[index];
-
-    promptInterval.current = setInterval(() => {
-      index = (index + 1) % ui.initialPlaceholders.length;
+    if (!promptInterval.current) {
+      let index = 0;
       promptBox.current.placeholder = ui.initialPlaceholders[index];
-    }, ui.promptRefreshMs);
+
+      promptInterval.current = setInterval(() => {
+        index = (index + 1) % ui.initialPlaceholders.length;
+        promptBox.current.placeholder = ui.initialPlaceholders[index];
+      }, ui.promptRefreshMs);
+    }
   };
   /* const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
