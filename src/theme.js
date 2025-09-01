@@ -135,7 +135,7 @@ export default extendTheme({
         _placeholder: { color: 'chakra-placeholder-color' },
         _light: { fontWeight: 300 }
       },
-      variants: { outline: { bg: 'chakra-subtle-bg' } }
+      variants: { outline: { borderWidth: '2px', bg: 'chakra-subtle-bg' } }
     },
     Button: {
       baseStyle: {

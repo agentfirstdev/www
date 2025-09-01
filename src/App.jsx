@@ -61,7 +61,6 @@ export default function App() {
   const frameIndex = useRef();
   const promptInterval = useRef();
   const candidatePrompt = useRef();
-  const hasDrawnTimeline = useRef(false);
   const hasAnimatedTimeline = useRef(false);
   // const [logoPath, setLogoPath] = useState(null);
   const [servicesPath, setServicesPath] = useState(null);
@@ -73,6 +72,7 @@ export default function App() {
   const [sitePath, setSitePath] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
+  const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
   const servicesStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
@@ -175,8 +175,7 @@ export default function App() {
       setSitePath(module.default);
     });
 
-    if (!hasDrawnTimeline.current) {
-      hasDrawnTimeline.current = true;
+    if (timelineColor) {
       const roughTimeline = rough.svg(timeline.current);
       const timelineVerticalAxis = ui.timelineFontSize + ui.timelineClearance;
       const timelineDestination = ui.tickOffset + ui.timelineLabels.length * ui.tickDistance;
@@ -190,20 +189,22 @@ export default function App() {
       const paradigmOrigin = timelineVerticalAxis + 1.75 * ui.timelineClearance;
       timeline.current.setAttribute('height', `${paradigmOrigin}px`);
 
+      timeline.current.classList.remove('animated');
+      timelineParts.current.replaceChildren();
       timelineParts.current.appendChild(
         roughTimeline.line(
           ui.tickOffset,
           timelineVerticalAxis,
           timelineDestination,
           timelineVerticalAxis,
-          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          { stroke: timelineColor, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
         )
       );
       timelineParts.current.appendChild(
         roughTimeline.circle(ui.tickOffset, timelineVerticalAxis, pointDiameter, {
-          stroke: ui.blackAlpha,
+          stroke: timelineColor,
           strokeWidth: ui.timelineStrokeWidth,
-          fill: ui.blackAlpha,
+          fill: timelineColor,
           fillStyle: 'solid',
           disableMultiStroke: true
         })
@@ -214,7 +215,7 @@ export default function App() {
           timelineVerticalAxis - arrowLength,
           timelineDestination,
           timelineVerticalAxis,
-          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          { stroke: timelineColor, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
         )
       );
       timelineParts.current.appendChild(
@@ -223,7 +224,7 @@ export default function App() {
           timelineVerticalAxis + arrowLength,
           timelineDestination,
           timelineVerticalAxis,
-          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          { stroke: timelineColor, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
         )
       );
 
@@ -234,7 +235,7 @@ export default function App() {
         if (i) {
           timelineParts.current.appendChild(
             roughTimeline.line(horizontalAxis, tickOrigin, horizontalAxis, tickDestination, {
-              stroke: ui.blackAlpha,
+              stroke: timelineColor,
               strokeWidth: ui.timelineStrokeWidth,
               disableMultiStroke: true
             })
@@ -246,7 +247,7 @@ export default function App() {
           'style',
           `font-family: ${ui.headingFont};` +
             ` font-size: ${ui.timelineFontSize};` +
-            ` fill: ${ui.blackAlpha};`
+            ` fill: ${timelineColor};`
         );
 
         const paradigm = year.cloneNode(true);
@@ -279,7 +280,7 @@ export default function App() {
     return () => {
       timelineAnimation.cancel();
     };
-  }, []);
+  }, [timelineColor]);
 
   useEffect(() => {
     if (
