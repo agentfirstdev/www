@@ -8,6 +8,16 @@ html {
   text-align: center;
 }
 
+.animated path {
+  stroke: rgba(74, 109, 229, .48) !important;
+  transition: stroke 4s ease-out;
+}
+
+.animated text:not(:last-of-type) {
+  fill: rgba(74, 109, 229, .48) !important;
+  transition: fill 4s ease-out;
+}
+
 .animated text:last-of-type {
   fill: #4a6de5 !important;
   transition: fill 2s ease-out;

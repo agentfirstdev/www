@@ -51,7 +51,7 @@ export const prettyPink = '#eaabb0';
 export const ruddyPink = '#e38f95';
 export const turkishRose = '#aa6b70';
 export const blackAlpha = 'rgba(26, 32, 44, .36)';
-export const blueAlpha = 'rgba(0, 32, 130, .36)';
+export const blueAlpha = 'rgba(74, 109, 229, .48)';
 export const postItColors = [
   { background: { from: pastelYellow, to: naplesYellow }, border: vegasGold },
   { background: { from: asagiYellow, to: yellowOrange }, border: burntSienna },
