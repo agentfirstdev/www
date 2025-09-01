@@ -196,14 +196,14 @@ export default function App() {
           timelineVerticalAxis,
           timelineDestination,
           timelineVerticalAxis,
-          { stroke: ui.blueAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
         )
       );
       timelineParts.current.appendChild(
         roughTimeline.circle(ui.tickOffset, timelineVerticalAxis, pointDiameter, {
-          stroke: ui.blueAlpha,
+          stroke: ui.blackAlpha,
           strokeWidth: ui.timelineStrokeWidth,
-          fill: ui.blueAlpha,
+          fill: ui.blackAlpha,
           fillStyle: 'solid',
           disableMultiStroke: true
         })
@@ -214,7 +214,7 @@ export default function App() {
           timelineVerticalAxis - arrowLength,
           timelineDestination,
           timelineVerticalAxis,
-          { stroke: ui.blueAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
         )
       );
       timelineParts.current.appendChild(
@@ -223,7 +223,7 @@ export default function App() {
           timelineVerticalAxis + arrowLength,
           timelineDestination,
           timelineVerticalAxis,
-          { stroke: ui.blueAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          { stroke: ui.blackAlpha, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
         )
       );
 
@@ -234,7 +234,7 @@ export default function App() {
         if (i) {
           timelineParts.current.appendChild(
             roughTimeline.line(horizontalAxis, tickOrigin, horizontalAxis, tickDestination, {
-              stroke: ui.blueAlpha,
+              stroke: ui.blackAlpha,
               strokeWidth: ui.timelineStrokeWidth,
               disableMultiStroke: true
             })
@@ -246,7 +246,7 @@ export default function App() {
           'style',
           `font-family: ${ui.headingFont};` +
             ` font-size: ${ui.timelineFontSize};` +
-            ` fill: ${ui.blueAlpha};`
+            ` fill: ${ui.blackAlpha};`
         );
 
         const paradigm = year.cloneNode(true);
