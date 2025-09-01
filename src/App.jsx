@@ -93,11 +93,11 @@ export default function App() {
 
     return tempCanvas;
   };
-  const animatePromptBox = (placeholder) => {
+  const animateCompletion = (index) => {
     promptBox.current.placeholder = '';
     promptTimeouts.current = [];
 
-    placeholder.forEach(({ delay, token }) => {
+    ui.initialPlaceholders[index].forEach(({ delay, token }) => {
       promptTimeouts.current.push(
         setTimeout(() => {
           promptBox.current.placeholder += token;
@@ -153,6 +153,20 @@ export default function App() {
         timeline.current.classList.add('animated');
       }
     });
+    const animatePromptBox = () => {
+      if (!promptInterval.current) {
+        const divisor = ui.initialPlaceholders.length + 1;
+        let index = 0;
+
+        animateCompletion(index);
+
+        promptInterval.current = setInterval(() => {
+          index = (index + 1) % divisor;
+
+          if (index < ui.initialPlaceholders.length) animateCompletion(index);
+        }, ui.promptRefreshMs);
+      }
+    };
 
     /* import('./paths/logotype.txt?raw').then((module) => {
       setLogoPath(module.default);
@@ -279,18 +293,7 @@ export default function App() {
     }
 
     timelineAnimation.play();
-
-    if (!promptInterval.current) {
-      let index = 0;
-
-      animatePromptBox(ui.initialPlaceholders[index]);
-
-      promptInterval.current = setInterval(() => {
-        index = (index + 1) % ui.initialPlaceholders.length;
-
-        animatePromptBox(ui.initialPlaceholders[index]);
-      }, ui.promptRefreshMs);
-    }
+    animatePromptBox();
 
     return () => {
       timelineAnimation.cancel();
