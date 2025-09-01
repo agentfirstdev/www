@@ -33,8 +33,8 @@ export const timelineLabels = [
 ];
 export const initialPlaceholders = [
   `Ask me how to add ${logoLabel} to your agent ...`,
-  'Or ask me what I can do ...',
-  'Or let me show you by researching something ...'
+  'Or ask me what I can do for you ...',
+  'Or let me show you by researching a question ...'
 ];
 
 // Colors
