@@ -60,6 +60,7 @@ export default function App() {
   const siteFrames = useRef();
   const frameIndex = useRef();
   const promptInterval = useRef();
+  const promptTimeouts = useRef();
   const candidatePrompt = useRef();
   const hasAnimatedTimeline = useRef(false);
   // const [logoPath, setLogoPath] = useState(null);
@@ -92,16 +93,17 @@ export default function App() {
 
     return tempCanvas;
   };
-  const animatePromptBox = () => {
-    if (!promptInterval.current) {
-      let index = 0;
-      promptBox.current.placeholder = ui.initialPlaceholders[index];
+  const animatePromptBox = (placeholder) => {
+    promptBox.current.placeholder = '';
+    promptTimeouts.current = [];
 
-      promptInterval.current = setInterval(() => {
-        index = (index + 1) % ui.initialPlaceholders.length;
-        promptBox.current.placeholder = ui.initialPlaceholders[index];
-      }, ui.promptRefreshMs);
-    }
+    placeholder.forEach(({ delay, token }) => {
+      promptTimeouts.current.push(
+        setTimeout(() => {
+          promptBox.current.placeholder += token;
+        }, delay)
+      );
+    });
   };
   /* const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
@@ -277,7 +279,18 @@ export default function App() {
     }
 
     timelineAnimation.play();
-    animatePromptBox();
+
+    if (!promptInterval.current) {
+      let index = 0;
+
+      animatePromptBox(ui.initialPlaceholders[index]);
+
+      promptInterval.current = setInterval(() => {
+        index = (index + 1) % ui.initialPlaceholders.length;
+
+        animatePromptBox(ui.initialPlaceholders[index]);
+      }, ui.promptRefreshMs);
+    }
 
     return () => {
       timelineAnimation.cancel();

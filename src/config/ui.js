@@ -32,9 +32,43 @@ export const timelineLabels = [
   { year: 2026, paradigm: 'Agent first' }
 ];
 export const initialPlaceholders = [
-  `Ask me how to add ${logoLabel} to your agent ...`,
-  'Or ask me what I can do for you ...',
-  'Or let me show you by researching a question ...'
+  [
+    { delay: 0, token: 'Ask' },
+    { delay: 55, token: ' me' },
+    { delay: 55, token: ' how' },
+    { delay: 83, token: ' to' },
+    { delay: 112, token: ' add' },
+    { delay: 139, token: ' Agent' },
+    { delay: 208, token: ' First' },
+    { delay: 209, token: ' to' },
+    { delay: 225, token: ' your' },
+    { delay: 264, token: ' agent' },
+    { delay: 292, token: ' ...' }
+  ],
+  [
+    { delay: 0, token: 'Or' },
+    { delay: 26, token: ' ask' },
+    { delay: 61, token: ' me' },
+    { delay: 108, token: ' what' },
+    { delay: 131, token: ' I' },
+    { delay: 169, token: ' can' },
+    { delay: 203, token: ' do' },
+    { delay: 258, token: ' for' },
+    { delay: 290, token: ' you' },
+    { delay: 334, token: ' ...' }
+  ],
+  [
+    { delay: 0, token: 'Or' },
+    { delay: 32, token: ' let' },
+    { delay: 45, token: ' me' },
+    { delay: 102, token: ' show' },
+    { delay: 102, token: ' you' },
+    { delay: 149, token: ' by' },
+    { delay: 149, token: ' researching' },
+    { delay: 172, token: ' a' },
+    { delay: 198, token: ' question' },
+    { delay: 221, token: ' ...' }
+  ]
 ];
 
 // Colors
