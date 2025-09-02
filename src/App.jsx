@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import {
   Box,
   Flex,
@@ -51,6 +51,7 @@ export default function App() {
   const brianLinkedinIcon = useRef();
   const brianXIcon = useRef();
   // const logoFrames = useRef();
+  const promptBoxHeight = useRef();
   const servicesFrames = useRef();
   const hedFrames = useRef();
   const agentFrames = useRef();
@@ -94,6 +95,8 @@ export default function App() {
     return tempCanvas;
   };
   const animateCompletion = (index) => {
+    promptTimeouts.current?.forEach(clearTimeout);
+
     promptBox.current.placeholder = '';
     promptTimeouts.current = [];
 
@@ -104,6 +107,20 @@ export default function App() {
         }, delay)
       );
     });
+  };
+  const animatePromptBox = () => {
+    if (!promptInterval.current) {
+      const divisor = ui.initialPlaceholders.length + 1;
+      let index = 0;
+
+      animateCompletion(index);
+
+      promptInterval.current = setInterval(() => {
+        index = (index + 1) % divisor;
+
+        if (index < ui.initialPlaceholders.length) animateCompletion(index);
+      }, ui.promptRefreshMs);
+    }
   };
   /* const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
@@ -126,22 +143,26 @@ export default function App() {
     candidatePrompt.current = event.target.value;
   };
   const handleResetPress = () => {
+    clearInterval(promptInterval.current);
+
+    candidatePrompt.current = '';
+    promptBox.current.value = '';
+    promptBox.current.style.height = promptBoxHeight.current;
+    promptInterval.current = null;
+
+    setIsLoading(false);
+    animatePromptBox();
+    promptBox.current.focus();
+
     /* completionsController.current?.abort();
     replayTimeouts.current?.forEach(clearTimeout);
 
-    candidatePrompt.current = '';
     conversationBuffer.current = {};
     completionsController.current = null;
     replayTimeouts.current = [];
-    promptBox.current.placeholder = ui.initialPlaceholder;
-    promptBox.current.value = '';
-    promptBox.current.style.height = promptBoxHeight.current;
 
-    clearInterval(promptInterval.current);
-    setIsLoading(false);
     setConversation(conversationBuffer.current);
-    setError('');
-    promptBox.current.focus(); */
+    setError(''); */
   };
 
   useEffect(() => {
@@ -153,20 +174,6 @@ export default function App() {
         timeline.current.classList.add('animated');
       }
     });
-    const animatePromptBox = () => {
-      if (!promptInterval.current) {
-        const divisor = ui.initialPlaceholders.length + 1;
-        let index = 0;
-
-        animateCompletion(index);
-
-        promptInterval.current = setInterval(() => {
-          index = (index + 1) % divisor;
-
-          if (index < ui.initialPlaceholders.length) animateCompletion(index);
-        }, ui.promptRefreshMs);
-      }
-    };
 
     /* import('./paths/logotype.txt?raw').then((module) => {
       setLogoPath(module.default);
@@ -298,7 +305,7 @@ export default function App() {
     return () => {
       timelineAnimation.cancel();
     };
-  }, [timelineColor]);
+  }, [timelineColor, animatePromptBox]);
 
   useEffect(() => {
     if (
@@ -548,6 +555,14 @@ export default function App() {
 
     link.href = `atom-one-${colorMode}${import.meta.env.PROD ? '.min' : ''}.css`;
   }, [colorMode]);
+
+  useLayoutEffect(() => {
+    if (!promptBoxHeight.current && promptBox.current) {
+      promptBoxHeight.current = `${promptBox.current.offsetHeight}px`;
+    }
+
+    promptBox.current.focus();
+  }, []);
 
   return (
     <Flex w='100%' minH='100vh' direction='column'>
