@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useLayoutEffect } from 'react';
+import { useRef, useState, useCallback, useEffect, useLayoutEffect } from 'react';
 import {
   Box,
   Flex,
@@ -108,7 +108,7 @@ export default function App() {
       );
     });
   };
-  const animatePromptBox = () => {
+  const animatePromptBox = useCallback(() => {
     if (!promptInterval.current) {
       const divisor = ui.initialPlaceholders.length + 1;
       let index = 0;
@@ -121,7 +121,7 @@ export default function App() {
         if (index < ui.initialPlaceholders.length) animateCompletion(index);
       }, ui.promptRefreshMs);
     }
-  };
+  }, []);
   /* const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
       event.preventDefault();
