@@ -143,7 +143,7 @@ export default extendTheme({
     Textarea: {
       defaultProps: { focusBorderColor: 'brand.primary' },
       baseStyle: {
-        p: ui.turnPadding,
+        p: ui.promptPadding,
         lineHeight: 'base',
         fontFamily: 'tagline',
         fontSize: ui.promptFontSize,

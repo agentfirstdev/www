@@ -176,6 +176,7 @@ export const tickOffset = 48;
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
 export const postItPadding = 4;
+export const promptPadding = 3;
 export const taglineFontSize = { base: '36px', md: '52px' };
 export const ctaFontSize = { base: '24px', md: '20px' };
 export const postItWidth = { base: '100%', md: postItMaxWidth };
