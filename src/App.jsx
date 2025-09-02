@@ -104,7 +104,7 @@ export default function App() {
       promptTimeouts.current.push(
         setTimeout(() => {
           promptBox.current.placeholder += token;
-        }, delay)
+        }, delay + ui.promptDelayMs)
       );
     });
   };
