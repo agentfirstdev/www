@@ -77,6 +77,7 @@ export default extendTheme({
           _dark: { color: 'brand.primary' }
         },
         attribution: {
+          fontFamily: 'tagline',
           fontSize: { base: 'xs', md: 'sm' },
           _light: { fontWeight: 300, color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
