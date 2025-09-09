@@ -29,7 +29,7 @@ export const Tagline = () => {
         </Text>
         {' development'}
       </Heading>
-      <Text variant='cta'>Enhance your agent instantly with world-class research abilities</Text>
+      <Text variant='cta'>Enhance your agent in minutes with world-class research abilities</Text>
     </>
   );
 };
