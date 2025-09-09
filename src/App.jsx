@@ -606,11 +606,14 @@ export default function App() {
             <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
               Documentation
             </Link>
+            <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
+              Pricing
+            </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
               Live demo
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href='#team'>
-              Our team
+            <Link variant='nav' ml={ui.itemMargin} href='#about'>
+              About us
             </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
               llms.txt
