@@ -25,11 +25,11 @@ export const browsingUrl = 'https://doc.agentfirst.dev/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/geotargeting';
 export const timelineLabels = [
   { year: 1984, paradigm: 'Desktop first', log: 1.2 },
-  { year: 2000, paradigm: 'Web first', log: .9 },
-  { year: 2008, paradigm: 'Mobile first', log: .6},
+  { year: 2000, paradigm: 'Web first', log: 0.9 },
+  { year: 2008, paradigm: 'Mobile first', log: 0.6 },
   { year: 2012, paradigm: 'Cloud first', log: 1 },
-  { year: 2022, paradigm: 'AI first', log: .6},
-  { year: 2026, paradigm: 'Agent first', log: .9 }
+  { year: 2022, paradigm: 'AI first', log: 0.6 },
+  { year: 2026, paradigm: 'Agent first', log: 0.9 }
 ];
 export const initialPlaceholders = [
   [
