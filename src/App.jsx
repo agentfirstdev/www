@@ -202,18 +202,21 @@ export default function App() {
 
     if (timelineColor) {
       const roughTimeline = rough.svg(timeline.current);
+      const logLength = ui.timelineLabels.reduce((length, label) => {
+        return length + label.log;
+      }, 0);
+      const timelineDestination = 2 * ui.tickOffset + logLength * ui.tickDistanceUnit;
       const timelineVerticalAxis = ui.timelineFontSize + ui.timelineClearance;
-      const timelineDestination = ui.tickOffset + ui.timelineLabels.length * ui.tickDistance;
       const pointDiameter = 0.75 * ui.tickLength;
       const arrowLength = ui.tickLength / Math.sqrt(2);
       const arrowOrigin = timelineDestination - arrowLength;
       const tickSubsegment = ui.tickLength / 2;
       const tickOrigin = timelineVerticalAxis - tickSubsegment;
       const tickDestination = timelineVerticalAxis + tickSubsegment;
-      const tickMidpoint = ui.tickDistance / 2;
       const paradigmOrigin = timelineVerticalAxis + 1.75 * ui.timelineClearance;
-      timeline.current.setAttribute('height', `${paradigmOrigin}px`);
+      let currentDistance = 2 * ui.tickOffset;
 
+      timeline.current.setAttribute('height', `${paradigmOrigin}px`);
       timeline.current.classList.remove('animated');
       timelineParts.current.replaceChildren();
       timelineParts.current.appendChild(
@@ -254,19 +257,16 @@ export default function App() {
       );
 
       ui.timelineLabels.forEach((label, i) => {
-        const horizontalAxis = ui.tickOffset + i * ui.tickDistance;
+        const tickDistance = label.log * ui.tickDistanceUnit;
         const year = document.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-        if (i) {
-          timelineParts.current.appendChild(
-            roughTimeline.line(horizontalAxis, tickOrigin, horizontalAxis, tickDestination, {
-              stroke: timelineColor,
-              strokeWidth: ui.timelineStrokeWidth,
-              disableMultiStroke: true
-            })
-          );
-        }
-
+        timelineParts.current.appendChild(
+          roughTimeline.line(currentDistance, tickOrigin, currentDistance, tickDestination, {
+            stroke: timelineColor,
+            strokeWidth: ui.timelineStrokeWidth,
+            disableMultiStroke: true
+          })
+        );
         year.setAttribute('text-anchor', 'middle');
         year.setAttribute(
           'style',
@@ -278,24 +278,26 @@ export default function App() {
         const paradigm = year.cloneNode(true);
         year.textContent = label.year;
 
-        year.setAttribute('x', horizontalAxis);
+        year.setAttribute('x', currentDistance);
         year.setAttribute('y', ui.timelineFontSize);
         timelineParts.current.appendChild(year);
 
         paradigm.textContent = label.paradigm;
 
-        paradigm.setAttribute('x', horizontalAxis + tickMidpoint);
+        paradigm.setAttribute('x', currentDistance + tickDistance / 2);
         paradigm.setAttribute('y', paradigmOrigin);
         timelineParts.current.appendChild(paradigm);
-      });
-    }
 
-    for (let i = 1; i < ui.timelineLabels.length; i++) {
-      timelineAnimation.add({ duration: ui.timelineDelayMs });
-      timelineAnimation.add(timelineParts.current, {
-        x: i * -ui.tickDistance,
-        duration: ui.timelineTransitionMs,
-        ease: 'outBack'
+        currentDistance += tickDistance;
+
+        if (i < ui.timelineLabels.length - 1) {
+          timelineAnimation.add({ duration: ui.timelineDelayMs });
+          timelineAnimation.add(timelineParts.current, {
+            x: -currentDistance,
+            duration: ui.timelineTransitionMs,
+            ease: 'outBack'
+          });
+        }
       });
     }
 

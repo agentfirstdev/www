@@ -24,12 +24,12 @@ export const searchUrl = 'https://doc.agentfirst.dev/search';
 export const browsingUrl = 'https://doc.agentfirst.dev/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/geotargeting';
 export const timelineLabels = [
-  { year: 1984, paradigm: 'Desktop first' },
-  { year: 2000, paradigm: 'Web first' },
-  { year: 2008, paradigm: 'Mobile first' },
-  { year: 2012, paradigm: 'Cloud first' },
-  { year: 2022, paradigm: 'AI first' },
-  { year: 2026, paradigm: 'Agent first' }
+  { year: 1984, paradigm: 'Desktop first', log: 1.2 },
+  { year: 2000, paradigm: 'Web first', log: .9 },
+  { year: 2008, paradigm: 'Mobile first', log: .6},
+  { year: 2012, paradigm: 'Cloud first', log: 1 },
+  { year: 2022, paradigm: 'AI first', log: .6},
+  { year: 2026, paradigm: 'Agent first', log: .9 }
 ];
 export const initialPlaceholders = [
   [
@@ -171,13 +171,13 @@ export const promptMaxHeight = '180px';
 export const timelineFontSize = 24;
 export const timelineClearance = 20;
 export const tickLength = 16;
-export const tickDistance = 320;
+export const tickDistanceUnit = 360;
 export const tickOffset = 48;
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
 export const postItPadding = 4;
 export const promptPadding = 3;
-export const taglineFontSize = { base: '36px', md: '52px' };
+export const taglineFontSize = { base: '36px', md: '54px' };
 export const ctaFontSize = { base: '24px', md: '20px' };
 export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
