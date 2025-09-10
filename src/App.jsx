@@ -909,7 +909,7 @@ export default function App() {
               >
                 <canvas
                   ref={hedcut}
-                  class='lazy'
+                  className='lazy'
                   width={ui.hedOldWidth}
                   height={ui.hedOldHeight}
                   style={{ width: '100%' }}
@@ -951,7 +951,7 @@ export default function App() {
                 <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
                   <canvas
                     ref={siteIcon}
-                    class='lazy'
+                    className='lazy'
                     width={ui.siteOldDimension}
                     height={ui.siteOldDimension}
                     style={{ width: ui.socialDimension, height: ui.socialDimension }}
@@ -974,7 +974,7 @@ export default function App() {
                 >
                   <canvas
                     ref={brianGithubIcon}
-                    class='lazy'
+                    className='lazy'
                     width={ui.githubOldDimension}
                     height={ui.githubOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
@@ -997,7 +997,7 @@ export default function App() {
                 >
                   <canvas
                     ref={brianLinkedinIcon}
-                    class='lazy'
+                    className='lazy'
                     width={ui.linkedinOldDimension}
                     height={ui.linkedinOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
@@ -1015,7 +1015,7 @@ export default function App() {
                 >
                   <canvas
                     ref={brianXIcon}
-                    class='lazy'
+                    className='lazy'
                     width={ui.xOldDimension}
                     height={ui.xOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
@@ -1031,7 +1031,7 @@ export default function App() {
               <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
                 <canvas
                   ref={agent}
-                  class='lazy'
+                  className='lazy'
                   width={ui.agentOldWidth}
                   height={ui.agentOldHeight}
                   style={{ width: '100%' }}
@@ -1094,7 +1094,7 @@ export default function App() {
               <Link variant='social' href='https://github.com/agentfirstdev' isExternal>
                 <canvas
                   ref={githubIcon}
-                  class='lazy'
+                  className='lazy'
                   width={ui.githubOldDimension}
                   height={ui.githubOldDimension}
                   style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
@@ -1112,7 +1112,7 @@ export default function App() {
               >
                 <canvas
                   ref={linkedinIcon}
-                  class='lazy'
+                  className='lazy'
                   width={ui.linkedinOldDimension}
                   height={ui.linkedinOldDimension}
                   style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
@@ -1130,7 +1130,7 @@ export default function App() {
               >
                 <canvas
                   ref={xIcon}
-                  class='lazy'
+                  className='lazy'
                   width={ui.xOldDimension}
                   height={ui.xOldDimension}
                   style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
