@@ -171,16 +171,18 @@ export default function App() {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (timelineAnimation.current) {
-            if (entry.isIntersecting && entry.intersectionRatio >= ui.timelineMaxVisibility) {
-              timelineAnimation.current.play();
-            } else if (entry.intersectionRatio < ui.timelineMinVisibility) {
+            if (entry.isIntersecting) {
+              if (entry.intersectionRatio >= ui.timelineMinVisibility) {
+                timelineAnimation.current.play();
+              }
+            } else {
               timelineAnimation.current.pause();
               timelineAnimation.current.seek(0);
               timeline.current.classList.remove('animated');
             }
           }
         },
-        { root: null, threshold: [0, ui.timelineMinVisibility, ui.timelineMaxVisibility, 1] }
+        { root: null, threshold: [0, 0, ui.timelineMinVisibility, 1] }
       );
 
       observer.observe(timeline.current);
