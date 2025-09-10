@@ -43,7 +43,7 @@ export default extendTheme({
         _dark: { color: 'brand.primary' }
       },
       variants: {
-        section: { textAlign: 'center' },
+        section: { textAlign: 'center', fontWeight: 'normal' },
         tagline: {
           fontFamily: 'tagline',
           _light: { color: 'gray.800' },

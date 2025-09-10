@@ -23,14 +23,6 @@ export const llmsTxtUrl = 'llms.txt';
 export const searchUrl = 'https://doc.agentfirst.dev/search';
 export const browsingUrl = 'https://doc.agentfirst.dev/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/geotargeting';
-export const timelineLabels = [
-  { year: 1984, paradigm: 'Desktop first', log: 1.2 },
-  { year: 2000, paradigm: 'Web first', log: 0.9 },
-  { year: 2008, paradigm: 'Mobile first', log: 0.6 },
-  { year: 2012, paradigm: 'Cloud first', log: 1 },
-  { year: 2022, paradigm: 'AI first', log: 0.6 },
-  { year: 2026, paradigm: 'Agent first', log: 0.9 }
-];
 export const initialPlaceholders = [
   [
     { delay: 0, token: 'Ask' },
@@ -69,6 +61,14 @@ export const initialPlaceholders = [
     { delay: 198, token: ' question' },
     { delay: 221, token: ' ...' }
   ]
+];
+export const timelineLabels = [
+  { year: 1984, paradigm: 'Desktop first', log: 1.2 },
+  { year: 2000, paradigm: 'Web first', log: 0.9 },
+  { year: 2008, paradigm: 'Mobile first', log: 0.6 },
+  { year: 2012, paradigm: 'Cloud first', log: 1 },
+  { year: 2022, paradigm: 'AI first', log: 0.6 },
+  { year: 2026, paradigm: 'Agent first', log: 0.9 }
 ];
 
 // Colors
@@ -129,9 +129,6 @@ export const agentStroke = 'transparent';
 export const agentFillStyle = 'solid';
 export const iconStroke = 'transparent';
 export const iconFillStyle = 'dots';
-export const timelineStrokeWidth = 4;
-export const timelineTransitionMs = 400;
-export const timelineDelayMs = 600;
 export const frameCount = 12;
 export const blueprintStrokeWidth = 4;
 export const blueprintAngle = -40;
@@ -140,6 +137,9 @@ export const logoRoughness = 2;
 export const promptRefreshMs = 4000;
 export const promptDelayMs = 1000;
 export const servicesRoughness = 2;
+export const timelineStrokeWidth = 4;
+export const timelineTransitionMs = 400;
+export const timelineDelayMs = 600;
 export const hedRoughness = 2;
 export const agentRoughness = 3;
 export const iconStrokeWidth = 3;
@@ -159,7 +159,6 @@ export const gradientAngle = 140;
 
 // Hero
 export const heroHeight = '60vh';
-export const gradientWidth = '15%';
 export const logoMargin = '8px';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
@@ -168,15 +167,16 @@ export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-colo
 export const postItRotation = '-1.5deg';
 export const promptMinHeight = '108px';
 export const promptMaxHeight = '180px';
-export const timelineFontSize = 24;
-export const timelineClearance = 20;
-export const tickLength = 16;
-export const tickDistanceUnit = 360;
-export const tickOffset = 48;
+export const gradientWidth = '12.5%';
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
 export const postItPadding = 4;
 export const promptPadding = 3;
+export const timelineFontSize = 28;
+export const timelineClearance = 20;
+export const tickLength = 16;
+export const tickDistanceUnit = 420;
+export const tickOffset = 48;
 export const taglineFontSize = { base: '36px', md: '54px' };
 export const ctaFontSize = { base: '24px', md: '20px' };
 export const postItWidth = { base: '100%', md: postItMaxWidth };

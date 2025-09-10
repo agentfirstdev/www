@@ -36,11 +36,11 @@ import browsingGeotargeting from './markdown/GEOTARGETING-BROWSING.md?raw';
 import './App.css';
 
 export default function App() {
-  const timeline = useRef();
-  const timelineParts = useRef();
-  // const logotype = useRef();
+  const logotype = useRef();
   const promptBox = useRef();
   const services = useRef();
+  const timeline = useRef();
+  const timelineParts = useRef();
   const hedcut = useRef();
   const agent = useRef();
   const githubIcon = useRef();
@@ -50,7 +50,7 @@ export default function App() {
   const brianGithubIcon = useRef();
   const brianLinkedinIcon = useRef();
   const brianXIcon = useRef();
-  // const logoFrames = useRef();
+  const logoFrames = useRef();
   const promptBoxHeight = useRef();
   const servicesFrames = useRef();
   const hedFrames = useRef();
@@ -64,7 +64,7 @@ export default function App() {
   const promptTimeouts = useRef();
   const candidatePrompt = useRef();
   const hasAnimatedTimeline = useRef(false);
-  // const [logoPath, setLogoPath] = useState(null);
+  const [logoPath, setLogoPath] = useState(null);
   const [servicesPath, setServicesPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
   const [agentPath, setAgentPath] = useState(null);
@@ -74,11 +74,11 @@ export default function App() {
   const [sitePath, setSitePath] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
-  const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
   const servicesStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
   const servicesFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
+  const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isLightMode = colorMode == 'light';
@@ -175,9 +175,9 @@ export default function App() {
       }
     });
 
-    /* import('./paths/logotype.txt?raw').then((module) => {
+    import('./paths/logotype.txt?raw').then((module) => {
       setLogoPath(module.default);
-    }); */
+    });
     import('./paths/services.txt?raw').then((module) => {
       setServicesPath(module.default);
     });
@@ -293,7 +293,7 @@ export default function App() {
         if (i < ui.timelineLabels.length - 1) {
           timelineAnimation.add({ duration: ui.timelineDelayMs });
           timelineAnimation.add(timelineParts.current, {
-            x: -currentDistance,
+            x: ui.tickOffset - currentDistance,
             duration: ui.timelineTransitionMs,
             ease: 'outBack'
           });
@@ -311,7 +311,7 @@ export default function App() {
 
   useEffect(() => {
     if (
-      // logoPath &&
+      logoPath &&
       servicesPath &&
       hedPath &&
       agentPath &&
@@ -324,7 +324,7 @@ export default function App() {
       servicesStroke &&
       servicesFill
     ) {
-      // logoFrames.current = [];
+      logoFrames.current = [];
       servicesFrames.current = [];
       hedFrames.current = [];
       agentFrames.current = [];
@@ -333,8 +333,8 @@ export default function App() {
       xFrames.current = [];
       siteFrames.current = [];
       frameIndex.current = 0;
-      // const logoCanvas = logotype.current;
-      // const logoContext = logoCanvas.getContext('2d');
+      const logoCanvas = logotype.current;
+      const logoContext = logoCanvas.getContext('2d');
       const servicesCanvas = services.current;
       const servicesContext = servicesCanvas.getContext('2d');
       const hedCanvas = hedcut.current;
@@ -358,7 +358,7 @@ export default function App() {
       const renderFrames = () => {
         let frame;
 
-        /* if (logoFrames.current[frameIndex.current]) {
+        if (logoFrames.current[frameIndex.current]) {
           frame = logoFrames.current[frameIndex.current];
         } else {
           frame = generateFrame(logoCanvas, logoPath, {
@@ -374,7 +374,7 @@ export default function App() {
         }
 
         logoContext.clearRect(0, 0, logoCanvas.width, logoCanvas.height);
-        logoContext.drawImage(frame, 0, 0); */
+        logoContext.drawImage(frame, 0, 0);
 
         if (servicesFrames.current[frameIndex.current]) {
           frame = servicesFrames.current[frameIndex.current];
@@ -526,7 +526,7 @@ export default function App() {
       };
     }
   }, [
-    // logoPath,
+    logoPath,
     servicesPath,
     hedPath,
     agentPath,
@@ -569,33 +569,14 @@ export default function App() {
   return (
     <Flex w='100%' minH='100vh' direction='column'>
       <Box>
-        <Box position='relative' pt='1' w='33%'>
-          <svg ref={timeline} width='100%'>
-            <g ref={timelineParts} />
-          </svg>
-          {/* <canvas
+        <Box>
+          <canvas
             ref={logotype}
             width={ui.logoOldWidth}
             height={ui.logoOldHeight}
             style={{ marginTop: ui.logoMargin, width: ui.logoNewWidth, minWidth: ui.logoMinWidth }}
             role='img'
             aria-label={ui.logoLabel}
-          /> */}
-          <Box
-            position='absolute'
-            top='0'
-            left='0'
-            bgGradient='linear(to-r, chakra-body-bg, transparent)'
-            w={ui.gradientWidth}
-            h='100%'
-          />
-          <Box
-            position='absolute'
-            top='0'
-            right='0'
-            bgGradient='linear(to-l, chakra-body-bg, transparent)'
-            w={ui.gradientWidth}
-            h='100%'
           />
         </Box>
         <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition}>
@@ -828,6 +809,29 @@ export default function App() {
             </Button>
           </CardFooter>
         </Card>
+      </Box>
+      <Box id='about' pt={ui.smMargin} align='center'>
+        <Box position='relative' pt='1' w='33%'>
+          <svg ref={timeline} width='100%'>
+            <g ref={timelineParts} />
+          </svg>
+          <Box
+            position='absolute'
+            top='0'
+            left='0'
+            bgGradient='linear(to-r, chakra-body-bg, transparent)'
+            w={ui.gradientWidth}
+            h='100%'
+          />
+          <Box
+            position='absolute'
+            top='0'
+            right='0'
+            bgGradient='linear(to-l, chakra-body-bg, transparent)'
+            w={ui.gradientWidth}
+            h='100%'
+          />
+        </Box>
       </Box>
       <Box id='team' pt={ui.mdMargin}>
         <Heading as='h1' variant='section'>
