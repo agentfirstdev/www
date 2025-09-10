@@ -53,6 +53,7 @@ export default function App() {
   const logoFrames = useRef();
   const promptBoxHeight = useRef();
   const servicesFrames = useRef();
+  const timelineAnimation = useRef();
   const hedFrames = useRef();
   const agentFrames = useRef();
   const githubFrames = useRef();
@@ -166,15 +167,31 @@ export default function App() {
   };
 
   useEffect(() => {
-    const timelineAnimation = createTimeline({
-      autoplay: false,
-      onComplete: () => {
-        hasAnimatedTimeline.current = true;
+    if (timeline.current) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (timelineAnimation.current) {
+            if (entry.isIntersecting && entry.intersectionRatio >= ui.timelineMaxVisibility) {
+              timelineAnimation.current.play();
+            } else if (entry.intersectionRatio < ui.timelineMinVisibility) {
+              timelineAnimation.current.pause();
+              timelineAnimation.current.seek(0);
+              timeline.current.classList.remove('animated');
+            }
+          }
+        },
+        { root: null, threshold: [0, ui.timelineMinVisibility, ui.timelineMaxVisibility, 1] }
+      );
 
-        timeline.current.classList.add('animated');
-      }
-    });
+      observer.observe(timeline.current);
 
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, []);
+
+  useEffect(() => {
     import('./paths/logotype.txt?raw').then((module) => {
       setLogoPath(module.default);
     });
@@ -215,9 +232,16 @@ export default function App() {
       const tickDestination = timelineVerticalAxis + tickSubsegment;
       const paradigmOrigin = timelineVerticalAxis + 1.75 * ui.timelineClearance;
       let currentDistance = 2 * ui.tickOffset;
+      timelineAnimation.current = createTimeline({
+        autoplay: false,
+        onComplete: () => {
+          hasAnimatedTimeline.current = true;
+
+          timeline.current.classList.add('animated');
+        }
+      });
 
       timeline.current.setAttribute('height', `${paradigmOrigin}px`);
-      timeline.current.classList.remove('animated');
       timelineParts.current.replaceChildren();
       timelineParts.current.appendChild(
         roughTimeline.line(
@@ -291,23 +315,20 @@ export default function App() {
         currentDistance += tickDistance;
 
         if (i < ui.timelineLabels.length - 1) {
-          timelineAnimation.add({ duration: ui.timelineDelayMs });
-          timelineAnimation.add(timelineParts.current, {
+          timelineAnimation.current.add({ duration: ui.timelineDelayMs });
+          timelineAnimation.current.add(timelineParts.current, {
             x: ui.tickOffset - currentDistance,
             duration: ui.timelineTransitionMs,
             ease: 'outBack'
           });
         }
       });
+
+      return () => {
+        timelineAnimation.current.cancel();
+      };
     }
-
-    timelineAnimation.play();
-    animatePromptBox();
-
-    return () => {
-      timelineAnimation.cancel();
-    };
-  }, [timelineColor, animatePromptBox]);
+  }, [timelineColor]);
 
   useEffect(() => {
     if (
@@ -541,8 +562,11 @@ export default function App() {
   ]);
 
   useEffect(() => {
-    if (!isLoading && promptBox.current) promptBox.current.focus();
-  }, [isLoading]);
+    if (!isLoading && promptBox.current) {
+      promptBox.current.focus();
+      animatePromptBox();
+    }
+  }, [isLoading, animatePromptBox]);
 
   useEffect(() => {
     let link = document.getElementById(modeId);
