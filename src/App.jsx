@@ -220,6 +220,14 @@ export default function App() {
     });
 
     if (timelineColor) {
+      timelineAnimation.current = createTimeline({
+        autoplay: false,
+        onComplete: () => {
+          hasAnimatedTimeline.current = true;
+
+          timeline.current.classList.add('animated');
+        }
+      });
       const roughTimeline = rough.svg(timeline.current);
       const logLength = ui.timelineLabels.reduce((length, label) => {
         return length + label.log;
@@ -234,14 +242,6 @@ export default function App() {
       const tickDestination = timelineVerticalAxis + tickSubsegment;
       const paradigmOrigin = timelineVerticalAxis + 1.75 * ui.timelineClearance;
       let currentDistance = 2 * ui.tickOffset;
-      timelineAnimation.current = createTimeline({
-        autoplay: false,
-        onComplete: () => {
-          hasAnimatedTimeline.current = true;
-
-          timeline.current.classList.add('animated');
-        }
-      });
 
       timeline.current.setAttribute('height', `${paradigmOrigin}px`);
       timelineParts.current.replaceChildren();
@@ -336,12 +336,6 @@ export default function App() {
     if (
       logoPath &&
       servicesPath &&
-      hedPath &&
-      agentPath &&
-      githubPath &&
-      linkedinPath &&
-      xPath &&
-      sitePath &&
       blueprintStroke &&
       blueprintFill &&
       servicesStroke &&
@@ -349,35 +343,11 @@ export default function App() {
     ) {
       logoFrames.current = [];
       servicesFrames.current = [];
-      hedFrames.current = [];
-      agentFrames.current = [];
-      githubFrames.current = [];
-      linkedinFrames.current = [];
-      xFrames.current = [];
-      siteFrames.current = [];
       frameIndex.current = 0;
       const logoCanvas = logotype.current;
       const logoContext = logoCanvas.getContext('2d');
       const servicesCanvas = services.current;
       const servicesContext = servicesCanvas.getContext('2d');
-      const hedCanvas = hedcut.current;
-      const hedContext = hedCanvas.getContext('2d');
-      const agentCanvas = agent.current;
-      const agentContext = agentCanvas.getContext('2d');
-      const githubCanvas = githubIcon.current;
-      const githubContext = githubCanvas.getContext('2d');
-      const linkedinCanvas = linkedinIcon.current;
-      const linkedinContext = linkedinCanvas.getContext('2d');
-      const xCanvas = xIcon.current;
-      const xContext = xCanvas.getContext('2d');
-      const siteCanvas = siteIcon.current;
-      const siteContext = siteCanvas.getContext('2d');
-      const brianGithubCanvas = brianGithubIcon.current;
-      const brianGithubContext = brianGithubCanvas.getContext('2d');
-      const brianLinkedinCanvas = brianLinkedinIcon.current;
-      const brianLinkedinContext = brianLinkedinCanvas.getContext('2d');
-      const brianXCanvas = brianXIcon.current;
-      const brianXContext = brianXCanvas.getContext('2d');
       const renderFrames = () => {
         let frame;
 
@@ -417,7 +387,40 @@ export default function App() {
         servicesContext.clearRect(0, 0, servicesCanvas.width, servicesCanvas.height);
         servicesContext.drawImage(frame, 0, 0);
 
-        if (hasAnimatedTimeline.current) {
+        if (
+          hedPath &&
+          agentPath &&
+          githubPath &&
+          linkedinPath &&
+          xPath &&
+          sitePath &&
+          hasAnimatedTimeline.current
+        ) {
+          hedFrames.current = [];
+          agentFrames.current = [];
+          githubFrames.current = [];
+          linkedinFrames.current = [];
+          xFrames.current = [];
+          siteFrames.current = [];
+          const hedCanvas = hedcut.current;
+          const hedContext = hedCanvas.getContext('2d');
+          const agentCanvas = agent.current;
+          const agentContext = agentCanvas.getContext('2d');
+          const githubCanvas = githubIcon.current;
+          const githubContext = githubCanvas.getContext('2d');
+          const linkedinCanvas = linkedinIcon.current;
+          const linkedinContext = linkedinCanvas.getContext('2d');
+          const xCanvas = xIcon.current;
+          const xContext = xCanvas.getContext('2d');
+          const siteCanvas = siteIcon.current;
+          const siteContext = siteCanvas.getContext('2d');
+          const brianGithubCanvas = brianGithubIcon.current;
+          const brianGithubContext = brianGithubCanvas.getContext('2d');
+          const brianLinkedinCanvas = brianLinkedinIcon.current;
+          const brianLinkedinContext = brianLinkedinCanvas.getContext('2d');
+          const brianXCanvas = brianXIcon.current;
+          const brianXContext = brianXCanvas.getContext('2d');
+
           if (hedFrames.current[frameIndex.current]) {
             frame = hedFrames.current[frameIndex.current];
           } else {
@@ -435,6 +438,7 @@ export default function App() {
 
           hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
           hedContext.drawImage(frame, 0, 0);
+          if (!hedcut.current.classList.contains('loaded')) hedcut.current.classList.add('loaded');
 
           if (agentFrames.current[frameIndex.current]) {
             frame = agentFrames.current[frameIndex.current];
@@ -453,6 +457,7 @@ export default function App() {
 
           agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
           agentContext.drawImage(frame, 0, 0);
+          if (!agent.current.classList.contains('loaded')) agent.current.classList.add('loaded');
 
           if (githubFrames.current[frameIndex.current]) {
             frame = githubFrames.current[frameIndex.current];
@@ -473,6 +478,14 @@ export default function App() {
           githubContext.drawImage(frame, 0, 0);
           brianGithubContext.clearRect(0, 0, brianGithubCanvas.width, brianGithubCanvas.height);
           brianGithubContext.drawImage(frame, 0, 0);
+
+          if (!githubIcon.current.classList.contains('loaded')) {
+            githubIcon.current.classList.add('loaded');
+          }
+
+          if (!brianGithubIcon.current.classList.contains('loaded')) {
+            brianGithubIcon.current.classList.add('loaded');
+          }
 
           if (linkedinFrames.current[frameIndex.current]) {
             frame = linkedinFrames.current[frameIndex.current];
@@ -499,6 +512,14 @@ export default function App() {
           );
           brianLinkedinContext.drawImage(frame, 0, 0);
 
+          if (!linkedinIcon.current.classList.contains('loaded')) {
+            linkedinIcon.current.classList.add('loaded');
+          }
+
+          if (!brianLinkedinIcon.current.classList.contains('loaded')) {
+            brianLinkedinIcon.current.classList.add('loaded');
+          }
+
           if (xFrames.current[frameIndex.current]) {
             frame = xFrames.current[frameIndex.current];
           } else {
@@ -518,6 +539,11 @@ export default function App() {
           xContext.drawImage(frame, 0, 0);
           brianXContext.clearRect(0, 0, brianXCanvas.width, brianXCanvas.height);
           brianXContext.drawImage(frame, 0, 0);
+          if (!xIcon.current.classList.contains('loaded')) xIcon.current.classList.add('loaded');
+
+          if (!brianXIcon.current.classList.contains('loaded')) {
+            brianXIcon.current.classList.add('loaded');
+          }
 
           if (siteFrames.current[frameIndex.current]) {
             frame = siteFrames.current[frameIndex.current];
@@ -536,6 +562,10 @@ export default function App() {
 
           siteContext.clearRect(0, 0, siteCanvas.width, siteCanvas.height);
           siteContext.drawImage(frame, 0, 0);
+
+          if (!siteIcon.current.classList.contains('loaded')) {
+            siteIcon.current.classList.add('loaded');
+          }
         }
 
         frameIndex.current = ++frameIndex.current % ui.frameCount;
@@ -879,6 +909,7 @@ export default function App() {
               >
                 <canvas
                   ref={hedcut}
+                  class='lazy'
                   width={ui.hedOldWidth}
                   height={ui.hedOldHeight}
                   style={{ width: '100%' }}
@@ -920,6 +951,7 @@ export default function App() {
                 <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
                   <canvas
                     ref={siteIcon}
+                    class='lazy'
                     width={ui.siteOldDimension}
                     height={ui.siteOldDimension}
                     style={{ width: ui.socialDimension, height: ui.socialDimension }}
@@ -942,6 +974,7 @@ export default function App() {
                 >
                   <canvas
                     ref={brianGithubIcon}
+                    class='lazy'
                     width={ui.githubOldDimension}
                     height={ui.githubOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
@@ -964,6 +997,7 @@ export default function App() {
                 >
                   <canvas
                     ref={brianLinkedinIcon}
+                    class='lazy'
                     width={ui.linkedinOldDimension}
                     height={ui.linkedinOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
@@ -981,6 +1015,7 @@ export default function App() {
                 >
                   <canvas
                     ref={brianXIcon}
+                    class='lazy'
                     width={ui.xOldDimension}
                     height={ui.xOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
@@ -996,6 +1031,7 @@ export default function App() {
               <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
                 <canvas
                   ref={agent}
+                  class='lazy'
                   width={ui.agentOldWidth}
                   height={ui.agentOldHeight}
                   style={{ width: '100%' }}
@@ -1058,6 +1094,7 @@ export default function App() {
               <Link variant='social' href='https://github.com/agentfirstdev' isExternal>
                 <canvas
                   ref={githubIcon}
+                  class='lazy'
                   width={ui.githubOldDimension}
                   height={ui.githubOldDimension}
                   style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
@@ -1075,6 +1112,7 @@ export default function App() {
               >
                 <canvas
                   ref={linkedinIcon}
+                  class='lazy'
                   width={ui.linkedinOldDimension}
                   height={ui.linkedinOldDimension}
                   style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
@@ -1092,6 +1130,7 @@ export default function App() {
               >
                 <canvas
                   ref={xIcon}
+                  class='lazy'
                   width={ui.xOldDimension}
                   height={ui.xOldDimension}
                   style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}

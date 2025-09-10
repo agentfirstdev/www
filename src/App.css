@@ -13,6 +13,15 @@ html {
   transition: fill 2s ease-out;
 }
 
+.lazy {
+  opacity: 0;
+  transition: opacity 2s ease-out;
+}
+
+.lazy.loaded {
+  opacity: 1;
+}
+
 [data-popper-placement="right-start" i] .chakra-tooltip__arrow-wrapper {
   top: -3px !important;
 }
