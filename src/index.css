@@ -3,12 +3,12 @@
   font-family: 'Fira Sans';
   font-style: normal;
   font-weight: 300;
-  src: url('fonts/fira-sans-v17-latin-300.eot'); /* IE9 compat modes */
-  src: url('fonts/fira-sans-v17-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/fira-sans-v17-latin-300.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('fonts/fira-sans-v17-latin-300.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-       url('fonts/fira-sans-v17-latin-300.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-       url('fonts/fira-sans-v17-latin-300.svg#FiraSans') format('svg'); /* Legacy iOS */
+  src: url('/fonts/fira-sans-v17-latin-300.eot'); /* IE9 compat modes */
+  src: url('/fonts/fira-sans-v17-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/fira-sans-v17-latin-300.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('/fonts/fira-sans-v17-latin-300.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('/fonts/fira-sans-v17-latin-300.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('/fonts/fira-sans-v17-latin-300.svg#FiraSans') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
@@ -16,12 +16,12 @@
   font-family: 'Fira Sans';
   font-style: normal;
   font-weight: 400;
-  src: url('fonts/fira-sans-v17-latin-regular.eot'); /* IE9 compat modes */
-  src: url('fonts/fira-sans-v17-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/fira-sans-v17-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('fonts/fira-sans-v17-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-       url('fonts/fira-sans-v17-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-       url('fonts/fira-sans-v17-latin-regular.svg#FiraSans') format('svg'); /* Legacy iOS */
+  src: url('/fonts/fira-sans-v17-latin-regular.eot'); /* IE9 compat modes */
+  src: url('/fonts/fira-sans-v17-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/fira-sans-v17-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('/fonts/fira-sans-v17-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('/fonts/fira-sans-v17-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('/fonts/fira-sans-v17-latin-regular.svg#FiraSans') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
@@ -29,12 +29,12 @@
   font-family: 'Fira Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('fonts/fira-sans-v17-latin-700.eot'); /* IE9 compat modes */
-  src: url('fonts/fira-sans-v17-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/fira-sans-v17-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('fonts/fira-sans-v17-latin-700.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-       url('fonts/fira-sans-v17-latin-700.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-       url('fonts/fira-sans-v17-latin-700.svg#FiraSans') format('svg'); /* Legacy iOS */
+  src: url('/fonts/fira-sans-v17-latin-700.eot'); /* IE9 compat modes */
+  src: url('/fonts/fira-sans-v17-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/fira-sans-v17-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('/fonts/fira-sans-v17-latin-700.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('/fonts/fira-sans-v17-latin-700.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('/fonts/fira-sans-v17-latin-700.svg#FiraSans') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
@@ -42,12 +42,12 @@
   font-family: Lato;
   font-style: normal;
   font-weight: 300;
-  src: url('fonts/lato-v24-latin-300.eot'); /* IE9 compat modes */
-  src: url('fonts/lato-v24-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/lato-v24-latin-300.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('fonts/lato-v24-latin-300.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-       url('fonts/lato-v24-latin-300.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-       url('fonts/lato-v24-latin-300.svg#Lato') format('svg'); /* Legacy iOS */
+  src: url('/fonts/lato-v24-latin-300.eot'); /* IE9 compat modes */
+  src: url('/fonts/lato-v24-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/lato-v24-latin-300.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('/fonts/lato-v24-latin-300.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('/fonts/lato-v24-latin-300.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('/fonts/lato-v24-latin-300.svg#Lato') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
@@ -55,12 +55,12 @@
   font-family: Lato;
   font-style: normal;
   font-weight: 400;
-  src: url('fonts/lato-v24-latin-regular.eot'); /* IE9 compat modes */
-  src: url('fonts/lato-v24-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/lato-v24-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('fonts/lato-v24-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-       url('fonts/lato-v24-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-       url('fonts/lato-v24-latin-regular.svg#Lato') format('svg'); /* Legacy iOS */
+  src: url('/fonts/lato-v24-latin-regular.eot'); /* IE9 compat modes */
+  src: url('/fonts/lato-v24-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/lato-v24-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('/fonts/lato-v24-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('/fonts/lato-v24-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('/fonts/lato-v24-latin-regular.svg#Lato') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
@@ -68,12 +68,12 @@
   font-family: Lato;
   font-style: normal;
   font-weight: 700;
-  src: url('fonts/lato-v24-latin-700.eot'); /* IE9 compat modes */
-  src: url('fonts/lato-v24-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/lato-v24-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('fonts/lato-v24-latin-700.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-       url('fonts/lato-v24-latin-700.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-       url('fonts/lato-v24-latin-700.svg#Lato') format('svg'); /* Legacy iOS */
+  src: url('/fonts/lato-v24-latin-700.eot'); /* IE9 compat modes */
+  src: url('/fonts/lato-v24-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/lato-v24-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('/fonts/lato-v24-latin-700.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('/fonts/lato-v24-latin-700.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('/fonts/lato-v24-latin-700.svg#Lato') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
@@ -81,12 +81,12 @@
   font-family: 'Permanent Marker';
   font-style: normal;
   font-weight: 400;
-  src: url('fonts/permanent-marker-v16-latin-regular.eot'); /* IE9 compat modes */
-  src: url('fonts/permanent-marker-v16-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/permanent-marker-v16-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('fonts/permanent-marker-v16-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-       url('fonts/permanent-marker-v16-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-       url('fonts/permanent-marker-v16-latin-regular.svg#PermanentMarker') format('svg'); /* Legacy iOS */
+  src: url('/fonts/permanent-marker-v16-latin-regular.eot'); /* IE9 compat modes */
+  src: url('/fonts/permanent-marker-v16-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/permanent-marker-v16-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('/fonts/permanent-marker-v16-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('/fonts/permanent-marker-v16-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('/fonts/permanent-marker-v16-latin-regular.svg#PermanentMarker') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
@@ -94,12 +94,12 @@
   font-family: 'Indie Flower';
   font-style: normal;
   font-weight: 400;
-  src: url('fonts/indie-flower-v23-latin-regular.eot'); /* IE9 compat modes */
-  src: url('fonts/indie-flower-v23-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/indie-flower-v23-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('fonts/indie-flower-v23-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-       url('fonts/indie-flower-v23-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-       url('fonts/indie-flower-v23-latin-regular.svg#IndieFlower') format('svg'); /* Legacy iOS */
+  src: url('/fonts/indie-flower-v23-latin-regular.eot'); /* IE9 compat modes */
+  src: url('/fonts/indie-flower-v23-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/indie-flower-v23-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('/fonts/indie-flower-v23-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('/fonts/indie-flower-v23-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('/fonts/indie-flower-v23-latin-regular.svg#IndieFlower') format('svg'); /* Legacy iOS */
 }
 
 html {
