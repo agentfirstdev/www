@@ -718,6 +718,7 @@ export default function App() {
         w='100%'
         h={ui.heroHeight}
         direction={{ base: 'column', md: 'row' }}
+        justify='center'
         gap='8'
       >
         <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
