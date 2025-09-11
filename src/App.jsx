@@ -866,8 +866,8 @@ export default function App() {
           </CardFooter>
         </Card>
       </Box>
-      <Box id='about' pt={ui.smMargin} align='center'>
-        <Box position='relative' pt='1' w='33%'>
+      <Box id='about' px={{ base: ui.smMargin, md: ui.xlMargin }} pt={ui.smMargin} align='center'>
+        <Box position='relative' pt='1' w={ui.timelineWidth} minW={ui.timelineMinWidth}>
           <svg ref={timeline} width='100%'>
             <g ref={timelineParts} />
           </svg>
@@ -888,9 +888,12 @@ export default function App() {
             h='100%'
           />
         </Box>
+        <Text variant='teammate' mt={ui.mdMargin}>
+          [Insert company description here]
+        </Text>
       </Box>
       <Box id='team' pt={ui.mdMargin}>
-        <Heading as='h1' variant='section'>
+        <Heading as='h1' variant='team' fontSize={ui.teamFontSize}>
           Our team
         </Heading>
         <Flex

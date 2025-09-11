@@ -43,7 +43,6 @@ export default extendTheme({
         _dark: { color: 'brand.primary' }
       },
       variants: {
-        section: { textAlign: 'center', fontWeight: 'normal' },
         tagline: {
           fontFamily: 'tagline',
           _light: { color: 'gray.800' },
@@ -51,6 +50,7 @@ export default extendTheme({
         },
         'post-it': { _light: { color: 'gray.800' }, _dark: { color: 'gray.800' } },
         service: { fontFamily: 'subheading' },
+        team: { textAlign: 'center', fontWeight: 'normal' },
         name: { fontFamily: 'subheading' }
       }
     },

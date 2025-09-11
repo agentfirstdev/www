@@ -123,6 +123,8 @@ export const navRightPosition = { base: 4, lg: 6 };
 // Animation
 export const logoFillStyle = 'hachure';
 export const servicesFillStyle = 'solid';
+export const timelineWidth = '40%';
+export const timelineMinWidth = '480px';
 export const hedStroke = 'transparent';
 export const hedFillStyle = 'solid';
 export const agentStroke = 'transparent';
@@ -184,6 +186,7 @@ export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
 export const postItFontSize = { base: '22px', md: '28px' };
 export const promptFontSize = { base: '22px', md: '18px' };
+export const teamFontSize = { base: '26px', md: '32px' };
 
 // Services
 export const servicesBorder = '1px solid var(--chakra-colors-chakra-border-color)';
