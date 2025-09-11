@@ -170,7 +170,7 @@ export default function App() {
     if (timeline.current) {
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (timelineAnimation.current) {
+          if (!hasAnimatedTimeline.current && timelineAnimation.current) {
             if (entry.isIntersecting) {
               if (entry.intersectionRatio >= ui.timelineMinVisibility) {
                 timelineAnimation.current.play();
