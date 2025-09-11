@@ -180,13 +180,13 @@ export const timelineClearance = 20;
 export const tickLength = 16;
 export const tickDistanceUnit = 420;
 export const tickOffset = 48;
-export const taglineFontSize = { base: '36px', md: '54px' };
-export const ctaFontSize = { base: '24px', md: '20px' };
+export const taglineFontSize = { base: '28px', md: '54px' };
+export const ctaFontSize = { base: '20px', md: '20px' };
 export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
 export const postItFontSize = { base: '22px', md: '28px' };
 export const promptFontSize = '18px';
-export const teamFontSize = { base: '26px', md: '32px' };
+export const teamFontSize = { base: '32px', md: '32px' };
 
 // Services
 export const servicesBorder = '1px solid var(--chakra-colors-chakra-border-color)';
