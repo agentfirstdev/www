@@ -696,17 +696,20 @@ export default function App() {
               <MenuItem as='a' borderRadius={ui.menuTopBorder} href='#services'>
                 Services
               </MenuItem>
+              <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
+                Documentation
+              </MenuItem>
               <MenuItem as='a' borderRadius='0' href='#pricing'>
                 Pricing
               </MenuItem>
               <MenuItem as='a' borderRadius='0' href={ui.demoUrl} target='_blank' rel='noopener'>
                 Live demo
               </MenuItem>
-              <MenuItem as='a' borderRadius='0' href='#team'>
-                Our team
+              <MenuItem as='a' borderRadius='0' href='#about'>
+                About us
               </MenuItem>
-              <MenuItem as='a' borderRadius={ui.menuBottomBorder} href='#contact'>
-                Contact info
+              <MenuItem as='a' borderRadius={ui.menuBottomBorder} href={ui.llmsTxtUrl}>
+                llms.txt
               </MenuItem>
             </MenuList>
           </Menu>
