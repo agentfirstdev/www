@@ -85,7 +85,7 @@ export default extendTheme({
           _dark: { color: 'brand.primary' }
         },
         bold: { fontWeight: 'bold' },
-        boldFinePrint: { fontWeight: 600 },
+        boldFinePrint: { fontWeight: 500 },
         co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
       }
@@ -123,7 +123,7 @@ export default extendTheme({
           borderBottomWidth: '2px',
           p: 0,
           h: '24px',
-          fontWeight: 600,
+          fontWeight: 500,
           _light: {
             borderBottomColor: 'accent.secondary',
             _hover: { borderColor: 'brand.secondary' },
