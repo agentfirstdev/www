@@ -943,11 +943,11 @@ export default function App() {
                 , which is developing an alternative to ads and paywalls for monetizing spare
                 computing resources and was named Proxyway’s 2025 “Newcomer of the Year” for its
                 {' bandwidth monetization. '}
-                <Text as='strong' variant='co'>
+                <Text as='strong' variant='footerCo'>
                   Agent First
                 </Text>
                 {' is a spinoff of '}
-                <Text as='strong' variant='boldFinePrint'>
+                <Text as='strong' variant='footerBold'>
                   Massive
                 </Text>
                 {' that’s focused on serving AI agents.'}
@@ -1058,15 +1058,15 @@ export default function App() {
                   Franck
                 </Link>
                 {', who cofounded the startup community '}
-                <Text as='strong' variant='boldFinePrint'>
+                <Text as='strong' variant='footerBold'>
                   Startup Weekend
                 </Text>
                 {' and AI investor '}
-                <Text as='strong' variant='boldFinePrint'>
+                <Text as='strong' variant='footerBold'>
                   No Cap
                 </Text>
                 {', to run the boring parts of '}
-                <Text as='strong' variant='co'>
+                <Text as='strong' variant='footerCo'>
                   Agent First
                 </Text>
                 {' and to dogfood our services. Although '}

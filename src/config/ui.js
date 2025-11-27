@@ -99,7 +99,7 @@ export const taglineFont = '"Fira Sans", sans-serif';
 export const headingFont = '"Permanent Marker", cursive';
 export const subheadingFont = '"Indie Flower", cursive';
 export const bodyFont = '"Fira Sans", sans-serif';
-export const finePrintFont = '"Fira Sans Condensed", sans-serif';
+export const footerFont = '"Fira Sans Condensed", sans-serif';
 
 // Controls
 export const controlDimension = '48px';
@@ -207,7 +207,7 @@ export const siteOldDimension = 640;
 export const githubOldDimension = 640;
 export const linkedinOldDimension = 640;
 export const xOldDimension = 640;
-export const cardWidth = { base: '100%', lg: '400px' };
+export const cardWidth = { base: '100%', lg: '420px' };
 export const nameFont = { base: '2xl', md: '3xl' };
 export const hedMargin = { base: '-5.5%', lg: '-16px' };
 export const hedNewWidth = { base: '55%', lg: '160px' };

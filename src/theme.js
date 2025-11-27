@@ -28,7 +28,7 @@ export default extendTheme({
     heading: ui.headingFont,
     subheading: ui.subheadingFont,
     body: ui.bodyFont,
-    finePrint: ui.finePrintFont
+    footer: ui.footerFont
   },
   components: {
     Divider: {
@@ -74,19 +74,20 @@ export default extendTheme({
         service: { mt: 4, _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
         teammate: {
           mt: 2,
-          fontFamily: 'finePrint',
+          fontFamily: 'footer',
           _light: { fontWeight: 300, color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
         attribution: {
-          fontFamily: 'tagline',
+          fontFamily: 'footer',
           fontSize: { base: 'xs', md: 'sm' },
           _light: { fontWeight: 300, color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
         bold: { fontWeight: 'bold' },
-        boldFinePrint: { fontWeight: 500 },
+        footerBold: { fontWeight: 500 },
         co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
+        footerCo: { mx: '.1em', fontFamily: 'heading', fontWeight: 'normal' },
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
       }
     },
