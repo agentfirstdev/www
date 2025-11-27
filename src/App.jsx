@@ -947,7 +947,7 @@ export default function App() {
                   Agent First
                 </Text>
                 {' is a spinoff of '}
-                <Text as='strong' variant='bold'>
+                <Text as='strong' variant='boldFinePrint'>
                   Massive
                 </Text>
                 {' that’s focused on serving AI agents.'}
@@ -1058,11 +1058,11 @@ export default function App() {
                   Franck
                 </Link>
                 {', who cofounded the startup community '}
-                <Text as='strong' variant='bold'>
+                <Text as='strong' variant='boldFinePrint'>
                   Startup Weekend
                 </Text>
                 {' and AI investor '}
-                <Text as='strong' variant='bold'>
+                <Text as='strong' variant='boldFinePrint'>
                   No Cap
                 </Text>
                 {', to run the boring parts of '}

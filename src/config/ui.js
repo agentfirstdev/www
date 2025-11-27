@@ -98,7 +98,8 @@ export const postItColors = [
 export const taglineFont = '"Fira Sans", sans-serif';
 export const headingFont = '"Permanent Marker", cursive';
 export const subheadingFont = '"Indie Flower", cursive';
-export const bodyFont = 'Lato, sans-serif';
+export const bodyFont = '"Fira Sans", sans-serif';
+export const finePrintFont = '"Fira Sans Condensed", sans-serif';
 
 // Controls
 export const controlDimension = '48px';
