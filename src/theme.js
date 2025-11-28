@@ -163,7 +163,11 @@ export default extendTheme({
         fontFamily: 'body',
         fontWeight: 'bold',
         _hover: { borderColor: 'transparent' },
-        _focus: { outline: 'none', shadow: ui.shadowStyle }
+        _focus: { outline: 'none', shadow: ui.shadowStyle },
+        _disabled: {
+          _light: { _hover: { background: 'accent.secondary !important' } },
+          _dark: { _hover: { background: 'brand.primary !important' } }
+        }
       },
       variants: {
         solid: {

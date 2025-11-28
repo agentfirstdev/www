@@ -849,7 +849,7 @@ export default function App() {
             </Text>
           </CardBody>
           <CardFooter>
-            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight}>
+            <Button w={ui.buttonWidth} h={ui.buttonHeight} isDisabled>
               Join waitlist
             </Button>
           </CardFooter>
