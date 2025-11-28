@@ -41,6 +41,7 @@ export default function App() {
   const services = useRef();
   const timeline = useRef();
   const timelineParts = useRef();
+  const team = useRef();
   const hedcut = useRef();
   const agent = useRef();
   const githubIcon = useRef();
@@ -65,6 +66,7 @@ export default function App() {
   const promptTimeouts = useRef();
   const candidatePrompt = useRef();
   const hasAnimatedTimeline = useRef(false);
+  const hasScrolledToTeam = useRef(false);
   const [logoPath, setLogoPath] = useState(null);
   const [servicesPath, setServicesPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
@@ -167,12 +169,16 @@ export default function App() {
   };
 
   useEffect(() => {
-    if (timeline.current) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (!hasAnimatedTimeline.current && timelineAnimation.current) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (
+            entry.target == timeline.current &&
+            !hasAnimatedTimeline.current &&
+            timelineAnimation.current
+          ) {
             if (entry.isIntersecting) {
-              if (entry.intersectionRatio >= ui.timelineMinVisibility) {
+              if (entry.intersectionRatio >= ui.minVisibility) {
                 timelineAnimation.current.play();
               }
             } else {
@@ -181,16 +187,21 @@ export default function App() {
               timeline.current.classList.remove('animated');
             }
           }
-        },
-        { root: null, threshold: [0, 0, ui.timelineMinVisibility, 1] }
-      );
 
-      observer.observe(timeline.current);
+          if (entry.target == team.current && !hasScrolledToTeam.current && entry.isIntersecting) {
+            hasScrolledToTeam.current = true;
+          }
+        });
+      },
+      { root: null, threshold: [0, ui.minVisibility, 1] }
+    );
 
-      return () => {
-        observer.disconnect();
-      };
-    }
+    if (timeline.current) observer.observe(timeline.current);
+    if (team.current) observer.observe(team.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -394,7 +405,7 @@ export default function App() {
           linkedinPath &&
           xPath &&
           sitePath &&
-          hasAnimatedTimeline.current
+          hasScrolledToTeam.current
         ) {
           hedFrames.current = [];
           agentFrames.current = [];
@@ -896,7 +907,7 @@ export default function App() {
           [Insert company description here]
         </Text>
       </Box>
-      <Box id='team' pt={ui.mdMargin}>
+      <Box ref={team} id='team' pt={ui.mdMargin}>
         <Heading as='h1' variant='team' fontSize={ui.teamFontSize}>
           Our team
         </Heading>
