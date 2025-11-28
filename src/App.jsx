@@ -172,15 +172,15 @@ export default function App() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const isVisible = entry.isIntersecting && entry.intersectionRatio >= ui.minVisibility;
+
           if (
             entry.target == timeline.current &&
             !hasAnimatedTimeline.current &&
             timelineAnimation.current
           ) {
-            if (entry.isIntersecting) {
-              if (entry.intersectionRatio >= ui.minVisibility) {
-                timelineAnimation.current.play();
-              }
+            if (isVisible) {
+              timelineAnimation.current.play();
             } else {
               timelineAnimation.current.pause();
               timelineAnimation.current.seek(0);
@@ -188,7 +188,7 @@ export default function App() {
             }
           }
 
-          if (entry.target == team.current && !hasScrolledToTeam.current && entry.isIntersecting) {
+          if (entry.target == team.current && !hasScrolledToTeam.current && isVisible) {
             hasScrolledToTeam.current = true;
           }
         });
