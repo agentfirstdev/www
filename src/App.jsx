@@ -97,7 +97,7 @@ export default function App() {
 
     return tempCanvas;
   };
-  const animateCompletion = (index) => {
+  const animatePrompt = (index) => {
     promptTimeouts.current?.forEach(clearTimeout);
 
     promptBox.current.placeholder = '';
@@ -116,12 +116,12 @@ export default function App() {
       const divisor = ui.initialPlaceholders.length + 1;
       let index = 0;
 
-      animateCompletion(index);
+      animatePrompt(index);
 
       promptInterval.current = setInterval(() => {
         index = (index + 1) % divisor;
 
-        if (index < ui.initialPlaceholders.length) animateCompletion(index);
+        if (index < ui.initialPlaceholders.length) animatePrompt(index);
       }, ui.promptRefreshMs);
     }
   }, []);
