@@ -37,6 +37,7 @@ import './App.css';
 
 export default function App() {
   const logotype = useRef();
+  const completion = useRef();
   const promptBox = useRef();
   const services = useRef();
   const timeline = useRef();
@@ -65,6 +66,7 @@ export default function App() {
   const promptInterval = useRef();
   const promptTimeouts = useRef();
   const candidatePrompt = useRef();
+  const hasAnimatedCompletion = useRef(false);
   const hasAnimatedTimeline = useRef(false);
   const hasScrolledToTeam = useRef(false);
   const [logoPath, setLogoPath] = useState(null);
@@ -195,6 +197,26 @@ export default function App() {
       },
       { root: null, threshold: [0, ui.minVisibility, 1] }
     );
+
+    if (completion.current && !hasAnimatedCompletion.current) {
+      hasAnimatedCompletion.current = true;
+
+      for (let i = 0; i < ui.blinkCount * 2; i++) {
+        setTimeout(() => {
+          if (!(i % 2)) {
+            completion.current.textContent = '|';
+          } else {
+            completion.current.textContent = '';
+          }
+        }, i * ui.cursorRefreshMs);
+      }
+
+      ui.completion.forEach(({ delay, token }) => {
+        setTimeout(() => {
+          completion.current.textContent += token;
+        }, delay + ui.blinkCount * 2 * ui.cursorRefreshMs)
+      });
+    }
 
     if (timeline.current) observer.observe(timeline.current);
     if (team.current) observer.observe(team.current);
@@ -604,12 +626,12 @@ export default function App() {
     servicesFill
   ]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (!isLoading && promptBox.current) {
       promptBox.current.focus();
       animatePromptBox();
     }
-  }, [isLoading, animatePromptBox]);
+  }, [isLoading, animatePromptBox]); */
 
   useEffect(() => {
     let link = document.getElementById(modeId);
@@ -625,13 +647,13 @@ export default function App() {
     link.href = `atom-one-${colorMode}${import.meta.env.PROD ? '.min' : ''}.css`;
   }, [colorMode]);
 
-  useLayoutEffect(() => {
+  /* useLayoutEffect(() => {
     if (!promptBoxHeight.current && promptBox.current) {
       promptBoxHeight.current = `${promptBox.current.offsetHeight}px`;
     }
 
     promptBox.current.focus();
-  }, []);
+  }, []); */
 
   return (
     <Flex w='100%' minH='100vh' direction='column'>
@@ -736,7 +758,7 @@ export default function App() {
         gap='8'
       >
         <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
-          <uix.Tagline />
+          <uix.Tagline ref={completion} />
         </Flex>
         <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
           <Textarea

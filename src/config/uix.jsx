@@ -1,12 +1,10 @@
-import { useRef } from 'react';
+import { forwardRef } from 'react';
 import { Box, Heading, Text } from '@chakra-ui/react';
 
 import * as ui from './ui';
 
 // Strings
-export const Tagline = () => {
-  const completion = useRef();
-
+export const Tagline = forwardRef((props, ref) => {
   return (
     <>
       <Heading as='h1' variant='tagline' fontSize={ui.taglineFontSize}>
@@ -17,12 +15,12 @@ export const Tagline = () => {
           Missing
         </Text>
         {' services for '}
-        <Box as='span' display='inline-block' position='relative'>
+        <Box as='span' display='inline-block' position='relative' textAlign='left'>
           <Text fontSize={ui.taglineFontSize} visibility='hidden' pointerEvents='none'>
             agent-first
           </Text>
           <Text
-            ref={completion}
+            ref={ref}
             position='absolute'
             inset='0'
             bgClip='text'
@@ -40,4 +38,4 @@ export const Tagline = () => {
       <Text variant='cta'>Enhance your agent in minutes with world-class research abilities</Text>
     </>
   );
-};
+});

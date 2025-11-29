@@ -24,19 +24,17 @@ export const searchUrl = 'https://doc.agentfirst.dev/search';
 export const browsingUrl = 'https://doc.agentfirst.dev/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/geotargeting';
 export const completion = [
-  [
-    { delay: 0, token: 'a' },
-    { delay: 26, token: 'g' },
-    { delay: 61, token: 'e' },
-    { delay: 108, token: 'n' },
-    { delay: 131, token: 't' },
-    { delay: 169, token: '-' },
-    { delay: 203, token: 'f' },
-    { delay: 258, token: 'i' },
-    { delay: 290, token: 'r' },
-    { delay: 334, token: 's' },
-    { delay: 353, token: 't' }
-  ]
+  { delay: 0, token: 'a' },
+  { delay: 26, token: 'g' },
+  { delay: 61, token: 'e' },
+  { delay: 108, token: 'n' },
+  { delay: 131, token: 't' },
+  { delay: 169, token: '-' },
+  { delay: 203, token: 'f' },
+  { delay: 258, token: 'i' },
+  { delay: 290, token: 'r' },
+  { delay: 334, token: 's' },
+  { delay: 353, token: 't' }
 ];
 export const initialPlaceholders = [
   [
@@ -152,6 +150,8 @@ export const blueprintStrokeWidth = 4;
 export const blueprintAngle = -40;
 export const blueprintRefreshMs = 250;
 export const logoRoughness = 2;
+export const blinkCount = 3;
+export const cursorRefreshMs = 600;
 export const promptRefreshMs = 4000;
 export const promptDelayMs = 1000;
 export const servicesRoughness = 2;
