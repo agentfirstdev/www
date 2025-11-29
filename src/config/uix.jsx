@@ -4,7 +4,7 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import * as ui from './ui';
 
 // Strings
-export const Tagline = forwardRef((props, ref) => {
+export const Tagline = forwardRef(function Tagline(props, ref) {
   return (
     <>
       <Heading as='h1' variant='tagline' fontSize={ui.taglineFontSize}>
