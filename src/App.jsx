@@ -201,7 +201,7 @@ export default function App() {
     if (completion.current && !hasAnimatedCompletion.current) {
       hasAnimatedCompletion.current = true;
       const dutyCount = ui.blinkCount * 2;
-      const blinkDelay = dutyCount * ui.cursorDutyMs;
+      const blinkDelay = dutyCount * ui.blinkIntervalMs;
 
       for (let i = 0; i < dutyCount; i++) {
         setTimeout(() => {
@@ -210,7 +210,7 @@ export default function App() {
           } else {
             completion.current.textContent = '';
           }
-        }, i * ui.cursorDutyMs);
+        }, i * ui.blinkIntervalMs);
       }
 
       ui.completion.forEach(({ delay, token }) => {
