@@ -139,7 +139,7 @@ export default function App() {
   const handlePromptKeyPress = (event) => {
     if (event.key == 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      handlePromptSubmit();
+      // handlePromptSubmit();
     }
   };
   const handlePromptChange = (event) => {
