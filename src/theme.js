@@ -59,7 +59,8 @@ export default extendTheme({
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
         cta: {
-          my: 2,
+          my: 4,
+          // my: 2,
           fontFamily: 'tagline',
           fontSize: ui.ctaFontSize,
           color: 'chakra-label-color'

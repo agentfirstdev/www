@@ -755,14 +755,21 @@ export default function App() {
         px={{ base: ui.smMargin, md: ui.xlMargin }}
         w='100%'
         h={ui.heroHeight}
-        direction={{ base: 'column', md: 'row' }}
+        direction={ui.heroDirection}
         justify='center'
+        align='center'
         gap='8'
       >
-        <Flex w={{ base: '100%', md: '50%' }} direction='column' justify='center' align='center'>
+        <Flex
+          w={ui.taglineWidth}
+          maxW={ui.taglineMaxWidth}
+          direction='column'
+          justify='center'
+          align='center'
+        >
           <uix.Tagline ref={completion} />
         </Flex>
-        <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
+        {/* <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
           <Textarea
             ref={promptBox}
             rows='1'
@@ -786,7 +793,7 @@ export default function App() {
               }}
             />
           </Tooltip>
-        </Flex>
+        </Flex> */}
       </Flex>
       <Box
         id='services'
