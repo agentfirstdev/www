@@ -200,21 +200,23 @@ export default function App() {
 
     if (completion.current && !hasAnimatedCompletion.current) {
       hasAnimatedCompletion.current = true;
+      const dutyCount = ui.blinkCount * 2;
+      const blinkDelay = dutyCount * ui.cursorDutyMs;
 
-      for (let i = 0; i < ui.blinkCount * 2; i++) {
+      for (let i = 0; i < dutyCount; i++) {
         setTimeout(() => {
           if (!(i % 2)) {
             completion.current.textContent = '|';
           } else {
             completion.current.textContent = '';
           }
-        }, i * ui.cursorRefreshMs);
+        }, i * ui.cursorDutyMs);
       }
 
       ui.completion.forEach(({ delay, token }) => {
         setTimeout(() => {
           completion.current.textContent += token;
-        }, delay + ui.blinkCount * 2 * ui.cursorRefreshMs)
+        }, delay + blinkDelay)
       });
     }
 
