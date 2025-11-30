@@ -73,6 +73,7 @@ export default extendTheme({
           color: 'gray.800'
         },
         service: { mt: 4, _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
+        about: { _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
         teammate: {
           mt: 2,
           fontFamily: 'footer',

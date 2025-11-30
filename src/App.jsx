@@ -934,8 +934,14 @@ export default function App() {
             h='100%'
           />
         </Box>
-        <Text variant='teammate' mt={ui.mdMargin}>
-          [Insert company description here]
+        <Text variant='about' mx={ui.lgMargin} mt={ui.mdMargin} textAlign='left'>
+          Many of the biggest winners in the history of computing are drawn from the software
+          developers who figured out how to exploit unique features of emerging platforms, from
+          desktop computing to AI.
+        </Text>
+        <Text variant='about' mx={ui.lgMargin} mt={ui.smMargin} textAlign='left'>
+          We’re betting agent-first development is the next growth opportunity and are providing the
+          infrastructure tools to let you focus on creating novel AI agents.
         </Text>
       </Box>
       <Box ref={team} id='team' pt={ui.mdMargin}>
