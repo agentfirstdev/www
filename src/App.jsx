@@ -935,7 +935,7 @@ export default function App() {
           />
         </Box>
         <Text variant='about' mx={ui.lgMargin} mt={ui.mdMargin} textAlign='left'>
-          Many of the most successful technology companies started with developers who figured out
+          Many of the most successful technology companies were founded on developers figuring out
           how to build natively on emerging platforms, from desktop computing to AI. We’re betting
           agent-first development is the next big opportunity and are providing infrastructure tools
           that let you focus on creating unique agents.
