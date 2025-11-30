@@ -937,8 +937,8 @@ export default function App() {
         <Text variant='about' mx={ui.lgMargin} mt={ui.mdMargin} textAlign='left'>
           Many of the most successful technology companies were founded on developers leveraging new
           features of emerging platforms, from desktop computing to AI. We’re betting agent-first
-          development is the next big opportunity and are providing the basic tools so you can focus
-          on building unique, native agents.
+          development is the next big opportunity and are providing the fundamental tools so you can
+          focus on building unique, native agents.
         </Text>
       </Box>
       <Box ref={team} id='team' pt={ui.mdMargin}>
