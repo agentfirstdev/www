@@ -681,9 +681,9 @@ export default function App() {
             <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
               Pricing
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
+            {/* <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
               Live demo
-            </Link>
+            </Link> */}
             <Link variant='nav' ml={ui.itemMargin} href='#about'>
               About us
             </Link>
