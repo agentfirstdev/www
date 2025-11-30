@@ -935,13 +935,12 @@ export default function App() {
           />
         </Box>
         <Text variant='about' mx={ui.lgMargin} mt={ui.mdMargin} textAlign='left'>
-          Many of the most successful tech companies owe their origins to software developers who
-          figured out how to take advantage of new features of emerging platforms, from desktop
-          computing to AI.
+          Many of the most successful technology companies started when developers figured out how
+          to build natively on emerging platforms, from desktop computing to AI.
         </Text>
         <Text variant='about' mx={ui.lgMargin} mt={ui.smMargin} textAlign='left'>
           We’re betting agent-first development is the next big opportunity and are providing
-          infrastructure tools that let you focus on creating native agents.
+          infrastructure tools that let you focus on creating unique agents.
         </Text>
       </Box>
       <Box ref={team} id='team' pt={ui.mdMargin}>
