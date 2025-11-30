@@ -940,8 +940,8 @@ export default function App() {
           desktop computing to AI.
         </Text>
         <Text variant='about' mx={ui.lgMargin} mt={ui.smMargin} textAlign='left'>
-          We’re betting agent-first development is the next growth opportunity and are providing the
-          infrastructure tools to let you focus on creating novel AI agents.
+          We’re betting agent-first development is the next market opportunity and are providing
+          infrastructure tools so you can focus on creating novel agents.
         </Text>
       </Box>
       <Box ref={team} id='team' pt={ui.mdMargin}>
