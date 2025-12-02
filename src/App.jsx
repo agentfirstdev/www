@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { useRef, useState, useCallback, useEffect, useLayoutEffect } from 'react';
 import {
   Box,
@@ -10,7 +11,7 @@ import {
   Text,
   Code,
   Link,
-  Textarea,
+  Textarea, // eslint-disable-line no-unused-vars
   Button,
   IconButton,
   Menu,
@@ -23,6 +24,7 @@ import {
   useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react';
+// eslint-disable-next-line no-unused-vars
 import { SunIcon, MoonIcon, HamburgerIcon, AddIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 import { createTimeline } from 'animejs';
@@ -38,7 +40,7 @@ import './App.css';
 export default function App() {
   const logotype = useRef();
   const completion = useRef();
-  const promptBox = useRef();
+  // const promptBox = useRef();
   const services = useRef();
   const timeline = useRef();
   const timelineParts = useRef();
@@ -53,7 +55,7 @@ export default function App() {
   const brianLinkedinIcon = useRef();
   const brianXIcon = useRef();
   const logoFrames = useRef();
-  const promptBoxHeight = useRef();
+  // const promptBoxHeight = useRef();
   const servicesFrames = useRef();
   const timelineAnimation = useRef();
   const hedFrames = useRef();
@@ -63,9 +65,9 @@ export default function App() {
   const xFrames = useRef();
   const siteFrames = useRef();
   const frameIndex = useRef();
-  const promptInterval = useRef();
-  const promptTimeouts = useRef();
-  const candidatePrompt = useRef();
+  // const promptInterval = useRef();
+  // const promptTimeouts = useRef();
+  // const candidatePrompt = useRef();
   const hasCachedFrames = useRef(false);
   const hasAnimatedCompletion = useRef(false);
   const hasAnimatedTimeline = useRef(false);
@@ -78,7 +80,7 @@ export default function App() {
   const [linkedinPath, setLinkedinPath] = useState(null);
   const [xPath, setXPath] = useState(null);
   const [sitePath, setSitePath] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
@@ -100,7 +102,7 @@ export default function App() {
 
     return tempCanvas;
   };
-  const animatePrompt = (index) => {
+  /* const animatePrompt = (index) => {
     promptTimeouts.current?.forEach(clearTimeout);
 
     promptBox.current.placeholder = '';
@@ -128,7 +130,7 @@ export default function App() {
       }, ui.promptRefreshMs);
     }
   }, []);
-  /* const handleKeyPress = (event, commitAction, cancelAction) => {
+  const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
       event.preventDefault();
       commitAction(event);
@@ -136,7 +138,7 @@ export default function App() {
       event.preventDefault();
       cancelAction(event);
     }
-  }; */
+  };
   const handlePromptKeyPress = (event) => {
     if (event.key == 'Enter' && !event.shiftKey) {
       event.preventDefault();
@@ -160,16 +162,16 @@ export default function App() {
     animatePromptBox();
     promptBox.current.focus();
 
-    /* completionsController.current?.abort();
-    replayTimeouts.current?.forEach(clearTimeout);
+    // completionsController.current?.abort();
+    // replayTimeouts.current?.forEach(clearTimeout);
 
-    conversationBuffer.current = {};
-    completionsController.current = null;
-    replayTimeouts.current = [];
+    // conversationBuffer.current = {};
+    // completionsController.current = null;
+    // replayTimeouts.current = [];
 
-    setConversation(conversationBuffer.current);
-    setError(''); */
-  };
+    // setConversation(conversationBuffer.current);
+    // setError('');
+  }; */
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -217,7 +219,7 @@ export default function App() {
       ui.completion.forEach(({ delay, token }) => {
         setTimeout(() => {
           completion.current.textContent += token;
-        }, delay + blinkDelay)
+        }, delay + blinkDelay);
       });
     }
 
