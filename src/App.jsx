@@ -440,6 +440,7 @@ export default function App() {
           sitePath &&
           hasCachedFrames.current
         ) {
+          const shortIndex = frameIndex.current % Math.round(ui.frameCount / 2);
           const hedCanvas = hedcut.current;
           const hedContext = hedCanvas.getContext('2d');
           const agentCanvas = agent.current;
@@ -459,8 +460,8 @@ export default function App() {
           const brianXCanvas = brianXIcon.current;
           const brianXContext = brianXCanvas.getContext('2d');
 
-          if (hedFrames.current[frameIndex.current]) {
-            frame = hedFrames.current[frameIndex.current];
+          if (hedFrames.current[shortIndex]) {
+            frame = hedFrames.current[shortIndex];
           } else {
             frame = generateFrame(hedCanvas, hedPath, {
               stroke: ui.hedStroke,
@@ -478,8 +479,8 @@ export default function App() {
           hedContext.drawImage(frame, 0, 0);
           if (!hedcut.current.classList.contains('loaded')) hedcut.current.classList.add('loaded');
 
-          if (agentFrames.current[frameIndex.current]) {
-            frame = agentFrames.current[frameIndex.current];
+          if (agentFrames.current[shortIndex]) {
+            frame = agentFrames.current[shortIndex];
           } else {
             frame = generateFrame(agentCanvas, agentPath, {
               stroke: ui.agentStroke,
@@ -497,8 +498,8 @@ export default function App() {
           agentContext.drawImage(frame, 0, 0);
           if (!agent.current.classList.contains('loaded')) agent.current.classList.add('loaded');
 
-          if (githubFrames.current[frameIndex.current]) {
-            frame = githubFrames.current[frameIndex.current];
+          if (githubFrames.current[shortIndex]) {
+            frame = githubFrames.current[shortIndex];
           } else {
             frame = generateFrame(githubCanvas, githubPath, {
               stroke: ui.iconStroke,
@@ -525,8 +526,8 @@ export default function App() {
             brianGithubIcon.current.classList.add('loaded');
           }
 
-          if (linkedinFrames.current[frameIndex.current]) {
-            frame = linkedinFrames.current[frameIndex.current];
+          if (linkedinFrames.current[shortIndex]) {
+            frame = linkedinFrames.current[shortIndex];
           } else {
             frame = generateFrame(linkedinCanvas, linkedinPath, {
               stroke: ui.iconStroke,
@@ -558,8 +559,8 @@ export default function App() {
             brianLinkedinIcon.current.classList.add('loaded');
           }
 
-          if (xFrames.current[frameIndex.current]) {
-            frame = xFrames.current[frameIndex.current];
+          if (xFrames.current[shortIndex]) {
+            frame = xFrames.current[shortIndex];
           } else {
             frame = generateFrame(xCanvas, xPath, {
               stroke: ui.iconStroke,
@@ -583,8 +584,8 @@ export default function App() {
             brianXIcon.current.classList.add('loaded');
           }
 
-          if (siteFrames.current[frameIndex.current]) {
-            frame = siteFrames.current[frameIndex.current];
+          if (siteFrames.current[shortIndex]) {
+            frame = siteFrames.current[shortIndex];
           } else {
             frame = generateFrame(siteCanvas, sitePath, {
               stroke: ui.iconStroke,
