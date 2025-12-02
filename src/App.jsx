@@ -440,7 +440,8 @@ export default function App() {
           sitePath &&
           hasCachedFrames.current
         ) {
-          const shortIndex = frameIndex.current % Math.round(ui.frameCount / 2);
+          const limitedIndex =
+            frameIndex.current % Math.round(ui.frameCount / ui.frameCountLimiter);
           const hedCanvas = hedcut.current;
           const hedContext = hedCanvas.getContext('2d');
           const agentCanvas = agent.current;
@@ -460,8 +461,8 @@ export default function App() {
           const brianXCanvas = brianXIcon.current;
           const brianXContext = brianXCanvas.getContext('2d');
 
-          if (hedFrames.current[shortIndex]) {
-            frame = hedFrames.current[shortIndex];
+          if (hedFrames.current[limitedIndex]) {
+            frame = hedFrames.current[limitedIndex];
           } else {
             frame = generateFrame(hedCanvas, hedPath, {
               stroke: ui.hedStroke,
@@ -479,8 +480,8 @@ export default function App() {
           hedContext.drawImage(frame, 0, 0);
           if (!hedcut.current.classList.contains('loaded')) hedcut.current.classList.add('loaded');
 
-          if (agentFrames.current[shortIndex]) {
-            frame = agentFrames.current[shortIndex];
+          if (agentFrames.current[limitedIndex]) {
+            frame = agentFrames.current[limitedIndex];
           } else {
             frame = generateFrame(agentCanvas, agentPath, {
               stroke: ui.agentStroke,
@@ -498,8 +499,8 @@ export default function App() {
           agentContext.drawImage(frame, 0, 0);
           if (!agent.current.classList.contains('loaded')) agent.current.classList.add('loaded');
 
-          if (githubFrames.current[shortIndex]) {
-            frame = githubFrames.current[shortIndex];
+          if (githubFrames.current[limitedIndex]) {
+            frame = githubFrames.current[limitedIndex];
           } else {
             frame = generateFrame(githubCanvas, githubPath, {
               stroke: ui.iconStroke,
@@ -526,8 +527,8 @@ export default function App() {
             brianGithubIcon.current.classList.add('loaded');
           }
 
-          if (linkedinFrames.current[shortIndex]) {
-            frame = linkedinFrames.current[shortIndex];
+          if (linkedinFrames.current[limitedIndex]) {
+            frame = linkedinFrames.current[limitedIndex];
           } else {
             frame = generateFrame(linkedinCanvas, linkedinPath, {
               stroke: ui.iconStroke,
@@ -559,8 +560,8 @@ export default function App() {
             brianLinkedinIcon.current.classList.add('loaded');
           }
 
-          if (xFrames.current[shortIndex]) {
-            frame = xFrames.current[shortIndex];
+          if (xFrames.current[limitedIndex]) {
+            frame = xFrames.current[limitedIndex];
           } else {
             frame = generateFrame(xCanvas, xPath, {
               stroke: ui.iconStroke,
@@ -584,8 +585,8 @@ export default function App() {
             brianXIcon.current.classList.add('loaded');
           }
 
-          if (siteFrames.current[shortIndex]) {
-            frame = siteFrames.current[shortIndex];
+          if (siteFrames.current[limitedIndex]) {
+            frame = siteFrames.current[limitedIndex];
           } else {
             frame = generateFrame(siteCanvas, sitePath, {
               stroke: ui.iconStroke,

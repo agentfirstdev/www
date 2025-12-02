@@ -146,6 +146,7 @@ export const agentFillStyle = 'solid';
 export const iconStroke = 'transparent';
 export const iconFillStyle = 'dots';
 export const frameCount = 12;
+export const frameCountLimiter = 2;
 export const blueprintStrokeWidth = 4;
 export const blueprintAngle = -40;
 export const blueprintRefreshMs = 250;
