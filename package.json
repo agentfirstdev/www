@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "lint": "npx eslint -c linter/eslint.config.js",
+    "lint-sql": "bash -c 'diff -u \"$1\" <(./linter/3p/pgFormatter/pg_format -c linter/.pg_format \"$1\")' --",
     "build": "vite build",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -27,19 +28,9 @@
     "roughjs": "^4.6.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.0",
-    "@babel/eslint-parser": "^7.28.0",
-    "@babel/preset-react": "^7.27.1",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.3",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.1",
-    "prettier": "^3.6.2",
     "rollup-plugin-visualizer": "^6.0.3",
     "vite": "^4.4.0"
   }
