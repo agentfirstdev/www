@@ -68,7 +68,7 @@ export default function App() {
   const candidatePrompt = useRef();
   const hasAnimatedCompletion = useRef(false);
   const hasAnimatedTimeline = useRef(false);
-  const hasScrolledToTeam = useRef(false);
+  // const hasScrolledToTeam = useRef(false);
   const [logoPath, setLogoPath] = useState(null);
   const [servicesPath, setServicesPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
@@ -190,9 +190,9 @@ export default function App() {
             }
           }
 
-          if (entry.target == team.current && !hasScrolledToTeam.current && isVisible) {
+          /* if (entry.target == team.current && !hasScrolledToTeam.current && isVisible) {
             hasScrolledToTeam.current = true;
-          }
+          } */
         });
       },
       { root: null, threshold: [0, ui.minVisibility, 1] }
@@ -221,7 +221,7 @@ export default function App() {
     }
 
     if (timeline.current) observer.observe(timeline.current);
-    if (team.current) observer.observe(team.current);
+    // if (team.current) observer.observe(team.current);
 
     return () => {
       observer.disconnect();
@@ -371,6 +371,12 @@ export default function App() {
     if (
       logoPath &&
       servicesPath &&
+      hedPath &&
+      agentPath &&
+      githubPath &&
+      linkedinPath &&
+      xPath &&
+      sitePath &&
       blueprintStroke &&
       blueprintFill &&
       servicesStroke &&
@@ -378,11 +384,35 @@ export default function App() {
     ) {
       logoFrames.current = [];
       servicesFrames.current = [];
+      hedFrames.current = [];
+      agentFrames.current = [];
+      githubFrames.current = [];
+      linkedinFrames.current = [];
+      xFrames.current = [];
+      siteFrames.current = [];
       frameIndex.current = 0;
       const logoCanvas = logotype.current;
       const logoContext = logoCanvas.getContext('2d');
       const servicesCanvas = services.current;
       const servicesContext = servicesCanvas.getContext('2d');
+      const hedCanvas = hedcut.current;
+      const hedContext = hedCanvas.getContext('2d');
+      const agentCanvas = agent.current;
+      const agentContext = agentCanvas.getContext('2d');
+      const githubCanvas = githubIcon.current;
+      const githubContext = githubCanvas.getContext('2d');
+      const linkedinCanvas = linkedinIcon.current;
+      const linkedinContext = linkedinCanvas.getContext('2d');
+      const xCanvas = xIcon.current;
+      const xContext = xCanvas.getContext('2d');
+      const siteCanvas = siteIcon.current;
+      const siteContext = siteCanvas.getContext('2d');
+      const brianGithubCanvas = brianGithubIcon.current;
+      const brianGithubContext = brianGithubCanvas.getContext('2d');
+      const brianLinkedinCanvas = brianLinkedinIcon.current;
+      const brianLinkedinContext = brianLinkedinCanvas.getContext('2d');
+      const brianXCanvas = brianXIcon.current;
+      const brianXContext = brianXCanvas.getContext('2d');
       const renderFrames = () => {
         let frame;
 
@@ -422,186 +452,123 @@ export default function App() {
         servicesContext.clearRect(0, 0, servicesCanvas.width, servicesCanvas.height);
         servicesContext.drawImage(frame, 0, 0);
 
-        if (
-          hedPath &&
-          agentPath &&
-          githubPath &&
-          linkedinPath &&
-          xPath &&
-          sitePath &&
-          hasScrolledToTeam.current
-        ) {
-          hedFrames.current = [];
-          agentFrames.current = [];
-          githubFrames.current = [];
-          linkedinFrames.current = [];
-          xFrames.current = [];
-          siteFrames.current = [];
-          const hedCanvas = hedcut.current;
-          const hedContext = hedCanvas.getContext('2d');
-          const agentCanvas = agent.current;
-          const agentContext = agentCanvas.getContext('2d');
-          const githubCanvas = githubIcon.current;
-          const githubContext = githubCanvas.getContext('2d');
-          const linkedinCanvas = linkedinIcon.current;
-          const linkedinContext = linkedinCanvas.getContext('2d');
-          const xCanvas = xIcon.current;
-          const xContext = xCanvas.getContext('2d');
-          const siteCanvas = siteIcon.current;
-          const siteContext = siteCanvas.getContext('2d');
-          const brianGithubCanvas = brianGithubIcon.current;
-          const brianGithubContext = brianGithubCanvas.getContext('2d');
-          const brianLinkedinCanvas = brianLinkedinIcon.current;
-          const brianLinkedinContext = brianLinkedinCanvas.getContext('2d');
-          const brianXCanvas = brianXIcon.current;
-          const brianXContext = brianXCanvas.getContext('2d');
+        if (hedFrames.current[frameIndex.current]) {
+          frame = hedFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(hedCanvas, hedPath, {
+            stroke: ui.hedStroke,
+            strokeWidth: ui.blueprintStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.hedFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.hedRoughness
+          });
 
-          if (hedFrames.current[frameIndex.current]) {
-            frame = hedFrames.current[frameIndex.current];
-          } else {
-            frame = generateFrame(hedCanvas, hedPath, {
-              stroke: ui.hedStroke,
-              strokeWidth: ui.blueprintStrokeWidth,
-              fill: blueprintFill,
-              fillStyle: ui.hedFillStyle,
-              hachureAngle: ui.blueprintAngle,
-              roughness: ui.hedRoughness
-            });
-
-            hedFrames.current.push(frame);
-          }
-
-          hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
-          hedContext.drawImage(frame, 0, 0);
-          if (!hedcut.current.classList.contains('loaded')) hedcut.current.classList.add('loaded');
-
-          if (agentFrames.current[frameIndex.current]) {
-            frame = agentFrames.current[frameIndex.current];
-          } else {
-            frame = generateFrame(agentCanvas, agentPath, {
-              stroke: ui.agentStroke,
-              strokeWidth: ui.blueprintStrokeWidth,
-              fill: blueprintFill,
-              fillStyle: ui.agentFillStyle,
-              hachureAngle: ui.blueprintAngle,
-              roughness: ui.agentRoughness
-            });
-
-            agentFrames.current.push(frame);
-          }
-
-          agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
-          agentContext.drawImage(frame, 0, 0);
-          if (!agent.current.classList.contains('loaded')) agent.current.classList.add('loaded');
-
-          if (githubFrames.current[frameIndex.current]) {
-            frame = githubFrames.current[frameIndex.current];
-          } else {
-            frame = generateFrame(githubCanvas, githubPath, {
-              stroke: ui.iconStroke,
-              strokeWidth: ui.iconStrokeWidth,
-              fill: blueprintFill,
-              fillStyle: ui.iconFillStyle,
-              hachureAngle: ui.blueprintAngle,
-              roughness: ui.iconRoughness
-            });
-
-            githubFrames.current.push(frame);
-          }
-
-          githubContext.clearRect(0, 0, githubCanvas.width, githubCanvas.height);
-          githubContext.drawImage(frame, 0, 0);
-          brianGithubContext.clearRect(0, 0, brianGithubCanvas.width, brianGithubCanvas.height);
-          brianGithubContext.drawImage(frame, 0, 0);
-
-          if (!githubIcon.current.classList.contains('loaded')) {
-            githubIcon.current.classList.add('loaded');
-          }
-
-          if (!brianGithubIcon.current.classList.contains('loaded')) {
-            brianGithubIcon.current.classList.add('loaded');
-          }
-
-          if (linkedinFrames.current[frameIndex.current]) {
-            frame = linkedinFrames.current[frameIndex.current];
-          } else {
-            frame = generateFrame(linkedinCanvas, linkedinPath, {
-              stroke: ui.iconStroke,
-              strokeWidth: ui.iconStrokeWidth,
-              fill: blueprintFill,
-              fillStyle: ui.iconFillStyle,
-              hachureAngle: ui.blueprintAngle,
-              roughness: ui.iconRoughness
-            });
-
-            linkedinFrames.current.push(frame);
-          }
-
-          linkedinContext.clearRect(0, 0, linkedinCanvas.width, linkedinCanvas.height);
-          linkedinContext.drawImage(frame, 0, 0);
-          brianLinkedinContext.clearRect(
-            0,
-            0,
-            brianLinkedinCanvas.width,
-            brianLinkedinCanvas.height
-          );
-          brianLinkedinContext.drawImage(frame, 0, 0);
-
-          if (!linkedinIcon.current.classList.contains('loaded')) {
-            linkedinIcon.current.classList.add('loaded');
-          }
-
-          if (!brianLinkedinIcon.current.classList.contains('loaded')) {
-            brianLinkedinIcon.current.classList.add('loaded');
-          }
-
-          if (xFrames.current[frameIndex.current]) {
-            frame = xFrames.current[frameIndex.current];
-          } else {
-            frame = generateFrame(xCanvas, xPath, {
-              stroke: ui.iconStroke,
-              strokeWidth: ui.iconStrokeWidth,
-              fill: blueprintFill,
-              fillStyle: ui.iconFillStyle,
-              hachureAngle: ui.blueprintAngle,
-              roughness: ui.iconRoughness
-            });
-
-            xFrames.current.push(frame);
-          }
-
-          xContext.clearRect(0, 0, xCanvas.width, xCanvas.height);
-          xContext.drawImage(frame, 0, 0);
-          brianXContext.clearRect(0, 0, brianXCanvas.width, brianXCanvas.height);
-          brianXContext.drawImage(frame, 0, 0);
-          if (!xIcon.current.classList.contains('loaded')) xIcon.current.classList.add('loaded');
-
-          if (!brianXIcon.current.classList.contains('loaded')) {
-            brianXIcon.current.classList.add('loaded');
-          }
-
-          if (siteFrames.current[frameIndex.current]) {
-            frame = siteFrames.current[frameIndex.current];
-          } else {
-            frame = generateFrame(siteCanvas, sitePath, {
-              stroke: ui.iconStroke,
-              strokeWidth: ui.iconStrokeWidth,
-              fill: blueprintFill,
-              fillStyle: ui.iconFillStyle,
-              hachureAngle: ui.blueprintAngle,
-              roughness: ui.iconRoughness
-            });
-
-            siteFrames.current.push(frame);
-          }
-
-          siteContext.clearRect(0, 0, siteCanvas.width, siteCanvas.height);
-          siteContext.drawImage(frame, 0, 0);
-
-          if (!siteIcon.current.classList.contains('loaded')) {
-            siteIcon.current.classList.add('loaded');
-          }
+          hedFrames.current.push(frame);
         }
+
+        hedContext.clearRect(0, 0, hedCanvas.width, hedCanvas.height);
+        hedContext.drawImage(frame, 0, 0);
+
+        if (agentFrames.current[frameIndex.current]) {
+          frame = agentFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(agentCanvas, agentPath, {
+            stroke: ui.agentStroke,
+            strokeWidth: ui.blueprintStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.agentFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.agentRoughness
+          });
+
+          agentFrames.current.push(frame);
+        }
+
+        agentContext.clearRect(0, 0, agentCanvas.width, agentCanvas.height);
+        agentContext.drawImage(frame, 0, 0);
+
+        if (githubFrames.current[frameIndex.current]) {
+          frame = githubFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(githubCanvas, githubPath, {
+            stroke: ui.iconStroke,
+            strokeWidth: ui.iconStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.iconFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.iconRoughness
+          });
+
+          githubFrames.current.push(frame);
+        }
+
+        githubContext.clearRect(0, 0, githubCanvas.width, githubCanvas.height);
+        githubContext.drawImage(frame, 0, 0);
+        brianGithubContext.clearRect(0, 0, brianGithubCanvas.width, brianGithubCanvas.height);
+        brianGithubContext.drawImage(frame, 0, 0);
+
+        if (linkedinFrames.current[frameIndex.current]) {
+          frame = linkedinFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(linkedinCanvas, linkedinPath, {
+            stroke: ui.iconStroke,
+            strokeWidth: ui.iconStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.iconFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.iconRoughness
+          });
+
+          linkedinFrames.current.push(frame);
+        }
+
+        linkedinContext.clearRect(0, 0, linkedinCanvas.width, linkedinCanvas.height);
+        linkedinContext.drawImage(frame, 0, 0);
+        brianLinkedinContext.clearRect(0, 0, brianLinkedinCanvas.width, brianLinkedinCanvas.height);
+        brianLinkedinContext.drawImage(frame, 0, 0);
+
+        if (xFrames.current[frameIndex.current]) {
+          frame = xFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(xCanvas, xPath, {
+            stroke: ui.iconStroke,
+            strokeWidth: ui.iconStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.iconFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.iconRoughness
+          });
+
+          xFrames.current.push(frame);
+        }
+
+        xContext.clearRect(0, 0, xCanvas.width, xCanvas.height);
+        xContext.drawImage(frame, 0, 0);
+        brianXContext.clearRect(0, 0, brianXCanvas.width, brianXCanvas.height);
+        brianXContext.drawImage(frame, 0, 0);
+
+        if (!brianXIcon.current.classList.contains('loaded')) {
+          brianXIcon.current.classList.add('loaded');
+        }
+
+        if (siteFrames.current[frameIndex.current]) {
+          frame = siteFrames.current[frameIndex.current];
+        } else {
+          frame = generateFrame(siteCanvas, sitePath, {
+            stroke: ui.iconStroke,
+            strokeWidth: ui.iconStrokeWidth,
+            fill: blueprintFill,
+            fillStyle: ui.iconFillStyle,
+            hachureAngle: ui.blueprintAngle,
+            roughness: ui.iconRoughness
+          });
+
+          siteFrames.current.push(frame);
+        }
+
+        siteContext.clearRect(0, 0, siteCanvas.width, siteCanvas.height);
+        siteContext.drawImage(frame, 0, 0);
 
         frameIndex.current = ++frameIndex.current % ui.frameCount;
       };
@@ -966,7 +933,7 @@ export default function App() {
               >
                 <canvas
                   ref={hedcut}
-                  className='lazy'
+                  // className='lazy'
                   width={ui.hedOldWidth}
                   height={ui.hedOldHeight}
                   style={{ width: '100%' }}
@@ -1008,7 +975,7 @@ export default function App() {
                 <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
                   <canvas
                     ref={siteIcon}
-                    className='lazy'
+                    // className='lazy'
                     width={ui.siteOldDimension}
                     height={ui.siteOldDimension}
                     style={{ width: ui.socialDimension, height: ui.socialDimension }}
@@ -1031,7 +998,7 @@ export default function App() {
                 >
                   <canvas
                     ref={brianGithubIcon}
-                    className='lazy'
+                    // className='lazy'
                     width={ui.githubOldDimension}
                     height={ui.githubOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
@@ -1054,7 +1021,7 @@ export default function App() {
                 >
                   <canvas
                     ref={brianLinkedinIcon}
-                    className='lazy'
+                    // className='lazy'
                     width={ui.linkedinOldDimension}
                     height={ui.linkedinOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
@@ -1072,7 +1039,7 @@ export default function App() {
                 >
                   <canvas
                     ref={brianXIcon}
-                    className='lazy'
+                    // className='lazy'
                     width={ui.xOldDimension}
                     height={ui.xOldDimension}
                     style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
@@ -1088,7 +1055,7 @@ export default function App() {
               <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
                 <canvas
                   ref={agent}
-                  className='lazy'
+                  // className='lazy'
                   width={ui.agentOldWidth}
                   height={ui.agentOldHeight}
                   style={{ width: '100%' }}
@@ -1151,7 +1118,7 @@ export default function App() {
               <Link variant='social' href='https://github.com/agentfirstdev' isExternal>
                 <canvas
                   ref={githubIcon}
-                  className='lazy'
+                  // className='lazy'
                   width={ui.githubOldDimension}
                   height={ui.githubOldDimension}
                   style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
@@ -1169,7 +1136,7 @@ export default function App() {
               >
                 <canvas
                   ref={linkedinIcon}
-                  className='lazy'
+                  // className='lazy'
                   width={ui.linkedinOldDimension}
                   height={ui.linkedinOldDimension}
                   style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
@@ -1187,7 +1154,7 @@ export default function App() {
               >
                 <canvas
                   ref={xIcon}
-                  className='lazy'
+                  // className='lazy'
                   width={ui.xOldDimension}
                   height={ui.xOldDimension}
                   style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
