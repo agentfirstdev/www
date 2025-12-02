@@ -29,7 +29,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
               bgGradient: `linear(${ui.gradientAngle}deg, ${ui.cornflowerBlue}, ${ui.creativeBlue})`
             }}
             _dark={{
-              bgGradient: `linear(${ui.gradientAngle}deg, ${ui.creativeBlue}, ${ui.cornflowerBlue})`
+              bgGradient: `linear(${ui.gradientAngle}deg, ${ui.cornflowerBlue}, ${ui.creativeBlue})`
             }}
           ></Text>
         </Box>
