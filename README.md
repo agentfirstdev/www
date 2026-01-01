@@ -1,6 +1,6 @@
 # ![Agent First](assets/social/logotype-optimized.png) [![X post](assets/social/x-post-optimized.png)](https://x.com/intent/post?text=Enhance%20your%20AI%20agent%20with%20research%20and%20browsing%20abilities%3A&url=https%3A%2F%2Fagentfirst.dev%2F%3Fref%3Dgithub&via=agentfirstdev)
 
-*The missing services for agent-first development*
+_The missing services for agent-first development_
 
 ## Agent First website
 
