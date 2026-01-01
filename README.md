@@ -2,7 +2,7 @@
 
 *The missing services for agent-first development*
 
-## Website
+## Agent First website
 
 The **Agent First** website describes the company’s search and browsing services.
 
