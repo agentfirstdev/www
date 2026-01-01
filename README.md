@@ -2,7 +2,9 @@
 
 *The missing services for agent-first development*
 
-[TODO: Add website description.]
+## Website
+
+The **Agent First** website describes the company’s search and browsing services.
 
 The site is developed using [Node.js 22.x](https://nodejs.org/en/download) (due to Amazon Linux 2023
 availability), [Yarn](https://yarnpkg.com/), [React](https://react.dev/),
@@ -75,7 +77,7 @@ even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
 
 ## Exceptions
 
-The Agent First logos, trademarks, domain names, and other brand features used in this program
+The **Agent First** logos, trademarks, domain names, and other brand features used in this program
 cannot be reused without permission and no license is granted thereto.
 
 Further, these third-party portions of the program and any use thereof are subject to their own
@@ -83,4 +85,5 @@ licensing terms:
 
 * [Permanent Marker](https://fonts.google.com/specimen/Permanent+Marker)
 * [Indie Flower](https://fonts.google.com/specimen/Indie+Flower)
-* [Lato](https://fonts.google.com/specimen/Lato)
+* [Fira Sans](https://fonts.google.com/specimen/Fira+Sans)
+* [Fira Sans Condensed](https://fonts.google.com/specimen/Fira+Sans+Condensed)
