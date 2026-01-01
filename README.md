@@ -2,9 +2,10 @@
 
 _The missing services for agent-first development_
 
-## Agent First website
+## Product website
 
-The **Agent First** website describes the company’s search and browsing services.
+The [Agent First website](https://agentfirst.dev/) describes the company’s search and browsing
+products.
 
 The site is developed using [Node.js 22.x](https://nodejs.org/en/download) (due to Amazon Linux 2023
 availability), [Yarn](https://yarnpkg.com/), [React](https://react.dev/),
