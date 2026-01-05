@@ -829,17 +829,18 @@ export default function App() {
         <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='md'>
           <CardBody>
             <Heading as='h2' variant='service'>
-              1. Google-like search
+              1. Live search results
             </Heading>
             <Text variant='service'>
               <Text as='strong' variant='co'>
                 Agent First
               </Text>
-              {' lets you reliably integrate live Google results, including '}
+              {' lets you integrate popular search engines reliably via structured data or raw'}
+              {' HTML that includes '}
               <Text as='strong' variant='bold'>
                 all organic & paid result types
               </Text>
-              {', as structured data or raw HTML:'}
+              :
             </Text>
             <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
           </CardBody>
