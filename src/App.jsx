@@ -31,10 +31,10 @@ import { createTimeline } from 'animejs';
 
 import * as ui from './config/ui';
 import * as uix from './config/uix';
-import search from './markdown/SEARCH.md?raw';
-import browsing from './markdown/BROWSING.md?raw';
-import searchGeotargeting from './markdown/GEOTARGETING-SEARCH.md?raw';
-import browsingGeotargeting from './markdown/GEOTARGETING-BROWSING.md?raw';
+import search from './markdown/search.md?raw';
+import browsing from './markdown/browsing.md?raw';
+import searchGeotargeting from './markdown/geotargeting-search.md?raw';
+import browsingGeotargeting from './markdown/geotargeting-browsing.md?raw';
 import './App.css';
 
 export default function App() {
