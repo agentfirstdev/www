@@ -20,9 +20,9 @@ export const resetHint = 'Start a new conversation';
 export const docUrl = 'https://doc.agentfirst.dev/';
 export const demoUrl = 'https://dev.llamapile.com/';
 export const llmsTxtUrl = 'llms.txt';
-export const searchUrl = 'https://doc.agentfirst.dev/search';
-export const browsingUrl = 'https://doc.agentfirst.dev/browser';
-export const geotargetingUrl = 'https://doc.agentfirst.dev/geotargeting';
+export const searchUrl = 'https://doc.agentfirst.dev/endpoints/search';
+export const browsingUrl = 'https://doc.agentfirst.dev/endpoints/browser';
+export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargeting';
 export const completion = [
   { delay: 0, token: 'a' },
   { delay: 13, token: 'g' },
