@@ -835,8 +835,8 @@ export default function App() {
               <Text as='strong' variant='co'>
                 Agent First
               </Text>
-              {' lets you integrate popular search engines reliably via structured data or raw'}
-              {' HTML that includes '}
+              {' lets you integrate popular search engines reliably via structured or raw data'}
+              {' that includes '}
               <Text as='strong' variant='bold'>
                 all organic & paid result types
               </Text>
