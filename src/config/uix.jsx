@@ -11,7 +11,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         {'Making '}
         <Box as='span' display='inline-block' position='relative' textAlign='left'>
           <Text fontSize={ui.taglineFontSize} visibility='hidden' pointerEvents='none'>
-            (web)
+            web
           </Text>
           <Text
             ref={ref}

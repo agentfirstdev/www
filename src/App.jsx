@@ -771,13 +771,7 @@ export default function App() {
         align='center'
         gap='8'
       >
-        <Flex
-          w={ui.taglineWidth}
-          maxW={ui.taglineMaxWidth}
-          direction='column'
-          justify='center'
-          align='center'
-        >
+        <Flex w={ui.taglineWidth} direction='column' justify='center' align='center'>
           <uix.Tagline ref={completion} />
         </Flex>
         {/* <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>

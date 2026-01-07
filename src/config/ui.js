@@ -24,11 +24,9 @@ export const searchUrl = 'https://doc.agentfirst.dev/endpoints/search';
 export const browsingUrl = 'https://doc.agentfirst.dev/endpoints/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargeting';
 export const completion = [
-  { delay: 0, token: '(' },
-  { delay: 13, token: 'w' },
-  { delay: 31, token: 'e' },
-  { delay: 54, token: 'b' },
-  { delay: 66, token: ')' }
+  { delay: 0, token: 'w' },
+  { delay: 13, token: 'e' },
+  { delay: 31, token: 'b' }
 ];
 export const initialPlaceholders = [
   [
@@ -178,7 +176,6 @@ export const logoMargin = '8px';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
 export const taglineWidth = '100%';
-export const taglineMaxWidth = '760px';
 export const postItMaxWidth = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-chakra-shadow-color)';
 export const postItRotation = '-1.5deg';
