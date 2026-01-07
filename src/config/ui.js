@@ -24,17 +24,12 @@ export const searchUrl = 'https://doc.agentfirst.dev/endpoints/search';
 export const browsingUrl = 'https://doc.agentfirst.dev/endpoints/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargeting';
 export const completion = [
-  { delay: 0, token: 'a' },
-  { delay: 13, token: 'g' },
-  { delay: 31, token: 'e' },
-  { delay: 54, token: 'n' },
-  { delay: 66, token: 't' },
-  { delay: 85, token: '-' },
-  { delay: 102, token: 'f' },
-  { delay: 129, token: 'i' },
-  { delay: 145, token: 'r' },
-  { delay: 167, token: 's' },
-  { delay: 177, token: 't' }
+  { delay: 0, token: '(' },
+  { delay: 13, token: 'H' },
+  { delay: 31, token: 'T' },
+  { delay: 54, token: 'T' },
+  { delay: 66, token: 'P' },
+  { delay: 85, token: ')' }
 ];
 export const initialPlaceholders = [
   [
