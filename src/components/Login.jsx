@@ -103,7 +103,7 @@ export default function Login({
           w={ui.loginWidth}
           shadow='md'
         >
-          <Heading fontSize='md'>Log in or sign up</Heading>
+          <Heading variant='login'>Log in or sign up</Heading>
           <Button
             variant='monochrome'
             position='absolute'

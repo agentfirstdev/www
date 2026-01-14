@@ -45,6 +45,7 @@ export default extendTheme({
         _dark: { color: 'brand.primary' }
       },
       variants: {
+        login: { fontFamily: 'subheading', fontSize: '1.25rem' },
         tagline: {
           fontFamily: 'tagline',
           _light: { color: 'gray.800' },
