@@ -29,12 +29,14 @@ import { SunIcon, MoonIcon, HamburgerIcon, AddIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 import { createTimeline } from 'animejs';
 
+import * as supabase from './config/supabase';
 import * as ui from './config/ui';
 import * as uix from './config/uix';
 import search from './markdown/search.md?raw';
 import browsing from './markdown/browsing.md?raw';
 import searchGeotargeting from './markdown/geotargeting-search.md?raw';
 import browsingGeotargeting from './markdown/geotargeting-browsing.md?raw';
+import Login from './components/Login';
 import './App.css';
 
 export default function App() {
@@ -72,6 +74,7 @@ export default function App() {
   const hasAnimatedCompletion = useRef(false);
   const hasAnimatedTimeline = useRef(false);
   // const hasScrolledToTeam = useRef(false);
+  const [session, setSession] = useState(null);
   const [logoPath, setLogoPath] = useState(null);
   const [servicesPath, setServicesPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
@@ -80,6 +83,7 @@ export default function App() {
   const [linkedinPath, setLinkedinPath] = useState(null);
   const [xPath, setXPath] = useState(null);
   const [sitePath, setSitePath] = useState(null);
+  const [shouldShowLogin, setShouldShowLogin] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
@@ -129,7 +133,7 @@ export default function App() {
         if (index < ui.initialPlaceholders.length) animatePrompt(index);
       }, ui.promptRefreshMs);
     }
-  }, []);
+  }, []); */
   const handleKeyPress = (event, commitAction, cancelAction) => {
     if (event.key == 'Enter') {
       event.preventDefault();
@@ -139,7 +143,7 @@ export default function App() {
       cancelAction(event);
     }
   };
-  const handlePromptKeyPress = (event) => {
+  /* const handlePromptKeyPress = (event) => {
     if (event.key == 'Enter' && !event.shiftKey) {
       event.preventDefault();
       // handlePromptSubmit();
@@ -174,6 +178,21 @@ export default function App() {
   }; */
 
   useEffect(() => {
+    const { data } = supabase.client.auth.onAuthStateChange((_, session) => {
+      setSession(session);
+    });
+
+    supabase.client.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    return () => {
+      data.subscription.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    const timeouts = [];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -189,7 +208,7 @@ export default function App() {
             } else {
               timelineAnimation.current.pause();
               timelineAnimation.current.seek(0);
-              timeline.current.classList.remove('animated');
+              timeline.current?.classList.remove('animated');
             }
           }
 
@@ -200,26 +219,28 @@ export default function App() {
       },
       { root: null, threshold: [0, ui.minVisibility, 1] }
     );
+    let shouldResetState = false;
 
     if (completion.current && !hasAnimatedCompletion.current) {
       hasAnimatedCompletion.current = true;
+      shouldResetState = true;
       const dutyCount = ui.blinkCount * 2;
       const blinkDelay = dutyCount * ui.blinkIntervalMs;
 
       for (let i = 0; i < dutyCount; i++) {
-        setTimeout(() => {
-          if (!(i % 2)) {
-            completion.current.textContent = '|';
-          } else {
-            completion.current.textContent = '';
-          }
-        }, i * ui.blinkIntervalMs);
+        timeouts.push(
+          setTimeout(() => {
+            if (completion.current) completion.current.textContent = !(i % 2) ? '|' : '';
+          }, i * ui.blinkIntervalMs)
+        );
       }
 
       ui.completion.forEach(({ delay, token }) => {
-        setTimeout(() => {
-          completion.current.textContent += token;
-        }, delay + blinkDelay);
+        timeouts.push(
+          setTimeout(() => {
+            if (completion.current) completion.current.textContent += token;
+          }, delay + blinkDelay)
+        );
       });
     }
 
@@ -227,6 +248,9 @@ export default function App() {
     // if (team.current) observer.observe(team.current);
 
     return () => {
+      if (shouldResetState) hasAnimatedCompletion.current = false;
+
+      timeouts.forEach(clearTimeout);
       observer.disconnect();
     };
   }, []);
@@ -714,6 +738,14 @@ export default function App() {
               onClick={toggleColorMode}
             />
           </Tooltip>
+          <Login
+            supabaseClient={supabase.client}
+            session={session}
+            setSession={setSession}
+            shouldShowLogin={shouldShowLogin}
+            setShouldShowLogin={setShouldShowLogin}
+            handleKeyPress={handleKeyPress}
+          />
           <Menu strategy='fixed' isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
             <Tooltip
               mx={ui.tooltipMargin}
@@ -745,17 +777,30 @@ export default function App() {
               <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
                 Documentation
               </MenuItem>
-              <MenuItem as='a' borderRadius='0' href='#pricing'>
+              {/* <MenuItem as='a' borderRadius='0' href='#pricing'>
                 Pricing
               </MenuItem>
               <MenuItem as='a' borderRadius='0' href={ui.demoUrl} target='_blank' rel='noopener'>
                 Live demo
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem as='a' borderRadius='0' href='#about'>
                 About us
               </MenuItem>
-              <MenuItem as='a' borderRadius={ui.menuBottomBorder} href={ui.llmsTxtUrl}>
+              <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
                 llms.txt
+              </MenuItem>
+              <MenuItem
+                borderRadius={ui.menuBottomBorder}
+                onClick={() => {
+                  setShouldShowLogin(true);
+                }}
+                onKeyDown={(event) => {
+                  handleKeyPress(event, () => {
+                    setShouldShowLogin(true);
+                  });
+                }}
+              >
+                Dashboard
               </MenuItem>
             </MenuList>
           </Menu>

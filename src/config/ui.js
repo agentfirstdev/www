@@ -4,6 +4,7 @@ import highlights from 'markdown-it-highlightjs';
 // Strings
 export const logoLabel = 'Agent First';
 export const menuLabel = 'View site contents';
+export const loginLabel = 'Email login link';
 export const servicesLabel = 'Services';
 export const hedLabel = 'Brian hedcut';
 export const agentLabel = 'Brain agent';
@@ -116,23 +117,16 @@ export const footerFont = '"Fira Sans Condensed", sans-serif';
 
 // Controls
 export const controlDimension = '48px';
+export const buttonBorder = '1px solid transparent';
 export const iconDimension = '32px';
 export const socialDimension = '24px';
-export const menuTopBorder = '5px 5px 0 0';
-export const menuBottomBorder = '0 0 5px 5px';
 export const tooltipPadding = '6px 10px';
-export const itemMargin = 6;
 export const iconHorizontalMargin = 3;
 export const iconVerticalMargin = 1;
 export const socialMargin = 2;
 export const tooltipMargin = 1;
-export const hamburgerTopMargin = -1;
-export const hamburgerLeftMargin = 4;
-export const sunStroke = 3;
 export const buttonWidth = { base: '160px', md: '176px' };
 export const buttonHeight = { base: controlDimension, md: '56px' };
-export const navTopPosition = { base: 4, lg: 6 };
-export const navRightPosition = { base: 4, lg: 6 };
 
 // Animation
 export const logoFillStyle = 'hachure';
@@ -164,18 +158,38 @@ export const hedRoughness = 2;
 export const agentRoughness = 3;
 export const iconStrokeWidth = 3;
 export const iconRoughness = 5;
+export const iconRotationMs = 600;
+export const openRotation = 45;
 
 // Other shared styles
 export const linkPadding = '2px';
 export const outlineStyle = '0 0 0 3px';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
+export const transition = 'all var(--chakra-transition-duration-normal)';
 export const xsMargin = 4;
 export const smMargin = 8;
 export const mdMargin = 14;
 export const lgMargin = 20;
 export const xlMargin = 24;
 export const gradientAngle = 140;
+
+// Header
+export const menuTopBorder = '5px 5px 0 0';
+export const menuBottomBorder = '0 0 5px 5px';
+export const badgeSize = '1.5rem';
+export const loginMargin = '0 .5rem';
+export const loginWidth = '420px';
+export const loginInputMargin = '1rem';
+export const loginButtonMargin = '1rem 0 .5rem auto';
+export const loginButtonWidth = '190px';
+export const itemMargin = 6;
+export const sunStroke = 3;
+export const hamburgerTopMargin = -1;
+export const hamburgerLeftMargin = 4;
+export const closePosition = 1.5;
+export const navTopPosition = { base: 4, lg: 6 };
+export const navRightPosition = { base: 4, lg: 6 };
 
 // Hero
 export const heroHeight = '60vh';
