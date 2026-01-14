@@ -771,6 +771,19 @@ export default function App() {
               />
             </Tooltip>
             <MenuList p='0'>
+              <MenuItem
+                borderRadius={ui.menuBottomBorder}
+                onClick={() => {
+                  setShouldShowLogin(true);
+                }}
+                onKeyDown={(event) => {
+                  handleKeyPress(event, () => {
+                    setShouldShowLogin(true);
+                  });
+                }}
+              >
+                Dashboard
+              </MenuItem>
               <MenuItem as='a' borderRadius={ui.menuTopBorder} href='#services'>
                 Services
               </MenuItem>
@@ -788,19 +801,6 @@ export default function App() {
               </MenuItem>
               <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
                 llms.txt
-              </MenuItem>
-              <MenuItem
-                borderRadius={ui.menuBottomBorder}
-                onClick={() => {
-                  setShouldShowLogin(true);
-                }}
-                onKeyDown={(event) => {
-                  handleKeyPress(event, () => {
-                    setShouldShowLogin(true);
-                  });
-                }}
-              >
-                Dashboard
               </MenuItem>
             </MenuList>
           </Menu>

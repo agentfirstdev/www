@@ -6,7 +6,6 @@ import {
   MenuItem,
   Avatar,
   AvatarBadge,
-  Link,
   Box,
   Heading,
   Button,
@@ -75,11 +74,10 @@ export default function Login({
     </Menu>
   ) : (
     <>
-      <Link
-        variant='nav'
-        display={{ base: 'none', lg: 'flex' }}
+      <Button
+        display={{ base: 'none', lg: 'inline-flex' }}
         ml={ui.itemMargin}
-        alignItems='center'
+        fontSize='md'
         tabIndex='0'
         onClick={() => {
           setShouldShowLogin(true);
@@ -91,7 +89,7 @@ export default function Login({
         }}
       >
         Dashboard
-      </Link>
+      </Button>
       {shouldShowLogin && (
         <Box
           position='absolute'
@@ -135,7 +133,8 @@ export default function Login({
                 default: {
                   colors: {
                     brand: 'var(--chakra-colors-accent-secondary)',
-                    brandAccent: 'var(--chakra-colors-brand-secondary)'
+                    brandAccent: 'var(--chakra-colors-chakra-inverse-bg)',
+                    inputPlaceholder: 'var(--chakra-colors-chakra-label-color)'
                   }
                 }
               },
@@ -144,12 +143,12 @@ export default function Login({
                 label: { marginBottom: 0 },
                 input: {
                   marginTop: ui.loginInputMargin,
+                  opacity: ui.loginInputOpacity,
                   borderColor: 'var(--chakra-colors-chakra-border-color)',
                   background: 'var(--chakra-colors-chakra-body-bg)',
                   height: ui.controlDimension,
                   font: 'var(--chakra-fontSizes-md) var(--chakra-fonts-body)',
-                  color: 'var(--chakra-colors-chakra-body-text)',
-                  '::placeholder': { color: 'var(--chakra-colors-chakra-placeholder-color)' }
+                  color: 'var(--chakra-colors-chakra-body-text)'
                 },
                 button: {
                   margin: ui.loginButtonMargin,

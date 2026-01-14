@@ -125,6 +125,7 @@ export const iconHorizontalMargin = 3;
 export const iconVerticalMargin = 1;
 export const socialMargin = 2;
 export const tooltipMargin = 1;
+export const closePosition = 1.5;
 export const buttonWidth = { base: '160px', md: '176px' };
 export const buttonHeight = { base: controlDimension, md: '56px' };
 
@@ -187,7 +188,7 @@ export const itemMargin = 6;
 export const sunStroke = 3;
 export const hamburgerTopMargin = -1;
 export const hamburgerLeftMargin = 4;
-export const closePosition = 1.5;
+export const loginInputOpacity = 0.75;
 export const navTopPosition = { base: 4, lg: 6 };
 export const navRightPosition = { base: 4, lg: 6 };
 
