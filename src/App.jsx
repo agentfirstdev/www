@@ -143,6 +143,10 @@ export default function App() {
       cancelAction(event);
     }
   };
+  const handleMenuOpen = () => {
+    setShouldShowLogin(false);
+    onOpen();
+  };
   /* const handlePromptKeyPress = (event) => {
     if (event.key == 'Enter' && !event.shiftKey) {
       event.preventDefault();
@@ -746,7 +750,7 @@ export default function App() {
             setShouldShowLogin={setShouldShowLogin}
             handleKeyPress={handleKeyPress}
           />
-          <Menu strategy='fixed' isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
+          <Menu strategy='fixed' isOpen={isOpen} onOpen={handleMenuOpen} onClose={onClose}>
             <Tooltip
               mx={ui.tooltipMargin}
               p={ui.tooltipPadding}
