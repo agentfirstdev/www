@@ -2,7 +2,7 @@ import markdown from 'markdown-it';
 import highlights from 'markdown-it-highlightjs';
 
 // Strings
-export const logoLabel = 'Agent First';
+export const logoLabel = 'Fetchability';
 export const menuLabel = 'View site contents';
 export const servicesLabel = 'Services';
 export const hedLabel = 'Brian hedcut';
@@ -17,12 +17,12 @@ export const brianXLabel = 'Go to Brian’s X';
 export const generatingPlaceholder = 'Generating an answer';
 export const updatePlaceholder = 'Your reply to the answer above ...';
 export const resetHint = 'Start a new conversation';
-export const docUrl = 'https://doc.agentfirst.dev/';
+export const docUrl = 'https://doc.fetchability.com/';
 export const demoUrl = 'https://dev.llamapile.com/';
 export const llmsTxtUrl = 'llms.txt';
-export const searchUrl = 'https://doc.agentfirst.dev/endpoints/search';
-export const browsingUrl = 'https://doc.agentfirst.dev/endpoints/browser';
-export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargeting';
+export const searchUrl = 'https://doc.fetchability.com/endpoints/search';
+export const browsingUrl = 'https://doc.fetchability.com/endpoints/browser';
+export const geotargetingUrl = 'https://doc.fetchability.com/endpoints/geotargeting';
 export const completion = [
   { delay: 0, token: 'w' },
   { delay: 13, token: 'e' },
