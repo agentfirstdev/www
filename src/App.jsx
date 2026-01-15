@@ -714,21 +714,21 @@ export default function App() {
             <Link variant='nav' ml={ui.itemMargin} href='#services'>
               Services
             </Link>
+            <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
+              Pricing
+            </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
               Documentation
             </Link>
-            {/* <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
-              Pricing
-            </Link>
-            <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
+            {/* <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
               Live demo
             </Link> */}
             <Link variant='nav' ml={ui.itemMargin} href='#about'>
               About us
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
+            {/* <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
               llms.txt
-            </Link>
+            </Link> */}
           </Flex>
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={modeLabel} hasArrow>
             <IconButton
@@ -791,21 +791,27 @@ export default function App() {
               <MenuItem as='a' borderRadius={ui.menuTopBorder} href='#services'>
                 Services
               </MenuItem>
+              <MenuItem as='a' borderRadius='0' href='#pricing'>
+                Pricing
+              </MenuItem>
               <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
                 Documentation
               </MenuItem>
-              {/* <MenuItem as='a' borderRadius='0' href='#pricing'>
-                Pricing
-              </MenuItem>
-              <MenuItem as='a' borderRadius='0' href={ui.demoUrl} target='_blank' rel='noopener'>
+              {/* <MenuItem
+                as='a'
+                borderRadius='0'
+                href={ui.demoUrl}
+                target='_blank'
+                rel='noopener'
+              >
                 Live demo
               </MenuItem> */}
               <MenuItem as='a' borderRadius='0' href='#about'>
                 About us
               </MenuItem>
-              <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
+              {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
                 llms.txt
-              </MenuItem>
+              </MenuItem> */}
             </MenuList>
           </Menu>
         </Flex>
