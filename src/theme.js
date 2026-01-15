@@ -123,6 +123,13 @@ export default extendTheme({
           _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
         },
+        doc: {
+          position: 'absolute',
+          right: '1.25rem',
+          bottom: '1rem',
+          _light: { fontWeight: 'normal' },
+          _dark: { fontWeight: 500 }
+        },
         team: {
           display: 'inline-block',
           borderBottomWidth: '2px',

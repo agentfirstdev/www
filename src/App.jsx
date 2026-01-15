@@ -897,10 +897,15 @@ export default function App() {
               </Text>
               :
             </Text>
-            <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
+            <Box position='relative'>
+              <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
+              <Link variant='doc' href={ui.searchUrl}>
+                More …
+              </Link>
+            </Box>
           </CardBody>
           <CardFooter>
-            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href={ui.searchUrl}>
+            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href='#pricing'>
               Get started
             </Button>
           </CardFooter>
@@ -920,10 +925,15 @@ export default function App() {
               </Text>
               {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
             </Text>
-            <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
+            <Box position='relative'>
+              <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
+              <Link variant='doc' href={ui.browsingUrl}>
+                More …
+              </Link>
+            </Box>
           </CardBody>
           <CardFooter>
-            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href={ui.browsingUrl}>
+            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href='#pricing'>
               Get started
             </Button>
           </CardFooter>
@@ -968,12 +978,19 @@ export default function App() {
               </Text>
               {' within our proxy network for local results or content:'}
             </Text>
-            <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(searchGeotargeting) }} />
-            <Box clear='both' />
-            <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }} />
+            <Box position='relative'>
+              <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(searchGeotargeting) }} />
+              <Box clear='both' />
+              <Code
+                dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }}
+              />
+              <Link variant='doc' href={ui.geotargetingUrl}>
+                More …
+              </Link>
+            </Box>
           </CardBody>
           <CardFooter>
-            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href={ui.geotargetingUrl}>
+            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href='#pricing'>
               Get started
             </Button>
           </CardFooter>
