@@ -127,8 +127,8 @@ export default extendTheme({
           position: 'absolute',
           right: '1.25rem',
           bottom: '1rem',
-          _light: { fontWeight: 'normal' },
-          _dark: { fontWeight: 500 }
+          _light: { fontWeight: 'normal', color: 'chakra-body-text' },
+          _dark: { fontWeight: 500, color: 'chakra-body-text' }
         },
         team: {
           display: 'inline-block',

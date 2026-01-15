@@ -900,7 +900,7 @@ export default function App() {
             <Box position='relative'>
               <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
               <Link variant='doc' href={ui.searchUrl}>
-                More …
+                See more
               </Link>
             </Box>
           </CardBody>
@@ -928,7 +928,7 @@ export default function App() {
             <Box position='relative'>
               <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
               <Link variant='doc' href={ui.browsingUrl}>
-                More …
+                See more
               </Link>
             </Box>
           </CardBody>
@@ -985,7 +985,7 @@ export default function App() {
                 dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }}
               />
               <Link variant='doc' href={ui.geotargetingUrl}>
-                More …
+                See more
               </Link>
             </Box>
           </CardBody>
