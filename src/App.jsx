@@ -709,7 +709,7 @@ export default function App() {
             aria-label={ui.logoLabel}
           />
         </Box>
-        <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition}>
+        <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
             <Link variant='nav' ml={ui.itemMargin} href='#services'>
               Services
