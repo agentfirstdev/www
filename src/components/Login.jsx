@@ -61,10 +61,13 @@ export default function Login({
         </Avatar>
       </MenuButton>
       <MenuList p='0' fontSize='sm'>
-        <MenuItem borderRadius={ui.menuTopBorder} textDecoration='line-through'>
-          Settings
+        <MenuItem as='a' borderRadius={ui.menuTopBorder} href={ui.dashboardUrl}>
+          Dashboard
         </MenuItem>
-        <MenuItem borderRadius='0' textDecoration='line-through'>
+        <MenuItem as='a' borderRadius='0' href={ui.profileUrl}>
+          Profile
+        </MenuItem>
+        <MenuItem as='a' borderRadius='0' href={ui.supportUrl}>
           Help
         </MenuItem>
         <MenuItem borderRadius={ui.menuBottomBorder} onClick={handleLogout}>
@@ -124,6 +127,7 @@ export default function Login({
             supabaseClient={supabaseClient}
             providers={[]}
             view='magic_link'
+            redirectTo={location.origin}
             localization={{
               variables: { magic_link: { email_input_label: '', button_label: ui.loginLabel } }
             }}
