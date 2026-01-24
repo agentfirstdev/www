@@ -61,10 +61,10 @@ export default function Login({
         </Avatar>
       </MenuButton>
       <MenuList p='0' fontSize='sm'>
-        <MenuItem as='a' borderRadius={ui.menuTopBorder} href={location.origin + ui.dashboardPath}>
+        <MenuItem as='a' borderRadius={ui.menuTopBorder} href={ui.dashboardUrl}>
           Dashboard
         </MenuItem>
-        <MenuItem as='a' borderRadius='0' href={location.origin + ui.profilePath}>
+        <MenuItem as='a' borderRadius='0' href={ui.profileUrl}>
           Profile
         </MenuItem>
         <MenuItem as='a' borderRadius='0' href={ui.supportUrl}>
@@ -127,7 +127,7 @@ export default function Login({
             supabaseClient={supabaseClient}
             providers={[]}
             view='magic_link'
-            redirectTo={location.origin + ui.dashboardPath}
+            redirectTo={ui.dashboardUrl}
             localization={{
               variables: { magic_link: { email_input_label: '', button_label: ui.loginLabel } }
             }}
