@@ -28,6 +28,7 @@ export default function Profile({
   const { hasCopied, onCopy } = useClipboard(account?.api_token);
   const toast = useToast();
   const hasToken = !!account?.api_token;
+  const isPlaintext = isTokenShown || !hasToken;
 
   useEffect(() => {
     supabaseClient
@@ -55,25 +56,15 @@ export default function Profile({
     };
   }, []);
 
-  useEffect(() => {
-    if (isTokenShown) {
-      clearTimeout(tokenTimeout.current);
-
-      tokenTimeout.current = setTimeout(() => {
-        setIsTokenShown(false);
-      }, ui.buttonResetMs);
-    }
-  }, [isTokenShown]);
-
   return (
     <Grid
-      templateColumns='20ch 1fr'
-      columnGap='2'
+      templateColumns='max-content 1fr'
+      columnGap='3'
       rowGap='4'
       justifyItems='start'
       alignItems='center'
     >
-      <GridItem display='flex' justifySelf='center'>
+      <GridItem display='flex' justifySelf='right'>
         <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
           {ui.emailLabel}
         </FormLabel>
@@ -88,17 +79,17 @@ export default function Profile({
           isReadOnly
         />
       </GridItem>
-      <GridItem display='flex' justifySelf='center'>
+      <GridItem display='flex' justifySelf='right'>
         <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
           {ui.tokenLabel}
         </FormLabel>
       </GridItem>
       <GridItem display='flex' alignItems='center'>
         <Input
-          type={isTokenShown || !hasToken ? 'text' : 'password'}
+          type={isPlaintext ? 'text' : 'password'}
           size='lg'
           w='35ch'
-          {...(isTokenShown || !hasToken ? {} : { letterSpacing: '.2rem' })}
+          letterSpacing={isPlaintext ? null : '0.2rem'}
           value={account?.api_token ?? ui.loadingPlaceholder}
           aria-label={ui.tokenLabel}
           isReadOnly
@@ -115,9 +106,12 @@ export default function Profile({
             aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
             isDisabled={!hasToken}
             onClick={() => {
-              setIsTokenShown((state) => {
-                return !state;
-              });
+              clearTimeout(tokenTimeout.current);
+              setIsTokenShown(true);
+
+              tokenTimeout.current = setTimeout(() => {
+                setIsTokenShown(false);
+              }, ui.buttonResetMs);
             }}
           />
         </Tooltip>
