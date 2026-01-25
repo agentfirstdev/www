@@ -29,17 +29,23 @@ import { SunIcon, MoonIcon, HamburgerIcon, AddIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 import { createTimeline } from 'animejs';
 
-import * as supabase from './config/supabase';
-import * as ui from './config/ui';
-import * as uix from './config/uix';
-import search from './markdown/search.md?raw';
-import browsing from './markdown/browsing.md?raw';
-import searchGeotargeting from './markdown/geotargeting-search.md?raw';
-import browsingGeotargeting from './markdown/geotargeting-browsing.md?raw';
-import Login from './components/Login';
-import './App.css';
+import * as ui from '../config/ui';
+import * as uix from '../config/uix';
+import Login from '../components/Login';
+import search from '../markdown/search.md?raw';
+import browsing from '../markdown/browsing.md?raw';
+import searchGeotargeting from '../markdown/geotargeting-search.md?raw';
+import browsingGeotargeting from '../markdown/geotargeting-browsing.md?raw';
 
-export default function App() {
+export default function Home({
+  supabaseClient,
+  session,
+  setSession,
+  shouldShowLogin,
+  setShouldShowLogin,
+  handleKeyPress,
+  handleMenuOpen
+}) {
   const logotype = useRef();
   const completion = useRef();
   // const promptBox = useRef();
@@ -74,7 +80,6 @@ export default function App() {
   const hasAnimatedCompletion = useRef(false);
   const hasAnimatedTimeline = useRef(false);
   // const hasScrolledToTeam = useRef(false);
-  const [session, setSession] = useState(null);
   const [logoPath, setLogoPath] = useState(null);
   const [servicesPath, setServicesPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
@@ -83,7 +88,6 @@ export default function App() {
   const [linkedinPath, setLinkedinPath] = useState(null);
   const [xPath, setXPath] = useState(null);
   const [sitePath, setSitePath] = useState(null);
-  const [shouldShowLogin, setShouldShowLogin] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
@@ -92,9 +96,8 @@ export default function App() {
   const servicesFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
   const isLightMode = colorMode == 'light';
-  const modeId = 'mode';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
   const generateFrame = (canvas, path, roughParams) => {
@@ -134,19 +137,6 @@ export default function App() {
       }, ui.promptRefreshMs);
     }
   }, []); */
-  const handleKeyPress = (event, commitAction, cancelAction) => {
-    if (event.key == 'Enter') {
-      event.preventDefault();
-      commitAction(event);
-    } else if (cancelAction && event.key == 'Escape') {
-      event.preventDefault();
-      cancelAction(event);
-    }
-  };
-  const handleMenuOpen = () => {
-    setShouldShowLogin(false);
-    onOpen();
-  };
   /* const handlePromptKeyPress = (event) => {
     if (event.key == 'Enter' && !event.shiftKey) {
       event.preventDefault();
@@ -180,20 +170,6 @@ export default function App() {
     // setConversation(conversationBuffer.current);
     // setError('');
   }; */
-
-  useEffect(() => {
-    const { data } = supabase.client.auth.onAuthStateChange((_, session) => {
-      setSession(session);
-    });
-
-    supabase.client.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    return () => {
-      data.subscription.unsubscribe();
-    };
-  }, []);
 
   useEffect(() => {
     const timeouts = [];
@@ -260,28 +236,28 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    import('./paths/logotype.txt?raw').then((module) => {
+    import('../paths/logotype.txt?raw').then((module) => {
       setLogoPath(module.default);
     });
-    import('./paths/services.txt?raw').then((module) => {
+    import('../paths/services.txt?raw').then((module) => {
       setServicesPath(module.default);
     });
-    import('./paths/hedcut.txt?raw').then((module) => {
+    import('../paths/hedcut.txt?raw').then((module) => {
       setHedPath(module.default);
     });
-    import('./paths/agent.txt?raw').then((module) => {
+    import('../paths/agent.txt?raw').then((module) => {
       setAgentPath(module.default);
     });
-    import('./paths/github.txt?raw').then((module) => {
+    import('../paths/github.txt?raw').then((module) => {
       setGithubPath(module.default);
     });
-    import('./paths/linkedin.txt?raw').then((module) => {
+    import('../paths/linkedin.txt?raw').then((module) => {
       setLinkedinPath(module.default);
     });
-    import('./paths/x.txt?raw').then((module) => {
+    import('../paths/x.txt?raw').then((module) => {
       setXPath(module.default);
     });
-    import('./paths/globe.txt?raw').then((module) => {
+    import('../paths/globe.txt?raw').then((module) => {
       setSitePath(module.default);
     });
 
@@ -674,20 +650,6 @@ export default function App() {
     }
   }, [isLoading, animatePromptBox]); */
 
-  useEffect(() => {
-    let link = document.getElementById(modeId);
-
-    if (!link) {
-      link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.id = modeId;
-
-      document.head.appendChild(link);
-    }
-
-    link.href = `atom-one-${colorMode}${import.meta.env.PROD ? '.min' : ''}.css`;
-  }, [colorMode]);
-
   /* useLayoutEffect(() => {
     if (!promptBoxHeight.current && promptBox.current) {
       promptBoxHeight.current = `${promptBox.current.offsetHeight}px`;
@@ -697,7 +659,7 @@ export default function App() {
   }, []); */
 
   return (
-    <Flex w='100%' minH='100vh' direction='column'>
+    <>
       <Box>
         <Box>
           <canvas
@@ -743,7 +705,7 @@ export default function App() {
             />
           </Tooltip>
           <Login
-            supabaseClient={supabase.client}
+            supabaseClient={supabaseClient}
             session={session}
             setSession={setSession}
             shouldShowLogin={shouldShowLogin}
@@ -1284,6 +1246,6 @@ export default function App() {
           <Text variant='attribution'>© Agent First Dev, LLC.</Text>
         </Flex>
       </Box>
-    </Flex>
+    </>
   );
 }
