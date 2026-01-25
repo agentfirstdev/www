@@ -60,8 +60,6 @@ export default function Profile({
       clearTimeout(tokenTimeout.current);
 
       tokenTimeout.current = setTimeout(() => {
-        tokenTimeout.current = null;
-
         setIsTokenShown(false);
       }, ui.buttonResetMs);
     }
@@ -75,7 +73,7 @@ export default function Profile({
       justifyItems='start'
       alignItems='center'
     >
-      <GridItem display='flex' justifySelf='center' alignItems='center'>
+      <GridItem display='flex' justifySelf='center'>
         <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
           {ui.emailLabel}
         </FormLabel>
@@ -90,7 +88,7 @@ export default function Profile({
           isReadOnly
         />
       </GridItem>
-      <GridItem display='flex' justifySelf='center' alignItems='center'>
+      <GridItem display='flex' justifySelf='center'>
         <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
           {ui.tokenLabel}
         </FormLabel>
@@ -100,6 +98,7 @@ export default function Profile({
           type={isTokenShown || !hasToken ? 'text' : 'password'}
           size='lg'
           w='35ch'
+          {...(isTokenShown || !hasToken ? {} : { letterSpacing: '.2rem' })}
           value={account?.api_token ?? ui.loadingPlaceholder}
           aria-label={ui.tokenLabel}
           isReadOnly
