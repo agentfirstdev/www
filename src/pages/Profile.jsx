@@ -153,12 +153,12 @@ export default function Profile({
       </GridItem>
       <GridItem display='flex' alignItems='center'>
         <Input type='text' w={ui.textboxWidth} value='0' aria-label={ui.creditsLabel} isReadOnly />
-        <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.buyLabel} hasArrow>
+        <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.purchaseLabel} hasArrow>
           <IconButton
             as='a'
             ml='2'
             icon={<AddIcon fontSize='sm' />}
-            aria-label={ui.buyLabel}
+            aria-label={ui.purchaseLabel}
             href='/#pricing'
           />
         </Tooltip>
