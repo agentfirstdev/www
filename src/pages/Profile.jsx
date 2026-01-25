@@ -9,7 +9,7 @@ import {
   useClipboard,
   useToast
 } from '@chakra-ui/react';
-import { ViewIcon, ViewOffIcon, CopyIcon, CheckIcon } from '@chakra-ui/icons';
+import { EditIcon, ViewIcon, ViewOffIcon, CopyIcon, CheckIcon, AddIcon } from '@chakra-ui/icons';
 
 import * as ui from '../config/ui';
 
@@ -56,6 +56,16 @@ export default function Profile({
     };
   }, []);
 
+  useEffect(() => {
+    if (isTokenShown) {
+      clearTimeout(tokenTimeout.current);
+
+      tokenTimeout.current = setTimeout(() => {
+        setIsTokenShown(false);
+      }, ui.buttonResetMs);
+    }
+  }, [isTokenShown]);
+
   return (
     <Grid
       templateColumns='auto 1fr'
@@ -65,29 +75,30 @@ export default function Profile({
       alignItems='center'
     >
       <GridItem display='flex' justifySelf='right'>
-        <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
+        <FormLabel mr='0' mb='0' fontWeight='bold'>
           {ui.emailLabel}
         </FormLabel>
       </GridItem>
       <GridItem display='flex' alignItems='center'>
         <Input
           type='email'
-          size='lg'
           w={ui.textboxWidth}
           value={account?.email ?? ui.loadingPlaceholder}
           aria-label={ui.emailLabel}
           isReadOnly
         />
+        <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
+          <IconButton ml='2' icon={<EditIcon />} aria-label={ui.updateLabel} isDisabled='true' />
+        </Tooltip>
       </GridItem>
       <GridItem display='flex' justifySelf='right'>
-        <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
+        <FormLabel mr='0' mb='0' fontWeight='bold'>
           {ui.tokenLabel}
         </FormLabel>
       </GridItem>
       <GridItem display='flex' alignItems='center'>
         <Input
           type={isPlaintext ? 'text' : 'password'}
-          size='lg'
           w={ui.textboxWidth}
           letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
           value={account?.api_token ?? ui.loadingPlaceholder}
@@ -106,12 +117,9 @@ export default function Profile({
             aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
             isDisabled={!hasToken}
             onClick={() => {
-              clearTimeout(tokenTimeout.current);
-              setIsTokenShown(true);
-
-              tokenTimeout.current = setTimeout(() => {
-                setIsTokenShown(false);
-              }, ui.buttonResetMs);
+              setIsTokenShown((state) => {
+                return !state;
+              });
             }}
           />
         </Tooltip>
@@ -135,6 +143,23 @@ export default function Profile({
                 duration: ui.toastTimeoutMs
               });
             }}
+          />
+        </Tooltip>
+      </GridItem>
+      <GridItem display='flex' justifySelf='right'>
+        <FormLabel mr='0' mb='0' fontWeight='bold'>
+          {ui.creditsLabel}
+        </FormLabel>
+      </GridItem>
+      <GridItem display='flex' alignItems='center'>
+        <Input type='text' w={ui.textboxWidth} value='0' aria-label={ui.creditsLabel} isReadOnly />
+        <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.buyLabel} hasArrow>
+          <IconButton
+            as='a'
+            ml='2'
+            icon={<AddIcon fontSize='sm' />}
+            aria-label={ui.buyLabel}
+            href='/#pricing'
           />
         </Tooltip>
       </GridItem>
