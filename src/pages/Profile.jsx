@@ -58,9 +58,9 @@ export default function Profile({
 
   return (
     <Grid
-      templateColumns='max-content 1fr'
-      columnGap='3'
-      rowGap='4'
+      templateColumns='auto 1fr'
+      columnGap={ui.profileHorizontalMargin}
+      rowGap={ui.profileVerticalMargin}
       justifyItems='start'
       alignItems='center'
     >
@@ -73,7 +73,7 @@ export default function Profile({
         <Input
           type='email'
           size='lg'
-          w='35ch'
+          w={ui.textboxWidth}
           value={account?.email ?? ui.loadingPlaceholder}
           aria-label={ui.emailLabel}
           isReadOnly
@@ -88,8 +88,8 @@ export default function Profile({
         <Input
           type={isPlaintext ? 'text' : 'password'}
           size='lg'
-          w='35ch'
-          letterSpacing={isPlaintext ? null : '0.2rem'}
+          w={ui.textboxWidth}
+          letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
           value={account?.api_token ?? ui.loadingPlaceholder}
           aria-label={ui.tokenLabel}
           isReadOnly

@@ -146,8 +146,8 @@ export default function Login({
                 container: { margin: ui.loginMargin, gap: 0 },
                 label: { marginBottom: 0 },
                 input: {
-                  marginTop: ui.loginInputMargin,
-                  opacity: ui.loginInputOpacity,
+                  marginTop: ui.loginTextboxMargin,
+                  opacity: ui.loginTextboxOpacity,
                   borderColor: 'var(--chakra-colors-chakra-border-color)',
                   background: 'var(--chakra-colors-chakra-body-bg)',
                   height: ui.controlDimension,
