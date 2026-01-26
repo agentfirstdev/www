@@ -65,7 +65,7 @@ export default function Login({
           Dashboard
         </MenuItem>
         <MenuItem as='a' borderRadius='0' href={ui.profileUrl}>
-          Profile
+          Settings
         </MenuItem>
         <MenuItem as='a' borderRadius='0' href={ui.supportUrl}>
           Help
