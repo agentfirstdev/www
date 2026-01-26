@@ -10,7 +10,8 @@ import {
   Box,
   Heading,
   Button,
-  Divider
+  Divider,
+  useBreakpointValue
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { Auth } from '@supabase/auth-ui-react';
@@ -29,7 +30,9 @@ export default function Login({
   // eslint-disable-next-line no-unused-vars
   const [notifications, setNotifications] = useState([]);
   const location = useLocation();
+  const isInLgView = useBreakpointValue({ base: false, lg: true });
   const isOnHomepage = location.pathname == '/';
+  const isOnDashboard = location.pathname == ui.dashboardPath;
   const handleLogout = async () => {
     await supabaseClient.auth.signOut();
     setSession(null);
@@ -64,12 +67,12 @@ export default function Login({
         </Avatar>
       </MenuButton>
       <MenuList p='0' fontSize='sm'>
-        {!isOnHomepage && (
+        {isInLgView && !isOnHomepage && (
           <MenuItem as='a' borderRadius={ui.menuTopBorder} href='/'>
             Home
           </MenuItem>
         )}
-        {location.pathname != ui.dashboardPath && (
+        {!isOnDashboard && (
           <MenuItem
             as='a'
             borderRadius={isOnHomepage ? ui.menuTopBorder : '0'}
@@ -79,10 +82,59 @@ export default function Login({
           </MenuItem>
         )}
         {location.pathname != ui.profilePath && (
-          <MenuItem as='a' borderRadius='0' href={ui.profileUrl}>
+          <MenuItem
+            as='a'
+            borderRadius={!isInLgView && isOnDashboard ? ui.menuTopBorder : '0'}
+            href={ui.profileUrl}
+          >
             Settings
           </MenuItem>
         )}
+        <MenuItem
+          as='a'
+          display={{ base: 'flex', lg: 'none' }}
+          borderRadius='0'
+          href={ui.servicesPath}
+        >
+          Services
+        </MenuItem>
+        <MenuItem
+          as='a'
+          display={{ base: 'flex', lg: 'none' }}
+          borderRadius='0'
+          href={ui.pricingPath}
+        >
+          Pricing
+        </MenuItem>
+        <MenuItem as='a' display={{ base: 'flex', lg: 'none' }} borderRadius='0' href={ui.docUrl}>
+          Documentation
+        </MenuItem>
+        {/* <MenuItem
+          as='a'
+          display={{ base: 'flex', lg: 'none' }}
+          borderRadius='0'
+          href={ui.demoUrl}
+          target='_blank'
+          rel='noopener'
+        >
+          Live demo
+        </MenuItem> */}
+        <MenuItem
+          as='a'
+          display={{ base: 'flex', lg: 'none' }}
+          borderRadius='0'
+          href={ui.aboutPath}
+        >
+          About us
+        </MenuItem>
+        {/* <MenuItem
+          as='a'
+          display={{ base: 'flex', lg: 'none' }}
+          borderRadius='0'
+          href={ui.llmsTxtUrl}
+        >
+          llms.txt
+        </MenuItem> */}
         <MenuItem as='a' borderRadius='0' href={ui.supportUrl}>
           Help
         </MenuItem>
