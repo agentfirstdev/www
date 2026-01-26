@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import {
   Box,
   Flex,
@@ -44,7 +44,6 @@ export default function App() {
   const [xPath, setXPath] = useState(null);
   const [session, setSession] = useState(null);
   const [shouldShowLogin, setShouldShowLogin] = useState(false);
-  const location = useLocation();
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
@@ -242,7 +241,7 @@ export default function App() {
   return (
     <Flex w='100%' minH='100vh' direction='column'>
       <Box p='2'>
-        <Box as='a' href={location.pathname != '/' ? '/' : null}>
+        <Box>
           <canvas
             ref={logotype}
             width={ui.logoOldWidth}
