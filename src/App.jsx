@@ -285,6 +285,72 @@ export default function App() {
               onClick={toggleColorMode}
             />
           </Tooltip>
+          {!session && (
+            <Menu strategy='fixed' isOpen={isMenuOpen} onOpen={handleMenuOpen} onClose={closeMenu}>
+              <Tooltip
+                mx={ui.tooltipMargin}
+                p={ui.tooltipPadding}
+                label={ui.menuLabel}
+                isDisabled={isMenuOpen}
+                hasArrow
+              >
+                <MenuButton
+                  as={IconButton}
+                  display={{ base: 'inline-flex', lg: 'none' }}
+                  mt={ui.hamburgerTopMargin}
+                  ml={ui.hamburgerLeftMargin}
+                  borderRadius='50%'
+                  bg='brand.secondary'
+                  w={ui.controlDimension}
+                  h={ui.controlDimension}
+                  fontSize='xl'
+                  icon={<HamburgerIcon />}
+                  aria-label={ui.menuLabel}
+                  _hover={{ bg: 'accent.secondary' }}
+                  _dark={{ bg: 'brand.primary', color: 'whiteAlpha.800' }}
+                />
+              </Tooltip>
+              <MenuList p='0'>
+                <MenuItem
+                  borderRadius={ui.menuBottomBorder}
+                  onClick={() => {
+                    setShouldShowLogin(true);
+                  }}
+                  onKeyDown={(event) => {
+                    handleKeyPress(event, () => {
+                      setShouldShowLogin(true);
+                    });
+                  }}
+                >
+                  Dashboard
+                </MenuItem>
+                <MenuItem as='a' borderRadius={ui.menuTopBorder} href='/#services'>
+                  Services
+                </MenuItem>
+                <MenuItem as='a' borderRadius='0' href='/#pricing'>
+                  Pricing
+                </MenuItem>
+                <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
+                  Documentation
+                </MenuItem>
+                {/* <MenuItem
+                  as='a'
+                  borderRadius='0'
+                  href={ui.demoUrl}
+                  target='_blank'
+                  rel='noopener'
+                >
+                  Live demo
+                </MenuItem> */}
+                <MenuItem as='a' borderRadius='0' href='/#about'>
+                  About us
+                </MenuItem>
+                {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
+                  llms.txt
+                </MenuItem> */}
+              </MenuList>
+            </Menu>
+          )}
           <Login
             supabaseClient={supabase.client}
             session={session}
@@ -293,70 +359,6 @@ export default function App() {
             setShouldShowLogin={setShouldShowLogin}
             handleKeyPress={handleKeyPress}
           />
-          <Menu strategy='fixed' isOpen={isMenuOpen} onOpen={handleMenuOpen} onClose={closeMenu}>
-            <Tooltip
-              mx={ui.tooltipMargin}
-              p={ui.tooltipPadding}
-              label={ui.menuLabel}
-              isDisabled={isMenuOpen}
-              hasArrow
-            >
-              <MenuButton
-                as={IconButton}
-                display={{ base: 'inline-flex', lg: 'none' }}
-                mt={ui.hamburgerTopMargin}
-                ml={ui.hamburgerLeftMargin}
-                borderRadius='50%'
-                bg='brand.secondary'
-                w={ui.controlDimension}
-                h={ui.controlDimension}
-                fontSize='xl'
-                icon={<HamburgerIcon />}
-                aria-label={ui.menuLabel}
-                _hover={{ bg: 'accent.secondary' }}
-                _dark={{ bg: 'brand.primary', color: 'whiteAlpha.800' }}
-              />
-            </Tooltip>
-            <MenuList p='0'>
-              <MenuItem
-                borderRadius={ui.menuBottomBorder}
-                onClick={() => {
-                  setShouldShowLogin(true);
-                }}
-                onKeyDown={(event) => {
-                  handleKeyPress(event, () => {
-                    setShouldShowLogin(true);
-                  });
-                }}
-              >
-                Dashboard
-              </MenuItem>
-              <MenuItem as='a' borderRadius={ui.menuTopBorder} href='#services'>
-                Services
-              </MenuItem>
-              <MenuItem as='a' borderRadius='0' href='#pricing'>
-                Pricing
-              </MenuItem>
-              <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
-                Documentation
-              </MenuItem>
-              {/* <MenuItem
-                as='a'
-                borderRadius='0'
-                href={ui.demoUrl}
-                target='_blank'
-                rel='noopener'
-              >
-                Live demo
-              </MenuItem> */}
-              <MenuItem as='a' borderRadius='0' href='#about'>
-                About us
-              </MenuItem>
-              {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
-                llms.txt
-              </MenuItem> */}
-            </MenuList>
-          </Menu>
         </Flex>
       </Box>
       <Routes>
