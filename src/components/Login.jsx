@@ -69,16 +69,20 @@ export default function Login({
             Home
           </MenuItem>
         )}
-        <MenuItem
-          as='a'
-          borderRadius={isOnHomepage ? ui.menuTopBorder : '0'}
-          href={ui.dashboardUrl}
-        >
-          Dashboard
-        </MenuItem>
-        <MenuItem as='a' borderRadius='0' href={ui.profileUrl}>
-          Settings
-        </MenuItem>
+        {location.pathname != ui.dashboardPath && (
+          <MenuItem
+            as='a'
+            borderRadius={isOnHomepage ? ui.menuTopBorder : '0'}
+            href={ui.dashboardUrl}
+          >
+            Dashboard
+          </MenuItem>
+        )}
+        {location.pathname != ui.profilePath && (
+          <MenuItem as='a' borderRadius='0' href={ui.profileUrl}>
+            Settings
+          </MenuItem>
+        )}
         <MenuItem as='a' borderRadius='0' href={ui.supportUrl}>
           Help
         </MenuItem>
