@@ -213,8 +213,8 @@ export const sunStroke = 3;
 export const hamburgerTopMargin = -1;
 export const hamburgerLeftMargin = 4;
 export const loginTextboxOpacity = 0.75;
-export const navTopPosition = { base: 4, lg: 6 };
-export const navRightPosition = { base: 4, lg: 6 };
+export const navTopPosition = { base: 4, lg: 7 };
+export const navRightPosition = { base: 4, lg: 7 };
 
 // Hero
 export const heroHeight = '60vh';

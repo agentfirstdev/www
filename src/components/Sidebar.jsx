@@ -96,7 +96,7 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
           shadow='lg'
           bg='chakra-subtle-bg'
           px='4'
-          py='6'
+          py='8'
           w={ui.sidebarWidth}
           h='100vh'
           textAlign='right'
