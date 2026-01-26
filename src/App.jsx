@@ -395,7 +395,10 @@ export default function App() {
             />
           }
         />
-        <Route path={ui.profilePath} element={<Profile supabaseClient={supabase.client} />} />
+        <Route
+          path={ui.profilePath}
+          element={<Profile supabaseClient={supabase.client} session={session} />}
+        />
       </Routes>
       <Box
         id='contact'

@@ -14,7 +14,7 @@ import { EditIcon, ViewIcon, ViewOffIcon, CopyIcon, CheckIcon, AddIcon } from '@
 
 import * as ui from '../config/ui';
 
-export default function Profile({ supabaseClient }) {
+export default function Profile({ supabaseClient, session }) {
   const tokenTimeout = useRef();
   const [account, setAccount] = useState(null);
   const [isTokenShown, setIsTokenShown] = useState(false);
@@ -24,23 +24,25 @@ export default function Profile({ supabaseClient }) {
   const isPlaintext = isTokenShown || !hasToken;
 
   useEffect(() => {
-    supabaseClient
-      .from('accounts')
-      .select('email, api_token, partners (email)')
-      .single()
-      .then(({ data, error }) => {
-        if (error) {
-          toast({
-            position: 'top',
-            status: 'error',
-            description: ui.errorMessage,
-            duration: ui.toastTimeoutMs
-          });
-          console.error(error);
-        } else {
-          setAccount(data);
-        }
-      });
+    if (session) {
+      supabaseClient
+        .from('accounts')
+        .select('email, api_token, partners (email)')
+        .single()
+        .then(({ data, error }) => {
+          if (error) {
+            toast({
+              position: 'top',
+              status: 'error',
+              description: ui.errorMessage,
+              duration: ui.toastTimeoutMs
+            });
+            console.error(error);
+          } else {
+            setAccount(data);
+          }
+        });
+    }
   }, []);
 
   useEffect(() => {
