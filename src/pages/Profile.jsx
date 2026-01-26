@@ -60,9 +60,8 @@ export default function Profile({ supabaseClient }) {
   }, [isTokenShown]);
 
   return (
-    <Flex minH={ui.profileHeight} justify='center' align='start'>
+    <Flex mt={ui.xlMargin} minH={ui.profileHeight} justify='center' align='start'>
       <Grid
-        mt={ui.xlMargin}
         templateColumns='auto 1fr'
         columnGap={ui.profileHorizontalMargin}
         rowGap={ui.profileVerticalMargin}

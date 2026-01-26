@@ -157,6 +157,12 @@ export default extendTheme({
         }
       }
     },
+    Input: {
+      baseStyle: { field: { _light: { bg: 'white' }, _dark: { bg: 'whiteAlpha.50' } } },
+      variants: {
+        sidebar: { field: { _light: { bg: 'whiteAlpha.700' }, _dark: { bg: 'gray.700' } } }
+      }
+    },
     Textarea: {
       defaultProps: { focusBorderColor: 'brand.primary' },
       baseStyle: {
@@ -176,8 +182,8 @@ export default extendTheme({
         _hover: { borderColor: 'transparent' },
         _focus: { outline: 'none', shadow: ui.shadowStyle },
         _disabled: {
-          _light: { _hover: { background: 'accent.secondary !important' } },
-          _dark: { _hover: { background: 'brand.primary !important' } }
+          _light: { _hover: { bg: 'accent.secondary !important' } },
+          _dark: { _hover: { bg: 'brand.primary !important' } }
         }
       },
       variants: {
@@ -202,6 +208,10 @@ export default extendTheme({
           _hover: { bg: 'chakra-accent-bg' },
           _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
+        },
+        toggle: {
+          _light: { bg: '#e2e8f0', _hover: { bg: '#cbd5e0' } },
+          _dark: { bg: '#343944', _hover: { bg: '#464b55' } }
         }
       }
     },

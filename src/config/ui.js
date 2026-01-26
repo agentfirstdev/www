@@ -292,7 +292,7 @@ export const sidebarCollapsedPadding = 20;
 export const sidebarCollapseSecs = 0.4;
 
 // Secondary pages
-export const profileHeight = '80vh';
+export const profileHeight = '65vh';
 export const secondaryStyle = {
   h3: { mt: '1.5rem', fontWeight: 'bold', color: 'brand.secondary' },
   a: {

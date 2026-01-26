@@ -100,16 +100,14 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
           h='100vh'
           textAlign='right'
           pointerEvents='auto'
-          _light={{ bg: isOpen ? 'white' : 'whiteAlpha.700' }}
+          _light={{ bg: isOpen ? 'gray.100' : '#edf2f7b3' }}
           _dark={{ bg: isOpen ? '#232934' : '#232934b3' }}
         >
           <Button
-            variant='monochrome'
+            variant='toggle'
             mr={isOpen ? '-8' : null}
             aspectRatio='1'
             fontSize='2xl'
-            _light={{ bg: '#e2e8f0', _hover: { bg: '#cbd5e0' } }}
-            _dark={{ bg: '#343944', _hover: { bg: '#464b55' } }}
             onClick={toggle}
           >
             <ChevronRightIcon
@@ -136,12 +134,11 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
             <GridItem display='flex' alignItems='center'>
               <Input
                 type='email'
+                variant='sidebar'
                 w={ui.textboxWidth}
                 value={account?.email ?? ui.loadingPlaceholder}
                 aria-label={ui.emailLabel}
                 isReadOnly
-                _light={{ bg: 'gray.50' }}
-                _dark={{ bg: 'whiteAlpha.50' }}
               />
               <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
                 <IconButton
@@ -160,13 +157,12 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
             <GridItem display='flex' alignItems='center'>
               <Input
                 type={isPlaintext ? 'text' : 'password'}
+                variant='sidebar'
                 w={ui.textboxWidth}
                 letterSpacing={isPlaintext ? null : ui.ciphertextSmSpacing}
                 value={account?.api_token ?? ui.loadingPlaceholder}
                 aria-label={ui.tokenLabel}
                 isReadOnly
-                _light={{ bg: 'gray.50' }}
-                _dark={{ bg: 'whiteAlpha.50' }}
               />
               <Tooltip
                 mx={ui.tooltipMargin}
@@ -217,12 +213,11 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
             <GridItem display='flex' alignItems='center'>
               <Input
                 type='text'
+                variant='sidebar'
                 w={ui.textboxWidth}
                 value='0'
                 aria-label={ui.creditsLabel}
                 isReadOnly
-                _light={{ bg: 'gray.50' }}
-                _dark={{ bg: 'whiteAlpha.50' }}
               />
               <Tooltip
                 mx={ui.tooltipMargin}
