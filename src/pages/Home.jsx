@@ -29,16 +29,10 @@ import searchGeotargeting from '../markdown/geotargeting-search.md?raw';
 import browsingGeotargeting from '../markdown/geotargeting-browsing.md?raw';
 
 export default function Home({
-  supabaseClient,
   blueprintStroke,
   blueprintFill,
-  session,
-  setSession,
-  shouldShowLogin,
-  setShouldShowLogin,
-  generateFrame,
-  handleKeyPress,
-  handleMenuOpen
+  generateFrame /* ,
+  handleKeyPress */
 }) {
   const completion = useRef();
   // const promptBox = useRef();
@@ -560,9 +554,9 @@ export default function Home({
       promptBox.current.focus();
       animatePromptBox();
     }
-  }, [isLoading, animatePromptBox]); */
+  }, [isLoading, animatePromptBox]);
 
-  /* useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (!promptBoxHeight.current && promptBox.current) {
       promptBoxHeight.current = `${promptBox.current.offsetHeight}px`;
     }

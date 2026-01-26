@@ -136,7 +136,8 @@ export const controlDimension = '48px';
 export const buttonBorder = '1px solid transparent';
 export const iconDimension = '32px';
 export const textboxWidth = '35ch';
-export const ciphertextSpacing = '0.175em';
+export const ciphertextSpacing = '0.2rem';
+export const ciphertextSmSpacing = '0.175em';
 export const socialDimension = '24px';
 export const tooltipPadding = '6px 10px';
 export const iconHorizontalMargin = 3;
@@ -183,6 +184,7 @@ export const iconStrokeWidth = 3;
 export const iconRoughness = 5;
 export const iconRotationMs = 600;
 export const openRotation = 45;
+export const expandRotation = 180;
 
 // Other shared styles
 export const linkPadding = '2px';
@@ -273,6 +275,18 @@ export const hedMargin = { base: '-5.5%', lg: '-16px' };
 export const hedNewWidth = { base: '55%', lg: '160px' };
 export const hedTransform = { base: 'translateX(-11%)', lg: 'translateX(-16px)' };
 export const agentNewWidth = { base: '50%', lg: '144px' };
+
+// Sidebar
+export const sidebarWidth = '560px';
+export const sidebarMargin = `calc(100% - ${sidebarWidth} - ${sidebarWidth} + 4vw)`;
+export const sidebarCollapsedWidth = '40px';
+export const sidebarCollapsedMargin =
+  'calc(100% - ' + sidebarCollapsedWidth + ' - ' + sidebarCollapsedWidth + ' + 4vw)';
+export const sidebarTravel = `calc(-${sidebarWidth} + ${sidebarCollapsedWidth})`;
+export const sidebarEasing = 'backOut';
+export const sidebarPadding = 6;
+export const sidebarCollapsedPadding = 20;
+export const sidebarCollapseSecs = 0.4;
 
 // Secondary pages
 export const profileHeight = '80vh';

@@ -24,6 +24,7 @@ import * as ui from './config/ui';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Login from './components/Login';
+import Sidebar from './components/Sidebar';
 import './App.css';
 
 export default function App() {
@@ -47,7 +48,8 @@ export default function App() {
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isMenuOpen, onOpen: openMenu, onClose: closeMenu } = useDisclosure();
+  const { isOpen: isSidebarOpen, onToggle: toggleSidebar } = useDisclosure();
   const modeId = 'mode';
   const isLightMode = colorMode == 'light';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
@@ -71,7 +73,7 @@ export default function App() {
   };
   const handleMenuOpen = () => {
     setShouldShowLogin(false);
-    onOpen();
+    openMenu();
   };
 
   useEffect(() => {
@@ -252,10 +254,10 @@ export default function App() {
         </Box>
         <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
-            <Link variant='nav' ml={ui.itemMargin} href='#services'>
+            <Link variant='nav' ml={ui.itemMargin} href='/#services'>
               Services
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href='#pricing'>
+            <Link variant='nav' ml={ui.itemMargin} href='/#pricing'>
               Pricing
             </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
@@ -264,7 +266,7 @@ export default function App() {
             {/* <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
               Live demo
             </Link> */}
-            <Link variant='nav' ml={ui.itemMargin} href='#about'>
+            <Link variant='nav' ml={ui.itemMargin} href='/#about'>
               About us
             </Link>
             {/* <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
@@ -291,12 +293,12 @@ export default function App() {
             setShouldShowLogin={setShouldShowLogin}
             handleKeyPress={handleKeyPress}
           />
-          <Menu strategy='fixed' isOpen={isOpen} onOpen={handleMenuOpen} onClose={onClose}>
+          <Menu strategy='fixed' isOpen={isMenuOpen} onOpen={handleMenuOpen} onClose={closeMenu}>
             <Tooltip
               mx={ui.tooltipMargin}
               p={ui.tooltipPadding}
               label={ui.menuLabel}
-              isDisabled={isOpen}
+              isDisabled={isMenuOpen}
               hasArrow
             >
               <MenuButton
@@ -362,33 +364,14 @@ export default function App() {
           path='/'
           element={
             <Home
-              supabaseClient={supabase.client}
               blueprintStroke={blueprintStroke}
               blueprintFill={blueprintFill}
-              session={session}
-              setSession={setSession}
-              shouldShowLogin={shouldShowLogin}
-              setShouldShowLogin={setShouldShowLogin}
               generateFrame={generateFrame}
               handleKeyPress={handleKeyPress}
-              handleMenuOpen={handleMenuOpen}
             />
           }
         />
-        <Route
-          path={ui.profilePath}
-          element={
-            <Profile
-              supabaseClient={supabase.client}
-              session={session}
-              setSession={setSession}
-              shouldShowLogin={shouldShowLogin}
-              setShouldShowLogin={setShouldShowLogin}
-              handleKeyPress={handleKeyPress}
-              handleMenuOpen={handleMenuOpen}
-            />
-          }
-        />
+        <Route path={ui.profilePath} element={<Profile supabaseClient={supabase.client} />} />
       </Routes>
       <Box
         id='contact'
@@ -452,6 +435,15 @@ export default function App() {
           <Text variant='attribution'>© Agent First Dev, LLC.</Text>
         </Flex>
       </Box>
+      {session && (
+        <Sidebar
+          supabaseClient={supabase.client}
+          isOpen={isSidebarOpen}
+          toggle={toggleSidebar}
+          handleKeyPress={handleKeyPress}
+          handleMenuOpen={handleMenuOpen}
+        />
+      )}
     </Flex>
   );
 }

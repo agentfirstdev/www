@@ -14,15 +14,7 @@ import { EditIcon, ViewIcon, ViewOffIcon, CopyIcon, CheckIcon, AddIcon } from '@
 
 import * as ui from '../config/ui';
 
-export default function Profile({
-  supabaseClient,
-  session,
-  setSession,
-  shouldShowLogin,
-  setShouldShowLogin,
-  handleKeyPress,
-  handleMenuOpen
-}) {
+export default function Profile({ supabaseClient }) {
   const tokenTimeout = useRef();
   const [account, setAccount] = useState(null);
   const [isTokenShown, setIsTokenShown] = useState(false);
@@ -70,7 +62,7 @@ export default function Profile({
   return (
     <Flex minH={ui.profileHeight} justify='center' align='start'>
       <Grid
-        mt={ui.mdMargin}
+        mt={ui.xlMargin}
         templateColumns='auto 1fr'
         columnGap={ui.profileHorizontalMargin}
         rowGap={ui.profileVerticalMargin}
@@ -78,13 +70,14 @@ export default function Profile({
         alignItems='center'
       >
         <GridItem display='flex' justifySelf='right'>
-          <FormLabel mr='0' mb='0' fontWeight='bold'>
+          <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
             {ui.emailLabel}
           </FormLabel>
         </GridItem>
         <GridItem display='flex' alignItems='center'>
           <Input
             type='email'
+            size='lg'
             w={ui.textboxWidth}
             value={account?.email ?? ui.loadingPlaceholder}
             aria-label={ui.emailLabel}
@@ -95,13 +88,14 @@ export default function Profile({
           </Tooltip>
         </GridItem>
         <GridItem display='flex' justifySelf='right'>
-          <FormLabel mr='0' mb='0' fontWeight='bold'>
+          <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
             {ui.tokenLabel}
           </FormLabel>
         </GridItem>
         <GridItem display='flex' alignItems='center'>
           <Input
             type={isPlaintext ? 'text' : 'password'}
+            size='lg'
             w={ui.textboxWidth}
             letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
             value={account?.api_token ?? ui.loadingPlaceholder}
@@ -150,13 +144,14 @@ export default function Profile({
           </Tooltip>
         </GridItem>
         <GridItem display='flex' justifySelf='right'>
-          <FormLabel mr='0' mb='0' fontWeight='bold'>
+          <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
             {ui.creditsLabel}
           </FormLabel>
         </GridItem>
         <GridItem display='flex' alignItems='center'>
           <Input
             type='text'
+            size='lg'
             w={ui.textboxWidth}
             value='0'
             aria-label={ui.creditsLabel}
