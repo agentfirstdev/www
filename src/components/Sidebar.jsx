@@ -71,7 +71,7 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
   }, [isTokenShown]);
 
   return (
-    <Box pointerEvents='none'>
+    <Box zIndex='overlay' pointerEvents='none'>
       <Slide
         direction='left'
         motionProps={{
