@@ -254,10 +254,10 @@ export default function App() {
         </Box>
         <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
-            <Link variant='nav' ml={ui.itemMargin} href='/#services'>
+            <Link variant='nav' ml={ui.itemMargin} href={ui.servicesPath}>
               Services
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href='/#pricing'>
+            <Link variant='nav' ml={ui.itemMargin} href={ui.pricingPath}>
               Pricing
             </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
@@ -266,7 +266,7 @@ export default function App() {
             {/* <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
               Live demo
             </Link> */}
-            <Link variant='nav' ml={ui.itemMargin} href='/#about'>
+            <Link variant='nav' ml={ui.itemMargin} href={ui.aboutPath}>
               About us
             </Link>
             {/* <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
@@ -324,10 +324,10 @@ export default function App() {
                 >
                   Dashboard
                 </MenuItem>
-                <MenuItem as='a' borderRadius={ui.menuTopBorder} href='/#services'>
+                <MenuItem as='a' borderRadius={ui.menuTopBorder} href={ui.servicesPath}>
                   Services
                 </MenuItem>
-                <MenuItem as='a' borderRadius='0' href='/#pricing'>
+                <MenuItem as='a' borderRadius='0' href={ui.pricingPath}>
                   Pricing
                 </MenuItem>
                 <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
@@ -342,7 +342,7 @@ export default function App() {
                 >
                   Live demo
                 </MenuItem> */}
-                <MenuItem as='a' borderRadius='0' href='/#about'>
+                <MenuItem as='a' borderRadius='0' href={ui.aboutPath}>
                   About us
                 </MenuItem>
                 {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
