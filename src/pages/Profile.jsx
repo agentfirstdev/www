@@ -88,7 +88,7 @@ export default function Profile({
           isReadOnly
         />
         <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
-          <IconButton ml='2' icon={<EditIcon />} aria-label={ui.updateLabel} isDisabled='true' />
+          <IconButton ml='2' icon={<EditIcon />} aria-label={ui.updateLabel} isDisabled={true} />
         </Tooltip>
       </GridItem>
       <GridItem display='flex' justifySelf='right'>
