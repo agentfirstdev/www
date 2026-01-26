@@ -22,9 +22,10 @@ import rough from 'roughjs/bin/rough';
 import * as supabase from './config/supabase';
 import * as ui from './config/ui';
 import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Login from './components/Login';
-import Sidebar from './components/Sidebar';
+// import Sidebar from './components/Sidebar';
 import './App.css';
 
 export default function App() {
@@ -370,6 +371,17 @@ export default function App() {
             />
           }
         />
+        <Route
+          path={ui.dashboardPath}
+          element={
+            <Dashboard
+              supabaseClient={supabase.client}
+              session={session}
+              isSidebarOpen={isSidebarOpen}
+              toggleSidebar={toggleSidebar}
+            />
+          }
+        />
         <Route path={ui.profilePath} element={<Profile supabaseClient={supabase.client} />} />
       </Routes>
       <Box
@@ -434,15 +446,9 @@ export default function App() {
           <Text variant='attribution'>© Agent First Dev, LLC.</Text>
         </Flex>
       </Box>
-      {session && (
-        <Sidebar
-          supabaseClient={supabase.client}
-          isOpen={isSidebarOpen}
-          toggle={toggleSidebar}
-          handleKeyPress={handleKeyPress}
-          handleMenuOpen={handleMenuOpen}
-        />
-      )}
+      {/* {session && (
+        <Sidebar supabaseClient={supabase.client} isOpen={isSidebarOpen} toggle={toggleSidebar} />
+      )} */}
     </Flex>
   );
 }

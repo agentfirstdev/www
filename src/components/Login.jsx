@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   Menu,
   MenuButton,
@@ -27,6 +28,8 @@ export default function Login({
 }) {
   // eslint-disable-next-line no-unused-vars
   const [notifications, setNotifications] = useState([]);
+  const location = useLocation();
+  const isOnHomepage = location.pathname == '/';
   const handleLogout = async () => {
     await supabaseClient.auth.signOut();
     setSession(null);
@@ -61,7 +64,16 @@ export default function Login({
         </Avatar>
       </MenuButton>
       <MenuList p='0' fontSize='sm'>
-        <MenuItem as='a' borderRadius={ui.menuTopBorder} href={ui.dashboardUrl}>
+        {!isOnHomepage && (
+          <MenuItem as='a' borderRadius={ui.menuTopBorder} href='/'>
+            Home
+          </MenuItem>
+        )}
+        <MenuItem
+          as='a'
+          borderRadius={isOnHomepage ? ui.menuTopBorder : '0'}
+          href={ui.dashboardUrl}
+        >
           Dashboard
         </MenuItem>
         <MenuItem as='a' borderRadius='0' href={ui.profileUrl}>
