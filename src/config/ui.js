@@ -275,6 +275,7 @@ export const hedTransform = { base: 'translateX(-11%)', lg: 'translateX(-16px)' 
 export const agentNewWidth = { base: '50%', lg: '144px' };
 
 // Secondary pages
+export const profileHeight = '80vh';
 export const secondaryStyle = {
   h3: { mt: '1.5rem', fontWeight: 'bold', color: 'brand.secondary' },
   a: {

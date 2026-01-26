@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import {
+  Flex,
   Grid,
   GridItem,
   FormLabel,
@@ -67,102 +68,111 @@ export default function Profile({
   }, [isTokenShown]);
 
   return (
-    <Grid
-      templateColumns='auto 1fr'
-      columnGap={ui.profileHorizontalMargin}
-      rowGap={ui.profileVerticalMargin}
-      justifyItems='start'
-      alignItems='center'
-    >
-      <GridItem display='flex' justifySelf='right'>
-        <FormLabel mr='0' mb='0' fontWeight='bold'>
-          {ui.emailLabel}
-        </FormLabel>
-      </GridItem>
-      <GridItem display='flex' alignItems='center'>
-        <Input
-          type='email'
-          w={ui.textboxWidth}
-          value={account?.email ?? ui.loadingPlaceholder}
-          aria-label={ui.emailLabel}
-          isReadOnly
-        />
-        <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
-          <IconButton ml='2' icon={<EditIcon />} aria-label={ui.updateLabel} isDisabled={true} />
-        </Tooltip>
-      </GridItem>
-      <GridItem display='flex' justifySelf='right'>
-        <FormLabel mr='0' mb='0' fontWeight='bold'>
-          {ui.tokenLabel}
-        </FormLabel>
-      </GridItem>
-      <GridItem display='flex' alignItems='center'>
-        <Input
-          type={isPlaintext ? 'text' : 'password'}
-          w={ui.textboxWidth}
-          letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
-          value={account?.api_token ?? ui.loadingPlaceholder}
-          aria-label={ui.tokenLabel}
-          isReadOnly
-        />
-        <Tooltip
-          mx={ui.tooltipMargin}
-          p={ui.tooltipPadding}
-          label={hasToken ? (isTokenShown ? ui.hideLabel : ui.showLabel) : null}
-          hasArrow
-        >
-          <IconButton
-            ml='2'
-            icon={isTokenShown ? <ViewOffIcon /> : <ViewIcon />}
-            aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
-            isDisabled={!hasToken}
-            onClick={() => {
-              setIsTokenShown((state) => {
-                return !state;
-              });
-            }}
+    <Flex minH={ui.profileHeight} justify='center' align='start'>
+      <Grid
+        mt={ui.mdMargin}
+        templateColumns='auto 1fr'
+        columnGap={ui.profileHorizontalMargin}
+        rowGap={ui.profileVerticalMargin}
+        justifyItems='start'
+        alignItems='center'
+      >
+        <GridItem display='flex' justifySelf='right'>
+          <FormLabel mr='0' mb='0' fontWeight='bold'>
+            {ui.emailLabel}
+          </FormLabel>
+        </GridItem>
+        <GridItem display='flex' alignItems='center'>
+          <Input
+            type='email'
+            w={ui.textboxWidth}
+            value={account?.email ?? ui.loadingPlaceholder}
+            aria-label={ui.emailLabel}
+            isReadOnly
           />
-        </Tooltip>
-        <Tooltip
-          mx={ui.tooltipMargin}
-          p={ui.tooltipPadding}
-          label={hasToken ? ui.copyLabel : null}
-          hasArrow
-        >
-          <IconButton
-            ml='2'
-            icon={hasCopied ? <CheckIcon /> : <CopyIcon />}
-            aria-label={ui.copyLabel}
-            isDisabled={!hasToken}
-            onClick={() => {
-              onCopy();
-              toast({
-                position: 'top',
-                status: 'success',
-                description: ui.copiedMessage,
-                duration: ui.toastTimeoutMs
-              });
-            }}
+          <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
+            <IconButton ml='2' icon={<EditIcon />} aria-label={ui.updateLabel} isDisabled={true} />
+          </Tooltip>
+        </GridItem>
+        <GridItem display='flex' justifySelf='right'>
+          <FormLabel mr='0' mb='0' fontWeight='bold'>
+            {ui.tokenLabel}
+          </FormLabel>
+        </GridItem>
+        <GridItem display='flex' alignItems='center'>
+          <Input
+            type={isPlaintext ? 'text' : 'password'}
+            w={ui.textboxWidth}
+            letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
+            value={account?.api_token ?? ui.loadingPlaceholder}
+            aria-label={ui.tokenLabel}
+            isReadOnly
           />
-        </Tooltip>
-      </GridItem>
-      <GridItem display='flex' justifySelf='right'>
-        <FormLabel mr='0' mb='0' fontWeight='bold'>
-          {ui.creditsLabel}
-        </FormLabel>
-      </GridItem>
-      <GridItem display='flex' alignItems='center'>
-        <Input type='text' w={ui.textboxWidth} value='0' aria-label={ui.creditsLabel} isReadOnly />
-        <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.purchaseLabel} hasArrow>
-          <IconButton
-            as='a'
-            ml='2'
-            icon={<AddIcon fontSize='sm' />}
-            aria-label={ui.purchaseLabel}
-            href='/#pricing'
+          <Tooltip
+            mx={ui.tooltipMargin}
+            p={ui.tooltipPadding}
+            label={hasToken ? (isTokenShown ? ui.hideLabel : ui.showLabel) : null}
+            hasArrow
+          >
+            <IconButton
+              ml='2'
+              icon={isTokenShown ? <ViewOffIcon /> : <ViewIcon />}
+              aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
+              isDisabled={!hasToken}
+              onClick={() => {
+                setIsTokenShown((state) => {
+                  return !state;
+                });
+              }}
+            />
+          </Tooltip>
+          <Tooltip
+            mx={ui.tooltipMargin}
+            p={ui.tooltipPadding}
+            label={hasToken ? ui.copyLabel : null}
+            hasArrow
+          >
+            <IconButton
+              ml='2'
+              icon={hasCopied ? <CheckIcon /> : <CopyIcon />}
+              aria-label={ui.copyLabel}
+              isDisabled={!hasToken}
+              onClick={() => {
+                onCopy();
+                toast({
+                  position: 'top',
+                  status: 'success',
+                  description: ui.copiedMessage,
+                  duration: ui.toastTimeoutMs
+                });
+              }}
+            />
+          </Tooltip>
+        </GridItem>
+        <GridItem display='flex' justifySelf='right'>
+          <FormLabel mr='0' mb='0' fontWeight='bold'>
+            {ui.creditsLabel}
+          </FormLabel>
+        </GridItem>
+        <GridItem display='flex' alignItems='center'>
+          <Input
+            type='text'
+            w={ui.textboxWidth}
+            value='0'
+            aria-label={ui.creditsLabel}
+            isReadOnly
           />
-        </Tooltip>
-      </GridItem>
-    </Grid>
+          <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.purchaseLabel} hasArrow>
+            <IconButton
+              as='a'
+              ml='2'
+              icon={<AddIcon fontSize='sm' />}
+              aria-label={ui.purchaseLabel}
+              href='/#pricing'
+            />
+          </Tooltip>
+        </GridItem>
+      </Grid>
+    </Flex>
   );
 }
