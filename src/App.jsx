@@ -357,6 +357,7 @@ export default function App() {
             setSession={setSession}
             shouldShowLogin={shouldShowLogin}
             setShouldShowLogin={setShouldShowLogin}
+            toggleSidebar={toggleSidebar}
             handleKeyPress={handleKeyPress}
           />
         </Flex>

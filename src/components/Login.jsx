@@ -25,6 +25,7 @@ export default function Login({
   setSession,
   shouldShowLogin,
   setShouldShowLogin,
+  toggleSidebar,
   handleKeyPress
 }) {
   // eslint-disable-next-line no-unused-vars
@@ -85,7 +86,8 @@ export default function Login({
           <MenuItem
             as='a'
             borderRadius={!isInLgView && isOnDashboard ? ui.menuTopBorder : '0'}
-            href={ui.profileUrl}
+            href={!isOnDashboard ? ui.profileUrl : null}
+            onClick={isOnDashboard ? toggleSidebar : null}
           >
             Settings
           </MenuItem>
