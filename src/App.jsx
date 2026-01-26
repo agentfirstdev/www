@@ -241,8 +241,8 @@ export default function App() {
 
   return (
     <Flex w='100%' minH='100vh' direction='column'>
-      <Box>
-        <Box {...(location.pathname != '/' ? { as: 'a', href: '/' } : {})}>
+      <Box p='2'>
+        <Box as='a' href={location.pathname != '/' ? '/' : null}>
           <canvas
             ref={logotype}
             width={ui.logoOldWidth}

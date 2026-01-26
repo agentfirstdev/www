@@ -111,7 +111,7 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
           >
             <ChevronRightIcon
               transform={isOpen ? `rotate(${ui.expandRotation}deg)` : 'rotate(0)'}
-              sx={{ transitionDuration: `${ui.iconRotationMs}ms` }}
+              sx={{ transitionProperty: 'transform', transitionDuration: `${ui.iconRotationMs}ms` }}
             />
           </Button>
           <Heading mt='2' size='md' textAlign='left' fontFamily='body'>
