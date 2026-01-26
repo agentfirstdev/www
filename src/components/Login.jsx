@@ -75,7 +75,7 @@ export default function Login({
         {!isOnDashboard && (
           <MenuItem
             as='a'
-            borderRadius={isOnHomepage ? ui.menuTopBorder : '0'}
+            borderRadius={!isInLgView || isOnHomepage ? ui.menuTopBorder : '0'}
             href={ui.dashboardUrl}
           >
             Dashboard
@@ -90,51 +90,34 @@ export default function Login({
             Settings
           </MenuItem>
         )}
-        <MenuItem
-          as='a'
-          display={{ base: 'flex', lg: 'none' }}
-          borderRadius='0'
-          href={ui.servicesPath}
-        >
-          Services
-        </MenuItem>
-        <MenuItem
-          as='a'
-          display={{ base: 'flex', lg: 'none' }}
-          borderRadius='0'
-          href={ui.pricingPath}
-        >
-          Pricing
-        </MenuItem>
-        <MenuItem as='a' display={{ base: 'flex', lg: 'none' }} borderRadius='0' href={ui.docUrl}>
-          Documentation
-        </MenuItem>
-        {/* <MenuItem
-          as='a'
-          display={{ base: 'flex', lg: 'none' }}
-          borderRadius='0'
-          href={ui.demoUrl}
-          target='_blank'
-          rel='noopener'
-        >
-          Live demo
-        </MenuItem> */}
-        <MenuItem
-          as='a'
-          display={{ base: 'flex', lg: 'none' }}
-          borderRadius='0'
-          href={ui.aboutPath}
-        >
-          About us
-        </MenuItem>
-        {/* <MenuItem
-          as='a'
-          display={{ base: 'flex', lg: 'none' }}
-          borderRadius='0'
-          href={ui.llmsTxtUrl}
-        >
-          llms.txt
-        </MenuItem> */}
+        {!isInLgView && (
+          <>
+            <MenuItem as='a' borderRadius='0' href={ui.servicesPath}>
+              Services
+            </MenuItem>
+            <MenuItem as='a' borderRadius='0' href={ui.pricingPath}>
+              Pricing
+            </MenuItem>
+            <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
+              Documentation
+            </MenuItem>
+            {/* <MenuItem
+              as='a'
+              borderRadius='0'
+              href={ui.demoUrl}
+              target='_blank'
+              rel='noopener'
+            >
+              Live demo
+            </MenuItem> */}
+            <MenuItem as='a' borderRadius='0' href={ui.aboutPath}>
+              About us
+            </MenuItem>
+            {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
+              llms.txt
+            </MenuItem> */}
+          </>
+        )}
         <MenuItem as='a' borderRadius='0' href={ui.supportUrl}>
           Help
         </MenuItem>
