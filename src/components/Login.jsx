@@ -86,8 +86,8 @@ export default function Login({
           <MenuItem
             as='a'
             borderRadius={!isInLgView && isOnDashboard ? ui.menuTopBorder : '0'}
-            href={!isOnDashboard ? ui.profileUrl : null}
-            onClick={isOnDashboard ? toggleSidebar : null}
+            href={!isInLgView || !isOnDashboard ? ui.profileUrl : null}
+            onClick={isInLgView && isOnDashboard ? toggleSidebar : null}
           >
             Settings
           </MenuItem>
