@@ -94,19 +94,22 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
           top='0'
           left='0'
           shadow='lg'
-          bg='chakra-subtle-bg'
           px='4'
           py='8'
           w={ui.sidebarWidth}
           h='100vh'
           textAlign='right'
           pointerEvents='auto'
+          _light={{ bg: isOpen ? 'white' : 'whiteAlpha.700' }}
+          _dark={{ bg: isOpen ? '#232934' : '#232934b3' }}
         >
           <Button
             variant='monochrome'
             mr={isOpen ? '-8' : null}
             aspectRatio='1'
             fontSize='2xl'
+            _light={{ bg: '#e2e8f0', _hover: { bg: '#cbd5e0' } }}
+            _dark={{ bg: '#343944', _hover: { bg: '#464b55' } }}
             onClick={toggle}
           >
             <ChevronRightIcon
@@ -137,6 +140,8 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
                 value={account?.email ?? ui.loadingPlaceholder}
                 aria-label={ui.emailLabel}
                 isReadOnly
+                _light={{ bg: 'gray.50' }}
+                _dark={{ bg: 'whiteAlpha.50' }}
               />
               <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
                 <IconButton
@@ -160,6 +165,8 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
                 value={account?.api_token ?? ui.loadingPlaceholder}
                 aria-label={ui.tokenLabel}
                 isReadOnly
+                _light={{ bg: 'gray.50' }}
+                _dark={{ bg: 'whiteAlpha.50' }}
               />
               <Tooltip
                 mx={ui.tooltipMargin}
@@ -214,6 +221,8 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
                 value='0'
                 aria-label={ui.creditsLabel}
                 isReadOnly
+                _light={{ bg: 'gray.50' }}
+                _dark={{ bg: 'whiteAlpha.50' }}
               />
               <Tooltip
                 mx={ui.tooltipMargin}
