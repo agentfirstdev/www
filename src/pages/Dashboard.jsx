@@ -25,6 +25,12 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
   const isPlaintext = isTokenShown || !hasToken;
 
   useEffect(() => {
+    return () => {
+      clearTimeout(tokenTimeout.current);
+    };
+  }, []);
+
+  useEffect(() => {
     if (session) {
       supabaseClient
         .from('accounts')
@@ -44,13 +50,7 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
           }
         });
     }
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      clearTimeout(tokenTimeout.current);
-    };
-  }, []);
+  }, [session]);
 
   useEffect(() => {
     if (isTokenShown) {
@@ -179,7 +179,12 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
         </Grid>
       </Flex>
       {session && (
-        <Sidebar supabaseClient={supabaseClient} isOpen={isSidebarOpen} toggle={toggleSidebar} />
+        <Sidebar
+          supabaseClient={supabaseClient}
+          session={session}
+          isOpen={isSidebarOpen}
+          toggle={toggleSidebar}
+        />
       )}
     </>
   );

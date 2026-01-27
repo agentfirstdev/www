@@ -25,7 +25,7 @@ import {
 
 import * as ui from '../config/ui';
 
-export default function Sidebar({ supabaseClient, isOpen, toggle }) {
+export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
   const tokenTimeout = useRef();
   const [account, setAccount] = useState(null);
   const [isTokenShown, setIsTokenShown] = useState(false);
@@ -33,6 +33,12 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
   const toast = useToast();
   const hasToken = !!account?.api_token;
   const isPlaintext = isTokenShown || !hasToken;
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(tokenTimeout.current);
+    };
+  }, []);
 
   useEffect(() => {
     supabaseClient
@@ -52,13 +58,7 @@ export default function Sidebar({ supabaseClient, isOpen, toggle }) {
           setAccount(data);
         }
       });
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      clearTimeout(tokenTimeout.current);
-    };
-  }, []);
+  }, [session]);
 
   useEffect(() => {
     if (isTokenShown) {

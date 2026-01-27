@@ -24,6 +24,12 @@ export default function Profile({ supabaseClient, session }) {
   const isPlaintext = isTokenShown || !hasToken;
 
   useEffect(() => {
+    return () => {
+      clearTimeout(tokenTimeout.current);
+    };
+  }, []);
+
+  useEffect(() => {
     if (session) {
       supabaseClient
         .from('accounts')
@@ -43,13 +49,7 @@ export default function Profile({ supabaseClient, session }) {
           }
         });
     }
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      clearTimeout(tokenTimeout.current);
-    };
-  }, []);
+  }, [session]);
 
   useEffect(() => {
     if (isTokenShown) {
