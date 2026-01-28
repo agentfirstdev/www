@@ -8,14 +8,16 @@ export default extendTheme({
     colors: {
       'chakra-body-bg': { _light: '#f9fafc', _dark: 'gray.800' },
       'chakra-subtle-bg': { _light: 'gray.100', _dark: 'whiteAlpha.50' },
-      'chakra-accent-bg': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
+      'chakra-inset-bg': { _light: 'white', _dark: 'whiteAlpha.50' },
       'chakra-overlay-bg': { _light: 'white', _dark: 'gray.700' },
       'chakra-inverse-bg': { _light: ui.resolutionBlue, _dark: ui.cornflowerBlue },
-      'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' },
+      'chakra-accent-bg': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
       'chakra-shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
+      'chakra-label-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
       'chakra-button-color': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
-      'chakra-label-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' }
+      'chakra-accent-color': { _light: '#3182ce', _dark: '#63b3ed' },
+      'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' }
     }
   },
   colors: {
@@ -46,15 +48,18 @@ export default extendTheme({
       },
       variants: {
         login: { fontFamily: 'subheading', fontSize: '1.25rem' },
-        tagline: {
-          fontFamily: 'tagline',
-          _light: { color: 'gray.800' },
-          _dark: { color: 'whiteAlpha.800' }
-        },
+        tagline: { fontFamily: 'tagline', color: 'chakra-body-text !important' },
         'post-it': { _light: { color: 'gray.800' }, _dark: { color: 'gray.800' } },
         service: { fontFamily: 'subheading' },
         team: { textAlign: 'center', fontWeight: 'normal' },
-        name: { fontFamily: 'subheading' }
+        name: { fontFamily: 'subheading' },
+        secondary: {
+          mt: ui.mdMargin,
+          mb: ui.smMargin,
+          fontFamily: 'body',
+          _light: { color: 'gray.600' },
+          _dark: { color: 'whiteAlpha.600' }
+        }
       }
     },
     Text: {

@@ -34,6 +34,7 @@ export default function Login({
   const isInLgView = useBreakpointValue({ base: false, lg: true });
   const isOnHomepage = location.pathname == '/';
   const isOnDashboard = location.pathname == ui.dashboardPath;
+  const isOnProfile = location.pathname == ui.profilePath;
   const handleLogout = async () => {
     await supabaseClient.auth.signOut();
     setSession(null);
@@ -70,7 +71,7 @@ export default function Login({
       <MenuList p='0' fontSize='sm'>
         {isInLgView && !isOnHomepage && (
           <MenuItem as='a' borderRadius={ui.menuTopBorder} href='/'>
-            Home
+            {ui.homeLabel}
           </MenuItem>
         )}
         {!isOnDashboard && (
@@ -79,29 +80,29 @@ export default function Login({
             borderRadius={!isInLgView || isOnHomepage ? ui.menuTopBorder : '0'}
             href={ui.dashboardUrl}
           >
-            Dashboard
+            {ui.dashboardLabel}
           </MenuItem>
         )}
-        {location.pathname != ui.profilePath && (
+        {!isOnProfile && (
           <MenuItem
             as='a'
             borderRadius={!isInLgView && isOnDashboard ? ui.menuTopBorder : '0'}
             href={!isInLgView || !isOnDashboard ? ui.profileUrl : null}
             onClick={isInLgView && isOnDashboard ? toggleSidebar : null}
           >
-            Settings
+            {ui.profileLabel}
           </MenuItem>
         )}
         {!isInLgView && (
           <>
             <MenuItem as='a' borderRadius='0' href={ui.servicesPath}>
-              Services
+              {ui.servicesLabel}
             </MenuItem>
             <MenuItem as='a' borderRadius='0' href={ui.pricingPath}>
-              Pricing
+              {ui.pricingLabel}
             </MenuItem>
             <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
-              Documentation
+              {ui.docLabel}
             </MenuItem>
             {/* <MenuItem
               as='a'
@@ -110,42 +111,44 @@ export default function Login({
               target='_blank'
               rel='noopener'
             >
-              Live demo
+              {ui.demoLabel}
             </MenuItem> */}
             <MenuItem as='a' borderRadius='0' href={ui.aboutPath}>
-              About us
+              {ui.aboutLabel}
             </MenuItem>
-            {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
-              llms.txt
+            {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtPath}>
+              {ui.llmsTxtLabel}
             </MenuItem> */}
           </>
         )}
         <MenuItem as='a' borderRadius='0' href={ui.supportUrl}>
-          Help
+          {ui.supportLabel}
         </MenuItem>
         <MenuItem borderRadius={ui.menuBottomBorder} onClick={handleLogout}>
-          Logout
+          {ui.logoutLabel}
         </MenuItem>
       </MenuList>
     </Menu>
   ) : (
     <>
-      <Button
-        display={{ base: 'none', lg: 'inline-flex' }}
-        ml={ui.itemMargin}
-        fontSize='md'
-        tabIndex='0'
-        onClick={() => {
-          setShouldShowLogin(true);
-        }}
-        onKeyDown={(event) => {
-          handleKeyPress(event, () => {
+      {!isOnDashboard && !isOnProfile && (
+        <Button
+          display={{ base: 'none', lg: 'inline-flex' }}
+          ml={ui.itemMargin}
+          fontSize='md'
+          tabIndex='0'
+          onClick={() => {
             setShouldShowLogin(true);
-          });
-        }}
-      >
-        Dashboard
-      </Button>
+          }}
+          onKeyDown={(event) => {
+            handleKeyPress(event, () => {
+              setShouldShowLogin(true);
+            });
+          }}
+        >
+          {ui.dashboardLabel}
+        </Button>
+      )}
       {shouldShowLogin && (
         <Box
           position='absolute'
@@ -159,7 +162,7 @@ export default function Login({
           w={ui.loginWidth}
           shadow='md'
         >
-          <Heading variant='login'>Log in or sign up</Heading>
+          <Heading variant='login'>{ui.loginLabel}</Heading>
           <Button
             variant='monochrome'
             position='absolute'
@@ -182,7 +185,7 @@ export default function Login({
             view='magic_link'
             redirectTo={ui.dashboardUrl}
             localization={{
-              variables: { magic_link: { email_input_label: '', button_label: ui.loginLabel } }
+              variables: { magic_link: { email_input_label: '', button_label: ui.magicLabel } }
             }}
             appearance={{
               theme: ThemeSupa,
@@ -210,12 +213,9 @@ export default function Login({
                 button: {
                   margin: ui.loginButtonMargin,
                   border: ui.buttonBorder,
-                  width: ui.loginButtonWidth,
                   height: ui.controlDimension,
-                  font:
-                    'var(--chakra-fontWeights-semibold) ' +
-                    'var(--chakra-fontSizes-md) ' +
-                    'var(--chakra-fonts-body)',
+                  font: 'var(--chakra-fontSizes-md) var(--chakra-fonts-body)',
+                  fontWeight: 'var(--chakra-fontWeights-bold)',
                   transition: ui.transition
                 }
               }

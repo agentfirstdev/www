@@ -265,22 +265,22 @@ export default function App() {
         <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
             <Link variant='nav' ml={ui.itemMargin} href={ui.servicesPath}>
-              Services
+              {ui.servicesLabel}
             </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.pricingPath}>
-              Pricing
+              {ui.pricingLabel}
             </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
-              Documentation
+              {ui.docLabel}
             </Link>
             {/* <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
-              Live demo
+              {ui.demoLabel}
             </Link> */}
             <Link variant='nav' ml={ui.itemMargin} href={ui.aboutPath}>
-              About us
+              {ui.aboutLabel}
             </Link>
-            {/* <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtUrl}>
-              llms.txt
+            {/* <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtPath}>
+              {ui.llmsTxtLabel}
             </Link> */}
           </Flex>
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={modeLabel} hasArrow>
@@ -332,16 +332,16 @@ export default function App() {
                     });
                   }}
                 >
-                  Dashboard
+                  {ui.dashboardLabel}
                 </MenuItem>
                 <MenuItem as='a' borderRadius={ui.menuTopBorder} href={ui.servicesPath}>
-                  Services
+                  {ui.servicesLabel}
                 </MenuItem>
                 <MenuItem as='a' borderRadius='0' href={ui.pricingPath}>
-                  Pricing
+                  {ui.pricingLabel}
                 </MenuItem>
                 <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
-                  Documentation
+                  {ui.docLabel}
                 </MenuItem>
                 {/* <MenuItem
                   as='a'
@@ -350,13 +350,13 @@ export default function App() {
                   target='_blank'
                   rel='noopener'
                 >
-                  Live demo
+                  {ui.demoLabel}
                 </MenuItem> */}
                 <MenuItem as='a' borderRadius='0' href={ui.aboutPath}>
-                  About us
+                  {ui.aboutLabel}
                 </MenuItem>
-                {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtUrl}>
-                  llms.txt
+                {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtPath}>
+                  {ui.llmsTxtLabel}
                 </MenuItem> */}
               </MenuList>
             </Menu>
@@ -459,7 +459,7 @@ export default function App() {
               </Link>
             </Tooltip>
           </Box>
-          <Text variant='attribution'>© Agent First Dev, LLC.</Text>
+          <Text variant='attribution'>{ui.attributionLabel}</Text>
         </Flex>
       </Box>
       {/* {session && (

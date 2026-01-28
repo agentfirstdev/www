@@ -41,23 +41,25 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
   }, []);
 
   useEffect(() => {
-    supabaseClient
-      .from('accounts')
-      .select('email, api_token, partners (email)')
-      .single()
-      .then(({ data, error }) => {
-        if (error) {
-          toast({
-            position: 'top',
-            status: 'error',
-            description: ui.errorMessage,
-            duration: ui.toastTimeoutMs
-          });
-          console.error(error);
-        } else {
-          setAccount(data);
-        }
-      });
+    if (session) {
+      supabaseClient
+        .from('accounts')
+        .select('email, api_token, partners (email)')
+        .single()
+        .then(({ data, error }) => {
+          if (error) {
+            toast({
+              position: 'top',
+              status: 'error',
+              description: ui.errorMessage,
+              duration: ui.toastTimeoutMs
+            });
+            console.error(error);
+          } else {
+            setAccount(data);
+          }
+        });
+    }
   }, [session]);
 
   useEffect(() => {
@@ -116,7 +118,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
             />
           </Button>
           <Heading mt='2' size='md' textAlign='left' fontFamily='body'>
-            Settings
+            {ui.profileLabel}
           </Heading>
           <Grid
             mt={ui.xsMargin}

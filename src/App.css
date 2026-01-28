@@ -22,6 +22,14 @@ html {
   opacity: 1;
 }
 
+#auth-magic-link input:hover {
+  border-color: var(--chakra-colors-chakra-shadow-color) !important;
+}
+
+#auth-magic-link input:focus {
+  border-color: var(--chakra-colors-chakra-accent-color) !important;
+}
+
 [data-popper-placement="right-start" i] .chakra-tooltip__arrow-wrapper {
   top: -3px !important;
 }

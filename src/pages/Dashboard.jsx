@@ -3,6 +3,7 @@ import {
   Flex,
   Grid,
   GridItem,
+  Heading,
   FormLabel,
   Input,
   IconButton,
@@ -11,6 +12,8 @@ import {
   useToast
 } from '@chakra-ui/react';
 import { EditIcon, ViewIcon, ViewOffIcon, CopyIcon, CheckIcon, AddIcon } from '@chakra-ui/icons';
+import { Auth } from '@supabase/auth-ui-react';
+import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 import * as ui from '../config/ui';
 import Sidebar from '../components/Sidebar';
@@ -64,119 +67,171 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
 
   return (
     <>
-      <Flex minH={ui.profileHeight} justify='center' align='start'>
-        <Grid
-          mt={ui.xlMargin}
-          templateColumns='auto 1fr'
-          columnGap={ui.profileHorizontalMargin}
-          rowGap={ui.profileVerticalMargin}
-          justifyItems='start'
-          alignItems='center'
-        >
-          <GridItem display='flex' justifySelf='right'>
-            <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
-              {ui.emailLabel}
-            </FormLabel>
-          </GridItem>
-          <GridItem display='flex' alignItems='center'>
-            <Input
-              type='email'
-              size='lg'
-              w={ui.textboxWidth}
-              value={account?.email ?? ui.loadingPlaceholder}
-              aria-label={ui.emailLabel}
-              isReadOnly
-            />
-            <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
-              <IconButton
-                ml='2'
-                icon={<EditIcon />}
-                aria-label={ui.updateLabel}
-                isDisabled={true}
+      <Heading variant='secondary' size='lg'>
+        {session ? ui.dashboardLabel : ui.loginLabel}
+      </Heading>
+      <Flex minH={ui.secondaryHeight} justify='center' align='start'>
+        {session ? (
+          <Grid
+            templateColumns='auto 1fr'
+            columnGap={ui.profileHorizontalMargin}
+            rowGap={ui.profileVerticalMargin}
+            justifyItems='start'
+            alignItems='center'
+          >
+            <GridItem display='flex' justifySelf='right'>
+              <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
+                {ui.emailLabel}
+              </FormLabel>
+            </GridItem>
+            <GridItem display='flex' alignItems='center'>
+              <Input
+                type='email'
+                size='lg'
+                w={ui.textboxWidth}
+                value={account?.email ?? ui.loadingPlaceholder}
+                aria-label={ui.emailLabel}
+                isReadOnly
               />
-            </Tooltip>
-          </GridItem>
-          <GridItem display='flex' justifySelf='right'>
-            <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
-              {ui.tokenLabel}
-            </FormLabel>
-          </GridItem>
-          <GridItem display='flex' alignItems='center'>
-            <Input
-              type={isPlaintext ? 'text' : 'password'}
-              size='lg'
-              w={ui.textboxWidth}
-              letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
-              value={account?.api_token ?? ui.loadingPlaceholder}
-              aria-label={ui.tokenLabel}
-              isReadOnly
-            />
-            <Tooltip
-              mx={ui.tooltipMargin}
-              p={ui.tooltipPadding}
-              label={hasToken ? (isTokenShown ? ui.hideLabel : ui.showLabel) : null}
-              hasArrow
-            >
-              <IconButton
-                ml='2'
-                icon={isTokenShown ? <ViewOffIcon /> : <ViewIcon />}
-                aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
-                isDisabled={!hasToken}
-                onClick={() => {
-                  setIsTokenShown((state) => {
-                    return !state;
-                  });
-                }}
+              <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
+                <IconButton
+                  ml='2'
+                  icon={<EditIcon />}
+                  aria-label={ui.updateLabel}
+                  isDisabled={true}
+                />
+              </Tooltip>
+            </GridItem>
+            <GridItem display='flex' justifySelf='right'>
+              <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
+                {ui.tokenLabel}
+              </FormLabel>
+            </GridItem>
+            <GridItem display='flex' alignItems='center'>
+              <Input
+                type={isPlaintext ? 'text' : 'password'}
+                size='lg'
+                w={ui.textboxWidth}
+                letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
+                value={account?.api_token ?? ui.loadingPlaceholder}
+                aria-label={ui.tokenLabel}
+                isReadOnly
               />
-            </Tooltip>
-            <Tooltip
-              mx={ui.tooltipMargin}
-              p={ui.tooltipPadding}
-              label={hasToken ? ui.copyLabel : null}
-              hasArrow
-            >
-              <IconButton
-                ml='2'
-                icon={hasCopied ? <CheckIcon /> : <CopyIcon />}
-                aria-label={ui.copyLabel}
-                isDisabled={!hasToken}
-                onClick={() => {
-                  onCopy();
-                  toast({
-                    position: 'top',
-                    status: 'success',
-                    description: ui.copiedMessage,
-                    duration: ui.toastTimeoutMs
-                  });
-                }}
+              <Tooltip
+                mx={ui.tooltipMargin}
+                p={ui.tooltipPadding}
+                label={hasToken ? (isTokenShown ? ui.hideLabel : ui.showLabel) : null}
+                hasArrow
+              >
+                <IconButton
+                  ml='2'
+                  icon={isTokenShown ? <ViewOffIcon /> : <ViewIcon />}
+                  aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
+                  isDisabled={!hasToken}
+                  onClick={() => {
+                    setIsTokenShown((state) => {
+                      return !state;
+                    });
+                  }}
+                />
+              </Tooltip>
+              <Tooltip
+                mx={ui.tooltipMargin}
+                p={ui.tooltipPadding}
+                label={hasToken ? ui.copyLabel : null}
+                hasArrow
+              >
+                <IconButton
+                  ml='2'
+                  icon={hasCopied ? <CheckIcon /> : <CopyIcon />}
+                  aria-label={ui.copyLabel}
+                  isDisabled={!hasToken}
+                  onClick={() => {
+                    onCopy();
+                    toast({
+                      position: 'top',
+                      status: 'success',
+                      description: ui.copiedMessage,
+                      duration: ui.toastTimeoutMs
+                    });
+                  }}
+                />
+              </Tooltip>
+            </GridItem>
+            <GridItem display='flex' justifySelf='right'>
+              <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
+                {ui.creditsLabel}
+              </FormLabel>
+            </GridItem>
+            <GridItem display='flex' alignItems='center'>
+              <Input
+                type='text'
+                size='lg'
+                w={ui.textboxWidth}
+                value='0'
+                aria-label={ui.creditsLabel}
+                isReadOnly
               />
-            </Tooltip>
-          </GridItem>
-          <GridItem display='flex' justifySelf='right'>
-            <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
-              {ui.creditsLabel}
-            </FormLabel>
-          </GridItem>
-          <GridItem display='flex' alignItems='center'>
-            <Input
-              type='text'
-              size='lg'
-              w={ui.textboxWidth}
-              value='0'
-              aria-label={ui.creditsLabel}
-              isReadOnly
-            />
-            <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.purchaseLabel} hasArrow>
-              <IconButton
-                as='a'
-                ml='2'
-                icon={<AddIcon fontSize='sm' />}
-                aria-label={ui.purchaseLabel}
-                href='/#pricing'
-              />
-            </Tooltip>
-          </GridItem>
-        </Grid>
+              <Tooltip
+                mx={ui.tooltipMargin}
+                p={ui.tooltipPadding}
+                label={ui.purchaseLabel}
+                hasArrow
+              >
+                <IconButton
+                  as='a'
+                  ml='2'
+                  icon={<AddIcon fontSize='sm' />}
+                  aria-label={ui.purchaseLabel}
+                  href='/#pricing'
+                />
+              </Tooltip>
+            </GridItem>
+          </Grid>
+        ) : (
+          <Auth
+            supabaseClient={supabaseClient}
+            providers={[]}
+            view='magic_link'
+            redirectTo={ui.dashboardUrl}
+            localization={{
+              variables: { magic_link: { email_input_label: '', button_label: ui.magicLabel } }
+            }}
+            appearance={{
+              theme: ThemeSupa,
+              variables: {
+                default: {
+                  colors: {
+                    brand: 'var(--chakra-colors-accent-secondary)',
+                    brandAccent: 'var(--chakra-colors-chakra-inverse-bg)',
+                    inputPlaceholder: 'var(--chakra-colors-chakra-label-color)'
+                  }
+                }
+              },
+              style: {
+                container: { gap: 0, width: ui.secondaryWidth },
+                label: { marginBottom: 0 },
+                input: {
+                  borderRadius: 'var(--chakra-radii-md)',
+                  borderColor: 'var(--chakra-colors-chakra-border-color)',
+                  background: 'var(--chakra-colors-chakra-inset-bg)',
+                  height: ui.controlDimension,
+                  font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
+                  color: 'var(--chakra-colors-chakra-body-text)'
+                },
+                button: {
+                  margin: ui.loginButtonMargin,
+                  border: ui.buttonBorder,
+                  height: ui.controlDimension,
+                  font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
+                  fontWeight: 'var(--chakra-fontWeights-bold)',
+                  transition: ui.transition
+                }
+              }
+            }}
+            showLinks={false}
+          />
+        )}
       </Flex>
       {session && (
         <Sidebar
