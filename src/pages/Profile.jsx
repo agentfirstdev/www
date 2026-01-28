@@ -79,9 +79,7 @@ export default function Profile({ supabaseClient, session }) {
             alignItems='center'
           >
             <GridItem display='flex' justifySelf='right'>
-              <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
-                {ui.emailLabel}
-              </FormLabel>
+              <FormLabel fontSize='lg'>{ui.emailLabel}</FormLabel>
             </GridItem>
             <GridItem display='flex' alignItems='center'>
               <Input
@@ -102,9 +100,7 @@ export default function Profile({ supabaseClient, session }) {
               </Tooltip>
             </GridItem>
             <GridItem display='flex' justifySelf='right'>
-              <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
-                {ui.tokenLabel}
-              </FormLabel>
+              <FormLabel fontSize='lg'>{ui.tokenLabel}</FormLabel>
             </GridItem>
             <GridItem display='flex' alignItems='center'>
               <Input
@@ -158,9 +154,7 @@ export default function Profile({ supabaseClient, session }) {
               </Tooltip>
             </GridItem>
             <GridItem display='flex' justifySelf='right'>
-              <FormLabel mr='0' mb='0' fontSize='lg' fontWeight='bold'>
-                {ui.creditsLabel}
-              </FormLabel>
+              <FormLabel fontSize='lg'>{ui.creditsLabel}</FormLabel>
             </GridItem>
             <GridItem display='flex' alignItems='center'>
               <Input

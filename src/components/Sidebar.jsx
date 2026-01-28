@@ -129,9 +129,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
             alignItems='center'
           >
             <GridItem display='flex' justifySelf='right'>
-              <FormLabel mr='0' mb='0' fontWeight='bold'>
-                {ui.emailLabel}
-              </FormLabel>
+              <FormLabel>{ui.emailLabel}</FormLabel>
             </GridItem>
             <GridItem display='flex' alignItems='center'>
               <Input
@@ -152,9 +150,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
               </Tooltip>
             </GridItem>
             <GridItem display='flex' justifySelf='right'>
-              <FormLabel mr='0' mb='0' fontWeight='bold'>
-                {ui.tokenLabel}
-              </FormLabel>
+              <FormLabel>{ui.tokenLabel}</FormLabel>
             </GridItem>
             <GridItem display='flex' alignItems='center'>
               <Input
@@ -208,9 +204,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
               </Tooltip>
             </GridItem>
             <GridItem display='flex' justifySelf='right'>
-              <FormLabel mr='0' mb='0' fontWeight='bold'>
-                {ui.creditsLabel}
-              </FormLabel>
+              <FormLabel>{ui.creditsLabel}</FormLabel>
             </GridItem>
             <GridItem display='flex' alignItems='center'>
               <Input
