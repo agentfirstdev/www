@@ -41,12 +41,18 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
         .single()
         .then(({ data, error }) => {
           if (error) {
-            toast({
-              position: 'top',
-              status: 'error',
-              description: ui.errorMessage,
-              duration: ui.toastTimeoutMs
-            });
+            const id = 'settings';
+
+            if (!toast.isActive(id)) {
+              toast({
+                id,
+                position: 'top',
+                status: 'error',
+                description: ui.errorMessage,
+                duration: ui.toastTimeoutMs
+              });
+            }
+
             console.error(error);
           } else {
             setAccount(data);
@@ -143,13 +149,19 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
                   aria-label={ui.copyLabel}
                   isDisabled={!hasToken}
                   onClick={() => {
+                    const id = 'copy';
+
                     onCopy();
-                    toast({
-                      position: 'top',
-                      status: 'success',
-                      description: ui.copiedMessage,
-                      duration: ui.toastTimeoutMs
-                    });
+
+                    if (!toast.isActive(id)) {
+                      toast({
+                        id,
+                        position: 'top',
+                        status: 'success',
+                        description: ui.copiedMessage,
+                        duration: ui.toastTimeoutMs
+                      });
+                    }
                   }}
                 />
               </Tooltip>
