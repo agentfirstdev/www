@@ -53,6 +53,12 @@ No test framework is configured.
 
 - Prettier config at `linter/.prettierrc`: 100 char width, single quotes, no trailing commas.
 - ESLint uses flat config format with react, prettier, and jsonc plugins.
+- No shorthand variable names (e.g. `d` for date) except conventional loop indexes (`i`, `j`, `k`).
+- Boolean variables should start with an appropriate verb (e.g. `isCancelled`, `hasLoaded`, `shouldRetry`).
 - Underscore-prefixed variables are allowed as unused.
+- Do not shadow variables.
+- `let` declarations follow `const` declarations.
+- Prefer loose equality (`==`) over strict equality (`===`).
+- Avoid early returns; use conditional wrapping instead.
 - Environment variables prefixed with `VITE_` for client-side access.
-- Commit messages use past tense with terminal punctuation (e.g. "Renamed consts.", "Refactored chart.").
+- Commit messages use past tense with terminal punctuation (e.g. "Renamed consts.", "Refactored chart."). Backtick-quote inline code references.

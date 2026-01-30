@@ -28,7 +28,6 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
 
     return date.toISOString().split('T')[0];
   });
-  const usageBuffer = { success: {}, failure: {} };
   const formatLabel = (callCount, resultType) => {
     return (
       callCount.toLocaleString() +
@@ -39,48 +38,59 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
     );
   };
 
-  for (const date of dates) {
-    usageBuffer.success[date] = { count: 0, elapsed_ms: 0 };
-    usageBuffer.failure[date] = { count: 0, elapsed_ms: 0 };
-  }
-
   useEffect(() => {
     if (session) {
-      const date = new Date();
+      const startDate = new Date();
+      let isCancelled = false;
 
-      date.setDate(date.getDate() - 6);
+      startDate.setDate(startDate.getDate() - 6);
 
       supabaseClient
         .from('usage')
         .select('usage_date, result, count, elapsed_ms')
-        .gte('usage_date', date.toISOString().split('T')[0])
+        .gte('usage_date', startDate.toISOString().split('T')[0])
         .in('result', ['success', 'failure'])
         .then(({ data, error }) => {
-          if (error) {
-            const id = 'usage';
+          if (!isCancelled) {
+            if (error) {
+              const id = 'usage';
 
-            if (!toast.isActive(id)) {
-              toast({
-                id,
-                position: 'top',
-                status: 'error',
-                description: ui.errorMessage,
-                duration: ui.toastTimeoutMs
-              });
+              if (!toast.isActive(id)) {
+                toast({
+                  id,
+                  position: 'top',
+                  status: 'error',
+                  description: ui.errorMessage,
+                  duration: ui.toastTimeoutMs
+                });
+              }
+
+              console.error(error);
+            } else {
+              const buffer = { success: {}, failure: {} };
+
+              for (const date of dates) {
+                buffer.success[date] = { count: 0, elapsed_ms: 0 };
+                buffer.failure[date] = { count: 0, elapsed_ms: 0 };
+              }
+
+              for (const { usage_date, result, count, elapsed_ms } of data) {
+                if (buffer[result]?.[usage_date]) {
+                  buffer[result][usage_date].count += count;
+                  buffer[result][usage_date].elapsed_ms += elapsed_ms;
+                }
+              }
+
+              setUsage(buffer);
             }
-
-            console.error(error);
-          } else {
-            for (const { usage_date, result, count, elapsed_ms } of data) {
-              usageBuffer[result][usage_date].count += count;
-              usageBuffer[result][usage_date].elapsed_ms += elapsed_ms;
-            }
-
-            setUsage(usageBuffer);
           }
         });
+
+      return () => {
+        isCancelled = true;
+      };
     }
-  }, [session]);
+  }, [supabaseClient, session, toast]);
 
   return session ? (
     <>
