@@ -115,7 +115,7 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
                   x: {
                     ticks: {
                       minRotation: ui.labelRotation,
-                      font: { family: ui.headingFont, size: ui.xLabelSize }
+                      font: { family: ui.headingFont, size: ui.horizontalLabelSize }
                     },
                     grid: { display: false }
                   },
@@ -123,7 +123,7 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
                     suggestedMin: 0,
                     ticks: {
                       precision: 0,
-                      font: { family: ui.subheadingFont, size: ui.yLabelSize },
+                      font: { family: ui.subheadingFont, size: ui.verticalLabelSize },
                       callback(value) {
                         return formatLabel(value);
                       }
