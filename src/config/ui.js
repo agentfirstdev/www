@@ -320,7 +320,8 @@ export const secondaryStyle = {
 // Chart
 export const chartWidth = '80%';
 export const spinnerWidth = '4px';
-export const labelSize = 12;
+export const xLabelSize = 12;
+export const yLabelSize = 14;
 export const labelRotation = 30;
 export const lineWidth = 3;
 export const lineTension = 0.25;

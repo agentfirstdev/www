@@ -33,7 +33,9 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
     return (
       callCount.toLocaleString() +
       (resultType ? ` ${resultType.toLowerCase()}` : '') +
-      ` call${callCount == 1 ? '' : 's'}`
+      ((units) => {
+        return resultType ? units : units.toUpperCase();
+      })(` call${callCount == 1 ? '' : 's'}`)
     );
   };
 
@@ -113,7 +115,7 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
                   x: {
                     ticks: {
                       minRotation: ui.labelRotation,
-                      font: { family: ui.headingFont, size: ui.labelSize }
+                      font: { family: ui.headingFont, size: ui.xLabelSize }
                     },
                     grid: { display: false }
                   },
@@ -121,7 +123,7 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
                     suggestedMin: 0,
                     ticks: {
                       precision: 0,
-                      font: { family: ui.headingFont, size: ui.labelSize },
+                      font: { family: ui.subheadingFont, size: ui.yLabelSize },
                       callback(value) {
                         return formatLabel(value);
                       }
