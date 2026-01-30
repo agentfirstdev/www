@@ -1,47 +1,68 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Box, Flex, Heading, Spinner, useToast } from '@chakra-ui/react';
 import {
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  FormLabel,
-  Input,
-  IconButton,
-  Tooltip,
-  useClipboard,
-  useToast
-} from '@chakra-ui/react';
-import { EditIcon, ViewIcon, ViewOffIcon, CopyIcon, CheckIcon, AddIcon } from '@chakra-ui/icons';
+  Chart,
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Legend,
+  Tooltip
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 import * as ui from '../config/ui';
 import Sidebar from '../components/Sidebar';
 
-export default function Dashboard({ supabaseClient, session, isSidebarOpen, toggleSidebar }) {
-  const tokenTimeout = useRef();
-  const [account, setAccount] = useState(null);
-  const [isTokenShown, setIsTokenShown] = useState(false);
-  const { hasCopied, onCopy } = useClipboard(account?.api_token);
-  const toast = useToast();
-  const hasToken = !!account?.api_token;
-  const isPlaintext = isTokenShown || !hasToken;
+Chart.register(CategoryScale, LinearScale, LineElement, PointElement, Legend, Tooltip);
 
-  useEffect(() => {
-    return () => {
-      clearTimeout(tokenTimeout.current);
-    };
-  }, []);
+export default function Dashboard({ supabaseClient, session, isSidebarOpen, toggleSidebar }) {
+  const [usage, setUsage] = useState(null);
+  const toast = useToast();
+  const dates = Array.from({ length: 7 }, (_, i) => {
+    const date = new Date();
+
+    date.setDate(date.getDate() - (6 - i));
+
+    return date.toISOString().split('T')[0];
+  });
+  const usageBuffer = {};
+  usageBuffer.success = Object.fromEntries(
+    dates.map((date) => {
+      return [date, { count: 0, elapsed_ms: 0 }];
+    })
+  );
+  usageBuffer.failure = Object.fromEntries(
+    dates.map((date) => {
+      return [date, { count: 0, elapsed_ms: 0 }];
+    })
+  );
+  const adjectives = { Success: 'successful', Failure: 'failed' };
+  const formatLabel = (callCount, resultType) => {
+    return (
+      callCount.toLocaleString() +
+      (resultType ? ` ${adjectives[resultType]}` : '') +
+      ` call${callCount == 1 ? '' : 's'}`
+    );
+  };
 
   useEffect(() => {
     if (session) {
+      const date = new Date();
+
+      date.setDate(date.getDate() - 6);
+
       supabaseClient
-        .from('accounts')
-        .select('email, api_token, partners (email)')
-        .single()
+        .from('usage')
+        .select('usage_date, result, count, elapsed_ms')
+        .gte('usage_date', date.toISOString().split('T')[0])
+        .in('result', ['success', 'failure'])
+        .order('usage_date', { ascending: true })
         .then(({ data, error }) => {
           if (error) {
-            const id = 'settings';
+            const id = 'usage';
 
             if (!toast.isActive(id)) {
               toast({
@@ -55,198 +76,154 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
 
             console.error(error);
           } else {
-            setAccount(data);
+            for (const { usage_date, result, count, elapsed_ms } of data) {
+              usageBuffer[result][usage_date].count += count;
+              usageBuffer[result][usage_date].elapsed_ms += elapsed_ms;
+            }
+
+            setUsage(usageBuffer);
           }
         });
     }
   }, [session]);
 
-  useEffect(() => {
-    if (isTokenShown) {
-      clearTimeout(tokenTimeout.current);
-
-      tokenTimeout.current = setTimeout(() => {
-        setIsTokenShown(false);
-      }, ui.buttonResetMs);
-    }
-  }, [isTokenShown]);
-
-  return (
+  return session ? (
     <>
-      <Heading variant='secondary' size='lg'>
-        {session ? ui.dashboardLabel : ui.loginLabel}
-      </Heading>
-      <Flex minH={ui.secondaryHeight} justify='center' align='start'>
-        {session ? (
-          <Grid
-            templateColumns='auto 1fr'
-            columnGap={ui.profileHorizontalMargin}
-            rowGap={ui.profileVerticalMargin}
-            justifyItems='start'
-            alignItems='center'
-          >
-            <GridItem display='flex' justifySelf='right'>
-              <FormLabel fontSize='lg'>{ui.emailLabel}</FormLabel>
-            </GridItem>
-            <GridItem display='flex' alignItems='center'>
-              <Input
-                type='email'
-                size='lg'
-                w={ui.textboxWidth}
-                value={account?.email ?? ui.loadingPlaceholder}
-                aria-label={ui.emailLabel}
-                isReadOnly
-              />
-              <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
-                <IconButton
-                  ml='2'
-                  icon={<EditIcon />}
-                  aria-label={ui.updateLabel}
-                  isDisabled={true}
-                />
-              </Tooltip>
-            </GridItem>
-            <GridItem display='flex' justifySelf='right'>
-              <FormLabel fontSize='lg'>{ui.tokenLabel}</FormLabel>
-            </GridItem>
-            <GridItem display='flex' alignItems='center'>
-              <Input
-                type={isPlaintext ? 'text' : 'password'}
-                size='lg'
-                w={ui.textboxWidth}
-                letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
-                value={account?.api_token ?? ui.loadingPlaceholder}
-                aria-label={ui.tokenLabel}
-                isReadOnly
-              />
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={hasToken ? (isTokenShown ? ui.hideLabel : ui.showLabel) : null}
-                hasArrow
-              >
-                <IconButton
-                  ml='2'
-                  icon={isTokenShown ? <ViewOffIcon /> : <ViewIcon />}
-                  aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
-                  isDisabled={!hasToken}
-                  onClick={() => {
-                    setIsTokenShown((state) => {
-                      return !state;
-                    });
-                  }}
-                />
-              </Tooltip>
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={hasToken ? ui.copyLabel : null}
-                hasArrow
-              >
-                <IconButton
-                  ml='2'
-                  icon={hasCopied ? <CheckIcon /> : <CopyIcon />}
-                  aria-label={ui.copyLabel}
-                  isDisabled={!hasToken}
-                  onClick={() => {
-                    const id = 'copy';
-
-                    onCopy();
-
-                    if (!toast.isActive(id)) {
-                      toast({
-                        id,
-                        position: 'top',
-                        status: 'success',
-                        description: ui.copiedMessage,
-                        duration: ui.toastTimeoutMs
-                      });
+      {usage ? (
+        <Flex my={ui.mdMargin} minH={ui.secondaryHeight} justify='center'>
+          <Box w={ui.chartWidth}>
+            <Line
+              data={{
+                labels: dates,
+                datasets: [
+                  {
+                    label: 'Success',
+                    data: dates.map((date) => {
+                      return usage.success[date].count;
+                    }),
+                    borderColor: ui.royalBlue,
+                    pointBackgroundColor: ui.royalBlue
+                  },
+                  {
+                    label: 'Failure',
+                    data: dates.map((date) => {
+                      return usage.failure[date].count;
+                    }),
+                    borderColor: ui.ruddyPink,
+                    pointBackgroundColor: ui.ruddyPink
+                  }
+                ]
+              }}
+              options={{
+                maintainAspectRatio: false,
+                scales: {
+                  x: {
+                    ticks: {
+                      minRotation: ui.labelRotation,
+                      font: { family: ui.headingFont, size: ui.labelSize }
+                    },
+                    grid: { display: false }
+                  },
+                  y: {
+                    suggestedMin: 0,
+                    ticks: {
+                      precision: 0,
+                      font: { family: ui.headingFont, size: ui.labelSize },
+                      callback(value) {
+                        return formatLabel(value);
+                      }
                     }
-                  }}
-                />
-              </Tooltip>
-            </GridItem>
-            <GridItem display='flex' justifySelf='right'>
-              <FormLabel fontSize='lg'>{ui.creditsLabel}</FormLabel>
-            </GridItem>
-            <GridItem display='flex' alignItems='center'>
-              <Input
-                type='text'
-                size='lg'
-                w={ui.textboxWidth}
-                value='0'
-                aria-label={ui.creditsLabel}
-                isReadOnly
-              />
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={ui.purchaseLabel}
-                hasArrow
-              >
-                <IconButton
-                  as='a'
-                  ml='2'
-                  icon={<AddIcon fontSize='sm' />}
-                  aria-label={ui.purchaseLabel}
-                  href='/#pricing'
-                />
-              </Tooltip>
-            </GridItem>
-          </Grid>
-        ) : (
-          <Auth
-            supabaseClient={supabaseClient}
-            providers={[]}
-            view='magic_link'
-            redirectTo={ui.dashboardUrl}
-            localization={{
-              variables: { magic_link: { email_input_label: '', button_label: ui.magicLabel } }
-            }}
-            appearance={{
-              theme: ThemeSupa,
-              variables: {
-                default: {
-                  colors: {
-                    brand: 'var(--chakra-colors-accent-secondary)',
-                    brandAccent: 'var(--chakra-colors-chakra-inverse-bg)',
-                    inputPlaceholder: 'var(--chakra-colors-chakra-label-color)'
+                  }
+                },
+                elements: {
+                  line: { borderWidth: ui.lineWidth, tension: ui.lineTension },
+                  point: { radius: ui.pointRadius, hoverRadius: ui.pointHoverRadius }
+                },
+                plugins: {
+                  legend: {
+                    position: 'chartArea',
+                    align: 'end',
+                    labels: { boxHeight: 0, font: { family: ui.headingFont, size: ui.legendSize } }
+                  },
+                  tooltip: {
+                    displayColors: false,
+                    titleFont: { family: ui.bodyFont },
+                    bodyFont: { family: ui.bodyFont },
+                    callbacks: {
+                      title(items) {
+                        return items[0].label;
+                      },
+                      label(item) {
+                        return formatLabel(item.parsed.y, item.dataset.label);
+                      }
+                    }
                   }
                 }
-              },
-              style: {
-                container: { gap: 0, width: ui.secondaryWidth },
-                label: { marginBottom: 0 },
-                input: {
-                  borderRadius: 'var(--chakra-radii-md)',
-                  borderColor: 'var(--chakra-colors-chakra-border-color)',
-                  background: 'var(--chakra-colors-chakra-inset-bg)',
-                  height: ui.controlDimension,
-                  font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
-                  color: 'var(--chakra-colors-chakra-body-text)'
-                },
-                button: {
-                  margin: ui.loginButtonMargin,
-                  border: ui.buttonBorder,
-                  height: ui.controlDimension,
-                  font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
-                  fontWeight: 'var(--chakra-fontWeights-bold)',
-                  transition: ui.transition
+              }}
+            />
+          </Box>
+        </Flex>
+      ) : (
+        <Flex my={ui.mdMargin} minH={ui.secondaryHeight} justify='center' align='center'>
+          <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
+        </Flex>
+      )}
+      <Sidebar
+        supabaseClient={supabaseClient}
+        session={session}
+        isOpen={isSidebarOpen}
+        toggle={toggleSidebar}
+      />
+    </>
+  ) : (
+    <>
+      <Heading variant='secondary' size='lg'>
+        {ui.loginLabel}
+      </Heading>
+      <Flex minH={ui.secondaryHeight} justify='center' align='start'>
+        <Auth
+          supabaseClient={supabaseClient}
+          providers={[]}
+          view='magic_link'
+          redirectTo={ui.dashboardUrl}
+          localization={{
+            variables: { magic_link: { email_input_label: '', button_label: ui.magicLabel } }
+          }}
+          appearance={{
+            theme: ThemeSupa,
+            variables: {
+              default: {
+                colors: {
+                  brand: 'var(--chakra-colors-accent-secondary)',
+                  brandAccent: 'var(--chakra-colors-chakra-inverse-bg)',
+                  inputPlaceholder: 'var(--chakra-colors-chakra-label-color)'
                 }
               }
-            }}
-            showLinks={false}
-          />
-        )}
-      </Flex>
-      {session && (
-        <Sidebar
-          supabaseClient={supabaseClient}
-          session={session}
-          isOpen={isSidebarOpen}
-          toggle={toggleSidebar}
+            },
+            style: {
+              container: { gap: 0, width: ui.secondaryWidth },
+              label: { marginBottom: 0 },
+              input: {
+                borderRadius: 'var(--chakra-radii-md)',
+                borderColor: 'var(--chakra-colors-chakra-border-color)',
+                background: 'var(--chakra-colors-chakra-inset-bg)',
+                height: ui.controlDimension,
+                font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
+                color: 'var(--chakra-colors-chakra-body-text)'
+              },
+              button: {
+                margin: ui.loginButtonMargin,
+                border: ui.buttonBorder,
+                height: ui.controlDimension,
+                font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
+                fontWeight: 'var(--chakra-fontWeights-bold)',
+                transition: ui.transition
+              }
+            }
+          }}
+          showLinks={false}
         />
-      )}
+      </Flex>
     </>
   );
 }

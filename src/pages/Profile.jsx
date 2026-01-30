@@ -40,7 +40,7 @@ export default function Profile({ supabaseClient, session }) {
         .single()
         .then(({ data, error }) => {
           if (error) {
-            const id = 'settings';
+            const id = 'account';
 
             if (!toast.isActive(id)) {
               toast({

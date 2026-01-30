@@ -48,7 +48,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
         .single()
         .then(({ data, error }) => {
           if (error) {
-            const id = 'settings';
+            const id = 'account';
 
             if (!toast.isActive(id)) {
               toast({

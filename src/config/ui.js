@@ -317,5 +317,16 @@ export const secondaryStyle = {
   }
 };
 
+// Chart
+export const chartWidth = '80%';
+export const spinnerWidth = '4px';
+export const labelSize = 12;
+export const labelRotation = 30;
+export const lineWidth = 3;
+export const lineTension = 0.25;
+export const pointRadius = 4;
+export const pointHoverRadius = 5;
+export const legendSize = 16;
+
 // Utils
 export const renderer = markdown({ html: true, linkify: true, typographer: true }).use(highlights);
