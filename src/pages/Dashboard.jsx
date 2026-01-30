@@ -28,25 +28,19 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
 
     return date.toISOString().split('T')[0];
   });
-  const usageBuffer = {};
-  usageBuffer.success = Object.fromEntries(
-    dates.map((date) => {
-      return [date, { count: 0, elapsed_ms: 0 }];
-    })
-  );
-  usageBuffer.failure = Object.fromEntries(
-    dates.map((date) => {
-      return [date, { count: 0, elapsed_ms: 0 }];
-    })
-  );
-  const adjectives = { Success: 'successful', Failure: 'failed' };
+  const usageBuffer = { success: {}, failure: {} };
   const formatLabel = (callCount, resultType) => {
     return (
       callCount.toLocaleString() +
-      (resultType ? ` ${adjectives[resultType]}` : '') +
+      (resultType ? ` ${resultType.toLowerCase()}` : '') +
       ` call${callCount == 1 ? '' : 's'}`
     );
   };
+
+  for (const date of dates) {
+    usageBuffer.success[date] = { count: 0, elapsed_ms: 0 };
+    usageBuffer.failure[date] = { count: 0, elapsed_ms: 0 };
+  }
 
   useEffect(() => {
     if (session) {
@@ -59,7 +53,6 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
         .select('usage_date, result, count, elapsed_ms')
         .gte('usage_date', date.toISOString().split('T')[0])
         .in('result', ['success', 'failure'])
-        .order('usage_date', { ascending: true })
         .then(({ data, error }) => {
           if (error) {
             const id = 'usage';
@@ -97,7 +90,7 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
                 labels: dates,
                 datasets: [
                   {
-                    label: 'Success',
+                    label: 'Successful',
                     data: dates.map((date) => {
                       return usage.success[date].count;
                     }),
@@ -105,7 +98,7 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
                     pointBackgroundColor: ui.royalBlue
                   },
                   {
-                    label: 'Failure',
+                    label: 'Failed',
                     data: dates.map((date) => {
                       return usage.failure[date].count;
                     }),
@@ -150,9 +143,6 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
                     titleFont: { family: ui.bodyFont },
                     bodyFont: { family: ui.bodyFont },
                     callbacks: {
-                      title(items) {
-                        return items[0].label;
-                      },
                       label(item) {
                         return formatLabel(item.parsed.y, item.dataset.label);
                       }
