@@ -30,6 +30,96 @@ html {
   border-color: var(--chakra-colors-chakra-accent-color) !important;
 }
 
+.DateRangePickerInput {
+  border-radius: var(--chakra-radii-md);
+}
+
+.DateInput:first-child {
+  border-top-left-radius: var(--chakra-radii-md);
+  border-bottom-left-radius: var(--chakra-radii-md);
+}
+
+.DateInput:last-child {
+  border-top-right-radius: var(--chakra-radii-md);
+  border-bottom-right-radius: var(--chakra-radii-md);
+}
+
+.DateInput_input {
+  border-width: 3px;
+  height: 48px;
+  font: var(--chakra-fontSizes-lg) var(--chakra-fonts-body);
+}
+
+.DateInput_input__focused {
+  border-color: var(--chakra-colors-brand-primary);
+}
+
+#start-date {
+  border-top-left-radius: var(--chakra-radii-md);
+  border-bottom-left-radius: var(--chakra-radii-md);
+}
+
+#end-date {
+  border-top-right-radius: var(--chakra-radii-md);
+  border-bottom-right-radius: var(--chakra-radii-md);
+}
+
+.DateRangePicker_picker {
+  box-shadow: var(--chakra-shadows-md);
+}
+
+small {
+  font-size: 100% !important;
+}
+
+.DayPickerNavigation_button {
+  border-color: var(--chakra-colors-gray-200);
+}
+
+.DayPickerNavigation_button:hover {
+  border-color: var(--chakra-colors-gray-400);
+}
+
+.CalendarMonth_caption {
+  font-size: var(--chakra-fontSizes-lg);
+}
+
+.CalendarDay {
+  border-color: var(--chakra-colors-gray-200);
+  font: var(--chakra-fontSizes-md);
+}
+
+.CalendarDay:hover {
+  background: var(--chakra-colors-gray-100);
+}
+
+.CalendarDay__selected, .CalendarDay__selected:hover, .CalendarDay__selected:focus {
+  border-color: var(--chakra-colors-accent-secondary);
+  background: var(--chakra-colors-brand-primary);
+}
+
+.CalendarDay__selected_span {
+  border-color: var(--chakra-colors-brand-primary);
+  background: var(--chakra-colors-accent-primary);
+}
+
+.CalendarDay__selected_span:hover, .CalendarDay__selected_span:focus {
+  border-color: var(--chakra-colors-accent-secondary);
+  background: var(--chakra-colors-brand-primary);
+}
+
+.CalendarDay__hovered_span, .CalendarDay__hovered_span:hover {
+  border-color: var(--chakra-colors-brand-primary);
+  background: var(--chakra-colors-accent-primary);
+  color: white;
+}
+
+.CalendarDay__blocked_out_of_range, .CalendarDay__blocked_out_of_range:hover {
+  border-color: var(--chakra-colors-gray-100);
+  background: var(--chakra-colors-gray-50);
+  color: var(--chakra-colors-gray-300);
+}
+
 [data-popper-placement="right-start" i] .chakra-tooltip__arrow-wrapper {
   top: -3px !important;
 }

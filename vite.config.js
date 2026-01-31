@@ -19,6 +19,8 @@ export default defineConfig({
               name = 'chakra';
             } else if (id.includes('highlight')) {
               name = 'highlight';
+            } else if (id.includes('moment')) {
+              name = 'moment';
             } else {
               name = 'vendor';
             }

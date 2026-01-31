@@ -10,6 +10,10 @@ import {
   Tooltip
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import moment from 'moment';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker } from 'react-dates';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 
@@ -19,15 +23,12 @@ import Sidebar from '../components/Sidebar';
 Chart.register(CategoryScale, LinearScale, LineElement, PointElement, Legend, Tooltip);
 
 export default function Dashboard({ supabaseClient, session, isSidebarOpen, toggleSidebar }) {
+  const [startDate, setStartDate] = useState(moment().subtract(ui.defaultDayCount - 1, 'days'));
+  const [endDate, setEndDate] = useState(moment());
   const [usage, setUsage] = useState(null);
+  const [focusedInput, setFocusedInput] = useState(null);
   const toast = useToast();
-  const dates = Array.from({ length: 7 }, (_, i) => {
-    const date = new Date();
-
-    date.setDate(date.getDate() - (6 - i));
-
-    return date.toISOString().split('T')[0];
-  });
+  const dates = [];
   const formatLabel = (callCount, resultType) => {
     return (
       callCount.toLocaleString() +
@@ -38,17 +39,24 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
     );
   };
 
-  useEffect(() => {
-    if (session) {
-      const startDate = new Date();
-      let isCancelled = false;
+  if (startDate && endDate) {
+    const cursor = startDate.clone();
 
-      startDate.setDate(startDate.getDate() - 6);
+    while (cursor.isSameOrBefore(endDate, 'day')) {
+      dates.push(cursor.format(ui.dateFormat));
+      cursor.add(1, 'day');
+    }
+  }
+
+  useEffect(() => {
+    if (session && startDate && endDate) {
+      let isCancelled = false;
 
       supabaseClient
         .from('usage')
         .select('usage_date, result, count, elapsed_ms')
-        .gte('usage_date', startDate.toISOString().split('T')[0])
+        .gte('usage_date', startDate.format(ui.dateFormat))
+        .lte('usage_date', endDate.format(ui.dateFormat))
         .in('result', ['success', 'failure'])
         .then(({ data, error }) => {
           if (!isCancelled) {
@@ -90,12 +98,37 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
         isCancelled = true;
       };
     }
-  }, [supabaseClient, session, toast]);
+  }, [supabaseClient, session, startDate, endDate, toast]);
 
   return session ? (
     <>
+      <Flex my={ui.smMargin} justify='center'>
+        <DateRangePicker
+          startDate={startDate}
+          startDateId='start-date'
+          endDate={endDate}
+          endDateId='end-date'
+          displayFormat={ui.dateFormat}
+          focusedInput={focusedInput}
+          numberOfMonths={1}
+          minimumNights={0}
+          readOnly
+          hideKeyboardShortcutsPanel
+          onFocusChange={(input) => {
+            setFocusedInput(input);
+          }}
+          onDatesChange={({ startDate: from, endDate: to }) => {
+            setUsage(null);
+            setStartDate(from);
+            setEndDate(to);
+          }}
+          isOutsideRange={(day) => {
+            return day.isAfter(moment(), 'day');
+          }}
+        />
+      </Flex>
       {usage ? (
-        <Flex my={ui.mdMargin} minH={ui.secondaryHeight} justify='center'>
+        <Flex mb={ui.xsMargin} minH={ui.secondaryHeight} justify='center'>
           <Box w={ui.chartWidth}>
             <Line
               data={{
@@ -166,7 +199,7 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
           </Box>
         </Flex>
       ) : (
-        <Flex my={ui.mdMargin} minH={ui.secondaryHeight} justify='center' align='center'>
+        <Flex mb={ui.xsMargin} minH={ui.secondaryHeight} justify='center' align='center'>
           <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
         </Flex>
       )}
