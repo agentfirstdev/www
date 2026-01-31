@@ -12,7 +12,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           The missing
         </Text>
         <Text as='span' display={{ base: 'inline', md: 'none' }} fontSize={ui.taglineFontSize}>
-          Missing
+          The missing
         </Text>
         {' services for '}
         <Box as='span' display='inline-block' position='relative' textAlign='left'>
