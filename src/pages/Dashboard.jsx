@@ -22,7 +22,13 @@ import Sidebar from '../components/Sidebar';
 
 Chart.register(CategoryScale, LinearScale, LineElement, PointElement, Legend, Tooltip);
 
-export default function Dashboard({ supabaseClient, session, isSidebarOpen, toggleSidebar }) {
+export default function Dashboard({
+  supabaseClient,
+  session,
+  isSessionLoading,
+  isSidebarOpen,
+  toggleSidebar
+}) {
   const [startDate, setStartDate] = useState(moment().subtract(ui.defaultDayCount - 1, 'days'));
   const [endDate, setEndDate] = useState(moment());
   const [usage, setUsage] = useState(null);
@@ -100,7 +106,11 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
     }
   }, [supabaseClient, session, startDate, endDate, toast]);
 
-  return session ? (
+  return isSessionLoading ? (
+    <Flex my={ui.mdMargin} minH={ui.secondaryHeight} justify='center' align='center'>
+      <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
+    </Flex>
+  ) : session ? (
     <>
       <Flex my={ui.smMargin} justify='center'>
         <DateRangePicker

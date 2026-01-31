@@ -7,6 +7,7 @@ import {
   FormLabel,
   Input,
   IconButton,
+  Spinner,
   Tooltip,
   useClipboard,
   useToast
@@ -17,7 +18,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 import * as ui from '../config/ui';
 
-export default function Profile({ supabaseClient, session }) {
+export default function Profile({ supabaseClient, session, isSessionLoading }) {
   const tokenTimeout = useRef();
   const [account, setAccount] = useState(null);
   const [isTokenShown, setIsTokenShown] = useState(false);
@@ -70,7 +71,11 @@ export default function Profile({ supabaseClient, session }) {
     }
   }, [isTokenShown]);
 
-  return (
+  return isSessionLoading ? (
+    <Flex my={ui.mdMargin} minH={ui.secondaryHeight} justify='center' align='center'>
+      <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
+    </Flex>
+  ) : (
     <>
       <Heading variant='secondary' size='lg'>
         {session ? ui.profileLabel : ui.loginLabel}

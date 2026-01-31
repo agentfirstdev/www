@@ -44,6 +44,7 @@ export default function App() {
   const [linkedinPath, setLinkedinPath] = useState(null);
   const [xPath, setXPath] = useState(null);
   const [session, setSession] = useState(null);
+  const [isSessionLoading, setIsSessionLoading] = useState(true);
   const [shouldShowLogin, setShouldShowLogin] = useState(false);
   const { hash, pathname } = useLocation();
   const { colorMode, toggleColorMode } = useColorMode();
@@ -97,6 +98,7 @@ export default function App() {
 
     supabase.client.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
+      setIsSessionLoading(false);
     });
 
     return () => {
@@ -390,6 +392,7 @@ export default function App() {
             <Dashboard
               supabaseClient={supabase.client}
               session={session}
+              isSessionLoading={isSessionLoading}
               isSidebarOpen={isSidebarOpen}
               toggleSidebar={toggleSidebar}
             />
@@ -397,7 +400,13 @@ export default function App() {
         />
         <Route
           path={ui.profilePath}
-          element={<Profile supabaseClient={supabase.client} session={session} />}
+          element={
+            <Profile
+              supabaseClient={supabase.client}
+              session={session}
+              isSessionLoading={isSessionLoading}
+            />
+          }
         />
       </Routes>
       <Box
