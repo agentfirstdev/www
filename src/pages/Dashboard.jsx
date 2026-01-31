@@ -113,6 +113,7 @@ export default function Dashboard({ supabaseClient, session, isSidebarOpen, togg
           numberOfMonths={1}
           minimumNights={0}
           readOnly
+          enableOutsideDays
           hideKeyboardShortcutsPanel
           onFocusChange={(input) => {
             setFocusedInput(input);
