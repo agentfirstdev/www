@@ -303,7 +303,6 @@ export const sidebarCollapseSecs = 0.4;
 
 // Secondary pages
 export const secondaryWidth = '45ch';
-export const secondaryHeight = '62.5vh';
 export const secondaryStyle = {
   h3: { mt: '1.5rem', fontWeight: 'bold', color: 'brand.secondary' },
   a: {

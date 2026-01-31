@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Box, Flex, Heading, Spinner, useToast } from '@chakra-ui/react';
 import {
   Chart,
@@ -29,6 +29,7 @@ export default function Dashboard({
   isSidebarOpen,
   toggleSidebar
 }) {
+  const hasChartLoaded = useRef(false);
   const [startDate, setStartDate] = useState(moment().subtract(ui.defaultDayCount - 1, 'days'));
   const [endDate, setEndDate] = useState(moment());
   const [usage, setUsage] = useState(null);
@@ -96,6 +97,7 @@ export default function Dashboard({
               }
 
               setUsage(buffer);
+              hasChartLoaded.current = true;
             }
           }
         });
@@ -106,127 +108,136 @@ export default function Dashboard({
     }
   }, [supabaseClient, session, startDate, endDate, toast]);
 
-  return isSessionLoading ? (
-    <Flex my={ui.mdMargin} minH={ui.secondaryHeight} justify='center' align='center'>
+  return session && !isSessionLoading ? (
+    hasChartLoaded.current ? (
+      <>
+        <Flex my={ui.smMargin} justify='center'>
+          <DateRangePicker
+            startDate={startDate}
+            startDateId='start-date'
+            endDate={endDate}
+            endDateId='end-date'
+            displayFormat={ui.dateFormat}
+            focusedInput={focusedInput}
+            numberOfMonths={1}
+            minimumNights={0}
+            readOnly
+            enableOutsideDays
+            hideKeyboardShortcutsPanel
+            onFocusChange={(input) => {
+              setFocusedInput(input);
+            }}
+            onDatesChange={({ startDate: from, endDate: to }) => {
+              setUsage(null);
+              setStartDate(from);
+              setEndDate(to);
+            }}
+            isOutsideRange={(day) => {
+              return day.isAfter(moment(), 'day');
+            }}
+          />
+        </Flex>
+        {usage ? (
+          <Flex justify='center' flex={1}>
+            <Box w={ui.chartWidth}>
+              <Line
+                data={{
+                  labels: dates,
+                  datasets: [
+                    {
+                      label: 'Successful',
+                      data: dates.map((date) => {
+                        return usage.success[date].count;
+                      }),
+                      borderColor: ui.royalBlue,
+                      pointBackgroundColor: ui.royalBlue
+                    },
+                    {
+                      label: 'Failed',
+                      data: dates.map((date) => {
+                        return usage.failure[date].count;
+                      }),
+                      borderColor: ui.ruddyPink,
+                      pointBackgroundColor: ui.ruddyPink
+                    }
+                  ]
+                }}
+                options={{
+                  maintainAspectRatio: false,
+                  scales: {
+                    x: {
+                      ticks: {
+                        minRotation: ui.labelRotation,
+                        font: { family: ui.headingFont, size: ui.horizontalLabelSize }
+                      },
+                      grid: { display: false }
+                    },
+                    y: {
+                      suggestedMin: 0,
+                      ticks: {
+                        precision: 0,
+                        font: { family: ui.subheadingFont, size: ui.verticalLabelSize },
+                        callback(value) {
+                          return formatLabel(value);
+                        }
+                      }
+                    }
+                  },
+                  elements: {
+                    line: { borderWidth: ui.lineWidth, tension: ui.lineTension },
+                    point: { radius: ui.pointRadius, hoverRadius: ui.pointHoverRadius }
+                  },
+                  plugins: {
+                    legend: {
+                      position: 'chartArea',
+                      align: 'end',
+                      labels: {
+                        boxHeight: 0,
+                        font: { family: ui.headingFont, size: ui.legendSize }
+                      }
+                    },
+                    tooltip: {
+                      displayColors: false,
+                      titleFont: { family: ui.bodyFont },
+                      bodyFont: { family: ui.bodyFont },
+                      callbacks: {
+                        label(item) {
+                          return formatLabel(item.parsed.y, item.dataset.label);
+                        }
+                      }
+                    }
+                  }
+                }}
+              />
+            </Box>
+          </Flex>
+        ) : (
+          <Flex justify='center' align='center' flex={1}>
+            <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
+          </Flex>
+        )}
+        <Sidebar
+          supabaseClient={supabaseClient}
+          session={session}
+          isOpen={isSidebarOpen}
+          toggle={toggleSidebar}
+        />
+      </>
+    ) : (
+      <Flex justify='center' align='center' flex={1}>
+        <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
+      </Flex>
+    )
+  ) : isSessionLoading ? (
+    <Flex justify='center' align='center' flex={1}>
       <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
     </Flex>
-  ) : session ? (
-    <>
-      <Flex my={ui.smMargin} justify='center'>
-        <DateRangePicker
-          startDate={startDate}
-          startDateId='start-date'
-          endDate={endDate}
-          endDateId='end-date'
-          displayFormat={ui.dateFormat}
-          focusedInput={focusedInput}
-          numberOfMonths={1}
-          minimumNights={0}
-          readOnly
-          enableOutsideDays
-          hideKeyboardShortcutsPanel
-          onFocusChange={(input) => {
-            setFocusedInput(input);
-          }}
-          onDatesChange={({ startDate: from, endDate: to }) => {
-            setUsage(null);
-            setStartDate(from);
-            setEndDate(to);
-          }}
-          isOutsideRange={(day) => {
-            return day.isAfter(moment(), 'day');
-          }}
-        />
-      </Flex>
-      {usage ? (
-        <Flex mb={ui.xsMargin} minH={ui.secondaryHeight} justify='center'>
-          <Box w={ui.chartWidth}>
-            <Line
-              data={{
-                labels: dates,
-                datasets: [
-                  {
-                    label: 'Successful',
-                    data: dates.map((date) => {
-                      return usage.success[date].count;
-                    }),
-                    borderColor: ui.royalBlue,
-                    pointBackgroundColor: ui.royalBlue
-                  },
-                  {
-                    label: 'Failed',
-                    data: dates.map((date) => {
-                      return usage.failure[date].count;
-                    }),
-                    borderColor: ui.ruddyPink,
-                    pointBackgroundColor: ui.ruddyPink
-                  }
-                ]
-              }}
-              options={{
-                maintainAspectRatio: false,
-                scales: {
-                  x: {
-                    ticks: {
-                      minRotation: ui.labelRotation,
-                      font: { family: ui.headingFont, size: ui.horizontalLabelSize }
-                    },
-                    grid: { display: false }
-                  },
-                  y: {
-                    suggestedMin: 0,
-                    ticks: {
-                      precision: 0,
-                      font: { family: ui.subheadingFont, size: ui.verticalLabelSize },
-                      callback(value) {
-                        return formatLabel(value);
-                      }
-                    }
-                  }
-                },
-                elements: {
-                  line: { borderWidth: ui.lineWidth, tension: ui.lineTension },
-                  point: { radius: ui.pointRadius, hoverRadius: ui.pointHoverRadius }
-                },
-                plugins: {
-                  legend: {
-                    position: 'chartArea',
-                    align: 'end',
-                    labels: { boxHeight: 0, font: { family: ui.headingFont, size: ui.legendSize } }
-                  },
-                  tooltip: {
-                    displayColors: false,
-                    titleFont: { family: ui.bodyFont },
-                    bodyFont: { family: ui.bodyFont },
-                    callbacks: {
-                      label(item) {
-                        return formatLabel(item.parsed.y, item.dataset.label);
-                      }
-                    }
-                  }
-                }
-              }}
-            />
-          </Box>
-        </Flex>
-      ) : (
-        <Flex mb={ui.xsMargin} minH={ui.secondaryHeight} justify='center' align='center'>
-          <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
-        </Flex>
-      )}
-      <Sidebar
-        supabaseClient={supabaseClient}
-        session={session}
-        isOpen={isSidebarOpen}
-        toggle={toggleSidebar}
-      />
-    </>
   ) : (
     <>
       <Heading variant='secondary' size='lg'>
         {ui.loginLabel}
       </Heading>
-      <Flex minH={ui.secondaryHeight} justify='center' align='start'>
+      <Flex justify='center' align='start' flex={1}>
         <Auth
           supabaseClient={supabaseClient}
           providers={[]}

@@ -72,7 +72,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
   }, [isTokenShown]);
 
   return isSessionLoading ? (
-    <Flex my={ui.mdMargin} minH={ui.secondaryHeight} justify='center' align='center'>
+    <Flex justify='center' align='center' flex={1}>
       <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
     </Flex>
   ) : (
@@ -80,7 +80,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
       <Heading variant='secondary' size='lg'>
         {session ? ui.profileLabel : ui.loginLabel}
       </Heading>
-      <Flex minH={ui.secondaryHeight} justify='center' align='start'>
+      <Flex justify='center' align='start' flex={1}>
         {session ? (
           <Grid
             templateColumns='auto 1fr'
@@ -103,7 +103,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
               />
               <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
                 <IconButton
-                  ml='2'
+                  ml={2}
                   icon={<EditIcon />}
                   aria-label={ui.updateLabel}
                   isDisabled={true}
@@ -130,7 +130,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
                 hasArrow
               >
                 <IconButton
-                  ml='2'
+                  ml={2}
                   icon={isTokenShown ? <ViewOffIcon /> : <ViewIcon />}
                   aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
                   isDisabled={!hasToken}
@@ -148,7 +148,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
                 hasArrow
               >
                 <IconButton
-                  ml='2'
+                  ml={2}
                   icon={hasCopied ? <CheckIcon /> : <CopyIcon />}
                   aria-label={ui.copyLabel}
                   isDisabled={!hasToken}
@@ -190,7 +190,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
               >
                 <IconButton
                   as='a'
-                  ml='2'
+                  ml={2}
                   icon={<AddIcon fontSize='sm' />}
                   aria-label={ui.purchaseLabel}
                   href='/#pricing'

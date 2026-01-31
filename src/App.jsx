@@ -253,7 +253,7 @@ export default function App() {
 
   return (
     <Flex w='100%' minH='100vh' direction='column'>
-      <Box p='2'>
+      <Box p={2}>
         <Box>
           <canvas
             ref={logotype}
@@ -322,7 +322,7 @@ export default function App() {
                   _dark={{ bg: 'brand.primary', color: 'whiteAlpha.800' }}
                 />
               </Tooltip>
-              <MenuList p='0'>
+              <MenuList p={0}>
                 <MenuItem
                   borderRadius={ui.menuBottomBorder}
                   onClick={() => {
@@ -339,25 +339,25 @@ export default function App() {
                 <MenuItem as='a' borderRadius={ui.menuTopBorder} href={ui.servicesPath}>
                   {ui.servicesLabel}
                 </MenuItem>
-                <MenuItem as='a' borderRadius='0' href={ui.pricingPath}>
+                <MenuItem as='a' borderRadius={0} href={ui.pricingPath}>
                   {ui.pricingLabel}
                 </MenuItem>
-                <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
+                <MenuItem as='a' borderRadius={0} href={ui.docUrl}>
                   {ui.docLabel}
                 </MenuItem>
                 {/* <MenuItem
                   as='a'
-                  borderRadius='0'
+                  borderRadius={0}
                   href={ui.demoUrl}
                   target='_blank'
                   rel='noopener'
                 >
                   {ui.demoLabel}
                 </MenuItem> */}
-                <MenuItem as='a' borderRadius='0' href={ui.aboutPath}>
+                <MenuItem as='a' borderRadius={0} href={ui.aboutPath}>
                   {ui.aboutLabel}
                 </MenuItem>
-                {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtPath}>
+                {/* <MenuItem as='a' borderRadius={0} href={ui.llmsTxtPath}>
                   {ui.llmsTxtLabel}
                 </MenuItem> */}
               </MenuList>
@@ -374,41 +374,43 @@ export default function App() {
           />
         </Flex>
       </Box>
-      <Routes>
-        <Route
-          path='/'
-          element={
-            <Home
-              blueprintStroke={blueprintStroke}
-              blueprintFill={blueprintFill}
-              generateFrame={generateFrame}
-              handleKeyPress={handleKeyPress}
-            />
-          }
-        />
-        <Route
-          path={ui.dashboardPath}
-          element={
-            <Dashboard
-              supabaseClient={supabase.client}
-              session={session}
-              isSessionLoading={isSessionLoading}
-              isSidebarOpen={isSidebarOpen}
-              toggleSidebar={toggleSidebar}
-            />
-          }
-        />
-        <Route
-          path={ui.profilePath}
-          element={
-            <Profile
-              supabaseClient={supabase.client}
-              session={session}
-              isSessionLoading={isSessionLoading}
-            />
-          }
-        />
-      </Routes>
+      <Flex direction='column' flex={1}>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <Home
+                blueprintStroke={blueprintStroke}
+                blueprintFill={blueprintFill}
+                generateFrame={generateFrame}
+                handleKeyPress={handleKeyPress}
+              />
+            }
+          />
+          <Route
+            path={ui.dashboardPath}
+            element={
+              <Dashboard
+                supabaseClient={supabase.client}
+                session={session}
+                isSessionLoading={isSessionLoading}
+                isSidebarOpen={isSidebarOpen}
+                toggleSidebar={toggleSidebar}
+              />
+            }
+          />
+          <Route
+            path={ui.profilePath}
+            element={
+              <Profile
+                supabaseClient={supabase.client}
+                session={session}
+                isSessionLoading={isSessionLoading}
+              />
+            }
+          />
+        </Routes>
+      </Flex>
       <Box
         id='contact'
         mx={{ base: ui.smMargin, lg: ui.xlMargin }}
@@ -417,7 +419,7 @@ export default function App() {
       >
         <Divider />
         <Flex mt={ui.iconVerticalMargin} direction='row' justify='space-between' align='center'>
-          <Box lineHeight='0'>
+          <Box lineHeight={0}>
             <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.githubLabel} hasArrow>
               <Link variant='social' href='https://github.com/agentfirstdev' isExternal>
                 <canvas
