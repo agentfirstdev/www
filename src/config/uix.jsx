@@ -22,7 +22,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           <Text
             ref={ref}
             position='absolute'
-            inset='0'
+            inset={0}
             bgClip='text'
             fontSize={ui.taglineFontSize}
             _light={{

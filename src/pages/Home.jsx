@@ -574,7 +574,7 @@ export default function Home({
         direction={ui.heroDirection}
         justify='center'
         align='center'
-        gap='8'
+        gap={8}
       >
         <Flex
           w={ui.taglineWidth}
@@ -588,7 +588,7 @@ export default function Home({
         {/* <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
           <Textarea
             ref={promptBox}
-            rows='1'
+            rows={1}
             minH={ui.promptMinHeight}
             maxH={ui.promptMaxHeight}
             isDisabled={isLoading}
@@ -597,10 +597,10 @@ export default function Home({
           />
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.resetHint} hasArrow>
             <IconButton
-              ml='4'
+              ml={4}
               borderRadius='full'
               size='lg'
-              icon={<AddIcon boxSize='4' />}
+              icon={<AddIcon boxSize={4} />}
               boxShadow='lg'
               aria-label={ui.resetHint}
               onClick={handleResetPress}
@@ -747,22 +747,22 @@ export default function Home({
         </Card>
       </Box>
       <Box id='about' px={{ base: ui.smMargin, md: ui.xlMargin }} pt={ui.smMargin} align='center'>
-        <Box position='relative' pt='1' w={ui.timelineWidth} minW={ui.timelineMinWidth}>
+        <Box position='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>
           <svg ref={timeline} width='100%'>
             <g ref={timelineParts} />
           </svg>
           <Box
             position='absolute'
-            top='0'
-            left='0'
+            top={0}
+            left={0}
             bgGradient='linear(to-r, chakra-body-bg, transparent)'
             w={ui.gradientWidth}
             h='100%'
           />
           <Box
             position='absolute'
-            top='0'
-            right='0'
+            top={0}
+            right={0}
             bgGradient='linear(to-l, chakra-body-bg, transparent)'
             w={ui.gradientWidth}
             h='100%'
@@ -837,7 +837,7 @@ export default function Home({
                 {' that’s focused on serving AI agents.'}
               </Text>
             </CardBody>
-            <CardFooter pt='0'>
+            <CardFooter pt={0}>
               <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
                 <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
                   <canvas

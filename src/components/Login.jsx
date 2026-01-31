@@ -68,7 +68,7 @@ export default function Login({
           )}
         </Avatar>
       </MenuButton>
-      <MenuList p='0' fontSize='sm'>
+      <MenuList p={0} fontSize='sm'>
         {isInLgView && !isOnHomepage && (
           <MenuItem as='a' borderRadius={ui.menuTopBorder} href='/'>
             {ui.homeLabel}
@@ -95,33 +95,33 @@ export default function Login({
         )}
         {!isInLgView && (
           <>
-            <MenuItem as='a' borderRadius='0' href={ui.servicesPath}>
+            <MenuItem as='a' borderRadius={0} href={ui.servicesPath}>
               {ui.servicesLabel}
             </MenuItem>
-            <MenuItem as='a' borderRadius='0' href={ui.pricingPath}>
+            <MenuItem as='a' borderRadius={0} href={ui.pricingPath}>
               {ui.pricingLabel}
             </MenuItem>
-            <MenuItem as='a' borderRadius='0' href={ui.docUrl}>
+            <MenuItem as='a' borderRadius={0} href={ui.docUrl}>
               {ui.docLabel}
             </MenuItem>
             {/* <MenuItem
               as='a'
-              borderRadius='0'
+              borderRadius={0}
               href={ui.demoUrl}
               target='_blank'
               rel='noopener'
             >
               {ui.demoLabel}
             </MenuItem> */}
-            <MenuItem as='a' borderRadius='0' href={ui.aboutPath}>
+            <MenuItem as='a' borderRadius={0} href={ui.aboutPath}>
               {ui.aboutLabel}
             </MenuItem>
-            {/* <MenuItem as='a' borderRadius='0' href={ui.llmsTxtPath}>
+            {/* <MenuItem as='a' borderRadius={0} href={ui.llmsTxtPath}>
               {ui.llmsTxtLabel}
             </MenuItem> */}
           </>
         )}
-        <MenuItem as='a' borderRadius='0' href={ui.supportUrl}>
+        <MenuItem as='a' borderRadius={0} href={ui.supportUrl}>
           {ui.supportLabel}
         </MenuItem>
         <MenuItem borderRadius={ui.menuBottomBorder} onClick={handleLogout}>
@@ -136,7 +136,7 @@ export default function Login({
           display={{ base: 'none', lg: 'inline-flex' }}
           ml={ui.itemMargin}
           fontSize='md'
-          tabIndex='0'
+          tabIndex={0}
           onClick={() => {
             setShouldShowLogin(true);
           }}
@@ -153,12 +153,12 @@ export default function Login({
         <Box
           position='absolute'
           top='100%'
-          right='0'
+          right={0}
           zIndex='modal'
-          mt='2'
+          mt={2}
           rounded='md'
           bg='chakra-overlay-bg'
-          p='2'
+          p={2}
           w={ui.loginWidth}
           shadow='md'
         >
@@ -169,7 +169,7 @@ export default function Login({
             top={ui.closePosition}
             right={ui.closePosition}
             size='xs'
-            p='0'
+            p={0}
             fontSize='sm'
             aria-label='Close'
             onClick={() => {
@@ -178,7 +178,7 @@ export default function Login({
           >
             <AddIcon transform={`rotate(-${ui.openRotation}deg)`} />
           </Button>
-          <Divider mt='2' />
+          <Divider mt={2} />
           <Auth
             supabaseClient={supabaseClient}
             providers={[]}
