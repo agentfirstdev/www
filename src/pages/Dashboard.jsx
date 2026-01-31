@@ -36,13 +36,16 @@ export default function Dashboard({
   const [focusedInput, setFocusedInput] = useState(null);
   const toast = useToast();
   const dates = [];
-  const formatLabel = (callCount, resultType) => {
+  const formatLabel = (callCount, resultType, elapsedMs) => {
     return (
       callCount.toLocaleString() +
       (resultType ? ` ${resultType.toLowerCase()}` : '') +
       ((units) => {
         return resultType ? units : units.toUpperCase();
-      })(` call${callCount == 1 ? '' : 's'}`)
+      })(` call${callCount == 1 ? '' : 's'}`) +
+      (typeof elapsedMs == 'undefined'
+        ? ''
+        : ` (${(callCount > 0 ? elapsedMs / callCount / 1000 : 0).toFixed(2)}s mean)`)
     );
   };
 
@@ -202,7 +205,13 @@ export default function Dashboard({
                       bodyFont: { family: ui.bodyFont },
                       callbacks: {
                         label(item) {
-                          return formatLabel(item.parsed.y, item.dataset.label);
+                          return formatLabel(
+                            item.parsed.y,
+                            item.dataset.label,
+                            usage[{ Successful: 'success', Failed: 'failure' }[item.dataset.label]][
+                              dates[item.dataIndex]
+                            ].elapsed_ms
+                          );
                         }
                       }
                     }
