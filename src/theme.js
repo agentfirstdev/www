@@ -162,7 +162,7 @@ export default extendTheme({
         }
       }
     },
-    FormLabel: { baseStyle: { mr: 0, mb: 0, fontWeight: 'bold' } },
+    FormLabel: { baseStyle: { mr: 0, mb: 0, fontWeight: 'bold', whiteSpace: 'nowrap' } },
     Input: {
       baseStyle: { field: { _light: { bg: 'white' }, _dark: { bg: 'whiteAlpha.50' } } },
       variants: {

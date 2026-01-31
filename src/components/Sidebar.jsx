@@ -163,7 +163,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
                 type={isPlaintext ? 'text' : 'password'}
                 variant='sidebar'
                 w={ui.textboxWidth}
-                letterSpacing={isPlaintext ? null : ui.ciphertextSmSpacing}
+                letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
                 value={account?.api_token ?? ui.loadingPlaceholder}
                 aria-label={ui.tokenLabel}
                 isReadOnly
