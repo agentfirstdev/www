@@ -318,7 +318,6 @@ export const secondaryStyle = {
 };
 
 // Chart
-export const chartWidth = '80%';
 export const dateFormat = 'YYYY-MM-DD';
 export const timeFormat = 'HH:00:00';
 export const spinnerWidth = '4px';
@@ -331,6 +330,7 @@ export const pointRadius = 4;
 export const pointHoverRadius = 5;
 export const legendSize = 16;
 export const defaultDayCount = 7;
+export const chartWidth = { base: '100%', lg: '80%' };
 
 // Utils
 export const renderer = markdown({ html: true, linkify: true, typographer: true }).use(highlights);

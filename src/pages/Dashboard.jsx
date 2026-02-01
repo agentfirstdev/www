@@ -193,7 +193,7 @@ export default function Dashboard({
           </Menu>
         </Flex>
         {usage ? (
-          <Flex justify='center' flex={1}>
+          <Flex mx={ui.smMargin} justify='center' flex={1}>
             <Box w={ui.chartWidth}>
               <Line
                 data={{
