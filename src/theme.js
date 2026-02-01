@@ -104,8 +104,9 @@ export default extendTheme({
       baseStyle: {
         display: 'block',
         mt: 4,
-        border: '1px solid var(--chakra-colors-chakra-border-color)',
+        borderWidth: '1px',
         borderRadius: 'md',
+        borderColor: 'chakra-border-color',
         bg: 'chakra-body-bg',
         maxW: '100%',
         fontSize: { base: 'sm', md: 'md' }
@@ -218,16 +219,41 @@ export default extendTheme({
         toggle: {
           _light: { bg: '#e2e8f0', _hover: { bg: '#cbd5e0' } },
           _dark: { bg: '#343944', _hover: { bg: '#464b55' } }
+        },
+        dropdown: {
+          borderWidth: '1px',
+          borderColor: '#dbdbdb',
+          bg: 'white',
+          w: '150px',
+          h: '50px',
+          fontWeight: 'normal',
+          color: '#484848',
+          _hover: { borderColor: '#dbdbdb' }
         }
       }
     },
     Menu: {
       baseStyle: {
+        list: { p: 0, shadow: 'md' },
         item: {
           fontFamily: 'heading',
           fontSize: '2xl',
           _light: { color: 'brand.secondary' },
           _dark: { color: 'whiteAlpha.800' }
+        }
+      },
+      variants: {
+        dropdown: {
+          list: { borderColor: '#dbdbdb' },
+          item: {
+            bg: 'white',
+            h: '50px',
+            fontFamily: 'body',
+            fontSize: 'lg',
+            color: '#484848 !important',
+            _hover: { bg: 'brand.primary', color: 'white !important' },
+            _focus: { bg: 'brand.primary', color: 'white !important' }
+          }
         }
       }
     },

@@ -68,7 +68,7 @@ export default function Login({
           )}
         </Avatar>
       </MenuButton>
-      <MenuList p={0} fontSize='sm'>
+      <MenuList>
         {isInLgView && !isOnHomepage && (
           <MenuItem as='a' borderRadius={ui.menuTopBorder} href='/'>
             {ui.homeLabel}

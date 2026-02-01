@@ -91,11 +91,16 @@ small {
 
 .CalendarDay:hover {
   background: var(--chakra-colors-gray-100);
+  color: #484848;
 }
 
 .CalendarDay__selected, .CalendarDay__selected:hover, .CalendarDay__selected:focus {
   border-color: var(--chakra-colors-accent-secondary);
   background: var(--chakra-colors-brand-primary);
+}
+
+.CalendarDay__selected:hover {
+  color: white;
 }
 
 .CalendarDay__selected_span {
@@ -106,6 +111,10 @@ small {
 .CalendarDay__selected_span:hover, .CalendarDay__selected_span:focus {
   border-color: var(--chakra-colors-accent-secondary);
   background: var(--chakra-colors-brand-primary);
+}
+
+.CalendarDay__selected_span:hover {
+  color: white;
 }
 
 .CalendarDay__hovered_span, .CalendarDay__hovered_span:hover {

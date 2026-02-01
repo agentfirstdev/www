@@ -111,14 +111,9 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
           _light={{ bg: isOpen ? 'gray.100' : '#edf2f7b3' }}
           _dark={{ bg: isOpen ? '#232934' : '#232934b3' }}
         >
-          <Button
-            variant='toggle'
-            mr={isOpen ? '-8' : null}
-            aspectRatio='1'
-            fontSize='2xl'
-            onClick={toggle}
-          >
+          <Button variant='toggle' mr={isOpen ? '-8' : null} aspectRatio='1' onClick={toggle}>
             <ChevronRightIcon
+              fontSize='2xl'
               transform={isOpen ? `rotate(${ui.expandRotation}deg)` : 'rotate(0)'}
               sx={{ transitionProperty: 'transform', transitionDuration: `${ui.iconRotationMs}ms` }}
             />

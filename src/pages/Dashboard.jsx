@@ -1,5 +1,17 @@
 import { useRef, useState, useEffect } from 'react';
-import { Box, Flex, Heading, Spinner, useToast } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Spinner,
+  useToast
+} from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import {
   Chart,
   CategoryScale,
@@ -32,10 +44,11 @@ export default function Dashboard({
   const hasChartLoaded = useRef(false);
   const [startDate, setStartDate] = useState(moment().subtract(ui.defaultDayCount - 1, 'days'));
   const [endDate, setEndDate] = useState(moment());
+  const [granularity, setGranularity] = useState(0);
   const [usage, setUsage] = useState(null);
   const [focusedInput, setFocusedInput] = useState(null);
   const toast = useToast();
-  const dates = [];
+  const labels = [];
   const formatLabel = (callCount, resultType, elapsedMs) => {
     return (
       callCount.toLocaleString() +
@@ -50,11 +63,18 @@ export default function Dashboard({
   };
 
   if (startDate && endDate) {
-    const cursor = startDate.clone();
+    const cursor = startDate.clone().startOf('day');
 
-    while (cursor.isSameOrBefore(endDate, 'day')) {
-      dates.push(cursor.format(ui.dateFormat));
-      cursor.add(1, 'day');
+    if (!granularity) {
+      while (cursor.isSameOrBefore(endDate, 'day')) {
+        labels.push(cursor.format(ui.dateFormat));
+        cursor.add(1, 'day');
+      }
+    } else {
+      while (cursor.isSameOrBefore(endDate.clone().endOf('day'))) {
+        labels.push(`${cursor.format(ui.dateFormat)} ${cursor.format(ui.timeFormat)}`);
+        cursor.add(1, 'hour');
+      }
     }
   }
 
@@ -64,7 +84,7 @@ export default function Dashboard({
 
       supabaseClient
         .from('usage')
-        .select('usage_date, result, count, elapsed_ms')
+        .select('usage_date, usage_time, result, count, elapsed_ms')
         .gte('usage_date', startDate.format(ui.dateFormat))
         .lte('usage_date', endDate.format(ui.dateFormat))
         .in('result', ['success', 'failure'])
@@ -87,15 +107,17 @@ export default function Dashboard({
             } else {
               const buffer = { success: {}, failure: {} };
 
-              for (const date of dates) {
-                buffer.success[date] = { count: 0, elapsed_ms: 0 };
-                buffer.failure[date] = { count: 0, elapsed_ms: 0 };
+              for (const label of labels) {
+                buffer.success[label] = { count: 0, elapsed_ms: 0 };
+                buffer.failure[label] = { count: 0, elapsed_ms: 0 };
               }
 
-              for (const { usage_date, result, count, elapsed_ms } of data) {
-                if (buffer[result]?.[usage_date]) {
-                  buffer[result][usage_date].count += count;
-                  buffer[result][usage_date].elapsed_ms += elapsed_ms;
+              for (const { usage_date, usage_time, result, count, elapsed_ms } of data) {
+                const label = usage_date + ['', ` ${usage_time}`][granularity];
+
+                if (buffer[result]?.[label]) {
+                  buffer[result][label].count += count;
+                  buffer[result][label].elapsed_ms += elapsed_ms;
                 }
               }
 
@@ -109,12 +131,12 @@ export default function Dashboard({
         isCancelled = true;
       };
     }
-  }, [supabaseClient, session, startDate, endDate, toast]);
+  }, [supabaseClient, session, startDate, endDate, granularity, toast]);
 
   return session && !isSessionLoading ? (
     hasChartLoaded.current ? (
       <>
-        <Flex my={ui.smMargin} justify='center'>
+        <Flex my={ui.smMargin} justify='center' gap={3}>
           <DateRangePicker
             startDate={startDate}
             startDateId='start-date'
@@ -139,26 +161,56 @@ export default function Dashboard({
               return day.isAfter(moment(), 'day');
             }}
           />
+          <Menu variant='dropdown'>
+            <MenuButton
+              as={Button}
+              variant='dropdown'
+              size='lg'
+              rightIcon={<ChevronDownIcon fontSize='2xl' />}
+            >
+              {[ui.dailyLabel, ui.hourlyLabel][granularity]}
+            </MenuButton>
+            <MenuList>
+              <MenuItem
+                borderRadius={ui.menuTopBorder}
+                onClick={() => {
+                  setUsage(null);
+                  setGranularity(0);
+                }}
+              >
+                {ui.dailyLabel}
+              </MenuItem>
+              <MenuItem
+                borderRadius={ui.menuBottomBorder}
+                onClick={() => {
+                  setUsage(null);
+                  setGranularity(1);
+                }}
+              >
+                {ui.hourlyLabel}
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </Flex>
         {usage ? (
           <Flex justify='center' flex={1}>
             <Box w={ui.chartWidth}>
               <Line
                 data={{
-                  labels: dates,
+                  labels,
                   datasets: [
                     {
                       label: 'Successful',
-                      data: dates.map((date) => {
-                        return usage.success[date].count;
+                      data: labels.map((label) => {
+                        return usage.success[label].count;
                       }),
                       borderColor: ui.royalBlue,
                       pointBackgroundColor: ui.royalBlue
                     },
                     {
                       label: 'Failed',
-                      data: dates.map((date) => {
-                        return usage.failure[date].count;
+                      data: labels.map((label) => {
+                        return usage.failure[label].count;
                       }),
                       borderColor: ui.ruddyPink,
                       pointBackgroundColor: ui.ruddyPink
@@ -209,7 +261,7 @@ export default function Dashboard({
                             item.parsed.y,
                             item.dataset.label,
                             usage[{ Successful: 'success', Failed: 'failure' }[item.dataset.label]][
-                              dates[item.dataIndex]
+                              labels[item.dataIndex]
                             ].elapsed_ms
                           );
                         }
