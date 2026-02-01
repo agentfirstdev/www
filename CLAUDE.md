@@ -63,4 +63,4 @@ No test framework is configured.
 - Always write out arrow function bodies with braces and explicit `return` (e.g. `(day) => { return day.isAfter(); }`, not `(day) => day.isAfter()`).
 - Prefer inlining expressions over creating single-use variables.
 - Environment variables prefixed with `VITE_` for client-side access.
-- Commit messages use past tense with terminal punctuation (e.g. "Renamed consts.", "Refactored chart."). Backtick-quote inline code references.
+- Commit messages use past tense with terminal punctuation (e.g. "Renamed consts.", "Refactored chart."). Use a gerund when the change adds an ongoing action (e.g. "Preloading tagline font."). Backtick-quote inline code references.
