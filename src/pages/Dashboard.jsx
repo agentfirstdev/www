@@ -231,6 +231,7 @@ export default function Dashboard({
                       ticks: {
                         minRotation: ui.labelRotation,
                         color: tickColor,
+                        maxTicksLimit: ui.maxHorizontalTicks,
                         font: { family: ui.headingFont, size: ui.horizontalLabelSize }
                       },
                       grid: { display: false }
@@ -240,6 +241,7 @@ export default function Dashboard({
                       ticks: {
                         precision: 0,
                         color: tickColor,
+                        maxTicksLimit: ui.maxVerticalTicks,
                         font: { family: ui.subheadingFont, size: ui.verticalLabelSize },
                         callback(value) {
                           return formatLabel(value);
