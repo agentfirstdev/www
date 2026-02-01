@@ -73,6 +73,7 @@ export default function Home({
   // const [isLoading, setIsLoading] = useState(false);
   const servicesStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
   const servicesFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
+  const dividerColor = useColorModeValue('accent.secondary', 'brand.primary');
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
@@ -639,7 +640,7 @@ export default function Home({
             left: 0,
             top: `-${ui.verticalDividerOverflow}`,
             bottom: `-${ui.verticalDividerOverflow}`,
-            bg: 'accent.primary',
+            bg: dividerColor,
             w: '1px',
             content: '""'
           }}
@@ -648,7 +649,7 @@ export default function Home({
             right: 0,
             top: `-${ui.verticalDividerOverflow}`,
             bottom: `-${ui.verticalDividerOverflow}`,
-            bg: 'accent.primary',
+            bg: dividerColor,
             w: '1px',
             content: '""'
           }}
@@ -661,7 +662,7 @@ export default function Home({
               top: 0,
               left: `-${ui.horizontalDividerOverflow}`,
               right: `-${ui.horizontalDividerOverflow}`,
-              bg: 'accent.primary',
+              bg: dividerColor,
               h: '1px',
               content: '""'
             }}
@@ -698,7 +699,7 @@ export default function Home({
               top: 0,
               left: `-${ui.horizontalDividerOverflow}`,
               right: `-${ui.horizontalDividerOverflow}`,
-              bg: 'accent.primary',
+              bg: dividerColor,
               h: '1px',
               content: '""'
             }}
@@ -734,7 +735,7 @@ export default function Home({
               top: 0,
               left: `-${ui.horizontalDividerOverflow}`,
               right: `-${ui.horizontalDividerOverflow}`,
-              bg: 'accent.primary',
+              bg: dividerColor,
               h: '1px',
               content: '""'
             }}
@@ -766,7 +767,7 @@ export default function Home({
               top: 0,
               left: `-${ui.horizontalDividerOverflow}`,
               right: `-${ui.horizontalDividerOverflow}`,
-              bg: 'accent.primary',
+              bg: dividerColor,
               h: '1px',
               content: '""'
             }}
@@ -775,7 +776,7 @@ export default function Home({
               bottom: 0,
               left: `-${ui.horizontalDividerOverflow}`,
               right: `-${ui.horizontalDividerOverflow}`,
-              bg: 'accent.primary',
+              bg: dividerColor,
               h: '1px',
               content: '""'
             }}
