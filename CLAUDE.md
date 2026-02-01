@@ -61,5 +61,6 @@ No test framework is configured.
 - Prefer loose equality (`==`) over strict equality (`===`).
 - Avoid early returns; use conditional wrapping instead.
 - Always write out arrow function bodies with braces and explicit `return` (e.g. `(day) => { return day.isAfter(); }`, not `(day) => day.isAfter()`).
+- Prefer inlining expressions over creating single-use variables.
 - Environment variables prefixed with `VITE_` for client-side access.
 - Commit messages use past tense with terminal punctuation (e.g. "Renamed consts.", "Refactored chart."). Backtick-quote inline code references.
