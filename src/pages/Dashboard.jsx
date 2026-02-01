@@ -177,8 +177,10 @@ export default function Dashboard({
               <MenuItem
                 borderRadius={ui.menuTopBorder}
                 onClick={() => {
-                  setUsage(null);
-                  setGranularity(0);
+                  if (granularity) {
+                    setUsage(null);
+                    setGranularity(0);
+                  }
                 }}
               >
                 {ui.dailyLabel}
@@ -186,8 +188,10 @@ export default function Dashboard({
               <MenuItem
                 borderRadius={ui.menuBottomBorder}
                 onClick={() => {
-                  setUsage(null);
-                  setGranularity(1);
+                  if (!granularity) {
+                    setUsage(null);
+                    setGranularity(1);
+                  }
                 }}
               >
                 {ui.hourlyLabel}
