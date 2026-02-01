@@ -338,6 +338,7 @@ export const lineTension = 0.25;
 export const pointRadius = 4;
 export const pointHoverRadius = 5;
 export const legendSize = 16;
+export const tooltipSize = 12;
 export const defaultDayCount = 7;
 export const chartWidth = { base: '100%', lg: '80%' };
 

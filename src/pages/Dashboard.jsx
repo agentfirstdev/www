@@ -48,6 +48,7 @@ export default function Dashboard({
   const [granularity, setGranularity] = useState(0);
   const [usage, setUsage] = useState(null);
   const [focusedInput, setFocusedInput] = useState(null);
+  const [haveFontsLoaded, setHaveFontsLoaded] = useState(false);
   const tickColor = useColorModeValue(ui.lightTickColor, ui.darkTickColor);
   const gridColor = useColorModeValue(ui.lightGridColor, ui.darkGridColor);
   const toast = useToast();
@@ -80,6 +81,17 @@ export default function Dashboard({
       }
     }
   }
+
+  useEffect(() => {
+    Promise.all([
+      document.fonts.load(`${ui.horizontalLabelSize}px ${ui.headingFont}`),
+      document.fonts.load(`${ui.verticalLabelSize}px ${ui.subheadingFont}`),
+      document.fonts.load(`${ui.legendSize}px ${ui.headingFont}`),
+      document.fonts.load(`${ui.tooltipSize}px ${ui.bodyFont}`)
+    ]).finally(() => {
+      setHaveFontsLoaded(true);
+    });
+  }, []);
 
   useEffect(() => {
     if (session && startDate && endDate) {
@@ -199,7 +211,7 @@ export default function Dashboard({
             </MenuList>
           </Menu>
         </Flex>
-        {usage ? (
+        {usage && haveFontsLoaded ? (
           <Flex mx={ui.smMargin} justify='center' flex={1}>
             <Box w={ui.chartWidth}>
               <Line
@@ -266,8 +278,8 @@ export default function Dashboard({
                     },
                     tooltip: {
                       displayColors: false,
-                      titleFont: { family: ui.bodyFont },
-                      bodyFont: { family: ui.bodyFont },
+                      titleFont: { family: ui.bodyFont, size: ui.tooltipSize },
+                      bodyFont: { family: ui.bodyFont, size: ui.tooltipSize },
                       callbacks: {
                         label(item) {
                           return formatLabel(
