@@ -325,6 +325,7 @@ export const secondaryStyle = {
 export const dateFormat = 'YYYY-MM-DD';
 export const timeFormat = 'HH:00:00';
 export const spinnerWidth = '4px';
+export const chartRoughness = 2;
 export const labelRotation = 30;
 export const horizontalLabelSize = 12;
 export const maxHorizontalTicks = 15;
