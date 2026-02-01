@@ -231,8 +231,8 @@ export default function Dashboard({
                       data: labels.map((label) => {
                         return usage.failure[label].count;
                       }),
-                      borderColor: ui.ruddyPink,
-                      pointBackgroundColor: ui.ruddyPink
+                      borderColor: ui.roseRed,
+                      pointBackgroundColor: ui.roseRed
                     }
                   ]
                 }}
