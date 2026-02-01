@@ -73,7 +73,7 @@ export default function Home({
   // const [isLoading, setIsLoading] = useState(false);
   const servicesStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
   const servicesFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
-  const dividerColor = useColorModeValue('accent.secondary', 'brand.primary');
+  const dividerColor = useColorModeValue('gray.200', 'whiteAlpha.200');
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
