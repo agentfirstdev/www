@@ -15,6 +15,7 @@ import {
   // IconButton,
   Badge,
   Tooltip,
+  useBreakpointValue,
   useColorModeValue
 } from '@chakra-ui/react';
 // import { AddIcon } from '@chakra-ui/icons';
@@ -71,6 +72,10 @@ export default function Home({
   const [xPath, setXPath] = useState(null);
   const [sitePath, setSitePath] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
+  const horizontalDividerOverflow = useBreakpointValue({
+    base: ui.baseDividerOverflow,
+    md: ui.horizontalDividerOverflow
+  });
   const servicesStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
   const servicesFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
   const dividerColor = useColorModeValue('gray.200', 'whiteAlpha.200');
@@ -638,8 +643,8 @@ export default function Home({
           _before={{
             position: 'absolute',
             left: 0,
-            top: `-${ui.verticalDividerOverflow}`,
-            bottom: `-${ui.verticalDividerOverflow}`,
+            top: ui.verticalDividerOverflow,
+            bottom: ui.verticalDividerOverflow,
             bg: dividerColor,
             w: '1px',
             content: '""'
@@ -647,8 +652,8 @@ export default function Home({
           _after={{
             position: 'absolute',
             right: 0,
-            top: `-${ui.verticalDividerOverflow}`,
-            bottom: `-${ui.verticalDividerOverflow}`,
+            top: ui.verticalDividerOverflow,
+            bottom: ui.verticalDividerOverflow,
             bg: dividerColor,
             w: '1px',
             content: '""'
@@ -656,12 +661,13 @@ export default function Home({
         >
           <Box
             position='relative'
-            p={ui.smMargin}
+            px={{ base: ui.xsMargin, md: ui.smMargin }}
+            py={ui.smMargin}
             _before={{
               position: 'absolute',
               top: 0,
-              left: `-${ui.horizontalDividerOverflow}`,
-              right: `-${ui.horizontalDividerOverflow}`,
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
               bg: dividerColor,
               h: '1px',
               content: '""'
@@ -693,12 +699,13 @@ export default function Home({
           </Box>
           <Box
             position='relative'
-            p={ui.smMargin}
+            px={{ base: ui.xsMargin, md: ui.smMargin }}
+            py={ui.smMargin}
             _before={{
               position: 'absolute',
               top: 0,
-              left: `-${ui.horizontalDividerOverflow}`,
-              right: `-${ui.horizontalDividerOverflow}`,
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
               bg: dividerColor,
               h: '1px',
               content: '""'
@@ -729,12 +736,13 @@ export default function Home({
           </Box>
           <Box
             position='relative'
-            p={ui.smMargin}
+            px={{ base: ui.xsMargin, md: ui.smMargin }}
+            py={ui.smMargin}
             _before={{
               position: 'absolute',
               top: 0,
-              left: `-${ui.horizontalDividerOverflow}`,
-              right: `-${ui.horizontalDividerOverflow}`,
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
               bg: dividerColor,
               h: '1px',
               content: '""'
@@ -761,12 +769,13 @@ export default function Home({
           </Box>
           <Box
             position='relative'
-            p={ui.smMargin}
+            px={{ base: ui.xsMargin, md: ui.smMargin }}
+            py={ui.smMargin}
             _before={{
               position: 'absolute',
               top: 0,
-              left: `-${ui.horizontalDividerOverflow}`,
-              right: `-${ui.horizontalDividerOverflow}`,
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
               bg: dividerColor,
               h: '1px',
               content: '""'
@@ -774,8 +783,8 @@ export default function Home({
             _after={{
               position: 'absolute',
               bottom: 0,
-              left: `-${ui.horizontalDividerOverflow}`,
-              right: `-${ui.horizontalDividerOverflow}`,
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
               bg: dividerColor,
               h: '1px',
               content: '""'
