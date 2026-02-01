@@ -9,6 +9,7 @@ import {
   MenuList,
   MenuItem,
   Spinner,
+  useColorModeValue,
   useToast
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
@@ -47,6 +48,8 @@ export default function Dashboard({
   const [granularity, setGranularity] = useState(0);
   const [usage, setUsage] = useState(null);
   const [focusedInput, setFocusedInput] = useState(null);
+  const tickColor = useColorModeValue(ui.lightTickColor, ui.darkTickColor);
+  const gridColor = useColorModeValue(ui.lightGridColor, ui.darkGridColor);
   const toast = useToast();
   const labels = [];
   const formatLabel = (callCount, resultType, elapsedMs) => {
@@ -223,6 +226,7 @@ export default function Dashboard({
                     x: {
                       ticks: {
                         minRotation: ui.labelRotation,
+                        color: tickColor,
                         font: { family: ui.headingFont, size: ui.horizontalLabelSize }
                       },
                       grid: { display: false }
@@ -231,11 +235,13 @@ export default function Dashboard({
                       suggestedMin: 0,
                       ticks: {
                         precision: 0,
+                        color: tickColor,
                         font: { family: ui.subheadingFont, size: ui.verticalLabelSize },
                         callback(value) {
                           return formatLabel(value);
                         }
-                      }
+                      },
+                      grid: { color: gridColor }
                     }
                   },
                   elements: {
@@ -248,6 +254,7 @@ export default function Dashboard({
                       align: 'end',
                       labels: {
                         boxHeight: 0,
+                        color: tickColor,
                         font: { family: ui.headingFont, size: ui.legendSize }
                       }
                     },

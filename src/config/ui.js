@@ -135,6 +135,10 @@ export const turkishRose = '#aa6b70';
 export const blackAlpha = 'rgba(26, 32, 44, 0.48)';
 export const whiteAlpha = 'rgba(255, 255, 255, 0.48)';
 export const blueAlpha = 'rgba(74, 109, 229, 0.48)';
+export const lightTickColor = '#666';
+export const darkTickColor = '#999';
+export const lightGridColor = 'rgba(0, 0, 0, 0.1)';
+export const darkGridColor = 'rgba(255, 255, 255, 0.1)';
 export const postItColors = [
   { background: { from: pastelYellow, to: naplesYellow }, border: vegasGold },
   { background: { from: asagiYellow, to: yellowOrange }, border: burntSienna },
