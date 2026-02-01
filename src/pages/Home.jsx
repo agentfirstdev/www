@@ -631,8 +631,41 @@ export default function Home({
           role='img'
           aria-label={ui.servicesLabel}
         />
-        <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='md'>
-          <CardBody>
+        <Box
+          position='relative'
+          mt={ui.smMargin}
+          _before={{
+            position: 'absolute',
+            left: 0,
+            top: `-${ui.verticalDividerOverflow}`,
+            bottom: `-${ui.verticalDividerOverflow}`,
+            bg: 'accent.primary',
+            w: '1px',
+            content: '""'
+          }}
+          _after={{
+            position: 'absolute',
+            right: 0,
+            top: `-${ui.verticalDividerOverflow}`,
+            bottom: `-${ui.verticalDividerOverflow}`,
+            bg: 'accent.primary',
+            w: '1px',
+            content: '""'
+          }}
+        >
+          <Box
+            position='relative'
+            p={ui.smMargin}
+            _before={{
+              position: 'absolute',
+              top: 0,
+              left: `-${ui.horizontalDividerOverflow}`,
+              right: `-${ui.horizontalDividerOverflow}`,
+              bg: 'accent.primary',
+              h: '1px',
+              content: '""'
+            }}
+          >
             <Heading as='h2' variant='service'>
               1. Live search results
             </Heading>
@@ -653,15 +686,23 @@ export default function Home({
                 See more
               </Link>
             </Box>
-          </CardBody>
-          <CardFooter>
-            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href='#pricing'>
+            <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               Get started
             </Button>
-          </CardFooter>
-        </Card>
-        <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='md'>
-          <CardBody>
+          </Box>
+          <Box
+            position='relative'
+            p={ui.smMargin}
+            _before={{
+              position: 'absolute',
+              top: 0,
+              left: `-${ui.horizontalDividerOverflow}`,
+              right: `-${ui.horizontalDividerOverflow}`,
+              bg: 'accent.primary',
+              h: '1px',
+              content: '""'
+            }}
+          >
             <Heading as='h2' variant='service'>
               2. Uncaptcha’d browsing
             </Heading>
@@ -681,15 +722,23 @@ export default function Home({
                 See more
               </Link>
             </Box>
-          </CardBody>
-          <CardFooter>
-            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href='#pricing'>
+            <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               Get started
             </Button>
-          </CardFooter>
-        </Card>
-        <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='md'>
-          <CardBody>
+          </Box>
+          <Box
+            position='relative'
+            p={ui.smMargin}
+            _before={{
+              position: 'absolute',
+              top: 0,
+              left: `-${ui.horizontalDividerOverflow}`,
+              right: `-${ui.horizontalDividerOverflow}`,
+              bg: 'accent.primary',
+              h: '1px',
+              content: '""'
+            }}
+          >
             <Heading as='h2' variant='service'>
               {'3. Webpage interaction '}
               <Badge>Coming soon</Badge>
@@ -705,15 +754,32 @@ export default function Home({
               {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf '}
               of users.
             </Text>
-          </CardBody>
-          <CardFooter>
-            <Button w={ui.buttonWidth} h={ui.buttonHeight} isDisabled>
+            <Button mt={4} w={ui.buttonWidth} h={ui.buttonHeight} isDisabled>
               Join waitlist
             </Button>
-          </CardFooter>
-        </Card>
-        <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='md'>
-          <CardBody>
+          </Box>
+          <Box
+            position='relative'
+            p={ui.smMargin}
+            _before={{
+              position: 'absolute',
+              top: 0,
+              left: `-${ui.horizontalDividerOverflow}`,
+              right: `-${ui.horizontalDividerOverflow}`,
+              bg: 'accent.primary',
+              h: '1px',
+              content: '""'
+            }}
+            _after={{
+              position: 'absolute',
+              bottom: 0,
+              left: `-${ui.horizontalDividerOverflow}`,
+              right: `-${ui.horizontalDividerOverflow}`,
+              bg: 'accent.primary',
+              h: '1px',
+              content: '""'
+            }}
+          >
             <Heading as='h2' variant='service'>
               … From anywhere
             </Heading>
@@ -738,13 +804,11 @@ export default function Home({
                 See more
               </Link>
             </Box>
-          </CardBody>
-          <CardFooter>
-            <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href='#pricing'>
+            <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               Get started
             </Button>
-          </CardFooter>
-        </Card>
+          </Box>
+        </Box>
       </Box>
       <Box id='about' px={{ base: ui.smMargin, md: ui.xlMargin }} pt={ui.smMargin} align='center'>
         <Box position='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>

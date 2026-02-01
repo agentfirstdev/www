@@ -207,11 +207,13 @@ export const openRotation = 45;
 export const expandRotation = 180;
 
 // Other shared styles
-export const linkPadding = '2px';
 export const outlineStyle = '0 0 0 3px';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
 export const transition = 'all var(--chakra-transition-duration-normal)';
+export const horizontalDividerOverflow = '48px';
+export const verticalDividerOverflow = '24px';
+export const linkPadding = '2px';
 export const xsMargin = 4;
 export const smMargin = 8;
 export const mdMargin = 14;
@@ -271,7 +273,6 @@ export const promptFontSize = '18px';
 export const teamFontSize = { base: '32px', md: '32px' };
 
 // Services
-export const servicesBorder = '1px solid var(--chakra-colors-chakra-border-color)';
 export const servicesNewWidth = '20%';
 export const servicesMinWidth = '204px';
 export const servicesOldWidth = 1376;

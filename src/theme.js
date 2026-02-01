@@ -107,9 +107,10 @@ export default extendTheme({
         borderWidth: '1px',
         borderRadius: 'md',
         borderColor: 'chakra-border-color',
-        bg: 'chakra-body-bg',
         maxW: '100%',
-        fontSize: { base: 'sm', md: 'md' }
+        fontSize: { base: 'sm', md: 'md' },
+        _light: { bg: 'white' },
+        _dark: { bg: 'whiteAlpha.50' }
       }
     },
     Link: {
