@@ -681,7 +681,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service'>
+            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
               1. Live search results
             </Heading>
             <Text variant='service'>
@@ -714,7 +714,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service'>
+            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
               2. Uncaptcha’d browsing
             </Heading>
             <Text variant='service'>
@@ -749,7 +749,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service'>
+            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
               {'3. Webpage interaction '}
               <Badge>Coming soon</Badge>
             </Heading>
@@ -791,7 +791,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service'>
+            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
               … From anywhere
             </Heading>
             <Text variant='service'>
