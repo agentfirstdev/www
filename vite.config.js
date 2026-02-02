@@ -22,12 +22,16 @@ export default defineConfig({
               id.includes('motion-')
             ) {
               name = 'chakra';
+            } else if (id.includes('roughjs') || id.includes('animejs')) {
+              name = 'graphics';
             } else if (id.includes('highlight')) {
               name = 'highlight';
             } else if (id.includes('chart')) {
               name = 'chart';
             } else if (id.includes('moment')) {
               name = 'moment';
+            } else if (id.includes('react-dates')) {
+              name = 'dates';
             } else if (id.includes('supabase')) {
               name = 'supabase';
             } else {
