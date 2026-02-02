@@ -17,6 +17,8 @@ export const homeLabel = 'Home';
 export const profileLabel = 'Settings';
 export const supportLabel = 'Help';
 export const logoutLabel = 'Logout';
+export const codeLabel = 'Copy code';
+export const moreLabel = 'See more';
 export const hedLabel = 'Brian hedcut';
 export const agentLabel = 'Brain agent';
 export const githubLabel = 'Go to our GitHub';
@@ -41,6 +43,7 @@ export const loadingPlaceholder = 'Loading ...';
 export const generatingPlaceholder = 'Generating an answer';
 export const updatePlaceholder = 'Your reply to the answer above ...';
 export const resetHint = 'Start a new conversation';
+export const codeMessage = 'Code copied to clipboard';
 export const copiedMessage = 'Token copied to clipboard';
 export const errorMessage = 'Oops, something went wrong; please try again later';
 export const servicesPath = '/#services';
@@ -117,6 +120,7 @@ export const timelineLabels = [
   { year: 2022, paradigm: 'AI first', log: 0.6 },
   { year: 2026, paradigm: 'Agent first', log: 0.9 }
 ];
+export const codeLabels = { curl: 'cURL', py: 'Python', js: 'Node.js' };
 
 // Colors
 export const cornflowerBlue = '#7999f7';
@@ -214,7 +218,7 @@ export const shadowStyle = 'outline';
 export const transition = 'all var(--chakra-transition-duration-normal)';
 export const horizontalDividerOverflow = '-48px';
 export const verticalDividerOverflow = '-24px';
-export const baseDividerOverflow = '-16px';
+export const dividerBaseOverflow = '-16px';
 export const linkPadding = '2px';
 export const xsMargin = 4;
 export const smMargin = 8;
@@ -280,6 +284,16 @@ export const servicesMinWidth = '204px';
 export const servicesOldWidth = 1376;
 export const servicesOldHeight = 320;
 
+// Code
+export const chromeButtonMargin = '0.5em';
+export const chromeButtonPadding = '0.75em';
+export const chromeIconDimension = '16px';
+export const chromeButtonDimension = 9;
+export const editorHorizontalMargin = { base: '1.5em', md: '2em' };
+export const editorVerticalMargin = { base: '0.75em', md: '1em' };
+export const editorFontSize = { base: 'sm', md: 'md' };
+export const chromePadding = { base: '0.75em', md: '1em' };
+
 // Team
 export const hedMaxWidth = '240px';
 export const agentMaxWidth = '216px';
@@ -338,8 +352,8 @@ export const lineWidth = 3;
 export const lineTension = 0.25;
 export const pointRadius = 4;
 export const pointHoverRadius = 5;
-export const legendSize = 16;
-export const tooltipSize = 12;
+export const legendFontSize = 16;
+export const tooltipFontSize = 12;
 export const defaultDayCount = 7;
 export const chartWidth = { base: '100%', lg: '80%' };
 

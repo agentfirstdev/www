@@ -1,0 +1,140 @@
+import { useState } from 'react';
+import { Box, Flex, Link, Tooltip, useClipboard, useToast } from '@chakra-ui/react';
+import { CopyIcon, CheckIcon } from '@chakra-ui/icons';
+
+import * as ui from '../config/ui';
+import CurlSymbol from '../assets/CurlSymbol';
+import PythonDevice from '../assets/PythonDevice';
+import NodeHex from '../assets/NodeHex';
+
+const languageIcons = { curl: CurlSymbol, py: PythonDevice, js: NodeHex };
+const stripFences = (markdown) => {
+  return markdown.replace(/^```[^\n]*\n/, '').replace(/\n```\s*$/, '');
+};
+
+export default function Code({ markdown, moreUrl }) {
+  const [activeLanguage, setActiveLanguage] = useState('curl');
+  const { hasCopied, onCopy, setValue } = useClipboard('');
+  const toast = useToast();
+  const rawCode = stripFences(markdown[activeLanguage]);
+
+  return (
+    <Box
+      mt={4}
+      borderWidth='1px'
+      borderRadius='md'
+      borderColor='chakra-border-color'
+      bg='editor-bg'
+      overflow='hidden'
+      shadow='sm'
+    >
+      <Flex
+        borderBottomWidth='1px'
+        borderColor='chakra-border-color'
+        bg='chrome-bg'
+        px={ui.chromePadding}
+        py={2}
+        justify='space-between'
+      >
+        <Flex gap={ui.chromeButtonMargin}>
+          {Object.keys(markdown).map((language) => {
+            const Icon = languageIcons[language];
+            const isActive = language == activeLanguage;
+
+            return (
+              <Box
+                as='button'
+                display='flex'
+                borderRadius='md'
+                bg={isActive ? 'chakra-border-color' : 'transparent'}
+                px={ui.chromeButtonPadding}
+                h={ui.chromeButtonDimension}
+                alignItems='center'
+                fontSize={ui.editorFontSize}
+                color={isActive ? 'accent.primary' : 'chakra-label-color'}
+                gap={ui.chromeButtonMargin}
+                key={language}
+                cursor={isActive ? 'default' : 'pointer'}
+                _hover={{
+                  bg: isActive ? 'chakra-border-color' : 'chakra-subtle-bg',
+                  color: isActive ? 'accent.primary' : 'tab-color'
+                }}
+                onClick={() => {
+                  setActiveLanguage(language);
+                }}
+              >
+                {Icon ? <Icon dimension={ui.chromeIconDimension} /> : null}
+                {ui.codeLabels[language]}
+              </Box>
+            );
+          })}
+        </Flex>
+        <Tooltip
+          mx={ui.tooltipMargin}
+          p={ui.tooltipPadding}
+          label={hasCopied ? null : ui.codeLabel}
+          hasArrow
+        >
+          <Box
+            as='button'
+            display='flex'
+            borderRadius='md'
+            w={ui.chromeButtonDimension}
+            h={ui.chromeButtonDimension}
+            justifyContent='center'
+            alignItems='center'
+            color='chakra-label-color'
+            aria-label={ui.codeLabel}
+            _hover={{ bg: 'chakra-subtle-bg', color: 'tab-color' }}
+            onClick={() => {
+              const id = 'copy';
+
+              setValue(rawCode);
+              onCopy();
+
+              if (!toast.isActive(id)) {
+                toast({
+                  id,
+                  position: 'top',
+                  status: 'success',
+                  description: ui.codeMessage,
+                  duration: ui.toastTimeoutMs
+                });
+              }
+            }}
+          >
+            {hasCopied ? <CheckIcon /> : <CopyIcon />}
+          </Box>
+        </Tooltip>
+      </Flex>
+      <Box position='relative'>
+        <Flex>
+          <Box
+            mt={ui.editorVerticalMargin}
+            ml={ui.editorHorizontalMargin}
+            fontFamily='mono'
+            fontSize={ui.editorFontSize}
+            color='gutter-color'
+            userSelect='none'
+          >
+            {Array.from({ length: rawCode.split('\n').length }, (_, i) => {
+              return <Box key={i}>{i + 1}</Box>;
+            })}
+          </Box>
+          <Box
+            flex='1'
+            fontSize={ui.editorFontSize}
+            overflow='auto'
+            sx={{ '& code.hljs': { px: ui.editorHorizontalMargin, py: ui.editorVerticalMargin } }}
+            dangerouslySetInnerHTML={{ __html: ui.renderer.render(markdown[activeLanguage]) }}
+          />
+        </Flex>
+        {moreUrl ? (
+          <Link variant='doc' href={moreUrl}>
+            {ui.moreLabel}
+          </Link>
+        ) : null}
+      </Box>
+    </Box>
+  );
+}

@@ -8,7 +8,6 @@ import {
   CardFooter,
   Heading,
   Text,
-  Code,
   Link,
   // Textarea,
   Button,
@@ -24,10 +23,19 @@ import { createTimeline } from 'animejs';
 
 import * as ui from '../config/ui';
 import * as uix from '../config/uix';
-import search from '../markdown/search.md?raw';
-import browsing from '../markdown/browsing.md?raw';
-import searchGeotargeting from '../markdown/geotargeting-search.md?raw';
-import browsingGeotargeting from '../markdown/geotargeting-browsing.md?raw';
+import Code from '../components/Code';
+import searchCurl from '../markdown/search-curl.md?raw';
+import searchPy from '../markdown/search-py.md?raw';
+import searchJs from '../markdown/search-js.md?raw';
+import browsingCurl from '../markdown/browsing-curl.md?raw';
+import browsingPy from '../markdown/browsing-py.md?raw';
+import browsingJs from '../markdown/browsing-js.md?raw';
+import geotargetedSearchCurl from '../markdown/search-geotargeted-curl.md?raw';
+import geotargetedSearchPy from '../markdown/search-geotargeted-py.md?raw';
+import geotargetedSearchJs from '../markdown/search-geotargeted-js.md?raw';
+import geotargetedBrowsingCurl from '../markdown/browsing-geotargeted-curl.md?raw';
+import geotargetedBrowsingPy from '../markdown/browsing-geotargeted-py.md?raw';
+import geotargetedBrowsingJs from '../markdown/browsing-geotargeted-js.md?raw';
 
 export default function Home({
   blueprintStroke,
@@ -73,7 +81,7 @@ export default function Home({
   const [sitePath, setSitePath] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
   const horizontalDividerOverflow = useBreakpointValue({
-    base: ui.baseDividerOverflow,
+    base: ui.dividerBaseOverflow,
     md: ui.horizontalDividerOverflow
   });
   const servicesStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
@@ -687,12 +695,10 @@ export default function Home({
               </Text>
               :
             </Text>
-            <Box position='relative'>
-              <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(search) }} />
-              <Link variant='doc' href={ui.searchUrl}>
-                See more
-              </Link>
-            </Box>
+            <Code
+              markdown={{ curl: searchCurl, py: searchPy, js: searchJs }}
+              moreUrl={ui.searchUrl}
+            />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               Get started
             </Button>
@@ -724,12 +730,10 @@ export default function Home({
               </Text>
               {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
             </Text>
-            <Box position='relative'>
-              <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsing) }} />
-              <Link variant='doc' href={ui.browsingUrl}>
-                See more
-              </Link>
-            </Box>
+            <Code
+              markdown={{ curl: browsingCurl, py: browsingPy, js: browsingJs }}
+              moreUrl={ui.browsingUrl}
+            />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               Get started
             </Button>
@@ -804,16 +808,21 @@ export default function Home({
               </Text>
               {' within our proxy network for local results or content:'}
             </Text>
-            <Box position='relative'>
-              <Code dangerouslySetInnerHTML={{ __html: ui.renderer.render(searchGeotargeting) }} />
-              <Box clear='both' />
-              <Code
-                dangerouslySetInnerHTML={{ __html: ui.renderer.render(browsingGeotargeting) }}
-              />
-              <Link variant='doc' href={ui.geotargetingUrl}>
-                See more
-              </Link>
-            </Box>
+            <Code
+              markdown={{
+                curl: geotargetedSearchCurl,
+                py: geotargetedSearchPy,
+                js: geotargetedSearchJs
+              }}
+            />
+            <Code
+              markdown={{
+                curl: geotargetedBrowsingCurl,
+                py: geotargetedBrowsingPy,
+                js: geotargetedBrowsingJs
+              }}
+              moreUrl={ui.geotargetingUrl}
+            />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               Get started
             </Button>

@@ -184,7 +184,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
               <Tooltip
                 mx={ui.tooltipMargin}
                 p={ui.tooltipPadding}
-                label={hasToken ? ui.copyLabel : null}
+                label={hasToken ? (hasCopied ? null : ui.copyLabel) : null}
                 hasArrow
               >
                 <IconButton

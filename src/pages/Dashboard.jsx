@@ -86,8 +86,8 @@ export default function Dashboard({
     Promise.all([
       document.fonts.load(`${ui.horizontalLabelSize}px ${ui.headingFont}`),
       document.fonts.load(`${ui.verticalLabelSize}px ${ui.subheadingFont}`),
-      document.fonts.load(`${ui.legendSize}px ${ui.headingFont}`),
-      document.fonts.load(`${ui.tooltipSize}px ${ui.bodyFont}`)
+      document.fonts.load(`${ui.legendFontSize}px ${ui.headingFont}`),
+      document.fonts.load(`${ui.tooltipFontSize}px ${ui.bodyFont}`)
     ]).finally(() => {
       setHaveFontsLoaded(true);
     });
@@ -273,13 +273,13 @@ export default function Dashboard({
                       labels: {
                         boxHeight: 0,
                         color: tickColor,
-                        font: { family: ui.headingFont, size: ui.legendSize }
+                        font: { family: ui.headingFont, size: ui.legendFontSize }
                       }
                     },
                     tooltip: {
                       displayColors: false,
-                      titleFont: { family: ui.bodyFont, size: ui.tooltipSize },
-                      bodyFont: { family: ui.bodyFont, size: ui.tooltipSize },
+                      titleFont: { family: ui.bodyFont, size: ui.tooltipFontSize },
+                      bodyFont: { family: ui.bodyFont, size: ui.tooltipFontSize },
                       callbacks: {
                         label(item) {
                           return formatLabel(

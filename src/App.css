@@ -32,16 +32,7 @@ html {
 
 .DateRangePickerInput {
   border-radius: var(--chakra-radii-md);
-}
-
-.DateInput:first-child {
-  border-top-left-radius: var(--chakra-radii-md);
-  border-bottom-left-radius: var(--chakra-radii-md);
-}
-
-.DateInput:last-child {
-  border-top-right-radius: var(--chakra-radii-md);
-  border-bottom-right-radius: var(--chakra-radii-md);
+  overflow: hidden;
 }
 
 .DateInput_input {
@@ -52,16 +43,6 @@ html {
 
 .DateInput_input__focused {
   border-color: var(--chakra-colors-brand-primary);
-}
-
-#start-date {
-  border-top-left-radius: var(--chakra-radii-md);
-  border-bottom-left-radius: var(--chakra-radii-md);
-}
-
-#end-date {
-  border-top-right-radius: var(--chakra-radii-md);
-  border-bottom-right-radius: var(--chakra-radii-md);
 }
 
 .DateRangePicker_picker {

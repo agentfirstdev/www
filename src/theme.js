@@ -12,11 +12,15 @@ export default extendTheme({
       'chakra-overlay-bg': { _light: 'white', _dark: 'gray.700' },
       'chakra-inverse-bg': { _light: ui.resolutionBlue, _dark: ui.cornflowerBlue },
       'chakra-accent-bg': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
+      'editor-bg': { _light: 'white', _dark: '#2a2e37' },
+      'chrome-bg': { _light: 'gray.50', _dark: '#343944' },
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
       'chakra-shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
       'chakra-label-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
       'chakra-button-color': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
       'chakra-accent-color': { _light: '#3182ce', _dark: '#63b3ed' },
+      'gutter-color': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
+      'tab-color': { _light: 'gray.700', _dark: 'whiteAlpha.700' },
       'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' }
     }
   },
@@ -132,8 +136,9 @@ export default extendTheme({
         },
         doc: {
           position: 'absolute',
-          right: '1.25rem',
-          bottom: '1rem',
+          right: ui.editorHorizontalMargin,
+          bottom: ui.editorVerticalMargin,
+          fontSize: ui.editorFontSize,
           _light: { fontWeight: 'normal', color: 'chakra-body-text' },
           _dark: { fontWeight: 500, color: 'chakra-body-text' }
         },
