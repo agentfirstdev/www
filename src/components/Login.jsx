@@ -41,7 +41,7 @@ export default function Login({
   };
 
   return session ? (
-    <Menu>
+    <Menu variant='dropdown'>
       <MenuButton
         ml={ui.itemMargin}
         border='none'
