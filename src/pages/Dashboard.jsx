@@ -185,9 +185,8 @@ export default function Dashboard({
             >
               {[ui.dailyLabel, ui.hourlyLabel][granularity]}
             </MenuButton>
-            <MenuList>
+            <MenuList overflow='hidden'>
               <MenuItem
-                borderRadius={ui.menuTopBorder}
                 onClick={() => {
                   if (granularity) {
                     setUsage(null);
@@ -198,7 +197,6 @@ export default function Dashboard({
                 {ui.dailyLabel}
               </MenuItem>
               <MenuItem
-                borderRadius={ui.menuBottomBorder}
                 onClick={() => {
                   if (!granularity) {
                     setUsage(null);

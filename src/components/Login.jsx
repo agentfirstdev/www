@@ -32,7 +32,6 @@ export default function Login({
   const [notifications, setNotifications] = useState([]);
   const location = useLocation();
   const isInLgView = useBreakpointValue({ base: false, lg: true });
-  const isOnHomepage = location.pathname == '/';
   const isOnDashboard = location.pathname == ui.dashboardPath;
   const isOnProfile = location.pathname == ui.profilePath;
   const handleLogout = async () => {
@@ -68,25 +67,20 @@ export default function Login({
           )}
         </Avatar>
       </MenuButton>
-      <MenuList>
-        {isInLgView && !isOnHomepage && (
-          <MenuItem as='a' borderRadius={ui.menuTopBorder} href='/'>
+      <MenuList overflow='hidden'>
+        {isInLgView && location.pathname != '/' && (
+          <MenuItem as='a' href='/'>
             {ui.homeLabel}
           </MenuItem>
         )}
         {!isOnDashboard && (
-          <MenuItem
-            as='a'
-            borderRadius={!isInLgView || isOnHomepage ? ui.menuTopBorder : '0'}
-            href={ui.dashboardUrl}
-          >
+          <MenuItem as='a' href={ui.dashboardUrl}>
             {ui.dashboardLabel}
           </MenuItem>
         )}
         {!isOnProfile && (
           <MenuItem
             as='a'
-            borderRadius={!isInLgView && isOnDashboard ? ui.menuTopBorder : '0'}
             href={!isInLgView || !isOnDashboard ? ui.profileUrl : null}
             onClick={isInLgView && isOnDashboard ? toggleSidebar : null}
           >
@@ -95,38 +89,30 @@ export default function Login({
         )}
         {!isInLgView && (
           <>
-            <MenuItem as='a' borderRadius={0} href={ui.servicesPath}>
+            <MenuItem as='a' href={ui.servicesPath}>
               {ui.servicesLabel}
             </MenuItem>
-            <MenuItem as='a' borderRadius={0} href={ui.pricingPath}>
+            <MenuItem as='a' href={ui.pricingPath}>
               {ui.pricingLabel}
             </MenuItem>
-            <MenuItem as='a' borderRadius={0} href={ui.docUrl}>
+            <MenuItem as='a' href={ui.docUrl}>
               {ui.docLabel}
             </MenuItem>
-            {/* <MenuItem
-              as='a'
-              borderRadius={0}
-              href={ui.demoUrl}
-              target='_blank'
-              rel='noopener'
-            >
+            {/* <MenuItem as='a' href={ui.demoUrl} target='_blank' rel='noopener'>
               {ui.demoLabel}
             </MenuItem> */}
-            <MenuItem as='a' borderRadius={0} href={ui.aboutPath}>
+            <MenuItem as='a' href={ui.aboutPath}>
               {ui.aboutLabel}
             </MenuItem>
-            {/* <MenuItem as='a' borderRadius={0} href={ui.llmsTxtPath}>
+            {/* <MenuItem as='a' href={ui.llmsTxtPath}>
               {ui.llmsTxtLabel}
             </MenuItem> */}
           </>
         )}
-        <MenuItem as='a' borderRadius={0} href={ui.supportUrl}>
+        <MenuItem as='a' href={ui.supportUrl}>
           {ui.supportLabel}
         </MenuItem>
-        <MenuItem borderRadius={ui.menuBottomBorder} onClick={handleLogout}>
-          {ui.logoutLabel}
-        </MenuItem>
+        <MenuItem onClick={handleLogout}>{ui.logoutLabel}</MenuItem>
       </MenuList>
     </Menu>
   ) : (

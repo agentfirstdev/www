@@ -298,7 +298,13 @@ export default function App() {
             />
           </Tooltip>
           {!session && (
-            <Menu strategy='fixed' isOpen={isMenuOpen} onOpen={handleMenuOpen} onClose={closeMenu}>
+            <Menu
+              variant='dropdown'
+              strategy='fixed'
+              isOpen={isMenuOpen}
+              onOpen={handleMenuOpen}
+              onClose={closeMenu}
+            >
               <Tooltip
                 mx={ui.tooltipMargin}
                 p={ui.tooltipPadding}
@@ -322,9 +328,8 @@ export default function App() {
                   _dark={{ bg: 'brand.primary', color: 'whiteAlpha.800' }}
                 />
               </Tooltip>
-              <MenuList p={0}>
+              <MenuList overflow='hidden'>
                 <MenuItem
-                  borderRadius={ui.menuBottomBorder}
                   onClick={() => {
                     setShouldShowLogin(true);
                   }}
@@ -336,28 +341,22 @@ export default function App() {
                 >
                   {ui.dashboardLabel}
                 </MenuItem>
-                <MenuItem as='a' borderRadius={ui.menuTopBorder} href={ui.servicesPath}>
+                <MenuItem as='a' href={ui.servicesPath}>
                   {ui.servicesLabel}
                 </MenuItem>
-                <MenuItem as='a' borderRadius={0} href={ui.pricingPath}>
+                <MenuItem as='a' href={ui.pricingPath}>
                   {ui.pricingLabel}
                 </MenuItem>
-                <MenuItem as='a' borderRadius={0} href={ui.docUrl}>
+                <MenuItem as='a' href={ui.docUrl}>
                   {ui.docLabel}
                 </MenuItem>
-                {/* <MenuItem
-                  as='a'
-                  borderRadius={0}
-                  href={ui.demoUrl}
-                  target='_blank'
-                  rel='noopener'
-                >
+                {/* <MenuItem as='a' href={ui.demoUrl} target='_blank' rel='noopener'>
                   {ui.demoLabel}
                 </MenuItem> */}
-                <MenuItem as='a' borderRadius={0} href={ui.aboutPath}>
+                <MenuItem as='a' href={ui.aboutPath}>
                   {ui.aboutLabel}
                 </MenuItem>
-                {/* <MenuItem as='a' borderRadius={0} href={ui.llmsTxtPath}>
+                {/* <MenuItem as='a' href={ui.llmsTxtPath}>
                   {ui.llmsTxtLabel}
                 </MenuItem> */}
               </MenuList>

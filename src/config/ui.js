@@ -228,8 +228,6 @@ export const xlMargin = 24;
 export const gradientAngle = 140;
 
 // Header
-export const menuTopBorder = '5px 5px 0 0';
-export const menuBottomBorder = '0 0 5px 5px';
 export const badgeSize = '1.5rem';
 export const loginMargin = '0 0.5rem';
 export const loginWidth = '420px';
