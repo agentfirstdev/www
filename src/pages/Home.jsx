@@ -24,16 +24,16 @@ import { createTimeline } from 'animejs';
 import * as ui from '../config/ui';
 import * as uix from '../config/uix';
 import Code from '../components/Code';
-import searchCurl from '../markdown/search-curl.md?raw';
+import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
-import browsingCurl from '../markdown/browsing-curl.md?raw';
+import browsingSh from '../markdown/browsing-sh.md?raw';
 import browsingPy from '../markdown/browsing-py.md?raw';
 import browsingJs from '../markdown/browsing-js.md?raw';
-import geotargetedSearchCurl from '../markdown/search-geotargeted-curl.md?raw';
+import geotargetedSearchSh from '../markdown/search-geotargeted-sh.md?raw';
 import geotargetedSearchPy from '../markdown/search-geotargeted-py.md?raw';
 import geotargetedSearchJs from '../markdown/search-geotargeted-js.md?raw';
-import geotargetedBrowsingCurl from '../markdown/browsing-geotargeted-curl.md?raw';
+import geotargetedBrowsingSh from '../markdown/browsing-geotargeted-sh.md?raw';
 import geotargetedBrowsingPy from '../markdown/browsing-geotargeted-py.md?raw';
 import geotargetedBrowsingJs from '../markdown/browsing-geotargeted-js.md?raw';
 
@@ -695,10 +695,7 @@ export default function Home({
               </Text>
               :
             </Text>
-            <Code
-              markdown={{ curl: searchCurl, py: searchPy, js: searchJs }}
-              moreUrl={ui.searchUrl}
-            />
+            <Code markdown={{ sh: searchSh, py: searchPy, js: searchJs }} moreUrl={ui.searchUrl} />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               Get started
             </Button>
@@ -731,7 +728,7 @@ export default function Home({
               {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
             </Text>
             <Code
-              markdown={{ curl: browsingCurl, py: browsingPy, js: browsingJs }}
+              markdown={{ sh: browsingSh, py: browsingPy, js: browsingJs }}
               moreUrl={ui.browsingUrl}
             />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
@@ -810,14 +807,14 @@ export default function Home({
             </Text>
             <Code
               markdown={{
-                curl: geotargetedSearchCurl,
+                sh: geotargetedSearchSh,
                 py: geotargetedSearchPy,
                 js: geotargetedSearchJs
               }}
             />
             <Code
               markdown={{
-                curl: geotargetedBrowsingCurl,
+                sh: geotargetedBrowsingSh,
                 py: geotargetedBrowsingPy,
                 js: geotargetedBrowsingJs
               }}

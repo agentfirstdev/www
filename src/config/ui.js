@@ -120,7 +120,7 @@ export const timelineLabels = [
   { year: 2022, paradigm: 'AI first', log: 0.6 },
   { year: 2026, paradigm: 'Agent first', log: 0.9 }
 ];
-export const codeLabels = { curl: 'cURL', py: 'Python', js: 'Node.js' };
+export const codeLabels = { sh: 'cURL', py: 'Python', js: 'Node.js' };
 
 // Colors
 export const cornflowerBlue = '#7999f7';

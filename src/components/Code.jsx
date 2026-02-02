@@ -7,13 +7,13 @@ import CurlSymbol from '../assets/CurlSymbol';
 import PythonDevice from '../assets/PythonDevice';
 import NodeHex from '../assets/NodeHex';
 
-const languageIcons = { curl: CurlSymbol, py: PythonDevice, js: NodeHex };
+const languageIcons = { sh: CurlSymbol, py: PythonDevice, js: NodeHex };
 const stripFences = (markdown) => {
   return markdown.replace(/^```[^\n]*\n/, '').replace(/\n```\s*$/, '');
 };
 
 export default function Code({ markdown, moreUrl }) {
-  const [activeLanguage, setActiveLanguage] = useState('curl');
+  const [activeLanguage, setActiveLanguage] = useState('sh');
   const { hasCopied, onCopy, setValue } = useClipboard('');
   const toast = useToast();
   const rawCode = stripFences(markdown[activeLanguage]);
