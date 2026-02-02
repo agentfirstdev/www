@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Flex, Link, Tooltip, useClipboard, useToast } from '@chakra-ui/react';
 import { CopyIcon, CheckIcon } from '@chakra-ui/icons';
 
@@ -17,6 +17,10 @@ export default function Code({ markdown, moreUrl }) {
   const { hasCopied, onCopy, setValue } = useClipboard('');
   const toast = useToast();
   const rawCode = stripFences(markdown[activeLanguage]);
+
+  useEffect(() => {
+    setValue(rawCode);
+  }, [rawCode]);
 
   return (
     <Box
@@ -89,7 +93,6 @@ export default function Code({ markdown, moreUrl }) {
             onClick={() => {
               const id = 'copy';
 
-              setValue(rawCode);
               onCopy();
 
               if (!toast.isActive(id)) {
