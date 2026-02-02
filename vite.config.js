@@ -30,8 +30,6 @@ export default defineConfig({
               name = 'chart';
             } else if (id.includes('moment')) {
               name = 'moment';
-            } else if (id.includes('react-dates')) {
-              name = 'dates';
             } else if (id.includes('supabase')) {
               name = 'supabase';
             } else {
