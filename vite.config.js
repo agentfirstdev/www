@@ -15,12 +15,16 @@ export default defineConfig({
           let name;
 
           if (id.includes('node_modules')) {
-            if (id.includes('chakra')) {
+            if (id.includes('chakra') || id.includes('emotion') || id.includes('framer-motion')) {
               name = 'chakra';
             } else if (id.includes('highlight')) {
               name = 'highlight';
+            } else if (id.includes('chart')) {
+              name = 'chart';
             } else if (id.includes('moment')) {
               name = 'moment';
+            } else if (id.includes('supabase')) {
+              name = 'supabase';
             } else {
               name = 'vendor';
             }
