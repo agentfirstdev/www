@@ -2,7 +2,7 @@ export default function NodeHex({ dimension }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 17.5316 19.9478'
+      viewBox='-0.5844 -0.6649 18.7004 21.2777'
       width={dimension}
       height={dimension}
       fill='currentColor'
