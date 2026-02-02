@@ -15,7 +15,14 @@ export default defineConfig({
           let name;
 
           if (id.includes('node_modules')) {
-            if (id.includes('chakra') || id.includes('emotion') || id.includes('framer-motion')) {
+            if (id.includes('react-dom')) {
+              name = 'react';
+            } else if (
+              id.includes('chakra') ||
+              id.includes('emotion') ||
+              id.includes('framer-motion') ||
+              id.includes('motion-')
+            ) {
               name = 'chakra';
             } else if (id.includes('highlight')) {
               name = 'highlight';
