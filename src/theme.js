@@ -3,7 +3,6 @@ import { extendTheme } from '@chakra-ui/react';
 import * as ui from './config/ui';
 
 export default extendTheme({
-  cssVarPrefix: 'chakra',
   semanticTokens: {
     colors: {
       'chakra-body-bg': { _light: '#f9fafc', _dark: 'gray.800' },
@@ -53,7 +52,7 @@ export default extendTheme({
       variants: {
         login: { fontFamily: 'subheading', fontSize: '1.25rem' },
         tagline: { fontFamily: 'tagline', color: 'chakra-body-text !important' },
-        'post-it': { _light: { color: 'gray.800' }, _dark: { color: 'gray.800' } },
+        'post-it': { color: 'gray.800' },
         service: { fontFamily: 'subheading' },
         team: { textAlign: 'center', fontWeight: 'normal' },
         name: { fontFamily: 'subheading' },
@@ -71,7 +70,6 @@ export default extendTheme({
       variants: {
         cta: {
           my: 4,
-          // my: 2,
           fontFamily: 'tagline',
           fontSize: ui.ctaFontSize,
           color: 'chakra-label-color'
@@ -104,19 +102,6 @@ export default extendTheme({
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
       }
     },
-    Code: {
-      baseStyle: {
-        display: 'block',
-        mt: 4,
-        borderWidth: '1px',
-        borderRadius: 'md',
-        borderColor: 'chakra-border-color',
-        maxW: '100%',
-        fontSize: { base: 'sm', md: 'md' },
-        _light: { bg: 'white' },
-        _dark: { bg: 'whiteAlpha.50' }
-      }
-    },
     Link: {
       baseStyle: {
         borderRadius: ui.outlineRadius,
@@ -139,8 +124,9 @@ export default extendTheme({
           right: ui.editorHorizontalMargin,
           bottom: ui.editorVerticalMargin,
           fontSize: ui.editorFontSize,
-          _light: { fontWeight: 'normal', color: 'chakra-body-text' },
-          _dark: { fontWeight: 500, color: 'chakra-body-text' }
+          color: 'chakra-body-text',
+          _light: { fontWeight: 'normal' },
+          _dark: { fontWeight: 500 }
         },
         team: {
           display: 'inline-block',
@@ -278,7 +264,22 @@ export default extendTheme({
     global: {
       '*': {
         transition:
-          'top, right, bottom, left, border-color, background-color, background-image, background-position, width, height, font-size, color, stroke, fill, opacity, box-shadow var(--chakra-transition-duration-normal)'
+          'top var(--chakra-transition-duration-normal), ' +
+          'right var(--chakra-transition-duration-normal), ' +
+          'bottom var(--chakra-transition-duration-normal), ' +
+          'left var(--chakra-transition-duration-normal), ' +
+          'border-color var(--chakra-transition-duration-normal), ' +
+          'background-color var(--chakra-transition-duration-normal), ' +
+          'background-image var(--chakra-transition-duration-normal), ' +
+          'background-position var(--chakra-transition-duration-normal), ' +
+          'width var(--chakra-transition-duration-normal), ' +
+          'height var(--chakra-transition-duration-normal), ' +
+          'font-size var(--chakra-transition-duration-normal), ' +
+          'color var(--chakra-transition-duration-normal), ' +
+          'stroke var(--chakra-transition-duration-normal), ' +
+          'fill var(--chakra-transition-duration-normal), ' +
+          'opacity var(--chakra-transition-duration-normal), ' +
+          'box-shadow var(--chakra-transition-duration-normal)'
       },
       '.hljs': { bg: 'none !important' }
     }
