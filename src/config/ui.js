@@ -1,5 +1,5 @@
-import markdown from 'markdown-it';
-import highlights from 'markdown-it-highlightjs';
+// import markdown from 'markdown-it';
+// import highlights from 'markdown-it-highlightjs';
 
 // Strings
 export const logoLabel = 'Agent First';
@@ -358,4 +358,6 @@ export const defaultDayCount = 7;
 export const chartWidth = { base: '100%', lg: '80%' };
 
 // Utils
-export const renderer = markdown({ html: true, linkify: true, typographer: true }).use(highlights);
+/* export const renderer = markdown({ html: true, linkify: true, typographer: true }).use(
+  highlights
+); */

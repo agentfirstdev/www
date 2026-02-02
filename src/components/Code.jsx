@@ -1,16 +1,25 @@
 import { useState, useEffect } from 'react';
 import { Box, Flex, Link, Tooltip, useClipboard, useToast } from '@chakra-ui/react';
 import { CopyIcon, CheckIcon } from '@chakra-ui/icons';
+import hljs from 'highlight.js/lib/core';
+import sh from 'highlight.js/lib/languages/bash';
+import py from 'highlight.js/lib/languages/python';
+import js from 'highlight.js/lib/languages/javascript';
 
 import * as ui from '../config/ui';
 import CurlSymbol from '../assets/CurlSymbol';
 import PythonDevice from '../assets/PythonDevice';
 import NodeHex from '../assets/NodeHex';
 
+const languageNames = { sh: 'bash', py: 'python', js: 'javascript' };
 const languageIcons = { sh: CurlSymbol, py: PythonDevice, js: NodeHex };
 const stripFences = (markdown) => {
   return markdown.replace(/^```[^\n]*\n/, '').replace(/\n```\s*$/, '');
 };
+
+hljs.registerLanguage('bash', sh);
+hljs.registerLanguage('python', py);
+hljs.registerLanguage('javascript', js);
 
 export default function Code({ markdown, moreUrl }) {
   const [activeLanguage, setActiveLanguage] = useState('sh');
@@ -129,7 +138,12 @@ export default function Code({ markdown, moreUrl }) {
             fontSize={ui.editorFontSize}
             overflow='auto'
             sx={{ '& code.hljs': { px: ui.editorHorizontalMargin, py: ui.editorVerticalMargin } }}
-            dangerouslySetInnerHTML={{ __html: ui.renderer.render(markdown[activeLanguage]) }}
+            dangerouslySetInnerHTML={{
+              __html:
+                '<pre><code class="hljs">' +
+                hljs.highlight(rawCode, { language: languageNames[activeLanguage] }).value +
+                '</code></pre>'
+            }}
           />
         </Flex>
         {moreUrl ? (
