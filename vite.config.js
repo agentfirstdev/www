@@ -15,9 +15,7 @@ export default defineConfig({
           let name;
 
           if (id.includes('node_modules')) {
-            if (id.includes('react-dom')) {
-              name = 'react';
-            } else if (
+            if (
               id.includes('chakra') ||
               id.includes('emotion') ||
               id.includes('framer-motion') ||
