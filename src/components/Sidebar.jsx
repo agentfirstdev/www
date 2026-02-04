@@ -232,7 +232,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
                   ml='2'
                   icon={<AddIcon fontSize='sm' />}
                   aria-label={ui.checkoutLabel}
-                  href={ui.checkoutPath}
+                  href={ui.pricingPath}
                 />
               </Tooltip>
             </GridItem>

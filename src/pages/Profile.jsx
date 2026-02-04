@@ -192,7 +192,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
                   ml={2}
                   icon={<AddIcon fontSize='sm' />}
                   aria-label={ui.checkoutLabel}
-                  href={ui.checkoutPath}
+                  href={ui.pricingPath}
                 />
               </Tooltip>
             </GridItem>
