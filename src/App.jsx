@@ -255,16 +255,16 @@ export default function App() {
   return (
     <Flex w='100%' minH='100vh' direction='column'>
       <Box p={2}>
-        <Box>
+        <Link display='block' w={ui.logoNewWidth} minW={ui.logoMinWidth} href='/'>
           <canvas
             ref={logotype}
             width={ui.logoOldWidth}
             height={ui.logoOldHeight}
-            style={{ marginTop: ui.logoMargin, width: ui.logoNewWidth, minWidth: ui.logoMinWidth }}
+            style={{ marginTop: ui.logoMargin, width: '100%' }}
             role='img'
             aria-label={ui.logoLabel}
           />
-        </Box>
+        </Link>
         <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
             <Link variant='nav' ml={ui.itemMargin} href={ui.servicesPath}>
