@@ -39,6 +39,7 @@ html {
   border-width: 3px;
   height: 48px;
   font: var(--chakra-fontSizes-lg) var(--chakra-fonts-body);
+  cursor: pointer;
 }
 
 .DateInput_input__focused {
