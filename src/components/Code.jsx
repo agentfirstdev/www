@@ -25,6 +25,7 @@ export default function Code({ markdown, moreUrl }) {
   const [activeLanguage, setActiveLanguage] = useState('sh');
   const { hasCopied, onCopy, setValue } = useClipboard('');
   const toast = useToast();
+  const toastId = 'copy';
   const rawCode = stripFences(markdown[activeLanguage]);
 
   useEffect(() => {
@@ -100,13 +101,11 @@ export default function Code({ markdown, moreUrl }) {
             aria-label={ui.codeLabel}
             _hover={{ bg: 'chakra-subtle-bg', color: 'tab-color' }}
             onClick={() => {
-              const id = 'copy';
-
               onCopy();
 
-              if (!toast.isActive(id)) {
+              if (!toast.isActive(toastId)) {
                 toast({
-                  id,
+                  id: toastId,
                   position: 'top',
                   status: 'success',
                   description: ui.codeMessage,

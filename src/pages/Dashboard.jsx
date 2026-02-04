@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import {
   Box,
   Flex,
@@ -49,9 +50,12 @@ export default function Dashboard({
   const [usage, setUsage] = useState(null);
   const [focusedInput, setFocusedInput] = useState(null);
   const [haveFontsLoaded, setHaveFontsLoaded] = useState(false);
+  const [queryString, setQueryString] = useSearchParams();
   const tickColor = useColorModeValue(ui.lightTickColor, ui.darkTickColor);
   const gridColor = useColorModeValue(ui.lightGridColor, ui.darkGridColor);
   const toast = useToast();
+  const checkoutId = 'checkout';
+  const usageId = 'usage';
   const labels = [];
   const formatLabel = (callCount, resultType, elapsedMs) => {
     return (
@@ -94,6 +98,26 @@ export default function Dashboard({
   }, []);
 
   useEffect(() => {
+    if (queryString.has(ui.checkoutKey)) {
+      const newQueryString = new URLSearchParams(queryString);
+
+      newQueryString.delete(ui.checkoutKey);
+      setQueryString(newQueryString, { replace: true });
+
+      if (!toast.isActive(checkoutId)) {
+        toast({
+          id: checkoutId,
+          position: 'top',
+          status: 'success',
+          description: ui.checkoutMessage,
+          duration: null,
+          isClosable: true
+        });
+      }
+    }
+  }, [queryString]);
+
+  useEffect(() => {
     if (session && startDate && endDate) {
       let isCancelled = false;
 
@@ -106,15 +130,14 @@ export default function Dashboard({
         .then(({ data, error }) => {
           if (!isCancelled) {
             if (error) {
-              const id = 'usage';
-
-              if (!toast.isActive(id)) {
+              if (!toast.isActive(usageId)) {
                 toast({
-                  id,
+                  id: usageId,
                   position: 'top',
                   status: 'error',
                   description: ui.errorMessage,
-                  duration: ui.toastTimeoutMs
+                  duration: null,
+                  isClosable: true
                 });
               }
 

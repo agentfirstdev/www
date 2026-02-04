@@ -32,6 +32,8 @@ export default defineConfig({
               name = 'moment';
             } else if (id.includes('supabase')) {
               name = 'supabase';
+            } else if (id.includes('stripe')) {
+              name = 'stripe';
             } else {
               name = 'vendor';
             }

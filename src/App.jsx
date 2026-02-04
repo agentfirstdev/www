@@ -24,6 +24,7 @@ import * as ui from './config/ui';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Checkout from './pages/Checkout';
 import Login from './components/Login';
 // import Sidebar from './components/Sidebar';
 import './App.css';
@@ -402,6 +403,16 @@ export default function App() {
             path={ui.profilePath}
             element={
               <Profile
+                supabaseClient={supabase.client}
+                session={session}
+                isSessionLoading={isSessionLoading}
+              />
+            }
+          />
+          <Route
+            path={ui.checkoutPath}
+            element={
+              <Checkout
                 supabaseClient={supabase.client}
                 session={session}
                 isSessionLoading={isSessionLoading}

@@ -24,6 +24,8 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
   const [isTokenShown, setIsTokenShown] = useState(false);
   const { hasCopied, onCopy } = useClipboard(account?.api_token);
   const toast = useToast();
+  const copyId = 'copy';
+  const accountId = 'account';
   const hasToken = !!account?.api_token;
   const isPlaintext = isTokenShown || !hasToken;
 
@@ -41,11 +43,9 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
         .single()
         .then(({ data, error }) => {
           if (error) {
-            const id = 'account';
-
-            if (!toast.isActive(id)) {
+            if (!toast.isActive(accountId)) {
               toast({
-                id,
+                id: accountId,
                 position: 'top',
                 status: 'error',
                 description: ui.errorMessage,
@@ -153,13 +153,11 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
                   aria-label={ui.copyLabel}
                   isDisabled={!hasToken}
                   onClick={() => {
-                    const id = 'copy';
-
                     onCopy();
 
-                    if (!toast.isActive(id)) {
+                    if (!toast.isActive(copyId)) {
                       toast({
-                        id,
+                        id: copyId,
                         position: 'top',
                         status: 'success',
                         description: ui.copiedMessage,
@@ -185,15 +183,15 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
               <Tooltip
                 mx={ui.tooltipMargin}
                 p={ui.tooltipPadding}
-                label={ui.purchaseLabel}
+                label={ui.checkoutLabel}
                 hasArrow
               >
                 <IconButton
                   as='a'
                   ml={2}
                   icon={<AddIcon fontSize='sm' />}
-                  aria-label={ui.purchaseLabel}
-                  href='/#pricing'
+                  aria-label={ui.checkoutLabel}
+                  href={ui.checkoutPath}
                 />
               </Tooltip>
             </GridItem>
