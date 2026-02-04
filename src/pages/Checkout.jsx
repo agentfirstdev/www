@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Flex, Heading, Spinner, useToast } from '@chakra-ui/react';
+import { Box, Flex, Heading, Spinner, useToast } from '@chakra-ui/react';
 import { loadStripe } from '@stripe/stripe-js';
 import { EmbeddedCheckoutProvider, EmbeddedCheckout } from '@stripe/react-stripe-js';
 import { Auth } from '@supabase/auth-ui-react';
@@ -54,9 +54,11 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
           {ui.checkoutLabel}
         </Heading>
         <Flex justify='center' align='start' flex={1}>
-          <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
-            <EmbeddedCheckout />
-          </EmbeddedCheckoutProvider>
+          <Box w={ui.secondaryWidth} maxW={ui.checkoutWidth}>
+            <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
+              <EmbeddedCheckout />
+            </EmbeddedCheckoutProvider>
+          </Box>
         </Flex>
       </>
     ) : (

@@ -235,7 +235,7 @@ export default function Dashboard({
         </Flex>
         {usage && haveFontsLoaded ? (
           <Flex mx={ui.smMargin} justify='center' flex={1}>
-            <Box w={ui.chartWidth}>
+            <Box w={ui.secondaryWidth}>
               <Line
                 data={{
                   labels,
@@ -366,7 +366,7 @@ export default function Dashboard({
               }
             },
             style: {
-              container: { gap: 0, width: ui.secondaryWidth },
+              container: { gap: 0, width: ui.secondaryTextboxWidth },
               label: { marginBottom: 0 },
               input: {
                 borderRadius: 'var(--chakra-radii-md)',

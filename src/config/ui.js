@@ -327,7 +327,8 @@ export const sidebarCollapsedPadding = 20;
 export const sidebarCollapseSecs = 0.4;
 
 // Secondary pages
-export const secondaryWidth = '45ch';
+export const secondaryTextboxWidth = '45ch';
+export const secondaryWidth = { base: '100%', lg: '80%' };
 export const secondaryStyle = {
   h3: { mt: '1.5rem', fontWeight: 'bold', color: 'brand.secondary' },
   a: {
@@ -357,7 +358,9 @@ export const pointHoverRadius = 5;
 export const legendFontSize = 16;
 export const tooltipFontSize = 12;
 export const defaultDayCount = 7;
-export const chartWidth = { base: '100%', lg: '80%' };
+
+// Checkout
+export const checkoutWidth = '380px';
 
 // Utils
 /* export const renderer = markdown({ html: true, linkify: true, typographer: true }).use(

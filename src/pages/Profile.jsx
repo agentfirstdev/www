@@ -218,7 +218,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
                 }
               },
               style: {
-                container: { gap: 0, width: ui.secondaryWidth },
+                container: { gap: 0, width: ui.secondaryTextboxWidth },
                 label: { marginBottom: 0 },
                 input: {
                   borderRadius: 'var(--chakra-radii-md)',
