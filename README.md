@@ -32,7 +32,7 @@ sudo yum install -y yarn
 cd
 echo -e '\neval "$(/opt/homebrew/bin/brew shellenv)"' >> .zprofile
 source .zprofile
-brew install node@22 yarn
+brew install node@22 yarn supabase/tap/supabase
 echo 'export PATH="/opt/homebrew/opt/node@22/bin:$PATH"' >> .zshrc
 source .zshrc
 ```
@@ -66,6 +66,9 @@ yarn preview
 #### Edge Functions publishing
 
 ```shell
+supabase init
+supabase login
+supabase secrets set STRIPE_PRIVATE_KEY=[your Stripe publishable key]
 supabase functions deploy start-checkout
 ```
 
