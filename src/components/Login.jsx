@@ -30,10 +30,10 @@ export default function Login({
 }) {
   // eslint-disable-next-line no-unused-vars
   const [notifications, setNotifications] = useState([]);
-  const location = useLocation();
+  const { pathname } = useLocation();
   const isInLgView = useBreakpointValue({ base: false, lg: true });
-  const isOnDashboard = location.pathname == ui.dashboardPath;
-  const isOnProfile = location.pathname == ui.profilePath;
+  const isOnDashboard = pathname == ui.dashboardPath;
+  const isOnProfile = pathname == ui.profilePath;
   const handleLogout = async () => {
     await supabaseClient.auth.signOut();
     setSession(null);
@@ -68,11 +68,11 @@ export default function Login({
         </Avatar>
       </MenuButton>
       <MenuList overflow='hidden'>
-        {isInLgView && location.pathname != '/' && (
+        {/* {isInLgView && pathname != '/' && (
           <MenuItem as='a' href='/'>
             {ui.homeLabel}
           </MenuItem>
-        )}
+        )} */}
         {!isOnDashboard && (
           <MenuItem as='a' href={ui.dashboardUrl}>
             {ui.dashboardLabel}

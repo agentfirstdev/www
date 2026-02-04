@@ -255,7 +255,12 @@ export default function App() {
   return (
     <Flex w='100%' minH='100vh' direction='column'>
       <Box p={2}>
-        <Link display='block' w={ui.logoNewWidth} minW={ui.logoMinWidth} href='/'>
+        <Box
+          display='block'
+          w={ui.logoNewWidth}
+          minW={ui.logoMinWidth}
+          {...(pathname != '/' && { as: 'a', href: '/' })}
+        >
           <canvas
             ref={logotype}
             width={ui.logoOldWidth}
@@ -264,7 +269,7 @@ export default function App() {
             role='img'
             aria-label={ui.logoLabel}
           />
-        </Link>
+        </Box>
         <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
             <Link variant='nav' ml={ui.itemMargin} href={ui.servicesPath}>
