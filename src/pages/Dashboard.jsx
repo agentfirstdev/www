@@ -34,6 +34,9 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import * as ui from '../config/ui';
 import Sidebar from '../components/Sidebar';
 
+const checkoutId = 'checkout';
+const usageId = 'usage';
+
 Chart.register(CategoryScale, LinearScale, LineElement, PointElement, Legend, Tooltip);
 
 export default function Dashboard({
@@ -54,8 +57,6 @@ export default function Dashboard({
   const tickColor = useColorModeValue(ui.lightTickColor, ui.darkTickColor);
   const gridColor = useColorModeValue(ui.lightGridColor, ui.darkGridColor);
   const toast = useToast();
-  const checkoutId = 'checkout';
-  const usageId = 'usage';
   const labels = [];
   const formatLabel = (callCount, resultType, elapsedMs) => {
     return (

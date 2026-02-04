@@ -25,14 +25,15 @@ import {
 
 import * as ui from '../config/ui';
 
+const copyId = 'copy';
+const accountId = 'account';
+
 export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
   const tokenTimeout = useRef();
   const [account, setAccount] = useState(null);
   const [isTokenShown, setIsTokenShown] = useState(false);
   const { hasCopied, onCopy } = useClipboard(account?.api_token);
   const toast = useToast();
-  const copyId = 'copy';
-  const accountId = 'account';
   const hasToken = !!account?.api_token;
   const isPlaintext = isTokenShown || !hasToken;
 

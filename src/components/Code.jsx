@@ -11,6 +11,7 @@ import CurlSymbol from '../assets/CurlSymbol';
 import PythonDevice from '../assets/PythonDevice';
 import NodeHex from '../assets/NodeHex';
 
+const toastId = 'copy';
 const languageNames = { sh: 'bash', py: 'python', js: 'javascript' };
 const languageIcons = { sh: CurlSymbol, py: PythonDevice, js: NodeHex };
 const stripFences = (markdown) => {
@@ -25,7 +26,6 @@ export default function Code({ markdown, moreUrl }) {
   const [activeLanguage, setActiveLanguage] = useState('sh');
   const { hasCopied, onCopy, setValue } = useClipboard('');
   const toast = useToast();
-  const toastId = 'copy';
   const rawCode = stripFences(markdown[activeLanguage]);
 
   useEffect(() => {
