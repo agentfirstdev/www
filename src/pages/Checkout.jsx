@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Flex, Heading, Spinner, useToast } from '@chakra-ui/react';
 import { loadStripe } from '@stripe/stripe-js';
 import { EmbeddedCheckoutProvider, EmbeddedCheckout } from '@stripe/react-stripe-js';
@@ -11,54 +11,63 @@ const toastId = 'checkout';
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 export default function Checkout({ supabaseClient, session, isSessionLoading }) {
-  const [hasError, setHasError] = useState(false);
+  const [clientSecret, setClientSecret] = useState(null);
   const toast = useToast();
-  const fetchClientSecret = useCallback(() => {
-    return supabaseClient.functions
-      .invoke('start-checkout', { body: { priceId: import.meta.env.VITE_STRIPE_PRICE_ID } })
-      .then(({ data, error }) => {
-        let secret;
 
-        if (error || !data?.clientSecret) {
-          setHasError(true);
+  useEffect(() => {
+    if (session) {
+      let isCancelled = false;
 
-          if (!toast.isActive(toastId)) {
-            toast({
-              id: toastId,
-              position: 'top',
-              status: 'error',
-              description: ui.errorMessage,
-              duration: null,
-              isClosable: true
-            });
+      supabaseClient.functions
+        .invoke('start-checkout', { body: { priceId: import.meta.env.VITE_STRIPE_PRICE_ID } })
+        .then(({ data, error }) => {
+          if (!isCancelled) {
+            if (error || !data?.clientSecret) {
+              if (!toast.isActive(toastId)) {
+                toast({
+                  id: toastId,
+                  position: 'top',
+                  status: 'error',
+                  description: ui.errorMessage,
+                  duration: null,
+                  isClosable: true
+                });
+              }
+
+              console.error(error ?? 'clientSecret not returned');
+            } else {
+              setClientSecret(data.clientSecret);
+            }
           }
+        });
 
-          console.error(error ?? 'clientSecret not returned');
-        } else {
-          secret = data.clientSecret;
-        }
+      return () => {
+        isCancelled = true;
+      };
+    }
+  }, [supabaseClient, session, toast]);
 
-        return secret;
-      });
-  }, [supabaseClient]);
-
-  return isSessionLoading ? (
+  return session && !isSessionLoading ? (
+    clientSecret ? (
+      <>
+        <Heading variant='secondary' size='lg'>
+          {ui.checkoutLabel}
+        </Heading>
+        <Flex justify='center' align='start' flex={1}>
+          <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
+            <EmbeddedCheckout />
+          </EmbeddedCheckoutProvider>
+        </Flex>
+      </>
+    ) : (
+      <Flex justify='center' align='center' flex={1}>
+        <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
+      </Flex>
+    )
+  ) : isSessionLoading ? (
     <Flex justify='center' align='center' flex={1}>
       <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
     </Flex>
-  ) : session ? (
-    <>
-      <Heading variant='secondary' size='lg'>
-        {ui.checkoutLabel}
-      </Heading>
-      <Flex justify='center' align='start' flex={1}>
-        {!hasError && (
-          <EmbeddedCheckoutProvider stripe={stripePromise} options={{ fetchClientSecret }}>
-            <EmbeddedCheckout />
-          </EmbeddedCheckoutProvider>
-        )}
-      </Flex>
-    </>
   ) : (
     <>
       <Heading variant='secondary' size='lg'>
