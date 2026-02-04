@@ -51,7 +51,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
     clientSecret ? (
       <>
         <Heading variant='secondary' size='lg'>
-          {ui.checkoutLabel}
+          {ui.purchaseLabel}
         </Heading>
         <Flex justify='center' align='start' flex={1}>
           <Box w={ui.secondaryWidth} maxW={ui.checkoutWidth}>

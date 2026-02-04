@@ -39,6 +39,7 @@ export const showLabel = 'Show token';
 export const hideLabel = 'Hide token';
 export const copyLabel = 'Copy token';
 export const checkoutLabel = 'Add credits';
+export const purchaseLabel = 'Purchase API credits';
 export const loadingPlaceholder = 'Loading ...';
 export const generatingPlaceholder = 'Generating an answer';
 export const updatePlaceholder = 'Your reply to the answer above ...';
