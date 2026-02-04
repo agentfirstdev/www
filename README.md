@@ -15,52 +15,58 @@ the site on Amazon Linux or macOS.
 #### Amazon Linux prerequisites
 
 ```shell
-$ sudo yum update -y
-$ sudo yum install -y git
-$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-$ cd
-$ . .nvm/nvm.sh
-$ nvm install --lts
-$ sudo curl https://dl.yarnpkg.com/rpm/yarn.repo -o /etc/yum.repos.d/yarn.repo
-$ sudo yum install -y yarn
+sudo yum update -y
+sudo yum install -y git
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+cd
+. .nvm/nvm.sh
+nvm install --lts
+sudo curl https://dl.yarnpkg.com/rpm/yarn.repo -o /etc/yum.repos.d/yarn.repo
+sudo yum install -y yarn
 ```
 
 #### macOS prerequisites
 
 ```shell
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-$ cd
-$ echo -e '\neval "$(/opt/homebrew/bin/brew shellenv)"' >> .zprofile
-$ source .zprofile
-$ brew install node@22 yarn
-$ echo 'export PATH="/opt/homebrew/opt/node@22/bin:$PATH"' >> .zshrc
-$ source .zshrc
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+cd
+echo -e '\neval "$(/opt/homebrew/bin/brew shellenv)"' >> .zprofile
+source .zprofile
+brew install node@22 yarn
+echo 'export PATH="/opt/homebrew/opt/node@22/bin:$PATH"' >> .zshrc
+source .zshrc
 ```
 
 #### Dependency installation
 
 ```shell
-$ git clone https://github.com/agentfirstdev/www
-$ cd www
-$ yarn
+git clone https://github.com/agentfirstdev/www
+cd www
+yarn
 ```
 
 #### Development startup
 
 ```shell
-$ yarn dev
+yarn dev
 ```
 
 #### Production compilation
 
 ```shell
-$ yarn build
+yarn build
 ```
 
 #### Production testing
 
 ```shell
-$ yarn preview
+yarn preview
+```
+
+#### Edge Functions publishing
+
+```shell
+supabase functions deploy start-checkout
 ```
 
 ## License
