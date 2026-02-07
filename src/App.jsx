@@ -257,9 +257,14 @@ export default function App() {
       <Box p={2}>
         <Box
           display='block'
+          borderRadius='sm'
           w={ui.logoNewWidth}
           minW={ui.logoMinWidth}
           {...(pathname != '/' && { as: 'a', href: '/' })}
+          _focus={{
+            outline: 'none',
+            boxShadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)`
+          }}
         >
           <canvas
             ref={logotype}

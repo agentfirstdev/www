@@ -148,10 +148,7 @@ export default extendTheme({
         social: {
           display: 'inline-block',
           p: 0,
-          _light: {
-            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-accent-secondary)` }
-          },
-          _dark: { _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` } }
+          _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` }
         }
       }
     },
