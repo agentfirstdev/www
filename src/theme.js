@@ -16,7 +16,6 @@ export default extendTheme({
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
       'chakra-placeholder-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
       'fg-muted': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
-      'accent-color': { _light: '#3182ce', _dark: '#63b3ed' },
       'shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
       'button-color': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
       'gutter-color': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
