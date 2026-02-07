@@ -30,7 +30,7 @@ export default function Pricing({ isCartLoading, addToCart }) {
         <InputLeftElement
           h={ui.controlDimension}
           fontSize='lg'
-          color={dollarAmount ? 'chakra-body-text' : 'chakra-label-color'}
+          color={dollarAmount ? 'chakra-body-text' : 'chakra-placeholder-color'}
           pointerEvents='none'
         >
           $

@@ -65,7 +65,7 @@ export default function Code({ markdown, moreUrl }) {
                 h={ui.chromeButtonDimension}
                 alignItems='center'
                 fontSize={ui.editorFontSize}
-                color={isActive ? 'accent.primary' : 'chakra-label-color'}
+                color={isActive ? 'accent.primary' : 'fg-muted'}
                 gap={ui.chromeButtonMargin}
                 key={language}
                 cursor={isActive ? 'default' : 'pointer'}
@@ -97,7 +97,7 @@ export default function Code({ markdown, moreUrl }) {
             h={ui.chromeButtonDimension}
             justifyContent='center'
             alignItems='center'
-            color='chakra-label-color'
+            color='fg-muted'
             aria-label={ui.codeLabel}
             _hover={{ bg: 'chakra-subtle-bg', color: 'tab-color' }}
             onClick={() => {

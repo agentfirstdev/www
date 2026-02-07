@@ -202,7 +202,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
           supabaseClient={supabaseClient}
           width={ui.secondaryTextboxWidth}
           font='var(--chakra-fontSizes-lg) var(--chakra-fonts-body)'
-          textboxBackground='var(--chakra-colors-chakra-inset-bg)'
+          textboxBackground='var(--chakra-colors-bg-muted)'
           redirectUrl={ui.profileUrl}
         />
       </Flex>

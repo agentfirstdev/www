@@ -169,7 +169,7 @@ export default function LoginDropdown({
           zIndex='modal'
           mt={2}
           rounded='md'
-          bg='chakra-overlay-bg'
+          bg='bg-panel'
           p={2}
           w={ui.loginWidth}
           shadow='md'

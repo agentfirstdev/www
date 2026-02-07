@@ -349,7 +349,7 @@ export default function Dashboard({
           supabaseClient={supabaseClient}
           width={ui.secondaryTextboxWidth}
           font='var(--chakra-fontSizes-lg) var(--chakra-fonts-body)'
-          textboxBackground='var(--chakra-colors-chakra-inset-bg)'
+          textboxBackground='var(--chakra-colors-bg-muted)'
           redirectUrl={ui.dashboardUrl}
         />
       </Flex>

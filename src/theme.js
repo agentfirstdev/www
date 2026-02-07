@@ -7,17 +7,18 @@ export default extendTheme({
     colors: {
       'chakra-body-bg': { _light: '#f9fafc', _dark: 'gray.800' },
       'chakra-subtle-bg': { _light: 'gray.100', _dark: 'whiteAlpha.50' },
-      'chakra-inset-bg': { _light: 'white', _dark: 'whiteAlpha.50' },
-      'chakra-overlay-bg': { _light: 'white', _dark: 'gray.700' },
-      'chakra-inverse-bg': { _light: ui.resolutionBlue, _dark: ui.cornflowerBlue },
-      'chakra-accent-bg': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
+      'bg-emphasized': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
+      'bg-muted': { _light: 'white', _dark: 'whiteAlpha.50' },
+      'bg-inverted': { _light: ui.resolutionBlue, _dark: ui.cornflowerBlue },
+      'bg-panel': { _light: 'white', _dark: 'gray.700' },
       'editor-bg': { _light: 'white', _dark: '#2a2e37' },
       'chrome-bg': { _light: 'gray.50', _dark: '#343944' },
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
-      'chakra-shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
-      'chakra-label-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
-      'chakra-button-color': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
-      'chakra-accent-color': { _light: '#3182ce', _dark: '#63b3ed' },
+      'chakra-placeholder-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
+      'fg-muted': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
+      'accent-color': { _light: '#3182ce', _dark: '#63b3ed' },
+      'shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
+      'button-color': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
       'gutter-color': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
       'tab-color': { _light: 'gray.700', _dark: 'whiteAlpha.700' },
       'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' }
@@ -72,7 +73,7 @@ export default extendTheme({
           my: 4,
           fontFamily: 'tagline',
           fontSize: ui.ctaFontSize,
-          color: 'chakra-label-color'
+          color: 'fg-muted'
         },
         'post-it': {
           my: 6,
@@ -200,8 +201,8 @@ export default extendTheme({
           }
         },
         monochrome: {
-          bg: 'chakra-button-color',
-          _hover: { bg: 'chakra-accent-bg' },
+          bg: 'button-color',
+          _hover: { bg: 'bg-emphasized' },
           _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
         },
@@ -249,7 +250,7 @@ export default extendTheme({
     Badge: {
       baseStyle: {
         borderWidth: '1px',
-        bg: 'chakra-accent-bg',
+        bg: 'bg-emphasized',
         pt: '2px',
         fontFamily: 'body',
         _light: { borderColor: 'accent.secondary', color: 'accent.secondary' },

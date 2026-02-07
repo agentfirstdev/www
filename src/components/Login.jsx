@@ -27,8 +27,8 @@ export default function Checkout({
           default: {
             colors: {
               brand: 'var(--chakra-colors-accent-secondary)',
-              brandAccent: 'var(--chakra-colors-chakra-inverse-bg)',
-              inputPlaceholder: 'var(--chakra-colors-chakra-label-color)'
+              brandAccent: 'var(--chakra-colors-bg-inverted)',
+              inputPlaceholder: 'var(--chakra-colors-chakra-placeholder-color)'
             }
           }
         },
