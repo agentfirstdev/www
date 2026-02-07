@@ -78,119 +78,114 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
       </Heading>
       <Flex justify='center' align='start' flex={1}>
         <Grid
-            templateColumns='auto 1fr'
-            columnGap={ui.profileHorizontalMargin}
-            rowGap={ui.profileVerticalMargin}
-            justifyItems='start'
-            alignItems='center'
-          >
-            <GridItem display='flex' justifySelf='right'>
-              <FormLabel fontSize='lg'>{ui.emailLabel}</FormLabel>
-            </GridItem>
-            <GridItem display='flex' alignItems='center'>
-              <Input
-                type='email'
-                size='lg'
-                w={ui.textboxWidth}
-                value={account?.email ?? ui.loadingPlaceholder}
-                aria-label={ui.emailLabel}
-                isReadOnly
+          templateColumns='auto 1fr'
+          columnGap={ui.profileHorizontalMargin}
+          rowGap={ui.profileVerticalMargin}
+          justifyItems='start'
+          alignItems='center'
+        >
+          <GridItem display='flex' justifySelf='right'>
+            <FormLabel fontSize='lg'>{ui.emailLabel}</FormLabel>
+          </GridItem>
+          <GridItem display='flex' alignItems='center'>
+            <Input
+              type='email'
+              size='lg'
+              w={ui.textboxWidth}
+              value={account?.email ?? ui.loadingPlaceholder}
+              aria-label={ui.emailLabel}
+              isReadOnly
+            />
+            <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
+              <IconButton
+                ml={2}
+                icon={<EditIcon />}
+                aria-label={ui.updateLabel}
+                isDisabled={true}
               />
-              <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.updateLabel} hasArrow>
-                <IconButton
-                  ml={2}
-                  icon={<EditIcon />}
-                  aria-label={ui.updateLabel}
-                  isDisabled={true}
-                />
-              </Tooltip>
-            </GridItem>
-            <GridItem display='flex' justifySelf='right'>
-              <FormLabel fontSize='lg'>{ui.tokenLabel}</FormLabel>
-            </GridItem>
-            <GridItem display='flex' alignItems='center'>
-              <Input
-                type={isPlaintext ? 'text' : 'password'}
-                size='lg'
-                w={ui.textboxWidth}
-                letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
-                value={account?.api_token ?? ui.loadingPlaceholder}
-                aria-label={ui.tokenLabel}
-                isReadOnly
+            </Tooltip>
+          </GridItem>
+          <GridItem display='flex' justifySelf='right'>
+            <FormLabel fontSize='lg'>{ui.tokenLabel}</FormLabel>
+          </GridItem>
+          <GridItem display='flex' alignItems='center'>
+            <Input
+              type={isPlaintext ? 'text' : 'password'}
+              size='lg'
+              w={ui.textboxWidth}
+              letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
+              value={account?.api_token ?? ui.loadingPlaceholder}
+              aria-label={ui.tokenLabel}
+              isReadOnly
+            />
+            <Tooltip
+              mx={ui.tooltipMargin}
+              p={ui.tooltipPadding}
+              label={hasToken ? (isTokenShown ? ui.hideLabel : ui.showLabel) : null}
+              hasArrow
+            >
+              <IconButton
+                ml={2}
+                icon={isTokenShown ? <ViewOffIcon /> : <ViewIcon />}
+                aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
+                isDisabled={!hasToken}
+                onClick={() => {
+                  setIsTokenShown((state) => {
+                    return !state;
+                  });
+                }}
               />
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={hasToken ? (isTokenShown ? ui.hideLabel : ui.showLabel) : null}
-                hasArrow
-              >
-                <IconButton
-                  ml={2}
-                  icon={isTokenShown ? <ViewOffIcon /> : <ViewIcon />}
-                  aria-label={isTokenShown ? ui.hideLabel : ui.showLabel}
-                  isDisabled={!hasToken}
-                  onClick={() => {
-                    setIsTokenShown((state) => {
-                      return !state;
-                    });
-                  }}
-                />
-              </Tooltip>
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={hasToken ? (hasCopied ? null : ui.copyLabel) : null}
-                hasArrow
-              >
-                <IconButton
-                  ml={2}
-                  icon={hasCopied ? <CheckIcon /> : <CopyIcon />}
-                  aria-label={ui.copyLabel}
-                  isDisabled={!hasToken}
-                  onClick={() => {
-                    onCopy();
+            </Tooltip>
+            <Tooltip
+              mx={ui.tooltipMargin}
+              p={ui.tooltipPadding}
+              label={hasToken ? (hasCopied ? null : ui.copyLabel) : null}
+              hasArrow
+            >
+              <IconButton
+                ml={2}
+                icon={hasCopied ? <CheckIcon /> : <CopyIcon />}
+                aria-label={ui.copyLabel}
+                isDisabled={!hasToken}
+                onClick={() => {
+                  onCopy();
 
-                    if (!toast.isActive(copyId)) {
-                      toast({
-                        id: copyId,
-                        position: 'top',
-                        status: 'success',
-                        description: ui.copiedMessage,
-                        duration: ui.toastTimeoutMs
-                      });
-                    }
-                  }}
-                />
-              </Tooltip>
-            </GridItem>
-            <GridItem display='flex' justifySelf='right'>
-              <FormLabel fontSize='lg'>{ui.creditsLabel}</FormLabel>
-            </GridItem>
-            <GridItem display='flex' alignItems='center'>
-              <Input
-                type='text'
-                size='lg'
-                w={ui.textboxWidth}
-                value='0'
-                aria-label={ui.creditsLabel}
-                isReadOnly
+                  if (!toast.isActive(copyId)) {
+                    toast({
+                      id: copyId,
+                      position: 'top',
+                      status: 'success',
+                      description: ui.copiedMessage,
+                      duration: ui.toastTimeoutMs
+                    });
+                  }
+                }}
               />
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={ui.checkoutLabel}
-                hasArrow
-              >
-                <IconButton
-                  as='a'
-                  ml={2}
-                  icon={<AddIcon fontSize='sm' />}
-                  aria-label={ui.checkoutLabel}
-                  href={ui.pricingPath}
-                />
-              </Tooltip>
-            </GridItem>
-          </Grid>
+            </Tooltip>
+          </GridItem>
+          <GridItem display='flex' justifySelf='right'>
+            <FormLabel fontSize='lg'>{ui.creditsLabel}</FormLabel>
+          </GridItem>
+          <GridItem display='flex' alignItems='center'>
+            <Input
+              type='text'
+              size='lg'
+              w={ui.textboxWidth}
+              value='0'
+              aria-label={ui.creditsLabel}
+              isReadOnly
+            />
+            <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.checkoutLabel} hasArrow>
+              <IconButton
+                as='a'
+                ml={2}
+                icon={<AddIcon fontSize='sm' />}
+                aria-label={ui.checkoutLabel}
+                href={ui.pricingPath}
+              />
+            </Tooltip>
+          </GridItem>
+        </Grid>
       </Flex>
     </>
   ) : isSessionLoading ? (
