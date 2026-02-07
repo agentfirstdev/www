@@ -38,14 +38,14 @@ export default function Code({ markdown, moreUrl }) {
       borderWidth='1px'
       borderRadius='md'
       borderColor='chakra-border-color'
-      bg='editor-bg'
+      bg='bg-editor'
       overflow='hidden'
       shadow='sm'
     >
       <Flex
         borderBottomWidth='1px'
         borderColor='chakra-border-color'
-        bg='chrome-bg'
+        bg='bg-chrome'
         px={ui.chromePadding}
         py={2}
         justify='space-between'
