@@ -141,7 +141,7 @@ export default function LoginDropdown({
     </Menu>
   ) : (
     <>
-      {!isOnDashboard && !isOnProfile && (
+      {!isOnDashboard && !isOnProfile && pathname != ui.checkoutPath && (
         <Button
           display={{ base: 'none', lg: 'inline-flex' }}
           ml={ui.itemMargin}
