@@ -72,18 +72,13 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
     }
   }, [isTokenShown]);
 
-  return isSessionLoading ? (
-    <Flex justify='center' align='center' flex={1}>
-      <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
-    </Flex>
-  ) : (
+  return session && !isSessionLoading ? (
     <>
       <Heading variant='secondary' size='lg'>
-        {session ? ui.profileLabel : ui.loginLabel}
+        {ui.profileLabel}
       </Heading>
       <Flex justify='center' align='start' flex={1}>
-        {session ? (
-          <Grid
+        <Grid
             templateColumns='auto 1fr'
             columnGap={ui.profileHorizontalMargin}
             rowGap={ui.profileVerticalMargin}
@@ -197,50 +192,60 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
               </Tooltip>
             </GridItem>
           </Grid>
-        ) : (
-          <Auth
-            supabaseClient={supabaseClient}
-            providers={[]}
-            view='magic_link'
-            redirectTo={ui.profileUrl}
-            localization={{
-              variables: { magic_link: { email_input_label: '', button_label: ui.magicLabel } }
-            }}
-            appearance={{
-              theme: ThemeSupa,
-              variables: {
-                default: {
-                  colors: {
-                    brand: 'var(--chakra-colors-accent-secondary)',
-                    brandAccent: 'var(--chakra-colors-chakra-inverse-bg)',
-                    inputPlaceholder: 'var(--chakra-colors-chakra-label-color)'
-                  }
-                }
-              },
-              style: {
-                container: { gap: 0, width: ui.secondaryTextboxWidth },
-                label: { marginBottom: 0 },
-                input: {
-                  borderRadius: 'var(--chakra-radii-md)',
-                  borderColor: 'var(--chakra-colors-chakra-border-color)',
-                  background: 'var(--chakra-colors-chakra-inset-bg)',
-                  height: ui.controlDimension,
-                  font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
-                  color: 'var(--chakra-colors-chakra-body-text)'
-                },
-                button: {
-                  margin: ui.loginButtonMargin,
-                  border: ui.buttonBorder,
-                  height: ui.controlDimension,
-                  font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
-                  fontWeight: 'var(--chakra-fontWeights-bold)',
-                  transition: ui.transition
+      </Flex>
+    </>
+  ) : isSessionLoading ? (
+    <Flex justify='center' align='center' flex={1}>
+      <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
+    </Flex>
+  ) : (
+    <>
+      <Heading variant='secondary' size='lg'>
+        {ui.loginLabel}
+      </Heading>
+      <Flex justify='center' align='start' flex={1}>
+        <Auth
+          supabaseClient={supabaseClient}
+          providers={[]}
+          view='magic_link'
+          redirectTo={ui.profileUrl}
+          localization={{
+            variables: { magic_link: { email_input_label: '', button_label: ui.magicLabel } }
+          }}
+          appearance={{
+            theme: ThemeSupa,
+            variables: {
+              default: {
+                colors: {
+                  brand: 'var(--chakra-colors-accent-secondary)',
+                  brandAccent: 'var(--chakra-colors-chakra-inverse-bg)',
+                  inputPlaceholder: 'var(--chakra-colors-chakra-label-color)'
                 }
               }
-            }}
-            showLinks={false}
-          />
-        )}
+            },
+            style: {
+              container: { gap: 0, width: ui.secondaryTextboxWidth },
+              label: { marginBottom: 0 },
+              input: {
+                borderRadius: 'var(--chakra-radii-md)',
+                borderColor: 'var(--chakra-colors-chakra-border-color)',
+                background: 'var(--chakra-colors-chakra-inset-bg)',
+                height: ui.controlDimension,
+                font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
+                color: 'var(--chakra-colors-chakra-body-text)'
+              },
+              button: {
+                margin: ui.loginButtonMargin,
+                border: ui.buttonBorder,
+                height: ui.controlDimension,
+                font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
+                fontWeight: 'var(--chakra-fontWeights-bold)',
+                transition: ui.transition
+              }
+            }
+          }}
+          showLinks={false}
+        />
       </Flex>
     </>
   );
