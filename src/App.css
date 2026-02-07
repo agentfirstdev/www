@@ -27,8 +27,12 @@ html {
 }
 
 #auth-magic-link input:focus {
-  border-color: var(--chakra-colors-chakra-accent-color) !important;
-  box-shadow: 0 0 0 1px var(--chakra-colors-chakra-accent-color);
+  border-color: var(--chakra-colors-accent-secondary) !important;
+  box-shadow: 0 0 0 2px var(--chakra-colors-accent-secondary);
+}
+
+#auth-magic-link button:focus {
+  box-shadow: var(--chakra-shadows-outline);
 }
 
 .DateRangePickerInput {
