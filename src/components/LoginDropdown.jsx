@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   Menu,
@@ -27,6 +27,7 @@ export default function LoginDropdown({
   toggleSidebar,
   handleKeyPress
 }) {
+  const dropdown = useRef(null);
   // eslint-disable-next-line no-unused-vars
   const [notifications, setNotifications] = useState([]);
   const { pathname } = useLocation();
@@ -37,6 +38,29 @@ export default function LoginDropdown({
     await supabaseClient.auth.signOut();
     setSession(null);
   };
+
+  useEffect(() => {
+    if (shouldShowLogin) {
+      const handleDismissalClick = (event) => {
+        if (dropdown.current && !dropdown.current.contains(event.target)) {
+          setShouldShowLogin(false);
+        }
+      };
+      const handleEscapePress = (event) => {
+        handleKeyPress(event, null, () => {
+          setShouldShowLogin(false);
+        });
+      };
+
+      document.addEventListener('mousedown', handleDismissalClick);
+      document.addEventListener('keydown', handleEscapePress);
+
+      return () => {
+        document.removeEventListener('mousedown', handleDismissalClick);
+        document.removeEventListener('keydown', handleEscapePress);
+      };
+    }
+  }, [shouldShowLogin, setShouldShowLogin]);
 
   return session ? (
     <Menu variant='dropdown'>
@@ -136,6 +160,7 @@ export default function LoginDropdown({
       )}
       {shouldShowLogin && (
         <Box
+          ref={dropdown}
           position='absolute'
           top='100%'
           right={0}
