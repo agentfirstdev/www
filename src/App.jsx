@@ -25,7 +25,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout';
-import Login from './components/Login';
+import LoginDropdown from './components/LoginDropdown';
 // import Sidebar from './components/Sidebar';
 import './App.css';
 
@@ -368,7 +368,7 @@ export default function App() {
               </MenuList>
             </Menu>
           )}
-          <Login
+          <LoginDropdown
             supabaseClient={supabase.client}
             session={session}
             setSession={setSession}

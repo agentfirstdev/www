@@ -13,10 +13,9 @@ import {
   useToast
 } from '@chakra-ui/react';
 import { EditIcon, ViewIcon, ViewOffIcon, CopyIcon, CheckIcon, AddIcon } from '@chakra-ui/icons';
-import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 import * as ui from '../config/ui';
+import Login from '../components/Login';
 
 const copyId = 'copy';
 const accountId = 'account';
@@ -204,47 +203,12 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
         {ui.loginLabel}
       </Heading>
       <Flex justify='center' align='start' flex={1}>
-        <Auth
+        <Login
           supabaseClient={supabaseClient}
-          providers={[]}
-          view='magic_link'
-          redirectTo={ui.profileUrl}
-          localization={{
-            variables: { magic_link: { email_input_label: '', button_label: ui.magicLabel } }
-          }}
-          appearance={{
-            theme: ThemeSupa,
-            variables: {
-              default: {
-                colors: {
-                  brand: 'var(--chakra-colors-accent-secondary)',
-                  brandAccent: 'var(--chakra-colors-chakra-inverse-bg)',
-                  inputPlaceholder: 'var(--chakra-colors-chakra-label-color)'
-                }
-              }
-            },
-            style: {
-              container: { gap: 0, width: ui.secondaryTextboxWidth },
-              label: { marginBottom: 0 },
-              input: {
-                borderRadius: 'var(--chakra-radii-md)',
-                borderColor: 'var(--chakra-colors-chakra-border-color)',
-                background: 'var(--chakra-colors-chakra-inset-bg)',
-                height: ui.controlDimension,
-                font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
-                color: 'var(--chakra-colors-chakra-body-text)'
-              },
-              button: {
-                margin: ui.loginButtonMargin,
-                border: ui.buttonBorder,
-                height: ui.controlDimension,
-                font: 'var(--chakra-fontSizes-lg) var(--chakra-fonts-body)',
-                fontWeight: 'var(--chakra-fontWeights-bold)',
-                transition: ui.transition
-              }
-            }
-          }}
-          showLinks={false}
+          width={ui.secondaryTextboxWidth}
+          font='var(--chakra-fontSizes-lg) var(--chakra-fonts-body)'
+          textboxBackground='var(--chakra-colors-chakra-inset-bg)'
+          redirectUrl={ui.profileUrl}
         />
       </Flex>
     </>

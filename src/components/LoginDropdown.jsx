@@ -14,12 +14,11 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
-import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
 
+import Login from './Login';
 import * as ui from '../config/ui';
 
-export default function Login({
+export default function LoginDropdown({
   supabaseClient,
   session,
   setSession,
@@ -165,48 +164,13 @@ export default function Login({
             <AddIcon transform={`rotate(-${ui.openRotation}deg)`} />
           </Button>
           <Divider mt={2} />
-          <Auth
+          <Login
             supabaseClient={supabaseClient}
-            providers={[]}
-            view='magic_link'
-            redirectTo={ui.dashboardUrl}
-            localization={{
-              variables: { magic_link: { email_input_label: '', button_label: ui.magicLabel } }
-            }}
-            appearance={{
-              theme: ThemeSupa,
-              variables: {
-                default: {
-                  colors: {
-                    brand: 'var(--chakra-colors-accent-secondary)',
-                    brandAccent: 'var(--chakra-colors-chakra-inverse-bg)',
-                    inputPlaceholder: 'var(--chakra-colors-chakra-label-color)'
-                  }
-                }
-              },
-              style: {
-                container: { margin: ui.loginMargin, gap: 0 },
-                label: { marginBottom: 0 },
-                input: {
-                  marginTop: ui.loginTextboxMargin,
-                  opacity: ui.loginTextboxOpacity,
-                  borderColor: 'var(--chakra-colors-chakra-border-color)',
-                  background: 'var(--chakra-colors-chakra-body-bg)',
-                  height: ui.controlDimension,
-                  font: 'var(--chakra-fontSizes-md) var(--chakra-fonts-body)',
-                  color: 'var(--chakra-colors-chakra-body-text)'
-                },
-                button: {
-                  margin: ui.loginButtonMargin,
-                  border: ui.buttonBorder,
-                  height: ui.controlDimension,
-                  font: 'var(--chakra-fontSizes-md) var(--chakra-fonts-body)',
-                  fontWeight: 'var(--chakra-fontWeights-bold)',
-                  transition: ui.transition
-                }
-              }
-            }}
-            showLinks={false}
+            margin={ui.loginMargin}
+            font='var(--chakra-fontSizes-md) var(--chakra-fonts-body)'
+            textboxMargin={ui.loginTextboxMargin}
+            textboxBackground='var(--chakra-colors-chakra-body-bg)'
+            redirectUrl={ui.dashboardUrl}
           />
         </Box>
       )}
