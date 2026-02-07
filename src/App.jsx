@@ -137,9 +137,9 @@ export default function App() {
       linkedinFrames.current = [];
       xFrames.current = [];
       frameIndex.current = 0;
-      const logoCanvas = logotype.current;
-      const logoContext = logoCanvas.getContext('2d');
       const renderFrames = () => {
+        const logoCanvas = logotype.current;
+        const logoContext = logoCanvas.getContext('2d');
         let frame;
 
         if (logoFrames.current[frameIndex.current]) {
