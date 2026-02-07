@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Flex,
   InputGroup,
@@ -18,7 +19,8 @@ const calculateCredits = (dollars) => {
   ).toLocaleString();
 };
 
-export default function Pricing({ dollarAmount, setDollarAmount, isCartLoading, addToCart }) {
+export default function Pricing({ isCartLoading, addToCart }) {
+  const [dollarAmount, setDollarAmount] = useState('');
   const parsedAmount = parseFloat(dollarAmount);
   const isAmountValid = Number.isInteger(parsedAmount) && parsedAmount >= ui.minPurchaseAmount;
 

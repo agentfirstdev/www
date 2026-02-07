@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { useRef, useState, useCallback, useEffect, useLayoutEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Flex,
@@ -25,6 +26,7 @@ import { createTimeline } from 'animejs';
 import * as ui from '../config/ui';
 import * as uix from '../config/uix';
 import Code from '../components/Code';
+import Pricing from '../components/Pricing';
 import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
@@ -81,6 +83,7 @@ export default function Home({
   const [xPath, setXPath] = useState(null);
   const [sitePath, setSitePath] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const horizontalDividerOverflow = useBreakpointValue({
     base: ui.dividerBaseOverflow,
     md: ui.horizontalDividerOverflow
@@ -620,7 +623,7 @@ export default function Home({
         </Flex> */}
       </VStack>
       <Box
-        id='services'
+        id={ui.servicesId}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
         pt={ui.xsMargin}
         pb={ui.smMargin}
@@ -820,7 +823,19 @@ export default function Home({
           </Box>
         </Box>
       </Box>
-      <Box id='about' px={{ base: ui.smMargin, md: ui.xlMargin }} pt={ui.smMargin} align='center'>
+      <Box id={ui.pricingId} px={{ base: ui.smMargin, md: ui.xlMargin }} align='center'>
+        <Pricing
+          addToCart={(dollarAmount) => {
+            navigate(`${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`);
+          }}
+        />
+      </Box>
+      <Box
+        id={ui.aboutId}
+        px={{ base: ui.smMargin, md: ui.xlMargin }}
+        pt={ui.smMargin}
+        align='center'
+      >
         <Box position='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>
           <svg ref={timeline} width='100%'>
             <g ref={timelineParts} />
@@ -854,7 +869,7 @@ export default function Home({
           to focus on building unique, native agents.
         </Text>
       </Box>
-      <Box ref={team} id='team' pt={ui.mdMargin}>
+      <Box ref={team} id={ui.teamId} pt={ui.mdMargin}>
         <Heading as='h1' variant='team' fontSize={ui.teamFontSize}>
           Our team
         </Heading>
