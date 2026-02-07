@@ -94,6 +94,9 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
                 min={ui.minPurchaseAmount}
                 value={amount}
                 onChange={setAmount}
+                isValidCharacter={(character) => {
+                  return character >= '0' && character <= '9';
+                }}
               >
                 <NumberInputField
                   pl={ui.purchaseAmountPadding}
