@@ -1,5 +1,5 @@
 html {
-  background: var(--chakra-colors-body-bg) !important;
+  background: var(--chakra-colors-chakra-body-bg) !important;
   overflow-y: scroll;
 }
 
@@ -23,7 +23,7 @@ html {
 }
 
 #auth-magic-link input:hover {
-  border-color: var(--chakra-colors-chakra-shadow-color) !important;
+  border-color: var(--chakra-colors-shadow-color) !important;
 }
 
 #auth-magic-link input:focus {
