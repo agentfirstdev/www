@@ -67,7 +67,7 @@ Deno.serve(async (request) => {
   } else if (request.method == 'OPTIONS') {
     response = new Response(null, { status: 204, headers: corsHeaders(origin) });
   } else {
-    response = new Response(null, { status: 405 });
+    response = new Response(null, { status: 405, headers: corsHeaders(origin) });
   }
 
   return response;
