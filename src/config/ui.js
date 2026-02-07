@@ -127,6 +127,12 @@ export const timelineLabels = [
 ];
 export const codeLabels = { sh: 'cURL', py: 'Python', js: 'Node.js' };
 
+// Numbers
+export const cpm = 1;
+export const discountedCpm = 0.9;
+export const discountedPurchaseThreshold = 100;
+export const minPurchaseAmount = 10;
+
 // Colors
 export const cornflowerBlue = '#7999f7';
 export const royalBlue = '#4a6de5';
@@ -248,7 +254,6 @@ export const navRightPosition = { base: '18px', lg: 7 };
 
 // Hero
 export const heroHeight = '60vh';
-export const heroDirection = 'column';
 export const logoMargin = '8px';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
@@ -269,7 +274,6 @@ export const timelineClearance = 20;
 export const tickLength = 16;
 export const tickDistanceUnit = 420;
 export const tickOffset = 48;
-// export const heroDirection = { base: 'column', md: 'row' };
 // export const taglineWidth = { base: '100%', md: '50%' };
 // export const taglineFontSize = { base: '28px', md: '54px' };
 export const taglineFontSize = { base: '28px', md: '66px' };
@@ -328,7 +332,7 @@ export const sidebarCollapsedPadding = 20;
 export const sidebarCollapseSecs = 0.4;
 
 // Secondary pages
-export const secondaryTextboxWidth = '45ch';
+export const secondaryTextboxWidth = '40ch';
 export const secondaryWidth = { base: '100%', lg: '80%' };
 export const secondaryStyle = {
   h3: { mt: '1.5rem', fontWeight: 'bold', color: 'brand.secondary' },
@@ -362,6 +366,8 @@ export const defaultDayCount = 7;
 
 // Checkout
 export const checkoutWidth = '380px';
+export const purchaseAmountPadding = 7;
+export const purchaseDecimalPlaces = 0;
 
 // Utils
 /* export const renderer = markdown({ html: true, linkify: true, typographer: true }).use(

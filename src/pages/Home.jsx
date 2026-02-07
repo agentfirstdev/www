@@ -3,6 +3,7 @@ import { useRef, useState, useCallback, useEffect, useLayoutEffect } from 'react
 import {
   Box,
   Flex,
+  VStack,
   Card,
   CardBody,
   CardFooter,
@@ -580,25 +581,18 @@ export default function Home({
 
   return (
     <>
-      <Flex
+      <VStack
         id='hero'
         px={{ base: ui.smMargin, md: ui.xlMargin }}
         w='100%'
         h={ui.heroHeight}
-        direction={ui.heroDirection}
         justify='center'
         align='center'
-        gap={8}
+        spacing={8}
       >
-        <Flex
-          w={ui.taglineWidth}
-          maxW={ui.taglineMaxWidth}
-          direction='column'
-          justify='center'
-          align='center'
-        >
+        <VStack w={ui.taglineWidth} maxW={ui.taglineMaxWidth} justify='center' align='center'>
           <uix.Tagline ref={completion} />
-        </Flex>
+        </VStack>
         {/* <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
           <Textarea
             ref={promptBox}
@@ -624,7 +618,7 @@ export default function Home({
             />
           </Tooltip>
         </Flex> */}
-      </Flex>
+      </VStack>
       <Box
         id='services'
         px={{ base: ui.smMargin, md: ui.xlMargin }}
