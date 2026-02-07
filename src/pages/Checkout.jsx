@@ -60,7 +60,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
         {/* <Heading variant='secondary' size='lg'>
           {ui.purchaseLabel}
         </Heading> */}
-        <Flex pt={ui.mdMargin} pb={5} justify='center' align='start' flex={1}>
+        <Flex pt={ui.smMargin} pb={5} justify='center' align='start' flex={1}>
           <Box w={ui.secondaryWidth} maxW={ui.checkoutWidth}>
             <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
               <EmbeddedCheckout />
@@ -91,7 +91,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
       {/* <Heading variant='secondary' size='lg'>
         {ui.loginLabel}
       </Heading> */}
-      <Flex pt={7} pb={1} justify='center' align='center' flex={1}>
+      <Flex pt={ui.smMargin} pb={1} justify='center' align='center' flex={1}>
         <Login
           supabaseClient={supabaseClient}
           width={ui.secondaryTextboxWidth}

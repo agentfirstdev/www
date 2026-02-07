@@ -73,10 +73,10 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
 
   return session && !isSessionLoading ? (
     <>
-      <Heading variant='secondary' size='lg'>
+      {/* <Heading variant='secondary' size='lg'>
         {ui.profileLabel}
-      </Heading>
-      <Flex justify='center' align='start' flex={1}>
+      </Heading> */}
+      <Flex pt={9} pb={5} justify='center' align='center' flex={1}>
         <Grid
           templateColumns='auto 1fr'
           columnGap={ui.profileHorizontalMargin}
@@ -189,15 +189,15 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
       </Flex>
     </>
   ) : isSessionLoading ? (
-    <Flex justify='center' align='center' flex={1}>
+    <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
       <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
     </Flex>
   ) : (
     <>
-      <Heading variant='secondary' size='lg'>
+      {/* <Heading variant='secondary' size='lg'>
         {ui.loginLabel}
-      </Heading>
-      <Flex justify='center' align='start' flex={1}>
+      </Heading> */}
+      <Flex pt={ui.smMargin} pb={1} justify='center' align='center' flex={1}>
         <Login
           supabaseClient={supabaseClient}
           width={ui.secondaryTextboxWidth}
