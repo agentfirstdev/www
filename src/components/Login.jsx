@@ -33,23 +33,23 @@ export default function Checkout({
           }
         },
         style: {
-          container: { gap: 0, ...(margin != null && { margin }), ...(width != null && { width }) },
+          container: { ...(margin != null && { margin }), ...(width != null && { width }), gap: 0 },
           label: { marginBottom: 0 },
           input: {
-            borderColor: 'var(--chakra-colors-chakra-border-color)',
-            height: ui.controlDimension,
-            color: 'var(--chakra-colors-chakra-body-text)',
-            font,
             ...(textboxMargin != null && { marginTop: textboxMargin }),
-            ...(textboxBackground != null && { background: textboxBackground })
+            borderColor: 'var(--chakra-colors-chakra-border-color)',
+            ...(textboxBackground != null && { background: textboxBackground }),
+            height: ui.controlDimension,
+            font,
+            color: 'var(--chakra-colors-chakra-body-text)'
           },
           button: {
             margin: ui.loginButtonMargin,
             border: ui.buttonBorder,
             height: ui.controlDimension,
+            font,
             fontWeight: 'var(--chakra-fontWeights-bold)',
-            transition: ui.transition,
-            font
+            transition: ui.transition
           }
         }
       }}
