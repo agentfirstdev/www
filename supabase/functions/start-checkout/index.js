@@ -35,7 +35,7 @@ Deno.serve(async (request) => {
   if (request.method == 'POST') {
     const { amount } = await request.json();
 
-    if (!isNaN(amount) && amount >= minAmount) {
+    if (Number.isInteger(amount) && amount >= minAmount) {
       response = new Response(
         JSON.stringify({
           clientSecret: (
@@ -59,7 +59,7 @@ Deno.serve(async (request) => {
         { headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } }
       );
     } else {
-      response = new Response(`Minimum purchase is $${minAmount}\n`, {
+      response = new Response(`Minimum purchase is $${minAmount} in whole dollars\n`, {
         status: 400,
         headers: corsHeaders(origin)
       });

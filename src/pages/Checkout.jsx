@@ -35,7 +35,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
   const parsedAmount = parseFloat(amount);
-  const isAmountValid = !isNaN(parsedAmount) && parsedAmount >= ui.minPurchaseAmount;
+  const isAmountValid = Number.isInteger(parsedAmount) && parsedAmount >= ui.minPurchaseAmount;
   const addToCart = () => {
     setIsLoading(true);
 
