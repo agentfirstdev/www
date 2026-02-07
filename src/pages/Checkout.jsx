@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
 import { Box, Flex, Heading, Spinner, useToast } from '@chakra-ui/react';
 import { loadStripe } from '@stripe/stripe-js';
 import { EmbeddedCheckoutProvider, EmbeddedCheckout } from '@stripe/react-stripe-js';
@@ -56,10 +57,10 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
   return session && !isSessionLoading ? (
     clientSecret ? (
       <>
-        <Heading variant='secondary' size='lg'>
+        {/* <Heading variant='secondary' size='lg'>
           {ui.purchaseLabel}
-        </Heading>
-        <Flex justify='center' align='start' flex={1}>
+        </Heading> */}
+        <Flex pt={ui.mdMargin} pb={5} justify='center' align='start' flex={1}>
           <Box w={ui.secondaryWidth} maxW={ui.checkoutWidth}>
             <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
               <EmbeddedCheckout />
@@ -68,29 +69,29 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
         </Flex>
       </>
     ) : isLoading ? (
-      <Flex justify='center' align='center' flex={1}>
+      <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
         <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
       </Flex>
     ) : (
       <>
-        <Heading variant='secondary' size='lg'>
+        {/* <Heading variant='secondary' size='lg'>
           {ui.purchaseLabel}
-        </Heading>
-        <Flex justify='center' align='start' flex={1}>
+        </Heading> */}
+        <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
           <Pricing isCartLoading={isLoading} addToCart={addToCart} />
         </Flex>
       </>
     )
   ) : isSessionLoading ? (
-    <Flex justify='center' align='center' flex={1}>
+    <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
       <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
     </Flex>
   ) : (
     <>
-      <Heading variant='secondary' size='lg'>
+      {/* <Heading variant='secondary' size='lg'>
         {ui.loginLabel}
-      </Heading>
-      <Flex justify='center' align='start' flex={1}>
+      </Heading> */}
+      <Flex pt={7} pb={1} justify='center' align='center' flex={1}>
         <Login
           supabaseClient={supabaseClient}
           width={ui.secondaryTextboxWidth}
