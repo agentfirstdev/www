@@ -71,7 +71,7 @@ export default function Code({ markdown, moreUrl }) {
                 cursor={isActive ? 'default' : 'pointer'}
                 _hover={{
                   bg: isActive ? 'chakra-border-color' : 'chakra-subtle-bg',
-                  color: isActive ? 'accent.primary' : 'tab-color'
+                  color: isActive ? 'accent.primary' : 'fg-tab'
                 }}
                 onClick={() => {
                   setActiveLanguage(language);
@@ -99,7 +99,7 @@ export default function Code({ markdown, moreUrl }) {
             alignItems='center'
             color='fg-muted'
             aria-label={ui.codeLabel}
-            _hover={{ bg: 'chakra-subtle-bg', color: 'tab-color' }}
+            _hover={{ bg: 'chakra-subtle-bg', color: 'fg-tab' }}
             onClick={() => {
               onCopy();
 
@@ -125,7 +125,7 @@ export default function Code({ markdown, moreUrl }) {
             ml={ui.editorHorizontalMargin}
             fontFamily='mono'
             fontSize={ui.editorFontSize}
-            color='gutter-color'
+            color='fg-gutter'
             userSelect='none'
           >
             {Array.from({ length: rawCode.split('\n').length }, (_, i) => {

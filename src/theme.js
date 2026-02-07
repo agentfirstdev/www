@@ -11,15 +11,15 @@ export default extendTheme({
       'bg-muted': { _light: 'white', _dark: 'whiteAlpha.50' },
       'bg-inverted': { _light: ui.resolutionBlue, _dark: ui.cornflowerBlue },
       'bg-panel': { _light: 'white', _dark: 'gray.700' },
+      'bg-button': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
       'bg-editor': { _light: 'white', _dark: '#2a2e37' },
       'bg-chrome': { _light: 'gray.50', _dark: '#343944' },
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
       'chakra-placeholder-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
-      'fg-muted': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
       'shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
-      'button-color': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
-      'gutter-color': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
-      'tab-color': { _light: 'gray.700', _dark: 'whiteAlpha.700' },
+      'fg-muted': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
+      'fg-gutter': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
+      'fg-tab': { _light: 'gray.700', _dark: 'whiteAlpha.700' },
       'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' }
     }
   },
@@ -195,7 +195,7 @@ export default extendTheme({
           }
         },
         monochrome: {
-          bg: 'button-color',
+          bg: 'bg-button',
           _hover: { bg: 'bg-emphasized' },
           _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
