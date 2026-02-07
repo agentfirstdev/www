@@ -51,6 +51,7 @@ No test framework is configured.
 
 ## Code Style
 
+- This codebase uses JavaScript, not TypeScript. Convert any TypeScript examples or generated code to plain JavaScript.
 - Prettier config at `linter/.prettierrc`: 100 char width, single quotes, no trailing commas.
 - ESLint uses flat config format with react, prettier, and jsonc plugins.
 - No shorthand variable names (e.g. `d` for date) except conventional loop indexes (`i`, `j`, `k`).
