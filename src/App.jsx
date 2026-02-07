@@ -372,6 +372,7 @@ export default function App() {
             supabaseClient={supabase.client}
             session={session}
             setSession={setSession}
+            isSessionLoading={isSessionLoading}
             shouldShowLogin={shouldShowLogin}
             setShouldShowLogin={setShouldShowLogin}
             toggleSidebar={toggleSidebar}

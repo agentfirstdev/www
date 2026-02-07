@@ -22,6 +22,7 @@ export default function LoginDropdown({
   supabaseClient,
   session,
   setSession,
+  isSessionLoading,
   shouldShowLogin,
   setShouldShowLogin,
   toggleSidebar,
@@ -146,6 +147,7 @@ export default function LoginDropdown({
           ml={ui.itemMargin}
           fontSize='md'
           tabIndex={0}
+          isLoading={isSessionLoading}
           onClick={() => {
             setShouldShowLogin(true);
           }}
