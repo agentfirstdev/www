@@ -15,8 +15,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
   const [clientSecret, setClientSecret] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
-  const parsedAmount = parseFloat(amount);
-  const addToCart = () => {
+  const addToCart = (parsedAmount) => {
     setIsLoading(true);
 
     supabaseClient.functions

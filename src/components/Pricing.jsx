@@ -55,7 +55,9 @@ export default function Pricing({ dollarAmount, setDollarAmount, isCartLoading, 
         h={ui.controlDimension}
         isDisabled={!isAmountValid}
         isLoading={isCartLoading}
-        onClick={addToCart}
+        onClick={() => {
+          addToCart(parsedAmount);
+        }}
       >
         {`Add${isAmountValid ? ` ${calculateCredits(parsedAmount)}` : ''} credits`}
       </Button>
