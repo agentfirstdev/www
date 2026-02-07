@@ -588,7 +588,7 @@ export default function Home({
         h={ui.heroHeight}
         justify='center'
         align='center'
-        spacing={8}
+        gap={0}
       >
         <VStack w={ui.taglineWidth} maxW={ui.taglineMaxWidth} justify='center' align='center'>
           <uix.Tagline ref={completion} />
