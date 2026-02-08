@@ -49,6 +49,7 @@ export default function Home({
   const completion = useRef();
   // const promptBox = useRef();
   const services = useRef();
+  const pricing = useRef();
   const timeline = useRef();
   const timelineParts = useRef();
   const team = useRef();
@@ -60,6 +61,7 @@ export default function Home({
   const siteIcon = useRef();
   // const promptBoxHeight = useRef();
   const servicesFrames = useRef();
+  const pricingFrames = useRef();
   const timelineAnimation = useRef();
   const hedFrames = useRef();
   const agentFrames = useRef();
@@ -76,6 +78,7 @@ export default function Home({
   const hasAnimatedTimeline = useRef(false);
   // const hasScrolledToTeam = useRef(false);
   const [servicesPath, setServicesPath] = useState(null);
+  const [pricingPath, setPricingPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
   const [agentPath, setAgentPath] = useState(null);
   const [githubPath, setGithubPath] = useState(null);
@@ -88,8 +91,8 @@ export default function Home({
     base: ui.dividerBaseOverflow,
     md: ui.horizontalDividerOverflow
   });
-  const servicesStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
-  const servicesFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
+  const headingStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
+  const headingFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
   const dividerColor = useColorModeValue('gray.200', 'whiteAlpha.200');
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
@@ -224,6 +227,9 @@ export default function Home({
     import('../paths/services.txt?raw').then((module) => {
       setServicesPath(module.default);
     });
+    import('../paths/pricing.txt?raw').then((module) => {
+      setPricingPath(module.default);
+    });
     import('../paths/hedcut.txt?raw').then((module) => {
       setHedPath(module.default);
     });
@@ -357,8 +363,9 @@ export default function Home({
   }, [timelineColor]);
 
   useEffect(() => {
-    if (servicesPath && blueprintStroke && blueprintFill && servicesStroke && servicesFill) {
+    if (servicesPath && blueprintStroke && blueprintFill && headingStroke && headingFill) {
       servicesFrames.current = [];
+      pricingFrames.current = [];
       hedFrames.current = [];
       agentFrames.current = [];
       githubFrames.current = [];
@@ -375,12 +382,12 @@ export default function Home({
           frame = servicesFrames.current[frameIndex.current];
         } else {
           frame = generateFrame(servicesCanvas, servicesPath, {
-            stroke: servicesStroke,
+            stroke: headingStroke,
             strokeWidth: ui.blueprintStrokeWidth,
-            fill: servicesFill,
-            fillStyle: ui.servicesFillStyle,
+            fill: headingFill,
+            fillStyle: ui.headingFillStyle,
             hachureAngle: ui.blueprintAngle,
-            roughness: ui.servicesRoughness
+            roughness: ui.headingRoughness
           });
 
           servicesFrames.current.push(frame);
@@ -390,6 +397,7 @@ export default function Home({
         servicesContext.drawImage(frame, 0, 0);
 
         if (
+          pricingPath &&
           hedPath &&
           agentPath &&
           githubPath &&
@@ -400,6 +408,8 @@ export default function Home({
         ) {
           const limitedIndex =
             frameIndex.current % Math.round(ui.frameCount / ui.frameCountLimiter);
+          const pricingCanvas = pricing.current;
+          const pricingContext = pricingCanvas.getContext('2d');
           const hedCanvas = hedcut.current;
           const hedContext = hedCanvas.getContext('2d');
           const agentCanvas = agent.current;
@@ -412,6 +422,28 @@ export default function Home({
           const xContext = xCanvas.getContext('2d');
           const siteCanvas = siteIcon.current;
           const siteContext = siteCanvas.getContext('2d');
+
+          if (pricingFrames.current[limitedIndex]) {
+            frame = pricingFrames.current[limitedIndex];
+          } else {
+            frame = generateFrame(pricingCanvas, pricingPath, {
+              stroke: headingStroke,
+              strokeWidth: ui.blueprintStrokeWidth,
+              fill: headingFill,
+              fillStyle: ui.headingFillStyle,
+              hachureAngle: ui.blueprintAngle,
+              roughness: ui.headingRoughness
+            });
+
+            pricingFrames.current.push(frame);
+          }
+
+          pricingContext.clearRect(0, 0, pricingCanvas.width, pricingCanvas.height);
+          pricingContext.drawImage(frame, 0, 0);
+
+          if (!pricing.current.classList.contains('loaded')) {
+            pricing.current.classList.add('loaded');
+          }
 
           if (hedFrames.current[limitedIndex]) {
             frame = hedFrames.current[limitedIndex];
@@ -555,6 +587,7 @@ export default function Home({
     }
   }, [
     servicesPath,
+    pricingPath,
     hedPath,
     agentPath,
     githubPath,
@@ -563,8 +596,8 @@ export default function Home({
     sitePath,
     blueprintStroke,
     blueprintFill,
-    servicesStroke,
-    servicesFill
+    headingStroke,
+    headingFill
   ]);
 
   /* useEffect(() => {
@@ -626,7 +659,6 @@ export default function Home({
         id={ui.servicesId}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
         pt={ui.xsMargin}
-        pb={ui.smMargin}
         textAlign='left'
       >
         <canvas
@@ -823,7 +855,26 @@ export default function Home({
           </Box>
         </Box>
       </Box>
-      <Box id={ui.pricingId} px={{ base: ui.smMargin, md: ui.xlMargin }} align='center'>
+      <Box
+        id={ui.pricingId}
+        px={{ base: ui.smMargin, md: ui.xlMargin }}
+        pt={ui.lgMargin}
+        align='center'
+      >
+        <canvas
+          ref={pricing}
+          className='lazy'
+          width={ui.pricingOldWidth}
+          height={ui.pricingOldHeight}
+          style={{
+            marginRight: 'auto',
+            marginLeft: 'auto',
+            width: ui.pricingNewWidth,
+            minWidth: ui.pricingMinWidth
+          }}
+          role='img'
+          aria-label={ui.pricingLabel}
+        />
         <Pricing
           addToCart={(dollarAmount) => {
             navigate(`${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`);
@@ -833,7 +884,7 @@ export default function Home({
       <Box
         id={ui.aboutId}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.smMargin}
+        pt={ui.lgMargin}
         align='center'
       >
         <Box position='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>

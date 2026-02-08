@@ -196,7 +196,7 @@ export const buttonHeight = { base: controlDimension, md: '56px' };
 
 // Animation
 export const logoFillStyle = 'hachure';
-export const servicesFillStyle = 'solid';
+export const headingFillStyle = 'solid';
 export const timelineWidth = { base: '100%', md: '40%' };
 export const timelineMinWidth = { base: 'auto', md: '480px' };
 export const hedStroke = 'transparent';
@@ -215,7 +215,7 @@ export const blinkCount = 2;
 export const blinkIntervalMs = 600;
 export const promptRefreshMs = 4000;
 export const promptDelayMs = 1000;
-export const servicesRoughness = 2;
+export const headingRoughness = 2;
 export const timelineStrokeWidth = 4;
 export const timelineTransitionMs = 400;
 export const timelineDelayMs = 600;
@@ -315,6 +315,12 @@ export const editorHorizontalMargin = { base: '1.5em', md: '2em' };
 export const editorVerticalMargin = { base: '0.75em', md: '1em' };
 export const editorFontSize = { base: 'sm', md: 'md' };
 export const chromePadding = { base: '0.75em', md: '1em' };
+
+// Pricing
+export const pricingNewWidth = '20%';
+export const pricingMinWidth = '190px';
+export const pricingOldWidth = 1284;
+export const pricingOldHeight = 320;
 
 // Team
 export const hedMaxWidth = '240px';
