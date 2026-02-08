@@ -45,11 +45,7 @@ export default extendTheme({
       }
     },
     Heading: {
-      baseStyle: {
-        fontSize: { base: '26px', md: '4xl' },
-        _light: { color: 'accent.secondary' },
-        _dark: { color: 'brand.primary' }
-      },
+      baseStyle: { fontSize: { base: '26px', md: '4xl' }, color: 'bg-button' },
       variants: {
         login: { fontFamily: 'subheading', fontSize: '1.25rem' },
         tagline: { fontFamily: 'tagline', color: 'chakra-body-text !important' },

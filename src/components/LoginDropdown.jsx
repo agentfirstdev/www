@@ -183,7 +183,7 @@ export default function LoginDropdown({
             size='xs'
             p={0}
             fontSize='sm'
-            aria-label='Close'
+            aria-label={ui.closeLabel}
             onClick={() => {
               setShouldShowLogin(false);
             }}

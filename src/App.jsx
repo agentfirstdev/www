@@ -391,6 +391,8 @@ export default function App() {
             path='/'
             element={
               <Home
+                supabaseClient={supabase.client}
+                session={session}
                 blueprintStroke={blueprintStroke}
                 blueprintFill={blueprintFill}
                 generateFrame={generateFrame}

@@ -13,6 +13,7 @@ export const menuLabel = 'View site contents';
 export const dashboardLabel = 'Dashboard';
 export const loginLabel = 'Log in or sign up';
 export const magicLabel = 'Email login link';
+export const closeLabel = 'Close';
 export const homeLabel = 'Home';
 export const profileLabel = 'Settings';
 export const supportLabel = 'Help';

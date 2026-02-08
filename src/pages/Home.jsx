@@ -17,7 +17,8 @@ import {
   Badge,
   Tooltip,
   useBreakpointValue,
-  useColorModeValue
+  useColorModeValue,
+  useDisclosure
 } from '@chakra-ui/react';
 // import { AddIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
@@ -27,6 +28,7 @@ import * as ui from '../config/ui';
 import * as uix from '../config/uix';
 import Code from '../components/Code';
 import Pricing from '../components/Pricing';
+import LoginModal from '../components/LoginModal';
 import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
@@ -41,6 +43,8 @@ import geotargetedBrowsingPy from '../markdown/browsing-geotargeted-py.md?raw';
 import geotargetedBrowsingJs from '../markdown/browsing-geotargeted-js.md?raw';
 
 export default function Home({
+  supabaseClient,
+  session,
   blueprintStroke,
   blueprintFill,
   generateFrame /* ,
@@ -85,6 +89,7 @@ export default function Home({
   const [linkedinPath, setLinkedinPath] = useState(null);
   const [xPath, setXPath] = useState(null);
   const [sitePath, setSitePath] = useState(null);
+  const [pendingCheckoutUrl, setPendingCheckoutUrl] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const horizontalDividerOverflow = useBreakpointValue({
@@ -95,6 +100,7 @@ export default function Home({
   const headingFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
+  const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
   /* const animatePrompt = (index) => {
     promptTimeouts.current?.forEach(clearTimeout);
@@ -876,7 +882,14 @@ export default function Home({
         />
         <Pricing
           addToCart={(dollarAmount) => {
-            navigate(`${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`);
+            const path = `${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`;
+
+            if (session) {
+              navigate(path);
+            } else {
+              setPendingCheckoutUrl(location.origin + path);
+              openLogin();
+            }
           }}
         />
       </Box>
@@ -1111,6 +1124,13 @@ export default function Home({
           </Card>
         </Flex>
       </Box>
+      <LoginModal
+        supabaseClient={supabaseClient}
+        redirectUrl={pendingCheckoutUrl}
+        isOpen={isLoginOpen}
+        open={openLogin}
+        close={closeLogin}
+      />
     </>
   );
 }
