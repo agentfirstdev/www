@@ -3,7 +3,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 import * as ui from '../config/ui';
 
-export default function Checkout({
+export default function Login({
   supabaseClient,
   margin,
   width,
