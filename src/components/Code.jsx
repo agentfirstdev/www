@@ -73,10 +73,7 @@ export default function Code({ markdown, moreUrl }) {
                   bg: isActive ? 'chakra-border-color' : 'chakra-subtle-bg',
                   color: isActive ? 'accent.primary' : 'fg-tab'
                 }}
-                _focus={{
-                  outline: 'none',
-                  shadow: `${ui.outlineStyle} var(--chakra-colors-accent-primary)`
-                }}
+                _focus={{ outline: 'none', shadow: ui.outline('accent-primary') }}
                 onClick={() => {
                   setActiveLanguage(language);
                 }}
@@ -104,10 +101,7 @@ export default function Code({ markdown, moreUrl }) {
             color='fg-muted'
             aria-label={ui.codeLabel}
             _hover={{ bg: 'chakra-subtle-bg', color: 'fg-tab' }}
-            _focus={{
-              outline: 'none',
-              shadow: `${ui.outlineStyle} var(--chakra-colors-accent-primary)`
-            }}
+            _focus={{ outline: 'none', shadow: ui.outline('accent-primary') }}
             onClick={() => {
               onCopy();
 

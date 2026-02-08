@@ -243,6 +243,15 @@ export const mdMargin = 14;
 export const lgMargin = 20;
 export const xlMargin = 24;
 export const gradientAngle = 140;
+export const outline = (color) => {
+  return `${outlineStyle} var(--chakra-colors-${color})`;
+};
+export const outlineInset = (color) => {
+  return (
+    '0 0 0 1px var(--chakra-colors-chakra-body-bg), ' +
+    `${outlineStyle} var(--chakra-colors-${color})`
+  );
+};
 
 // Header
 export const badgeSize = '1.5rem';

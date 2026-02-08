@@ -106,7 +106,7 @@ export default extendTheme({
         _hover: {
           textDecoration: 'none',
           color: 'bg-inverted',
-          _focus: { shadow: `${ui.outlineStyle} var(--chakra-colors-bg-inverted)` }
+          _focus: { shadow: ui.outline('bg-inverted') }
         }
       },
       variants: {
@@ -123,7 +123,7 @@ export default extendTheme({
           bottom: ui.editorVerticalMargin,
           fontSize: ui.editorFontSize,
           color: 'chakra-body-text',
-          _focus: { shadow: `${ui.outlineStyle} var(--chakra-colors-chakra-body-text)` },
+          _focus: { shadow: ui.outline('chakra-body-text') },
           _light: { fontWeight: 'normal' },
           _dark: { fontWeight: 500 }
         },
@@ -139,8 +139,8 @@ export default extendTheme({
         social: {
           display: 'inline-block',
           p: 0,
-          _hover: { _focus: { shadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` } },
-          _focus: { shadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` }
+          _hover: { _focus: { shadow: ui.outline('brand-primary') } },
+          _focus: { shadow: ui.outline('brand-primary') }
         }
       }
     },
@@ -185,19 +185,8 @@ export default extendTheme({
         solid: {
           bg: 'bg-button',
           fontSize: { base: 'md', md: 'lg' },
-          _hover: {
-            bg: 'bg-inverted',
-            _focus: {
-              shadow:
-                '0 0 0 1px var(--chakra-colors-chakra-body-bg), ' +
-                `${ui.outlineStyle} var(--chakra-colors-bg-inverted)`
-            }
-          },
-          _focus: {
-            shadow:
-              '0 0 0 1px var(--chakra-colors-chakra-body-bg), ' +
-              `${ui.outlineStyle} var(--chakra-colors-bg-button)`
-          },
+          _hover: { bg: 'bg-inverted', _focus: { shadow: ui.outlineInset('bg-inverted') } },
+          _focus: { shadow: ui.outlineInset('bg-button') },
           _light: { color: 'white' },
           _dark: { color: 'whiteAlpha.800' }
         },
@@ -206,7 +195,7 @@ export default extendTheme({
           _hover: {
             bg: 'bg-emphasized',
             color: 'bg-inverted',
-            _focus: { shadow: `${ui.outlineStyle} var(--chakra-colors-bg-inverted)` }
+            _focus: { shadow: ui.outline('bg-inverted') }
           },
           _light: { bg: 'gray.200' },
           _dark: { bg: 'whiteAlpha.200' }
