@@ -68,10 +68,14 @@ export default function Code({ markdown, moreUrl }) {
                 color={isActive ? 'accent.primary' : 'fg-muted'}
                 gap={ui.chromeButtonMargin}
                 key={language}
-                cursor={isActive ? 'default' : 'pointer'}
+                disabled={isActive}
                 _hover={{
                   bg: isActive ? 'chakra-border-color' : 'chakra-subtle-bg',
                   color: isActive ? 'accent.primary' : 'fg-tab'
+                }}
+                _focus={{
+                  outline: 'none',
+                  shadow: `${ui.outlineStyle} var(--chakra-colors-accent-primary)`
                 }}
                 onClick={() => {
                   setActiveLanguage(language);
@@ -100,6 +104,10 @@ export default function Code({ markdown, moreUrl }) {
             color='fg-muted'
             aria-label={ui.codeLabel}
             _hover={{ bg: 'chakra-subtle-bg', color: 'fg-tab' }}
+            _focus={{
+              outline: 'none',
+              shadow: `${ui.outlineStyle} var(--chakra-colors-accent-primary)`
+            }}
             onClick={() => {
               onCopy();
 
