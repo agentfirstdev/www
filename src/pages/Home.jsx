@@ -93,7 +93,6 @@ export default function Home({
   });
   const headingStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
   const headingFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
-  const dividerColor = useColorModeValue('gray.200', 'whiteAlpha.200');
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
@@ -682,7 +681,7 @@ export default function Home({
             left: 0,
             top: ui.verticalDividerOverflow,
             bottom: ui.verticalDividerOverflow,
-            bg: dividerColor,
+            bg: 'fg-grid',
             w: '1px',
             content: '""'
           }}
@@ -691,7 +690,7 @@ export default function Home({
             right: 0,
             top: ui.verticalDividerOverflow,
             bottom: ui.verticalDividerOverflow,
-            bg: dividerColor,
+            bg: 'fg-grid',
             w: '1px',
             content: '""'
           }}
@@ -705,7 +704,7 @@ export default function Home({
               top: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
-              bg: dividerColor,
+              bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
@@ -738,7 +737,7 @@ export default function Home({
               top: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
-              bg: dividerColor,
+              bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
@@ -773,7 +772,7 @@ export default function Home({
               top: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
-              bg: dividerColor,
+              bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
@@ -806,7 +805,7 @@ export default function Home({
               top: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
-              bg: dividerColor,
+              bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
@@ -815,7 +814,7 @@ export default function Home({
               bottom: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
-              bg: dividerColor,
+              bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}

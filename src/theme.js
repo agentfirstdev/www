@@ -18,6 +18,7 @@ export default extendTheme({
       'chakra-placeholder-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
       'shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
       'fg-muted': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
+      'fg-grid': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
       'fg-gutter': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
       'fg-tab': { _light: 'gray.700', _dark: 'whiteAlpha.700' },
       'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' }
