@@ -146,9 +146,16 @@ export default extendTheme({
     },
     FormLabel: { baseStyle: { mr: 0, mb: 0, fontWeight: 'bold', whiteSpace: 'nowrap' } },
     Input: {
-      baseStyle: { field: { _light: { bg: 'white' }, _dark: { bg: 'whiteAlpha.50' } } },
+      baseStyle: {
+        field: {
+          _light: { borderColor: 'chakra-border-color', bg: 'white' },
+          _dark: { borderColor: 'chakra-border-color', bg: 'whiteAlpha.50' }
+        }
+      },
       variants: {
-        sidebar: { field: { _light: { bg: 'whiteAlpha.700' }, _dark: { bg: 'gray.700' } } }
+        sidebar: {
+          field: { borderWidth: '1px', _light: { bg: 'whiteAlpha.700' }, _dark: { bg: 'gray.700' } }
+        }
       }
     },
     Textarea: {
@@ -277,6 +284,9 @@ export default extendTheme({
           'opacity var(--chakra-transition-duration-normal), ' +
           'box-shadow var(--chakra-transition-duration-normal)'
       },
+      '::selection': { bg: 'bg-button' },
+      '.chakra-ui-light ::selection': { color: 'white' },
+      '.chakra-ui-dark ::selection': { color: 'whiteAlpha.800' },
       '.hljs': { bg: 'none !important' }
     }
   }

@@ -50,6 +50,10 @@ export default function Pricing({ isCartLoading, addToCart }) {
             h={ui.controlDimension}
             fontSize='lg'
             placeholder={`${ui.minPurchaseAmount} minimum`}
+            _focus={{
+              borderColor: 'transparent',
+              shadow: `${ui.outlineStyle} var(--chakra-colors-bg-button)`
+            }}
           />
         </NumberInput>
       </InputGroup>
