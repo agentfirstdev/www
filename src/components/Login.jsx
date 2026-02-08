@@ -26,7 +26,7 @@ export default function Checkout({
         variables: {
           default: {
             colors: {
-              brand: 'var(--chakra-colors-accent-secondary)',
+              brand: 'var(--chakra-colors-bg-button)',
               brandAccent: 'var(--chakra-colors-bg-inverted)',
               inputPlaceholder: 'var(--chakra-colors-chakra-placeholder-color)'
             }

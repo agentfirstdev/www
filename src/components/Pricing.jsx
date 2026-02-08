@@ -61,7 +61,7 @@ export default function Pricing({ isCartLoading, addToCart }) {
           addToCart(parsedAmount);
         }}
       >
-        {`Buy${isAmountValid ? ` ${calculateCredits(parsedAmount)}` : ''} credits`}
+        {`Buy ${isAmountValid ? `${calculateCredits(parsedAmount)} ` : ''}credits`}
       </Button>
     </Flex>
   );

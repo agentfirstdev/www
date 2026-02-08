@@ -9,9 +9,9 @@ export default extendTheme({
       'chakra-subtle-bg': { _light: 'gray.100', _dark: 'whiteAlpha.50' },
       'bg-emphasized': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
       'bg-muted': { _light: 'white', _dark: 'whiteAlpha.50' },
-      'bg-inverted': { _light: ui.resolutionBlue, _dark: ui.cornflowerBlue },
+      'bg-inverted': { _light: 'brand.secondary', _dark: 'accent.primary' },
       'bg-panel': { _light: 'white', _dark: 'gray.700' },
-      'bg-button': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
+      'bg-button': { _light: 'accent.secondary', _dark: 'brand.primary' },
       'bg-editor': { _light: 'white', _dark: '#2a2e37' },
       'bg-chrome': { _light: 'gray.50', _dark: '#343944' },
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
@@ -132,18 +132,18 @@ export default extendTheme({
           _light: {
             borderBottomColor: 'accent.secondary',
             _hover: { borderColor: 'brand.secondary' },
-            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-accent-secondary)` }
+            _focus: { shadow: `${ui.outlineStyle} var(--chakra-colors-accent-secondary)` }
           },
           _dark: {
             borderBottomColor: 'brand.primary',
             _hover: { borderColor: 'accent.primary' },
-            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` }
+            _focus: { shadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` }
           }
         },
         social: {
           display: 'inline-block',
           p: 0,
-          _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` }
+          _focus: { shadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)` }
         }
       }
     },
@@ -179,26 +179,32 @@ export default extendTheme({
       },
       variants: {
         solid: {
+          bg: 'bg-button',
           fontSize: { base: 'md', md: 'lg' },
-          _active: { bg: 'brand.secondary' },
-          _light: {
-            bg: 'accent.secondary',
-            color: 'white',
-            _hover: { bg: 'brand.secondary' },
-            _focus: { boxShadow: `${ui.outlineStyle} ${ui.blackAlpha}` }
+          _hover: {
+            bg: 'bg-inverted',
+            _focus: {
+              shadow:
+                '0 0 0 1px var(--chakra-colors-chakra-body-bg), ' +
+                `${ui.outlineStyle} var(--chakra-colors-bg-inverted)`
+            }
           },
-          _dark: {
-            bg: 'brand.primary',
-            color: 'whiteAlpha.800',
-            _hover: { bg: 'accent.primary' },
-            _focus: { boxShadow: `${ui.outlineStyle} var(--chakra-colors-whiteAlpha-800)` }
-          }
+          _focus: {
+            shadow:
+              '0 0 0 1px var(--chakra-colors-chakra-body-bg), ' +
+              `${ui.outlineStyle} var(--chakra-colors-bg-button)`
+          },
+          _light: { color: 'white' },
+          _dark: { color: 'whiteAlpha.800' }
         },
         monochrome: {
-          bg: 'bg-button',
           _hover: { bg: 'bg-emphasized' },
-          _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
-          _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
+          _light: { bg: 'gray.200', color: 'brand.primary', _hover: { color: 'brand.secondary' } },
+          _dark: {
+            bg: 'whiteAlpha.200',
+            color: 'brand.primary',
+            _hover: { color: 'accent.primary' }
+          }
         },
         toggle: {
           _light: { bg: '#e2e8f0', _hover: { bg: '#cbd5e0' } },

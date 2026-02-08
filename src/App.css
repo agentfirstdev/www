@@ -27,12 +27,17 @@ html {
 }
 
 #auth-magic-link input:focus {
-  border-color: var(--chakra-colors-accent-secondary) !important;
-  box-shadow: 0 0 0 2px var(--chakra-colors-accent-secondary);
+  border-color: var(--chakra-colors-bg-button) !important;
+  box-shadow: 0 0 0 2px var(--chakra-colors-bg-button);
 }
 
 #auth-magic-link button:focus {
-  box-shadow: var(--chakra-shadows-outline);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--chakra-colors-chakra-body-bg), 0 0 0 3px var(--chakra-colors-bg-button);
+}
+
+#auth-magic-link button:hover:focus {
+  box-shadow: 0 0 0 1px var(--chakra-colors-chakra-body-bg), 0 0 0 3px var(--chakra-colors-bg-inverted);
 }
 
 .DateRangePickerInput {
