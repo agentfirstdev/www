@@ -54,7 +54,8 @@ export default extendTheme({
         item: {
           fontSize: { base: 'md', md: 'lg' },
           _light: { fontWeight: 300 },
-          _dark: { color: 'whiteAlpha.700' }
+          _dark: { color: 'whiteAlpha.700' },
+          '::marker': { fontSize: '1.25em' }
         }
       }
     },
