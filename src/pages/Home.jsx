@@ -936,7 +936,7 @@ export default function Home({
           spacing={ui.mdMargin}
         >
           <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='xs'>
-            <CardHeader>Free trial</CardHeader>
+            <CardHeader>{ui.trialLabel}</CardHeader>
             <CardBody>
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>
@@ -957,12 +957,12 @@ export default function Home({
                   }
                 }}
               >
-                Start free trial
+                {ui.startLabel}
               </Button>
             </CardFooter>
           </Card>
           <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='xs'>
-            <CardHeader>À la carte</CardHeader>
+            <CardHeader>{ui.paygLabel}</CardHeader>
             <CardBody>
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>
@@ -987,7 +987,7 @@ export default function Home({
             </CardFooter>
           </Card>
           <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='xs'>
-            <CardHeader>High volume</CardHeader>
+            <CardHeader>{ui.enterpriseLabel}</CardHeader>
             <CardBody>
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>
@@ -997,7 +997,7 @@ export default function Home({
             </CardBody>
             <CardFooter>
               <Button as='a' w='100%' h={ui.controlDimension} href={ui.supportUrl}>
-                Contact to discuss
+                {ui.contactLabel}
               </Button>
             </CardFooter>
           </Card>
