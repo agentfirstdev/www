@@ -38,7 +38,7 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
   }, [parsedAmount, isAmountValid, addToCart]);
 
   return (
-    <Flex mt={2} w={ui.secondaryTextboxWidth} direction='column' gap={4}>
+    <Flex w={ui.secondaryTextboxWidth} direction='column' gap={4}>
       <InputGroup>
         <InputLeftElement
           h={ui.controlDimension}
