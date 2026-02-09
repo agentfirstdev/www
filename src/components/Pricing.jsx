@@ -19,7 +19,7 @@ const calculateCredits = (dollars) => {
   ).toLocaleString();
 };
 
-export default function Pricing({ isCartLoading, addToCart }) {
+export default function Pricing({ isCartLoading, addToCart, textboxBackground }) {
   const [dollarAmount, setDollarAmount] = useState('');
   const parsedAmount = parseFloat(dollarAmount);
   const isAmountValid = Number.isInteger(parsedAmount) && parsedAmount >= ui.minPurchaseAmount;
@@ -50,6 +50,7 @@ export default function Pricing({ isCartLoading, addToCart }) {
             h={ui.controlDimension}
             fontSize='lg'
             placeholder={`${ui.minPurchaseAmount} minimum`}
+            {...(textboxBackground && { bg: textboxBackground })}
             _focus={{
               borderColor: 'transparent',
               shadow: `${ui.outlineStyle} var(--chakra-colors-bg-button)`

@@ -971,6 +971,7 @@ export default function Home({
                     openLogin();
                   }
                 }}
+                textboxBackground='bg-muted'
               />
             </CardFooter>
           </Card>

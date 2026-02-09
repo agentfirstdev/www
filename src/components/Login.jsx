@@ -38,7 +38,7 @@ export default function Login({
           input: {
             ...(textboxMargin != null && { marginTop: textboxMargin }),
             borderColor: 'var(--chakra-colors-chakra-border-color)',
-            ...(textboxBackground != null && { background: textboxBackground }),
+            ...(textboxBackground && { background: textboxBackground }),
             height: ui.controlDimension,
             font,
             color: 'var(--chakra-colors-chakra-body-text)'
