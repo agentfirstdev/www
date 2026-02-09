@@ -100,7 +100,13 @@ export default function Dashboard({
 
   useEffect(() => {
     if (session) {
-      if (Date.now() - new Date(session.user.created_at) < ui.accountAgeThreshold) openSidebar();
+      if (
+        Date.now() - new Date(session.user.created_at) < ui.accountAgeThreshold &&
+        !localStorage.getItem(ui.profileFlag)
+      ) {
+        openSidebar();
+        localStorage.setItem(ui.profileFlag, 'true');
+      }
     }
   }, [session]);
 

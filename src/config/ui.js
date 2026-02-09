@@ -78,6 +78,7 @@ export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargetin
 export const rateUrl = 'https://doc.agentfirst.dev/endpoints/pricing';
 export const purchaseKey = 'amount';
 export const checkoutKey = 'session';
+export const profileFlag = 'wasProfilePresented';
 export const completion = [
   { delay: 0, token: 'a' },
   { delay: 13, token: 'g' },
@@ -145,7 +146,7 @@ export const cpm = 1;
 export const discountedCpm = 0.9;
 export const discountedPurchaseThreshold = 100;
 export const minPurchaseAmount = 10;
-export const accountAgeThreshold = 60 * 60 * 1000;
+export const accountAgeThreshold = 24 * 60 * 60 * 1000;
 
 // Colors
 export const cornflowerBlue = '#7999f7';
