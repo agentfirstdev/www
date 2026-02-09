@@ -901,11 +901,11 @@ export default function Home({
           </Text>
           {' API use is based on credits that cost '}
           <Text as='strong' variant='bold'>
-            $1 / 1,000 credits
+            $1 per 1,000 credits
           </Text>
           {' or '}
           <Text as='strong' variant='bold'>
-            $0.90 / 1,000 credits over $100
+            $0.90 per 1,000 credits over $100
           </Text>
           {', which lets you make about '}
           <Text as='strong' variant='bold'>
@@ -987,6 +987,7 @@ export default function Home({
                   <br />
                   (save 10%)
                 </ListItem>
+                <ListItem>Best efforts to unblock any problem site within 48 hours</ListItem>
               </UnorderedList>
             </CardBody>
             <CardFooter>
@@ -1020,8 +1021,8 @@ export default function Home({
             <CardBody>
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>
-                <ListItem>Bar</ListItem>
-                <ListItem>Baz</ListItem>
+                <ListItem>Volume pricing for $1,000+ monthly spend</ListItem>
+                <ListItem>Best efforts to unblock any problem site within 24 hours</ListItem>
               </UnorderedList>
             </CardBody>
             <CardFooter>
