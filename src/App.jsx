@@ -95,10 +95,6 @@ export default function App() {
 
     const { data } = supabase.client.auth.onAuthStateChange((_, session) => {
       setSession(session);
-    });
-
-    supabase.client.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
       setIsSessionLoading(false);
     });
 
