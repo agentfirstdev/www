@@ -42,10 +42,7 @@ Deno.serve(async (request) => {
             await stripe.checkout.sessions.create({
               mode: 'payment',
               ui_mode: 'embedded',
-              branding_settings: {
-                ...(background && { background_color: background }),
-                font_family: 'open_sans'
-              },
+              ...(background && { branding_settings: { background_color: background } }),
               line_items: [
                 {
                   price_data: {
