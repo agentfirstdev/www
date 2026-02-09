@@ -55,6 +55,13 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
     }
   }, [session, isAmountValid, dollarAmount]);
 
+  useEffect(() => {
+    if (clientSecret) {
+      setClientSecret(null);
+      addToCart(dollarAmount);
+    }
+  }, [background]);
+
   return session && !isSessionLoading ? (
     clientSecret ? (
       <>
