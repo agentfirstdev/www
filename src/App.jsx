@@ -52,7 +52,7 @@ export default function App() {
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
   const { isOpen: isMenuOpen, onOpen: openMenu, onClose: closeMenu } = useDisclosure();
-  const { isOpen: isSidebarOpen, onToggle: toggleSidebar } = useDisclosure();
+  const { isOpen: isSidebarOpen, onOpen: openSidebar, onToggle: toggleSidebar } = useDisclosure();
   const modeId = 'mode';
   const isLightMode = colorMode == 'light';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
@@ -408,6 +408,7 @@ export default function App() {
                 session={session}
                 isSessionLoading={isSessionLoading}
                 isSidebarOpen={isSidebarOpen}
+                openSidebar={openSidebar}
                 toggleSidebar={toggleSidebar}
               />
             }

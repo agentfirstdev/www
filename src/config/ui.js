@@ -145,6 +145,7 @@ export const cpm = 1;
 export const discountedCpm = 0.9;
 export const discountedPurchaseThreshold = 100;
 export const minPurchaseAmount = 10;
+export const accountAgeThreshold = 60 * 60 * 1000;
 
 // Colors
 export const cornflowerBlue = '#7999f7';

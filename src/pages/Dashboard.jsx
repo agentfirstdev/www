@@ -43,6 +43,7 @@ export default function Dashboard({
   session,
   isSessionLoading,
   isSidebarOpen,
+  openSidebar,
   toggleSidebar
 }) {
   const hasChartLoaded = useRef(false);
@@ -96,6 +97,12 @@ export default function Dashboard({
       setHaveFontsLoaded(true);
     });
   }, []);
+
+  useEffect(() => {
+    if (session) {
+      if (Date.now() - new Date(session.user.created_at) < ui.accountAgeThreshold) openSidebar();
+    }
+  }, [session]);
 
   useEffect(() => {
     if (queryString.has(ui.checkoutKey)) {
