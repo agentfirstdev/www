@@ -74,6 +74,9 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
             fontSize='lg'
             placeholder={`${ui.minPurchaseAmount} minimum`}
             required
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
             _focus={{
               borderColor: 'transparent',
               shadow: `${ui.outlineStyle} var(--chakra-colors-bg-button)`
