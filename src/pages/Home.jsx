@@ -905,9 +905,9 @@ export default function Home({
           </Text>
           {' or '}
           <Text as='strong' variant='bold'>
-            $0.90 per 1,000 credits over $100
+            10% less on $100+ of credits
           </Text>
-          {', which lets you make about '}
+          {', where 1,000 credits let you make about '}
           <Text as='strong' variant='bold'>
             1,000 successful page requests
           </Text>
@@ -953,8 +953,7 @@ export default function Home({
             <CardBody>
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>
-                <ListItem>Bar</ListItem>
-                <ListItem>Baz</ListItem>
+                <ListItem>Instant access to search, browsing, & reporting services</ListItem>
               </UnorderedList>
             </CardBody>
             <CardFooter>
@@ -987,6 +986,8 @@ export default function Home({
                   <br />
                   (save 10%)
                 </ListItem>
+                <ListItem>Instant access to search, browsing, & reporting services</ListItem>
+                <ListItem>Email support</ListItem>
                 <ListItem>Best efforts to unblock any problem site within 48 hours</ListItem>
               </UnorderedList>
             </CardBody>
@@ -1022,6 +1023,9 @@ export default function Home({
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>
                 <ListItem>Volume pricing for $1,000+ monthly spend</ListItem>
+                <ListItem>Access to search, browsing, & reporting services</ListItem>
+                <ListItem>Dedicated browser pool for faster responses</ListItem>
+                <ListItem>Email / chat support</ListItem>
                 <ListItem>Best efforts to unblock any problem site within 24 hours</ListItem>
               </UnorderedList>
             </CardBody>
