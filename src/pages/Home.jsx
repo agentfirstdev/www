@@ -898,24 +898,36 @@ export default function Home({
           <Text as='strong' variant='co'>
             Agent First
           </Text>
-          {' API usage is based on credits that cost '}
-          <Text as='strong' variant='highlight'>
+          {' API use is based on credits that cost '}
+          <Text as='strong' variant='bold'>
             $1 / 1,000 credits
           </Text>
           {' or '}
-          <Text as='strong' variant='highlight'>
+          <Text as='strong' variant='bold'>
             $0.90 / 1,000 credits over $100
           </Text>
-          {', which lets you make approximately '}
+          {', which lets you make about '}
           <Text as='strong' variant='bold'>
             1,000 successful page requests
           </Text>
-          {'. We provide '}
+          {' (see '}
+          <Link variant='pricing' href={ui.rateUrl}>
+            our rate card
+          </Link>
+          {' for details).'}
+        </Text>
+        <Text
+          variant='description'
+          mx={{ base: ui.xsMargin, lg: ui.lgMargin }}
+          mt='1lh'
+          textAlign='left'
+        >
+          {'Get '}
           <Text as='strong' variant='bold'>
             1,000 free credits
           </Text>
-          {' to try the API when you sign up and we offer volume pricing if you plan to spend '}
-          over $1,000 / month.
+          {' to try the API when you sign up and contact us for volume pricing if you plan to '}
+          spend over $1,000 monthly.
         </Text>
         <SimpleGrid
           mx={{ base: ui.smMargin, md: ui.lgMargin }}
