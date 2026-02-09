@@ -945,7 +945,18 @@ export default function Home({
               </UnorderedList>
             </CardBody>
             <CardFooter>
-              <Button w='100%' h={ui.controlDimension}>
+              <Button
+                w='100%'
+                h={ui.controlDimension}
+                onClick={() => {
+                  if (session) {
+                    navigate(ui.dashboardPath);
+                  } else {
+                    setPendingCheckoutUrl(ui.dashboardUrl);
+                    openLogin();
+                  }
+                }}
+              >
                 Start free trial
               </Button>
             </CardFooter>
