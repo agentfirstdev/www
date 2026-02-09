@@ -895,24 +895,27 @@ export default function Home({
           mt={ui.mdMargin}
           textAlign='left'
         >
-          {'The '}
           <Text as='strong' variant='co'>
             Agent First
           </Text>
-          {' API is based on prepaid credits at a cost of '}
+          {' API usage is based on credits that cost '}
           <Text as='strong' variant='highlight'>
-            $1 per 1,000 credits
+            $1 / 1,000 credits
           </Text>
           {' or '}
           <Text as='strong' variant='highlight'>
-            $0.90 per 1,000 credits
+            $0.90 / 1,000 credits over $100
           </Text>
-          {' for purchases over $100, which lets you make approximately '}
+          {', which lets you make approximately '}
           <Text as='strong' variant='bold'>
-            1,000 successful, rendered page requests
+            1,000 successful page requests
           </Text>
-          . We provide 1,000 free credits when you sign up and offer volume pricing if you plan to
-          spend $1,000+ per month.
+          {'. We provide '}
+          <Text as='strong' variant='bold'>
+            1,000 free credits
+          </Text>
+          {' to try the API when you sign up and we offer volume pricing if you plan to spend '}
+          over $1,000 / month.
         </Text>
         <SimpleGrid
           mx={{ base: ui.smMargin, md: ui.lgMargin }}
