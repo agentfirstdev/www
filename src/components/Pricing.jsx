@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useState, useImperativeHandle } from 'react';
+import { forwardRef, useRef, useState, useEffect, useImperativeHandle } from 'react';
 import {
   Flex,
   InputGroup,
@@ -24,15 +24,24 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
   const [dollarAmount, setDollarAmount] = useState('');
   const parsedAmount = parseFloat(dollarAmount);
   const isAmountValid = Number.isInteger(parsedAmount) && parsedAmount >= ui.minPurchaseAmount;
+  const handleSubmit = () => {
+    if (textbox.current?.reportValidity()) addToCart(parsedAmount);
+  };
+
+  useEffect(() => {
+    if (textbox.current) {
+      textbox.current.setCustomValidity(
+        dollarAmount && !isAmountValid ? `Please enter at least $${ui.minPurchaseAmount}.` : ''
+      );
+    }
+  }, [dollarAmount, isAmountValid]);
 
   useImperativeHandle(ref, () => {
     return {
       focus: () => {
         textbox.current?.focus();
       },
-      submit: () => {
-        if (isAmountValid) addToCart(parsedAmount);
-      },
+      submit: handleSubmit,
       isAmountValid
     };
   }, [parsedAmount, isAmountValid, addToCart]);
@@ -50,8 +59,7 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
         </InputLeftElement>
         <NumberInput
           w='100%'
-          precision={ui.purchaseDecimalPlaces}
-          min={ui.minPurchaseAmount}
+          // min={ui.minPurchaseAmount}
           value={dollarAmount}
           onChange={setDollarAmount}
           isValidCharacter={(character) => {
@@ -60,11 +68,12 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
         >
           <NumberInputField
             ref={textbox}
+            {...(textboxBackground && { bg: textboxBackground })}
             pl={ui.purchaseAmountPadding}
             h={ui.controlDimension}
             fontSize='lg'
             placeholder={`${ui.minPurchaseAmount} minimum`}
-            {...(textboxBackground && { bg: textboxBackground })}
+            required
             _focus={{
               borderColor: 'transparent',
               shadow: `${ui.outlineStyle} var(--chakra-colors-bg-button)`
@@ -72,14 +81,7 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
           />
         </NumberInput>
       </InputGroup>
-      <Button
-        h={ui.controlDimension}
-        isDisabled={!isAmountValid}
-        isLoading={isCartLoading}
-        onClick={() => {
-          addToCart(parsedAmount);
-        }}
-      >
+      <Button h={ui.controlDimension} isLoading={isCartLoading} onClick={handleSubmit}>
         {`Buy ${isAmountValid ? `${calculateCredits(parsedAmount)} ` : ''}credits`}
       </Button>
     </Flex>
