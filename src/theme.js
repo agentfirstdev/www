@@ -214,6 +214,7 @@ export default extendTheme({
           fontSize: { base: 'md', md: 'lg' },
           _hover: { bg: 'bg-inverted', _focus: { shadow: ui.outlineInset('bg-inverted') } },
           _focus: { shadow: ui.outlineInset('bg-button') },
+          _active: { bg: 'bg-inverted' },
           _light: { color: 'white' },
           _dark: { color: 'whiteAlpha.800' }
         },
