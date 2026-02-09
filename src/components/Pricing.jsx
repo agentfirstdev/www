@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { forwardRef, useRef, useState, useImperativeHandle } from 'react';
 import {
   Flex,
   InputGroup,
@@ -19,10 +19,23 @@ const calculateCredits = (dollars) => {
   ).toLocaleString();
 };
 
-export default function Pricing({ isCartLoading, addToCart, textboxBackground }) {
+export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBackground }, ref) {
+  const textbox = useRef();
   const [dollarAmount, setDollarAmount] = useState('');
   const parsedAmount = parseFloat(dollarAmount);
   const isAmountValid = Number.isInteger(parsedAmount) && parsedAmount >= ui.minPurchaseAmount;
+
+  useImperativeHandle(ref, () => {
+    return {
+      focus: () => {
+        textbox.current?.focus();
+      },
+      submit: () => {
+        if (isAmountValid) addToCart(parsedAmount);
+      },
+      isAmountValid
+    };
+  }, [parsedAmount, isAmountValid, addToCart]);
 
   return (
     <Flex mt={2} w={ui.secondaryTextboxWidth} direction='column' gap={4}>
@@ -46,6 +59,7 @@ export default function Pricing({ isCartLoading, addToCart, textboxBackground })
           }}
         >
           <NumberInputField
+            ref={textbox}
             pl={ui.purchaseAmountPadding}
             h={ui.controlDimension}
             fontSize='lg'
@@ -70,4 +84,4 @@ export default function Pricing({ isCartLoading, addToCart, textboxBackground })
       </Button>
     </Flex>
   );
-}
+});

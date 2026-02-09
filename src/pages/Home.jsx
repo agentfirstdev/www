@@ -58,6 +58,7 @@ export default function Home({
   // const promptBox = useRef();
   const services = useRef();
   const pricing = useRef();
+  const purchaseTextbox = useRef();
   const timeline = useRef();
   const timelineParts = useRef();
   const team = useRef();
@@ -935,7 +936,18 @@ export default function Home({
           columns={{ base: 1, md: 3 }}
           spacing={ui.mdMargin}
         >
-          <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='xs'>
+          <Card
+            mt={ui.smMargin}
+            bg='chakra-subtle-bg'
+            boxShadow='xs'
+            cursor={session ? 'not-allowed' : 'pointer'}
+            onClick={() => {
+              if (!session) {
+                setPendingCheckoutUrl(ui.dashboardUrl);
+                openLogin();
+              }
+            }}
+          >
             <CardHeader>{ui.trialLabel}</CardHeader>
             <CardBody>
               <UnorderedList>
@@ -945,24 +957,24 @@ export default function Home({
               </UnorderedList>
             </CardBody>
             <CardFooter>
-              <Button
-                w='100%'
-                h={ui.controlDimension}
-                isDisabled={!!session}
-                onClick={() => {
-                  if (session) {
-                    navigate(ui.dashboardPath);
-                  } else {
-                    setPendingCheckoutUrl(ui.dashboardUrl);
-                    openLogin();
-                  }
-                }}
-              >
+              <Button w='100%' h={ui.controlDimension} isDisabled={!!session}>
                 {ui.startLabel}
               </Button>
             </CardFooter>
           </Card>
-          <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='xs'>
+          <Card
+            mt={ui.smMargin}
+            bg='chakra-subtle-bg'
+            boxShadow='xs'
+            cursor='pointer'
+            onClick={() => {
+              if (purchaseTextbox.current?.isAmountValid) {
+                purchaseTextbox.current.submit();
+              } else {
+                purchaseTextbox.current?.focus();
+              }
+            }}
+          >
             <CardHeader>{ui.paygLabel}</CardHeader>
             <CardBody>
               <UnorderedList>
@@ -973,6 +985,7 @@ export default function Home({
             </CardBody>
             <CardFooter>
               <Pricing
+                ref={purchaseTextbox}
                 addToCart={(dollarAmount) => {
                   const path = `${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`;
 
@@ -987,7 +1000,15 @@ export default function Home({
               />
             </CardFooter>
           </Card>
-          <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='xs'>
+          <Card
+            mt={ui.smMargin}
+            bg='chakra-subtle-bg'
+            boxShadow='xs'
+            cursor='pointer'
+            onClick={() => {
+              location.href = ui.supportUrl;
+            }}
+          >
             <CardHeader>{ui.enterpriseLabel}</CardHeader>
             <CardBody>
               <UnorderedList>
