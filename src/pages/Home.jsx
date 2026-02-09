@@ -899,23 +899,23 @@ export default function Home({
           <Text as='strong' variant='co'>
             Agent First
           </Text>
-          {' API use is based on credits that cost '}
+          {' API usage is based on credits that cost '}
           <Text as='strong' variant='bold'>
             $1 per 1,000 credits
           </Text>
-          {' or '}
+          {' with '}
           <Text as='strong' variant='bold'>
-            10% off $100+ of credits
+            10% off $100+ purchases
           </Text>
-          {', where 1,000 credits let you make about '}
+          {', where 1,000 credits let you access '}
           <Text as='strong' variant='bold'>
-            1,000 successful page requests
+            1,000 standard page responses
           </Text>
           {' (see '}
           <Link variant='pricing' href={ui.rateUrl}>
             our rate card
           </Link>
-          {' for details) and are valid for 30 days from purchase.'}
+          {' for details) and can be used for up to 30 days after purchase.'}
         </Text>
         <Text
           variant='description'
@@ -927,8 +927,8 @@ export default function Home({
           <Text as='strong' variant='bold'>
             1,000 free credits
           </Text>
-          {' to try the API when you sign up and contact us for volume pricing if you plan to '}
-          spend over $1,000 monthly.
+          {' to try the API when you sign up and contact us for volume pricing if you expect to '}
+          spend $1,000+ per month.
         </Text>
         <SimpleGrid
           mx={{ base: ui.smMargin, md: ui.lgMargin }}
@@ -981,12 +981,8 @@ export default function Home({
             <CardBody>
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>
-                <ListItem>$1 / 1,000 credits</ListItem>
-                <ListItem>
-                  $0.90 / 1,000 credits over $100
-                  <br />
-                  (save 10%)
-                </ListItem>
+                <ListItem>$1 / 1,000 additional credits</ListItem>
+                <ListItem>$0.90 / 1,000 credits for $100+ purchases (save 10%)</ListItem>
                 <ListItem>Credits expire in 30 days</ListItem>
                 <ListItem>Instant access to search, browsing, & reporting services</ListItem>
                 <ListItem>Email support</ListItem>
@@ -1027,7 +1023,7 @@ export default function Home({
                 <ListItem>Volume pricing for $1,000+ monthly spend</ListItem>
                 <ListItem>Access to search, browsing, & reporting services</ListItem>
                 <ListItem>Dedicated browser pool for faster responses</ListItem>
-                <ListItem>Email / chat support</ListItem>
+                <ListItem>Email & chat support</ListItem>
                 <ListItem>Best efforts to unblock any problem site within 24 hours</ListItem>
               </UnorderedList>
             </CardBody>
