@@ -24,8 +24,11 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
   const [dollarAmount, setDollarAmount] = useState('');
   const parsedAmount = parseFloat(dollarAmount);
   const isAmountValid = Number.isInteger(parsedAmount) && parsedAmount >= ui.minPurchaseAmount;
+  const reportValidity = () => {
+    return textbox.current?.reportValidity();
+  };
   const handleSubmit = () => {
-    if (textbox.current?.reportValidity()) addToCart(parsedAmount);
+    if (reportValidity()) addToCart(parsedAmount);
   };
 
   useEffect(() => {
@@ -41,6 +44,7 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
       focus: () => {
         textbox.current?.focus();
       },
+      reportValidity,
       submit: handleSubmit,
       isAmountValid
     };

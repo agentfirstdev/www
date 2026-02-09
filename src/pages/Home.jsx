@@ -973,7 +973,7 @@ export default function Home({
               if (purchaseTextbox.current?.isAmountValid) {
                 purchaseTextbox.current.submit();
               } else {
-                purchaseTextbox.current?.focus();
+                purchaseTextbox.current?.reportValidity();
               }
             }}
           >
