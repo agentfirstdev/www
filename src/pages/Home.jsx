@@ -5,9 +5,13 @@ import {
   Box,
   Flex,
   VStack,
+  SimpleGrid,
   Card,
+  CardHeader,
   CardBody,
   CardFooter,
+  UnorderedList,
+  ListItem,
   Heading,
   Text,
   Link,
@@ -96,8 +100,9 @@ export default function Home({
     base: ui.dividerBaseOverflow,
     md: ui.horizontalDividerOverflow
   });
-  const headingStroke = useColorModeValue(ui.resolutionBlue, ui.creativeBlue);
-  const headingFill = useColorModeValue(ui.creativeBlue, ui.resolutionBlue);
+  const headingColor = useColorModeValue(ui.creativeBlue, ui.royalBlue);
+  const invertedColor = useColorModeValue(ui.resolutionBlue, ui.cornflowerBlue);
+  const textColor = useColorModeValue(ui.charcoalBlue, ui.whiteAlpha);
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
   const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
@@ -368,7 +373,7 @@ export default function Home({
   }, [timelineColor]);
 
   useEffect(() => {
-    if (servicesPath && blueprintStroke && blueprintFill && headingStroke && headingFill) {
+    if (servicesPath && blueprintStroke && blueprintFill && headingColor && invertedColor) {
       servicesFrames.current = [];
       pricingFrames.current = [];
       hedFrames.current = [];
@@ -387,9 +392,9 @@ export default function Home({
           frame = servicesFrames.current[frameIndex.current];
         } else {
           frame = generateFrame(servicesCanvas, servicesPath, {
-            stroke: headingStroke,
+            stroke: invertedColor,
             strokeWidth: ui.blueprintStrokeWidth,
-            fill: headingFill,
+            fill: headingColor,
             fillStyle: ui.headingFillStyle,
             hachureAngle: ui.blueprintAngle,
             roughness: ui.headingRoughness
@@ -409,6 +414,7 @@ export default function Home({
           linkedinPath &&
           xPath &&
           sitePath &&
+          textColor &&
           hasCachedFrames.current
         ) {
           const limitedIndex =
@@ -432,9 +438,9 @@ export default function Home({
             frame = pricingFrames.current[limitedIndex];
           } else {
             frame = generateFrame(pricingCanvas, pricingPath, {
-              stroke: headingStroke,
+              stroke: textColor,
               strokeWidth: ui.blueprintStrokeWidth,
-              fill: headingFill,
+              fill: invertedColor,
               fillStyle: ui.headingFillStyle,
               hachureAngle: ui.blueprintAngle,
               roughness: ui.headingRoughness
@@ -601,8 +607,9 @@ export default function Home({
     sitePath,
     blueprintStroke,
     blueprintFill,
-    headingStroke,
-    headingFill
+    headingColor,
+    invertedColor,
+    textColor
   ]);
 
   /* useEffect(() => {
@@ -663,7 +670,8 @@ export default function Home({
       <Box
         id={ui.servicesId}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.xsMargin}
+        pt={ui.smMargin}
+        pb={12}
         textAlign='left'
       >
         <canvas
@@ -863,7 +871,8 @@ export default function Home({
       <Box
         id={ui.pricingId}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.lgMargin}
+        pt={ui.smMargin}
+        pb={12}
         align='center'
       >
         <canvas
@@ -880,23 +889,97 @@ export default function Home({
           role='img'
           aria-label={ui.pricingLabel}
         />
-        <Pricing
-          addToCart={(dollarAmount) => {
-            const path = `${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`;
+        <Text
+          variant='description'
+          mx={{ base: ui.xsMargin, lg: ui.lgMargin }}
+          mt={ui.mdMargin}
+          textAlign='left'
+        >
+          {'The '}
+          <Text as='strong' variant='co'>
+            Agent First
+          </Text>
+          {' API is based on prepaid credits at a cost of '}
+          <Text as='strong' variant='highlight'>
+            $1 per 1,000 credits
+          </Text>
+          {' or '}
+          <Text as='strong' variant='highlight'>
+            $0.90 per 1,000 credits
+          </Text>
+          {' for purchases over $100, which lets you make approximately '}
+          <Text as='strong' variant='bold'>
+            1,000 successful, rendered page requests
+          </Text>
+          . We provide 1,000 free credits when you sign up and offer volume pricing if you plan to
+          spend $1,000+ per month.
+        </Text>
+        <SimpleGrid
+          mx={{ base: ui.smMargin, md: ui.lgMargin }}
+          mt={ui.smMargin}
+          columns={{ base: 1, md: 3 }}
+          spacing={ui.mdMargin}
+        >
+          <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='xs'>
+            <CardHeader>Free trial</CardHeader>
+            <CardBody>
+              <UnorderedList>
+                <ListItem>1,000 free credits</ListItem>
+                <ListItem>Bar</ListItem>
+                <ListItem>Baz</ListItem>
+              </UnorderedList>
+            </CardBody>
+            <CardFooter>
+              <Button w='100%' h={ui.controlDimension}>
+                Start free trial
+              </Button>
+            </CardFooter>
+          </Card>
+          <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='xs'>
+            <CardHeader>À la carte</CardHeader>
+            <CardBody>
+              <UnorderedList>
+                <ListItem>1,000 free credits</ListItem>
+                <ListItem>Bar</ListItem>
+                <ListItem>Baz</ListItem>
+              </UnorderedList>
+            </CardBody>
+            <CardFooter>
+              <Pricing
+                addToCart={(dollarAmount) => {
+                  const path = `${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`;
 
-            if (session) {
-              navigate(path);
-            } else {
-              setPendingCheckoutUrl(location.origin + path);
-              openLogin();
-            }
-          }}
-        />
+                  if (session) {
+                    navigate(path);
+                  } else {
+                    setPendingCheckoutUrl(location.origin + path);
+                    openLogin();
+                  }
+                }}
+              />
+            </CardFooter>
+          </Card>
+          <Card mt={ui.smMargin} bg='chakra-subtle-bg' boxShadow='xs'>
+            <CardHeader>High volume</CardHeader>
+            <CardBody>
+              <UnorderedList>
+                <ListItem>1,000 free credits</ListItem>
+                <ListItem>Bar</ListItem>
+                <ListItem>Baz</ListItem>
+              </UnorderedList>
+            </CardBody>
+            <CardFooter>
+              <Button as='a' w='100%' h={ui.controlDimension} href={ui.supportUrl}>
+                Contact to discuss
+              </Button>
+            </CardFooter>
+          </Card>
+        </SimpleGrid>
       </Box>
       <Box
         id={ui.aboutId}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.lgMargin}
+        pt={ui.smMargin}
         align='center'
       >
         <Box position='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>
@@ -921,7 +1004,7 @@ export default function Home({
           />
         </Box>
         <Text
-          variant='about'
+          variant='description'
           mx={{ base: ui.xsMargin, lg: ui.lgMargin }}
           mt={ui.mdMargin}
           textAlign='left'
@@ -932,7 +1015,7 @@ export default function Home({
           to focus on building unique, native agents.
         </Text>
       </Box>
-      <Box ref={team} id={ui.teamId} pt={ui.mdMargin}>
+      <Box ref={team} id={ui.teamId} pt={ui.smMargin}>
         <Heading as='h1' variant='team' fontSize={ui.teamFontSize}>
           Our team
         </Heading>

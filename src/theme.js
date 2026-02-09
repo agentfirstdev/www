@@ -38,6 +38,26 @@ export default extendTheme({
     footer: ui.footerFont
   },
   components: {
+    Card: {
+      baseStyle: {
+        header: {
+          fontFamily: 'subheading',
+          fontSize: { base: '2xl', md: '3xl' },
+          fontWeight: 'bold',
+          color: 'bg-button'
+        },
+        body: { pt: 0, textAlign: 'left' }
+      }
+    },
+    List: {
+      baseStyle: {
+        item: {
+          fontSize: { base: 'md', md: 'lg' },
+          _light: { fontWeight: 300 },
+          _dark: { color: 'whiteAlpha.700' }
+        }
+      }
+    },
     Divider: {
       baseStyle: {
         _light: { borderColor: 'accent.secondary' },
@@ -74,7 +94,6 @@ export default extendTheme({
           color: 'gray.800'
         },
         service: { mt: 4, _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
-        about: { _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
         teammate: {
           mt: 2,
           fontFamily: 'footer',
@@ -87,6 +106,8 @@ export default extendTheme({
           _light: { fontWeight: 300, color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
+        description: { _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
+        highlight: { fontWeight: 'bold', color: 'bg-inverted' },
         bold: { fontWeight: 'bold' },
         footerBold: { fontWeight: 500 },
         co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
@@ -123,6 +144,15 @@ export default extendTheme({
           _focus: { shadow: ui.outline('chakra-body-text') },
           _light: { fontWeight: 'normal' },
           _dark: { fontWeight: 500 }
+        },
+        pricing: {
+          borderBottomWidth: '2px',
+          borderBottomColor: 'chakra-body-text',
+          p: 0,
+          fontWeight: 'normal',
+          color: 'chakra-body-text',
+          _hover: { color: 'chakra-body-text', _focus: { shadow: ui.outline('chakra-body-text') } },
+          _focus: { shadow: ui.outline('chakra-body-text') }
         },
         team: {
           display: 'inline-block',
