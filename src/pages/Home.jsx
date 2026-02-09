@@ -948,6 +948,7 @@ export default function Home({
               <Button
                 w='100%'
                 h={ui.controlDimension}
+                isDisabled={!!session}
                 onClick={() => {
                   if (session) {
                     navigate(ui.dashboardPath);
