@@ -20,7 +20,7 @@ const corsHeaders = (origin) => {
     'Access-Control-Allow-Headers': 'authorization, apikey, content-type, x-client-info'
   };
 };
-const stripe = new Stripe(stripeKey, { apiVersion: '2025-04-30.basil' });
+const stripe = new Stripe(stripeKey, { apiVersion: '2025-09-30.clover' });
 const calculateCredits = (dollars) => {
   return Math.ceil(
     Math.floor(dollars) *
@@ -33,7 +33,7 @@ Deno.serve(async (request) => {
   let response;
 
   if (request.method == 'POST') {
-    const { amount } = await request.json();
+    const { amount, background } = await request.json();
 
     if (Number.isInteger(amount) && amount >= minAmount) {
       response = new Response(
@@ -42,6 +42,7 @@ Deno.serve(async (request) => {
             await stripe.checkout.sessions.create({
               mode: 'payment',
               ui_mode: 'embedded',
+              ...(background && { branding_settings: { background_color: background } }),
               line_items: [
                 {
                   price_data: {

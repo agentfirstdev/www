@@ -5,7 +5,7 @@ import * as ui from './config/ui';
 export default extendTheme({
   semanticTokens: {
     colors: {
-      'chakra-body-bg': { _light: '#f9fafc', _dark: 'gray.800' },
+      'chakra-body-bg': { _light: ui.lightBackground, _dark: ui.darkBackground },
       'chakra-subtle-bg': { _light: 'gray.100', _dark: 'whiteAlpha.50' },
       'bg-emphasized': { _light: 'gray.300', _dark: 'whiteAlpha.300' },
       'bg-muted': { _light: 'white', _dark: 'whiteAlpha.50' },

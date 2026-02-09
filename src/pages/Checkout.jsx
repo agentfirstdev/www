@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
-import { Box, Flex, Heading, Spinner, useToast } from '@chakra-ui/react';
+import { Box, Flex, Heading, Spinner, useColorModeValue, useToast } from '@chakra-ui/react';
 import { loadStripe } from '@stripe/stripe-js';
 import { EmbeddedCheckoutProvider, EmbeddedCheckout } from '@stripe/react-stripe-js';
 
@@ -17,6 +17,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
   const [clientSecret, setClientSecret] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [queryString] = useSearchParams();
+  const background = useColorModeValue(ui.lightBackground, ui.darkBackground);
   const toast = useToast();
   const dollarAmount = parseFloat(queryString.get(ui.purchaseKey));
   const isAmountValid = Number.isInteger(dollarAmount) && dollarAmount >= ui.minPurchaseAmount;
@@ -24,7 +25,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
     setIsLoading(true);
 
     supabaseClient.functions
-      .invoke('start-checkout', { body: { amount } })
+      .invoke('start-checkout', { body: { amount, background } })
       .then(({ data, error }) => {
         if (error || !data?.clientSecret) {
           if (!toast.isActive(toastId)) {
