@@ -981,8 +981,12 @@ export default function Home({
             <CardBody>
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>
-                <ListItem>Bar</ListItem>
-                <ListItem>Baz</ListItem>
+                <ListItem>$1 / 1,000 credits</ListItem>
+                <ListItem>
+                  $0.90 / 1,000 credits over $100
+                  <br />
+                  (save 10%)
+                </ListItem>
               </UnorderedList>
             </CardBody>
             <CardFooter>
