@@ -941,6 +941,7 @@ export default function Home({
             bg='chakra-subtle-bg'
             boxShadow='xs'
             cursor={session ? 'not-allowed' : 'pointer'}
+            _hover={session ? null : { transform: `scale(${ui.hoverScale})` }}
             onClick={() => {
               if (!session) {
                 setPendingCheckoutUrl(ui.dashboardUrl);
@@ -967,6 +968,7 @@ export default function Home({
             bg='chakra-subtle-bg'
             boxShadow='xs'
             cursor='pointer'
+            _hover={{ transform: `scale(${ui.hoverScale})` }}
             onClick={() => {
               if (purchaseTextbox.current?.isAmountValid) {
                 purchaseTextbox.current.submit();
@@ -1005,6 +1007,7 @@ export default function Home({
             bg='chakra-subtle-bg'
             boxShadow='xs'
             cursor='pointer'
+            _hover={{ transform: `scale(${ui.hoverScale})` }}
             onClick={() => {
               location.href = ui.supportUrl;
             }}

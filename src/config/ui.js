@@ -235,6 +235,7 @@ export const agentRoughness = 3;
 export const iconStrokeWidth = 3;
 export const iconRoughness = 5;
 export const iconRotationMs = 600;
+export const hoverScale = 1.05;
 export const openRotation = 45;
 export const expandRotation = 180;
 

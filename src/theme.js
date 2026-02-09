@@ -299,7 +299,8 @@ export default extendTheme({
           'stroke var(--chakra-transition-duration-normal), ' +
           'fill var(--chakra-transition-duration-normal), ' +
           'opacity var(--chakra-transition-duration-normal), ' +
-          'box-shadow var(--chakra-transition-duration-normal)'
+          'box-shadow var(--chakra-transition-duration-normal), ' +
+          'transform var(--chakra-transition-duration-normal)'
       },
       '::selection': { bg: 'bg-button' },
       '.chakra-ui-light ::selection': { color: 'white' },
