@@ -276,7 +276,6 @@ export const itemMargin = 6;
 export const sunStroke = 3;
 export const hamburgerTopMargin = -1;
 export const hamburgerLeftMargin = 4;
-export const loginTextboxOpacity = 0.75;
 export const navTopPosition = { base: '18px', lg: 7 };
 export const navRightPosition = { base: '18px', lg: 7 };
 
@@ -334,6 +333,7 @@ export const pricingNewWidth = '20%';
 export const pricingMinWidth = '190px';
 export const pricingOldWidth = 1284;
 export const pricingOldHeight = 320;
+export const pricingOpacity = 0.75;
 
 // Team
 export const hedMaxWidth = '240px';

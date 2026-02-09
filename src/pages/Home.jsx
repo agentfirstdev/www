@@ -876,20 +876,22 @@ export default function Home({
         pb={12}
         align='center'
       >
-        <canvas
-          ref={pricing}
-          className='lazy'
-          width={ui.pricingOldWidth}
-          height={ui.pricingOldHeight}
-          style={{
-            marginRight: 'auto',
-            marginLeft: 'auto',
-            width: ui.pricingNewWidth,
-            minWidth: ui.pricingMinWidth
-          }}
-          role='img'
-          aria-label={ui.pricingLabel}
-        />
+        <Box opacity={ui.pricingOpacity}>
+          <canvas
+            ref={pricing}
+            className='lazy'
+            width={ui.pricingOldWidth}
+            height={ui.pricingOldHeight}
+            style={{
+              marginRight: 'auto',
+              marginLeft: 'auto',
+              width: ui.pricingNewWidth,
+              minWidth: ui.pricingMinWidth
+            }}
+            role='img'
+            aria-label={ui.pricingLabel}
+          />
+        </Box>
         <Text
           variant='description'
           mx={{ base: ui.xsMargin, lg: ui.lgMargin }}
