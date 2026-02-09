@@ -905,7 +905,7 @@ export default function Home({
           </Text>
           {' or '}
           <Text as='strong' variant='bold'>
-            10% less on $100+ of credits
+            10% off $100+ of credits
           </Text>
           {', where 1,000 credits let you make about '}
           <Text as='strong' variant='bold'>
@@ -915,7 +915,7 @@ export default function Home({
           <Link variant='pricing' href={ui.rateUrl}>
             our rate card
           </Link>
-          {' for details).'}
+          {' for details) and are valid for 30 days from purchase.'}
         </Text>
         <Text
           variant='description'
@@ -953,6 +953,7 @@ export default function Home({
             <CardBody>
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>
+                <ListItem>Credits expire in 30 days</ListItem>
                 <ListItem>Instant access to search, browsing, & reporting services</ListItem>
               </UnorderedList>
             </CardBody>
@@ -986,6 +987,7 @@ export default function Home({
                   <br />
                   (save 10%)
                 </ListItem>
+                <ListItem>Credits expire in 30 days</ListItem>
                 <ListItem>Instant access to search, browsing, & reporting services</ListItem>
                 <ListItem>Email support</ListItem>
                 <ListItem>Best efforts to unblock any problem site within 48 hours</ListItem>
