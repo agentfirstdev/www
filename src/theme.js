@@ -44,6 +44,7 @@ export default extendTheme({
           fontFamily: 'subheading',
           fontSize: { base: '2xl', md: '3xl' },
           fontWeight: 'bold',
+          textDecor: 'underline',
           color: 'bg-button'
         },
         body: { pt: 0, textAlign: 'left' }
@@ -247,7 +248,7 @@ export default extendTheme({
     },
     Menu: {
       baseStyle: {
-        list: { p: 0, shadow: 'md' },
+        list: { p: 0, shadow: 'sm' },
         item: {
           fontFamily: 'heading',
           fontSize: '2xl',

@@ -236,7 +236,7 @@ export const hedRoughness = 2;
 export const agentRoughness = 3;
 export const iconStrokeWidth = 3;
 export const iconRoughness = 5;
-export const iconRotationMs = 600;
+export const iconRotationMs = 400;
 export const hoverScale = 1.05;
 export const openRotation = 45;
 export const expandRotation = 180;
@@ -276,12 +276,12 @@ export const itemMargin = 6;
 export const sunStroke = 3;
 export const hamburgerTopMargin = -1;
 export const hamburgerLeftMargin = 4;
-export const navTopPosition = { base: '18px', lg: 7 };
-export const navRightPosition = { base: '18px', lg: 7 };
+// export const navTopPosition = { base: '18px', lg: 5 };
+export const navRightPosition = { base: '18px', lg: smMargin };
 
 // Hero
 export const heroHeight = '60vh';
-export const logoMargin = '8px';
+// export const logoMargin = '8px';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
 export const taglineWidth = '100%';
@@ -363,7 +363,7 @@ export const sidebarTravel = `calc(-${sidebarWidth} + ${sidebarCollapsedWidth})`
 export const sidebarEasing = 'backOut';
 export const sidebarPadding = 6;
 export const sidebarCollapsedPadding = 20;
-export const sidebarCollapseSecs = 0.4;
+export const sidebarCollapseSecs = 0.2;
 
 // Secondary pages
 export const secondaryTextboxWidth = '40ch';

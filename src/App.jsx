@@ -47,6 +47,7 @@ export default function App() {
   const [session, setSession] = useState(null);
   const [isSessionLoading, setIsSessionLoading] = useState(true);
   const [shouldShowLogin, setShouldShowLogin] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { hash, pathname } = useLocation();
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
@@ -97,9 +98,15 @@ export default function App() {
       setSession(session);
       setIsSessionLoading(false);
     });
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       data.subscription.unsubscribe();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -250,7 +257,17 @@ export default function App() {
 
   return (
     <Flex w='100%' minH='100vh' direction='column'>
-      <Box p={2}>
+      <Box
+        position='sticky'
+        top={0}
+        zIndex='sticky'
+        borderBottom='1px'
+        borderColor={isScrolled ? 'fg-grid' : 'transparent'}
+        bg='chakra-body-bg'
+        p={2}
+        shadow={isScrolled ? 'sm' : 'none'}
+        transition='border-color 2s, box-shadow 2s'
+      >
         <Box
           display='block'
           borderRadius='sm'
@@ -266,12 +283,12 @@ export default function App() {
             ref={logotype}
             width={ui.logoOldWidth}
             height={ui.logoOldHeight}
-            style={{ marginTop: ui.logoMargin, width: '100%' }}
+            style={{ width: '100%' }}
             role='img'
             aria-label={ui.logoLabel}
           />
         </Box>
-        <Flex pos='absolute' top={ui.navTopPosition} right={ui.navRightPosition} align='center'>
+        <Flex pos='absolute' top={0} right={ui.navRightPosition} bottom={0} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
             <Link variant='nav' ml={ui.itemMargin} href={ui.servicesPath}>
               {ui.servicesLabel}
