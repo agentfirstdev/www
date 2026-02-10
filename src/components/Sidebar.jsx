@@ -102,12 +102,14 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
           pos='fixed'
           top='0'
           left='0'
-          shadow='lg'
+          borderRight='1px'
+          borderColor='fg-grid'
           px='4'
           py='8'
           w={ui.sidebarWidth}
           h='100vh'
           textAlign='right'
+          shadow='sm'
           pointerEvents='auto'
           _light={{ bg: isOpen ? 'gray.100' : '#edf2f7b3' }}
           _dark={{ bg: isOpen ? '#232934' : '#232934b3' }}

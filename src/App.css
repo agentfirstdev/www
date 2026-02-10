@@ -57,7 +57,7 @@ html {
 }
 
 .DateRangePicker_picker {
-  box-shadow: var(--chakra-shadows-md);
+  box-shadow: var(--chakra-shadows-sm);
 }
 
 small {

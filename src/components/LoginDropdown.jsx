@@ -172,7 +172,7 @@ export default function LoginDropdown({
           bg='bg-panel'
           p={2}
           w={ui.loginWidth}
-          shadow='md'
+          shadow='sm'
         >
           <Heading variant='login'>{ui.loginLabel}</Heading>
           <Button

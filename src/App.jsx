@@ -276,7 +276,7 @@ export default function App() {
           {...(pathname != '/' && { as: 'a', href: '/' })}
           _focus={{
             outline: 'none',
-            boxShadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)`
+            shadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)`
           }}
         >
           <canvas

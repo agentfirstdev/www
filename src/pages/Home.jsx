@@ -658,7 +658,7 @@ export default function Home({
               borderRadius='full'
               size='lg'
               icon={<AddIcon boxSize={4} />}
-              boxShadow='lg'
+              shadow='sm'
               aria-label={ui.resetHint}
               onClick={handleResetPress}
               onKeyDown={(event) => {
@@ -941,7 +941,7 @@ export default function Home({
           <Card
             mt={ui.smMargin}
             bg='chakra-subtle-bg'
-            boxShadow='xs'
+            shadow='sm'
             cursor={session ? 'not-allowed' : 'pointer'}
             _hover={session ? null : { transform: `scale(${ui.hoverScale})` }}
             onClick={() => {
@@ -968,7 +968,7 @@ export default function Home({
           <Card
             mt={ui.smMargin}
             bg='chakra-subtle-bg'
-            boxShadow='xs'
+            shadow='sm'
             cursor='pointer'
             _hover={{ transform: `scale(${ui.hoverScale})` }}
             onClick={() => {
@@ -1011,7 +1011,7 @@ export default function Home({
           <Card
             mt={ui.smMargin}
             bg='chakra-subtle-bg'
-            boxShadow='xs'
+            shadow='sm'
             cursor='pointer'
             _hover={{ transform: `scale(${ui.hoverScale})` }}
             onClick={() => {
@@ -1086,7 +1086,7 @@ export default function Home({
           direction={{ base: 'column', lg: 'row' }}
           justify='space-evenly'
         >
-          <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
+          <Card bg='transparent' w={ui.cardWidth} shadow='none'>
             <CardBody textAlign='left'>
               <Box
                 mt={ui.hedMargin}
@@ -1213,7 +1213,7 @@ export default function Home({
               </Tooltip>
             </CardFooter>
           </Card>
-          <Card bg='transparent' w={ui.cardWidth} boxShadow='none'>
+          <Card bg='transparent' w={ui.cardWidth} shadow='none'>
             <CardBody textAlign='left'>
               <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
                 <canvas
