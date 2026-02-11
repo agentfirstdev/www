@@ -385,3 +385,10 @@ s3_secret_key = "env(S3_SECRET_KEY)"
 
 [functions.start-checkout]
 entrypoint = "./functions/start-checkout/index.js"
+
+[functions.complete-checkout]
+entrypoint = "./functions/complete-checkout/index.js"
+verify_jwt = false
+
+[functions.verify-checkout]
+entrypoint = "./functions/verify-checkout/index.js"

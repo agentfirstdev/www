@@ -112,21 +112,30 @@ export default function Dashboard({
 
   useEffect(() => {
     if (queryString.has(ui.checkoutKey)) {
+      const sessionId = queryString.get(ui.checkoutKey);
       const newQueryString = new URLSearchParams(queryString);
 
       newQueryString.delete(ui.checkoutKey);
       setQueryString(newQueryString, { replace: true });
 
-      if (!toast.isActive(checkoutId)) {
-        toast({
-          id: checkoutId,
-          position: 'top',
-          status: 'success',
-          description: ui.checkoutMessage,
-          duration: null,
-          isClosable: true
+      supabaseClient.functions
+        .invoke('verify-checkout', { body: { sessionId } })
+        .then(({ data, error }) => {
+          if (data && !data.error && !error) {
+            openSidebar();
+          } else {
+            if (!toast.isActive(checkoutId)) {
+              toast({
+                id: checkoutId,
+                position: 'top',
+                status: 'error',
+                description: ui.errorMessage,
+                duration: null,
+                isClosable: true
+              });
+            }
+          }
         });
-      }
     }
   }, [queryString]);
 

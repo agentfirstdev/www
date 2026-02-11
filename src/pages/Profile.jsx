@@ -23,6 +23,7 @@ const accountId = 'account';
 export default function Profile({ supabaseClient, session, isSessionLoading }) {
   const tokenTimeout = useRef();
   const [account, setAccount] = useState(null);
+  const [creditBalance, setCreditBalance] = useState(null);
   const [isTokenShown, setIsTokenShown] = useState(false);
   const { hasCopied, onCopy } = useClipboard(account?.api_token);
   const toast = useToast();
@@ -58,6 +59,14 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
             setAccount(data);
           }
         });
+
+      supabaseClient.rpc('credit_balance').then(({ data, error }) => {
+        if (error || data == null) {
+          console.error(error ?? 'Credit balance not returned');
+        } else {
+          setCreditBalance(data);
+        }
+      });
     }
   }, [session]);
 
@@ -171,7 +180,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
               type='text'
               size='lg'
               w={ui.textboxWidth}
-              value='0'
+              value={creditBalance?.toLocaleString() ?? ui.loadingPlaceholder}
               aria-label={ui.creditsLabel}
               isReadOnly
             />
