@@ -83,7 +83,7 @@ Deno.serve(async (request) => {
                     unit_amount: amount * 100,
                     product_data: {
                       name:
-                        Math.ceil((amount / plan.cpm) * 1000).toLocaleString() +
+                        Math.ceil(((amount * 100) / plan.cpm) * 1000).toLocaleString() +
                         ' Agent First API credits'
                     }
                   },
