@@ -383,8 +383,8 @@ s3_access_key = "env(S3_ACCESS_KEY)"
 # Configures AWS_SECRET_ACCESS_KEY for S3 bucket
 s3_secret_key = "env(S3_SECRET_KEY)"
 
-[functions.start-checkout]
-entrypoint = "./functions/start-checkout/index.js"
+[functions.init-checkout]
+entrypoint = "./functions/init-checkout/index.js"
 
 [functions.complete-checkout]
 entrypoint = "./functions/complete-checkout/index.js"

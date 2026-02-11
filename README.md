@@ -69,7 +69,10 @@ yarn preview
 supabase init
 supabase login
 supabase secrets set STRIPE_PRIVATE_KEY=[your Stripe publishable key]
-supabase functions deploy start-checkout
+supabase secrets set STRIPE_SIGNING_SECRET=[your Stripe webhook secret]
+supabase functions deploy init-checkout
+supabase functions deploy complete-checkout
+supabase functions deploy verify-checkout
 ```
 
 ## License

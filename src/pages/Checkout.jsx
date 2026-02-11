@@ -25,7 +25,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
     setIsLoading(true);
 
     supabaseClient.functions
-      .invoke('start-checkout', { body: { amount, background } })
+      .invoke('init-checkout', { body: { amount, background } })
       .then(({ data, error }) => {
         if (error || !data?.clientSecret) {
           if (!toast.isActive(toastId)) {
