@@ -87,7 +87,7 @@ export default extendTheme({
     Text: {
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
-        cta: { my: 4, fontFamily: 'tagline', fontSize: ui.ctaFontSize, color: 'fg-muted' },
+        cta: { my: 4, fontSize: ui.ctaFontSize, color: 'fg-muted' },
         'post-it': {
           my: 6,
           textAlign: 'left',

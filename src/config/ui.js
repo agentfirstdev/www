@@ -183,7 +183,7 @@ export const postItColors = [
 export const taglineFont = '"Fira Sans", sans-serif';
 export const headingFont = '"Permanent Marker", cursive';
 export const subheadingFont = '"Indie Flower", cursive';
-export const bodyFont = '"Fira Sans", sans-serif';
+export const bodyFont = '"Fira Sans Condensed", sans-serif';
 export const footerFont = '"Fira Sans Condensed", sans-serif';
 
 // Controls
@@ -304,8 +304,7 @@ export const tickOffset = 48;
 // export const taglineWidth = { base: '100%', md: '50%' };
 // export const taglineFontSize = { base: '28px', md: '54px' };
 export const taglineFontSize = { base: '28px', md: '66px' };
-// export const ctaFontSize = { base: '20px', md: '20px' };
-export const ctaFontSize = { base: '20px', md: '24px' };
+export const ctaFontSize = { base: '22px', md: '26px' };
 export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
 export const postItFontSize = { base: '22px', md: '28px' };
