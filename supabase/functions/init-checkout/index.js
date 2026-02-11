@@ -90,6 +90,7 @@ Deno.serve(async (request) => {
                   quantity: 1
                 }
               ],
+              customer_email: user.email,
               return_url: `${origin}/dashboard?session={CHECKOUT_SESSION_ID}`
             });
 
