@@ -31,9 +31,9 @@ export default extendTheme({
   },
   shadows: { outline: `${ui.outlineStyle} var(--chakra-colors-outline)` },
   fonts: {
-    tagline: ui.taglineFont,
     heading: ui.headingFont,
     subheading: ui.subheadingFont,
+    display: ui.displayFont,
     body: ui.bodyFont,
     footer: ui.footerFont
   },
@@ -70,7 +70,7 @@ export default extendTheme({
       baseStyle: { fontSize: { base: '26px', md: '4xl' }, color: 'bg-button' },
       variants: {
         login: { fontFamily: 'subheading', fontSize: '1.25rem' },
-        tagline: { fontFamily: 'tagline', color: 'chakra-body-text !important' },
+        tagline: { fontFamily: 'display', color: 'chakra-body-text !important' },
         'post-it': { color: 'gray.800' },
         service: { fontFamily: 'subheading' },
         team: { textAlign: 'center', fontWeight: 'normal' },
@@ -95,7 +95,12 @@ export default extendTheme({
           fontSize: ui.postItFontSize,
           color: 'gray.800'
         },
-        service: { mt: 4, _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
+        service: {
+          mt: 4,
+          fontSize: { base: 'lg', md: 'xl' },
+          _light: { fontWeight: 300 },
+          _dark: { color: 'whiteAlpha.700' }
+        },
         teammate: {
           mt: 2,
           fontFamily: 'footer',
@@ -108,12 +113,16 @@ export default extendTheme({
           _light: { fontWeight: 300, color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
-        description: { _light: { fontWeight: 300 }, _dark: { color: 'whiteAlpha.700' } },
-        highlight: { fontWeight: 'bold', color: 'bg-inverted' },
-        bold: { fontWeight: 'bold' },
-        footerBold: { fontWeight: 500 },
-        co: { mx: '.2em', fontFamily: 'heading', fontWeight: 'normal' },
-        footerCo: { mx: '.1em', fontFamily: 'heading', fontWeight: 'normal' },
+        description: {
+          fontSize: { base: 'lg', md: 'xl' },
+          _light: { fontWeight: 300 },
+          _dark: { color: 'whiteAlpha.700' }
+        },
+        highlight: { fontSize: 'inherit', fontWeight: 'bold', color: 'bg-inverted' },
+        bold: { fontSize: 'inherit', fontWeight: 'bold' },
+        footerBold: { fontSize: 'inherit', fontWeight: 500 },
+        co: { mx: '.2em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },
+        footerCo: { mx: '.1em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
       }
     },
@@ -177,6 +186,7 @@ export default extendTheme({
     Input: {
       baseStyle: {
         field: {
+          fontFamily: 'display',
           _light: { borderColor: 'chakra-border-color', bg: 'white' },
           _dark: { borderColor: 'chakra-border-color', bg: 'whiteAlpha.50' }
         }
@@ -187,12 +197,13 @@ export default extendTheme({
         }
       }
     },
+    NumberInput: { baseStyle: { field: { fontFamily: 'display' } } },
     Textarea: {
       defaultProps: { focusBorderColor: 'brand.primary' },
       baseStyle: {
         p: ui.promptPadding,
         lineHeight: 'base',
-        fontFamily: 'tagline',
+        fontFamily: 'display',
         fontSize: ui.promptFontSize,
         _placeholder: { color: 'chakra-placeholder-color' },
         _light: { fontWeight: 300 }
@@ -201,7 +212,7 @@ export default extendTheme({
     },
     Button: {
       baseStyle: {
-        fontFamily: 'body',
+        fontFamily: 'display',
         fontWeight: 'bold',
         _hover: { borderColor: 'transparent' },
         _focus: { shadow: ui.shadowStyle },
@@ -262,7 +273,7 @@ export default extendTheme({
           item: {
             bg: 'white',
             h: '50px',
-            fontFamily: 'body',
+            fontFamily: 'display',
             fontSize: 'lg',
             color: '#484848 !important',
             _hover: { bg: 'brand.primary', color: 'white !important' },

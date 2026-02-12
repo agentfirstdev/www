@@ -180,9 +180,9 @@ export const postItColors = [
 ];
 
 // Typography
-export const taglineFont = '"Fira Sans", sans-serif';
 export const headingFont = '"Permanent Marker", cursive';
 export const subheadingFont = '"Indie Flower", cursive';
+export const displayFont = '"Fira Sans", sans-serif';
 export const bodyFont = '"Fira Sans Condensed", sans-serif';
 export const footerFont = '"Fira Sans Condensed", sans-serif';
 
