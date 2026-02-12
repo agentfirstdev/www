@@ -182,7 +182,9 @@ export default extendTheme({
         }
       }
     },
-    FormLabel: { baseStyle: { mr: 0, mb: 0, fontWeight: 'bold', whiteSpace: 'nowrap' } },
+    FormLabel: {
+      baseStyle: { mr: 0, mb: 0, fontFamily: 'display', fontWeight: 'bold', whiteSpace: 'nowrap' }
+    },
     Input: {
       baseStyle: {
         field: {
@@ -291,7 +293,8 @@ export default extendTheme({
         _light: { borderColor: 'accent.secondary', color: 'accent.secondary' },
         _dark: { borderColor: 'whiteAlpha.600', color: 'whiteAlpha.600' }
       }
-    }
+    },
+    Tooltip: { baseStyle: { fontFamily: 'display' } }
   },
   styles: {
     global: {

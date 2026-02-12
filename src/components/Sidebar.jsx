@@ -130,7 +130,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
               sx={{ transitionProperty: 'transform', transitionDuration: `${ui.iconRotationMs}ms` }}
             />
           </Button>
-          <Heading mt='2' size='md' textAlign='left' fontFamily='body'>
+          <Heading mt='2' size='md' textAlign='left' fontFamily='display'>
             {ui.profileLabel}
           </Heading>
           <Grid
