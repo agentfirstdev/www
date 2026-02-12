@@ -85,20 +85,21 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
       {/* <Heading variant='secondary' size='lg'>
         {ui.profileLabel}
       </Heading> */}
-      <Flex pt={9} pb={5} justify='center' align='center' flex={1}>
+      <Flex px={ui.smMargin} pt={9} pb={5} justify='center' align='center' flex={1}>
         <Grid
-          templateColumns='auto 1fr'
+          templateColumns={{ base: '1fr', md: 'auto 1fr' }}
           columnGap={ui.profileHorizontalMargin}
           rowGap={ui.profileVerticalMargin}
           justifyItems='start'
           alignItems='center'
         >
-          <GridItem display='flex' justifySelf='right'>
+          <GridItem display='flex' justifySelf={{ base: 'start', md: 'end' }}>
             <FormLabel fontSize='lg'>{ui.emailLabel}</FormLabel>
           </GridItem>
-          <GridItem display='flex' alignItems='center'>
+          <GridItem display='flex' w='100%' alignItems='center'>
             <Input
               type='email'
+              flex={{ base: 1, md: 'none' }}
               size='lg'
               w={ui.textboxWidth}
               value={account?.email ?? ui.loadingPlaceholder}
@@ -114,12 +115,13 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
               />
             </Tooltip>
           </GridItem>
-          <GridItem display='flex' justifySelf='right'>
+          <GridItem display='flex' justifySelf={{ base: 'start', md: 'end' }}>
             <FormLabel fontSize='lg'>{ui.tokenLabel}</FormLabel>
           </GridItem>
-          <GridItem display='flex' alignItems='center'>
+          <GridItem display='flex' w='100%' alignItems='center'>
             <Input
               type={isPlaintext ? 'text' : 'password'}
+              flex={{ base: 1, md: 'none' }}
               size='lg'
               w={ui.textboxWidth}
               letterSpacing={isPlaintext ? null : ui.ciphertextSpacing}
@@ -172,12 +174,13 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
               />
             </Tooltip>
           </GridItem>
-          <GridItem display='flex' justifySelf='right'>
+          <GridItem display='flex' justifySelf={{ base: 'start', md: 'end' }}>
             <FormLabel fontSize='lg'>{ui.creditsLabel}</FormLabel>
           </GridItem>
-          <GridItem display='flex' alignItems='center'>
+          <GridItem display='flex' w='100%' alignItems='center'>
             <Input
               type='text'
+              flex={{ base: 1, md: 'none' }}
               size='lg'
               w={ui.textboxWidth}
               value={creditBalance?.toLocaleString() ?? ui.loadingPlaceholder}
