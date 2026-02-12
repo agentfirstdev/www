@@ -30,62 +30,89 @@ Deno.serve(async (request) => {
   let response;
 
   if (request.method == 'POST') {
-    const { sessionId } = await request.json();
-    const { data: purchase, error: purchaseError } = await supabase
-      .from('ledger')
-      .select('id, status, credits_issued, plan_id, amount')
-      .eq('stripe_checkout_session_id', sessionId)
-      .single();
+    const {
+      data: { user },
+      error: userError
+    } = await supabase.auth.getUser(request.headers.get('authorization')?.replace('Bearer ', ''));
 
-    if (purchaseError || !purchase) {
-      response = new Response(JSON.stringify({ error: 'Session was not found' }), {
-        status: 404,
+    if (userError || !user) {
+      response = new Response(JSON.stringify({ error: 'Session is invalid' }), {
+        status: 401,
         headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' }
       });
-    } else if (purchase.status == 'completed') {
-      response = new Response(
-        JSON.stringify({ status: 'completed', credits: purchase.credits_issued }),
-        { headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } }
-      );
     } else {
-      const session = await stripe.checkout.sessions.retrieve(sessionId);
+      const { data: account, error: accountError } = await supabase
+        .from('accounts')
+        .select('id')
+        .eq('user_id', user.id)
+        .single();
 
-      if (session.payment_status == 'paid') {
-        const { data: plan, error: planError } = await supabase
-          .from('plans')
-          .select('cpm')
-          .eq('id', purchase.plan_id)
-          .single();
-
-        if (planError || !plan) {
-          response = new Response(JSON.stringify({ error: 'Plan is missing' }), {
-            status: 500,
-            headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' }
-          });
-        } else {
-          const creditsIssued = Math.ceil((purchase.amount / plan.cpm) * 1000);
-
-          await supabase
-            .from('ledger')
-            .update({
-              status: 'completed',
-              credits_issued: creditsIssued,
-              credits_expire_at: new Date(
-                Date.now() + validDays * 24 * 60 * 60 * 1000
-              ).toISOString(),
-              stripe_payment_intent_id: session.payment_intent
-            })
-            .eq('id', purchase.id)
-            .eq('status', 'pending');
-
-          response = new Response(JSON.stringify({ status: 'completed', credits: creditsIssued }), {
-            headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' }
-          });
-        }
-      } else {
-        response = new Response(JSON.stringify({ status: 'pending' }), {
+      if (accountError || !account) {
+        response = new Response(JSON.stringify({ error: 'Account was not found' }), {
+          status: 404,
           headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' }
         });
+      } else {
+        const { sessionId } = await request.json();
+        const { data: purchase, error: purchaseError } = await supabase
+          .from('ledger')
+          .select('id, status, credits_issued, plan_id, amount')
+          .eq('stripe_checkout_session_id', sessionId)
+          .eq('account_id', account.id)
+          .single();
+
+        if (purchaseError || !purchase) {
+          response = new Response(JSON.stringify({ error: 'Session was not found' }), {
+            status: 404,
+            headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' }
+          });
+        } else if (purchase.status == 'completed') {
+          response = new Response(
+            JSON.stringify({ status: 'completed', credits: purchase.credits_issued }),
+            { headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } }
+          );
+        } else {
+          const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+          if (session.payment_status == 'paid') {
+            const { data: plan, error: planError } = await supabase
+              .from('plans')
+              .select('cpm')
+              .eq('id', purchase.plan_id)
+              .single();
+
+            if (planError || !plan) {
+              response = new Response(JSON.stringify({ error: 'Plan is missing' }), {
+                status: 500,
+                headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' }
+              });
+            } else {
+              const creditsIssued = Math.ceil((purchase.amount / plan.cpm) * 1000);
+
+              await supabase
+                .from('ledger')
+                .update({
+                  status: 'completed',
+                  credits_issued: creditsIssued,
+                  credits_expire_at: new Date(
+                    Date.now() + validDays * 24 * 60 * 60 * 1000
+                  ).toISOString(),
+                  stripe_payment_intent_id: session.payment_intent
+                })
+                .eq('id', purchase.id)
+                .eq('status', 'pending');
+
+              response = new Response(
+                JSON.stringify({ status: 'completed', credits: creditsIssued }),
+                { headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } }
+              );
+            }
+          } else {
+            response = new Response(JSON.stringify({ status: 'pending' }), {
+              headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' }
+            });
+          }
+        }
       }
     }
   } else if (request.method == 'OPTIONS') {
