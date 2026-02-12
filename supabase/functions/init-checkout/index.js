@@ -96,6 +96,13 @@ Deno.serve(async (request) => {
 
             await supabase
               .from('ledger')
+              .delete()
+              .eq('account_id', account.id)
+              .eq('entry', 'purchase')
+              .eq('status', 'pending')
+              .eq('amount', amount * 100);
+            await supabase
+              .from('ledger')
               .insert({
                 account_id: account.id,
                 entry: 'purchase',
