@@ -99,7 +99,7 @@ export default extendTheme({
           mt: 4,
           fontSize: { base: 'lg', md: 'xl' },
           _light: { fontWeight: 300 },
-          _dark: { color: 'whiteAlpha.700' }
+          _dark: { color: 'whiteAlpha.600' }
         },
         teammate: {
           mt: 2,
@@ -116,7 +116,7 @@ export default extendTheme({
         description: {
           fontSize: { base: 'lg', md: 'xl' },
           _light: { fontWeight: 300 },
-          _dark: { color: 'whiteAlpha.700' }
+          _dark: { color: 'whiteAlpha.600' }
         },
         highlight: { fontSize: 'inherit', fontWeight: 'bold', color: 'bg-inverted' },
         bold: { fontSize: 'inherit', fontWeight: 'bold' },
