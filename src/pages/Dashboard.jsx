@@ -370,7 +370,7 @@ export default function Dashboard({
         <Login
           supabaseClient={supabaseClient}
           width={ui.secondaryTextboxWidth}
-          font='var(--chakra-fontSizes-lg) var(--chakra-fonts-body)'
+          font='var(--chakra-fontSizes-lg) var(--chakra-fonts-display)'
           textboxBackground='var(--chakra-colors-bg-muted)'
           redirectUrl={ui.dashboardUrl}
         />

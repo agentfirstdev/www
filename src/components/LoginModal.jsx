@@ -44,7 +44,7 @@ export default function LoginModal({ supabaseClient, redirectUrl, isOpen, open, 
           <Login
             supabaseClient={supabaseClient}
             margin={ui.loginMargin}
-            font='var(--chakra-fontSizes-lg) var(--chakra-fonts-body)'
+            font='var(--chakra-fontSizes-lg) var(--chakra-fonts-display)'
             textboxMargin={ui.loginTextboxMargin}
             textboxBackground='var(--chakra-colors-chakra-body-bg)'
             redirectUrl={redirectUrl}

@@ -194,7 +194,7 @@ export default function LoginDropdown({
           <Login
             supabaseClient={supabaseClient}
             margin={ui.loginMargin}
-            font='var(--chakra-fontSizes-md) var(--chakra-fonts-body)'
+            font='var(--chakra-fontSizes-md) var(--chakra-fonts-display)'
             textboxMargin={ui.loginTextboxMargin}
             textboxBackground='var(--chakra-colors-chakra-body-bg)'
             redirectUrl={ui.dashboardUrl}

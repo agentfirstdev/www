@@ -213,7 +213,7 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
         <Login
           supabaseClient={supabaseClient}
           width={ui.secondaryTextboxWidth}
-          font='var(--chakra-fontSizes-lg) var(--chakra-fonts-body)'
+          font='var(--chakra-fontSizes-lg) var(--chakra-fonts-display)'
           textboxBackground='var(--chakra-colors-bg-muted)'
           redirectUrl={ui.profileUrl}
         />
