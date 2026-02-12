@@ -269,11 +269,18 @@ export default function App() {
         transition='border-color 2s, box-shadow 2s'
       >
         <Box
+          as='a'
           display='block'
           borderRadius='sm'
           w={ui.logoNewWidth}
           minW={ui.logoMinWidth}
-          {...(pathname != '/' && { as: 'a', href: '/' })}
+          href='/'
+          {...(pathname == '/' && {
+            onClick: (event) => {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          })}
           _focus={{
             outline: 'none',
             shadow: `${ui.outlineStyle} var(--chakra-colors-brand-primary)`
