@@ -321,7 +321,7 @@ export default function Dashboard({
                     },
                     tooltip: {
                       displayColors: false,
-                      titleFont: { family: ui.bodyFont, size: ui.tooltipFontSize },
+                      titleFont: { family: ui.displayFont, size: ui.tooltipFontSize },
                       bodyFont: { family: ui.bodyFont, size: ui.tooltipFontSize },
                       callbacks: {
                         label(item) {

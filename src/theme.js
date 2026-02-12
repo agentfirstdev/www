@@ -321,7 +321,8 @@ export default extendTheme({
       '::selection': { bg: 'bg-button' },
       '.chakra-ui-light ::selection': { color: 'white' },
       '.chakra-ui-dark ::selection': { color: 'whiteAlpha.800' },
-      '.hljs': { bg: 'none !important' }
+      '.hljs': { bg: 'none !important' },
+      '.DateRangePicker, .DateRangePicker *': { fontFamily: 'display' }
     }
   }
 });
