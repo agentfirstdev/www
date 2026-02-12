@@ -76,7 +76,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
         }
       });
     }
-  }, [session]);
+  }, [session, isOpen]);
 
   useEffect(() => {
     if (isTokenShown) {
