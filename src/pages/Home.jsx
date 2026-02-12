@@ -637,9 +637,14 @@ export default function Home({
         h={ui.heroHeight}
         justify='center'
         align='center'
-        gap={0}
       >
-        <VStack w={ui.taglineWidth} maxW={ui.taglineMaxWidth} justify='center' align='center'>
+        <VStack
+          gap={0}
+          w={ui.taglineWidth}
+          maxW={ui.taglineMaxWidth}
+          justify='center'
+          align='center'
+        >
           <uix.Tagline ref={completion} />
         </VStack>
         {/* <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
@@ -892,12 +897,7 @@ export default function Home({
             aria-label={ui.pricingLabel}
           />
         </Box>
-        <Text
-          variant='description'
-          mx={{ base: ui.xsMargin, lg: ui.lgMargin }}
-          mt={ui.mdMargin}
-          textAlign='left'
-        >
+        <Text variant='description' mx={ui.descriptionMargin} mt={ui.mdMargin} textAlign='left'>
           <Text as='strong' variant='co'>
             Agent First
           </Text>
@@ -919,12 +919,7 @@ export default function Home({
           </Link>
           {' for details) and can be used for up to 30 days after purchase.'}
         </Text>
-        <Text
-          variant='description'
-          mx={{ base: ui.xsMargin, lg: ui.lgMargin }}
-          mt='1lh'
-          textAlign='left'
-        >
+        <Text variant='description' mx={ui.descriptionMargin} mt='1lh' textAlign='left'>
           {'Get '}
           <Text as='strong' variant='bold'>
             1,000 free credits
@@ -933,10 +928,10 @@ export default function Home({
           spend $1,000+ per month.
         </Text>
         <SimpleGrid
-          mx={{ base: ui.smMargin, md: ui.lgMargin }}
-          mt={ui.smMargin}
-          columns={{ base: 1, md: 3 }}
-          spacing={ui.mdMargin}
+          mx={ui.descriptionMargin}
+          mt={{ base: 0, lg: 2 }}
+          columns={{ base: 1, lg: 3 }}
+          spacing={ui.smMargin}
         >
           <Card
             mt={ui.smMargin}
@@ -966,7 +961,7 @@ export default function Home({
             </CardFooter>
           </Card>
           <Card
-            mt={ui.smMargin}
+            mt={ui.cardMargin}
             bg='chakra-subtle-bg'
             shadow='sm'
             cursor='pointer'
@@ -1009,7 +1004,7 @@ export default function Home({
             </CardFooter>
           </Card>
           <Card
-            mt={ui.smMargin}
+            mt={ui.cardMargin}
             bg='chakra-subtle-bg'
             shadow='sm'
             cursor='pointer'
@@ -1064,12 +1059,7 @@ export default function Home({
             h='100%'
           />
         </Box>
-        <Text
-          variant='description'
-          mx={{ base: ui.xsMargin, lg: ui.lgMargin }}
-          mt={ui.mdMargin}
-          textAlign='left'
-        >
+        <Text variant='description' mx={ui.descriptionMargin} mt={ui.mdMargin} textAlign='left'>
           Many of the most successful technology companies were founded by developers who leveraged
           new features of emerging platforms, from desktop computing to AI. We’re betting
           agent-first development is the next big opportunity and are providing the tools you need

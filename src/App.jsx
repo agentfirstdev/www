@@ -295,7 +295,7 @@ export default function App() {
             aria-label={ui.logoLabel}
           />
         </Box>
-        <Flex pos='absolute' top={0} right={ui.navRightPosition} bottom={0} align='center'>
+        <Flex pos='absolute' top={0} right={ui.itemMargin} bottom={0} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
             <Link variant='nav' ml={ui.itemMargin} href={ui.servicesPath}>
               {ui.servicesLabel}
@@ -346,17 +346,17 @@ export default function App() {
                 <MenuButton
                   as={IconButton}
                   display={{ base: 'inline-flex', lg: 'none' }}
-                  mt={ui.hamburgerTopMargin}
-                  ml={ui.hamburgerLeftMargin}
+                  ml={ui.itemMargin}
                   borderRadius='50%'
-                  bg='brand.secondary'
+                  bg='bg-button'
                   w={ui.controlDimension}
                   h={ui.controlDimension}
                   fontSize='xl'
                   icon={<HamburgerIcon />}
                   aria-label={ui.menuLabel}
-                  _hover={{ bg: 'accent.secondary' }}
-                  _dark={{ bg: 'brand.primary', color: 'whiteAlpha.800' }}
+                  _hover={{ bg: 'bg-inverted', _focus: { shadow: ui.outlineInset('bg-inverted') } }}
+                  _light={{ color: 'white' }}
+                  _dark={{ color: 'whiteAlpha.800' }}
                 />
               </Tooltip>
               <MenuList overflow='hidden'>

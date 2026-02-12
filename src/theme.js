@@ -42,7 +42,7 @@ export default extendTheme({
       baseStyle: {
         header: {
           fontFamily: 'subheading',
-          fontSize: { base: '2xl', md: '3xl' },
+          fontSize: '3xl',
           fontWeight: 'bold',
           textDecor: 'underline',
           color: 'bg-button'
@@ -97,7 +97,7 @@ export default extendTheme({
         },
         service: {
           mt: 4,
-          fontSize: { base: 'lg', md: 'xl' },
+          fontSize: { base: 'md', md: 'xl' },
           _light: { fontWeight: 300 },
           _dark: { color: 'whiteAlpha.600' }
         },
@@ -114,7 +114,7 @@ export default extendTheme({
           _dark: { color: 'brand.primary' }
         },
         description: {
-          fontSize: { base: 'lg', md: 'xl' },
+          fontSize: { base: 'md', md: 'xl' },
           _light: { fontWeight: 300 },
           _dark: { color: 'whiteAlpha.600' }
         },

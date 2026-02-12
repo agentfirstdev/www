@@ -256,6 +256,8 @@ export const mdMargin = 14;
 export const lgMargin = 20;
 export const xlMargin = 24;
 export const gradientAngle = 140;
+export const descriptionMargin = { base: 0, lg: smMargin };
+export const cardMargin = { base: 2, lg: smMargin };
 export const outline = (color) => {
   return `${outlineStyle} var(--chakra-colors-${color})`;
 };
@@ -272,12 +274,8 @@ export const loginMargin = '0 0.5rem';
 export const loginWidth = '420px';
 export const loginTextboxMargin = '1rem';
 export const loginButtonMargin = '1rem 0 0.5rem auto';
-export const itemMargin = 6;
+export const itemMargin = { base: 5, lg: 6 };
 export const sunStroke = 3;
-export const hamburgerTopMargin = -1;
-export const hamburgerLeftMargin = 4;
-// export const navTopPosition = { base: '18px', lg: 5 };
-export const navRightPosition = { base: '18px', lg: smMargin };
 
 // Hero
 export const heroHeight = '60vh';
@@ -302,9 +300,8 @@ export const tickLength = 16;
 export const tickDistanceUnit = 420;
 export const tickOffset = 48;
 // export const taglineWidth = { base: '100%', md: '50%' };
-// export const taglineFontSize = { base: '28px', md: '54px' };
-export const taglineFontSize = { base: '28px', md: '66px' };
-export const ctaFontSize = { base: '22px', md: '26px' };
+export const taglineFontSize = { base: '28px', lg: '66px' };
+export const ctaFontSize = { base: '22px', lg: '26px' };
 export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
 export const postItFontSize = { base: '22px', md: '28px' };
