@@ -30,6 +30,7 @@ import LoginDropdown from './components/LoginDropdown';
 import './App.css';
 
 export default function App() {
+  const navbar = useRef();
   const logotype = useRef();
   const githubIcon = useRef();
   const linkedinIcon = useRef();
@@ -108,6 +109,20 @@ export default function App() {
       data.subscription.unsubscribe();
       window.removeEventListener('scroll', handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    if (navbar.current) {
+      const observer = new ResizeObserver(([entry]) => {
+        document.documentElement.style.scrollPaddingTop = `${entry.contentRect.height}px`;
+      });
+
+      observer.observe(navbar.current);
+
+      return () => {
+        observer.disconnect();
+      };
+    }
   }, []);
 
   useEffect(() => {
@@ -258,6 +273,7 @@ export default function App() {
   return (
     <Flex w='100%' minH='100vh' direction='column'>
       <Box
+        ref={navbar}
         position='sticky'
         top={0}
         zIndex='sticky'
