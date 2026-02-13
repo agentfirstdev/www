@@ -47,12 +47,12 @@ export const copyLabel = 'Copy token';
 export const checkoutLabel = 'Add credits';
 export const purchaseLabel = 'Purchase API credits';
 export const loadingPlaceholder = 'Loading ...';
-export const generatingPlaceholder = 'Generating an answer';
-export const updatePlaceholder = 'Your reply to the answer above ...';
+// export const generatingPlaceholder = 'Generating an answer';
+// export const updatePlaceholder = 'Your reply to the answer above ...';
 export const resetHint = 'Start a new conversation';
 export const codeMessage = 'Code copied to clipboard';
 export const copiedMessage = 'Token copied to clipboard';
-export const checkoutMessage = 'Credits added to your account';
+// export const checkoutMessage = 'Credits added to your account';
 export const errorMessage = 'Oops, something went wrong; please try again later';
 export const servicesId = 'services';
 export const pricingId = 'pricing';
@@ -92,7 +92,7 @@ export const completion = [
   { delay: 167, token: 's' },
   { delay: 177, token: 't' }
 ];
-export const initialPlaceholders = [
+/* export const initialPlaceholders = [
   [
     { delay: 0, token: 'Ask' },
     { delay: 55, token: ' me' },
@@ -130,7 +130,7 @@ export const initialPlaceholders = [
     { delay: 198, token: ' question' },
     { delay: 221, token: ' ...' }
   ]
-];
+]; */
 export const timelineLabels = [
   { year: 1984, paradigm: 'Desktop first', log: 1.2 },
   { year: 2000, paradigm: 'Web first', log: 0.9 },
@@ -155,7 +155,7 @@ export const creativeBlue = '#3057e1';
 export const resolutionBlue = '#002082';
 export const charcoalBlue = '#1a202c';
 export const roseRed = '#e54a6d';
-export const pastelYellow = '#fcea8b';
+/* export const pastelYellow = '#fcea8b';
 export const naplesYellow = '#fbe364';
 export const moderateYellow = '#bcaa4b';
 export const coralOrange = '#ffc876';
@@ -163,21 +163,21 @@ export const yellowOrange = '#ff9d48';
 export const burntOrange = '#bf6436';
 export const prettyPink = '#eaabb0';
 export const ruddyPink = '#e38f95';
-export const retroPink = '#aa6b70';
+export const retroPink = '#aa6b70'; */
 export const blackAlpha = 'rgba(26, 32, 44, 0.48)';
 export const whiteAlpha = 'rgba(255, 255, 255, 0.48)';
-export const blueAlpha = 'rgba(74, 109, 229, 0.48)';
+// export const blueAlpha = 'rgba(74, 109, 229, 0.48)';
 export const lightBackground = '#f9fafc';
 export const darkBackground = '#1a202c';
 export const lightTickColor = '#666';
 export const darkTickColor = '#999';
 export const lightGridColor = 'rgba(0, 0, 0, 0.1)';
 export const darkGridColor = 'rgba(255, 255, 255, 0.1)';
-export const postItColors = [
+/* export const postItColors = [
   { background: { from: pastelYellow, to: naplesYellow }, border: moderateYellow },
   { background: { from: coralOrange, to: yellowOrange }, border: burntOrange },
   { background: { from: prettyPink, to: ruddyPink }, border: retroPink }
-];
+]; */
 
 // Typography
 export const headingFont = '"Permanent Marker", cursive';
@@ -286,15 +286,15 @@ export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
 export const taglineWidth = '100%';
 export const taglineMaxWidth = '760px';
-export const postItMaxWidth = '4in';
+/* export const postItMaxWidth = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-shadow-color)';
-export const postItRotation = '-1.5deg';
+export const postItRotation = '-1.5deg'; */
 export const promptMinHeight = '108px';
 export const promptMaxHeight = '180px';
 export const gradientWidth = '12.5%';
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
-export const postItPadding = 4;
+// export const postItPadding = 4;
 export const promptPadding = 3;
 export const timelineFontSize = 28;
 export const timelineClearance = 20;
@@ -304,8 +304,8 @@ export const tickOffset = 48;
 // export const taglineWidth = { base: '100%', md: '50%' };
 export const taglineFontSize = { base: '28px', lg: '66px' };
 export const ctaFontSize = { base: '22px', lg: '26px' };
-export const postItWidth = { base: '100%', md: postItMaxWidth };
-export const postItMinWidth = { base: '3.5in', md: postItMaxWidth };
+/* export const postItWidth = { base: '100%', md: postItMaxWidth };
+export const postItMinWidth = { base: '3.5in', md: postItMaxWidth }; */
 export const postItFontSize = { base: '22px', md: '28px' };
 export const promptFontSize = '18px';
 export const teamFontSize = { base: '32px', md: '32px' };
@@ -353,30 +353,19 @@ export const agentNewWidth = { base: '50%', lg: '144px' };
 
 // Sidebar
 export const sidebarWidth = '560px';
-export const sidebarMargin = `calc(100% - ${sidebarWidth} - ${sidebarWidth} + 4vw)`;
+// export const sidebarMargin = `calc(100% - ${sidebarWidth} - ${sidebarWidth} + 4vw)`;
 export const sidebarCollapsedWidth = '40px';
-export const sidebarCollapsedMargin =
-  'calc(100% - ' + sidebarCollapsedWidth + ' - ' + sidebarCollapsedWidth + ' + 4vw)';
+/* export const sidebarCollapsedMargin =
+  'calc(100% - ' + sidebarCollapsedWidth + ' - ' + sidebarCollapsedWidth + ' + 4vw)'; */
 export const sidebarTravel = `calc(-${sidebarWidth} + ${sidebarCollapsedWidth})`;
 export const sidebarEasing = 'backOut';
 export const sidebarPadding = 6;
-export const sidebarCollapsedPadding = 20;
+// export const sidebarCollapsedPadding = 20;
 export const sidebarCollapseSecs = 0.2;
 
 // Secondary pages
 export const secondaryTextboxWidth = '40ch';
 export const secondaryWidth = { base: '100%', lg: '80%' };
-export const secondaryStyle = {
-  h3: { mt: '1.5rem', fontWeight: 'bold', color: 'brand.secondary' },
-  a: {
-    mx: '-1px',
-    borderRadius: '2px',
-    padding: '1px',
-    color: 'accent.secondary',
-    ':hover': { color: 'brand.secondary' },
-    ':focus': { outline: 'none', shadow: shadowStyle }
-  }
-};
 
 // Chart
 export const dateFormat = 'YYYY-MM-DD';
