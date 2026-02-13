@@ -28,7 +28,13 @@ export default function Login({
             colors: {
               brand: 'var(--chakra-colors-bg-button)',
               brandAccent: 'var(--chakra-colors-bg-inverted)',
-              inputPlaceholder: 'var(--chakra-colors-chakra-placeholder-color)'
+              inputPlaceholder: 'var(--chakra-colors-chakra-placeholder-color)',
+              messageBorder: 'var(--chakra-colors-bg-success)',
+              messageBackground: 'var(--chakra-colors-bg-success)',
+              messageText: 'var(--chakra-colors-fg-success)',
+              messageBorderDanger: 'var(--chakra-colors-bg-failure)',
+              messageBackgroundDanger: 'var(--chakra-colors-bg-failure)',
+              messageTextDanger: 'var(--chakra-colors-fg-failure)'
             }
           }
         },
@@ -50,7 +56,8 @@ export default function Login({
             font,
             fontWeight: 'var(--chakra-fontWeights-bold)',
             transition: ui.transition
-          }
+          },
+          message: { marginTop: ui.loginMessageMargin, padding: ui.loginMessagePadding, font }
         }
       }}
       showLinks={false}

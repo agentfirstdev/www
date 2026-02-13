@@ -272,8 +272,10 @@ export const outlineInset = (color) => {
 export const badgeSize = '1.5rem';
 export const loginMargin = '0 0.5rem';
 export const loginWidth = '420px';
-export const loginTextboxMargin = '1rem';
-export const loginButtonMargin = '1rem 0 0.5rem auto';
+export const loginTextboxMargin = '1em';
+export const loginButtonMargin = '1em 0 0.5em auto';
+export const loginMessageMargin = '0.5em';
+export const loginMessagePadding = '11px 15px';
 export const itemMargin = { base: 5, lg: 6 };
 export const sunStroke = 3;
 

@@ -14,6 +14,8 @@ export default extendTheme({
       'bg-button': { _light: 'accent.secondary', _dark: 'brand.primary' },
       'bg-editor': { _light: 'white', _dark: '#2a2e37' },
       'bg-chrome': { _light: 'gray.50', _dark: '#343944' },
+      'bg-success': { _light: 'green.100', _dark: 'rgba(154, 230, 180, 0.16)' },
+      'bg-failure': { _light: 'red.100', _dark: 'rgba(254, 178, 178, 0.16)' },
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
       'chakra-placeholder-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
       'shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
@@ -22,6 +24,8 @@ export default extendTheme({
       'fg-button': { _light: 'white', _dark: 'whiteAlpha.800' },
       'fg-gutter': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
       'fg-tab': { _light: 'gray.700', _dark: 'whiteAlpha.700' },
+      'fg-success': { _light: 'green.600', _dark: 'green.200' },
+      'fg-failure': { _light: 'red.600', _dark: 'red.200' },
       'chakra-body-text': { _light: 'gray.800', _dark: 'whiteAlpha.800' }
     }
   },
