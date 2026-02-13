@@ -298,7 +298,8 @@ export default extendTheme({
         _dark: { borderColor: 'whiteAlpha.600', color: 'whiteAlpha.600' }
       }
     },
-    Tooltip: { baseStyle: { fontFamily: 'display' } }
+    Tooltip: { baseStyle: { fontFamily: 'display' } },
+    Alert: { baseStyle: { container: { fontFamily: 'display' } } }
   },
   styles: {
     global: {
