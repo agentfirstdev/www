@@ -102,10 +102,10 @@ export default function Dashboard({
     if (session) {
       if (
         Date.now() - new Date(session.user.created_at) < ui.accountAgeThreshold &&
-        !localStorage.getItem(ui.profileFlag)
+        !localStorage.getItem(ui.profileKey)
       ) {
         openSidebar();
-        localStorage.setItem(ui.profileFlag, 'true');
+        localStorage.setItem(ui.profileKey, 'true');
       }
     }
   }, [session]);

@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import {
   Box,
   Flex,
@@ -50,6 +50,7 @@ export default function App() {
   const [shouldShowLogin, setShouldShowLogin] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { hash, pathname } = useLocation();
+  const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
@@ -95,9 +96,18 @@ export default function App() {
       setXPath(module.default);
     });
 
-    const { data } = supabase.client.auth.onAuthStateChange((_, session) => {
+    const { data } = supabase.client.auth.onAuthStateChange((event, session) => {
       setSession(session);
       setIsSessionLoading(false);
+
+      if (event == 'SIGNED_IN') {
+        const pendingAmount = localStorage.getItem(ui.pendingPurchaseKey);
+
+        if (pendingAmount != null) {
+          localStorage.removeItem(ui.pendingPurchaseKey);
+          navigate(`${ui.checkoutPath}?${ui.purchaseKey}=${pendingAmount}`);
+        }
+      }
     });
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);

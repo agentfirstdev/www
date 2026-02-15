@@ -78,7 +78,8 @@ export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargetin
 export const rateUrl = 'https://doc.agentfirst.dev/endpoints/pricing';
 export const purchaseKey = 'amount';
 export const checkoutKey = 'session';
-export const profileFlag = 'wasProfilePresented';
+export const pendingPurchaseKey = 'pendingAmount';
+export const profileKey = 'wasProfilePresented';
 export const completion = [
   { delay: 0, token: 'a' },
   { delay: 13, token: 'g' },

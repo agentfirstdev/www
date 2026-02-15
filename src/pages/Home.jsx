@@ -990,12 +990,11 @@ export default function Home({
               <Pricing
                 ref={purchaseTextbox}
                 addToCart={(dollarAmount) => {
-                  const path = `${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`;
-
                   if (session) {
-                    navigate(path);
+                    navigate(`${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`);
                   } else {
-                    setPendingCheckoutUrl(location.origin + path);
+                    localStorage.setItem(ui.pendingPurchaseKey, dollarAmount);
+                    setPendingCheckoutUrl(ui.checkoutUrl);
                     openLogin();
                   }
                 }}
