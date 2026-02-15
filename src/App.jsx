@@ -105,7 +105,7 @@ export default function App() {
 
         if (pendingAmount != null) {
           localStorage.removeItem(ui.pendingPurchaseKey);
-          navigate(`${ui.checkoutPath}?${ui.purchaseKey}=${pendingAmount}`);
+          navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${pendingAmount}`);
         }
       }
     });

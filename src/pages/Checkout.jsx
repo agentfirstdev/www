@@ -19,7 +19,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
   const [queryString] = useSearchParams();
   const background = useColorModeValue(ui.lightBackground, ui.darkBackground);
   const toast = useToast();
-  const dollarAmount = parseFloat(queryString.get(ui.purchaseKey));
+  const dollarAmount = parseFloat(queryString.get(ui.purchaseParam));
   const isAmountValid = Number.isInteger(dollarAmount) && dollarAmount >= ui.minPurchaseAmount;
   const addToCart = (amount) => {
     setIsLoading(true);

@@ -991,7 +991,7 @@ export default function Home({
                 ref={purchaseTextbox}
                 addToCart={(dollarAmount) => {
                   if (session) {
-                    navigate(`${ui.checkoutPath}?${ui.purchaseKey}=${dollarAmount}`);
+                    navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${dollarAmount}`);
                   } else {
                     localStorage.setItem(ui.pendingPurchaseKey, dollarAmount);
                     setPendingCheckoutUrl(ui.checkoutUrl);

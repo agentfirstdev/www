@@ -111,11 +111,11 @@ export default function Dashboard({
   }, [session]);
 
   useEffect(() => {
-    if (queryString.has(ui.checkoutKey)) {
-      const sessionId = queryString.get(ui.checkoutKey);
+    if (queryString.has(ui.checkoutParam)) {
+      const sessionId = queryString.get(ui.checkoutParam);
       const newQueryString = new URLSearchParams(queryString);
 
-      newQueryString.delete(ui.checkoutKey);
+      newQueryString.delete(ui.checkoutParam);
       setQueryString(newQueryString, { replace: true });
 
       supabaseClient.functions
