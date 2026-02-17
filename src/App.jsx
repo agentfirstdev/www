@@ -126,7 +126,12 @@ export default function App() {
           });
         }
 
-        await supabase.client.auth.signOut();
+        try {
+          await supabase.client.auth.signOut();
+        } finally {
+          setSession(null);
+          setIsSessionLoading(false);
+        }
       } else {
         setSession(session);
         setIsSessionLoading(false);

@@ -6,64 +6,98 @@ import * as ui from '../config/ui';
 
 const waitlistId = 'waitlist';
 
-export default function Waitlist({ supabaseClient, isOpen, close, handleKeyPress, onWaitlisted }) {
+export default function Waitlist({
+  supabaseClient,
+  session,
+  isOpen,
+  close,
+  handleKeyPress,
+  onWaitlisted
+}) {
   const dropdown = useRef(null);
   const [emailAddress, setEmailAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isJoining, setIsJoining] = useState(false);
   const toast = useToast();
+  const isUsingSessionEmail = emailAddress == session?.user?.email;
+  const handleSuccess = () => {
+    localStorage.setItem(ui.waitlistKey, 'true');
+    setIsJoining(true);
+    onWaitlisted();
+  };
+  const handleFailure = () => {
+    if (!toast.isActive(waitlistId)) {
+      toast({
+        id: waitlistId,
+        position: 'top',
+        status: 'error',
+        description: ui.errorMessage,
+        duration: null,
+        isClosable: true
+      });
+    }
+  };
   const joinWaitlist = async () => {
     if (emailAddress) {
-      setIsLoading(true);
+      if (isUsingSessionEmail) {
+        setIsLoading(true);
 
-      const { error: signinError } = await supabaseClient.auth.signInWithOtp({
-        email: emailAddress,
-        options: {
-          data: { source: ui.waitlistSource, service: ui.waitlistService },
-          emailRedirectTo: ui.homeUrl
-        }
-      });
-
-      if (signinError) {
-        setIsLoading(false);
-
-        if (!toast.isActive(waitlistId)) {
-          toast({
-            id: waitlistId,
-            position: 'top',
-            status: 'error',
-            description: ui.errorMessage,
-            duration: null,
-            isClosable: true
-          });
-        }
-      } else {
         const { error: waitlistError } = await supabaseClient.rpc('join_waitlist', {
           waitlist_email: emailAddress,
           waitlist_service: ui.waitlistService
         });
 
-        setIsLoading(false);
-
         if (waitlistError) {
-          if (!toast.isActive(waitlistId)) {
-            toast({
-              id: waitlistId,
-              position: 'top',
-              status: 'error',
-              description: ui.errorMessage,
-              duration: null,
-              isClosable: true
-            });
-          }
+          setIsLoading(false);
+          handleFailure();
         } else {
-          localStorage.setItem(ui.waitlistKey, 'true');
-          setIsJoining(true);
-          onWaitlisted();
+          const { error: confirmationError } = await supabaseClient.rpc('confirm_email', {
+            waitlist_service: ui.waitlistService
+          });
+
+          setIsLoading(false);
+
+          if (confirmationError) {
+            handleFailure();
+          } else {
+            handleSuccess();
+          }
+        }
+      } else {
+        setIsLoading(true);
+
+        const { error: signinError } = await supabaseClient.auth.signInWithOtp({
+          email: emailAddress,
+          options: {
+            data: { source: ui.waitlistSource, service: ui.waitlistService },
+            emailRedirectTo: ui.homeUrl
+          }
+        });
+
+        if (signinError) {
+          setIsLoading(false);
+          handleFailure();
+        } else {
+          const { error: waitlistError } = await supabaseClient.rpc('join_waitlist', {
+            waitlist_email: emailAddress,
+            waitlist_service: ui.waitlistService
+          });
+
+          setIsLoading(false);
+
+          if (waitlistError) {
+            handleFailure();
+          } else {
+            handleSuccess();
+          }
         }
       }
     }
   };
+
+  useEffect(() => {
+    if (session?.user?.email && !emailAddress) setEmailAddress(session.user.email);
+  }, [session]);
 
   useEffect(() => {
     if (isOpen) {
@@ -104,7 +138,7 @@ export default function Waitlist({ supabaseClient, isOpen, close, handleKeyPress
       shadow='sm'
     >
       <Heading variant='dropdown' textAlign='center'>
-        {ui.notificationLabel}
+        {ui.firstLabel}
       </Heading>
       <Button
         variant='monochrome'
@@ -145,7 +179,7 @@ export default function Waitlist({ supabaseClient, isOpen, close, handleKeyPress
           isLoading={isLoading}
           onClick={joinWaitlist}
         >
-          {ui.confirmationLabel}
+          {isUsingSessionEmail ? ui.notificationLabel : ui.confirmationLabel}
         </Button>
         {isJoining && (
           <Text
@@ -160,7 +194,7 @@ export default function Waitlist({ supabaseClient, isOpen, close, handleKeyPress
             fontSize='md'
             color='fg-success'
           >
-            {ui.confirmationMessage}
+            {isUsingSessionEmail ? ui.cdpMessage : ui.confirmationMessage}
           </Text>
         )}
       </Box>

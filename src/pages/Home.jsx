@@ -831,6 +831,7 @@ export default function Home({
               </Button>
               <Waitlist
                 supabaseClient={supabaseClient}
+                session={session}
                 isOpen={isWaitlistOpen}
                 close={() => {
                   setIsWaitlistOpen(false);
