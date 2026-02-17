@@ -4,15 +4,15 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  Divider,
-  Button
+  Button,
+  Divider
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 
 import * as ui from '../config/ui';
 import Login from './Login';
 
-export default function LoginModal({ supabaseClient, redirectUrl, isOpen, open, close }) {
+export default function LoginModal({ supabaseClient, redirectUrl, isOpen, close }) {
   return (
     <Modal isOpen={isOpen} isCentered returnFocusOnClose={false} onClose={close}>
       <ModalOverlay />

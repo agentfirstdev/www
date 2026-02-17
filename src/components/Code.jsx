@@ -36,7 +36,7 @@ export default function Code({ markdown, moreUrl }) {
     <Box
       mt={4}
       borderWidth='1px'
-      borderRadius='md'
+      rounded='md'
       borderColor='chakra-border-color'
       bg='bg-editor'
       overflow='hidden'
@@ -59,7 +59,7 @@ export default function Code({ markdown, moreUrl }) {
               <Box
                 as='button'
                 display='flex'
-                borderRadius='md'
+                rounded='md'
                 bg={isActive ? 'chakra-border-color' : 'transparent'}
                 px={ui.chromeButtonPadding}
                 h={ui.chromeButtonDimension}
@@ -93,7 +93,7 @@ export default function Code({ markdown, moreUrl }) {
           <Box
             as='button'
             display='flex'
-            borderRadius='md'
+            rounded='md'
             w={ui.chromeButtonDimension}
             h={ui.chromeButtonDimension}
             justifyContent='center'

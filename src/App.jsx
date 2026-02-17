@@ -3,7 +3,6 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import {
   Box,
   Flex,
-  Divider,
   Text,
   Link,
   IconButton,
@@ -11,10 +10,12 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Divider,
   Tooltip,
   useColorMode,
   useColorModeValue,
-  useDisclosure
+  useDisclosure,
+  useToast
 } from '@chakra-ui/react';
 import { SunIcon, MoonIcon, HamburgerIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
@@ -56,7 +57,10 @@ export default function App() {
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
   const { isOpen: isMenuOpen, onOpen: openMenu, onClose: closeMenu } = useDisclosure();
   const { isOpen: isSidebarOpen, onOpen: openSidebar, onToggle: toggleSidebar } = useDisclosure();
+  const toast = useToast();
   const modeId = 'mode';
+  const waitlistId = 'waitlist';
+  const errorId = 'error';
   const isLightMode = colorMode == 'light';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
   const generateFrame = (canvas, path, roughParams) => {
@@ -96,16 +100,44 @@ export default function App() {
       setXPath(module.default);
     });
 
-    const { data } = supabase.client.auth.onAuthStateChange((event, session) => {
-      setSession(session);
-      setIsSessionLoading(false);
+    const { data } = supabase.client.auth.onAuthStateChange(async (event, session) => {
+      if (event == 'SIGNED_IN' && session?.user?.user_metadata?.source == ui.waitlistSource) {
+        const { error } = await supabase.client.rpc('confirm_email', {
+          waitlist_service: session.user.user_metadata.service
+        });
 
-      if (event == 'SIGNED_IN') {
-        const pendingAmount = localStorage.getItem(ui.pendingPurchaseKey);
+        if (error) {
+          toast({
+            id: errorId,
+            position: 'top',
+            status: 'error',
+            description: ui.errorMessage,
+            duration: null,
+            isClosable: true
+          });
+        } else {
+          toast({
+            id: waitlistId,
+            position: 'top',
+            status: 'success',
+            description: ui.cdpMessage,
+            duration: null,
+            isClosable: true
+          });
+        }
 
-        if (pendingAmount != null) {
-          localStorage.removeItem(ui.pendingPurchaseKey);
-          navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${pendingAmount}`);
+        await supabase.client.auth.signOut();
+      } else {
+        setSession(session);
+        setIsSessionLoading(false);
+
+        if (event == 'SIGNED_IN') {
+          const pendingAmount = localStorage.getItem(ui.pendingPurchaseKey);
+
+          if (pendingAmount != null) {
+            localStorage.removeItem(ui.pendingPurchaseKey);
+            navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${pendingAmount}`);
+          }
         }
       }
     });
@@ -297,7 +329,7 @@ export default function App() {
         <Box
           as='a'
           display='block'
-          borderRadius='sm'
+          rounded='sm'
           w={ui.logoNewWidth}
           minW={ui.logoMinWidth}
           href='/'
@@ -373,7 +405,7 @@ export default function App() {
                   as={IconButton}
                   display={{ base: 'inline-flex', lg: 'none' }}
                   ml={ui.itemMargin}
-                  borderRadius='50%'
+                  rounded='50%'
                   bg='bg-button'
                   w={ui.controlDimension}
                   h={ui.controlDimension}

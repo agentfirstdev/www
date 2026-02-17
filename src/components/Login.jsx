@@ -43,6 +43,7 @@ export default function Login({
           label: { marginBottom: 0 },
           input: {
             ...(textboxMargin != null && { marginTop: textboxMargin }),
+            borderRadius: 'var(--chakra-radii-md)',
             borderColor: 'var(--chakra-colors-chakra-border-color)',
             ...(textboxBackground && { background: textboxBackground }),
             height: ui.controlDimension,
@@ -52,6 +53,7 @@ export default function Login({
           button: {
             margin: ui.loginButtonMargin,
             border: ui.buttonBorder,
+            borderRadius: 'var(--chakra-radii-md)',
             height: ui.controlDimension,
             font,
             fontWeight: 'var(--chakra-fontWeights-bold)',

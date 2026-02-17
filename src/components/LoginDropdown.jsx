@@ -1,15 +1,15 @@
 import { useRef, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
+  Box,
+  Heading,
+  Button,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
   Avatar,
   AvatarBadge,
-  Box,
-  Heading,
-  Button,
   Divider,
   useBreakpointValue
 } from '@chakra-ui/react';
@@ -68,7 +68,7 @@ export default function LoginDropdown({
       <MenuButton
         ml={ui.itemMargin}
         border='none'
-        borderRadius='50%'
+        rounded='50%'
         sx={{ '&:hover .chakra-avatar': { backgroundColor: 'brand.secondary' } }}
         _focus={{ outline: 'none', shadow: ui.shadowStyle }}
       >
@@ -174,7 +174,7 @@ export default function LoginDropdown({
           w={ui.loginWidth}
           shadow='sm'
         >
-          <Heading variant='login'>{ui.loginLabel}</Heading>
+          <Heading variant='dropdown'>{ui.loginLabel}</Heading>
           <Button
             variant='monochrome'
             position='absolute'

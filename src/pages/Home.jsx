@@ -33,6 +33,7 @@ import * as uix from '../config/uix';
 import Code from '../components/Code';
 import Pricing from '../components/Pricing';
 import LoginModal from '../components/LoginModal';
+import Waitlist from '../components/Waitlist';
 import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
@@ -51,8 +52,8 @@ export default function Home({
   session,
   blueprintStroke,
   blueprintFill,
-  generateFrame /* ,
-  handleKeyPress */
+  generateFrame,
+  handleKeyPress
 }) {
   const completion = useRef();
   // const promptBox = useRef();
@@ -96,6 +97,10 @@ export default function Home({
   const [sitePath, setSitePath] = useState(null);
   const [pendingCheckoutUrl, setPendingCheckoutUrl] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  const [isWaitlisted, setIsWaitlisted] = useState(() => {
+    return localStorage.getItem(ui.waitlistKey) == 'true';
+  });
   const navigate = useNavigate();
   const horizontalDividerOverflow = useBreakpointValue({
     base: ui.dividerBaseOverflow,
@@ -660,7 +665,7 @@ export default function Home({
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.resetHint} hasArrow>
             <IconButton
               ml={4}
-              borderRadius='full'
+              rounded='full'
               size='lg'
               icon={<AddIcon boxSize={4} />}
               shadow='sm'
@@ -745,7 +750,7 @@ export default function Home({
             </Text>
             <Code markdown={{ sh: searchSh, py: searchPy, js: searchJs }} moreUrl={ui.searchUrl} />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
-              Get started
+              {ui.startLabel}
             </Button>
           </Box>
           <Box
@@ -780,7 +785,7 @@ export default function Home({
               moreUrl={ui.browsingUrl}
             />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
-              Get started
+              {ui.startLabel}
             </Button>
           </Box>
           <Box
@@ -812,9 +817,30 @@ export default function Home({
               {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf '}
               of users.
             </Text>
-            <Button mt={4} w={ui.buttonWidth} h={ui.buttonHeight} isDisabled>
-              Join waitlist
-            </Button>
+            <Box position='relative'>
+              <Button
+                mt={4}
+                w={ui.buttonWidth}
+                h={ui.buttonHeight}
+                isDisabled={isWaitlisted}
+                onClick={() => {
+                  setIsWaitlistOpen(!isWaitlistOpen);
+                }}
+              >
+                {isWaitlisted ? ui.waitingLabel : ui.waitLabel}
+              </Button>
+              <Waitlist
+                supabaseClient={supabaseClient}
+                isOpen={isWaitlistOpen}
+                close={() => {
+                  setIsWaitlistOpen(false);
+                }}
+                handleKeyPress={handleKeyPress}
+                onWaitlisted={() => {
+                  setIsWaitlisted(true);
+                }}
+              />
+            </Box>
           </Box>
           <Box
             position='relative'
@@ -869,7 +895,7 @@ export default function Home({
               moreUrl={ui.geotargetingUrl}
             />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
-              Get started
+              {ui.startLabel}
             </Button>
           </Box>
         </Box>
@@ -956,7 +982,7 @@ export default function Home({
             </CardBody>
             <CardFooter>
               <Button w='100%' h={ui.controlDimension} isDisabled={!!session}>
-                {ui.startLabel}
+                {session ? ui.tryingLabel : ui.tryLabel}
               </Button>
             </CardFooter>
           </Card>
@@ -1261,7 +1287,6 @@ export default function Home({
         supabaseClient={supabaseClient}
         redirectUrl={pendingCheckoutUrl}
         isOpen={isLoginOpen}
-        open={openLogin}
         close={closeLogin}
       />
     </>

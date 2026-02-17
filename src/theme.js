@@ -73,7 +73,6 @@ export default extendTheme({
     Heading: {
       baseStyle: { fontSize: { base: '26px', md: '4xl' }, color: 'bg-button' },
       variants: {
-        login: { fontFamily: 'subheading', fontSize: '1.25rem' },
         tagline: { fontFamily: 'display', color: 'chakra-body-text !important' },
         'post-it': { color: 'gray.800' },
         service: { fontFamily: 'subheading' },
@@ -85,7 +84,8 @@ export default extendTheme({
           fontFamily: 'body',
           _light: { color: 'gray.600' },
           _dark: { color: 'whiteAlpha.600' }
-        }
+        },
+        dropdown: { fontFamily: 'subheading', fontSize: '1.25rem' }
       }
     },
     Text: {
@@ -132,7 +132,7 @@ export default extendTheme({
     },
     Link: {
       baseStyle: {
-        borderRadius: ui.outlineRadius,
+        rounded: ui.outlineRadius,
         p: ui.linkPadding,
         fontWeight: 'bold',
         color: 'bg-button',
