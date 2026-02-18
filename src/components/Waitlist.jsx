@@ -21,7 +21,13 @@ export default function Waitlist({
   const toast = useToast();
   const isUsingSessionEmail = emailAddress == session?.user?.email;
   const handleSuccess = () => {
-    localStorage.setItem(ui.waitlistKey, 'true');
+    localStorage.setItem(
+      ui.waitlistKey,
+      JSON.stringify([
+        ...(JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? []),
+        ui.waitlistService
+      ])
+    );
     setIsJoining(true);
     onWaitlisted();
   };

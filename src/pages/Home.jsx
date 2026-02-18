@@ -99,7 +99,7 @@ export default function Home({
   // const [isLoading, setIsLoading] = useState(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const [isWaitlisted, setIsWaitlisted] = useState(() => {
-    return localStorage.getItem(ui.waitlistKey) == 'true';
+    return (JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? []).includes(ui.waitlistService);
   });
   const navigate = useNavigate();
   const horizontalDividerOverflow = useBreakpointValue({
