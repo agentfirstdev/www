@@ -75,24 +75,15 @@ export default function Waitlist({
 
         const { error: signinError } = await supabaseClient.auth.signInWithOtp({
           email: emailAddress,
-          options: {
-            emailRedirectTo:
-              ui.homeUrl +
-              '?' +
-              ui.sourceParam +
-              '=' +
-              ui.waitlistSource +
-              '&' +
-              ui.serviceParam +
-              '=' +
-              ui.waitlistService
-          }
+          options: { emailRedirectTo: ui.homeUrl }
         });
 
         if (signinError) {
           setIsLoading(false);
           handleFailure();
         } else {
+          localStorage.setItem(ui.pendingWaitlistKey, ui.waitlistService);
+
           const { error: waitlistError } = await supabaseClient.rpc('join_waitlist', {
             waitlist_email: emailAddress,
             waitlist_service: ui.waitlistService

@@ -102,11 +102,10 @@ export default function App() {
     });
 
     const { data } = supabase.client.auth.onAuthStateChange(async (event, session) => {
-      const params = new URLSearchParams(window.location.search);
-      const service = params.get(ui.serviceParam);
+      const service = localStorage.getItem(ui.pendingWaitlistKey);
 
-      if (event == 'SIGNED_IN' && service && params.get(ui.sourceParam) == ui.waitlistSource) {
-        history.replaceState({}, '', location.pathname);
+      if (event == 'SIGNED_IN' && service) {
+        localStorage.removeItem(ui.pendingWaitlistKey);
 
         const { error } = await supabase.client.rpc('confirm_email', { waitlist_service: service });
 

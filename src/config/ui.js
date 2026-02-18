@@ -88,13 +88,11 @@ export const browsingUrl = 'https://doc.agentfirst.dev/endpoints/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargeting';
 export const rateUrl = 'https://doc.agentfirst.dev/endpoints/pricing';
 export const purchaseParam = 'amount';
-export const checkoutParam = 'session';
-export const sourceParam = 'source';
-export const serviceParam = 'service';
 export const pendingPurchaseKey = 'pendingAmount';
+export const checkoutParam = 'session';
 export const waitlistKey = 'waitlistServices';
+export const pendingWaitlistKey = 'pendingWaitlistService';
 export const profileKey = 'wasProfilePresented';
-export const waitlistSource = 'waitlist';
 export const waitlistService = 'cdp';
 export const completion = [
   { delay: 0, token: 'a' },
