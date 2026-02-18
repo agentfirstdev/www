@@ -4,7 +4,7 @@ import { AddIcon } from '@chakra-ui/icons';
 
 import * as ui from '../config/ui';
 
-const waitlistId = 'waitlist';
+const toastId = crypto.randomUUID();
 
 export default function Waitlist({
   supabaseClient,
@@ -26,9 +26,9 @@ export default function Waitlist({
     onWaitlisted();
   };
   const handleFailure = () => {
-    if (!toast.isActive(waitlistId)) {
+    if (!toast.isActive(toastId)) {
       toast({
-        id: waitlistId,
+        id: toastId,
         position: 'top',
         status: 'error',
         description: ui.errorMessage,

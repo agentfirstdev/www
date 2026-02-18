@@ -25,8 +25,8 @@ import {
 
 import * as ui from '../config/ui';
 
-const copyId = 'copy';
-const accountId = 'account';
+const copyId = crypto.randomUUID();
+const accountId = crypto.randomUUID();
 
 export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
   const tokenTimeout = useRef();
@@ -58,7 +58,8 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
                 position: 'top',
                 status: 'error',
                 description: ui.errorMessage,
-                duration: ui.toastTimeoutMs
+                duration: null,
+                isClosable: true
               });
             }
 

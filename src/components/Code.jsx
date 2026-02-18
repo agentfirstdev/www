@@ -11,7 +11,7 @@ import CurlSymbol from '../assets/CurlSymbol';
 import PythonDevice from '../assets/PythonDevice';
 import NodeHex from '../assets/NodeHex';
 
-const toastId = 'copy';
+const toastId = crypto.randomUUID();
 const languageNames = { sh: 'bash', py: 'python', js: 'javascript' };
 const languageIcons = { sh: CurlSymbol, py: PythonDevice, js: NodeHex };
 const stripFences = (markdown) => {

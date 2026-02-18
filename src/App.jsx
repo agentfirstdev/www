@@ -30,6 +30,9 @@ import LoginDropdown from './components/LoginDropdown';
 // import Sidebar from './components/Sidebar';
 import './App.css';
 
+const successId = crypto.randomUUID();
+const failureId = crypto.randomUUID();
+
 export default function App() {
   const navbar = useRef();
   const logotype = useRef();
@@ -59,8 +62,6 @@ export default function App() {
   const { isOpen: isSidebarOpen, onOpen: openSidebar, onToggle: toggleSidebar } = useDisclosure();
   const toast = useToast();
   const modeId = 'mode';
-  const waitlistId = 'waitlist';
-  const errorId = 'error';
   const isLightMode = colorMode == 'light';
   const modeLabel = `Switch to ${isLightMode ? 'dark' : 'light'} mode`;
   const generateFrame = (canvas, path, roughParams) => {
@@ -108,7 +109,7 @@ export default function App() {
 
         if (error) {
           toast({
-            id: errorId,
+            id: failureId,
             position: 'top',
             status: 'error',
             description: ui.errorMessage,
@@ -117,7 +118,7 @@ export default function App() {
           });
         } else {
           toast({
-            id: waitlistId,
+            id: successId,
             position: 'top',
             status: 'success',
             description: ui.cdpMessage,

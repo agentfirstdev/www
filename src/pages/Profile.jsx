@@ -17,8 +17,8 @@ import { EditIcon, ViewIcon, ViewOffIcon, CopyIcon, CheckIcon, AddIcon } from '@
 import * as ui from '../config/ui';
 import Login from '../components/Login';
 
-const copyId = 'copy';
-const accountId = 'account';
+const copyId = crypto.randomUUID();
+const accountId = crypto.randomUUID();
 
 export default function Profile({ supabaseClient, session, isSessionLoading }) {
   const tokenTimeout = useRef();
@@ -50,7 +50,8 @@ export default function Profile({ supabaseClient, session, isSessionLoading }) {
                 position: 'top',
                 status: 'error',
                 description: ui.errorMessage,
-                duration: ui.toastTimeoutMs
+                duration: null,
+                isClosable: true
               });
             }
 

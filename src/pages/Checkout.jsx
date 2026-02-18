@@ -9,7 +9,7 @@ import * as ui from '../config/ui';
 import Pricing from '../components/Pricing';
 import Login from '../components/Login';
 
-const toastId = 'checkout';
+const toastId = crypto.randomUUID();
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 export default function Checkout({ supabaseClient, session, isSessionLoading }) {

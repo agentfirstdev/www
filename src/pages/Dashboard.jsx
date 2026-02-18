@@ -33,8 +33,8 @@ import * as ui from '../config/ui';
 import Sidebar from '../components/Sidebar';
 import Login from '../components/Login';
 
-const checkoutId = 'checkout';
-const usageId = 'usage';
+const checkoutId = crypto.randomUUID();
+const usageId = crypto.randomUUID();
 
 Chart.register(CategoryScale, LinearScale, LineElement, PointElement, Legend, Tooltip);
 
