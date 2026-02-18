@@ -198,6 +198,14 @@ export default extendTheme({
         }
       },
       variants: {
+        outline: {
+          field: {
+            _focus: {
+              borderColor: 'bg-button',
+              boxShadow: '0 0 0 2px var(--chakra-colors-bg-button)'
+            }
+          }
+        },
         sidebar: {
           field: { borderWidth: '1px', _light: { bg: 'whiteAlpha.700' }, _dark: { bg: 'gray.700' } }
         }

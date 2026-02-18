@@ -15,6 +15,7 @@ export default function Waitlist({
   onWaitlisted
 }) {
   const dropdown = useRef(null);
+  const textbox = useRef(null);
   const [emailAddress, setEmailAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isJoining, setIsJoining] = useState(false);
@@ -106,6 +107,10 @@ export default function Waitlist({
   }, [session]);
 
   useEffect(() => {
+    if (isOpen && textbox.current) textbox.current.focus();
+  }, [isOpen]);
+
+  useEffect(() => {
     if (isOpen) {
       const handleDismissalClick = (event) => {
         if (dropdown.current && !dropdown.current.contains(event.target)) {
@@ -169,6 +174,7 @@ export default function Waitlist({
         }}
       >
         <Input
+          ref={textbox}
           type='email'
           mt={ui.loginTextboxMargin}
           bg='chakra-body-bg'
