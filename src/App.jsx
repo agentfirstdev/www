@@ -102,10 +102,13 @@ export default function App() {
     });
 
     const { data } = supabase.client.auth.onAuthStateChange(async (event, session) => {
-      if (event == 'SIGNED_IN' && session?.user?.user_metadata?.source == ui.waitlistSource) {
-        const { error } = await supabase.client.rpc('confirm_email', {
-          waitlist_service: session.user.user_metadata.service
-        });
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get(ui.serviceParam);
+
+      if (event == 'SIGNED_IN' && service && params.get(ui.sourceParam) == ui.waitlistSource) {
+        history.replaceState({}, '', location.pathname);
+
+        const { error } = await supabase.client.rpc('confirm_email', { waitlist_service: service });
 
         if (error) {
           toast({

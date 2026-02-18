@@ -76,8 +76,16 @@ export default function Waitlist({
         const { error: signinError } = await supabaseClient.auth.signInWithOtp({
           email: emailAddress,
           options: {
-            data: { source: ui.waitlistSource, service: ui.waitlistService },
-            emailRedirectTo: ui.homeUrl
+            emailRedirectTo:
+              ui.homeUrl +
+              '?' +
+              ui.sourceParam +
+              '=' +
+              ui.waitlistSource +
+              '&' +
+              ui.serviceParam +
+              '=' +
+              ui.waitlistService
           }
         });
 
