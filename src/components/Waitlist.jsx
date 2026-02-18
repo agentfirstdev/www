@@ -160,7 +160,14 @@ export default function Waitlist({
         <AddIcon transform={`rotate(-${ui.openRotation}deg)`} />
       </Button>
       <Divider mt={2} />
-      <Box px={2}>
+      <Box
+        as='form'
+        px={2}
+        onSubmit={(event) => {
+          event.preventDefault();
+          joinWaitlist();
+        }}
+      >
         <Input
           type='email'
           mt={ui.loginTextboxMargin}
@@ -169,21 +176,19 @@ export default function Waitlist({
           fontSize='md'
           placeholder={ui.emailPlaceholder}
           value={emailAddress}
-          onKeyDown={(event) => {
-            handleKeyPress(event, joinWaitlist);
-          }}
+          required
           onChange={(event) => {
             setEmailAddress(event.target.value);
           }}
         />
         <Button
+          type='submit'
           m={ui.loginButtonMargin}
           border={ui.buttonBorder}
           w='100%'
           h={ui.controlDimension}
           fontSize='md'
           isLoading={isLoading}
-          onClick={joinWaitlist}
         >
           {isUsingSessionEmail ? ui.notificationLabel : ui.confirmationLabel}
         </Button>
