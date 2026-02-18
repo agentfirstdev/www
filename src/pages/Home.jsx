@@ -989,7 +989,8 @@ export default function Home({
           </Card>
           <Card
             mt={ui.cardMargin}
-            bg='chakra-subtle-bg'
+            bg='bg-button'
+            color='chakra-subtle-bg'
             shadow='sm'
             cursor='pointer'
             _hover={{ transform: `scale(${ui.hoverScale})` }}
@@ -1001,7 +1002,7 @@ export default function Home({
               }
             }}
           >
-            <CardHeader>{ui.paygLabel}</CardHeader>
+            <CardHeader color='fg-button'>{ui.paygLabel}</CardHeader>
             <CardBody>
               <UnorderedList>
                 <ListItem>1,000 free credits</ListItem>

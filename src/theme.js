@@ -21,6 +21,7 @@ export default extendTheme({
       'shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
       'fg-muted': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
       'fg-grid': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
+      'fg-button': { _light: 'white', _dark: 'whiteAlpha.800' },
       'fg-gutter': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
       'fg-tab': { _light: 'gray.700', _dark: 'whiteAlpha.700' },
       'fg-success': { _light: 'green.600', _dark: 'green.200' },
@@ -239,11 +240,10 @@ export default extendTheme({
         solid: {
           bg: 'bg-button',
           fontSize: { base: 'md', md: 'lg' },
+          color: 'fg-button',
           _hover: { bg: 'bg-inverted', _focus: { shadow: ui.outlineInset('bg-inverted') } },
           _focus: { shadow: ui.outlineInset('bg-button') },
-          _active: { bg: 'bg-inverted' },
-          _light: { color: 'white' },
-          _dark: { color: 'whiteAlpha.800' }
+          _active: { bg: 'bg-inverted' }
         },
         monochrome: {
           color: 'brand.primary',
