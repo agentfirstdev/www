@@ -241,8 +241,11 @@ export default extendTheme({
           bg: 'bg-button',
           fontSize: { base: 'md', md: 'lg' },
           color: 'fg-button',
-          _hover: { bg: 'bg-inverted', _focus: { shadow: ui.outlineInset('bg-inverted') } },
-          _focus: { shadow: ui.outlineInset('bg-button') },
+          _hover: {
+            bg: 'bg-inverted',
+            _focus: { shadow: ui.outlineInset('chakra-body-bg', 'bg-inverted') }
+          },
+          _focus: { shadow: ui.outlineInset('chakra-body-bg', 'bg-button') },
           _active: { bg: 'bg-inverted' }
         },
         monochrome: {

@@ -276,10 +276,10 @@ export const cardMargin = { base: 2, lg: smMargin };
 export const outline = (color) => {
   return `${outlineStyle} var(--chakra-colors-${color})`;
 };
-export const outlineInset = (color) => {
+export const outlineInset = (background, foreground) => {
   return (
-    '0 0 0 1px var(--chakra-colors-chakra-body-bg), ' +
-    `${outlineStyle} var(--chakra-colors-${color})`
+    `0 0 0 1px var(--chakra-colors-${background}), ` +
+    `${outlineStyle} var(--chakra-colors-${foreground})`
   );
 };
 

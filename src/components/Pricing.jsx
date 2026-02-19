@@ -19,7 +19,7 @@ const calculateCredits = (dollars) => {
   ).toLocaleString();
 };
 
-export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBackground }, ref) {
+export default forwardRef(function Pricing({ shouldInvertColors, isCartLoading, addToCart }, ref) {
   const textbox = useRef();
   const [dollarAmount, setDollarAmount] = useState('');
   const parsedAmount = parseFloat(dollarAmount);
@@ -56,7 +56,15 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
         <InputLeftElement
           h={ui.controlDimension}
           fontSize='lg'
-          color={dollarAmount ? 'chakra-body-text' : 'chakra-placeholder-color'}
+          color={
+            shouldInvertColors
+              ? dollarAmount
+                ? 'fg-button'
+                : 'whiteAlpha.700'
+              : dollarAmount
+                ? 'chakra-body-text'
+                : 'chakra-placeholder-color'
+          }
           pointerEvents='none'
         >
           $
@@ -72,7 +80,6 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
         >
           <NumberInputField
             ref={textbox}
-            {...(textboxBackground && { bg: textboxBackground })}
             pl={ui.purchaseAmountPadding}
             h={ui.controlDimension}
             fontSize='lg'
@@ -83,12 +90,31 @@ export default forwardRef(function Pricing({ isCartLoading, addToCart, textboxBa
             }}
             _focus={{
               borderColor: 'transparent',
-              shadow: `${ui.outlineStyle} var(--chakra-colors-bg-button)`
+              shadow: shouldInvertColors ? ui.outline('fg-button') : ui.outline('bg-button')
             }}
+            {...(shouldInvertColors && {
+              borderColor: 'whiteAlpha.500',
+              bg: 'whiteAlpha.400',
+              color: 'fg-button',
+              _placeholder: { color: 'whiteAlpha.700' },
+              _hover: { borderColor: 'whiteAlpha.700', _focus: { borderColor: 'transparent' } }
+            })}
           />
         </NumberInput>
       </InputGroup>
-      <Button h={ui.controlDimension} isLoading={isCartLoading} onClick={handleSubmit}>
+      <Button
+        h={ui.controlDimension}
+        isLoading={isCartLoading}
+        onClick={handleSubmit}
+        {...(shouldInvertColors && {
+          bg: 'fg-button',
+          color: 'bg-button',
+          _hover: { _focus: { shadow: ui.outlineInset('bg-button', 'whiteAlpha-700') } },
+          _focus: { shadow: ui.outlineInset('bg-button', 'fg-button') },
+          _light: { _hover: { bg: 'whiteAlpha.700' }, _active: { bg: 'whiteAlpha.700' } },
+          _dark: { _hover: { bg: 'whiteAlpha.600' }, _active: { bg: 'whiteAlpha.600' } }
+        })}
+      >
         {`Buy ${isAmountValid ? `${calculateCredits(parsedAmount)} ` : ''}credits`}
       </Button>
     </Flex>

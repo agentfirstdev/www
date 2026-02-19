@@ -420,7 +420,10 @@ export default function App() {
                   fontSize='xl'
                   icon={<HamburgerIcon />}
                   aria-label={ui.menuLabel}
-                  _hover={{ bg: 'bg-inverted', _focus: { shadow: ui.outlineInset('bg-inverted') } }}
+                  _hover={{
+                    bg: 'bg-inverted',
+                    _focus: { shadow: ui.outlineInset('chakra-body-bg', 'bg-inverted') }
+                  }}
                   _light={{ color: 'white' }}
                   _dark={{ color: 'whiteAlpha.800' }}
                 />

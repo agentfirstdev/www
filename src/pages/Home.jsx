@@ -1017,6 +1017,7 @@ export default function Home({
             <CardFooter>
               <Pricing
                 ref={purchaseTextbox}
+                shouldInvertColors
                 addToCart={(dollarAmount) => {
                   if (session) {
                     navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${dollarAmount}`);
@@ -1026,7 +1027,6 @@ export default function Home({
                     openLogin();
                   }
                 }}
-                textboxBackground='bg-muted'
               />
             </CardFooter>
           </Card>
