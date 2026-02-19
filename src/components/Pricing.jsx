@@ -110,7 +110,7 @@ export default forwardRef(function Pricing({ shouldInvertColors, isCartLoading, 
           bg: 'fg-button',
           color: 'bg-button',
           _hover: { _focus: { shadow: ui.outlineInset('bg-button', 'whiteAlpha-700') } },
-          _focus: { shadow: ui.outlineInset('bg-button', 'fg-button') },
+          _focus: { shadow: ui.outlineInset('bg-button', 'whiteAlpha-700') },
           _light: { _hover: { bg: 'whiteAlpha.700' }, _active: { bg: 'whiteAlpha.700' } },
           _dark: { _hover: { bg: 'whiteAlpha.600' }, _active: { bg: 'whiteAlpha.600' } }
         })}
