@@ -87,6 +87,7 @@ export default function Home({
   const hasAnimatedCompletion = useRef(false);
   const hasAnimatedTimeline = useRef(false);
   // const hasScrolledToTeam = useRef(false);
+  const isPurchaseTextboxFocused = useRef(false);
   const [servicesPath, setServicesPath] = useState(null);
   const [pricingPath, setPricingPath] = useState(null);
   const [hedPath, setHedPath] = useState(null);
@@ -994,12 +995,17 @@ export default function Home({
             shadow='sm'
             cursor='pointer'
             _hover={{ transform: `scale(${ui.hoverScale})` }}
+            onMouseDown={() => {
+              isPurchaseTextboxFocused.current = purchaseTextbox.current?.isFocused();
+            }}
             onClick={() => {
-              if (purchaseTextbox.current?.isAmountValid) {
-                purchaseTextbox.current.submit();
+              if (isPurchaseTextboxFocused.current || purchaseTextbox.current?.hasAmount) {
+                purchaseTextbox.current?.submit();
               } else {
-                purchaseTextbox.current?.reportValidity();
+                purchaseTextbox.current?.focus();
               }
+
+              isPurchaseTextboxFocused.current = false;
             }}
           >
             <CardHeader color='fg-button'>{ui.paygLabel}</CardHeader>

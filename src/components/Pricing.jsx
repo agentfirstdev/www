@@ -41,11 +41,15 @@ export default forwardRef(function Pricing({ shouldInvertColors, isCartLoading, 
 
   useImperativeHandle(ref, () => {
     return {
+      reportValidity,
+      submit: handleSubmit,
       focus: () => {
         textbox.current?.focus();
       },
-      reportValidity,
-      submit: handleSubmit,
+      isFocused: () => {
+        return document.activeElement == textbox.current;
+      },
+      hasAmount: !!parsedAmount,
       isAmountValid
     };
   }, [parsedAmount, isAmountValid, addToCart]);
