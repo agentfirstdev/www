@@ -278,8 +278,13 @@ export const outline = (color) => {
 };
 export const outlineInset = (background, foreground) => {
   return (
-    `0 0 0 1px var(--chakra-colors-${background}), ` +
-    `${outlineStyle} var(--chakra-colors-${foreground})`
+    '0 0 0 1px var(--chakra-colors-' +
+    background +
+    '), ' +
+    outlineStyle +
+    ' var(--chakra-colors-' +
+    foreground +
+    ')'
   );
 };
 
