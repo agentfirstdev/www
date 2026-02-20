@@ -28,8 +28,6 @@ export default defineConfig({
               name = 'highlight';
             } else if (id.includes('chart')) {
               name = 'chart';
-            } else if (id.includes('moment')) {
-              name = 'moment';
             } else if (id.includes('supabase')) {
               name = 'supabase';
             } else if (id.includes('stripe')) {
