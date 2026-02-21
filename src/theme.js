@@ -102,7 +102,7 @@ export default extendTheme({
         },
         service: {
           mt: 4,
-          fontSize: { base: 'md', md: 'xl' },
+          fontSize: { base: 'md', md: 'lg' },
           _light: { fontWeight: 300 },
           _dark: { color: 'whiteAlpha.600' }
         },
@@ -119,7 +119,7 @@ export default extendTheme({
           _dark: { color: 'brand.primary' }
         },
         description: {
-          fontSize: { base: 'md', md: 'xl' },
+          fontSize: { base: 'md', md: 'lg' },
           _light: { fontWeight: 300 },
           _dark: { color: 'whiteAlpha.600' }
         },
@@ -152,6 +152,7 @@ export default extendTheme({
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
         },
         doc: {
+          display: { base: 'none', lg: 'inline' },
           position: 'absolute',
           right: ui.editorHorizontalMargin,
           bottom: ui.editorVerticalMargin,

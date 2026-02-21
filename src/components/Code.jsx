@@ -92,7 +92,7 @@ export default function Code({ markdown, moreUrl }) {
         >
           <Box
             as='button'
-            display='flex'
+            display={{ base: 'none', md: 'flex' }}
             rounded='md'
             w={ui.chromeButtonDimension}
             h={ui.chromeButtonDimension}
