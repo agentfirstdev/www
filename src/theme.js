@@ -34,7 +34,7 @@ export default extendTheme({
     accent: { primary: ui.cornflowerBlue, secondary: ui.creativeBlue },
     outline: ui.royalBlue
   },
-  shadows: { outline: `${ui.outlineStyle} var(--chakra-colors-outline)` },
+  shadows: { outline: ui.outline('outline') },
   fonts: {
     heading: ui.headingFont,
     subheading: ui.subheadingFont,
@@ -201,12 +201,7 @@ export default extendTheme({
       },
       variants: {
         outline: {
-          field: {
-            _focus: {
-              borderColor: 'bg-button',
-              boxShadow: '0 0 0 2px var(--chakra-colors-bg-button)'
-            }
-          }
+          field: { _focus: { borderColor: 'bg-button', boxShadow: ui.outline('bg-button') } }
         },
         sidebar: {
           field: { borderWidth: '1px', _light: { bg: 'whiteAlpha.700' }, _dark: { bg: 'gray.700' } }
