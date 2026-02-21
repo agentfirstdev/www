@@ -33,7 +33,7 @@ import * as uix from '../config/uix';
 import Code from '../components/Code';
 import Pricing from '../components/Pricing';
 import LoginModal from '../components/LoginModal';
-import Waitlist from '../components/Waitlist';
+import WaitlistModal from '../components/WaitlistModal';
 import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
@@ -52,8 +52,8 @@ export default function Home({
   session,
   blueprintStroke,
   blueprintFill,
-  generateFrame,
-  handleKeyPress
+  generateFrame /* ,
+  handleKeyPress */
 }) {
   const completion = useRef();
   // const promptBox = useRef();
@@ -98,7 +98,6 @@ export default function Home({
   const [sitePath, setSitePath] = useState(null);
   const [pendingCheckoutUrl, setPendingCheckoutUrl] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const [isWaitlisted, setIsWaitlisted] = useState(() => {
     return (JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? []).includes(ui.waitlistService);
   });
@@ -113,6 +112,7 @@ export default function Home({
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
   const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
+  const { isOpen: isWaitlistOpen, onOpen: openWaitlist, onClose: closeWaitlist } = useDisclosure();
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
   /* const animatePrompt = (index) => {
     promptTimeouts.current?.forEach(clearTimeout);
@@ -818,31 +818,15 @@ export default function Home({
               {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf '}
               of users.
             </Text>
-            <Box position='relative'>
-              <Button
-                mt={4}
-                w={ui.buttonWidth}
-                h={ui.buttonHeight}
-                isDisabled={isWaitlisted}
-                onClick={() => {
-                  setIsWaitlistOpen(!isWaitlistOpen);
-                }}
-              >
-                {isWaitlisted ? ui.waitingLabel : ui.waitLabel}
-              </Button>
-              <Waitlist
-                supabaseClient={supabaseClient}
-                session={session}
-                isOpen={isWaitlistOpen}
-                close={() => {
-                  setIsWaitlistOpen(false);
-                }}
-                handleKeyPress={handleKeyPress}
-                onWaitlisted={() => {
-                  setIsWaitlisted(true);
-                }}
-              />
-            </Box>
+            <Button
+              mt={4}
+              w={ui.buttonWidth}
+              h={ui.buttonHeight}
+              isDisabled={isWaitlisted}
+              onClick={openWaitlist}
+            >
+              {isWaitlisted ? ui.waitingLabel : ui.waitLabel}
+            </Button>
           </Box>
           <Box
             position='relative'
@@ -1296,6 +1280,15 @@ export default function Home({
         redirectUrl={pendingCheckoutUrl}
         isOpen={isLoginOpen}
         close={closeLogin}
+      />
+      <WaitlistModal
+        supabaseClient={supabaseClient}
+        session={session}
+        isOpen={isWaitlistOpen}
+        join={() => {
+          setIsWaitlisted(true);
+        }}
+        close={closeWaitlist}
       />
     </>
   );

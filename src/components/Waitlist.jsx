@@ -1,6 +1,5 @@
-import { useRef, useState, useEffect } from 'react';
-import { Box, Text, Heading, Input, Button, Divider, useToast } from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
+import { useState, useEffect } from 'react';
+import { Box, Text, Input, Button, useToast } from '@chakra-ui/react';
 
 import * as ui from '../config/ui';
 
@@ -9,13 +8,11 @@ const toastId = crypto.randomUUID();
 export default function Waitlist({
   supabaseClient,
   session,
-  isOpen,
-  close,
-  handleKeyPress,
-  onWaitlisted
+  fontSize,
+  textboxMargin,
+  textboxBackground,
+  join
 }) {
-  const dropdown = useRef(null);
-  const textbox = useRef(null);
   const [emailAddress, setEmailAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isJoining, setIsJoining] = useState(false);
@@ -30,7 +27,7 @@ export default function Waitlist({
       ])
     );
     setIsJoining(true);
-    onWaitlisted();
+    join();
   };
   const handleFailure = () => {
     if (!toast.isActive(toastId)) {
@@ -105,115 +102,56 @@ export default function Waitlist({
     if (session?.user?.email && !emailAddress) setEmailAddress(session.user.email);
   }, [session]);
 
-  useEffect(() => {
-    if (isOpen && textbox.current) textbox.current.focus();
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (isOpen) {
-      const handleDismissalClick = (event) => {
-        if (dropdown.current && !dropdown.current.contains(event.target)) {
-          close();
-        }
-      };
-      const handleEscapePress = (event) => {
-        handleKeyPress(event, null, () => {
-          close();
-        });
-      };
-
-      document.addEventListener('mousedown', handleDismissalClick);
-      document.addEventListener('keydown', handleEscapePress);
-
-      return () => {
-        document.removeEventListener('mousedown', handleDismissalClick);
-        document.removeEventListener('keydown', handleEscapePress);
-      };
-    }
-  }, [isOpen, close]);
-
-  return isOpen ? (
+  return (
     <Box
-      ref={dropdown}
-      position='absolute'
-      top={0}
-      left={ui.buttonWidth}
-      zIndex='modal'
-      mt={4}
-      ml={4}
-      rounded='md'
-      bg='bg-panel'
-      p={2}
-      w={ui.loginWidth}
-      shadow='sm'
+      as='form'
+      px={2}
+      onSubmit={(event) => {
+        event.preventDefault();
+        joinWaitlist();
+      }}
     >
-      <Heading variant='dropdown' textAlign='center'>
-        {ui.firstLabel}
-      </Heading>
-      <Button
-        variant='monochrome'
-        position='absolute'
-        top={ui.closePosition}
-        right={ui.closePosition}
-        size='xs'
-        p={0}
-        fontSize='sm'
-        aria-label={ui.closeLabel}
-        onClick={close}
-      >
-        <AddIcon transform={`rotate(-${ui.openRotation}deg)`} />
-      </Button>
-      <Divider mt={2} />
-      <Box
-        as='form'
-        px={2}
-        onSubmit={(event) => {
-          event.preventDefault();
-          joinWaitlist();
+      <Input
+        type='email'
+        mt={textboxMargin}
+        bg={textboxBackground}
+        h={ui.controlDimension}
+        fontSize={fontSize}
+        placeholder={ui.emailPlaceholder}
+        value={emailAddress}
+        autoFocus={true}
+        required
+        onChange={(event) => {
+          setEmailAddress(event.target.value);
         }}
+      />
+      <Button
+        type='submit'
+        m={ui.loginButtonMargin}
+        border={ui.buttonBorder}
+        w='100%'
+        h={ui.controlDimension}
+        fontSize={fontSize}
+        isLoading={isLoading}
       >
-        <Input
-          ref={textbox}
-          type='email'
-          mt={ui.loginTextboxMargin}
-          bg='chakra-body-bg'
-          h={ui.controlDimension}
-          fontSize='md'
-          placeholder={ui.emailPlaceholder}
-          value={emailAddress}
-          required
-          onChange={(event) => {
-            setEmailAddress(event.target.value);
-          }}
-        />
-        <Button
-          type='submit'
-          m={ui.loginButtonMargin}
-          border={ui.buttonBorder}
-          w='100%'
-          h={ui.controlDimension}
-          fontSize='md'
-          isLoading={isLoading}
+        {isUsingSessionEmail ? ui.notificationLabel : ui.confirmationLabel}
+      </Button>
+      {isJoining && (
+        <Text
+          my={ui.loginMessageMargin}
+          border='1px solid'
+          rounded='md'
+          borderColor='bg-success'
+          bg='bg-success'
+          p={ui.loginMessagePadding}
+          textAlign='center'
+          fontFamily='display'
+          fontSize={fontSize}
+          color='fg-success'
         >
-          {isUsingSessionEmail ? ui.notificationLabel : ui.confirmationLabel}
-        </Button>
-        {isJoining && (
-          <Text
-            my={ui.loginMessageMargin}
-            border='1px solid'
-            rounded='md'
-            borderColor='bg-success'
-            bg='bg-success'
-            p={ui.loginMessagePadding}
-            textAlign='center'
-            fontFamily='display'
-            fontSize='md'
-            color='fg-success'
-          >
-            {isUsingSessionEmail ? ui.cdpMessage : ui.confirmationMessage}
-          </Text>
-        )}
-      </Box>
+          {isUsingSessionEmail ? ui.cdpMessage : ui.confirmationMessage}
+        </Text>
+      )}
     </Box>
-  ) : null;
+  );
 }

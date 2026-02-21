@@ -43,9 +43,7 @@ export default function LoginDropdown({
   useEffect(() => {
     if (shouldShowLogin) {
       const handleDismissalClick = (event) => {
-        if (dropdown.current && !dropdown.current.contains(event.target)) {
-          setShouldShowLogin(false);
-        }
+        if (dropdown.current && !dropdown.current.contains(event.target)) setShouldShowLogin(false);
       };
       const handleEscapePress = (event) => {
         handleKeyPress(event, null, () => {
