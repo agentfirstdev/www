@@ -32,6 +32,7 @@ import * as ui from '../config/ui';
 import * as uix from '../config/uix';
 import Code from '../components/Code';
 import Pricing from '../components/Pricing';
+import XRay from '../components/XRay';
 import LoginModal from '../components/LoginModal';
 import WaitlistModal from '../components/WaitlistModal';
 import searchSh from '../markdown/search-sh.md?raw';
@@ -1275,6 +1276,7 @@ export default function Home({
           </Card>
         </Flex>
       </Box>
+      <XRay />
       <LoginModal
         supabaseClient={supabaseClient}
         redirectUrl={pendingCheckoutUrl}
