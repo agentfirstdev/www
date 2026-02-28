@@ -3,36 +3,36 @@ import { Box, useColorModeValue } from '@chakra-ui/react';
 
 import * as ui from '../config/ui';
 
+const maskRadius = ui.xRayDiameterPixels / 2;
+const gradients = [];
+
+for (let i = 0; i < ui.xRayRougheningPasses; i++) {
+  const offset = i * (!(i % 2) ? 1 : -1);
+
+  gradients.push(
+    'radial-gradient(circle ' +
+      (maskRadius + offset) +
+      'px at ' +
+      (50 - offset) +
+      '% ' +
+      (50 + offset) +
+      '%, rgba(0, 0, 0, ' +
+      ui.xRayOpacity +
+      ') 0%, transparent 100%)'
+  );
+}
+
+const mask = gradients.join(', ');
+const maskSize = `${ui.xRayDiameterPixels}px ${ui.xRayDiameterPixels}px`;
+
 export default function XRay() {
   const field = useRef();
   const anatomy = useRef();
-  const animationFrame = useRef();
   const [isDesktopView] = useState(() => {
     return window?.matchMedia('(hover: hover)').matches;
   });
   const backgroundColor = useColorModeValue(ui.darkBackground, ui.lightBackground);
   const textColor = useColorModeValue(ui.whiteAlpha, ui.blackAlpha);
-  const maskRadius = ui.xRayDiameterPixels / 2;
-  const gradients = [];
-
-  for (let i = 0; i < ui.xRayRougheningPasses; i++) {
-    const offset = i * (!(i % 2) ? 1 : -1);
-
-    gradients.push(
-      'radial-gradient(circle ' +
-        (maskRadius + offset) +
-        'px at ' +
-        (50 - offset) +
-        '% ' +
-        (50 + offset) +
-        '%, rgba(0, 0, 0, ' +
-        ui.xRayOpacity +
-        ') 0%, transparent 100%)'
-    );
-  }
-
-  const mask = gradients.join(', ');
-  const maskSize = `${ui.xRayDiameterPixels}px ${ui.xRayDiameterPixels}px`;
 
   useEffect(() => {
     if (isDesktopView) {
@@ -72,16 +72,6 @@ export default function XRay() {
         }
       };
 
-      const handleMouseMove = (event) => {
-        if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
-
-        animationFrame.current = requestAnimationFrame(() => {
-          updateMask(event);
-
-          animationFrame.current = null;
-        });
-      };
-
       const handleMouseOver = (event) => {
         if (field.current) field.current.style.opacity = 1;
 
@@ -93,16 +83,15 @@ export default function XRay() {
       };
 
       window.addEventListener('scroll', handleScroll, { passive: true });
-      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mousemove', updateMask);
       document.addEventListener('mouseenter', handleMouseOver);
       document.addEventListener('mouseleave', handleMouseOut);
 
       return () => {
         window.removeEventListener('scroll', handleScroll);
-        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mousemove', updateMask);
         document.removeEventListener('mouseenter', handleMouseOver);
         document.removeEventListener('mouseleave', handleMouseOut);
-        if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
       };
     }
   }, []);
@@ -113,7 +102,7 @@ export default function XRay() {
       position='fixed'
       top={0}
       left={0}
-      zIndex={ui.xRayZIndex}
+      zIndex='popover'
       opacity={0}
       bg={backgroundColor}
       w='100vw'

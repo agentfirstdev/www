@@ -253,7 +253,6 @@ export const agentRoughness = 3;
 export const iconStrokeWidth = 3;
 export const iconRoughness = 5;
 export const iconRotationMs = 400;
-export const xRayZIndex = 1900;
 export const xRayOpacity = 0.4;
 export const xRayDiameterPixels = 280;
 export const xRayRougheningPasses = 3;
