@@ -95,17 +95,21 @@ export const pendingWaitlistKey = 'pendingWaitlistService';
 export const profileKey = 'wasProfilePresented';
 export const waitlistService = 'cdp';
 export const completion = [
-  { delay: 0, token: 'a' },
-  { delay: 13, token: 'g' },
-  { delay: 31, token: 'e' },
-  { delay: 54, token: 'n' },
-  { delay: 66, token: 't' },
-  { delay: 85, token: '-' },
-  { delay: 102, token: 'f' },
-  { delay: 129, token: 'i' },
-  { delay: 145, token: 'r' },
-  { delay: 167, token: 's' },
-  { delay: 177, token: 't' }
+  { delay: 0, token: 'r' },
+  { delay: 13, token: 'e' },
+  { delay: 31, token: 'l' },
+  { delay: 54, token: 'i' },
+  { delay: 66, token: 'a' },
+  { delay: 85, token: 'b' },
+  { delay: 102, token: 'l' },
+  { delay: 129, token: 'e' },
+  { delay: 145, token: ' ' },
+  { delay: 167, token: 'a' },
+  { delay: 180, token: 'c' },
+  { delay: 193, token: 'c' },
+  { delay: 203, token: 'e' },
+  { delay: 211, token: 's' },
+  { delay: 218, token: 's' }
 ];
 /* export const initialPlaceholders = [
   [
@@ -197,9 +201,10 @@ export const darkGridColor = 'rgba(255, 255, 255, 0.1)';
 // Typography
 export const headingFont = '"Permanent Marker", cursive';
 export const subheadingFont = '"Indie Flower", cursive';
-export const displayFont = '"Fira Sans", sans-serif';
-export const bodyFont = '"Fira Sans Condensed", sans-serif';
-export const footerFont = '"Fira Sans Condensed", sans-serif';
+export const displayFont = '"Outfit", sans-serif';
+export const bodyFont = '"Outfit", sans-serif';
+export const codeFont = '"JetBrains Mono", monospace';
+export const footerFont = '"Outfit", sans-serif';
 
 // Controls
 export const controlDimension = '48px';

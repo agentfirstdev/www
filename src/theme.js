@@ -19,7 +19,7 @@ export default extendTheme({
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
       'chakra-placeholder-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
       'shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
-      'fg-muted': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
+      'fg-muted': { _light: 'gray.600', _dark: 'whiteAlpha.600' },
       'fg-grid': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
       'fg-button': { _light: 'white', _dark: 'whiteAlpha.800' },
       'fg-gutter': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
@@ -40,6 +40,7 @@ export default extendTheme({
     subheading: ui.subheadingFont,
     display: ui.displayFont,
     body: ui.bodyFont,
+    code: ui.codeFont,
     footer: ui.footerFont
   },
   components: {
@@ -74,25 +75,24 @@ export default extendTheme({
     Heading: {
       baseStyle: { fontSize: { base: '26px', md: '4xl' }, color: 'bg-button' },
       variants: {
-        tagline: { fontFamily: 'display', color: 'chakra-body-text !important' },
+        tagline: {
+          lineHeight: 1.1,
+          fontFamily: 'display',
+          fontWeight: 800,
+          color: 'chakra-body-text !important'
+        },
         'post-it': { color: 'gray.800' },
         service: { fontFamily: 'subheading' },
         team: { textAlign: 'center', fontWeight: 'normal' },
         name: { fontFamily: 'subheading' },
-        secondary: {
-          mt: ui.mdMargin,
-          mb: ui.smMargin,
-          fontFamily: 'body',
-          _light: { color: 'gray.600' },
-          _dark: { color: 'whiteAlpha.600' }
-        },
+        secondary: { mt: ui.mdMargin, mb: ui.smMargin, fontFamily: 'body', color: 'fg-muted' },
         dropdown: { fontFamily: 'subheading', fontSize: '1.25rem' }
       }
     },
     Text: {
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
-        cta: { my: 4, fontSize: ui.ctaFontSize, color: 'fg-muted' },
+        cta: { my: 4, fontSize: ui.ctaFontSize, fontWeight: 300, color: 'fg-muted' },
         'post-it': {
           my: 6,
           textAlign: 'left',
@@ -109,6 +109,7 @@ export default extendTheme({
         teammate: {
           mt: 2,
           fontFamily: 'footer',
+          fontSize: 'md',
           _light: { fontWeight: 300, color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
@@ -176,7 +177,7 @@ export default extendTheme({
           borderBottomWidth: '2px',
           borderBottomColor: 'bg-button',
           p: 0,
-          h: '24px',
+          h: '22px',
           fontWeight: 500,
           _hover: { borderColor: 'bg-inverted' }
         },
