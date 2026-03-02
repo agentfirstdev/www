@@ -76,6 +76,7 @@ export default extendTheme({
       baseStyle: { fontSize: { base: '26px', md: '4xl' }, color: 'bg-button' },
       variants: {
         tagline: {
+          mt: 4,
           lineHeight: 1.1,
           fontFamily: 'display',
           fontWeight: 800,
@@ -92,6 +93,16 @@ export default extendTheme({
     Text: {
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
+        pill: { fontSize: 'xs', fontWeight: 'medium' },
+        audience: {
+          mt: 4,
+          fontFamily: 'code',
+          fontSize: '11px',
+          fontWeight: 600,
+          textTransform: 'uppercase',
+          letterSpacing: '.2em',
+          color: 'fg-muted'
+        },
         cta: { my: 4, fontSize: ui.ctaFontSize, fontWeight: 300, color: 'fg-muted' },
         'post-it': {
           my: 6,

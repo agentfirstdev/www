@@ -305,7 +305,7 @@ export const itemMargin = { base: 5, lg: 6 };
 export const sunStroke = 3;
 
 // Hero
-export const heroHeight = '60vh';
+export const heroHeight = '50vh';
 // export const logoMargin = '8px';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
