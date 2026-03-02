@@ -32,8 +32,9 @@ import * as ui from '../config/ui';
 import * as uix from '../config/uix';
 import Code from '../components/Code';
 import Pricing from '../components/Pricing';
-import LoginModal from '../components/LoginModal';
+import WaitlistDropdown from '../components/WaitlistDropdown';
 import WaitlistModal from '../components/WaitlistModal';
+import LoginModal from '../components/LoginModal';
 import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
@@ -52,8 +53,8 @@ export default function Home({
   session,
   blueprintStroke,
   blueprintFill,
-  generateFrame /* ,
-  handleKeyPress */
+  generateFrame,
+  handleKeyPress
 }) {
   const completion = useRef();
   // const promptBox = useRef();
@@ -106,13 +107,19 @@ export default function Home({
     base: ui.dividerBaseOverflow,
     md: ui.horizontalDividerOverflow
   });
+  const isInMdView = useBreakpointValue({ base: false, md: true });
   const headingColor = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const invertedColor = useColorModeValue(ui.resolutionBlue, ui.cornflowerBlue);
   const textColor = useColorModeValue(ui.charcoalBlue, ui.whiteAlpha);
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
   const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
-  const { isOpen: isWaitlistOpen, onOpen: openWaitlist, onClose: closeWaitlist } = useDisclosure();
+  const {
+    isOpen: isWaitlistOpen,
+    onOpen: openWaitlist,
+    onClose: closeWaitlist,
+    onToggle: toggleWaitlist
+  } = useDisclosure();
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
   /* const animatePrompt = (index) => {
     promptTimeouts.current?.forEach(clearTimeout);
@@ -818,15 +825,32 @@ export default function Home({
               {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf '}
               of users.
             </Text>
-            <Button
-              mt={4}
-              w={ui.buttonWidth}
-              h={ui.buttonHeight}
-              isDisabled={isWaitlisted}
-              onClick={openWaitlist}
-            >
-              {isWaitlisted ? ui.waitingLabel : ui.waitLabel}
-            </Button>
+            <Box position='relative'>
+              <Button
+                mt={4}
+                w={ui.buttonWidth}
+                h={ui.buttonHeight}
+                isDisabled={isWaitlisted}
+                onMouseDown={(event) => {
+                  event.stopPropagation();
+                }}
+                onClick={isInMdView ? toggleWaitlist : openWaitlist}
+              >
+                {isWaitlisted ? ui.waitingLabel : ui.waitLabel}
+              </Button>
+              {isInMdView && (
+                <WaitlistDropdown
+                  supabaseClient={supabaseClient}
+                  session={session}
+                  isOpen={isWaitlistOpen}
+                  join={() => {
+                    setIsWaitlisted(true);
+                  }}
+                  close={closeWaitlist}
+                  handleKeyPress={handleKeyPress}
+                />
+              )}
+            </Box>
           </Box>
           <Box
             position='relative'
@@ -1275,20 +1299,22 @@ export default function Home({
           </Card>
         </Flex>
       </Box>
+      {!isInMdView && (
+        <WaitlistModal
+          supabaseClient={supabaseClient}
+          session={session}
+          isOpen={isWaitlistOpen}
+          join={() => {
+            setIsWaitlisted(true);
+          }}
+          close={closeWaitlist}
+        />
+      )}
       <LoginModal
         supabaseClient={supabaseClient}
         redirectUrl={pendingCheckoutUrl}
         isOpen={isLoginOpen}
         close={closeLogin}
-      />
-      <WaitlistModal
-        supabaseClient={supabaseClient}
-        session={session}
-        isOpen={isWaitlistOpen}
-        join={() => {
-          setIsWaitlisted(true);
-        }}
-        close={closeWaitlist}
       />
     </>
   );

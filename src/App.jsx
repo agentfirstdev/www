@@ -12,6 +12,7 @@ import {
   MenuItem,
   Divider,
   Tooltip,
+  useBreakpointValue,
   useColorMode,
   useColorModeValue,
   useDisclosure,
@@ -27,6 +28,7 @@ import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout';
 import LoginDropdown from './components/LoginDropdown';
+import LoginModal from './components/LoginModal';
 // import Sidebar from './components/Sidebar';
 import './App.css';
 
@@ -55,6 +57,7 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { hash, pathname } = useLocation();
   const navigate = useNavigate();
+  const isInMdView = useBreakpointValue({ base: false, md: true });
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
   const blueprintFill = useColorModeValue(ui.royalBlue, ui.creativeBlue);
@@ -467,7 +470,7 @@ export default function App() {
             session={session}
             setSession={setSession}
             isSessionLoading={isSessionLoading}
-            shouldShowLogin={shouldShowLogin}
+            shouldShowLogin={shouldShowLogin && isInMdView}
             setShouldShowLogin={setShouldShowLogin}
             toggleSidebar={toggleSidebar}
             handleKeyPress={handleKeyPress}
@@ -586,6 +589,16 @@ export default function App() {
           <Text variant='attribution'>{ui.attributionLabel}</Text>
         </Flex>
       </Box>
+      {shouldShowLogin && !isInMdView && (
+        <LoginModal
+          supabaseClient={supabase.client}
+          redirectUrl={ui.dashboardUrl}
+          isOpen
+          close={() => {
+            setShouldShowLogin(false);
+          }}
+        />
+      )}
       {/* {session && (
         <Sidebar supabaseClient={supabase.client} isOpen={isSidebarOpen} toggle={toggleSidebar} />
       )} */}
