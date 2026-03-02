@@ -8,10 +8,9 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
   return (
     <>
       <Heading as='h1' variant='tagline' fontSize={ui.taglineFontSize}>
-        {'Upgrade your product with '}
         <Box as='span' display='inline-block' position='relative' textAlign='left'>
           <Text fontSize={ui.taglineFontSize} visibility='hidden' pointerEvents='none'>
-            reliable access
+            Reliable access
           </Text>
           <Text
             ref={ref}
@@ -27,11 +26,11 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
             }}
           ></Text>
         </Box>
-        {' to every website'}
+        {' to every public website'}
       </Heading>
       <Text variant='cta'>
-        Search & browse with automatic captcha solving, geotargeting to 190+ countries, & payment
-        only for successful requests
+        Search & browse with automatic captcha solving & geo-targeting to 190+ countries — pay only
+        for successful requests
       </Text>
     </>
   );
