@@ -95,7 +95,7 @@ export const pendingWaitlistKey = 'pendingWaitlistService';
 export const profileKey = 'wasProfilePresented';
 export const waitlistService = 'cdp';
 export const completion = [
-  { delay: 0, token: 'R' },
+  { delay: 0, token: 'r' },
   { delay: 13, token: 'e' },
   { delay: 31, token: 'l' },
   { delay: 54, token: 'i' },
@@ -310,7 +310,7 @@ export const heroHeight = '50vh';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
 export const taglineWidth = '100%';
-export const taglineMaxWidth = '660px';
+export const taglineMaxWidth = '760px';
 /* export const postItMaxWidth = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-shadow-color)';
 export const postItRotation = '-1.5deg'; */
@@ -327,7 +327,7 @@ export const tickLength = 16;
 export const tickDistanceUnit = 420;
 export const tickOffset = 48;
 // export const taglineWidth = { base: '100%', md: '50%' };
-export const taglineFontSize = { base: '26px', lg: '60px' };
+export const taglineFontSize = { base: '24px', lg: '54px' };
 export const ctaFontSize = { base: '20px', lg: '24px' };
 /* export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth }; */
