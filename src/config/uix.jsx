@@ -49,11 +49,11 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
             }}
           ></Text>
         </Box>
-        {' to any website'}
+        {' to any site'}
       </Heading>
       <Text variant='cta'>
-        Programmatic search & browsing, automatic captcha solving, & geotargeting to 190+ countries
-        — you pay only for successful requests
+        Search & browsing API, automatic captcha solving, & geo-targeting to 190+ countries — you
+        pay only for successful calls
       </Text>
     </>
   );
