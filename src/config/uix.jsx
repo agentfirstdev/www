@@ -24,7 +24,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           _dark={{ bg: ui.cornflowerBlue, boxShadow: `0 0 8px ${ui.cornflowerBlue}` }}
         />
         <Text variant='pill'>
-          From the developer of The New York Times’s favorite privacy tool
+          From the developer of The New York Times’s privacy tool of choice
           <sup><Link variant='citation' href={`#${ui.citationsId}`}>1</Link></sup>
           {' & Proxyway’s benchmark-topping proxy provider'}
           <sup><Link variant='citation' href={`#${ui.citationsId}`}>2</Link></sup>

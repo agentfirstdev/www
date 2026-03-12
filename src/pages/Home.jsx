@@ -1307,7 +1307,7 @@ export default function Home({
             href='https://www.nytimes.com/2016/02/18/technology/personaltech/free-tools-to-keep-those-creepy-online-ads-from-watching-you.html'
             isExternal
           >
-            “[The] app Disconnect became our anti-tracking tool of choice.” The New York Times
+            “[We] picked Disconnect as our favorite tool”, The New York Times
           </Link>
         </ListItem>
         <ListItem>
@@ -1316,8 +1316,8 @@ export default function Home({
             href='https://proxyway.com/research/proxy-service-awards-2025'
             isExternal
           >
-            “[Massive] topped our benchmarks multiple times and handled everything we threw at
-            it.” Proxyway
+            “[Massive] topped our benchmarks multiple times and handled everything we threw at it”,
+            Proxyway
           </Link>
         </ListItem>
       </OrderedList>
