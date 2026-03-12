@@ -68,6 +68,7 @@ export const servicesId = 'services';
 export const pricingId = 'pricing';
 export const aboutId = 'about';
 export const teamId = 'team';
+export const citationsId = 'citations';
 export const servicesPath = `/#${servicesId}`;
 export const pricingPath = `/#${pricingId}`;
 export const aboutPath = `/#${aboutId}`;
@@ -263,6 +264,7 @@ export const expandRotation = 180;
 
 // Other shared styles
 export const outlineStyle = '0 0 0 3px';
+export const smOutlineStyle = '0 0 0 2px';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
 export const transition = 'all var(--chakra-transition-duration-normal)';

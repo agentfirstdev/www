@@ -527,12 +527,7 @@ export default function App() {
           />
         </Routes>
       </Flex>
-      <Box
-        id='contact'
-        mx={{ base: ui.smMargin, lg: ui.xlMargin }}
-        mt={ui.smMargin}
-        mb={ui.xsMargin}
-      >
+      <Box id='contact' mx={{ base: ui.smMargin, lg: ui.xlMargin }} mb={1}>
         <Divider />
         <Flex mt={ui.iconVerticalMargin} direction='row' justify='space-between' align='center'>
           <Box lineHeight={0}>

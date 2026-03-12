@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
+  OrderedList,
   UnorderedList,
   ListItem,
   Heading,
@@ -1107,7 +1108,7 @@ export default function Home({
           to focus on building unique, native agents.
         </Text>
       </Box>
-      <Box ref={team} id={ui.teamId} pt={ui.smMargin}>
+      <Box ref={team} id={ui.teamId} pt={ui.mdMargin}>
         <Heading as='h1' variant='team' fontSize={ui.teamFontSize}>
           Our team
         </Heading>
@@ -1299,6 +1300,27 @@ export default function Home({
           </Card>
         </Flex>
       </Box>
+      <OrderedList id={ui.citationsId} variant='citations'>
+        <ListItem>
+          <Link
+            variant='citation'
+            href='https://www.nytimes.com/2016/02/18/technology/personaltech/free-tools-to-keep-those-creepy-online-ads-from-watching-you.html'
+            isExternal
+          >
+            “[The] app Disconnect became our anti-tracking tool of choice.” The New York Times
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link
+            variant='citation'
+            href='https://proxyway.com/research/proxy-service-awards-2025'
+            isExternal
+          >
+            “[Massive] topped our benchmarks multiple times and handled everything we threw at
+            it.” Proxyway
+          </Link>
+        </ListItem>
+      </OrderedList>
       {!isInMdView && (
         <WaitlistModal
           supabaseClient={supabaseClient}

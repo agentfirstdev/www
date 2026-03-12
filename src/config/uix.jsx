@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { Box, HStack, Heading, Text } from '@chakra-ui/react';
+import { Box, HStack, Heading, Text, Link } from '@chakra-ui/react';
 
 import * as ui from './ui';
 
@@ -24,8 +24,10 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           _dark={{ bg: ui.cornflowerBlue, boxShadow: `0 0 8px ${ui.cornflowerBlue}` }}
         />
         <Text variant='pill'>
-          From the developer of the world’s most-used privacy tools<sup>1</sup> & Proxyway’s
-          most-performant proxy provider<sup>2</sup>
+          From the developer of The New York Times’s favorite privacy tool
+          <sup><Link variant='citation' href={`#${ui.citationsId}`}>1</Link></sup>
+          {' & Proxyway’s benchmark-topping proxy provider'}
+          <sup><Link variant='citation' href={`#${ui.citationsId}`}>2</Link></sup>
         </Text>
       </HStack>
       <Text variant='audience'>For data teams · For agent builders · For proxy providers</Text>

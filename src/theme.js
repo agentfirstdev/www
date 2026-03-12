@@ -64,6 +64,22 @@ export default extendTheme({
           _dark: { color: 'whiteAlpha.700' },
           '::marker': { fontSize: '1.25em' }
         }
+      },
+      variants: {
+        citations: {
+          container: {
+            mt: ui.xsMargin,
+            mb: 1.5,
+            px: { base: ui.smMargin, md: ui.xlMargin },
+            textAlign: 'left'
+          },
+          item: {
+            fontSize: 'xs',
+            fontWeight: 'normal',
+            color: 'bg-button',
+            '::marker': { fontSize: 'inherit' }
+          }
+        }
       }
     },
     Divider: {
@@ -197,6 +213,10 @@ export default extendTheme({
           p: 0,
           _hover: { _focus: { shadow: ui.outline('brand-primary') } },
           _focus: { shadow: ui.outline('brand-primary') }
+        },
+        citation: {
+          fontWeight: 'normal',
+          _focus: { shadow:`${ui.smOutlineStyle} var(--chakra-colors-brand-primary)` }
         }
       }
     },
