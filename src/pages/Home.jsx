@@ -1304,10 +1304,10 @@ export default function Home({
         <ListItem>
           <Link
             variant='citation'
-            href='https://www.nytimes.com/2016/02/18/technology/personaltech/free-tools-to-keep-those-creepy-online-ads-from-watching-you.html'
+            href='https://www.washingtonpost.com/technology/2019/05/28/its-middle-night-do-you-know-who-your-iphone-is-talking/'
             isExternal
           >
-            “[We] picked Disconnect as our favorite tool”, The New York Times
+            “[Disconnect] powers the Firefox browser’s private browsing mode”, The Washington Post
           </Link>
         </ListItem>
         <ListItem>
