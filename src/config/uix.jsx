@@ -25,9 +25,9 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         />
         <Text variant='pill'>
           From the developer of the world’s most-used privacy tools
-          <sup><Link variant='citation' href={`#${ui.citationsId}`}>1, 2</Link></sup>
+          <sup><Link variant='citation' href={`#${ui.citationsId}`}>1</Link></sup>
           {' & Proxyway’s benchmark-topping proxy provider'}
-          <sup><Link variant='citation' href={`#${ui.citationsId}`}>3</Link></sup>
+          <sup><Link variant='citation' href={`#${ui.citationsId}`}>2</Link></sup>
         </Text>
       </HStack>
       <Text variant='audience'>For data teams · For agent builders · For proxy providers</Text>

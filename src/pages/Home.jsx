@@ -1304,16 +1304,6 @@ export default function Home({
         <ListItem>
           <Link
             variant='citation'
-            href='https://blog.mozilla.org/en/firefox/firefox-now-available-with-enhanced-tracking-protection-by-default/'
-            isExternal
-          >
-            “Enhanced Tracking Protection will automatically … block known ‘third-party tracking
-            cookies’ according to the Disconnect list”, Mozilla
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link
-            variant='citation'
             href='https://medium.com/samsung-internet-dev/introducing-our-new-tracking-blocker-powered-by-disconnect-c00f118c1151'
             isExternal
           >
