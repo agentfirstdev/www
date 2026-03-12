@@ -1304,10 +1304,19 @@ export default function Home({
         <ListItem>
           <Link
             variant='citation'
-            href='https://www.washingtonpost.com/technology/2019/05/28/its-middle-night-do-you-know-who-your-iphone-is-talking/'
+            href='https://blog.mozilla.org/en/firefox/firefox-now-available-with-enhanced-tracking-protection-by-default/'
             isExternal
           >
-            “[Disconnect] powers the Firefox browser’s private browsing mode”, The Washington Post
+            “Enhanced Tracking Protection will automatically … block known ‘third-party tracking cookies’ according to the Disconnect list”, Mozilla
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link
+            variant='citation'
+            href='https://medium.com/samsung-internet-dev/introducing-our-new-tracking-blocker-powered-by-disconnect-c00f118c1151'
+            isExternal
+          >
+            “The filter used by the Tracking Blocker is provided by Disconnect, the industry-leading privacy protection company”, Samsung
           </Link>
         </ListItem>
         <ListItem>
