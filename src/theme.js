@@ -69,7 +69,7 @@ export default extendTheme({
       baseStyle: {
         item: {
           fontSize: { base: 'md', md: 'lg' },
-          _light: { fontWeight: 300 },
+          fontWeight: 'light',
           _dark: { color: 'whiteAlpha.700' },
           '::marker': { fontSize: '1.25em' }
         }
@@ -78,16 +78,15 @@ export default extendTheme({
         pricing: { item: { listStyleType: 'none', fontSize: 'sm' }, icon: { color: 'bg-button' } },
         citations: {
           container: {
-            mt: ui.xsMargin,
+            mt: ui.smMargin,
             mb: 1.5,
             px: { base: ui.smMargin, md: ui.xlMargin },
             textAlign: 'left'
           },
           item: {
             fontSize: 'xs',
-            fontWeight: 'normal',
             color: 'bg-button',
-            '::marker': { fontSize: 'inherit' }
+            '::marker': { fontSize: 'inherit', color: 'bg-button' }
           }
         }
       }
@@ -105,8 +104,8 @@ export default extendTheme({
           mt: 4,
           lineHeight: 1.1,
           fontFamily: 'display',
-          fontWeight: 800,
-          color: 'chakra-body-text !important'
+          fontWeight: 'extrabold',
+          color: 'chakra-body-text'
         },
         'post-it': { color: 'gray.800' },
         service: { fontFamily: 'subheading' },
@@ -124,12 +123,12 @@ export default extendTheme({
           mt: 4,
           fontFamily: 'code',
           fontSize: '11px',
-          fontWeight: 600,
+          fontWeight: 'semibold',
           textTransform: 'uppercase',
           letterSpacing: '.2em',
           color: 'fg-muted'
         },
-        cta: { my: 4, fontSize: ui.ctaFontSize, fontWeight: 300, color: 'fg-muted' },
+        cta: { my: 4, fontSize: ui.ctaFontSize, fontWeight: 'light', color: 'fg-muted' },
         'post-it': {
           my: 6,
           textAlign: 'left',
@@ -140,27 +139,29 @@ export default extendTheme({
         service: {
           mt: 4,
           fontSize: { base: 'md', md: 'lg' },
-          _light: { fontWeight: 300 },
-          _dark: { color: 'whiteAlpha.600' }
+          fontWeight: 'light',
+          _dark: { color: 'whiteAlpha.700' }
         },
-        pricing: { fontSize: 'sm', fontWeight: 300, color: 'chakra-placeholder-color' },
+        pricing: { fontSize: 'sm', fontWeight: 'light', color: 'chakra-placeholder-color' },
         teammate: {
           mt: 2,
           fontFamily: 'footer',
           fontSize: 'md',
-          _light: { fontWeight: 300, color: 'accent.secondary' },
+          fontWeight: 'light',
+          _light: { color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
         attribution: {
           fontFamily: 'footer',
           fontSize: { base: 'xs', md: 'sm' },
-          _light: { fontWeight: 300, color: 'accent.secondary' },
+          fontWeight: 'light',
+          _light: { color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
         description: {
           fontSize: { base: 'md', md: 'lg' },
-          _light: { fontWeight: 300 },
-          _dark: { color: 'whiteAlpha.600' }
+          fontWeight: 'light',
+          _dark: { color: 'whiteAlpha.700' }
         },
         bold: { fontSize: 'inherit' },
         footerBold: { fontSize: 'inherit' },
@@ -191,22 +192,25 @@ export default extendTheme({
           _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
         },
+        marker: {
+          fontWeight: 'medium',
+          _focus: { shadow: `${ui.smOutlineStyle} var(--chakra-colors-brand-primary)` }
+        },
         doc: {
           display: { base: 'none', lg: 'inline' },
           position: 'absolute',
           right: ui.editorHorizontalMargin,
           bottom: ui.editorVerticalMargin,
           fontSize: ui.editorFontSize,
+          fontWeight: 'light',
           color: 'chakra-body-text',
-          _focus: { shadow: ui.outline('chakra-body-text') },
-          _light: { fontWeight: 'normal' },
-          _dark: { fontWeight: 500 }
+          _focus: { shadow: ui.outline('chakra-body-text') }
         },
         pricing: {
-          borderBottomWidth: '2px',
+          borderBottomWidth: '1px',
           borderBottomColor: 'chakra-body-text',
           p: 0,
-          fontWeight: 'normal',
+          fontWeight: 'light',
           color: 'chakra-body-text',
           _hover: { color: 'chakra-body-text', _focus: { shadow: ui.outline('chakra-body-text') } },
           _focus: { shadow: ui.outline('chakra-body-text') }
@@ -217,7 +221,7 @@ export default extendTheme({
           borderBottomColor: 'bg-button',
           p: 0,
           h: '22px',
-          fontWeight: 500,
+          fontWeight: 'medium',
           _hover: { borderColor: 'bg-inverted' }
         },
         social: {
@@ -227,7 +231,7 @@ export default extendTheme({
           _focus: { shadow: ui.outline('brand-primary') }
         },
         citation: {
-          fontWeight: 'normal',
+          fontWeight: 'light',
           _focus: { shadow: `${ui.smOutlineStyle} var(--chakra-colors-brand-primary)` }
         }
       }
@@ -260,8 +264,8 @@ export default extendTheme({
         lineHeight: 'base',
         fontFamily: 'display',
         fontSize: ui.promptFontSize,
-        _placeholder: { color: 'chakra-placeholder-color' },
-        _light: { fontWeight: 300 }
+        fontWeight: 'light',
+        _placeholder: { color: 'chakra-placeholder-color' }
       },
       variants: { outline: { borderWidth: '2px', bg: 'chakra-subtle-bg' } }
     },

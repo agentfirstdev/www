@@ -25,11 +25,11 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         />
         <Text variant='pill'>
           From the developer of the world’s most-used privacy tools
-          <Link variant='citation' href={`#${ui.citationsId}`}>
+          <Link variant='marker' href={`#${ui.citationsId}`}>
             <sup>1</sup>
           </Link>
           {' & Proxyway’s benchmark-topping proxy provider'}
-          <Link variant='citation' href={`#${ui.citationsId}`}>
+          <Link variant='marker' href={`#${ui.citationsId}`}>
             <sup>2</sup>
           </Link>
         </Text>
