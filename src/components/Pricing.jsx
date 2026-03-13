@@ -55,7 +55,7 @@ export default forwardRef(function Pricing({ shouldInvertColors, isCartLoading, 
   }, [parsedAmount, isAmountValid, addToCart]);
 
   return (
-    <Flex w={ui.secondaryTextboxWidth} direction='column' gap={4}>
+    <Flex w={ui.secondaryTextboxWidth} maxW='100%' direction='column' gap={4}>
       <InputGroup>
         <InputLeftElement
           h={ui.controlDimension}

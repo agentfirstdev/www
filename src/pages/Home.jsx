@@ -13,6 +13,7 @@ import {
   OrderedList,
   UnorderedList,
   ListItem,
+  ListIcon,
   Heading,
   Text,
   Link,
@@ -25,7 +26,7 @@ import {
   useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react';
-// import { AddIcon } from '@chakra-ui/icons';
+import { AddIcon, CheckIcon } from '@chakra-ui/icons'; // eslint-disable-line no-unused-vars
 import rough from 'roughjs/bin/rough';
 import { createTimeline } from 'animejs';
 
@@ -708,7 +709,7 @@ export default function Home({
           aria-label={ui.servicesLabel}
         />
         <Box
-          position='relative'
+          pos='relative'
           mt={ui.smMargin}
           _before={{
             position: 'absolute',
@@ -730,7 +731,7 @@ export default function Home({
           }}
         >
           <Box
-            position='relative'
+            pos='relative'
             px={{ base: ui.xsMargin, md: ui.smMargin }}
             py={ui.smMargin}
             _before={{
@@ -763,7 +764,7 @@ export default function Home({
             </Button>
           </Box>
           <Box
-            position='relative'
+            pos='relative'
             px={{ base: ui.xsMargin, md: ui.smMargin }}
             py={ui.smMargin}
             _before={{
@@ -798,7 +799,7 @@ export default function Home({
             </Button>
           </Box>
           <Box
-            position='relative'
+            pos='relative'
             px={{ base: ui.xsMargin, md: ui.smMargin }}
             py={ui.smMargin}
             _before={{
@@ -826,7 +827,7 @@ export default function Home({
               {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf '}
               of users.
             </Text>
-            <Box position='relative'>
+            <Box pos='relative'>
               <Button
                 mt={4}
                 w={ui.buttonWidth}
@@ -854,7 +855,7 @@ export default function Home({
             </Box>
           </Box>
           <Box
-            position='relative'
+            pos='relative'
             px={{ base: ui.xsMargin, md: ui.smMargin }}
             py={ui.smMargin}
             _before={{
@@ -934,48 +935,27 @@ export default function Home({
             aria-label={ui.pricingLabel}
           />
         </Box>
-        <Text variant='description' mx={ui.descriptionMargin} mt={ui.mdMargin} textAlign='left'>
-          <Text as='strong' variant='co'>
-            Agent First
+        <Text variant='description' mx={ui.descriptionMargin} mt={ui.mdMargin}>
+          <Text as='strong' variant='lede'>
+            Simple credits.
           </Text>
-          {' API usage is based on credits that cost '}
-          <Text as='strong' variant='bold'>
-            $1 per 1,000 credits
-          </Text>
-          {' with '}
-          <Text as='strong' variant='bold'>
-            10% off $100+ purchases
-          </Text>
-          {', where 1,000 credits let you access '}
-          <Text as='strong' variant='bold'>
-            1,000 standard page responses
-          </Text>
-          {' (see '}
-          <Link variant='pricing' href={ui.rateUrl}>
-            our rate card
-          </Link>
-          {' for details) and can be used for up to 30 days after purchase.'}
-        </Text>
-        <Text variant='description' mx={ui.descriptionMargin} mt='1lh' textAlign='left'>
-          {'Get '}
-          <Text as='strong' variant='bold'>
-            1,000 free credits
-          </Text>
-          {' to try the API when you sign up and contact us for volume pricing if you expect to '}
-          spend $1,000+ per month.
+          {' $1 per 1,000 credits; credits can be used for 30 days; only '}
+          successful requests are billed.
         </Text>
         <SimpleGrid
           mx={ui.descriptionMargin}
           mt={{ base: 0, lg: 2 }}
           columns={{ base: 1, lg: 3 }}
-          spacing={ui.smMargin}
+          spacing={12}
         >
           <Card
-            mt={ui.smMargin}
-            bg='chakra-subtle-bg'
-            shadow='sm'
+            variant='pricing'
             cursor={session ? 'not-allowed' : 'pointer'}
-            _hover={session ? null : { transform: `scale(${ui.hoverScale})` }}
+            _hover={
+              session
+                ? null
+                : { borderColor: 'bg-emphasized', transform: `translateY(-${ui.hoverTravel})` }
+            }
             onClick={() => {
               if (!session) {
                 setPendingCheckoutUrl(ui.dashboardUrl);
@@ -983,27 +963,46 @@ export default function Home({
               }
             }}
           >
-            <CardHeader>{ui.trialLabel}</CardHeader>
+            <CardHeader>
+              {ui.trialLabel}
+              <Text variant='pricing'>
+                <Text as='strong' variant='amount'>
+                  $0
+                </Text>
+                {' for 1,000 credits'}
+                <br />
+                1,000 credits to test any site
+              </Text>
+            </CardHeader>
             <CardBody>
-              <UnorderedList>
-                <ListItem>1,000 free credits</ListItem>
-                <ListItem>Credits expire in 30 days</ListItem>
-                <ListItem>Instant access to search, browsing, & reporting services</ListItem>
+              <UnorderedList variant='pricing' ms={0} spacing={2}>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  1,000 free credits
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Credits are valid for 30 days
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Instant access to search, browsing, & reporting
+                </ListItem>
               </UnorderedList>
             </CardBody>
             <CardFooter>
-              <Button w='100%' h={ui.controlDimension} isDisabled={!!session}>
+              <Button variant='outline' isDisabled={!!session}>
                 {session ? ui.tryingLabel : ui.tryLabel}
               </Button>
             </CardFooter>
           </Card>
           <Card
-            mt={ui.cardMargin}
-            bg='bg-button'
-            color='chakra-subtle-bg'
-            shadow='sm'
-            cursor='pointer'
-            _hover={{ transform: `scale(${ui.hoverScale})` }}
+            variant='pricing'
+            pos='relative'
+            borderColor='bg-button'
+            _light={{ boxShadow: ui.lightPopularShadow }}
+            _dark={{ boxShadow: ui.darkPopularShadow }}
+            _hover={{ borderColor: 'bg-inverted', transform: `translateY(-${ui.hoverTravel})` }}
             onMouseDown={() => {
               isPurchaseTextboxFocused.current = purchaseTextbox.current?.isFocused();
             }}
@@ -1017,22 +1016,62 @@ export default function Home({
               isPurchaseTextboxFocused.current = false;
             }}
           >
-            <CardHeader color='fg-button'>{ui.paygLabel}</CardHeader>
+            <Box
+              pos='absolute'
+              top='-11px'
+              left='50%'
+              rounded='full'
+              bg='bg-button'
+              px={2.5}
+              py={1}
+              lineHeight={1.4}
+              fontSize='2xs'
+              fontWeight='bold'
+              textTransform='uppercase'
+              letterSpacing='1px'
+              color='fg-button'
+              transform='translateX(-50%)'
+            >
+              {ui.popularLabel}
+            </Box>
+            <CardHeader>
+              {ui.paygLabel}
+              <Text variant='pricing'>
+                <Text as='strong' variant='amount'>
+                  $1
+                </Text>
+                {' / 1,000 credits'}
+                <br />
+                $0.90 / 1,000 credits for $100+ purchases
+              </Text>
+            </CardHeader>
             <CardBody>
-              <UnorderedList>
-                <ListItem>1,000 free credits</ListItem>
-                <ListItem>$1 / 1,000 additional credits</ListItem>
-                <ListItem>$0.90 / 1,000 credits for $100+ purchases (save 10%)</ListItem>
-                <ListItem>Credits expire in 30 days</ListItem>
-                <ListItem>Instant access to search, browsing, & reporting services</ListItem>
-                <ListItem>Email support</ListItem>
-                <ListItem>Best efforts to unblock any problem site within 48 hours</ListItem>
+              <UnorderedList variant='pricing' ms={0} spacing={2}>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  1,000 free credits
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Credits are valid for 30 days
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Instant access to search, browsing, & reporting
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Email support
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Best efforts to unblock any site within 48 hours
+                </ListItem>
               </UnorderedList>
             </CardBody>
             <CardFooter>
               <Pricing
                 ref={purchaseTextbox}
-                shouldInvertColors
                 addToCart={(dollarAmount) => {
                   if (session) {
                     navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${dollarAmount}`);
@@ -1046,28 +1085,52 @@ export default function Home({
             </CardFooter>
           </Card>
           <Card
-            mt={ui.cardMargin}
-            bg='chakra-subtle-bg'
-            shadow='sm'
-            cursor='pointer'
-            _hover={{ transform: `scale(${ui.hoverScale})` }}
+            variant='pricing'
+            _hover={{ borderColor: 'bg-emphasized', transform: `translateY(-${ui.hoverTravel})` }}
             onClick={() => {
               location.href = ui.supportUrl;
             }}
           >
-            <CardHeader>{ui.enterpriseLabel}</CardHeader>
+            <CardHeader>
+              {ui.enterpriseLabel}
+              <Text variant='pricing'>
+                <Text as='strong' variant='amount'>
+                  Custom
+                </Text>
+                <br />
+                $1,000+ monthly spend
+              </Text>
+            </CardHeader>
             <CardBody>
-              <UnorderedList>
-                <ListItem>1,000 free credits</ListItem>
-                <ListItem>Volume pricing for $1,000+ monthly spend</ListItem>
-                <ListItem>Access to search, browsing, & reporting services</ListItem>
-                <ListItem>Dedicated browser pool for faster responses</ListItem>
-                <ListItem>Email & chat support</ListItem>
-                <ListItem>Best efforts to unblock any problem site within 24 hours</ListItem>
+              <UnorderedList variant='pricing' ms={0} spacing={2}>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  1,000 free credits
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Credits are valid long term
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Access to search, browsing, & reporting
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Email & chat support
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Best efforts to unblock any site within 24 hours
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckIcon} />
+                  Dedicated browser pool for faster responses
+                </ListItem>
               </UnorderedList>
             </CardBody>
             <CardFooter>
-              <Button as='a' w='100%' h={ui.controlDimension} href={ui.supportUrl}>
+              <Button as='a' variant='outline' href={ui.supportUrl}>
                 {ui.contactLabel}
               </Button>
             </CardFooter>
@@ -1080,12 +1143,12 @@ export default function Home({
         pt={ui.smMargin}
         align='center'
       >
-        <Box position='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>
+        <Box pos='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>
           <svg ref={timeline} width='100%'>
             <g ref={timelineParts} />
           </svg>
           <Box
-            position='absolute'
+            pos='absolute'
             top={0}
             left={0}
             bgGradient='linear(to-r, chakra-body-bg, transparent)'
@@ -1093,7 +1156,7 @@ export default function Home({
             h='100%'
           />
           <Box
-            position='absolute'
+            pos='absolute'
             top={0}
             right={0}
             bgGradient='linear(to-l, chakra-body-bg, transparent)'
@@ -1118,8 +1181,8 @@ export default function Home({
           direction={{ base: 'column', lg: 'row' }}
           justify='space-evenly'
         >
-          <Card bg='transparent' w={ui.cardWidth} shadow='none'>
-            <CardBody textAlign='left'>
+          <Card variant='teammate'>
+            <CardBody>
               <Box
                 mt={ui.hedMargin}
                 w={ui.hedNewWidth}
@@ -1165,7 +1228,7 @@ export default function Home({
                 {' that’s focused on serving AI agents.'}
               </Text>
             </CardBody>
-            <CardFooter pt={0}>
+            <CardFooter>
               <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
                 <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
                   <canvas
@@ -1245,8 +1308,8 @@ export default function Home({
               </Tooltip>
             </CardFooter>
           </Card>
-          <Card bg='transparent' w={ui.cardWidth} shadow='none'>
-            <CardBody textAlign='left'>
+          <Card variant='teammate'>
+            <CardBody>
               <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
                 <canvas
                   ref={agent}

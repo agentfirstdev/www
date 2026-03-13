@@ -46,14 +46,23 @@ export default extendTheme({
   components: {
     Card: {
       baseStyle: {
-        header: {
-          fontFamily: 'subheading',
-          fontSize: '3xl',
-          fontWeight: 'bold',
-          textDecor: 'underline',
-          color: 'bg-button'
+        container: { shadow: 'none' },
+        header: { fontSize: 'xl', fontWeight: 'bold', color: 'bg-button' },
+        body: { pt: 0, textAlign: 'left' },
+        footer: { pt: 0 }
+      },
+      variants: {
+        pricing: {
+          container: {
+            mt: ui.cardMargin,
+            borderWidth: '1px',
+            borderColor: 'chakra-border-color',
+            bg: 'bg-muted',
+            cursor: 'pointer',
+            '--card-padding': 'sizes.6'
+          }
         },
-        body: { pt: 0, textAlign: 'left' }
+        teammate: { container: { w: ui.cardWidth } }
       }
     },
     List: {
@@ -66,6 +75,7 @@ export default extendTheme({
         }
       },
       variants: {
+        pricing: { item: { listStyleType: 'none', fontSize: 'sm' }, icon: { color: 'bg-button' } },
         citations: {
           container: {
             mt: ui.xsMargin,
@@ -133,6 +143,7 @@ export default extendTheme({
           _light: { fontWeight: 300 },
           _dark: { color: 'whiteAlpha.600' }
         },
+        pricing: { fontSize: 'sm', fontWeight: 300, color: 'chakra-placeholder-color' },
         teammate: {
           mt: 2,
           fontFamily: 'footer',
@@ -151,12 +162,13 @@ export default extendTheme({
           _light: { fontWeight: 300 },
           _dark: { color: 'whiteAlpha.600' }
         },
-        highlight: { fontSize: 'inherit', fontWeight: 'bold', color: 'bg-inverted' },
-        bold: { fontSize: 'inherit', fontWeight: 'bold' },
-        footerBold: { fontSize: 'inherit', fontWeight: 500 },
+        bold: { fontSize: 'inherit' },
+        footerBold: { fontSize: 'inherit' },
+        lede: { fontSize: '1.5em' },
+        name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger' },
         co: { mx: '.2em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },
         footerCo: { mx: '.1em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },
-        name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
+        amount: { fontSize: '3em', color: 'chakra-body-text' }
       }
     },
     Link: {
@@ -216,7 +228,7 @@ export default extendTheme({
         },
         citation: {
           fontWeight: 'normal',
-          _focus: { shadow:`${ui.smOutlineStyle} var(--chakra-colors-brand-primary)` }
+          _focus: { shadow: `${ui.smOutlineStyle} var(--chakra-colors-brand-primary)` }
         }
       }
     },
@@ -275,6 +287,26 @@ export default extendTheme({
           },
           _focus: { shadow: ui.outlineInset('chakra-body-bg', 'bg-button') },
           _active: { bg: 'bg-inverted' }
+        },
+        outline: {
+          borderWidth: '1px',
+          borderColor: 'bg-button',
+          w: '100%',
+          h: ui.controlDimension,
+          fontSize: { base: 'md', md: 'lg' },
+          color: 'bg-button',
+          _hover: {
+            borderColor: 'bg-inverted',
+            bg: 'transparent',
+            color: 'bg-inverted',
+            _focus: { shadow: ui.outline('bg-inverted') }
+          },
+          _focus: { shadow: ui.outline('bg-button') },
+          _active: { bg: 'transparent' },
+          _disabled: {
+            _light: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } },
+            _dark: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } }
+          }
         },
         monochrome: {
           color: 'brand.primary',

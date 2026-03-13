@@ -13,8 +13,8 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         px={3.5}
         py={1.5}
         color='bg-button'
-        _light={{ borderColor: `rgba(74, 109, 229, 0.24)`, bg: `rgba(74, 109, 229, 0.08)` }}
-        _dark={{ borderColor: `rgba(121, 153, 247, 0.24)`, bg: `rgba(121, 153, 247, 0.08)` }}
+        _light={{ borderColor: ui.blueAlpha, bg: ui.lightBlueAlpha }}
+        _dark={{ borderColor: ui.grayAlpha, bg: ui.lightGrayAlpha }}
       >
         <Box
           rounded='full'
@@ -25,9 +25,13 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         />
         <Text variant='pill'>
           From the developer of the world’s most-used privacy tools
-          <sup><Link variant='citation' href={`#${ui.citationsId}`}>1</Link></sup>
+          <Link variant='citation' href={`#${ui.citationsId}`}>
+            <sup>1</sup>
+          </Link>
           {' & Proxyway’s benchmark-topping proxy provider'}
-          <sup><Link variant='citation' href={`#${ui.citationsId}`}>2</Link></sup>
+          <Link variant='citation' href={`#${ui.citationsId}`}>
+            <sup>2</sup>
+          </Link>
         </Text>
       </HStack>
       <Text variant='audience'>For data teams · For agent builders · For proxy providers</Text>
