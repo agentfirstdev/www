@@ -136,7 +136,7 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
           </Heading>
           <Grid
             mt={ui.xsMargin}
-            templateColumns='auto 1fr'
+            templateColumns='auto minmax(0, 1fr)'
             columnGap={ui.profileHorizontalMargin}
             rowGap={ui.profileVerticalMargin}
             justifyItems='start'

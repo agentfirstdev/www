@@ -217,7 +217,7 @@ export const footerFont = '"Outfit", sans-serif';
 export const controlDimension = '48px';
 export const buttonBorder = '1px solid transparent';
 export const iconDimension = '32px';
-export const textboxWidth = '36ch';
+export const textboxWidth = '32ch';
 export const ciphertextSpacing = '0.2rem';
 export const socialDimension = '24px';
 export const tooltipPadding = '6px 10px';
@@ -388,7 +388,7 @@ export const hedTransform = { base: 'translateX(-11%)', lg: 'translateX(-16px)' 
 export const agentNewWidth = { base: '50%', lg: '144px' };
 
 // Sidebar
-export const sidebarWidth = '560px';
+export const sidebarWidth = '600px';
 // export const sidebarMargin = `calc(100% - ${sidebarWidth} - ${sidebarWidth} + 4vw)`;
 export const sidebarCollapsedWidth = '40px';
 /* export const sidebarCollapsedMargin =
