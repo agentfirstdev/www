@@ -939,7 +939,12 @@ export default function Home({
           <Text as='strong' variant='lede'>
             Simple credits:
           </Text>
-          {' $1 per 1,000 credits, which let you successfully fetch 1,000 standard page responses'}
+          {' $1 per 1,000 credits, which let you successfully fetch 1,000 standard page responses '}
+          (
+          <Link variant='pricing' href={ui.rateUrl}>
+            see details
+          </Link>
+          )
         </Text>
         <SimpleGrid
           mx={ui.descriptionMargin}
