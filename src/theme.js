@@ -135,11 +135,7 @@ export default extendTheme({
           fontSize: ui.postItFontSize,
           color: 'gray.800'
         },
-        service: {
-          mt: 4,
-          fontWeight: 'light',
-          _dark: { color: 'whiteAlpha.700' }
-        },
+        service: { mt: 4, fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
         pricing: { fontSize: 'sm', fontWeight: 'light', color: 'chakra-placeholder-color' },
         teammate: {
           mt: 2,
@@ -154,10 +150,7 @@ export default extendTheme({
           _light: { color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
-        description: {
-          fontWeight: 'light',
-          _dark: { color: 'whiteAlpha.700' }
-        },
+        description: { fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
         bold: { fontSize: 'inherit' },
         lede: { fontSize: '1.5em' },
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger' },
@@ -230,9 +223,7 @@ export default extendTheme({
         }
       }
     },
-    FormLabel: {
-      baseStyle: { mr: 0, mb: 0, fontWeight: 'bold', whiteSpace: 'nowrap' }
-    },
+    FormLabel: { baseStyle: { mr: 0, mb: 0, fontWeight: 'bold', whiteSpace: 'nowrap' } },
     Input: {
       baseStyle: {
         field: {
@@ -361,7 +352,7 @@ export default extendTheme({
         _light: { borderColor: 'accent.secondary', color: 'accent.secondary' },
         _dark: { borderColor: 'whiteAlpha.600', color: 'whiteAlpha.600' }
       }
-    },
+    }
   },
   styles: {
     global: {
