@@ -255,7 +255,7 @@ export default function Dashboard({
           </Menu>
         </Flex>
         {usage && haveFontsLoaded ? (
-          <Flex px={ui.smMargin} pb={2} justify='center' flex={1}>
+          <Flex px={ui.smMargin} pb={ui.smMargin} justify='center' flex={1}>
             <Box w={ui.secondaryWidth}>
               <Line
                 data={{
