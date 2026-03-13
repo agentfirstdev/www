@@ -937,10 +937,9 @@ export default function Home({
         </Box>
         <Text variant='description' mx={ui.descriptionMargin} mt={ui.mdMargin}>
           <Text as='strong' variant='lede'>
-            Simple credits.
+            Simple credits:
           </Text>
-          {' $1 per 1,000 credits; credits can be used for 30 days; only '}
-          successful requests are billed.
+          {' $1 per 1,000 credits, which let you successfully fetch 1,000 standard page responses'}
         </Text>
         <SimpleGrid
           mx={ui.descriptionMargin}
@@ -969,7 +968,6 @@ export default function Home({
                 <Text as='strong' variant='amount'>
                   $0
                 </Text>
-                {' for 1,000 credits'}
                 <br />
                 1,000 credits to test any site
               </Text>
@@ -982,7 +980,7 @@ export default function Home({
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckIcon} />
-                  Credits are valid for 30 days
+                  Credits can be used for 30 days
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckIcon} />
@@ -1053,7 +1051,7 @@ export default function Home({
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckIcon} />
-                  Credits are valid for 30 days
+                  Credits can be used for 30 days
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckIcon} />
@@ -1109,7 +1107,7 @@ export default function Home({
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckIcon} />
-                  Credits are valid long term
+                  Credits can be used long term
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckIcon} />
