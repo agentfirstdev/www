@@ -117,7 +117,7 @@ export default extendTheme({
     Text: {
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
-        pill: { fontSize: 'xs', fontWeight: 'medium' },
+        pill: { verticalAlign: 'middle', fontFamily: 'body', fontSize: 'xs', color: 'bg-button' },
         audience: {
           mt: 4,
           fontFamily: 'code',

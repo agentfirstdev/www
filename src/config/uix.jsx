@@ -8,11 +8,10 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
   return (
     <>
       <HStack
-        border='1px solid'
+        borderWidth='1px'
         rounded='full'
         px={3.5}
         py={1.5}
-        color='bg-button'
         _light={{ borderColor: ui.blueAlpha, bg: ui.lightBlueAlpha }}
         _dark={{ borderColor: ui.grayAlpha, bg: ui.lightGrayAlpha }}
       >
@@ -23,7 +22,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           _light={{ bg: ui.royalBlue, boxShadow: `0 0 8px ${ui.royalBlue}` }}
           _dark={{ bg: ui.cornflowerBlue, boxShadow: `0 0 8px ${ui.cornflowerBlue}` }}
         />
-        <Text variant='pill'>
+        <Text variant='pill' fontWeight='medium'>
           From the developer of the world’s most-used privacy tools
           <Link variant='marker' href={`#${ui.citationsId}`}>
             <sup>1</sup>

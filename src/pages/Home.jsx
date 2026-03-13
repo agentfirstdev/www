@@ -20,7 +20,6 @@ import {
   // Textarea,
   Button,
   // IconButton,
-  Badge,
   Tooltip,
   useBreakpointValue,
   useColorModeValue,
@@ -814,7 +813,20 @@ export default function Home({
           >
             <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
               {'3. Webpage interaction '}
-              <Badge>Coming soon</Badge>
+              <Text
+                as='span'
+                variant='pill'
+                borderWidth='1px'
+                rounded='full'
+                px={3.5}
+                py={1.5}
+                fontWeight='bold'
+                textTransform='uppercase'
+                _light={{ borderColor: ui.blueAlpha, bg: ui.lightBlueAlpha }}
+                _dark={{ borderColor: ui.grayAlpha, bg: ui.lightGrayAlpha }}
+              >
+                Coming soon
+              </Text>
             </Heading>
             <Text variant='service'>
               <Text as='strong' variant='co'>
