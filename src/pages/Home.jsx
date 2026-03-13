@@ -935,210 +935,255 @@ export default function Home({
             aria-label={ui.pricingLabel}
           />
         </Box>
-        <Text variant='description' mx={ui.descriptionMargin} mt={ui.mdMargin}>
-          <Text as='strong' variant='lede'>
-            Simple credits:
-          </Text>
-          {' $1 per 1,000 credits, which let you successfully fetch 1,000 standard page responses '}
-          (
-          <Link variant='pricing' href={ui.rateUrl}>
-            see details
-          </Link>
-          )
-        </Text>
-        <SimpleGrid
-          mx={ui.descriptionMargin}
-          mt={{ base: 0, lg: 2 }}
-          columns={{ base: 1, lg: 3 }}
-          spacing={12}
+        <Box
+          pos='relative'
+          mt={ui.smMargin}
+          _before={{
+            position: 'absolute',
+            left: 0,
+            top: ui.verticalDividerOverflow,
+            bottom: ui.verticalDividerOverflow,
+            bg: 'fg-grid',
+            w: '1px',
+            content: '""'
+          }}
+          _after={{
+            position: 'absolute',
+            right: 0,
+            top: ui.verticalDividerOverflow,
+            bottom: ui.verticalDividerOverflow,
+            bg: 'fg-grid',
+            w: '1px',
+            content: '""'
+          }}
         >
-          <Card
-            variant='pricing'
-            cursor={session ? 'not-allowed' : 'pointer'}
-            _hover={
-              session
-                ? null
-                : { borderColor: 'bg-emphasized', transform: `translateY(-${ui.hoverTravel})` }
-            }
-            onClick={() => {
-              if (!session) {
-                setPendingCheckoutUrl(ui.dashboardUrl);
-                openLogin();
-              }
-            }}
-          >
-            <CardHeader>
-              {ui.trialLabel}
-              <Text variant='pricing'>
-                <Text as='strong' variant='amount'>
-                  $0
-                </Text>
-                <br />
-                1,000 credits to test any site
-              </Text>
-            </CardHeader>
-            <CardBody>
-              <UnorderedList variant='pricing' ms={0} spacing={2}>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  1,000 free credits
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Credits can be used for 30 days
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Instant access to search, browsing, & reporting
-                </ListItem>
-              </UnorderedList>
-            </CardBody>
-            <CardFooter>
-              <Button variant='outline' isDisabled={!!session}>
-                {session ? ui.tryingLabel : ui.tryLabel}
-              </Button>
-            </CardFooter>
-          </Card>
-          <Card
-            variant='pricing'
+          <Box
             pos='relative'
-            borderColor='bg-button'
-            _light={{ boxShadow: ui.lightPopularShadow }}
-            _dark={{ boxShadow: ui.darkPopularShadow }}
-            _hover={{ borderColor: 'bg-inverted', transform: `translateY(-${ui.hoverTravel})` }}
-            onMouseDown={() => {
-              isPurchaseTextboxFocused.current = purchaseTextbox.current?.isFocused();
+            px={{ base: ui.xsMargin, md: ui.smMargin }}
+            py={ui.smMargin}
+            _before={{
+              position: 'absolute',
+              top: 0,
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
+              bg: 'fg-grid',
+              h: '1px',
+              content: '""'
             }}
-            onClick={() => {
-              if (isPurchaseTextboxFocused.current || purchaseTextbox.current?.hasAmount) {
-                purchaseTextbox.current?.submit();
-              } else {
-                purchaseTextbox.current?.focus();
-              }
-
-              isPurchaseTextboxFocused.current = false;
+            _after={{
+              position: 'absolute',
+              bottom: 0,
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
+              bg: 'fg-grid',
+              h: '1px',
+              content: '""'
             }}
           >
-            <Box
-              pos='absolute'
-              top='-11px'
-              left='50%'
-              rounded='full'
-              bg='bg-button'
-              px={2.5}
-              py={1}
-              lineHeight={1.4}
-              fontSize='2xs'
-              fontWeight='bold'
-              textTransform='uppercase'
-              letterSpacing='1px'
-              color='fg-button'
-              transform='translateX(-50%)'
-            >
-              {ui.popularLabel}
-            </Box>
-            <CardHeader>
-              {ui.paygLabel}
-              <Text variant='pricing'>
-                <Text as='strong' variant='amount'>
-                  $1
-                </Text>
-                {' / 1,000 credits'}
-                <br />
-                $0.90 / 1,000 credits for $100+ purchases
+            <Text variant='description' mt={-1}>
+              <Text as='strong' variant='lede'>
+                Simple credits:
               </Text>
-            </CardHeader>
-            <CardBody>
-              <UnorderedList variant='pricing' ms={0} spacing={2}>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  1,000 free credits
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Credits can be used for 30 days
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Instant access to search, browsing, & reporting
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Email support
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Best efforts to unblock any site within 48 hours
-                </ListItem>
-              </UnorderedList>
-            </CardBody>
-            <CardFooter>
-              <Pricing
-                ref={purchaseTextbox}
-                addToCart={(dollarAmount) => {
-                  if (session) {
-                    navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${dollarAmount}`);
-                  } else {
-                    localStorage.setItem(ui.pendingPurchaseKey, dollarAmount);
-                    setPendingCheckoutUrl(ui.checkoutUrl);
+              {' $1 per 1,000 credits, which let you successfully fetch 1,000 standard page '}
+              responses (
+              <Link variant='pricing' href={ui.rateUrl}>
+                see details
+              </Link>
+              )
+            </Text>
+            <SimpleGrid mt={{ base: 0, lg: 2 }} columns={{ base: 1, lg: 3 }} spacing={12}>
+              <Card
+                variant='pricing'
+                cursor={session ? 'not-allowed' : 'pointer'}
+                _hover={
+                  session
+                    ? null
+                    : { borderColor: 'bg-emphasized', transform: `translateY(-${ui.hoverTravel})` }
+                }
+                onClick={() => {
+                  if (!session) {
+                    setPendingCheckoutUrl(ui.dashboardUrl);
                     openLogin();
                   }
                 }}
-              />
-            </CardFooter>
-          </Card>
-          <Card
-            variant='pricing'
-            _hover={{ borderColor: 'bg-emphasized', transform: `translateY(-${ui.hoverTravel})` }}
-            onClick={() => {
-              location.href = ui.supportUrl;
-            }}
-          >
-            <CardHeader>
-              {ui.enterpriseLabel}
-              <Text variant='pricing'>
-                <Text as='strong' variant='amount'>
-                  Custom
-                </Text>
-                <br />
-                $1,000+ monthly spend
-              </Text>
-            </CardHeader>
-            <CardBody>
-              <UnorderedList variant='pricing' ms={0} spacing={2}>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  1,000 free credits
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Credits can be used long term
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Access to search, browsing, & reporting
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Email & chat support
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Best efforts to unblock any site within 24 hours
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} />
-                  Dedicated browser pool for faster responses
-                </ListItem>
-              </UnorderedList>
-            </CardBody>
-            <CardFooter>
-              <Button as='a' variant='outline' href={ui.supportUrl}>
-                {ui.contactLabel}
-              </Button>
-            </CardFooter>
-          </Card>
-        </SimpleGrid>
+              >
+                <CardHeader>
+                  {ui.trialLabel}
+                  <Text variant='pricing'>
+                    <Text as='strong' variant='amount'>
+                      $0
+                    </Text>
+                    <br />
+                    1,000 credits to test any site
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <UnorderedList variant='pricing' ms={0} spacing={2}>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      1,000 free credits
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Credits can be used for 30 days
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Instant access to search, browsing, & reporting
+                    </ListItem>
+                  </UnorderedList>
+                </CardBody>
+                <CardFooter>
+                  <Button variant='outline' isDisabled={!!session}>
+                    {session ? ui.tryingLabel : ui.tryLabel}
+                  </Button>
+                </CardFooter>
+              </Card>
+              <Card
+                variant='pricing'
+                pos='relative'
+                borderColor='bg-button'
+                _light={{ boxShadow: ui.lightPopularShadow }}
+                _dark={{ boxShadow: ui.darkPopularShadow }}
+                _hover={{ borderColor: 'bg-inverted', transform: `translateY(-${ui.hoverTravel})` }}
+                onMouseDown={() => {
+                  isPurchaseTextboxFocused.current = purchaseTextbox.current?.isFocused();
+                }}
+                onClick={() => {
+                  if (isPurchaseTextboxFocused.current || purchaseTextbox.current?.hasAmount) {
+                    purchaseTextbox.current?.submit();
+                  } else {
+                    purchaseTextbox.current?.focus();
+                  }
+
+                  isPurchaseTextboxFocused.current = false;
+                }}
+              >
+                <Box
+                  pos='absolute'
+                  top='-11px'
+                  left='50%'
+                  rounded='full'
+                  bg='bg-button'
+                  px={2.5}
+                  py={1}
+                  lineHeight={1.4}
+                  fontSize='2xs'
+                  fontWeight='bold'
+                  textTransform='uppercase'
+                  letterSpacing='1px'
+                  color='fg-button'
+                  transform='translateX(-50%)'
+                >
+                  {ui.popularLabel}
+                </Box>
+                <CardHeader>
+                  {ui.paygLabel}
+                  <Text variant='pricing'>
+                    <Text as='strong' variant='amount'>
+                      $1
+                    </Text>
+                    {' / 1,000 credits'}
+                    <br />
+                    $0.90 / 1,000 credits for $100+ purchases
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <UnorderedList variant='pricing' ms={0} spacing={2}>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      1,000 free credits
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Credits can be used for 30 days
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Instant access to search, browsing, & reporting
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Email support
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Best efforts to unblock any site within 48 hours
+                    </ListItem>
+                  </UnorderedList>
+                </CardBody>
+                <CardFooter>
+                  <Pricing
+                    ref={purchaseTextbox}
+                    addToCart={(dollarAmount) => {
+                      if (session) {
+                        navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${dollarAmount}`);
+                      } else {
+                        localStorage.setItem(ui.pendingPurchaseKey, dollarAmount);
+                        setPendingCheckoutUrl(ui.checkoutUrl);
+                        openLogin();
+                      }
+                    }}
+                  />
+                </CardFooter>
+              </Card>
+              <Card
+                variant='pricing'
+                _hover={{
+                  borderColor: 'bg-emphasized',
+                  transform: `translateY(-${ui.hoverTravel})`
+                }}
+                onClick={() => {
+                  location.href = ui.supportUrl;
+                }}
+              >
+                <CardHeader>
+                  {ui.enterpriseLabel}
+                  <Text variant='pricing'>
+                    <Text as='strong' variant='amount'>
+                      Custom
+                    </Text>
+                    <br />
+                    $1,000+ monthly spend
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <UnorderedList variant='pricing' ms={0} spacing={2}>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      1,000 free credits
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Credits can be used long term
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Access to search, browsing, & reporting
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Email & chat support
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Best efforts to unblock any site within 24 hours
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Dedicated browser pool for faster responses
+                    </ListItem>
+                  </UnorderedList>
+                </CardBody>
+                <CardFooter>
+                  <Button as='a' variant='outline' href={ui.supportUrl}>
+                    {ui.contactLabel}
+                  </Button>
+                </CardFooter>
+              </Card>
+            </SimpleGrid>
+          </Box>
+        </Box>
       </Box>
       <Box
         id={ui.aboutId}
