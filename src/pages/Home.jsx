@@ -1225,7 +1225,7 @@ export default function Home({
                   Agent First
                 </Text>
                 {' is a spinoff of '}
-                <Text as='strong' variant='footerBold'>
+                <Text as='strong' variant='bold'>
                   Massive
                 </Text>
                 {' that’s focused on serving AI agents.'}
@@ -1336,11 +1336,11 @@ export default function Home({
                   Franck
                 </Link>
                 {', who cofounded the startup community '}
-                <Text as='strong' variant='footerBold'>
+                <Text as='strong' variant='bold'>
                   Startup Weekend
                 </Text>
                 {' and AI investor '}
-                <Text as='strong' variant='footerBold'>
+                <Text as='strong' variant='bold'>
                   No Cap
                 </Text>
                 {', to run the boring parts of '}

@@ -40,8 +40,7 @@ export default extendTheme({
     subheading: ui.subheadingFont,
     display: ui.displayFont,
     body: ui.bodyFont,
-    code: ui.codeFont,
-    footer: ui.footerFont
+    code: ui.codeFont
   },
   components: {
     Card: {
@@ -138,33 +137,28 @@ export default extendTheme({
         },
         service: {
           mt: 4,
-          fontSize: { base: 'md', md: 'lg' },
           fontWeight: 'light',
           _dark: { color: 'whiteAlpha.700' }
         },
         pricing: { fontSize: 'sm', fontWeight: 'light', color: 'chakra-placeholder-color' },
         teammate: {
           mt: 2,
-          fontFamily: 'footer',
           fontSize: 'md',
           fontWeight: 'light',
           _light: { color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
         attribution: {
-          fontFamily: 'footer',
           fontSize: { base: 'xs', md: 'sm' },
           fontWeight: 'light',
           _light: { color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
         description: {
-          fontSize: { base: 'md', md: 'lg' },
           fontWeight: 'light',
           _dark: { color: 'whiteAlpha.700' }
         },
         bold: { fontSize: 'inherit' },
-        footerBold: { fontSize: 'inherit' },
         lede: { fontSize: '1.5em' },
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger' },
         co: { mx: '.2em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },
@@ -237,12 +231,11 @@ export default extendTheme({
       }
     },
     FormLabel: {
-      baseStyle: { mr: 0, mb: 0, fontFamily: 'display', fontWeight: 'bold', whiteSpace: 'nowrap' }
+      baseStyle: { mr: 0, mb: 0, fontWeight: 'bold', whiteSpace: 'nowrap' }
     },
     Input: {
       baseStyle: {
         field: {
-          fontFamily: 'display',
           _light: { borderColor: 'chakra-border-color', bg: 'white' },
           _dark: { borderColor: 'chakra-border-color', bg: 'whiteAlpha.50' }
         }
@@ -256,13 +249,11 @@ export default extendTheme({
         }
       }
     },
-    NumberInput: { baseStyle: { field: { fontFamily: 'display' } } },
     Textarea: {
       defaultProps: { focusBorderColor: 'brand.primary' },
       baseStyle: {
         p: ui.promptPadding,
         lineHeight: 'base',
-        fontFamily: 'display',
         fontSize: ui.promptFontSize,
         fontWeight: 'light',
         _placeholder: { color: 'chakra-placeholder-color' }
@@ -271,7 +262,6 @@ export default extendTheme({
     },
     Button: {
       baseStyle: {
-        fontFamily: 'display',
         fontWeight: 'bold',
         _hover: { borderColor: 'transparent' },
         _focus: { shadow: ui.shadowStyle },
@@ -368,13 +358,10 @@ export default extendTheme({
         borderWidth: '1px',
         bg: 'bg-emphasized',
         pt: '2px',
-        fontFamily: 'body',
         _light: { borderColor: 'accent.secondary', color: 'accent.secondary' },
         _dark: { borderColor: 'whiteAlpha.600', color: 'whiteAlpha.600' }
       }
     },
-    Tooltip: { baseStyle: { fontFamily: 'display' } },
-    Alert: { baseStyle: { container: { fontFamily: 'display' } } }
   },
   styles: {
     global: {
