@@ -254,12 +254,12 @@ export default extendTheme({
     Button: {
       baseStyle: {
         fontWeight: 'bold',
-        _hover: { borderColor: 'transparent' },
-        _focus: { shadow: ui.shadowStyle },
         _disabled: {
           _light: { _hover: { bg: 'accent.secondary !important' } },
           _dark: { _hover: { bg: 'brand.primary !important' } }
-        }
+        },
+        _hover: { borderColor: 'transparent' },
+        _focus: { shadow: ui.shadowStyle }
       },
       variants: {
         solid: {
@@ -280,6 +280,10 @@ export default extendTheme({
           h: ui.controlDimension,
           fontSize: { base: 'md', md: 'lg' },
           color: 'bg-button',
+          _disabled: {
+            _light: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } },
+            _dark: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } }
+          },
           _hover: {
             borderColor: 'bg-inverted',
             bg: 'transparent',
@@ -287,21 +291,17 @@ export default extendTheme({
             _focus: { shadow: ui.outline('bg-inverted') }
           },
           _focus: { shadow: ui.outline('bg-button') },
-          _active: { bg: 'transparent' },
-          _disabled: {
-            _light: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } },
-            _dark: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } }
-          }
+          _active: { bg: 'transparent' }
         },
         monochrome: {
           color: 'brand.primary',
+          _light: { bg: 'gray.200' },
+          _dark: { bg: 'whiteAlpha.200' },
           _hover: {
             bg: 'bg-emphasized',
             color: 'bg-inverted',
             _focus: { shadow: ui.outline('bg-inverted') }
-          },
-          _light: { bg: 'gray.200' },
-          _dark: { bg: 'whiteAlpha.200' }
+          }
         },
         toggle: {
           _light: { bg: '#e2e8f0', _hover: { bg: '#cbd5e0' } },

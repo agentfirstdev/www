@@ -750,9 +750,9 @@ export default function Home({
             py={ui.smMargin}
             _before={{
               position: 'absolute',
-              top: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              top: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
@@ -789,9 +789,9 @@ export default function Home({
             py={ui.smMargin}
             _before={{
               position: 'absolute',
-              top: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              top: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
@@ -827,9 +827,9 @@ export default function Home({
             py={ui.smMargin}
             _before={{
               position: 'absolute',
-              top: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              top: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
@@ -896,18 +896,18 @@ export default function Home({
             py={ui.smMargin}
             _before={{
               position: 'absolute',
-              top: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              top: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
             _after={{
               position: 'absolute',
-              bottom: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              bottom: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
@@ -1011,18 +1011,18 @@ export default function Home({
             py={ui.smMargin}
             _before={{
               position: 'absolute',
-              top: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              top: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
             _after={{
               position: 'absolute',
-              bottom: 0,
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              bottom: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
@@ -1043,17 +1043,17 @@ export default function Home({
               <Card
                 variant='pricing'
                 cursor={session ? 'not-allowed' : 'pointer'}
-                _hover={
-                  session
-                    ? null
-                    : { borderColor: 'bg-emphasized', transform: `translateY(-${ui.hoverTravel})` }
-                }
                 onClick={() => {
                   if (!session) {
                     setPendingCheckoutUrl(ui.dashboardUrl);
                     openLogin();
                   }
                 }}
+                _hover={
+                  session
+                    ? null
+                    : { borderColor: 'bg-emphasized', transform: `translateY(-${ui.hoverTravel})` }
+                }
               >
                 <CardHeader>
                   {ui.trialLabel}
@@ -1091,9 +1091,6 @@ export default function Home({
                 variant='pricing'
                 pos='relative'
                 borderColor='bg-button'
-                _light={{ boxShadow: ui.lightPopularShadow }}
-                _dark={{ boxShadow: ui.darkPopularShadow }}
-                _hover={{ borderColor: 'bg-inverted', transform: `translateY(-${ui.hoverTravel})` }}
                 onMouseDown={() => {
                   isPurchaseTextboxFocused.current = purchaseTextbox.current?.isFocused();
                 }}
@@ -1106,11 +1103,14 @@ export default function Home({
 
                   isPurchaseTextboxFocused.current = false;
                 }}
+                _light={{ boxShadow: ui.lightPopularShadow }}
+                _dark={{ boxShadow: ui.darkPopularShadow }}
+                _hover={{ borderColor: 'bg-inverted', transform: `translateY(-${ui.hoverTravel})` }}
               >
                 <Box
                   pos='absolute'
-                  top='-11px'
                   left='50%'
+                  top='-11px'
                   rounded='full'
                   bg='bg-button'
                   px={2.5}
@@ -1177,12 +1177,12 @@ export default function Home({
               </Card>
               <Card
                 variant='pricing'
+                onClick={() => {
+                  location.href = ui.supportUrl;
+                }}
                 _hover={{
                   borderColor: 'bg-emphasized',
                   transform: `translateY(-${ui.hoverTravel})`
-                }}
-                onClick={() => {
-                  location.href = ui.supportUrl;
                 }}
               >
                 <CardHeader>
@@ -1245,16 +1245,16 @@ export default function Home({
           </svg>
           <Box
             pos='absolute'
-            top={0}
             left={0}
+            top={0}
             bgGradient='linear(to-r, chakra-body-bg, transparent)'
             w={ui.gradientWidth}
             h='100%'
           />
           <Box
             pos='absolute'
-            top={0}
             right={0}
+            top={0}
             bgGradient='linear(to-l, chakra-body-bg, transparent)'
             w={ui.gradientWidth}
             h='100%'

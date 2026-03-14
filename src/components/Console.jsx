@@ -1,4 +1,13 @@
-import { Modal, ModalOverlay, ModalContent, ModalBody, Box, Flex, Button } from '@chakra-ui/react';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  Box,
+  Flex,
+  Button,
+  useBreakpointValue
+} from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import hljs from 'highlight.js/lib/core';
 import xml from 'highlight.js/lib/languages/xml';
@@ -10,8 +19,15 @@ hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('json', json);
 
 export default function Console({ apiResponse, isOpen, close }) {
+  const margin = useBreakpointValue(ui.codeHorizontalMargin);
   const output = apiResponse?.content
-    ? hljs.highlight(apiResponse.content, { language: apiResponse.type }).value
+    ? hljs
+        .highlight(apiResponse.content, { language: apiResponse.type })
+        .value.split('\n')
+        .map((line) => {
+          return `<span class='line'>${line || ' '}</span>`;
+        })
+        .join('')
     : '';
 
   return (
@@ -48,8 +64,28 @@ export default function Console({ apiResponse, isOpen, close }) {
               fontFamily='code'
               fontSize={ui.codeFontSize}
               sx={{
-                '& pre': { whiteSpace: 'pre-wrap', wordBreak: 'break-word' },
-                '& code.hljs': { px: ui.codeHorizontalMargin, py: ui.codeVerticalMargin }
+                '& code.hljs': {
+                  px: ui.codeHorizontalMargin,
+                  py: ui.codeVerticalMargin,
+                  counterReset: 'line'
+                },
+                '& .line': {
+                  display: 'block',
+                  pl: `calc(${margin} + 1ch)`,
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-word'
+                },
+                '& .line::before': {
+                  display: 'inline-block',
+                  ml: `calc(-${margin} - 2ch)`,
+                  mr: margin,
+                  w: '2ch',
+                  textAlign: 'right',
+                  color: 'whiteAlpha.300',
+                  content: 'counter(line)',
+                  userSelect: 'none',
+                  counterIncrement: 'line'
+                }
               }}
               dangerouslySetInnerHTML={{ __html: `<pre><code class="hljs">${output}</code></pre>` }}
             />

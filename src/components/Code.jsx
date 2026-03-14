@@ -5,6 +5,7 @@ import {
   Link,
   Tooltip,
   Spinner,
+  useBreakpointValue,
   useDisclosure,
   useClipboard,
   useToast
@@ -38,6 +39,7 @@ export default function Code({ markdown, apiRequest, apiToken, openLogin, moreUr
   const [activeLanguage, setActiveLanguage] = useState('sh');
   const [apiResponse, setApiResponse] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
+  const margin = useBreakpointValue(ui.codeHorizontalMargin);
   const { isOpen: isConsoleOpen, onOpen: openConsole, onClose: closeConsole } = useDisclosure();
   const { hasCopied, onCopy, setValue } = useClipboard('');
   const toast = useToast();
@@ -76,6 +78,7 @@ export default function Code({ markdown, apiRequest, apiToken, openLogin, moreUr
 
         if (response.status >= 200 && response.status < 300) {
           setApiResponse({ code: response.status, message: response.statusText, content, type });
+          toast.close(runId);
           openConsole();
         } else {
           handleError();
@@ -121,6 +124,7 @@ export default function Code({ markdown, apiRequest, apiToken, openLogin, moreUr
               return (
                 <Box
                   as='button'
+                  key={language}
                   display='flex'
                   rounded='md'
                   bg={isActive ? 'chakra-border-color' : 'transparent'}
@@ -130,7 +134,6 @@ export default function Code({ markdown, apiRequest, apiToken, openLogin, moreUr
                   fontSize={ui.codeFontSize}
                   color={isActive ? 'accent.primary' : 'fg-muted'}
                   gap={ui.chromeButtonMargin}
-                  key={language}
                   disabled={isActive}
                   onClick={() => {
                     setActiveLanguage(language);
@@ -215,15 +218,19 @@ export default function Code({ markdown, apiRequest, apiToken, openLogin, moreUr
         <Box position='relative'>
           <Flex>
             <Box
+              ml={`calc(${margin} - 1ch)`}
               mt={ui.codeVerticalMargin}
-              ml={ui.codeHorizontalMargin}
               fontFamily='code'
               fontSize={ui.codeFontSize}
               color='fg-gutter'
               userSelect='none'
             >
               {Array.from({ length: rawCode.split('\n').length }, (_, i) => {
-                return <Box key={i}>{i + 1}</Box>;
+                return (
+                  <Box key={i} w='2ch' textAlign='right'>
+                    {i + 1}
+                  </Box>
+                );
               })}
             </Box>
             <Box
