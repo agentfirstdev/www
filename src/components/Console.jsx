@@ -54,8 +54,10 @@ export default function Console({ request, response, isRunning, isOpen, close })
     output =
       numberLines(hljs.highlight(output, { language: 'bash' }).value) +
       '<span class="line"> </span>' +
-      (response?.content
-        ? numberLines(hljs.highlight(response.content, { language: response.type }).value)
+      (response?.code
+        ? response.code >= 200 && response.code < 300
+          ? numberLines(hljs.highlight(response.content, { language: response.type }).value)
+          : `<span class='line'>${ui.errorMessage}</span>`
         : isRunning
           ? '<span class="line"><span class="cursor">█</span></span>'
           : '');
@@ -104,6 +106,7 @@ export default function Console({ request, response, isRunning, isOpen, close })
                 '& .line': {
                   display: 'block',
                   pl: `calc(${margin} + 1ch)`,
+                  color: 'whiteAlpha.500',
                   whiteSpace: 'pre-wrap',
                   wordBreak: 'break-word'
                 },

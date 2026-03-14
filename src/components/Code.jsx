@@ -23,8 +23,7 @@ import NodeHex from '../assets/NodeHex';
 import PlayIcon from '../assets/PlayIcon';
 import Console from './Console';
 
-const copyId = crypto.randomUUID();
-const runId = crypto.randomUUID();
+const toastId = crypto.randomUUID();
 const languageNames = { sh: 'bash', py: 'python', js: 'javascript' };
 const languageIcons = { sh: CurlSymbol, py: PythonDevice, js: NodeHex };
 const stripFences = (markdown) => {
@@ -45,24 +44,11 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
   const { hasCopied, onCopy, setValue } = useClipboard('');
   const toast = useToast();
   const rawCode = stripFences(markdown[activeLanguage]);
-  const handleError = () => {
-    if (!toast.isActive(runId)) {
-      toast({
-        id: runId,
-        position: 'top',
-        status: 'error',
-        description: ui.errorMessage,
-        duration: null,
-        isClosable: true
-      });
-    }
-  };
   const runCode = async () => {
     if (apiToken) {
       setApiRequest({ code: rawCode, language: languageNames[activeLanguage] });
       setApiResponse(null);
       setIsRunning(true);
-      toast.close(runId);
       openConsole();
 
       try {
@@ -79,15 +65,9 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
           type = 'html';
         }
 
-        if (response.status >= 200 && response.status < 300) {
-          setApiResponse({ code: response.status, message: response.statusText, content, type });
-        } else {
-          closeConsole();
-          handleError();
-        }
+        setApiResponse({ code: response.status, message: response.statusText, content, type });
       } catch {
-        closeConsole();
-        handleError();
+        setApiResponse({ code: 500, message: 'Unknown error occurred' });
       } finally {
         setIsRunning(false);
       }
@@ -173,9 +153,9 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
                 onClick={() => {
                   onCopy();
 
-                  if (!toast.isActive(copyId)) {
+                  if (!toast.isActive(toastId)) {
                     toast({
-                      id: copyId,
+                      id: toastId,
                       position: 'top',
                       status: 'success',
                       description: ui.codeMessage,
