@@ -359,6 +359,7 @@ export const consoleWidth = '100ch';
 export const consoleHeight = '60vh';
 export const chromeButtonDimension = 9;
 export const consoleTabWidth = 2;
+export const apiTryCount = 3;
 export const codeHorizontalMargin = { base: '1.5em', md: '2em' };
 export const codeVerticalMargin = { base: '0.75em', md: '1em' };
 export const codeFontSize = { base: 'sm', md: 'md' };

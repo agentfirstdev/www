@@ -46,31 +46,53 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
   const rawCode = stripFences(markdown[activeLanguage]);
   const runCode = async () => {
     if (apiToken) {
+      const finalTry = ui.apiTryCount - 1;
+
       setApiRequest({ code: rawCode, language: languageNames[activeLanguage] });
       setApiResponse(null);
       setIsRunning(true);
       openConsole();
 
-      try {
-        const response = await fetch(apiUrl, { headers: { Authorization: `Bearer ${apiToken}` } });
-        const text = await response.text();
-        let content;
-        let type;
-
+      for (let i = 0; i < ui.apiTryCount; i++) {
         try {
-          content = JSON.stringify(JSON.parse(text), null, ui.consoleTabWidth);
-          type = 'json';
-        } catch {
-          content = text;
-          type = 'html';
-        }
+          const response = await fetch(apiUrl, {
+            headers: { Authorization: `Bearer ${apiToken}` }
+          });
+          const text = await response.text();
+          let content;
+          let type;
 
-        setApiResponse({ code: response.status, message: response.statusText, content, type });
-      } catch {
-        setApiResponse({ code: 500, message: 'Unknown error occurred' });
-      } finally {
-        setIsRunning(false);
+          try {
+            content = JSON.stringify(JSON.parse(text), null, ui.consoleTabWidth);
+            type = 'json';
+          } catch {
+            content = text;
+            type = 'html';
+          }
+
+          if (response.status >= 200 && response.status < 300) {
+            setApiResponse({ code: response.status, message: response.statusText, content, type });
+
+            break;
+          }
+
+          if (i == finalTry) {
+            setApiResponse({
+              code: response.status,
+              message: response.statusText,
+              content,
+              type,
+              isError: true
+            });
+          }
+        } catch {
+          if (i == finalTry) {
+            setApiResponse({ code: 500, message: 'Unknown error occurred', isError: true });
+          }
+        }
       }
+
+      setIsRunning(false);
     } else {
       openLogin();
     }
@@ -150,6 +172,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
                 alignItems='center'
                 color='fg-muted'
                 aria-label={ui.codeLabel}
+                pointerEvents={hasCopied ? 'none' : 'auto'}
                 onClick={() => {
                   onCopy();
 
@@ -185,6 +208,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
                 alignItems='center'
                 color='fg-muted'
                 aria-label={ui.runLabel}
+                pointerEvents={isRunning ? 'none' : 'auto'}
                 onClick={runCode}
                 _hover={{ bg: 'chakra-subtle-bg', color: 'fg-tab' }}
                 _focus={{ outline: 'none', shadow: ui.outline('accent-primary') }}
