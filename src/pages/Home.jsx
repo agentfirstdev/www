@@ -774,7 +774,7 @@ export default function Home({
             </Text>
             <Code
               markdown={{ sh: searchSh, py: searchPy, js: searchJs }}
-              apiRequest='https://api.agentfirst.dev/search?terms=foo+bar+baz&format=json'
+              apiUrl='https://api.agentfirst.dev/search?terms=foo+bar+baz&format=json'
               apiToken={apiToken}
               moreUrl={ui.searchUrl}
               openLogin={openLogin}
@@ -812,7 +812,7 @@ export default function Home({
             </Text>
             <Code
               markdown={{ sh: browsingSh, py: browsingPy, js: browsingJs }}
-              apiRequest='https://api.agentfirst.dev/browser?url=https://example.com/'
+              apiUrl='https://api.agentfirst.dev/browser?url=https://example.com/'
               apiToken={apiToken}
               moreUrl={ui.browsingUrl}
               openLogin={openLogin}
@@ -933,7 +933,7 @@ export default function Home({
                 py: geotargetedSearchPy,
                 js: geotargetedSearchJs
               }}
-              apiRequest={
+              apiUrl={
                 'https://api.agentfirst.dev/search' +
                 '?terms=foo+bar+baz&country=us&subdivision=tn&format=json'
               }
@@ -946,7 +946,7 @@ export default function Home({
                 py: geotargetedBrowsingPy,
                 js: geotargetedBrowsingJs
               }}
-              apiRequest={
+              apiUrl={
                 'https://api.agentfirst.dev/browser' +
                 '?url=https://example.com/&country=us&city=nashville'
               }

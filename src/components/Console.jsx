@@ -10,25 +10,56 @@ import {
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import hljs from 'highlight.js/lib/core';
+import sh from 'highlight.js/lib/languages/bash';
 import xml from 'highlight.js/lib/languages/xml';
 import json from 'highlight.js/lib/languages/json';
 
 import * as ui from '../config/ui';
 
+const numberLines = (text) => {
+  return text
+    .split('\n')
+    .map((line) => {
+      return `<span class='line'>${line || ' '}</span>`;
+    })
+    .join('');
+};
+
+hljs.registerLanguage('bash', sh);
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('json', json);
 
-export default function Console({ apiResponse, isOpen, close }) {
+export default function Console({ request, response, isRunning, isOpen, close }) {
   const margin = useBreakpointValue(ui.codeHorizontalMargin);
-  const output = apiResponse?.content
-    ? hljs
-        .highlight(apiResponse.content, { language: apiResponse.type })
-        .value.split('\n')
-        .map((line) => {
-          return `<span class='line'>${line || ' '}</span>`;
-        })
-        .join('')
-    : '';
+  let output = '';
+
+  if (request) {
+    output = '$ ';
+
+    switch (request.language) {
+      case 'python':
+        output += `python3 <<'EOF'\n${request.code}\nEOF`;
+
+        break;
+
+      case 'javascript':
+        output += `node <<'EOF'\n${request.code}\nEOF`;
+
+        break;
+
+      default:
+        output += request.code.replace("'\\\n'", '').replace('\\\n', '');
+    }
+
+    output =
+      numberLines(hljs.highlight(output, { language: 'bash' }).value) +
+      '<span class="line"> </span>' +
+      (response?.content
+        ? numberLines(hljs.highlight(response.content, { language: response.type }).value)
+        : isRunning
+          ? '<span class="line"><span class="cursor">█</span></span>'
+          : '');
+  }
 
   return (
     <Modal isOpen={isOpen} isCentered autoFocus={false} returnFocusOnClose={false} onClose={close}>
@@ -38,7 +69,7 @@ export default function Console({ apiResponse, isOpen, close }) {
         bg={ui.darkBackground}
         p={0}
         maxW={ui.consoleWidth}
-        maxH={ui.consoleHeight}
+        h={ui.consoleHeight}
         overflow='hidden'
       >
         <Flex bg='whiteAlpha.50' px={ui.chromePadding} py={2} justify='flex-end'>
@@ -58,12 +89,13 @@ export default function Console({ apiResponse, isOpen, close }) {
             <AddIcon transform={`rotate(-${ui.openRotation}deg)`} />
           </Button>
         </Flex>
-        <ModalBody p={0}>
+        <ModalBody p={0} overflow='auto'>
           {output && (
             <Box
               fontFamily='code'
               fontSize={ui.codeFontSize}
               sx={{
+                '@keyframes blink': { '0%, 100%': { opacity: 1 }, '50%': { opacity: 0 } },
                 '& code.hljs': {
                   px: ui.codeHorizontalMargin,
                   py: ui.codeVerticalMargin,
@@ -77,17 +109,18 @@ export default function Console({ apiResponse, isOpen, close }) {
                 },
                 '& .line::before': {
                   display: 'inline-block',
-                  ml: `calc(-${margin} - 2ch)`,
+                  ml: `calc(-${margin} - 3ch)`,
                   mr: margin,
-                  w: '2ch',
+                  w: '3ch',
                   textAlign: 'right',
                   color: 'whiteAlpha.300',
                   content: 'counter(line)',
                   userSelect: 'none',
                   counterIncrement: 'line'
-                }
+                },
+                '& .cursor': { color: 'whiteAlpha.800', animation: 'blink 1s step-end infinite' }
               }}
-              dangerouslySetInnerHTML={{ __html: `<pre><code class="hljs">${output}</code></pre>` }}
+              dangerouslySetInnerHTML={{ __html: `<pre><code class='hljs'>${output}</code></pre>` }}
             />
           )}
         </ModalBody>

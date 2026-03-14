@@ -35,8 +35,9 @@ hljs.registerLanguage('bash', sh);
 hljs.registerLanguage('python', py);
 hljs.registerLanguage('javascript', js);
 
-export default function Code({ markdown, apiRequest, apiToken, openLogin, moreUrl }) {
+export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl }) {
   const [activeLanguage, setActiveLanguage] = useState('sh');
+  const [apiRequest, setApiRequest] = useState(null);
   const [apiResponse, setApiResponse] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
   const margin = useBreakpointValue(ui.codeHorizontalMargin);
@@ -58,12 +59,14 @@ export default function Code({ markdown, apiRequest, apiToken, openLogin, moreUr
   };
   const runCode = async () => {
     if (apiToken) {
+      setApiRequest({ code: rawCode, language: languageNames[activeLanguage] });
+      setApiResponse(null);
       setIsRunning(true);
+      toast.close(runId);
+      openConsole();
 
       try {
-        const response = await fetch(apiRequest, {
-          headers: { Authorization: `Bearer ${apiToken}` }
-        });
+        const response = await fetch(apiUrl, { headers: { Authorization: `Bearer ${apiToken}` } });
         const text = await response.text();
         let content;
         let type;
@@ -78,12 +81,12 @@ export default function Code({ markdown, apiRequest, apiToken, openLogin, moreUr
 
         if (response.status >= 200 && response.status < 300) {
           setApiResponse({ code: response.status, message: response.statusText, content, type });
-          toast.close(runId);
-          openConsole();
         } else {
+          closeConsole();
           handleError();
         }
       } catch {
+        closeConsole();
         handleError();
       } finally {
         setIsRunning(false);
@@ -246,14 +249,20 @@ export default function Code({ markdown, apiRequest, apiToken, openLogin, moreUr
               }}
             />
           </Flex>
-          {moreUrl ? (
+          {moreUrl && (
             <Link variant='doc' href={moreUrl}>
               {ui.moreLabel}
             </Link>
-          ) : null}
+          )}
         </Box>
       </Box>
-      <Console apiResponse={apiResponse} isOpen={isConsoleOpen} close={closeConsole} />
+      <Console
+        request={apiRequest}
+        response={apiResponse}
+        isRunning={isRunning}
+        isOpen={isConsoleOpen}
+        close={closeConsole}
+      />
     </>
   );
 }
