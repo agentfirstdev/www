@@ -263,6 +263,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
       <Console
         request={apiRequest}
         response={apiResponse}
+        token={apiToken}
         isRunning={isRunning}
         isOpen={isConsoleOpen}
         close={closeConsole}

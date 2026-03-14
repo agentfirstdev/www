@@ -352,11 +352,13 @@ export const servicesOldWidth = 1376;
 export const servicesOldHeight = 320;
 
 // Code
+export const maskChar = '*';
 export const chromeButtonMargin = '0.5em';
 export const chromeButtonPadding = '0.75em';
 export const chromeIconDimension = '16px';
 export const consoleWidth = '100ch';
 export const consoleHeight = '60vh';
+export const tokenPrefixCharCount = 3;
 export const chromeButtonDimension = 9;
 export const consoleTabWidth = 2;
 export const apiTryCount = 3;

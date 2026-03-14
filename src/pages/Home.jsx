@@ -948,7 +948,7 @@ export default function Home({
               }}
               apiUrl={
                 'https://api.agentfirst.dev/browser' +
-                '?url=https://example.com/&country=us&city=nashville'
+                '?url=https%3A%2F%2Fexample.com%2F&country=us&city=nashville'
               }
               apiToken={apiToken}
               moreUrl={ui.geotargetingUrl}

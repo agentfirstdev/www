@@ -29,26 +29,37 @@ hljs.registerLanguage('bash', sh);
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('json', json);
 
-export default function Console({ request, response, isRunning, isOpen, close }) {
+export default function Console({ request, response, token, isRunning, isOpen, close }) {
   const margin = useBreakpointValue(ui.codeHorizontalMargin);
   let output = '';
 
   if (request) {
     output = '$ ';
+    const maskedToken =
+      token.slice(0, ui.tokenPrefixCharCount) +
+      ui.maskChar.repeat(Math.max(0, token.length - ui.tokenPrefixCharCount));
 
     switch (request.language) {
       case 'python':
-        output += `python3 <<'EOF'\n${request.code}\nEOF`;
+        output += `python3 <<'EOF'\n${request.code}\nEOF`
+          .replace("f'", "'")
+          .replace('{AGENT_FIRST_TOKEN}', maskedToken);
 
         break;
 
       case 'javascript':
-        output += `node <<'EOF'\n${request.code}\nEOF`;
+        output += `node <<'EOF'\n${request.code}\nEOF`
+          .replaceAll('`', "'")
+          .replace('${agentFirstToken}', maskedToken);
 
         break;
 
       default:
-        output += request.code.replace("'\\\n'", '').replace('\\\n', '');
+        output += request.code
+          .replaceAll("'\\\n'", '')
+          .replaceAll('\\\n', '')
+          .replaceAll('"', "'")
+          .replace('$AGENT_FIRST_TOKEN', maskedToken);
     }
 
     output =
