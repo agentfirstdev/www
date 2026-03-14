@@ -98,6 +98,7 @@ export default function Home({
   const [linkedinPath, setLinkedinPath] = useState(null);
   const [xPath, setXPath] = useState(null);
   const [sitePath, setSitePath] = useState(null);
+  const [apiToken, setApiToken] = useState(null);
   const [pendingCheckoutUrl, setPendingCheckoutUrl] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
   const [isWaitlisted, setIsWaitlisted] = useState(() => {
@@ -627,6 +628,20 @@ export default function Home({
     textColor
   ]);
 
+  useEffect(() => {
+    if (session) {
+      supabaseClient
+        .from('accounts')
+        .select('api_token')
+        .single()
+        .then(({ data }) => {
+          if (data) setApiToken(data.api_token);
+        });
+    } else {
+      setApiToken(null);
+    }
+  }, [session]);
+
   /* useEffect(() => {
     if (!isLoading && promptBox.current) {
       promptBox.current.focus();
@@ -757,7 +772,13 @@ export default function Home({
               </Text>
               :
             </Text>
-            <Code markdown={{ sh: searchSh, py: searchPy, js: searchJs }} moreUrl={ui.searchUrl} />
+            <Code
+              markdown={{ sh: searchSh, py: searchPy, js: searchJs }}
+              apiRequest='https://api.agentfirst.dev/search?terms=foo+bar+baz&format=json'
+              apiToken={apiToken}
+              moreUrl={ui.searchUrl}
+              openLogin={openLogin}
+            />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               {ui.startLabel}
             </Button>
@@ -791,7 +812,10 @@ export default function Home({
             </Text>
             <Code
               markdown={{ sh: browsingSh, py: browsingPy, js: browsingJs }}
+              apiRequest='https://api.agentfirst.dev/browser?url=https://example.com/'
+              apiToken={apiToken}
               moreUrl={ui.browsingUrl}
+              openLogin={openLogin}
             />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               {ui.startLabel}
@@ -909,6 +933,12 @@ export default function Home({
                 py: geotargetedSearchPy,
                 js: geotargetedSearchJs
               }}
+              apiRequest={
+                'https://api.agentfirst.dev/search' +
+                '?terms=foo+bar+baz&country=us&subdivision=tn&format=json'
+              }
+              apiToken={apiToken}
+              openLogin={openLogin}
             />
             <Code
               markdown={{
@@ -916,7 +946,13 @@ export default function Home({
                 py: geotargetedBrowsingPy,
                 js: geotargetedBrowsingJs
               }}
+              apiRequest={
+                'https://api.agentfirst.dev/browser' +
+                '?url=https://example.com/&country=us&city=nashville'
+              }
+              apiToken={apiToken}
               moreUrl={ui.geotargetingUrl}
+              openLogin={openLogin}
             />
             <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
               {ui.startLabel}

@@ -19,6 +19,7 @@ export const profileLabel = 'Settings';
 export const supportLabel = 'Help';
 export const logoutLabel = 'Logout';
 export const codeLabel = 'Copy code';
+export const runLabel = 'Run code';
 export const moreLabel = 'See more';
 export const startLabel = 'Get started';
 export const waitLabel = 'Join waitlist';
@@ -354,10 +355,13 @@ export const servicesOldHeight = 320;
 export const chromeButtonMargin = '0.5em';
 export const chromeButtonPadding = '0.75em';
 export const chromeIconDimension = '16px';
+export const consoleWidth = '100ch';
+export const consoleHeight = '80vh';
 export const chromeButtonDimension = 9;
-export const editorHorizontalMargin = { base: '1.5em', md: '2em' };
-export const editorVerticalMargin = { base: '0.75em', md: '1em' };
-export const editorFontSize = { base: 'sm', md: 'md' };
+export const consoleTabWidth = 2;
+export const codeHorizontalMargin = { base: '1.5em', md: '2em' };
+export const codeVerticalMargin = { base: '0.75em', md: '1em' };
+export const codeFontSize = { base: 'sm', md: 'md' };
 export const chromePadding = { base: '0.75em', md: '1em' };
 
 // Pricing

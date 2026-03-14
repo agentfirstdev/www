@@ -7,7 +7,8 @@ response = requests.get(
   params={
     'terms': 'foo bar baz',
     'country': 'us',
-    'subdivision': 'tn'
+    'subdivision': 'tn',
+    'format': 'json'
   }
 )
 ```

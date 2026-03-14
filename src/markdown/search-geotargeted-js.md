@@ -1,7 +1,7 @@
 ```js
 const response = await fetch(
   'https://api.agentfirst.dev/search' +
-    '?terms=foo+bar+baz&country=us&subdivision=tn',
+    '?terms=foo+bar+baz&country=us&subdivision=tn&format=json',
   { headers: { Authorization: `Bearer ${agentFirstToken}` } }
 );
 ```

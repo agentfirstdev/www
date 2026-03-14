@@ -77,7 +77,7 @@ export default extendTheme({
         pricing: { item: { listStyleType: 'none', fontSize: 'sm' }, icon: { color: 'bg-button' } },
         citations: {
           container: {
-            mt: ui.smMargin,
+            mt: ui.xsMargin,
             mb: 1.5,
             px: { base: ui.smMargin, md: ui.xlMargin },
             textAlign: 'left'
@@ -186,10 +186,10 @@ export default extendTheme({
         doc: {
           display: { base: 'none', lg: 'inline' },
           position: 'absolute',
-          right: ui.editorHorizontalMargin,
-          bottom: ui.editorVerticalMargin,
-          fontSize: ui.editorFontSize,
-          fontWeight: 'light',
+          right: ui.codeHorizontalMargin,
+          bottom: ui.codeVerticalMargin,
+          fontSize: ui.codeFontSize,
+          fontWeight: 'normal',
           color: 'chakra-body-text',
           _focus: { shadow: ui.outline('chakra-body-text') }
         },

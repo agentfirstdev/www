@@ -16,7 +16,7 @@ export default function LoginModal({ supabaseClient, redirectUrl, isOpen, close 
   return (
     <Modal isOpen={isOpen} isCentered returnFocusOnClose={false} onClose={close}>
       <ModalOverlay />
-      <ModalContent mx={4} p={2} bg='bg-panel'>
+      <ModalContent mx={4} bg='bg-panel' p={2}>
         <ModalHeader
           p={0}
           textAlign='center'

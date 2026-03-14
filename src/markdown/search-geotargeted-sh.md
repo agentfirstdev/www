@@ -1,5 +1,5 @@
 ```sh
 curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
 'https://api.agentfirst.dev/search'\
-'?terms=foo+bar+baz&country=us&subdivision=tn'
+'?terms=foo+bar+baz&country=us&subdivision=tn&format=json'
 ```
