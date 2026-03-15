@@ -761,7 +761,7 @@ export default function Home({
           >
             <Text variant='description' mt={-1} color='chakra-placeholder-color'>
               <Text as='strong' variant='lede'>
-                You didn’t create your product to battle gatekeepers
+                You didn’t create your product to battle web gatekeepers
               </Text>
               <br />
               TODO
@@ -1290,17 +1290,11 @@ export default function Home({
             h='100%'
           />
         </Box>
-        <Text variant='description' mx={ui.descriptionMargin} mt={ui.xsMargin} textAlign='left'>
-          Many of the most successful technology companies were founded by developers who leveraged
-          new features of emerging platforms, from desktop computing to AI. We’re betting
-          agent-first development is the next big opportunity and are providing the tools you need
-          to focus on building unique, native agents.
+        <Text variant='description' mt={ui.xsMargin}>
+          <Text as='strong' variant='lede' color={timelineColor}>
+            Developed & maintained by a team that knows web infrastructure
+          </Text>
         </Text>
-      </Box>
-      <Box ref={team} id={ui.teamId} pt={ui.mdMargin}>
-        <Heading as='h1' variant='team' fontSize={ui.teamFontSize}>
-          Our team
-        </Heading>
         <Flex
           mx={ui.xsMargin}
           mt={ui.lgMargin}
