@@ -65,7 +65,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         <Button as='a' size='lg' h={ui.ctaHeight} href={ui.pricingPath}>
           {ui.ctaLabel}
         </Button>
-        <Button as='a' variant='outline' w='auto' h={ui.ctaHeight} href={ui.docUrl}>
+        <Button as='a' variant='outline' size='lg' w='auto' h={ui.ctaHeight} href={ui.docUrl}>
           {ui.secondaryCtaLabel}
         </Button>
       </Flex>

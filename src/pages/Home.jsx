@@ -761,7 +761,7 @@ export default function Home({
           >
             <Text variant='description' mt={-1} color='chakra-placeholder-color'>
               <Text as='strong' variant='lede'>
-                You didn’t create your product to wrestle with gatekeepers
+                You didn’t create your product to battle gatekeepers
               </Text>
               <br />
               TODO
@@ -1096,7 +1096,7 @@ export default function Home({
                       $0
                     </Text>
                     <br />
-                    1,000 credits to test any site
+                    1,000 credits to test your target sites
                   </Text>
                 </CardHeader>
                 <CardBody>
