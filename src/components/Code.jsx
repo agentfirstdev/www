@@ -54,8 +54,10 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
       openConsole();
 
       for (let i = 0; i < ui.apiTryCount; i++) {
+        const isFinalTry = i == finalTry;
+
         try {
-          const response = await fetch(apiUrl, {
+          const response = await fetch(apiUrl + (isFinalTry ? '&difficulty=medium' : ''), {
             headers: { Authorization: `Bearer ${apiToken}` }
           });
           const text = await response.text();
@@ -70,13 +72,13 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
             type = 'html';
           }
 
-          if (response.status >= 200 && response.status < 300) {
+          if (response.status >= 200 && response.status < 500) {
             setApiResponse({ code: response.status, message: response.statusText, content, type });
 
             break;
           }
 
-          if (i == finalTry) {
+          if (isFinalTry) {
             setApiResponse({
               code: response.status,
               message: response.statusText,
@@ -86,7 +88,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
             });
           }
         } catch {
-          if (i == finalTry) {
+          if (isFinalTry) {
             setApiResponse({ code: 500, message: 'Unknown error occurred', isError: true });
           }
         }
