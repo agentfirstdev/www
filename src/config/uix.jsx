@@ -33,7 +33,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           </Link>
         </Text>
       </HStack>
-      <Text variant='audience' mt={ui.xsMargin}>
+      <Text variant='audience' mt={ui.xxsMargin}>
         For data teams · For agent builders · For proxy providers
       </Text>
       <Heading as='h1' variant='tagline' mt={6} fontSize={ui.taglineFontSize}>
@@ -57,11 +57,11 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         </Box>
         {' to every public website'}
       </Heading>
-      <Text variant='cta' my={ui.xsMargin}>
+      <Text variant='cta' my={ui.xxsMargin}>
         Search & browse with automatic captcha solving & geo-targeting to 190+ countries — pay only
         for successful requests
       </Text>
-      <Flex mt={ui.mdMargin} gap={4}>
+      <Flex mt={ui.lgMargin} gap={ui.xxsMargin}>
         <Button as='a' size='lg' h={ui.ctaHeight} href={ui.pricingPath}>
           {ui.ctaLabel}
         </Button>

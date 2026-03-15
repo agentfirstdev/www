@@ -104,7 +104,7 @@ export default extendTheme({
         service: { fontFamily: 'subheading', fontSize: '2xl' },
         team: { textAlign: 'center', fontWeight: 'normal' },
         name: { fontFamily: 'subheading' },
-        secondary: { mt: ui.mdMargin, mb: ui.smMargin, fontFamily: 'body', color: 'fg-muted' },
+        secondary: { mt: ui.lgMargin, mb: ui.xsMargin, fontFamily: 'body', color: 'fg-muted' },
         dropdown: { fontFamily: 'subheading', fontSize: '1.25rem' }
       }
     },
@@ -134,7 +134,7 @@ export default extendTheme({
           fontSize: ui.postItFontSize,
           color: 'gray.800'
         },
-        service: { mt: ui.xsMargin, fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
+        service: { mt: ui.xxsMargin, fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
         pricing: { fontSize: 'sm', fontWeight: 'light', color: 'chakra-placeholder-color' },
         teammate: {
           mt: 2,

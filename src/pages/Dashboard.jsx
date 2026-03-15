@@ -196,7 +196,7 @@ export default function Dashboard({
   return session && !isSessionLoading ? (
     hasChartLoaded.current ? (
       <>
-        <Flex my={ui.smMargin} justify='center' gap={3}>
+        <Flex my={ui.xsMargin} justify='center' gap={3}>
           <DateRangePicker
             startDate={startDate}
             startDateId='start-date'
@@ -255,7 +255,7 @@ export default function Dashboard({
           </Menu>
         </Flex>
         {usage && haveFontsLoaded ? (
-          <Flex px={ui.smMargin} pb={ui.smMargin} justify='center' flex={1}>
+          <Flex mx={ui.xsMargin} mb={ui.xsMargin} justify='center' flex={1}>
             <Box w={ui.secondaryWidth}>
               <Line
                 data={{
@@ -341,7 +341,7 @@ export default function Dashboard({
             </Box>
           </Flex>
         ) : (
-          <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
+          <Flex mt={7} mb={5} justify='center' align='center' flex={1}>
             <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
           </Flex>
         )}
@@ -353,12 +353,12 @@ export default function Dashboard({
         />
       </>
     ) : (
-      <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
+      <Flex mt={7} mb={5} justify='center' align='center' flex={1}>
         <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
       </Flex>
     )
   ) : isSessionLoading ? (
-    <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
+    <Flex mt={7} mb={5} justify='center' align='center' flex={1}>
       <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
     </Flex>
   ) : (
@@ -366,7 +366,7 @@ export default function Dashboard({
       {/* <Heading variant='secondary' size='lg'>
         {ui.loginLabel}
       </Heading> */}
-      <Flex pt={ui.smMargin} pb={1} justify='center' align='center' flex={1}>
+      <Flex mt={ui.xsMargin} mb={1} justify='center' align='center' flex={1}>
         <Login
           supabaseClient={supabaseClient}
           width={ui.secondaryTextboxWidth}

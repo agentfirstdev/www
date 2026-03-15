@@ -661,8 +661,8 @@ export default function Home({
     <>
       <VStack
         id='hero'
-        px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.smMargin}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
+        pt={ui.xsMargin}
         w='100%'
         justify='center'
         align='center'
@@ -688,7 +688,7 @@ export default function Home({
           />
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.resetHint} hasArrow>
             <IconButton
-              ml={ui.xsMargin}
+              ml={ui.xxsMargin}
               rounded='full'
               size='lg'
               icon={<AddIcon boxSize={4} />}
@@ -704,10 +704,10 @@ export default function Home({
       </VStack>
       <Box
         id={ui.servicesId}
-        mt={ui.sectionMargin}
-        px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.sectionMargin}
-        pb={ui.sectionPadding}
+        mt={ui.smMargin}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
+        pt={ui.smMargin}
+        pb={ui.mdMargin}
         textAlign='left'
       >
         <canvas
@@ -725,7 +725,7 @@ export default function Home({
         />
         <Box
           pos='relative'
-          mt={ui.smMargin}
+          mt={ui.xsMargin}
           _before={{
             pos: 'absolute',
             left: 0,
@@ -747,8 +747,8 @@ export default function Home({
         >
           <Box
             pos='relative'
-            px={{ base: ui.xsMargin, md: ui.smMargin }}
-            py={ui.smMargin}
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
             _before={{
               pos: 'absolute',
               left: horizontalDividerOverflow,
@@ -769,7 +769,7 @@ export default function Home({
             <Heading
               as='h2'
               variant='service'
-              mt={ui.mdMargin}
+              mt={ui.lgMargin}
               fontSize={{ base: '22px', md: '3xl' }}
             >
               1. Live search results
@@ -794,7 +794,7 @@ export default function Home({
             />
             <Button
               as='a'
-              mt={ui.xsMargin}
+              mt={ui.xxsMargin}
               w={ui.buttonWidth}
               h={ui.buttonHeight}
               href={ui.pricingPath}
@@ -804,8 +804,8 @@ export default function Home({
           </Box>
           <Box
             pos='relative'
-            px={{ base: ui.xsMargin, md: ui.smMargin }}
-            py={ui.smMargin}
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
             _before={{
               pos: 'absolute',
               left: horizontalDividerOverflow,
@@ -838,7 +838,7 @@ export default function Home({
             />
             <Button
               as='a'
-              mt={ui.xsMargin}
+              mt={ui.xxsMargin}
               w={ui.buttonWidth}
               h={ui.buttonHeight}
               href={ui.pricingPath}
@@ -848,8 +848,8 @@ export default function Home({
           </Box>
           <Box
             pos='relative'
-            px={{ base: ui.xsMargin, md: ui.smMargin }}
-            py={ui.smMargin}
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
             _before={{
               pos: 'absolute',
               left: horizontalDividerOverflow,
@@ -889,7 +889,7 @@ export default function Home({
             </Text>
             <Box pos='relative'>
               <Button
-                mt={ui.xsMargin}
+                mt={ui.xxsMargin}
                 w={ui.buttonWidth}
                 h={ui.buttonHeight}
                 isDisabled={isWaitlisted}
@@ -916,8 +916,8 @@ export default function Home({
           </Box>
           <Box
             pos='relative'
-            px={{ base: ui.xsMargin, md: ui.smMargin }}
-            py={ui.smMargin}
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
             _before={{
               pos: 'absolute',
               left: horizontalDividerOverflow,
@@ -980,7 +980,7 @@ export default function Home({
             />
             <Button
               as='a'
-              mt={ui.xsMargin}
+              mt={ui.xxsMargin}
               w={ui.buttonWidth}
               h={ui.buttonHeight}
               href={ui.pricingPath}
@@ -992,9 +992,9 @@ export default function Home({
       </Box>
       <Box
         id={ui.pricingId}
-        px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.sectionMargin}
-        pb={ui.sectionPadding}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
+        pt={ui.smMargin}
+        pb={ui.mdMargin}
         align='center'
       >
         <Box opacity={ui.pricingOpacity}>
@@ -1015,7 +1015,7 @@ export default function Home({
         </Box>
         <Box
           pos='relative'
-          mt={ui.smMargin}
+          mt={ui.xsMargin}
           _before={{
             pos: 'absolute',
             left: 0,
@@ -1037,8 +1037,8 @@ export default function Home({
         >
           <Box
             pos='relative'
-            px={{ base: ui.xsMargin, md: ui.smMargin }}
-            py={ui.smMargin}
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
             _before={{
               pos: 'absolute',
               left: horizontalDividerOverflow,
@@ -1069,11 +1069,7 @@ export default function Home({
               </Link>
               )
             </Text>
-            <SimpleGrid
-              mt={{ base: 0, lg: 2 }}
-              columns={{ base: 1, lg: 3 }}
-              spacing={ui.sectionPadding}
-            >
+            <SimpleGrid mt={{ base: 0, lg: 2 }} columns={{ base: 1, lg: 3 }} spacing={ui.mdMargin}>
               <Card
                 variant='pricing'
                 cursor={session ? 'not-allowed' : 'pointer'}
@@ -1269,8 +1265,8 @@ export default function Home({
       </Box>
       <Box
         id={ui.aboutId}
-        px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.sectionMargin}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
+        pt={ui.smMargin}
         align='center'
       >
         <Box pos='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>
@@ -1294,20 +1290,20 @@ export default function Home({
             h='100%'
           />
         </Box>
-        <Text variant='description' mx={ui.descriptionMargin} mt={ui.smMargin} textAlign='left'>
+        <Text variant='description' mx={ui.descriptionMargin} mt={ui.xsMargin} textAlign='left'>
           Many of the most successful technology companies were founded by developers who leveraged
           new features of emerging platforms, from desktop computing to AI. We’re betting
           agent-first development is the next big opportunity and are providing the tools you need
           to focus on building unique, native agents.
         </Text>
       </Box>
-      <Box ref={team} id={ui.teamId} pt={ui.sectionPadding}>
+      <Box ref={team} id={ui.teamId} pt={ui.mdMargin}>
         <Heading as='h1' variant='team' fontSize={ui.teamFontSize}>
           Our team
         </Heading>
         <Flex
-          mx={ui.smMargin}
-          mt={ui.mdMargin}
+          mx={ui.xsMargin}
+          mt={ui.lgMargin}
           direction={{ base: 'column', lg: 'row' }}
           justify='space-evenly'
         >
@@ -1496,9 +1492,9 @@ export default function Home({
       <OrderedList
         id={ui.citationsId}
         variant='citations'
-        mt={ui.sectionMargin}
+        mx={{ base: ui.xsMargin, md: ui.xxlMargin }}
+        mt={ui.smMargin}
         mb={3}
-        px={{ base: ui.smMargin, md: ui.xlMargin }}
       >
         <ListItem>
           <Link

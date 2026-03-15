@@ -172,6 +172,15 @@ export const discountedPurchaseThreshold = 100;
 export const minPurchaseAmount = 10;
 export const accountAgeThreshold = 24 * 60 * 60 * 1000;
 
+// Margins
+export const xxsMargin = 4;
+export const xsMargin = 8;
+export const smMargin = 10;
+export const mdMargin = 12;
+export const lgMargin = 14;
+export const xlMargin = 20;
+export const xxlMargin = 24;
+
 // Colors
 export const cornflowerBlue = '#7999f7';
 export const royalBlue = '#4a6de5';
@@ -227,7 +236,7 @@ export const tooltipPadding = '6px 10px';
 export const iconHorizontalMargin = 3;
 export const iconVerticalMargin = 2;
 export const profileHorizontalMargin = 3;
-export const profileVerticalMargin = 4;
+export const profileVerticalMargin = xxsMargin;
 export const socialMargin = 2;
 export const tooltipMargin = 1;
 export const closePosition = 1.5;
@@ -282,16 +291,9 @@ export const horizontalDividerOverflow = '-48px';
 export const verticalDividerOverflow = '-24px';
 export const dividerBaseOverflow = '-16px';
 export const linkPadding = '2px';
-export const xsMargin = 4;
-export const smMargin = 8;
-export const sectionMargin = 10;
-export const sectionPadding = 12;
-export const mdMargin = 14;
-export const lgMargin = 20;
-export const xlMargin = 24;
 export const gradientAngle = 140;
-export const descriptionMargin = { base: 0, lg: smMargin };
-export const cardMargin = { base: 2, lg: smMargin };
+export const descriptionMargin = { base: 0, lg: xsMargin };
+export const cardMargin = { base: 2, lg: xsMargin };
 export const outline = (color) => {
   return `${outlineStyle} var(--chakra-colors-${color})`;
 };
