@@ -662,8 +662,8 @@ export default function Home({
       <VStack
         id='hero'
         px={{ base: ui.smMargin, md: ui.xlMargin }}
+        pt={ui.smMargin}
         w='100%'
-        h={ui.heroHeight}
         justify='center'
         align='center'
       >
@@ -688,7 +688,7 @@ export default function Home({
           />
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.resetHint} hasArrow>
             <IconButton
-              ml={4}
+              ml={ui.xsMargin}
               rounded='full'
               size='lg'
               icon={<AddIcon boxSize={4} />}
@@ -704,9 +704,10 @@ export default function Home({
       </VStack>
       <Box
         id={ui.servicesId}
+        mt={ui.sectionMargin}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.smMargin}
-        pb={12}
+        pt={ui.sectionMargin}
+        pb={ui.sectionPadding}
         textAlign='left'
       >
         <canvas
@@ -714,8 +715,8 @@ export default function Home({
           width={ui.servicesOldWidth}
           height={ui.servicesOldHeight}
           style={{
-            marginRight: 'auto',
             marginLeft: 'auto',
+            marginRight: 'auto',
             width: ui.servicesNewWidth,
             minWidth: ui.servicesMinWidth
           }}
@@ -726,7 +727,7 @@ export default function Home({
           pos='relative'
           mt={ui.smMargin}
           _before={{
-            position: 'absolute',
+            pos: 'absolute',
             left: 0,
             top: ui.verticalDividerOverflow,
             bottom: ui.verticalDividerOverflow,
@@ -735,7 +736,7 @@ export default function Home({
             content: '""'
           }}
           _after={{
-            position: 'absolute',
+            pos: 'absolute',
             right: 0,
             top: ui.verticalDividerOverflow,
             bottom: ui.verticalDividerOverflow,
@@ -749,7 +750,7 @@ export default function Home({
             px={{ base: ui.xsMargin, md: ui.smMargin }}
             py={ui.smMargin}
             _before={{
-              position: 'absolute',
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
               top: 0,
@@ -758,7 +759,19 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
+            <Text variant='description' mt={-1} color='chakra-placeholder-color'>
+              <Text as='strong' variant='lede'>
+                You didn’t create your product to wrestle with gatekeepers
+              </Text>
+              <br />
+              TODO
+            </Text>
+            <Heading
+              as='h2'
+              variant='service'
+              mt={ui.mdMargin}
+              fontSize={{ base: '22px', md: '3xl' }}
+            >
               1. Live search results
             </Heading>
             <Text variant='service'>
@@ -779,7 +792,13 @@ export default function Home({
               moreUrl={ui.searchUrl}
               openLogin={openLogin}
             />
-            <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
+            <Button
+              as='a'
+              mt={ui.xsMargin}
+              w={ui.buttonWidth}
+              h={ui.buttonHeight}
+              href={ui.pricingPath}
+            >
               {ui.startLabel}
             </Button>
           </Box>
@@ -788,7 +807,7 @@ export default function Home({
             px={{ base: ui.xsMargin, md: ui.smMargin }}
             py={ui.smMargin}
             _before={{
-              position: 'absolute',
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
               top: 0,
@@ -797,7 +816,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
+            <Heading as='h2' variant='service' fontSize={{ base: '22px', md: '3xl' }}>
               2. Uncaptcha’d browsing
             </Heading>
             <Text variant='service'>
@@ -817,7 +836,13 @@ export default function Home({
               moreUrl={ui.browsingUrl}
               openLogin={openLogin}
             />
-            <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
+            <Button
+              as='a'
+              mt={ui.xsMargin}
+              w={ui.buttonWidth}
+              h={ui.buttonHeight}
+              href={ui.pricingPath}
+            >
               {ui.startLabel}
             </Button>
           </Box>
@@ -826,7 +851,7 @@ export default function Home({
             px={{ base: ui.xsMargin, md: ui.smMargin }}
             py={ui.smMargin}
             _before={{
-              position: 'absolute',
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
               top: 0,
@@ -835,7 +860,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
+            <Heading as='h2' variant='service' fontSize={{ base: '22px', md: '3xl' }}>
               {'3. Webpage interaction '}
               <Text
                 as='span'
@@ -844,7 +869,6 @@ export default function Home({
                 rounded='full'
                 px={3.5}
                 py={1.5}
-                fontWeight='bold'
                 textTransform='uppercase'
                 _light={{ borderColor: ui.blueAlpha, bg: ui.lightBlueAlpha }}
                 _dark={{ borderColor: ui.grayAlpha, bg: ui.lightGrayAlpha }}
@@ -865,7 +889,7 @@ export default function Home({
             </Text>
             <Box pos='relative'>
               <Button
-                mt={4}
+                mt={ui.xsMargin}
                 w={ui.buttonWidth}
                 h={ui.buttonHeight}
                 isDisabled={isWaitlisted}
@@ -895,7 +919,7 @@ export default function Home({
             px={{ base: ui.xsMargin, md: ui.smMargin }}
             py={ui.smMargin}
             _before={{
-              position: 'absolute',
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
               top: 0,
@@ -904,7 +928,7 @@ export default function Home({
               content: '""'
             }}
             _after={{
-              position: 'absolute',
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
               bottom: 0,
@@ -913,7 +937,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
+            <Heading as='h2' variant='service' fontSize={{ base: '22px', md: '3xl' }}>
               … From anywhere
             </Heading>
             <Text variant='service'>
@@ -954,7 +978,13 @@ export default function Home({
               moreUrl={ui.geotargetingUrl}
               openLogin={openLogin}
             />
-            <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
+            <Button
+              as='a'
+              mt={ui.xsMargin}
+              w={ui.buttonWidth}
+              h={ui.buttonHeight}
+              href={ui.pricingPath}
+            >
               {ui.startLabel}
             </Button>
           </Box>
@@ -963,8 +993,8 @@ export default function Home({
       <Box
         id={ui.pricingId}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.smMargin}
-        pb={12}
+        pt={ui.sectionMargin}
+        pb={ui.sectionPadding}
         align='center'
       >
         <Box opacity={ui.pricingOpacity}>
@@ -974,8 +1004,8 @@ export default function Home({
             width={ui.pricingOldWidth}
             height={ui.pricingOldHeight}
             style={{
-              marginRight: 'auto',
               marginLeft: 'auto',
+              marginRight: 'auto',
               width: ui.pricingNewWidth,
               minWidth: ui.pricingMinWidth
             }}
@@ -987,7 +1017,7 @@ export default function Home({
           pos='relative'
           mt={ui.smMargin}
           _before={{
-            position: 'absolute',
+            pos: 'absolute',
             left: 0,
             top: ui.verticalDividerOverflow,
             bottom: ui.verticalDividerOverflow,
@@ -996,7 +1026,7 @@ export default function Home({
             content: '""'
           }}
           _after={{
-            position: 'absolute',
+            pos: 'absolute',
             right: 0,
             top: ui.verticalDividerOverflow,
             bottom: ui.verticalDividerOverflow,
@@ -1010,7 +1040,7 @@ export default function Home({
             px={{ base: ui.xsMargin, md: ui.smMargin }}
             py={ui.smMargin}
             _before={{
-              position: 'absolute',
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
               top: 0,
@@ -1019,7 +1049,7 @@ export default function Home({
               content: '""'
             }}
             _after={{
-              position: 'absolute',
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
               bottom: 0,
@@ -1039,7 +1069,11 @@ export default function Home({
               </Link>
               )
             </Text>
-            <SimpleGrid mt={{ base: 0, lg: 2 }} columns={{ base: 1, lg: 3 }} spacing={12}>
+            <SimpleGrid
+              mt={{ base: 0, lg: 2 }}
+              columns={{ base: 1, lg: 3 }}
+              spacing={ui.sectionPadding}
+            >
               <Card
                 variant='pricing'
                 cursor={session ? 'not-allowed' : 'pointer'}
@@ -1236,7 +1270,7 @@ export default function Home({
       <Box
         id={ui.aboutId}
         px={{ base: ui.smMargin, md: ui.xlMargin }}
-        pt={ui.smMargin}
+        pt={ui.sectionMargin}
         align='center'
       >
         <Box pos='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>
@@ -1260,20 +1294,20 @@ export default function Home({
             h='100%'
           />
         </Box>
-        <Text variant='description' mx={ui.descriptionMargin} mt={ui.mdMargin} textAlign='left'>
+        <Text variant='description' mx={ui.descriptionMargin} mt={ui.smMargin} textAlign='left'>
           Many of the most successful technology companies were founded by developers who leveraged
           new features of emerging platforms, from desktop computing to AI. We’re betting
           agent-first development is the next big opportunity and are providing the tools you need
           to focus on building unique, native agents.
         </Text>
       </Box>
-      <Box ref={team} id={ui.teamId} pt={ui.mdMargin}>
+      <Box ref={team} id={ui.teamId} pt={ui.sectionPadding}>
         <Heading as='h1' variant='team' fontSize={ui.teamFontSize}>
           Our team
         </Heading>
         <Flex
           mx={ui.smMargin}
-          mt={ui.smMargin}
+          mt={ui.mdMargin}
           direction={{ base: 'column', lg: 'row' }}
           justify='space-evenly'
         >
@@ -1295,7 +1329,7 @@ export default function Home({
                   aria-label={ui.hedLabel}
                 />
               </Box>
-              <Heading variant='name' fontSize={ui.nameFont}>
+              <Heading variant='name' fontSize={ui.nameFontSize}>
                 Brian
               </Heading>
               <Text variant='teammate'>
@@ -1417,7 +1451,7 @@ export default function Home({
                   aria-label={ui.agentLabel}
                 />
               </Box>
-              <Heading variant='name' fontSize={ui.nameFont}>
+              <Heading variant='name' fontSize={ui.nameFontSize}>
                 Brain
               </Heading>
               <Text variant='teammate'>
@@ -1459,7 +1493,13 @@ export default function Home({
           </Card>
         </Flex>
       </Box>
-      <OrderedList id={ui.citationsId} variant='citations'>
+      <OrderedList
+        id={ui.citationsId}
+        variant='citations'
+        mt={ui.sectionMargin}
+        mb={3}
+        px={{ base: ui.smMargin, md: ui.xlMargin }}
+      >
         <ListItem>
           <Link
             variant='citation'

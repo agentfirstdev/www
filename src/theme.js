@@ -76,12 +76,7 @@ export default extendTheme({
       variants: {
         pricing: { item: { listStyleType: 'none', fontSize: 'sm' }, icon: { color: 'bg-button' } },
         citations: {
-          container: {
-            mt: ui.xsMargin,
-            mb: 1.5,
-            px: { base: ui.smMargin, md: ui.xlMargin },
-            textAlign: 'left'
-          },
+          container: { textAlign: 'left' },
           item: {
             fontSize: 'xs',
             color: 'bg-button',
@@ -100,14 +95,13 @@ export default extendTheme({
       baseStyle: { fontSize: { base: '26px', md: '4xl' }, color: 'bg-button' },
       variants: {
         tagline: {
-          mt: 4,
           lineHeight: 1.1,
           fontFamily: 'display',
           fontWeight: 'extrabold',
           color: 'chakra-body-text'
         },
         'post-it': { color: 'gray.800' },
-        service: { fontFamily: 'subheading' },
+        service: { fontFamily: 'subheading', fontSize: '2xl' },
         team: { textAlign: 'center', fontWeight: 'normal' },
         name: { fontFamily: 'subheading' },
         secondary: { mt: ui.mdMargin, mb: ui.smMargin, fontFamily: 'body', color: 'fg-muted' },
@@ -117,9 +111,14 @@ export default extendTheme({
     Text: {
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
-        pill: { verticalAlign: 'middle', fontFamily: 'body', fontSize: 'xs', color: 'bg-button' },
+        pill: {
+          verticalAlign: 'middle',
+          fontFamily: 'body',
+          fontSize: 'xs',
+          fontWeight: 'medium',
+          color: 'bg-button'
+        },
         audience: {
-          mt: 4,
           fontFamily: 'code',
           fontSize: '11px',
           fontWeight: 'semibold',
@@ -127,7 +126,7 @@ export default extendTheme({
           letterSpacing: '.2em',
           color: 'fg-muted'
         },
-        cta: { my: 4, fontSize: ui.ctaFontSize, fontWeight: 'light', color: 'fg-muted' },
+        cta: { fontSize: ui.ctaFontSize, fontWeight: 'light', color: 'fg-muted' },
         'post-it': {
           my: 6,
           textAlign: 'left',
@@ -135,7 +134,7 @@ export default extendTheme({
           fontSize: ui.postItFontSize,
           color: 'gray.800'
         },
-        service: { mt: 4, fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
+        service: { mt: ui.xsMargin, fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
         pricing: { fontSize: 'sm', fontWeight: 'light', color: 'chakra-placeholder-color' },
         teammate: {
           mt: 2,
@@ -152,7 +151,7 @@ export default extendTheme({
         },
         description: { fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
         bold: { fontSize: 'inherit' },
-        lede: { fontSize: '1.5em' },
+        lede: { fontSize: '1.5em', color: 'chakra-body-text' },
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger' },
         co: { mx: '.2em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },
         footerCo: { mx: '.1em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },

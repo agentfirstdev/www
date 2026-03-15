@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { Box, HStack, Heading, Text, Link } from '@chakra-ui/react';
+import { Box, Flex, HStack, Heading, Text, Link, Button } from '@chakra-ui/react';
 
 import * as ui from './ui';
 
@@ -22,7 +22,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           _light={{ bg: ui.royalBlue, boxShadow: `0 0 8px ${ui.royalBlue}` }}
           _dark={{ bg: ui.cornflowerBlue, boxShadow: `0 0 8px ${ui.cornflowerBlue}` }}
         />
-        <Text variant='pill' fontWeight='medium'>
+        <Text variant='pill'>
           From the developer of the world’s most-used privacy tools
           <Link variant='marker' href={`#${ui.citationsId}`}>
             <sup>1</sup>
@@ -33,8 +33,10 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           </Link>
         </Text>
       </HStack>
-      <Text variant='audience'>For data teams · For agent builders · For proxy providers</Text>
-      <Heading as='h1' variant='tagline' fontSize={ui.taglineFontSize}>
+      <Text variant='audience' mt={ui.xsMargin}>
+        For data teams · For agent builders · For proxy providers
+      </Text>
+      <Heading as='h1' variant='tagline' mt={6} fontSize={ui.taglineFontSize}>
         <Box as='span' display='inline-block' position='relative' textAlign='left'>
           <Text fontSize={ui.taglineFontSize} visibility='hidden' pointerEvents='none'>
             Reliable access
@@ -55,10 +57,18 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         </Box>
         {' to every public website'}
       </Heading>
-      <Text variant='cta'>
+      <Text variant='cta' my={ui.xsMargin}>
         Search & browse with automatic captcha solving & geo-targeting to 190+ countries — pay only
         for successful requests
       </Text>
+      <Flex mt={ui.mdMargin} gap={4}>
+        <Button as='a' size='lg' h={ui.ctaHeight} href={ui.pricingPath}>
+          {ui.ctaLabel}
+        </Button>
+        <Button as='a' variant='outline' w='auto' h={ui.ctaHeight} href={ui.docUrl}>
+          {ui.secondaryCtaLabel}
+        </Button>
+      </Flex>
     </>
   );
 });

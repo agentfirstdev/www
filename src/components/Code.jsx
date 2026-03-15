@@ -139,7 +139,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
                   fontSize={ui.codeFontSize}
                   color={isActive ? 'accent.primary' : 'fg-muted'}
                   gap={ui.chromeButtonMargin}
-                  disabled={isActive}
+                  pointerEvents={isActive ? 'not-allowed' : 'auto'}
                   onClick={() => {
                     setActiveLanguage(language);
                   }}
@@ -172,7 +172,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
                 alignItems='center'
                 color='fg-muted'
                 aria-label={ui.codeLabel}
-                pointerEvents={hasCopied ? 'none' : 'auto'}
+                pointerEvents={hasCopied ? 'not-allowed' : 'auto'}
                 onClick={() => {
                   onCopy();
 
@@ -208,7 +208,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
                 alignItems='center'
                 color='fg-muted'
                 aria-label={ui.runLabel}
-                pointerEvents={isRunning ? 'none' : 'auto'}
+                pointerEvents={isRunning ? 'not-allowed' : 'auto'}
                 onClick={runCode}
                 _hover={{ bg: 'chakra-subtle-bg', color: 'fg-tab' }}
                 _focus={{ outline: 'none', shadow: ui.outline('accent-primary') }}

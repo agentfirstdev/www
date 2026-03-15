@@ -364,7 +364,7 @@ export default function App() {
             aria-label={ui.logoLabel}
           />
         </Box>
-        <Flex pos='absolute' top={0} right={ui.itemMargin} bottom={0} align='center'>
+        <Flex pos='absolute' right={ui.itemMargin} top={0} bottom={0} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
             <Link variant='nav' ml={ui.itemMargin} href={ui.servicesPath}>
               {ui.servicesLabel}
@@ -423,12 +423,12 @@ export default function App() {
                   fontSize='xl'
                   icon={<HamburgerIcon />}
                   aria-label={ui.menuLabel}
+                  _light={{ color: 'white' }}
+                  _dark={{ color: 'whiteAlpha.800' }}
                   _hover={{
                     bg: 'bg-inverted',
                     _focus: { shadow: ui.outlineInset('chakra-body-bg', 'bg-inverted') }
                   }}
-                  _light={{ color: 'white' }}
-                  _dark={{ color: 'whiteAlpha.800' }}
                 />
               </Tooltip>
               <MenuList overflow='hidden'>
@@ -527,7 +527,7 @@ export default function App() {
           />
         </Routes>
       </Flex>
-      <Box id='contact' mx={{ base: ui.smMargin, lg: ui.xlMargin }} mb={1}>
+      <Box id='contact' mx={{ base: ui.smMargin, lg: ui.xlMargin }} mb={ui.iconVerticalMargin}>
         <Divider />
         <Flex mt={ui.iconVerticalMargin} direction='row' justify='space-between' align='center'>
           <Box lineHeight={0}>
