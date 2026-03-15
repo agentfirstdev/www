@@ -1492,7 +1492,7 @@ export default function Home({
       <OrderedList
         id={ui.citationsId}
         variant='citations'
-        mx={{ base: ui.xsMargin, md: ui.xxlMargin }}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
         mt={ui.smMargin}
         mb={3}
       >
