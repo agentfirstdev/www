@@ -1292,7 +1292,7 @@ export default function Home({
         </Box>
         <Text variant='description' mt={ui.xsMargin}>
           <Text as='strong' variant='lede' color={timelineColor}>
-            Developed & maintained by a team that knows web infrastructure
+            Developed & maintained by web-infrastructure experts
           </Text>
         </Text>
         <Flex
