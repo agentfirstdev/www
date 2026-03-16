@@ -64,7 +64,7 @@ export default function Home({
   const purchaseTextbox = useRef();
   const timeline = useRef();
   const timelineParts = useRef();
-  const team = useRef();
+  // const team = useRef();
   const hedcut = useRef();
   const agent = useRef();
   const githubIcon = useRef();
@@ -1291,201 +1291,204 @@ export default function Home({
             h='100%'
           />
         </Box>
-        <Text
-          variant='description'
-          mt={ui.xsMargin}
-          w={ui.teamMargin} align='left' color='bg-button'>
-          <Text as='strong' variant='lede' color='bg-button'>
-            Made by experts:
+        <Flex mt={ui.xsMargin} direction='column' maxW={ui.teamWidth}>
+          <Text variant='description' px={5} align='left' color='bg-button'>
+            <Text as='strong' variant='lede' color='bg-button'>
+              Made by experts:
+            </Text>
+            {' Our team knows web infrastructure & [is] agents'}
           </Text>
-          {' Our team knows web infrastructure & [is] agents'}
-        </Text>
-        <Flex
-          mx={ui.xsMargin}
-          mt={ui.lgMargin}
-          direction={{ base: 'column', lg: 'row' }}
-          justify='space-evenly'
-        >
-          <Card variant='teammate'>
-            <CardBody>
-              <Box
-                mt={ui.hedMargin}
-                w={ui.hedNewWidth}
-                maxW={ui.hedMaxWidth}
-                transform={ui.hedTransform}
-              >
-                <canvas
-                  ref={hedcut}
-                  className='lazy'
-                  width={ui.hedOldWidth}
-                  height={ui.hedOldHeight}
-                  style={{ width: '100%' }}
-                  role='img'
-                  aria-label={ui.hedLabel}
-                />
-              </Box>
-              <Heading variant='name' fontSize={ui.nameFontSize}>
-                Brian
-              </Heading>
-              <Text variant='teammate'>
-                <Text as='strong' variant='name'>
+          <Flex mt={ui.lgMargin} direction={{ base: 'column', lg: 'row' }} gap={ui.teammateMargin}>
+            <Card variant='teammate'>
+              <CardBody>
+                <Box
+                  mt={ui.hedMargin}
+                  w={ui.hedNewWidth}
+                  maxW={ui.hedMaxWidth}
+                  transform={ui.hedTransform}
+                >
+                  <canvas
+                    ref={hedcut}
+                    className='lazy'
+                    width={ui.hedOldWidth}
+                    height={ui.hedOldHeight}
+                    style={{ width: '100%' }}
+                    role='img'
+                    aria-label={ui.hedLabel}
+                  />
+                </Box>
+                <Heading variant='name' fontSize={ui.nameFontSize}>
                   Brian
+                </Heading>
+                <Text variant='teammate'>
+                  <Text as='strong' variant='name'>
+                    Brian
+                  </Text>
+                  {' cofounded '}
+                  <Link variant='team' href='https://disconnect.me/' isExternal>
+                    Disconnect
+                  </Link>
+                  , which makes privacy software that ships with most modern browsers and has helped
+                  {' protect the data of 100,000,000+ users, and '}
+                  <Link variant='team' href='https://joinmassive.com/' isExternal>
+                    Massive
+                  </Link>
+                  , which is developing an alternative to ads and paywalls for monetizing spare
+                  computing resources and was named Proxyway’s 2025 “Newcomer of the Year” for its
+                  {' bandwidth monetization. '}
+                  <Text as='strong' variant='footerCo'>
+                    Agent First
+                  </Text>
+                  {' is a spinoff of '}
+                  <Text as='strong' variant='bold'>
+                    Massive
+                  </Text>
+                  {' that’s focused on serving AI agents.'}
                 </Text>
-                {' cofounded '}
-                <Link variant='team' href='https://disconnect.me/' isExternal>
-                  Disconnect
-                </Link>
-                , which makes privacy software that ships with most modern browsers and has helped
-                {' protect the data of 100,000,000+ users, and '}
-                <Link variant='team' href='https://joinmassive.com/' isExternal>
-                  Massive
-                </Link>
-                , which is developing an alternative to ads and paywalls for monetizing spare
-                computing resources and was named Proxyway’s 2025 “Newcomer of the Year” for its
-                {' bandwidth monetization. '}
-                <Text as='strong' variant='footerCo'>
-                  Agent First
-                </Text>
-                {' is a spinoff of '}
-                <Text as='strong' variant='bold'>
-                  Massive
-                </Text>
-                {' that’s focused on serving AI agents.'}
-              </Text>
-            </CardBody>
-            <CardFooter>
-              <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
-                <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
-                  <canvas
-                    ref={siteIcon}
-                    className='lazy'
-                    width={ui.siteOldDimension}
-                    height={ui.siteOldDimension}
-                    style={{ width: ui.socialDimension, height: ui.socialDimension }}
-                    role='img'
-                    aria-label={ui.siteLabel}
-                  />
-                </Link>
-              </Tooltip>
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={ui.brianGithubLabel}
-                hasArrow
-              >
-                <Link
-                  variant='social'
-                  ml={ui.socialMargin}
-                  href='https://github.com/oldestlivingboy'
-                  isExternal
+              </CardBody>
+              <CardFooter>
+                <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
+                  <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
+                    <canvas
+                      ref={siteIcon}
+                      className='lazy'
+                      width={ui.siteOldDimension}
+                      height={ui.siteOldDimension}
+                      style={{ width: ui.socialDimension, height: ui.socialDimension }}
+                      role='img'
+                      aria-label={ui.siteLabel}
+                    />
+                  </Link>
+                </Tooltip>
+                <Tooltip
+                  mx={ui.tooltipMargin}
+                  p={ui.tooltipPadding}
+                  label={ui.brianGithubLabel}
+                  hasArrow
                 >
-                  <canvas
-                    ref={githubIcon}
-                    className='lazy'
-                    width={ui.githubOldDimension}
-                    height={ui.githubOldDimension}
-                    style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
-                    role='img'
-                    aria-label={ui.brianGithubLabel}
-                  />
-                </Link>
-              </Tooltip>
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={ui.brianLinkedinLabel}
-                hasArrow
-              >
-                <Link
-                  variant='social'
-                  ml={ui.socialMargin}
-                  href='https://www.linkedin.com/in/oldestlivingboy/'
-                  isExternal
+                  <Link
+                    variant='social'
+                    ml={ui.socialMargin}
+                    href='https://github.com/oldestlivingboy'
+                    isExternal
+                  >
+                    <canvas
+                      ref={githubIcon}
+                      className='lazy'
+                      width={ui.githubOldDimension}
+                      height={ui.githubOldDimension}
+                      style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                      role='img'
+                      aria-label={ui.brianGithubLabel}
+                    />
+                  </Link>
+                </Tooltip>
+                <Tooltip
+                  mx={ui.tooltipMargin}
+                  p={ui.tooltipPadding}
+                  label={ui.brianLinkedinLabel}
+                  hasArrow
                 >
-                  <canvas
-                    ref={linkedinIcon}
-                    className='lazy'
-                    width={ui.linkedinOldDimension}
-                    height={ui.linkedinOldDimension}
-                    style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
-                    role='img'
-                    aria-label={ui.brianLinkedinLabel}
-                  />
-                </Link>
-              </Tooltip>
-              <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.brianXLabel} hasArrow>
-                <Link
-                  variant='social'
-                  ml={ui.socialMargin}
-                  href='https://x.com/oldestlivingboy'
-                  isExternal
+                  <Link
+                    variant='social'
+                    ml={ui.socialMargin}
+                    href='https://www.linkedin.com/in/oldestlivingboy/'
+                    isExternal
+                  >
+                    <canvas
+                      ref={linkedinIcon}
+                      className='lazy'
+                      width={ui.linkedinOldDimension}
+                      height={ui.linkedinOldDimension}
+                      style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                      role='img'
+                      aria-label={ui.brianLinkedinLabel}
+                    />
+                  </Link>
+                </Tooltip>
+                <Tooltip
+                  mx={ui.tooltipMargin}
+                  p={ui.tooltipPadding}
+                  label={ui.brianXLabel}
+                  hasArrow
                 >
+                  <Link
+                    variant='social'
+                    ml={ui.socialMargin}
+                    href='https://x.com/oldestlivingboy'
+                    isExternal
+                  >
+                    <canvas
+                      ref={xIcon}
+                      className='lazy'
+                      width={ui.xOldDimension}
+                      height={ui.xOldDimension}
+                      style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                      role='img'
+                      aria-label={ui.brianXLabel}
+                    />
+                  </Link>
+                </Tooltip>
+              </CardFooter>
+            </Card>
+            <Card variant='teammate'>
+              <CardBody>
+                <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
                   <canvas
-                    ref={xIcon}
+                    ref={agent}
                     className='lazy'
-                    width={ui.xOldDimension}
-                    height={ui.xOldDimension}
-                    style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                    width={ui.agentOldWidth}
+                    height={ui.agentOldHeight}
+                    style={{ width: '100%' }}
                     role='img'
-                    aria-label={ui.brianXLabel}
+                    aria-label={ui.agentLabel}
                   />
-                </Link>
-              </Tooltip>
-            </CardFooter>
-          </Card>
-          <Card variant='teammate'>
-            <CardBody>
-              <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
-                <canvas
-                  ref={agent}
-                  className='lazy'
-                  width={ui.agentOldWidth}
-                  height={ui.agentOldHeight}
-                  style={{ width: '100%' }}
-                  role='img'
-                  aria-label={ui.agentLabel}
-                />
-              </Box>
-              <Heading variant='name' fontSize={ui.nameFontSize}>
-                Brain
-              </Heading>
-              <Text variant='teammate'>
-                <Text as='strong' variant='name'>
+                </Box>
+                <Heading variant='name' fontSize={ui.nameFontSize}>
                   Brain
+                </Heading>
+                <Text variant='teammate'>
+                  <Text as='strong' variant='name'>
+                    Brain
+                  </Text>
+                  {' is a cofounder agent we’re collaborating on with '}
+                  <Link
+                    variant='team'
+                    href='https://www.linkedin.com/in/francknouyrigat/'
+                    isExternal
+                  >
+                    Franck
+                  </Link>
+                  {', who cofounded the startup community '}
+                  <Text as='strong' variant='bold'>
+                    Startup Weekend
+                  </Text>
+                  {' and AI investor '}
+                  <Text as='strong' variant='bold'>
+                    No Cap
+                  </Text>
+                  {', to run the boring parts of '}
+                  <Text as='strong' variant='footerCo'>
+                    Agent First
+                  </Text>
+                  {' and to dogfood our services. Although '}
+                  <Text as='strong' variant='name'>
+                    Brain
+                  </Text>
+                  {' isn’t publicly available yet, you can try another agent we’re '}
+                  <Text as='span' textDecoration='line-through'>
+                    dog
+                  </Text>
+                  llamafooding that is, a “meta-LLM” that evaluates and combines responses from
+                  {' popular large language models, called '}
+                  <Link variant='team' href={ui.demoUrl} isExternal>
+                    Llamapile
+                  </Link>
+                  .
                 </Text>
-                {' is a cofounder agent we’re collaborating on with '}
-                <Link variant='team' href='https://www.linkedin.com/in/francknouyrigat/' isExternal>
-                  Franck
-                </Link>
-                {', who cofounded the startup community '}
-                <Text as='strong' variant='bold'>
-                  Startup Weekend
-                </Text>
-                {' and AI investor '}
-                <Text as='strong' variant='bold'>
-                  No Cap
-                </Text>
-                {', to run the boring parts of '}
-                <Text as='strong' variant='footerCo'>
-                  Agent First
-                </Text>
-                {' and to dogfood our services. Although '}
-                <Text as='strong' variant='name'>
-                  Brain
-                </Text>
-                {' isn’t publicly available yet, you can try another agent we’re '}
-                <Text as='span' textDecoration='line-through'>
-                  dog
-                </Text>
-                llamafooding that is, a “meta-LLM” that evaluates and combines responses from
-                {' popular large language models, called '}
-                <Link variant='team' href={ui.demoUrl} isExternal>
-                  Llamapile
-                </Link>
-                .
-              </Text>
-            </CardBody>
-          </Card>
+              </CardBody>
+            </Card>
+          </Flex>
         </Flex>
       </Box>
       <OrderedList
