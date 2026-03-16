@@ -392,6 +392,7 @@ export const siteOldDimension = 640;
 export const githubOldDimension = 640;
 export const linkedinOldDimension = 640;
 export const xOldDimension = 640;
+export const teamMargin = { base: '100%', lg: 'calc(100% - 360px)' };
 export const teamFontSize = { base: '32px', md: '32px' };
 export const cardWidth = { base: '100%', lg: '420px' };
 export const nameFontSize = { base: '2xl', md: '3xl' };

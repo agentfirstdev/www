@@ -1290,11 +1290,14 @@ export default function Home({
             h='100%'
           />
         </Box>
-        <Text variant='description' mt={ui.xsMargin} color='bg-button'>
+        <Text
+          variant='description'
+          mt={ui.xsMargin}
+          w={ui.teamMargin} align='left' color='bg-button'>
           <Text as='strong' variant='lede' color='bg-button'>
             Made by experts:
           </Text>
-          {' Our team knows web infrastructure'}
+          {' Our team knows web infrastructure & agents'}
         </Text>
         <Flex
           mx={ui.xsMargin}
