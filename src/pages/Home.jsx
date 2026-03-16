@@ -1290,10 +1290,11 @@ export default function Home({
             h='100%'
           />
         </Box>
-        <Text variant='description' mt={ui.xsMargin}>
-          <Text as='strong' variant='lede' color={timelineColor}>
-            Developed & maintained by web-infrastructure experts
+        <Text variant='description' mt={ui.xsMargin} color='bg-button'>
+          <Text as='strong' variant='lede' color='bg-button'>
+            Made by experts:
           </Text>
+          {' Our team knows web infrastructure'}
         </Text>
         <Flex
           mx={ui.xsMargin}
