@@ -759,17 +759,18 @@ export default function Home({
               content: '""'
             }}
           >
-            <Text variant='description' mt={-1} color='chakra-placeholder-color'>
+            <Text variant='description' mt={-2} color='chakra-placeholder-color'>
               <Text as='strong' variant='lede'>
                 You didn’t create your product to battle web gatekeepers
               </Text>
               <br />
-              TODO
+              Productionize in minutes while we handle the browser management & challenge
+              mitigations for you
             </Text>
             <Heading
               as='h2'
               variant='service'
-              mt={ui.lgMargin}
+              mt={ui.mdMargin}
               fontSize={{ base: '22px', md: '3xl' }}
             >
               1. Live search results
@@ -827,7 +828,7 @@ export default function Home({
               <Text as='strong' variant='bold'>
                 real, well-behaved browsers
               </Text>
-              {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
+              {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, hCaptcha, & other captchas:'}
             </Text>
             <Code
               markdown={{ sh: browsingSh, py: browsingPy, js: browsingJs }}
@@ -1058,7 +1059,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Text variant='description' mt={-1}>
+            <Text variant='description' mt={-2}>
               <Text as='strong' variant='lede'>
                 Simple credits:
               </Text>
