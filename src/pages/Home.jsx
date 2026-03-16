@@ -1297,7 +1297,7 @@ export default function Home({
           <Text as='strong' variant='lede' color='bg-button'>
             Made by experts:
           </Text>
-          {' Our team knows web infrastructure & agents'}
+          {' Our team knows web infrastructure & [is] agents'}
         </Text>
         <Flex
           mx={ui.xsMargin}
