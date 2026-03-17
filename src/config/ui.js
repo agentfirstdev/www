@@ -66,8 +66,6 @@ export const shTokenPlaceholder = '$AGENT_FIRST_TOKEN';
 export const pyTokenPlaceholder = '{AGENT_FIRST_TOKEN}';
 export const jsTokenPlaceholder = '${agentFirstToken}';
 export const resetHint = 'Start a new conversation';
-export const prompt = '$ ';
-export const urlPrompt = 'Enter URL';
 export const codeMessage = 'Code copied to clipboard';
 export const copiedMessage = 'Token copied to clipboard';
 // export const checkoutMessage = 'Credits added to your account';
@@ -106,6 +104,8 @@ export const waitlistKey = 'waitlistServices';
 export const pendingWaitlistKey = 'pendingWaitlistService';
 export const profileKey = 'wasProfilePresented';
 export const waitlistService = 'cdp';
+export const prompt = '$ ';
+export const urlPrompt = 'URL to try';
 export const completion = [
   { delay: 0, token: 'R' },
   { delay: 13, token: 'e' },
