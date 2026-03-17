@@ -18,10 +18,13 @@ export const homeLabel = 'Home';
 export const profileLabel = 'Settings';
 export const supportLabel = 'Help';
 export const logoutLabel = 'Logout';
+export const ctaLabel = 'Try any URL & get 1,000 free credits →';
+export const secondaryCtaLabel = 'Read API doc';
 export const codeLabel = 'Copy code';
+export const runLabel = 'Run code';
 export const moreLabel = 'See more';
-export const startLabel = 'Get started';
-export const waitLabel = 'Join waitlist';
+export const startLabel = 'Get started →';
+export const waitLabel = 'Join waitlist →';
 export const waitingLabel = 'Waitlist joined';
 export const firstLabel = 'Get notified first';
 export const notificationLabel = 'Get notified';
@@ -32,6 +35,7 @@ export const tryingLabel = 'Free trial started';
 export const paygLabel = 'Pay as you go';
 export const enterpriseLabel = 'High volume';
 export const contactLabel = 'Contact to discuss';
+export const popularLabel = 'Most popular';
 export const hedLabel = 'Brian hedcut';
 export const agentLabel = 'Brain agent';
 export const githubLabel = 'Go to our GitHub';
@@ -57,6 +61,10 @@ export const loadingPlaceholder = 'Loading ...';
 // export const generatingPlaceholder = 'Generating an answer';
 // export const updatePlaceholder = 'Your reply to the answer above ...';
 export const emailPlaceholder = 'Your email address';
+export const urlPlaceholder = 'https://example.com/';
+export const shTokenPlaceholder = '$AGENT_FIRST_TOKEN';
+export const pyTokenPlaceholder = '{AGENT_FIRST_TOKEN}';
+export const jsTokenPlaceholder = '${agentFirstToken}';
 export const resetHint = 'Start a new conversation';
 export const codeMessage = 'Code copied to clipboard';
 export const copiedMessage = 'Token copied to clipboard';
@@ -68,6 +76,7 @@ export const servicesId = 'services';
 export const pricingId = 'pricing';
 export const aboutId = 'about';
 export const teamId = 'team';
+export const citationsId = 'citations';
 export const servicesPath = `/#${servicesId}`;
 export const pricingPath = `/#${pricingId}`;
 export const aboutPath = `/#${aboutId}`;
@@ -87,6 +96,7 @@ export const searchUrl = 'https://doc.agentfirst.dev/endpoints/search';
 export const browsingUrl = 'https://doc.agentfirst.dev/endpoints/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargeting';
 export const rateUrl = 'https://doc.agentfirst.dev/endpoints/pricing';
+export const defaultUrl = 'example.com';
 export const purchaseParam = 'amount';
 export const pendingPurchaseKey = 'pendingAmount';
 export const checkoutParam = 'session';
@@ -94,6 +104,8 @@ export const waitlistKey = 'waitlistServices';
 export const pendingWaitlistKey = 'pendingWaitlistService';
 export const profileKey = 'wasProfilePresented';
 export const waitlistService = 'cdp';
+export const prompt = '$ ';
+export const urlPrompt = 'Your URL';
 export const completion = [
   { delay: 0, token: 'r' },
   { delay: 13, token: 'e' },
@@ -167,6 +179,15 @@ export const discountedPurchaseThreshold = 100;
 export const minPurchaseAmount = 10;
 export const accountAgeThreshold = 24 * 60 * 60 * 1000;
 
+// Margins
+export const xxsMargin = 4;
+export const xsMargin = 8;
+export const smMargin = 10;
+export const mdMargin = 12;
+export const lgMargin = 14;
+export const xlMargin = 20;
+export const xxlMargin = 24;
+
 // Colors
 export const cornflowerBlue = '#7999f7';
 export const royalBlue = '#4a6de5';
@@ -185,7 +206,12 @@ export const ruddyPink = '#e38f95';
 export const retroPink = '#aa6b70'; */
 export const blackAlpha = 'rgba(26, 32, 44, 0.48)';
 export const whiteAlpha = 'rgba(255, 255, 255, 0.48)';
-// export const blueAlpha = 'rgba(74, 109, 229, 0.48)';
+export const grayAlpha = 'rgba(121, 153, 247, 0.16)';
+export const lightGrayAlpha = 'rgba(121, 153, 247, 0.08)';
+export const darkGrayAlpha = 'rgba(121, 153, 247, 0.24)';
+export const blueAlpha = 'rgba(48, 87, 225, 0.16)';
+export const lightBlueAlpha = 'rgba(48, 87, 225, 0.08)';
+export const darkBlueAlpha = 'rgba(48, 87, 225, 0.24)';
 export const lightBackground = '#f9fafc';
 export const darkBackground = '#1a202c';
 export const lightTickColor = '#666';
@@ -210,20 +236,20 @@ export const footerFont = '"Outfit", sans-serif';
 export const controlDimension = '48px';
 export const buttonBorder = '1px solid transparent';
 export const iconDimension = '32px';
-export const textboxWidth = '36ch';
+export const textboxWidth = '32ch';
 export const ciphertextSpacing = '0.2rem';
 export const socialDimension = '24px';
 export const tooltipPadding = '6px 10px';
 export const iconHorizontalMargin = 3;
-export const iconVerticalMargin = 1;
+export const iconVerticalMargin = 2;
 export const profileHorizontalMargin = 3;
-export const profileVerticalMargin = 4;
+export const profileVerticalMargin = xxsMargin;
 export const socialMargin = 2;
 export const tooltipMargin = 1;
 export const closePosition = 1.5;
 export const buttonResetMs = 3000;
 export const toastTimeoutMs = 3000;
-export const buttonWidth = { base: '160px', md: '176px' };
+export const buttonWidth = { base: '160px', md: '180px' };
 export const buttonHeight = { base: controlDimension, md: '56px' };
 
 // Animation
@@ -237,6 +263,7 @@ export const agentStroke = 'transparent';
 export const agentFillStyle = 'solid';
 export const iconStroke = 'transparent';
 export const iconFillStyle = 'dots';
+export const hoverTravel = '8px';
 export const frameCount = 12;
 export const frameCountLimiter = 2;
 export const blueprintStrokeWidth = 4;
@@ -263,6 +290,7 @@ export const expandRotation = 180;
 
 // Other shared styles
 export const outlineStyle = '0 0 0 3px';
+export const smOutlineStyle = '0 0 0 2px';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
 export const transition = 'all var(--chakra-transition-duration-normal)';
@@ -270,14 +298,9 @@ export const horizontalDividerOverflow = '-48px';
 export const verticalDividerOverflow = '-24px';
 export const dividerBaseOverflow = '-16px';
 export const linkPadding = '2px';
-export const xsMargin = 4;
-export const smMargin = 8;
-export const mdMargin = 14;
-export const lgMargin = 20;
-export const xlMargin = 24;
 export const gradientAngle = 140;
-export const descriptionMargin = { base: 0, lg: smMargin };
-export const cardMargin = { base: 2, lg: smMargin };
+export const descriptionMargin = { base: 0, lg: xsMargin };
+export const cardMargin = { base: 2, lg: xsMargin };
 export const outline = (color) => {
   return `${outlineStyle} var(--chakra-colors-${color})`;
 };
@@ -305,7 +328,6 @@ export const itemMargin = { base: 5, lg: 6 };
 export const sunStroke = 3;
 
 // Hero
-export const heroHeight = '50vh';
 // export const logoMargin = '8px';
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
@@ -316,6 +338,7 @@ export const postItShadow = '5px 5px 15px var(--chakra-colors-shadow-color)';
 export const postItRotation = '-1.5deg'; */
 export const promptMinHeight = '108px';
 export const promptMaxHeight = '180px';
+export const promptFontSize = '18px';
 export const gradientWidth = '12.5%';
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
@@ -332,8 +355,7 @@ export const ctaFontSize = { base: '20px', lg: '24px' };
 /* export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth }; */
 export const postItFontSize = { base: '22px', md: '28px' };
-export const promptFontSize = '18px';
-export const teamFontSize = { base: '32px', md: '32px' };
+export const ctaHeight = { base: controlDimension, md: '64px' };
 
 // Services
 export const servicesNewWidth = '20%';
@@ -342,18 +364,27 @@ export const servicesOldWidth = 1376;
 export const servicesOldHeight = 320;
 
 // Code
+export const cursorChar = '█';
+export const maskChar = '*';
 export const chromeButtonMargin = '0.5em';
 export const chromeButtonPadding = '0.75em';
 export const chromeIconDimension = '16px';
+export const consoleWidth = '100ch';
+export const consoleHeight = '60vh';
+export const tokenPrefixCharCount = 3;
 export const chromeButtonDimension = 9;
-export const editorHorizontalMargin = { base: '1.5em', md: '2em' };
-export const editorVerticalMargin = { base: '0.75em', md: '1em' };
-export const editorFontSize = { base: 'sm', md: 'md' };
+export const consoleTabWidth = 2;
+export const apiTryCount = 3;
+export const codeHorizontalMargin = { base: '1.5em', md: '2em' };
+export const codeVerticalMargin = { base: '0.75em', md: '1em' };
+export const codeFontSize = { base: 'sm', md: 'md' };
 export const chromePadding = { base: '0.75em', md: '1em' };
 
 // Pricing
 export const pricingNewWidth = '20%';
 export const pricingMinWidth = '190px';
+export const lightPopularShadow = `0 0 48px ${blueAlpha}, inset 0 1px 0 ${darkBlueAlpha}`;
+export const darkPopularShadow = `0 0 48px ${grayAlpha}, inset 0 1px 0 ${darkGrayAlpha}`;
 export const pricingOldWidth = 1284;
 export const pricingOldHeight = 320;
 export const pricingOpacity = 0.75;
@@ -369,15 +400,17 @@ export const siteOldDimension = 640;
 export const githubOldDimension = 640;
 export const linkedinOldDimension = 640;
 export const xOldDimension = 640;
-export const cardWidth = { base: '100%', lg: '420px' };
-export const nameFont = { base: '2xl', md: '3xl' };
+export const teamWidth = { base: '100%', lg: '880px' };
+export const teamFontSize = { base: '32px', md: '32px' };
+export const teammateMargin = { base: 0, lg: 48 };
+export const nameFontSize = { base: '2xl', md: '3xl' };
 export const hedMargin = { base: '-5.5%', lg: '-16px' };
 export const hedNewWidth = { base: '55%', lg: '160px' };
 export const hedTransform = { base: 'translateX(-11%)', lg: 'translateX(-16px)' };
 export const agentNewWidth = { base: '50%', lg: '144px' };
 
 // Sidebar
-export const sidebarWidth = '560px';
+export const sidebarWidth = '600px';
 // export const sidebarMargin = `calc(100% - ${sidebarWidth} - ${sidebarWidth} + 4vw)`;
 export const sidebarCollapsedWidth = '40px';
 /* export const sidebarCollapsedMargin =
@@ -419,3 +452,51 @@ export const purchaseDecimalPlaces = 0;
 /* export const renderer = markdown({ html: true, linkify: true, typographer: true }).use(
   highlights
 ); */
+export const stripFences = (markdown) => {
+  return markdown.replace(/^```[^\n]*\n/, '').replace(/\n```\s*$/, '');
+};
+export const apiCall = async (url, token) => {
+  const finalTry = apiTryCount - 1;
+  let apiResponse;
+
+  for (let i = 0; i < apiTryCount; i++) {
+    const isFinalTry = i == finalTry;
+
+    try {
+      const response = await fetch(url + (isFinalTry ? '&difficulty=medium' : ''), {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const text = await response.text();
+      let content;
+      let type;
+
+      try {
+        content = JSON.stringify(JSON.parse(text), null, consoleTabWidth);
+        type = 'json';
+      } catch {
+        content = text;
+        type = 'html';
+      }
+
+      if (response.status >= 200 && response.status < 500) {
+        apiResponse = { code: response.status, message: response.statusText, content, type };
+
+        break;
+      }
+
+      if (isFinalTry) {
+        apiResponse = {
+          code: response.status,
+          message: response.statusText,
+          content,
+          type,
+          isError: true
+        };
+      }
+    } catch {
+      if (isFinalTry) apiResponse = { code: 500, message: 'Unknown error occurred', isError: true };
+    }
+  }
+
+  return apiResponse;
+};

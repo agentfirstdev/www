@@ -68,7 +68,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
         {/* <Heading variant='secondary' size='lg'>
           {ui.purchaseLabel}
         </Heading> */}
-        <Flex pt={ui.smMargin} pb={5} justify='center' align='start' flex={1}>
+        <Flex mt={ui.xxsMargin} mb={ui.smMargin} justify='center' align='start' flex={1}>
           <Box w={ui.secondaryWidth} maxW={ui.checkoutWidth}>
             <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
               <EmbeddedCheckout />
@@ -77,7 +77,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
         </Flex>
       </>
     ) : isLoading ? (
-      <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
+      <Flex mt={7} mb={5} justify='center' align='center' flex={1}>
         <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
       </Flex>
     ) : (
@@ -85,13 +85,13 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
         {/* <Heading variant='secondary' size='lg'>
           {ui.purchaseLabel}
         </Heading> */}
-        <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
+        <Flex mt={7} mb={5} justify='center' align='center' flex={1}>
           <Pricing isCartLoading={isLoading} addToCart={addToCart} />
         </Flex>
       </>
     )
   ) : isSessionLoading ? (
-    <Flex pt={7} pb={5} justify='center' align='center' flex={1}>
+    <Flex mt={7} mb={5} justify='center' align='center' flex={1}>
       <Spinner size='xl' thickness={ui.spinnerWidth} color={ui.royalBlue} />
     </Flex>
   ) : (
@@ -99,7 +99,7 @@ export default function Checkout({ supabaseClient, session, isSessionLoading }) 
       {/* <Heading variant='secondary' size='lg'>
         {ui.loginLabel}
       </Heading> */}
-      <Flex pt={ui.smMargin} pb={1} justify='center' align='center' flex={1}>
+      <Flex mt={ui.xsMargin} mb={1} justify='center' align='center' flex={1}>
         <Login
           supabaseClient={supabaseClient}
           width={ui.secondaryTextboxWidth}

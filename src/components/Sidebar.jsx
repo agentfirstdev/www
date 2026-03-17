@@ -110,8 +110,8 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
       >
         <Box
           pos='fixed'
-          top='0'
           left='0'
+          top='0'
           borderRight='1px'
           borderColor='fg-grid'
           px='4'
@@ -135,8 +135,8 @@ export default function Sidebar({ supabaseClient, session, isOpen, toggle }) {
             {ui.profileLabel}
           </Heading>
           <Grid
-            mt={ui.xsMargin}
-            templateColumns='auto 1fr'
+            mt={ui.xxsMargin}
+            templateColumns='auto minmax(0, 1fr)'
             columnGap={ui.profileHorizontalMargin}
             rowGap={ui.profileVerticalMargin}
             justifyItems='start'

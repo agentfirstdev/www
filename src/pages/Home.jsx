@@ -10,21 +10,22 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
+  OrderedList,
   UnorderedList,
   ListItem,
+  ListIcon,
   Heading,
   Text,
   Link,
   // Textarea,
   Button,
   // IconButton,
-  Badge,
   Tooltip,
   useBreakpointValue,
   useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react';
-// import { AddIcon } from '@chakra-ui/icons';
+import { AddIcon, CheckIcon } from '@chakra-ui/icons'; // eslint-disable-line no-unused-vars
 import rough from 'roughjs/bin/rough';
 import { createTimeline } from 'animejs';
 
@@ -35,6 +36,7 @@ import Pricing from '../components/Pricing';
 import WaitlistDropdown from '../components/WaitlistDropdown';
 import WaitlistModal from '../components/WaitlistModal';
 import LoginModal from '../components/LoginModal';
+import Console from '../components/Console';
 import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
@@ -63,7 +65,7 @@ export default function Home({
   const purchaseTextbox = useRef();
   const timeline = useRef();
   const timelineParts = useRef();
-  const team = useRef();
+  // const team = useRef();
   const hedcut = useRef();
   const agent = useRef();
   const githubIcon = useRef();
@@ -88,6 +90,7 @@ export default function Home({
   const hasAnimatedCompletion = useRef(false);
   const hasAnimatedTimeline = useRef(false);
   // const hasScrolledToTeam = useRef(false);
+  const isConsoleOpenPending = useRef(false);
   const isPurchaseTextboxFocused = useRef(false);
   const [servicesPath, setServicesPath] = useState(null);
   const [pricingPath, setPricingPath] = useState(null);
@@ -97,6 +100,7 @@ export default function Home({
   const [linkedinPath, setLinkedinPath] = useState(null);
   const [xPath, setXPath] = useState(null);
   const [sitePath, setSitePath] = useState(null);
+  const [apiToken, setApiToken] = useState(null);
   const [pendingCheckoutUrl, setPendingCheckoutUrl] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
   const [isWaitlisted, setIsWaitlisted] = useState(() => {
@@ -113,14 +117,24 @@ export default function Home({
   const textColor = useColorModeValue(ui.charcoalBlue, ui.whiteAlpha);
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
-  const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
   const {
     isOpen: isWaitlistOpen,
     onOpen: openWaitlist,
     onClose: closeWaitlist,
     onToggle: toggleWaitlist
   } = useDisclosure();
+  const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
+  const { isOpen: isConsoleOpen, onOpen: openConsole, onClose: closeConsole } = useDisclosure();
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
+  const handleCtaPress = () => {
+    if (apiToken) {
+      openConsole();
+    } else {
+      isConsoleOpenPending.current = true;
+
+      openLogin();
+    }
+  };
   /* const animatePrompt = (index) => {
     promptTimeouts.current?.forEach(clearTimeout);
 
@@ -626,6 +640,28 @@ export default function Home({
     textColor
   ]);
 
+  useEffect(() => {
+    if (session) {
+      supabaseClient
+        .from('accounts')
+        .select('api_token')
+        .single()
+        .then(({ data }) => {
+          if (data) {
+            setApiToken(data.api_token);
+
+            if (isConsoleOpenPending.current) {
+              isConsoleOpenPending.current = false;
+
+              openConsole();
+            }
+          }
+        });
+    } else {
+      setApiToken(null);
+    }
+  }, [session]);
+
   /* useEffect(() => {
     if (!isLoading && promptBox.current) {
       promptBox.current.focus();
@@ -645,9 +681,9 @@ export default function Home({
     <>
       <VStack
         id='hero'
-        px={{ base: ui.smMargin, md: ui.xlMargin }}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
+        pt={ui.xsMargin}
         w='100%'
-        h={ui.heroHeight}
         justify='center'
         align='center'
       >
@@ -658,7 +694,7 @@ export default function Home({
           justify='center'
           align='center'
         >
-          <uix.Tagline ref={completion} />
+          <uix.Tagline ref={completion} onCtaPress={handleCtaPress} />
         </VStack>
         {/* <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
           <Textarea
@@ -672,7 +708,7 @@ export default function Home({
           />
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.resetHint} hasArrow>
             <IconButton
-              ml={4}
+              ml={ui.xxsMargin}
               rounded='full'
               size='lg'
               icon={<AddIcon boxSize={4} />}
@@ -688,9 +724,10 @@ export default function Home({
       </VStack>
       <Box
         id={ui.servicesId}
-        px={{ base: ui.smMargin, md: ui.xlMargin }}
+        mt={ui.smMargin}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
         pt={ui.smMargin}
-        pb={12}
+        pb={ui.mdMargin}
         textAlign='left'
       >
         <canvas
@@ -698,8 +735,8 @@ export default function Home({
           width={ui.servicesOldWidth}
           height={ui.servicesOldHeight}
           style={{
-            marginRight: 'auto',
             marginLeft: 'auto',
+            marginRight: 'auto',
             width: ui.servicesNewWidth,
             minWidth: ui.servicesMinWidth
           }}
@@ -707,10 +744,10 @@ export default function Home({
           aria-label={ui.servicesLabel}
         />
         <Box
-          position='relative'
-          mt={ui.smMargin}
+          pos='relative'
+          mt={ui.xsMargin}
           _before={{
-            position: 'absolute',
+            pos: 'absolute',
             left: 0,
             top: ui.verticalDividerOverflow,
             bottom: ui.verticalDividerOverflow,
@@ -719,7 +756,7 @@ export default function Home({
             content: '""'
           }}
           _after={{
-            position: 'absolute',
+            pos: 'absolute',
             right: 0,
             top: ui.verticalDividerOverflow,
             bottom: ui.verticalDividerOverflow,
@@ -729,20 +766,33 @@ export default function Home({
           }}
         >
           <Box
-            position='relative'
-            px={{ base: ui.xsMargin, md: ui.smMargin }}
-            py={ui.smMargin}
+            pos='relative'
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
             _before={{
-              position: 'absolute',
-              top: 0,
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              top: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
+            <Text variant='description' mt={-2} color='chakra-placeholder-color'>
+              <Text as='strong' variant='lede'>
+                You didn’t create your product to battle web gatekeepers
+              </Text>
+              <br />
+              Deploy to production in minutes while we handle the browser management & challenge
+              mitigations for you
+            </Text>
+            <Heading
+              as='h2'
+              variant='service'
+              mt={ui.mdMargin}
+              fontSize={{ base: '22px', md: '3xl' }}
+            >
               1. Live search results
             </Heading>
             <Text variant='service'>
@@ -756,26 +806,38 @@ export default function Home({
               </Text>
               :
             </Text>
-            <Code markdown={{ sh: searchSh, py: searchPy, js: searchJs }} moreUrl={ui.searchUrl} />
-            <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
+            <Code
+              markdown={{ sh: searchSh, py: searchPy, js: searchJs }}
+              apiUrl='https://api.agentfirst.dev/search?terms=foo+bar+baz&format=json'
+              apiToken={apiToken}
+              moreUrl={ui.searchUrl}
+              openLogin={openLogin}
+            />
+            {/* <Button
+              as='a'
+              mt={ui.xxsMargin}
+              w={ui.buttonWidth}
+              h={ui.buttonHeight}
+              href={ui.pricingPath}
+            >
               {ui.startLabel}
-            </Button>
+            </Button> */}
           </Box>
           <Box
-            position='relative'
-            px={{ base: ui.xsMargin, md: ui.smMargin }}
-            py={ui.smMargin}
+            pos='relative'
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
             _before={{
-              position: 'absolute',
-              top: 0,
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              top: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
+            <Heading as='h2' variant='service' fontSize={{ base: '22px', md: '3xl' }}>
               2. Uncaptcha’d browsing
             </Heading>
             <Text variant='service'>
@@ -786,33 +848,54 @@ export default function Home({
               <Text as='strong' variant='bold'>
                 real, well-behaved browsers
               </Text>
-              {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, & other captchas for you:'}
+              {' bypasses or solves reCAPTCHA, Cloudflare Turnstile, hCaptcha, & other captchas:'}
             </Text>
             <Code
               markdown={{ sh: browsingSh, py: browsingPy, js: browsingJs }}
+              apiUrl='https://api.agentfirst.dev/browser?url=https://example.com/'
+              apiToken={apiToken}
               moreUrl={ui.browsingUrl}
+              openLogin={openLogin}
             />
-            <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
+            {/* <Button
+              as='a'
+              mt={ui.xxsMargin}
+              w={ui.buttonWidth}
+              h={ui.buttonHeight}
+              href={ui.pricingPath}
+            >
               {ui.startLabel}
-            </Button>
+            </Button> */}
           </Box>
           <Box
-            position='relative'
-            px={{ base: ui.xsMargin, md: ui.smMargin }}
-            py={ui.smMargin}
+            pos='relative'
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
             _before={{
-              position: 'absolute',
-              top: 0,
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              top: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
+            <Heading as='h2' variant='service' fontSize={{ base: '22px', md: '3xl' }}>
               {'3. Webpage interaction '}
-              <Badge>Coming soon</Badge>
+              <Text
+                as='span'
+                variant='pill'
+                borderWidth='1px'
+                rounded='full'
+                px={3.5}
+                py={1.5}
+                textTransform='uppercase'
+                _light={{ borderColor: ui.blueAlpha, bg: ui.lightBlueAlpha }}
+                _dark={{ borderColor: ui.grayAlpha, bg: ui.lightGrayAlpha }}
+              >
+                Coming soon
+              </Text>
             </Heading>
             <Text variant='service'>
               <Text as='strong' variant='co'>
@@ -825,9 +908,9 @@ export default function Home({
               {' (Chrome DevTools Protocol–compatible code) to complete advanced tasks on behalf '}
               of users.
             </Text>
-            <Box position='relative'>
+            <Box pos='relative'>
               <Button
-                mt={4}
+                mt={ui.xxsMargin}
                 w={ui.buttonWidth}
                 h={ui.buttonHeight}
                 isDisabled={isWaitlisted}
@@ -853,29 +936,29 @@ export default function Home({
             </Box>
           </Box>
           <Box
-            position='relative'
-            px={{ base: ui.xsMargin, md: ui.smMargin }}
-            py={ui.smMargin}
+            pos='relative'
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
             _before={{
-              position: 'absolute',
-              top: 0,
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              top: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
             _after={{
-              position: 'absolute',
-              bottom: 0,
+              pos: 'absolute',
               left: horizontalDividerOverflow,
               right: horizontalDividerOverflow,
+              bottom: 0,
               bg: 'fg-grid',
               h: '1px',
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '28px', md: '4xl' }}>
+            <Heading as='h2' variant='service' fontSize={{ base: '22px', md: '3xl' }}>
               … From anywhere
             </Heading>
             <Text variant='service'>
@@ -895,6 +978,12 @@ export default function Home({
                 py: geotargetedSearchPy,
                 js: geotargetedSearchJs
               }}
+              apiUrl={
+                'https://api.agentfirst.dev/search' +
+                '?terms=vintage+guitars&country=us&subdivision=tn&format=json'
+              }
+              apiToken={apiToken}
+              openLogin={openLogin}
             />
             <Code
               markdown={{
@@ -902,19 +991,27 @@ export default function Home({
                 py: geotargetedBrowsingPy,
                 js: geotargetedBrowsingJs
               }}
+              apiUrl={
+                'https://api.agentfirst.dev/browser' +
+                '?url=https://guitars.com/&country=us&city=Nashville'
+              }
+              apiToken={apiToken}
               moreUrl={ui.geotargetingUrl}
+              openLogin={openLogin}
             />
-            <Button as='a' mt={4} w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
-              {ui.startLabel}
-            </Button>
+            <Flex mt={ui.lgMargin} justify='center'>
+              <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
+                {ui.startLabel}
+              </Button>
+            </Flex>
           </Box>
         </Box>
       </Box>
       <Box
         id={ui.pricingId}
-        px={{ base: ui.smMargin, md: ui.xlMargin }}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
         pt={ui.smMargin}
-        pb={12}
+        pb={ui.mdMargin}
         align='center'
       >
         <Box opacity={ui.pricingOpacity}>
@@ -924,8 +1021,8 @@ export default function Home({
             width={ui.pricingOldWidth}
             height={ui.pricingOldHeight}
             style={{
-              marginRight: 'auto',
               marginLeft: 'auto',
+              marginRight: 'auto',
               width: ui.pricingNewWidth,
               minWidth: ui.pricingMinWidth
             }}
@@ -933,372 +1030,511 @@ export default function Home({
             aria-label={ui.pricingLabel}
           />
         </Box>
-        <Text variant='description' mx={ui.descriptionMargin} mt={ui.mdMargin} textAlign='left'>
-          <Text as='strong' variant='co'>
-            Agent First
-          </Text>
-          {' API usage is based on credits that cost '}
-          <Text as='strong' variant='bold'>
-            $1 per 1,000 credits
-          </Text>
-          {' with '}
-          <Text as='strong' variant='bold'>
-            10% off $100+ purchases
-          </Text>
-          {', where 1,000 credits let you access '}
-          <Text as='strong' variant='bold'>
-            1,000 standard page responses
-          </Text>
-          {' (see '}
-          <Link variant='pricing' href={ui.rateUrl}>
-            our rate card
-          </Link>
-          {' for details) and can be used for up to 30 days after purchase.'}
-        </Text>
-        <Text variant='description' mx={ui.descriptionMargin} mt='1lh' textAlign='left'>
-          {'Get '}
-          <Text as='strong' variant='bold'>
-            1,000 free credits
-          </Text>
-          {' to try the API when you sign up and contact us for volume pricing if you expect to '}
-          spend $1,000+ per month.
-        </Text>
-        <SimpleGrid
-          mx={ui.descriptionMargin}
-          mt={{ base: 0, lg: 2 }}
-          columns={{ base: 1, lg: 3 }}
-          spacing={ui.smMargin}
+        <Box
+          pos='relative'
+          mt={ui.xsMargin}
+          _before={{
+            pos: 'absolute',
+            left: 0,
+            top: ui.verticalDividerOverflow,
+            bottom: ui.verticalDividerOverflow,
+            bg: 'fg-grid',
+            w: '1px',
+            content: '""'
+          }}
+          _after={{
+            pos: 'absolute',
+            right: 0,
+            top: ui.verticalDividerOverflow,
+            bottom: ui.verticalDividerOverflow,
+            bg: 'fg-grid',
+            w: '1px',
+            content: '""'
+          }}
         >
-          <Card
-            mt={ui.smMargin}
-            bg='chakra-subtle-bg'
-            shadow='sm'
-            cursor={session ? 'not-allowed' : 'pointer'}
-            _hover={session ? null : { transform: `scale(${ui.hoverScale})` }}
-            onClick={() => {
-              if (!session) {
-                setPendingCheckoutUrl(ui.dashboardUrl);
-                openLogin();
-              }
+          <Box
+            pos='relative'
+            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            py={ui.xsMargin}
+            _before={{
+              pos: 'absolute',
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
+              top: 0,
+              bg: 'fg-grid',
+              h: '1px',
+              content: '""'
+            }}
+            _after={{
+              pos: 'absolute',
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
+              bottom: 0,
+              bg: 'fg-grid',
+              h: '1px',
+              content: '""'
             }}
           >
-            <CardHeader>{ui.trialLabel}</CardHeader>
-            <CardBody>
-              <UnorderedList>
-                <ListItem>1,000 free credits</ListItem>
-                <ListItem>Credits expire in 30 days</ListItem>
-                <ListItem>Instant access to search, browsing, & reporting services</ListItem>
-              </UnorderedList>
-            </CardBody>
-            <CardFooter>
-              <Button w='100%' h={ui.controlDimension} isDisabled={!!session}>
-                {session ? ui.tryingLabel : ui.tryLabel}
-              </Button>
-            </CardFooter>
-          </Card>
-          <Card
-            mt={ui.cardMargin}
-            bg='bg-button'
-            color='chakra-subtle-bg'
-            shadow='sm'
-            cursor='pointer'
-            _hover={{ transform: `scale(${ui.hoverScale})` }}
-            onMouseDown={() => {
-              isPurchaseTextboxFocused.current = purchaseTextbox.current?.isFocused();
-            }}
-            onClick={() => {
-              if (isPurchaseTextboxFocused.current || purchaseTextbox.current?.hasAmount) {
-                purchaseTextbox.current?.submit();
-              } else {
-                purchaseTextbox.current?.focus();
-              }
-
-              isPurchaseTextboxFocused.current = false;
-            }}
-          >
-            <CardHeader color='fg-button'>{ui.paygLabel}</CardHeader>
-            <CardBody>
-              <UnorderedList>
-                <ListItem>1,000 free credits</ListItem>
-                <ListItem>$1 / 1,000 additional credits</ListItem>
-                <ListItem>$0.90 / 1,000 credits for $100+ purchases (save 10%)</ListItem>
-                <ListItem>Credits expire in 30 days</ListItem>
-                <ListItem>Instant access to search, browsing, & reporting services</ListItem>
-                <ListItem>Email support</ListItem>
-                <ListItem>Best efforts to unblock any problem site within 48 hours</ListItem>
-              </UnorderedList>
-            </CardBody>
-            <CardFooter>
-              <Pricing
-                ref={purchaseTextbox}
-                shouldInvertColors
-                addToCart={(dollarAmount) => {
-                  if (session) {
-                    navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${dollarAmount}`);
-                  } else {
-                    localStorage.setItem(ui.pendingPurchaseKey, dollarAmount);
-                    setPendingCheckoutUrl(ui.checkoutUrl);
+            <Text variant='description' mt={-2}>
+              <Text as='strong' variant='lede'>
+                Simple credits:
+              </Text>
+              {' $1 per 1,000 credits, which let you successfully fetch 1,000 standard page '}
+              responses (
+              <Link variant='pricing' href={ui.rateUrl}>
+                see details
+              </Link>
+              )
+            </Text>
+            <SimpleGrid mt={{ base: 0, lg: 2 }} columns={{ base: 1, lg: 3 }} spacing={ui.mdMargin}>
+              <Card
+                variant='pricing'
+                cursor={session ? 'not-allowed' : 'pointer'}
+                onClick={() => {
+                  if (!session) {
+                    setPendingCheckoutUrl(ui.dashboardUrl);
                     openLogin();
                   }
                 }}
-              />
-            </CardFooter>
-          </Card>
-          <Card
-            mt={ui.cardMargin}
-            bg='chakra-subtle-bg'
-            shadow='sm'
-            cursor='pointer'
-            _hover={{ transform: `scale(${ui.hoverScale})` }}
-            onClick={() => {
-              location.href = ui.supportUrl;
-            }}
-          >
-            <CardHeader>{ui.enterpriseLabel}</CardHeader>
-            <CardBody>
-              <UnorderedList>
-                <ListItem>1,000 free credits</ListItem>
-                <ListItem>Volume pricing for $1,000+ monthly spend</ListItem>
-                <ListItem>Access to search, browsing, & reporting services</ListItem>
-                <ListItem>Dedicated browser pool for faster responses</ListItem>
-                <ListItem>Email & chat support</ListItem>
-                <ListItem>Best efforts to unblock any problem site within 24 hours</ListItem>
-              </UnorderedList>
-            </CardBody>
-            <CardFooter>
-              <Button as='a' w='100%' h={ui.controlDimension} href={ui.supportUrl}>
-                {ui.contactLabel}
-              </Button>
-            </CardFooter>
-          </Card>
-        </SimpleGrid>
+                _hover={
+                  session
+                    ? null
+                    : { borderColor: 'bg-emphasized', transform: `translateY(-${ui.hoverTravel})` }
+                }
+              >
+                <CardHeader>
+                  {ui.trialLabel}
+                  <Text variant='pricing'>
+                    <Text as='strong' variant='amount'>
+                      $0
+                    </Text>
+                    <br />
+                    1,000 credits to test your target sites
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <UnorderedList variant='pricing' ms={0} spacing={2}>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      1,000 free credits
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Credits can be used for 30 days
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Instant access to search, browsing, & reporting
+                    </ListItem>
+                  </UnorderedList>
+                </CardBody>
+                <CardFooter>
+                  <Button variant='outline' isDisabled={!!session}>
+                    {session ? ui.tryingLabel : ui.tryLabel}
+                  </Button>
+                </CardFooter>
+              </Card>
+              <Card
+                variant='pricing'
+                pos='relative'
+                borderColor='bg-button'
+                onMouseDown={() => {
+                  isPurchaseTextboxFocused.current = purchaseTextbox.current?.isFocused();
+                }}
+                onClick={() => {
+                  if (isPurchaseTextboxFocused.current || purchaseTextbox.current?.hasAmount) {
+                    purchaseTextbox.current?.submit();
+                  } else {
+                    purchaseTextbox.current?.focus();
+                  }
+
+                  isPurchaseTextboxFocused.current = false;
+                }}
+                _light={{ boxShadow: ui.lightPopularShadow }}
+                _dark={{ boxShadow: ui.darkPopularShadow }}
+                _hover={{ borderColor: 'bg-inverted', transform: `translateY(-${ui.hoverTravel})` }}
+              >
+                <Box
+                  pos='absolute'
+                  left='50%'
+                  top='-11px'
+                  rounded='full'
+                  bg='bg-button'
+                  px={2.5}
+                  py={1}
+                  lineHeight={1.4}
+                  fontSize='2xs'
+                  fontWeight='bold'
+                  textTransform='uppercase'
+                  letterSpacing='1px'
+                  color='fg-button'
+                  transform='translateX(-50%)'
+                >
+                  {ui.popularLabel}
+                </Box>
+                <CardHeader>
+                  {ui.paygLabel}
+                  <Text variant='pricing'>
+                    <Text as='strong' variant='amount'>
+                      $1
+                    </Text>
+                    {' / 1,000 credits'}
+                    <br />
+                    $0.90 / 1,000 credits for $100+ purchases
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <UnorderedList variant='pricing' ms={0} spacing={2}>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      1,000 free credits
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Credits can be used for 30 days
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Instant access to search, browsing, & reporting
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Email support
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Best efforts to unblock any site within 48 hours
+                    </ListItem>
+                  </UnorderedList>
+                </CardBody>
+                <CardFooter>
+                  <Pricing
+                    ref={purchaseTextbox}
+                    addToCart={(dollarAmount) => {
+                      if (session) {
+                        navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${dollarAmount}`);
+                      } else {
+                        localStorage.setItem(ui.pendingPurchaseKey, dollarAmount);
+                        setPendingCheckoutUrl(ui.checkoutUrl);
+                        openLogin();
+                      }
+                    }}
+                  />
+                </CardFooter>
+              </Card>
+              <Card
+                variant='pricing'
+                onClick={() => {
+                  location.href = ui.supportUrl;
+                }}
+                _hover={{
+                  borderColor: 'bg-emphasized',
+                  transform: `translateY(-${ui.hoverTravel})`
+                }}
+              >
+                <CardHeader>
+                  {ui.enterpriseLabel}
+                  <Text variant='pricing'>
+                    <Text as='strong' variant='amount'>
+                      Custom
+                    </Text>
+                    <br />
+                    $1,000+ monthly spend
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <UnorderedList variant='pricing' ms={0} spacing={2}>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      1,000 free credits
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Credits can be used long term
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Access to search, browsing, & reporting
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Email & chat support
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Best efforts to unblock any site within 24 hours
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Dedicated browser pool for faster responses
+                    </ListItem>
+                  </UnorderedList>
+                </CardBody>
+                <CardFooter>
+                  <Button as='a' variant='outline' href={ui.supportUrl}>
+                    {ui.contactLabel}
+                  </Button>
+                </CardFooter>
+              </Card>
+            </SimpleGrid>
+          </Box>
+        </Box>
       </Box>
       <Box
         id={ui.aboutId}
-        px={{ base: ui.smMargin, md: ui.xlMargin }}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
         pt={ui.smMargin}
         align='center'
       >
-        <Box position='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>
+        <Box pos='relative' pt={1} w={ui.timelineWidth} minW={ui.timelineMinWidth}>
           <svg ref={timeline} width='100%'>
             <g ref={timelineParts} />
           </svg>
           <Box
-            position='absolute'
-            top={0}
+            pos='absolute'
             left={0}
+            top={0}
             bgGradient='linear(to-r, chakra-body-bg, transparent)'
             w={ui.gradientWidth}
             h='100%'
           />
           <Box
-            position='absolute'
-            top={0}
+            pos='absolute'
             right={0}
+            top={0}
             bgGradient='linear(to-l, chakra-body-bg, transparent)'
             w={ui.gradientWidth}
             h='100%'
           />
         </Box>
-        <Text variant='description' mx={ui.descriptionMargin} mt={ui.mdMargin} textAlign='left'>
-          Many of the most successful technology companies were founded by developers who leveraged
-          new features of emerging platforms, from desktop computing to AI. We’re betting
-          agent-first development is the next big opportunity and are providing the tools you need
-          to focus on building unique, native agents.
-        </Text>
-      </Box>
-      <Box ref={team} id={ui.teamId} pt={ui.smMargin}>
-        <Heading as='h1' variant='team' fontSize={ui.teamFontSize}>
-          Our team
-        </Heading>
-        <Flex
-          mx={ui.smMargin}
-          mt={ui.smMargin}
-          direction={{ base: 'column', lg: 'row' }}
-          justify='space-evenly'
-        >
-          <Card bg='transparent' w={ui.cardWidth} shadow='none'>
-            <CardBody textAlign='left'>
-              <Box
-                mt={ui.hedMargin}
-                w={ui.hedNewWidth}
-                maxW={ui.hedMaxWidth}
-                transform={ui.hedTransform}
-              >
-                <canvas
-                  ref={hedcut}
-                  className='lazy'
-                  width={ui.hedOldWidth}
-                  height={ui.hedOldHeight}
-                  style={{ width: '100%' }}
-                  role='img'
-                  aria-label={ui.hedLabel}
-                />
-              </Box>
-              <Heading variant='name' fontSize={ui.nameFont}>
-                Brian
-              </Heading>
-              <Text variant='teammate'>
-                <Text as='strong' variant='name'>
+        <Flex mt={ui.xsMargin} direction='column' maxW={ui.teamWidth}>
+          <Text variant='description' px={5} align='left' color='bg-button !important'>
+            <Text as='strong' variant='lede' color='bg-button'>
+              Made by experts:
+            </Text>
+            {' Our team knows web infrastructure & [is] agents'}
+          </Text>
+          <Flex mt={ui.lgMargin} direction={{ base: 'column', lg: 'row' }} gap={ui.teammateMargin}>
+            <Card variant='teammate'>
+              <CardBody>
+                <Box
+                  mt={ui.hedMargin}
+                  w={ui.hedNewWidth}
+                  maxW={ui.hedMaxWidth}
+                  transform={ui.hedTransform}
+                >
+                  <canvas
+                    ref={hedcut}
+                    className='lazy'
+                    width={ui.hedOldWidth}
+                    height={ui.hedOldHeight}
+                    style={{ width: '100%' }}
+                    role='img'
+                    aria-label={ui.hedLabel}
+                  />
+                </Box>
+                <Heading variant='name' fontSize={ui.nameFontSize}>
                   Brian
+                </Heading>
+                <Text variant='teammate'>
+                  <Text as='strong' variant='name'>
+                    Brian
+                  </Text>
+                  {' cofounded '}
+                  <Link variant='team' href='https://disconnect.me/' isExternal>
+                    Disconnect
+                  </Link>
+                  , which makes privacy software that ships with most modern browsers and has helped
+                  {' protect the data of 100,000,000+ users, and '}
+                  <Link variant='team' href='https://joinmassive.com/' isExternal>
+                    Massive
+                  </Link>
+                  , which is developing an alternative to ads and paywalls for monetizing spare
+                  computing resources and was named Proxyway’s 2025 “Newcomer of the Year” for its
+                  {' bandwidth monetization. '}
+                  <Text as='strong' variant='footerCo'>
+                    Agent First
+                  </Text>
+                  {' is a spinoff of '}
+                  <Text as='strong' variant='bold'>
+                    Massive
+                  </Text>
+                  {' that’s focused on serving AI agents.'}
                 </Text>
-                {' cofounded '}
-                <Link variant='team' href='https://disconnect.me/' isExternal>
-                  Disconnect
-                </Link>
-                , which makes privacy software that ships with most modern browsers and has helped
-                {' protect the data of 100,000,000+ users, and '}
-                <Link variant='team' href='https://joinmassive.com/' isExternal>
-                  Massive
-                </Link>
-                , which is developing an alternative to ads and paywalls for monetizing spare
-                computing resources and was named Proxyway’s 2025 “Newcomer of the Year” for its
-                {' bandwidth monetization. '}
-                <Text as='strong' variant='footerCo'>
-                  Agent First
-                </Text>
-                {' is a spinoff of '}
-                <Text as='strong' variant='footerBold'>
-                  Massive
-                </Text>
-                {' that’s focused on serving AI agents.'}
-              </Text>
-            </CardBody>
-            <CardFooter pt={0}>
-              <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
-                <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
-                  <canvas
-                    ref={siteIcon}
-                    className='lazy'
-                    width={ui.siteOldDimension}
-                    height={ui.siteOldDimension}
-                    style={{ width: ui.socialDimension, height: ui.socialDimension }}
-                    role='img'
-                    aria-label={ui.siteLabel}
-                  />
-                </Link>
-              </Tooltip>
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={ui.brianGithubLabel}
-                hasArrow
-              >
-                <Link
-                  variant='social'
-                  ml={ui.socialMargin}
-                  href='https://github.com/oldestlivingboy'
-                  isExternal
+              </CardBody>
+              <CardFooter>
+                <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.siteLabel} hasArrow>
+                  <Link variant='social' href='https://oldestlivingboy.com/' isExternal>
+                    <canvas
+                      ref={siteIcon}
+                      className='lazy'
+                      width={ui.siteOldDimension}
+                      height={ui.siteOldDimension}
+                      style={{ width: ui.socialDimension, height: ui.socialDimension }}
+                      role='img'
+                      aria-label={ui.siteLabel}
+                    />
+                  </Link>
+                </Tooltip>
+                <Tooltip
+                  mx={ui.tooltipMargin}
+                  p={ui.tooltipPadding}
+                  label={ui.brianGithubLabel}
+                  hasArrow
                 >
-                  <canvas
-                    ref={githubIcon}
-                    className='lazy'
-                    width={ui.githubOldDimension}
-                    height={ui.githubOldDimension}
-                    style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
-                    role='img'
-                    aria-label={ui.brianGithubLabel}
-                  />
-                </Link>
-              </Tooltip>
-              <Tooltip
-                mx={ui.tooltipMargin}
-                p={ui.tooltipPadding}
-                label={ui.brianLinkedinLabel}
-                hasArrow
-              >
-                <Link
-                  variant='social'
-                  ml={ui.socialMargin}
-                  href='https://www.linkedin.com/in/oldestlivingboy/'
-                  isExternal
+                  <Link
+                    variant='social'
+                    ml={ui.socialMargin}
+                    href='https://github.com/oldestlivingboy'
+                    isExternal
+                  >
+                    <canvas
+                      ref={githubIcon}
+                      className='lazy'
+                      width={ui.githubOldDimension}
+                      height={ui.githubOldDimension}
+                      style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                      role='img'
+                      aria-label={ui.brianGithubLabel}
+                    />
+                  </Link>
+                </Tooltip>
+                <Tooltip
+                  mx={ui.tooltipMargin}
+                  p={ui.tooltipPadding}
+                  label={ui.brianLinkedinLabel}
+                  hasArrow
                 >
-                  <canvas
-                    ref={linkedinIcon}
-                    className='lazy'
-                    width={ui.linkedinOldDimension}
-                    height={ui.linkedinOldDimension}
-                    style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
-                    role='img'
-                    aria-label={ui.brianLinkedinLabel}
-                  />
-                </Link>
-              </Tooltip>
-              <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={ui.brianXLabel} hasArrow>
-                <Link
-                  variant='social'
-                  ml={ui.socialMargin}
-                  href='https://x.com/oldestlivingboy'
-                  isExternal
+                  <Link
+                    variant='social'
+                    ml={ui.socialMargin}
+                    href='https://www.linkedin.com/in/oldestlivingboy/'
+                    isExternal
+                  >
+                    <canvas
+                      ref={linkedinIcon}
+                      className='lazy'
+                      width={ui.linkedinOldDimension}
+                      height={ui.linkedinOldDimension}
+                      style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                      role='img'
+                      aria-label={ui.brianLinkedinLabel}
+                    />
+                  </Link>
+                </Tooltip>
+                <Tooltip
+                  mx={ui.tooltipMargin}
+                  p={ui.tooltipPadding}
+                  label={ui.brianXLabel}
+                  hasArrow
                 >
+                  <Link
+                    variant='social'
+                    ml={ui.socialMargin}
+                    href='https://x.com/oldestlivingboy'
+                    isExternal
+                  >
+                    <canvas
+                      ref={xIcon}
+                      className='lazy'
+                      width={ui.xOldDimension}
+                      height={ui.xOldDimension}
+                      style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                      role='img'
+                      aria-label={ui.brianXLabel}
+                    />
+                  </Link>
+                </Tooltip>
+              </CardFooter>
+            </Card>
+            <Card variant='teammate'>
+              <CardBody>
+                <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
                   <canvas
-                    ref={xIcon}
+                    ref={agent}
                     className='lazy'
-                    width={ui.xOldDimension}
-                    height={ui.xOldDimension}
-                    style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                    width={ui.agentOldWidth}
+                    height={ui.agentOldHeight}
+                    style={{ width: '100%' }}
                     role='img'
-                    aria-label={ui.brianXLabel}
+                    aria-label={ui.agentLabel}
                   />
-                </Link>
-              </Tooltip>
-            </CardFooter>
-          </Card>
-          <Card bg='transparent' w={ui.cardWidth} shadow='none'>
-            <CardBody textAlign='left'>
-              <Box w={ui.agentNewWidth} maxW={ui.agentMaxWidth}>
-                <canvas
-                  ref={agent}
-                  className='lazy'
-                  width={ui.agentOldWidth}
-                  height={ui.agentOldHeight}
-                  style={{ width: '100%' }}
-                  role='img'
-                  aria-label={ui.agentLabel}
-                />
-              </Box>
-              <Heading variant='name' fontSize={ui.nameFont}>
-                Brain
-              </Heading>
-              <Text variant='teammate'>
-                <Text as='strong' variant='name'>
+                </Box>
+                <Heading variant='name' fontSize={ui.nameFontSize}>
                   Brain
+                </Heading>
+                <Text variant='teammate'>
+                  <Text as='strong' variant='name'>
+                    Brain
+                  </Text>
+                  {' is a cofounder agent we’re collaborating on with '}
+                  <Link
+                    variant='team'
+                    href='https://www.linkedin.com/in/francknouyrigat/'
+                    isExternal
+                  >
+                    Franck
+                  </Link>
+                  {', who cofounded the startup community '}
+                  <Text as='strong' variant='bold'>
+                    Startup Weekend
+                  </Text>
+                  {' and AI investor '}
+                  <Text as='strong' variant='bold'>
+                    No Cap
+                  </Text>
+                  {', to run the boring parts of '}
+                  <Text as='strong' variant='footerCo'>
+                    Agent First
+                  </Text>
+                  {' and to dogfood our services. Although '}
+                  <Text as='strong' variant='name'>
+                    Brain
+                  </Text>
+                  {' isn’t publicly available yet, you can try another agent we’re '}
+                  <Text as='span' textDecoration='line-through'>
+                    dog
+                  </Text>
+                  llamafooding that is, a “meta-LLM” that evaluates and combines responses from
+                  {' popular large language models, called '}
+                  <Link variant='team' href={ui.demoUrl} isExternal>
+                    Llamapile
+                  </Link>
+                  .
                 </Text>
-                {' is a cofounder agent we’re collaborating on with '}
-                <Link variant='team' href='https://www.linkedin.com/in/francknouyrigat/' isExternal>
-                  Franck
-                </Link>
-                {', who cofounded the startup community '}
-                <Text as='strong' variant='footerBold'>
-                  Startup Weekend
-                </Text>
-                {' and AI investor '}
-                <Text as='strong' variant='footerBold'>
-                  No Cap
-                </Text>
-                {', to run the boring parts of '}
-                <Text as='strong' variant='footerCo'>
-                  Agent First
-                </Text>
-                {' and to dogfood our services. Although '}
-                <Text as='strong' variant='name'>
-                  Brain
-                </Text>
-                {' isn’t publicly available yet, you can try another agent we’re '}
-                <Text as='span' textDecoration='line-through'>
-                  dog
-                </Text>
-                llamafooding that is, a “meta-LLM” that evaluates and combines responses from
-                {' popular large language models, called '}
-                <Link variant='team' href={ui.demoUrl} isExternal>
-                  Llamapile
-                </Link>
-                .
-              </Text>
-            </CardBody>
-          </Card>
+              </CardBody>
+            </Card>
+          </Flex>
         </Flex>
       </Box>
+      <OrderedList
+        id={ui.citationsId}
+        variant='citations'
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
+        mt={ui.smMargin}
+        mb={3}
+      >
+        <ListItem>
+          <Link
+            variant='citation'
+            href='https://medium.com/samsung-internet-dev/introducing-our-new-tracking-blocker-powered-by-disconnect-c00f118c1151'
+            isExternal
+          >
+            “The filter used by the Tracking Blocker is provided by Disconnect, the industry-leading
+            privacy protection company”, Samsung
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link
+            variant='citation'
+            href='https://proxyway.com/research/proxy-service-awards-2025'
+            isExternal
+          >
+            “[Massive] topped our benchmarks multiple times and handled everything we threw at it”,
+            Proxyway
+          </Link>
+        </ListItem>
+      </OrderedList>
       {!isInMdView && (
         <WaitlistModal
           supabaseClient={supabaseClient}
@@ -1315,6 +1551,14 @@ export default function Home({
         redirectUrl={pendingCheckoutUrl}
         isOpen={isLoginOpen}
         close={closeLogin}
+      />
+      <Console
+        apiUrl='https://api.agentfirst.dev/browser?url='
+        apiToken={apiToken}
+        apiRequest={{ code: ui.stripFences(browsingSh), language: 'bash' }}
+        isOpen={isConsoleOpen}
+        isInteractive
+        close={closeConsole}
       />
     </>
   );
