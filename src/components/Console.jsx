@@ -57,7 +57,6 @@ export default function Console({
   isRunning,
   close
 }) {
-  const modal = useRef();
   const hiddenInput = useRef();
   const [input, setInput] = useState('');
   const [rawUserUrl, setRawUserUrl] = useState('');
@@ -138,12 +137,6 @@ export default function Console({
       };
     }
   }, [isOpen, isInteractive]);
-
-  useEffect(() => {
-    if (isInteractive && modal.current && interactiveResponse) {
-      modal.current.scrollTo(0, modal.current.scrollHeight);
-    }
-  }, [isInteractive, interactiveResponse]);
 
   if (isInteractive) {
     if (userUrl) {
@@ -228,7 +221,7 @@ export default function Console({
             <AddIcon transform={`rotate(-${ui.openRotation}deg)`} />
           </Button>
         </Flex>
-        <ModalBody ref={modal} p={0} overflow='auto'>
+        <ModalBody p={0} overflow='auto'>
           {isInteractive && !userUrl ? (
             <Box fontFamily='code' fontSize={ui.codeFontSize} sx={terminalStyle}>
               <pre>
