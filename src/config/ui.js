@@ -249,7 +249,7 @@ export const tooltipMargin = 1;
 export const closePosition = 1.5;
 export const buttonResetMs = 3000;
 export const toastTimeoutMs = 3000;
-export const buttonWidth = { base: '160px', md: '176px' };
+export const buttonWidth = { base: '160px', md: '180px' };
 export const buttonHeight = { base: controlDimension, md: '56px' };
 
 // Animation

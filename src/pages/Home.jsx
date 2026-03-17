@@ -813,7 +813,7 @@ export default function Home({
               moreUrl={ui.searchUrl}
               openLogin={openLogin}
             />
-            <Button
+            {/* <Button
               as='a'
               mt={ui.xxsMargin}
               w={ui.buttonWidth}
@@ -821,7 +821,7 @@ export default function Home({
               href={ui.pricingPath}
             >
               {ui.startLabel}
-            </Button>
+            </Button> */}
           </Box>
           <Box
             pos='relative'
@@ -857,7 +857,7 @@ export default function Home({
               moreUrl={ui.browsingUrl}
               openLogin={openLogin}
             />
-            <Button
+            {/* <Button
               as='a'
               mt={ui.xxsMargin}
               w={ui.buttonWidth}
@@ -865,7 +865,7 @@ export default function Home({
               href={ui.pricingPath}
             >
               {ui.startLabel}
-            </Button>
+            </Button> */}
           </Box>
           <Box
             pos='relative'
@@ -999,15 +999,11 @@ export default function Home({
               moreUrl={ui.geotargetingUrl}
               openLogin={openLogin}
             />
-            <Button
-              as='a'
-              mt={ui.xxsMargin}
-              w={ui.buttonWidth}
-              h={ui.buttonHeight}
-              href={ui.pricingPath}
-            >
-              {ui.startLabel}
-            </Button>
+            <Flex mt={ui.lgMargin} justify='center'>
+              <Button as='a' w={ui.buttonWidth} h={ui.buttonHeight} href={ui.pricingPath}>
+                {ui.startLabel}
+              </Button>
+            </Flex>
           </Box>
         </Box>
       </Box>
