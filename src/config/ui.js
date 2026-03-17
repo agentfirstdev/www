@@ -77,6 +77,7 @@ export const pricingId = 'pricing';
 export const aboutId = 'about';
 export const teamId = 'team';
 export const citationsId = 'citations';
+export const altPath = '/alt';
 export const servicesPath = `/#${servicesId}`;
 export const pricingPath = `/#${pricingId}`;
 export const aboutPath = `/#${aboutId}`;
