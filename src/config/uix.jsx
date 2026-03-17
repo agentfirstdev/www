@@ -62,7 +62,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         for successful requests
       </Text>
       <Flex mt={ui.lgMargin} gap={ui.xxsMargin}>
-        <Button size='lg' h={ui.ctaHeight} onClick={props.onCtaPress}>
+        <Button size='lg' h={ui.ctaHeight} tabIndex={1} onClick={props.onCtaPress}>
           {ui.ctaLabel}
         </Button>
         <Button as='a' variant='outline' size='lg' w='auto' h={ui.ctaHeight} href={ui.docUrl}>

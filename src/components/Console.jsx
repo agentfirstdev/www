@@ -194,7 +194,14 @@ export default function Console({
   }
 
   return (
-    <Modal isOpen={isOpen} isCentered autoFocus={false} returnFocusOnClose={false} onClose={close}>
+    <Modal
+      isOpen={isOpen}
+      isCentered
+      autoFocus={false}
+      trapFocus={false}
+      returnFocusOnClose={false}
+      onClose={close}
+    >
       <ModalOverlay />
       <ModalContent
         mx={4}
@@ -221,7 +228,15 @@ export default function Console({
             <AddIcon transform={`rotate(-${ui.openRotation}deg)`} />
           </Button>
         </Flex>
-        <ModalBody p={0} overflow='auto'>
+        <ModalBody
+          p={0}
+          overflow='auto'
+          sx={{
+            scrollbarColor: 'var(--chakra-colors-whiteAlpha-200) transparent',
+            '&::-webkit-scrollbar-track': { bg: 'transparent' },
+            '&::-webkit-scrollbar-thumb': { bg: 'whiteAlpha.200' }
+          }}
+        >
           {isInteractive && !userUrl ? (
             <Box fontFamily='code' fontSize={ui.codeFontSize} sx={terminalStyle}>
               <pre>
