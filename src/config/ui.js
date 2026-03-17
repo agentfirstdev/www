@@ -105,7 +105,7 @@ export const pendingWaitlistKey = 'pendingWaitlistService';
 export const profileKey = 'wasProfilePresented';
 export const waitlistService = 'cdp';
 export const prompt = '$ ';
-export const urlPrompt = 'URL to try';
+export const urlPrompt = 'Your URL';
 export const completion = [
   { delay: 0, token: 'R' },
   { delay: 13, token: 'e' },
