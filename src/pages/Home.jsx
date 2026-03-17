@@ -980,7 +980,7 @@ export default function Home({
               }}
               apiUrl={
                 'https://api.agentfirst.dev/search' +
-                '?terms=foo+bar+baz&country=us&subdivision=tn&format=json'
+                '?terms=vintage+guitars&country=us&subdivision=tn&format=json'
               }
               apiToken={apiToken}
               openLogin={openLogin}
@@ -993,7 +993,7 @@ export default function Home({
               }}
               apiUrl={
                 'https://api.agentfirst.dev/browser' +
-                '?url=https%3A%2F%2Fexample.com%2F&country=us&city=nashville'
+                '?url=https://guitars.com/&country=us&city=Nashville'
               }
               apiToken={apiToken}
               moreUrl={ui.geotargetingUrl}
