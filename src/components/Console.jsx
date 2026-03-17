@@ -92,10 +92,7 @@ export default function Console({
       animation: 'blink 1s step-end infinite'
     }
   };
-  const runCode = async (url) => {
-    setInteractiveResponse(await ui.apiCall(apiUrl + url, apiToken));
-  };
-  const handleEnter = (event) => {
+  const runCode = async (event) => {
     if (event.key == 'Enter') {
       event.preventDefault();
       const rawUrl = input.trim() || ui.defaultUrl;
@@ -117,7 +114,7 @@ export default function Console({
       setRawUserUrl(rawUrl);
       setUserUrl(url);
       setEncodedUserUrl(encodedUrl);
-      runCode(encodedUrl);
+      setInteractiveResponse(await ui.apiCall(apiUrl + encodedUrl, apiToken));
     }
   };
   let output = '';
@@ -259,7 +256,7 @@ export default function Console({
                       onChange={(event) => {
                         setInput(event.target.value);
                       }}
-                      onKeyDown={handleEnter}
+                      onKeyDown={runCode}
                     />
                     <span className='cursor'>{ui.cursorChar}</span>
                   </span>
