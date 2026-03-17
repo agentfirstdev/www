@@ -241,7 +241,7 @@ export default function Home({
         );
       }
 
-      ui.completion.forEach(({ delay, token }) => {
+      ui.altCompletion.forEach(({ delay, token }) => {
         timeouts.push(
           setTimeout(() => {
             if (completion.current) completion.current.textContent += token;
@@ -690,7 +690,7 @@ export default function Home({
         <VStack
           gap={0}
           w={ui.taglineWidth}
-          maxW={ui.taglineMaxWidth}
+          maxW={ui.altTaglineMaxWidth}
           justify='center'
           align='center'
         >

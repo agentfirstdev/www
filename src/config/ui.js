@@ -107,6 +107,23 @@ export const waitlistService = 'cdp';
 export const prompt = '$ ';
 export const urlPrompt = 'Your URL';
 export const completion = [
+  { delay: 0, token: 'R' },
+  { delay: 13, token: 'e' },
+  { delay: 31, token: 'l' },
+  { delay: 54, token: 'i' },
+  { delay: 66, token: 'a' },
+  { delay: 85, token: 'b' },
+  { delay: 102, token: 'l' },
+  { delay: 129, token: 'e' },
+  { delay: 145, token: ' ' },
+  { delay: 167, token: 'a' },
+  { delay: 180, token: 'c' },
+  { delay: 193, token: 'c' },
+  { delay: 203, token: 'e' },
+  { delay: 211, token: 's' },
+  { delay: 218, token: 's' }
+];
+export const altCompletion = [
   { delay: 0, token: 'r' },
   { delay: 13, token: 'e' },
   { delay: 31, token: 'l' },
@@ -332,7 +349,8 @@ export const sunStroke = 3;
 export const logoNewWidth = '25%';
 export const logoMinWidth = '256px';
 export const taglineWidth = '100%';
-export const taglineMaxWidth = '680px';
+export const taglineMaxWidth = '660px';
+export const altTaglineMaxWidth = '680px';
 /* export const postItMaxWidth = '4in';
 export const postItShadow = '5px 5px 15px var(--chakra-colors-shadow-color)';
 export const postItRotation = '-1.5deg'; */
@@ -350,7 +368,8 @@ export const tickLength = 16;
 export const tickDistanceUnit = 420;
 export const tickOffset = 48;
 // export const taglineWidth = { base: '100%', md: '50%' };
-export const taglineFontSize = { base: '24px', lg: '54px' };
+export const taglineFontSize = { base: '26px', lg: '60px' };
+export const altTaglineFontSize = { base: '24px', lg: '54px' };
 export const ctaFontSize = { base: '20px', lg: '24px' };
 /* export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth }; */

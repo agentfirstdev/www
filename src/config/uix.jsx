@@ -36,10 +36,10 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='audience' mt={ui.xxsMargin}>
         For data teams · For agent builders · For proxy providers
       </Text>
-      <Heading as='h1' variant='tagline' mt={6} fontSize={ui.taglineFontSize}>
+      <Heading as='h1' variant='tagline' mt={6} fontSize={ui.altTaglineFontSize}>
         {'Upgrade your product with '}
         <Box as='span' display='inline-block' position='relative' textAlign='left'>
-          <Text fontSize={ui.taglineFontSize} visibility='hidden' pointerEvents='none'>
+          <Text fontSize={ui.altTaglineFontSize} visibility='hidden' pointerEvents='none'>
             reliable access
           </Text>
           <Text
@@ -47,7 +47,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
             position='absolute'
             inset={0}
             bgClip='text'
-            fontSize={ui.taglineFontSize}
+            fontSize={ui.altTaglineFontSize}
             _light={{
               bgGradient: `linear(${ui.gradientAngle}deg, ${ui.cornflowerBlue}, ${ui.creativeBlue})`
             }}
