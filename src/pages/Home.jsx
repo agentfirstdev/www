@@ -1292,7 +1292,7 @@ export default function Home({
           />
         </Box>
         <Flex mt={ui.xsMargin} direction='column' maxW={ui.teamWidth}>
-          <Text variant='description' px={5} align='left' color='bg-button'>
+          <Text variant='description' px={5} align='left' color='bg-button !important'>
             <Text as='strong' variant='lede' color='bg-button'>
               Made by experts:
             </Text>
