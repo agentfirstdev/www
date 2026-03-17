@@ -784,7 +784,7 @@ export default function Home({
                 You didn’t create your product to battle web gatekeepers
               </Text>
               <br />
-              Productionize in minutes while we handle the browser management & challenge
+              Deploy to production in minutes while we handle the browser management & challenge
               mitigations for you
             </Text>
             <Heading
