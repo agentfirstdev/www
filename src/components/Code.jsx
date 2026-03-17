@@ -26,9 +26,6 @@ import Console from './Console';
 const toastId = crypto.randomUUID();
 const languageNames = { sh: 'bash', py: 'python', js: 'javascript' };
 const languageIcons = { sh: CurlSymbol, py: PythonDevice, js: NodeHex };
-const stripFences = (markdown) => {
-  return markdown.replace(/^```[^\n]*\n/, '').replace(/\n```\s*$/, '');
-};
 
 hljs.registerLanguage('bash', sh);
 hljs.registerLanguage('python', py);
@@ -43,57 +40,14 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
   const { isOpen: isConsoleOpen, onOpen: openConsole, onClose: closeConsole } = useDisclosure();
   const { hasCopied, onCopy, setValue } = useClipboard('');
   const toast = useToast();
-  const rawCode = stripFences(markdown[activeLanguage]);
+  const rawCode = ui.stripFences(markdown[activeLanguage]);
   const runCode = async () => {
     if (apiToken) {
-      const finalTry = ui.apiTryCount - 1;
-
       setApiRequest({ code: rawCode, language: languageNames[activeLanguage] });
       setApiResponse(null);
       setIsRunning(true);
       openConsole();
-
-      for (let i = 0; i < ui.apiTryCount; i++) {
-        const isFinalTry = i == finalTry;
-
-        try {
-          const response = await fetch(apiUrl + (isFinalTry ? '&difficulty=medium' : ''), {
-            headers: { Authorization: `Bearer ${apiToken}` }
-          });
-          const text = await response.text();
-          let content;
-          let type;
-
-          try {
-            content = JSON.stringify(JSON.parse(text), null, ui.consoleTabWidth);
-            type = 'json';
-          } catch {
-            content = text;
-            type = 'html';
-          }
-
-          if (response.status >= 200 && response.status < 500) {
-            setApiResponse({ code: response.status, message: response.statusText, content, type });
-
-            break;
-          }
-
-          if (isFinalTry) {
-            setApiResponse({
-              code: response.status,
-              message: response.statusText,
-              content,
-              type,
-              isError: true
-            });
-          }
-        } catch {
-          if (isFinalTry) {
-            setApiResponse({ code: 500, message: 'Unknown error occurred', isError: true });
-          }
-        }
-      }
-
+      setApiResponse(await ui.apiCall(apiUrl, apiToken));
       setIsRunning(false);
     } else {
       openLogin();
@@ -263,11 +217,11 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
         </Box>
       </Box>
       <Console
-        request={apiRequest}
-        response={apiResponse}
-        token={apiToken}
-        isRunning={isRunning}
+        apiToken={apiToken}
+        apiRequest={apiRequest}
+        apiResponse={apiResponse}
         isOpen={isConsoleOpen}
+        isRunning={isRunning}
         close={closeConsole}
       />
     </>

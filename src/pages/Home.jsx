@@ -36,6 +36,7 @@ import Pricing from '../components/Pricing';
 import WaitlistDropdown from '../components/WaitlistDropdown';
 import WaitlistModal from '../components/WaitlistModal';
 import LoginModal from '../components/LoginModal';
+import Console from '../components/Console';
 import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
@@ -89,6 +90,7 @@ export default function Home({
   const hasAnimatedCompletion = useRef(false);
   const hasAnimatedTimeline = useRef(false);
   // const hasScrolledToTeam = useRef(false);
+  const isConsoleOpenPending = useRef(false);
   const isPurchaseTextboxFocused = useRef(false);
   const [servicesPath, setServicesPath] = useState(null);
   const [pricingPath, setPricingPath] = useState(null);
@@ -115,14 +117,24 @@ export default function Home({
   const textColor = useColorModeValue(ui.charcoalBlue, ui.whiteAlpha);
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
-  const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
   const {
     isOpen: isWaitlistOpen,
     onOpen: openWaitlist,
     onClose: closeWaitlist,
     onToggle: toggleWaitlist
   } = useDisclosure();
+  const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
+  const { isOpen: isConsoleOpen, onOpen: openConsole, onClose: closeConsole } = useDisclosure();
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
+  const handleCtaPress = () => {
+    if (apiToken) {
+      openConsole();
+    } else {
+      isConsoleOpenPending.current = true;
+
+      openLogin();
+    }
+  };
   /* const animatePrompt = (index) => {
     promptTimeouts.current?.forEach(clearTimeout);
 
@@ -635,7 +647,15 @@ export default function Home({
         .select('api_token')
         .single()
         .then(({ data }) => {
-          if (data) setApiToken(data.api_token);
+          if (data) {
+            setApiToken(data.api_token);
+
+            if (isConsoleOpenPending.current) {
+              isConsoleOpenPending.current = false;
+
+              openConsole();
+            }
+          }
         });
     } else {
       setApiToken(null);
@@ -674,7 +694,7 @@ export default function Home({
           justify='center'
           align='center'
         >
-          <uix.Tagline ref={completion} />
+          <uix.Tagline ref={completion} onCtaPress={handleCtaPress} />
         </VStack>
         {/* <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
           <Textarea
@@ -1535,6 +1555,14 @@ export default function Home({
         redirectUrl={pendingCheckoutUrl}
         isOpen={isLoginOpen}
         close={closeLogin}
+      />
+      <Console
+        apiUrl='https://api.agentfirst.dev/browser?url='
+        apiToken={apiToken}
+        apiRequest={{ code: ui.stripFences(browsingSh), language: 'bash' }}
+        isOpen={isConsoleOpen}
+        isInteractive
+        close={closeConsole}
       />
     </>
   );

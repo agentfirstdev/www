@@ -61,7 +61,13 @@ export const loadingPlaceholder = 'Loading ...';
 // export const generatingPlaceholder = 'Generating an answer';
 // export const updatePlaceholder = 'Your reply to the answer above ...';
 export const emailPlaceholder = 'Your email address';
+export const urlPlaceholder = 'https://example.com/';
+export const shTokenPlaceholder = '$AGENT_FIRST_TOKEN';
+export const pyTokenPlaceholder = '{AGENT_FIRST_TOKEN}';
+export const jsTokenPlaceholder = '${agentFirstToken}';
 export const resetHint = 'Start a new conversation';
+export const prompt = '$ ';
+export const urlPrompt = 'Enter URL';
 export const codeMessage = 'Code copied to clipboard';
 export const copiedMessage = 'Token copied to clipboard';
 // export const checkoutMessage = 'Credits added to your account';
@@ -92,6 +98,7 @@ export const searchUrl = 'https://doc.agentfirst.dev/endpoints/search';
 export const browsingUrl = 'https://doc.agentfirst.dev/endpoints/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargeting';
 export const rateUrl = 'https://doc.agentfirst.dev/endpoints/pricing';
+export const defaultUrl = 'example.com';
 export const purchaseParam = 'amount';
 export const pendingPurchaseKey = 'pendingAmount';
 export const checkoutParam = 'session';
@@ -357,6 +364,7 @@ export const servicesOldWidth = 1376;
 export const servicesOldHeight = 320;
 
 // Code
+export const cursorChar = '█';
 export const maskChar = '*';
 export const chromeButtonMargin = '0.5em';
 export const chromeButtonPadding = '0.75em';
@@ -444,3 +452,51 @@ export const purchaseDecimalPlaces = 0;
 /* export const renderer = markdown({ html: true, linkify: true, typographer: true }).use(
   highlights
 ); */
+export const stripFences = (markdown) => {
+  return markdown.replace(/^```[^\n]*\n/, '').replace(/\n```\s*$/, '');
+};
+export const apiCall = async (url, token) => {
+  const finalTry = apiTryCount - 1;
+  let apiResponse;
+
+  for (let i = 0; i < apiTryCount; i++) {
+    const isFinalTry = i == finalTry;
+
+    try {
+      const response = await fetch(url + (isFinalTry ? '&difficulty=medium' : ''), {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const text = await response.text();
+      let content;
+      let type;
+
+      try {
+        content = JSON.stringify(JSON.parse(text), null, consoleTabWidth);
+        type = 'json';
+      } catch {
+        content = text;
+        type = 'html';
+      }
+
+      if (response.status >= 200 && response.status < 500) {
+        apiResponse = { code: response.status, message: response.statusText, content, type };
+
+        break;
+      }
+
+      if (isFinalTry) {
+        apiResponse = {
+          code: response.status,
+          message: response.statusText,
+          content,
+          type,
+          isError: true
+        };
+      }
+    } catch {
+      if (isFinalTry) apiResponse = { code: 500, message: 'Unknown error occurred', isError: true };
+    }
+  }
+
+  return apiResponse;
+};
