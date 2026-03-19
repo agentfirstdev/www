@@ -120,10 +120,10 @@ export default extendTheme({
         },
         audience: {
           fontFamily: 'code',
-          fontSize: { base: '9px', sm: '2xs', md: '11px !important' },
+          fontSize: { base: '8px', sm: '9px', md: '11px !important' },
           fontWeight: 'semibold',
           textTransform: 'uppercase',
-          letterSpacing: { base: '.1em', md: '.2em' },
+          letterSpacing: '.2em',
           color: 'fg-muted'
         },
         subheading: { fontSize: ui.subheadingFontSize, fontWeight: 'light', color: 'fg-muted' },
