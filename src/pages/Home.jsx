@@ -767,7 +767,7 @@ export default function Home({
         >
           <Box
             pos='relative'
-            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            px={ui.dividerMargin}
             py={ui.xsMargin}
             _before={{
               pos: 'absolute',
@@ -824,7 +824,7 @@ export default function Home({
           </Box>
           <Box
             pos='relative'
-            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            px={ui.dividerMargin}
             py={ui.xsMargin}
             _before={{
               pos: 'absolute',
@@ -868,7 +868,7 @@ export default function Home({
           </Box>
           <Box
             pos='relative'
-            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            px={ui.dividerMargin}
             py={ui.xsMargin}
             _before={{
               pos: 'absolute',
@@ -937,7 +937,7 @@ export default function Home({
           </Box>
           <Box
             pos='relative'
-            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            px={ui.dividerMargin}
             py={ui.xsMargin}
             _before={{
               pos: 'absolute',
@@ -1054,7 +1054,7 @@ export default function Home({
         >
           <Box
             pos='relative'
-            px={{ base: ui.xxsMargin, md: ui.xsMargin }}
+            px={ui.dividerMargin}
             py={ui.xsMargin}
             _before={{
               pos: 'absolute',
@@ -1075,7 +1075,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Text variant='description' mt={-2}>
+            <Text variant='description' mt={-2} align={{ base: 'left', sm: 'center' }}>
               <Text as='strong' variant='lede'>
                 Simple credits:
               </Text>
@@ -1086,7 +1086,13 @@ export default function Home({
               </Link>
               )
             </Text>
-            <SimpleGrid mt={{ base: 0, lg: 2 }} columns={{ base: 1, lg: 3 }} spacing={ui.mdMargin}>
+            <SimpleGrid
+              mt={ui.xsMargin}
+              columns={{ base: 1, lg: 2, xl: 3 }}
+              spacingX={ui.dividerMargin}
+              spacingY={ui.xsMargin}
+              justifyItems='center'
+            >
               <Card
                 variant='pricing'
                 cursor={session ? 'not-allowed' : 'pointer'}
@@ -1308,7 +1314,7 @@ export default function Home({
           />
         </Box>
         <Flex mt={ui.xsMargin} direction='column' maxW={ui.teamWidth}>
-          <Text variant='description' px={5} align='left' color='bg-button !important'>
+          <Text variant='description' align='left' color='bg-button !important'>
             <Text as='strong' variant='lede' color='bg-button'>
               Made by experts:
             </Text>

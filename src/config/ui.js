@@ -320,13 +320,14 @@ export const smOutlineStyle = '0 0 0 2px';
 export const outlineRadius = '2px';
 export const shadowStyle = 'outline';
 export const transition = 'all var(--chakra-transition-duration-normal)';
+export const cardWidth = '400px';
 export const horizontalDividerOverflow = '-48px';
 export const verticalDividerOverflow = '-24px';
 export const dividerBaseOverflow = '-16px';
 export const linkPadding = '2px';
 export const gradientAngle = 140;
+export const dividerMargin = { base: xxsMargin, md: xsMargin };
 export const descriptionMargin = { base: 0, lg: xsMargin };
-export const cardMargin = { base: 2, lg: xsMargin };
 export const outline = (color) => {
   return `${outlineStyle} var(--chakra-colors-${color})`;
 };

@@ -46,22 +46,28 @@ export default extendTheme({
     Card: {
       baseStyle: {
         container: { shadow: 'none' },
-        header: { fontSize: 'xl', fontWeight: 'bold', color: 'bg-button' },
+        header: {
+          textAlign: { base: 'left', sm: 'center' },
+          fontSize: 'xl',
+          fontWeight: 'bold',
+          color: 'bg-button'
+        },
         body: { pt: 0, textAlign: 'left' },
         footer: { pt: 0 }
       },
       variants: {
         pricing: {
           container: {
-            mt: ui.cardMargin,
             borderWidth: '1px',
             borderColor: 'chakra-border-color',
             bg: 'bg-muted',
+            w: '100%',
+            maxW: ui.cardWidth,
             cursor: 'pointer',
             '--card-padding': 'sizes.6'
           }
         },
-        teammate: { container: { w: ui.cardWidth } }
+        teammate: { body: { px: 0 }, footer: { px: 0 } }
       }
     },
     List: {
