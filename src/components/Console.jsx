@@ -19,12 +19,6 @@ import * as ui from '../config/ui';
 
 const inputPrompt = `${ui.prompt}${ui.urlPrompt} [${ui.defaultUrl}]: `;
 const blankLine = "<span class='line'> </span>";
-const mask = (token) => {
-  return (
-    token.slice(0, ui.tokenPrefixCharCount) +
-    ui.maskChar.repeat(Math.max(0, token.length - ui.tokenPrefixCharCount))
-  );
-};
 const numberLines = (text) => {
   return text
     .split('\n')
@@ -92,30 +86,32 @@ export default function Console({
       animation: 'blink 1s step-end infinite'
     }
   };
-  const runCode = async (event) => {
-    if (event.key == 'Enter') {
-      event.preventDefault();
-      const rawUrl = input.trim() || ui.defaultUrl;
-      let candidateUrl;
+  const maskedToken = apiToken
+    ? apiToken.slice(0, ui.tokenPrefixCharCount) +
+      ui.maskChar.repeat(Math.max(0, apiToken.length - ui.tokenPrefixCharCount))
+    : '';
+  const isAwaitingInput = isInteractive && !userUrl;
+  const runCode = async () => {
+    const rawUrl = input.trim() || ui.defaultUrl;
+    let candidateUrl;
 
+    try {
+      candidateUrl = new URL(rawUrl);
+    } catch {
       try {
-        candidateUrl = new URL(rawUrl);
+        candidateUrl = new URL(`https://${rawUrl}`);
       } catch {
-        try {
-          candidateUrl = new URL(`https://${rawUrl}`);
-        } catch {
-          // Ignoring exceptions.
-        }
+        // Ignoring exceptions.
       }
-
-      const url = candidateUrl ? candidateUrl.href : rawUrl;
-      const encodedUrl = url.includes('?') ? encodeURIComponent(url) : url;
-
-      setRawUserUrl(rawUrl);
-      setUserUrl(url);
-      setEncodedUserUrl(encodedUrl);
-      setInteractiveResponse(await ui.apiCall(apiUrl + encodedUrl, apiToken));
     }
+
+    const url = candidateUrl ? candidateUrl.href : rawUrl;
+    const encodedUrl = url.includes('?') ? encodeURIComponent(url) : url;
+
+    setRawUserUrl(rawUrl);
+    setUserUrl(url);
+    setEncodedUserUrl(encodedUrl);
+    setInteractiveResponse(await ui.apiCall(apiUrl + encodedUrl, apiToken));
   };
   let output = '';
 
@@ -137,7 +133,6 @@ export default function Console({
 
   if (isInteractive) {
     if (userUrl) {
-      const maskedToken = mask(apiToken);
       output =
         numberLines(hljs.highlight(inputPrompt + rawUserUrl, { language: 'bash' }).value) +
         numberLines(
@@ -158,7 +153,6 @@ export default function Console({
   } else {
     if (apiRequest) {
       output = ui.prompt;
-      const maskedToken = mask(apiToken);
 
       switch (apiRequest.language) {
         case 'python':
@@ -228,17 +222,28 @@ export default function Console({
         <ModalBody
           p={0}
           overflow='auto'
+          cursor={isAwaitingInput ? 'text' : 'auto'}
+          onClick={() => {
+            if (isAwaitingInput) hiddenInput.current?.focus();
+          }}
           sx={{
             scrollbarColor: 'var(--chakra-colors-whiteAlpha-200) transparent',
             '&::-webkit-scrollbar-track': { bg: 'transparent' },
             '&::-webkit-scrollbar-thumb': { bg: 'whiteAlpha.200' }
           }}
         >
-          {isInteractive && !userUrl ? (
+          {isAwaitingInput ? (
             <Box fontFamily='code' fontSize={ui.codeFontSize} sx={terminalStyle}>
               <pre>
                 <code className='hljs'>
-                  <span className='line' style={{ display: 'flex', alignItems: 'baseline' }}>
+                  <form
+                    className='line'
+                    style={{ display: 'flex', alignItems: 'baseline' }}
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      runCode();
+                    }}
+                  >
                     <span>{inputPrompt}</span>
                     <input
                       ref={hiddenInput}
@@ -256,10 +261,15 @@ export default function Console({
                       onChange={(event) => {
                         setInput(event.target.value);
                       }}
-                      onKeyDown={runCode}
+                      onKeyDown={(event) => {
+                        if (event.key == 'Enter') {
+                          event.preventDefault();
+                          runCode();
+                        }
+                      }}
                     />
                     <span className='cursor'>{ui.cursorChar}</span>
-                  </span>
+                  </form>
                 </code>
               </pre>
             </Box>
