@@ -23,6 +23,9 @@ export const subheadingLabel =
   'for successful requests';
 export const shortSubheadingLabel =
   'Search & browse with automatic captcha solving & geotargeting to 190+ countries';
+export const altSubheadingLabel =
+  'Search & browsing API, automatic captcha solving, & geo-targeting to 190+ countries — you pay ' +
+  'only for successful calls';
 export const audienceLabel = 'For data teams · For agent builders · For proxy providers';
 export const shortAudienceLabel = 'Data teams · Agent builders · Proxy providers';
 export const ctaLabel = 'Try any URL & get 1,000 free credits →';

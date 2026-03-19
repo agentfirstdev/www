@@ -22,7 +22,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           _light={{ bg: ui.royalBlue, boxShadow: `0 0 8px ${ui.royalBlue}` }}
           _dark={{ bg: ui.cornflowerBlue, boxShadow: `0 0 8px ${ui.cornflowerBlue}` }}
         />
-        <Text variant='pill'>
+        <Text variant='pill' display={{ base: 'none', md: 'inline' }}>
           From the developer of the world’s most-used privacy tools
           <Link variant='marker' href={`#${ui.citationsId}`}>
             <sup>1</sup>
@@ -32,9 +32,18 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
             <sup>2</sup>
           </Link>
         </Text>
+        <Text variant='pill' display={{ base: 'inline', md: 'none' }}>
+          From the developer of Proxyway’s benchmark-topping proxy
+          <Link variant='marker' href={`#${ui.citationsId}`}>
+            <sup>1</sup>
+          </Link>
+        </Text>
       </HStack>
-      <Text variant='audience' mt={ui.xxsMargin}>
-        For data teams · For agent builders · For proxy providers
+      <Text variant='audience' display={{ base: 'none', sm: 'block' }} mt={ui.xxsMargin}>
+        {ui.audienceLabel}
+      </Text>
+      <Text variant='audience' display={{ base: 'block', sm: 'none' }} mt={ui.xxsMargin}>
+        {ui.shortAudienceLabel}
       </Text>
       <Heading as='h1' variant='tagline' mt={6} fontSize={ui.altTaglineFontSize}>
         {'Upgrade your product with '}
@@ -58,15 +67,34 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         </Box>
         {' to any site'}
       </Heading>
-      <Text variant='cta' my={ui.xxsMargin}>
-        Search & browsing API, automatic captcha solving, & geo-targeting to 190+ countries — you
-        pay only for successful calls
+      <Text variant='subheading' display={{ base: 'none', lg: 'inline' }} my={ui.xxsMargin}>
+        {ui.altSubheadingLabel}
+      </Text>
+      <Text variant='subheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
+        {ui.altSubheadingLabel}
       </Text>
       <Flex mt={ui.lgMargin} gap={ui.xxsMargin}>
-        <Button size='lg' h={ui.ctaHeight} tabIndex={1} onClick={props.onCtaPress}>
-          {ui.ctaLabel}
+        <Button
+          size={{ base: 'md', sm: 'lg' }}
+          h={ui.ctaHeight}
+          tabIndex={1}
+          onClick={props.onCtaPress}
+        >
+          <Text as='span' display={{ base: 'none', md: 'inline' }}>
+            {ui.ctaLabel}
+          </Text>
+          <Text as='span' display={{ base: 'inline', md: 'none' }} fontSize='inherit'>
+            {ui.shortCtaLabel}
+          </Text>
         </Button>
-        <Button as='a' variant='outline' size='lg' w='auto' h={ui.ctaHeight} href={ui.docUrl}>
+        <Button
+          as='a'
+          variant='outline'
+          w='auto'
+          h={ui.ctaHeight}
+          fontSize={{ base: 'md', sm: 'lg' }}
+          href={ui.docUrl}
+        >
           {ui.secondaryCtaLabel}
         </Button>
       </Flex>
