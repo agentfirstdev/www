@@ -26,6 +26,8 @@ export const shortSubheadingLabel =
 export const altSubheadingLabel =
   'Search & browsing API, automatic captcha solving, & geo-targeting to 190+ countries — you pay ' +
   'only for successful calls';
+export const altShortSubheadingLabel =
+  'Search & browsing API, automatic captcha solving, & geotargeting to 190+ countries';
 export const audienceLabel = 'For data teams · For agent builders · For proxy providers';
 export const shortAudienceLabel = 'Data teams · Agent builders · Proxy providers';
 export const ctaLabel = 'Try any URL & get 1,000 free credits →';
@@ -382,8 +384,9 @@ export const tickDistanceUnit = 420;
 export const tickOffset = 48;
 // export const taglineWidth = { base: '100%', md: '50%' };
 export const taglineFontSize = { base: '30px', sm: '42px', lg: '60px' };
-export const altTaglineFontSize = { base: '24px', lg: '54px' };
-export const subheadingFontSize = { base: '16px', sm: '22px', lg: '24px' };
+export const altTaglineFontSize = { base: '22px', sm: '32px', lg: '54px' };
+export const subheadingFontSize = { base: '16px', sm: '22px !important', lg: '24px' };
+export const altSubheadingFontSize = { base: '15px', sm: '22px !important', lg: '24px' };
 /* export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth }; */
 export const postItFontSize = { base: '22px', md: '28px' };

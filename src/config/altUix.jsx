@@ -67,11 +67,11 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         </Box>
         {' to any site'}
       </Heading>
-      <Text variant='subheading' display={{ base: 'none', lg: 'inline' }} my={ui.xxsMargin}>
+      <Text variant='altheading' display={{ base: 'none', lg: 'inline' }} my={ui.xxsMargin}>
         {ui.altSubheadingLabel}
       </Text>
-      <Text variant='subheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
-        {ui.altSubheadingLabel}
+      <Text variant='altheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
+        {ui.altShortSubheadingLabel}
       </Text>
       <Flex mt={ui.lgMargin} gap={ui.xxsMargin}>
         <Button

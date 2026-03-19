@@ -133,6 +133,7 @@ export default extendTheme({
           color: 'fg-muted'
         },
         subheading: { fontSize: ui.subheadingFontSize, fontWeight: 'light', color: 'fg-muted' },
+        altheading: { fontSize: ui.altSubheadingFontSize, fontWeight: 'light', color: 'fg-muted' },
         'post-it': {
           my: 6,
           textAlign: 'left',
