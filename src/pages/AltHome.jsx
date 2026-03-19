@@ -30,7 +30,7 @@ import rough from 'roughjs/bin/rough';
 import { createTimeline } from 'animejs';
 
 import * as ui from '../config/ui';
-import * as uix from '../config/uix';
+import * as uix from '../config/altUix';
 import Code from '../components/Code';
 import Pricing from '../components/Pricing';
 import WaitlistDropdown from '../components/WaitlistDropdown';
@@ -241,7 +241,7 @@ export default function Home({
         );
       }
 
-      ui.completion.forEach(({ delay, token }) => {
+      ui.altCompletion.forEach(({ delay, token }) => {
         timeouts.push(
           setTimeout(() => {
             if (completion.current) completion.current.textContent += token;
@@ -690,7 +690,7 @@ export default function Home({
         <VStack
           gap={0}
           w={ui.taglineWidth}
-          maxW={ui.taglineMaxWidth}
+          maxW={ui.altTaglineMaxWidth}
           justify='center'
           align='center'
         >

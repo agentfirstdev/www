@@ -45,17 +45,18 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='audience' display={{ base: 'block', sm: 'none' }} mt={ui.xxsMargin}>
         {ui.shortAudienceLabel}
       </Text>
-      <Heading as='h1' variant='tagline' mt={6} fontSize={ui.taglineFontSize}>
+      <Heading as='h1' variant='tagline' mt={6} fontSize={ui.altTaglineFontSize}>
+        {'Upgrade your product with '}
         <Box as='span' display='inline-block' position='relative' textAlign='left'>
-          <Text fontSize={ui.taglineFontSize} visibility='hidden' pointerEvents='none'>
-            Reliable access
+          <Text fontSize={ui.altTaglineFontSize} visibility='hidden' pointerEvents='none'>
+            reliable access
           </Text>
           <Text
             ref={ref}
             position='absolute'
             inset={0}
             bgClip='text'
-            fontSize={ui.taglineFontSize}
+            fontSize={ui.altTaglineFontSize}
             _light={{
               bgGradient: `linear(${ui.gradientAngle}deg, ${ui.cornflowerBlue}, ${ui.creativeBlue})`
             }}
@@ -64,13 +65,13 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
             }}
           ></Text>
         </Box>
-        {' to every public website'}
+        {' to any site'}
       </Heading>
-      <Text variant='subheading' display={{ base: 'none', lg: 'inline' }} my={ui.xxsMargin}>
-        {ui.subheadingLabel}
+      <Text variant='altheading' display={{ base: 'none', lg: 'inline' }} my={ui.xxsMargin}>
+        {ui.altSubheadingLabel}
       </Text>
-      <Text variant='subheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
-        {ui.shortSubheadingLabel}
+      <Text variant='altheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
+        {ui.altShortSubheadingLabel}
       </Text>
       <Flex mt={ui.lgMargin} gap={ui.xxsMargin}>
         <Button

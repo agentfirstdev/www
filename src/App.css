@@ -8,6 +8,12 @@ html {
   text-align: center;
 }
 
+[style*="visibility: hidden"][style*="min-width: max-content"] {
+  width: 0;
+  min-width: 0 !important;
+  overflow: hidden;
+}
+
 .animated text:last-of-type {
   fill: #4a6de5 !important;
   transition: fill 2s ease-out;

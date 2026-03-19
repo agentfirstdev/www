@@ -19,7 +19,7 @@ export default extendTheme({
       'chakra-border-color': { _light: 'gray.200', _dark: 'whiteAlpha.100' },
       'chakra-placeholder-color': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
       'shadow-color': { _light: 'gray.300', _dark: 'whiteAlpha.400' },
-      'fg-muted': { _light: 'gray.500', _dark: 'whiteAlpha.500' },
+      'fg-muted': { _light: 'gray.600', _dark: 'whiteAlpha.600' },
       'fg-grid': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
       'fg-button': { _light: 'white', _dark: 'whiteAlpha.800' },
       'fg-gutter': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
@@ -40,28 +40,54 @@ export default extendTheme({
     subheading: ui.subheadingFont,
     display: ui.displayFont,
     body: ui.bodyFont,
-    footer: ui.footerFont
+    code: ui.codeFont
   },
   components: {
     Card: {
       baseStyle: {
+        container: { shadow: 'none' },
         header: {
-          fontFamily: 'subheading',
-          fontSize: '3xl',
+          textAlign: { base: 'left', sm: 'center' },
+          fontSize: 'xl',
           fontWeight: 'bold',
-          textDecor: 'underline',
           color: 'bg-button'
         },
-        body: { pt: 0, textAlign: 'left' }
+        body: { pt: 0, textAlign: 'left' },
+        footer: { pt: 0 }
+      },
+      variants: {
+        pricing: {
+          container: {
+            borderWidth: '1px',
+            borderColor: 'chakra-border-color',
+            bg: 'bg-muted',
+            w: '100%',
+            maxW: ui.cardWidth,
+            cursor: 'pointer',
+            '--card-padding': 'sizes.6'
+          }
+        },
+        teammate: { body: { px: 0 }, footer: { px: 0 } }
       }
     },
     List: {
       baseStyle: {
         item: {
           fontSize: { base: 'md', md: 'lg' },
-          _light: { fontWeight: 300 },
+          fontWeight: 'light',
           _dark: { color: 'whiteAlpha.700' },
           '::marker': { fontSize: '1.25em' }
+        }
+      },
+      variants: {
+        pricing: { item: { listStyleType: 'none', fontSize: 'sm' }, icon: { color: 'bg-button' } },
+        citations: {
+          container: { textAlign: 'left' },
+          item: {
+            fontSize: { base: '9px', sm: '2xs !important', lg: 'xs !important' },
+            color: 'bg-button',
+            '::marker': { fontSize: 'inherit', color: 'bg-button' }
+          }
         }
       }
     },
@@ -74,25 +100,40 @@ export default extendTheme({
     Heading: {
       baseStyle: { fontSize: { base: '26px', md: '4xl' }, color: 'bg-button' },
       variants: {
-        tagline: { fontFamily: 'display', color: 'chakra-body-text !important' },
+        tagline: {
+          lineHeight: 1.1,
+          fontFamily: 'display',
+          fontWeight: 'extrabold',
+          color: 'chakra-body-text'
+        },
         'post-it': { color: 'gray.800' },
-        service: { fontFamily: 'subheading' },
+        service: { fontFamily: 'subheading', fontSize: '2xl' },
         team: { textAlign: 'center', fontWeight: 'normal' },
         name: { fontFamily: 'subheading' },
-        secondary: {
-          mt: ui.mdMargin,
-          mb: ui.smMargin,
-          fontFamily: 'body',
-          _light: { color: 'gray.600' },
-          _dark: { color: 'whiteAlpha.600' }
-        },
+        secondary: { mt: ui.lgMargin, mb: ui.xsMargin, fontFamily: 'body', color: 'fg-muted' },
         dropdown: { fontFamily: 'subheading', fontSize: '1.25rem' }
       }
     },
     Text: {
       baseStyle: { fontSize: { base: 'md', md: 'lg' } },
       variants: {
-        cta: { my: 4, fontSize: ui.ctaFontSize, color: 'fg-muted' },
+        pill: {
+          verticalAlign: 'middle',
+          fontFamily: 'body',
+          fontSize: { base: '9px', sm: '2xs !important', lg: 'xs !important' },
+          fontWeight: 'medium',
+          color: 'bg-button'
+        },
+        audience: {
+          fontFamily: 'code',
+          fontSize: { base: '8px', sm: '9px', md: '11px !important' },
+          fontWeight: 'semibold',
+          textTransform: 'uppercase',
+          letterSpacing: '.2em',
+          color: 'fg-muted'
+        },
+        subheading: { fontSize: ui.subheadingFontSize, fontWeight: 'light', color: 'fg-muted' },
+        altheading: { fontSize: ui.altSubheadingFontSize, fontWeight: 'light', color: 'fg-muted' },
         'post-it': {
           my: 6,
           textAlign: 'left',
@@ -100,35 +141,28 @@ export default extendTheme({
           fontSize: ui.postItFontSize,
           color: 'gray.800'
         },
-        service: {
-          mt: 4,
-          fontSize: { base: 'md', md: 'lg' },
-          _light: { fontWeight: 300 },
-          _dark: { color: 'whiteAlpha.600' }
-        },
+        service: { mt: ui.xxsMargin, fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
+        pricing: { fontSize: 'sm', fontWeight: 'light', color: 'chakra-placeholder-color' },
         teammate: {
           mt: 2,
-          fontFamily: 'footer',
-          _light: { fontWeight: 300, color: 'accent.secondary' },
+          fontSize: 'md',
+          fontWeight: 'light',
+          _light: { color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
         attribution: {
-          fontFamily: 'footer',
           fontSize: { base: 'xs', md: 'sm' },
-          _light: { fontWeight: 300, color: 'accent.secondary' },
+          fontWeight: 'light',
+          _light: { color: 'accent.secondary' },
           _dark: { color: 'brand.primary' }
         },
-        description: {
-          fontSize: { base: 'md', md: 'lg' },
-          _light: { fontWeight: 300 },
-          _dark: { color: 'whiteAlpha.600' }
-        },
-        highlight: { fontSize: 'inherit', fontWeight: 'bold', color: 'bg-inverted' },
-        bold: { fontSize: 'inherit', fontWeight: 'bold' },
-        footerBold: { fontSize: 'inherit', fontWeight: 500 },
+        description: { fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
+        bold: { fontSize: 'inherit' },
+        lede: { fontSize: { base: '1.25em', md: '1.5em' }, color: 'chakra-body-text' },
+        name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger' },
         co: { mx: '.2em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },
         footerCo: { mx: '.1em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },
-        name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger', fontWeight: 'bold' }
+        amount: { fontSize: '3em', color: 'chakra-body-text' }
       }
     },
     Link: {
@@ -151,22 +185,25 @@ export default extendTheme({
           _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
           _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
         },
+        marker: {
+          fontWeight: 'medium',
+          _focus: { shadow: `${ui.smOutlineStyle} var(--chakra-colors-brand-primary)` }
+        },
         doc: {
           display: { base: 'none', lg: 'inline' },
           position: 'absolute',
-          right: ui.editorHorizontalMargin,
-          bottom: ui.editorVerticalMargin,
-          fontSize: ui.editorFontSize,
+          right: ui.codeHorizontalMargin,
+          bottom: ui.codeVerticalMargin,
+          fontSize: ui.codeFontSize,
+          fontWeight: 'normal',
           color: 'chakra-body-text',
-          _focus: { shadow: ui.outline('chakra-body-text') },
-          _light: { fontWeight: 'normal' },
-          _dark: { fontWeight: 500 }
+          _focus: { shadow: ui.outline('chakra-body-text') }
         },
         pricing: {
-          borderBottomWidth: '2px',
+          borderBottomWidth: '1px',
           borderBottomColor: 'chakra-body-text',
           p: 0,
-          fontWeight: 'normal',
+          fontWeight: 'light',
           color: 'chakra-body-text',
           _hover: { color: 'chakra-body-text', _focus: { shadow: ui.outline('chakra-body-text') } },
           _focus: { shadow: ui.outline('chakra-body-text') }
@@ -176,8 +213,8 @@ export default extendTheme({
           borderBottomWidth: '2px',
           borderBottomColor: 'bg-button',
           p: 0,
-          h: '24px',
-          fontWeight: 500,
+          h: '22px',
+          fontWeight: 'medium',
           _hover: { borderColor: 'bg-inverted' }
         },
         social: {
@@ -185,16 +222,17 @@ export default extendTheme({
           p: 0,
           _hover: { _focus: { shadow: ui.outline('brand-primary') } },
           _focus: { shadow: ui.outline('brand-primary') }
+        },
+        citation: {
+          fontWeight: 'light',
+          _focus: { shadow: `${ui.smOutlineStyle} var(--chakra-colors-brand-primary)` }
         }
       }
     },
-    FormLabel: {
-      baseStyle: { mr: 0, mb: 0, fontFamily: 'display', fontWeight: 'bold', whiteSpace: 'nowrap' }
-    },
+    FormLabel: { baseStyle: { mr: 0, mb: 0, fontWeight: 'bold', whiteSpace: 'nowrap' } },
     Input: {
       baseStyle: {
         field: {
-          fontFamily: 'display',
           _light: { borderColor: 'chakra-border-color', bg: 'white' },
           _dark: { borderColor: 'chakra-border-color', bg: 'whiteAlpha.50' }
         }
@@ -208,29 +246,26 @@ export default extendTheme({
         }
       }
     },
-    NumberInput: { baseStyle: { field: { fontFamily: 'display' } } },
     Textarea: {
       defaultProps: { focusBorderColor: 'brand.primary' },
       baseStyle: {
         p: ui.promptPadding,
         lineHeight: 'base',
-        fontFamily: 'display',
         fontSize: ui.promptFontSize,
-        _placeholder: { color: 'chakra-placeholder-color' },
-        _light: { fontWeight: 300 }
+        fontWeight: 'light',
+        _placeholder: { color: 'chakra-placeholder-color' }
       },
       variants: { outline: { borderWidth: '2px', bg: 'chakra-subtle-bg' } }
     },
     Button: {
       baseStyle: {
-        fontFamily: 'display',
         fontWeight: 'bold',
-        _hover: { borderColor: 'transparent' },
-        _focus: { shadow: ui.shadowStyle },
         _disabled: {
           _light: { _hover: { bg: 'accent.secondary !important' } },
           _dark: { _hover: { bg: 'brand.primary !important' } }
-        }
+        },
+        _hover: { borderColor: 'transparent' },
+        _focus: { shadow: ui.shadowStyle }
       },
       variants: {
         solid: {
@@ -244,15 +279,35 @@ export default extendTheme({
           _focus: { shadow: ui.outlineInset('chakra-body-bg', 'bg-button') },
           _active: { bg: 'bg-inverted' }
         },
+        outline: {
+          borderWidth: '1px',
+          borderColor: 'bg-button',
+          w: '100%',
+          h: ui.controlDimension,
+          fontSize: { base: 'md', md: 'lg' },
+          color: 'bg-button',
+          _disabled: {
+            _light: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } },
+            _dark: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } }
+          },
+          _hover: {
+            borderColor: 'bg-inverted',
+            bg: 'transparent',
+            color: 'bg-inverted',
+            _focus: { shadow: ui.outline('bg-inverted') }
+          },
+          _focus: { shadow: ui.outline('bg-button') },
+          _active: { bg: 'transparent' }
+        },
         monochrome: {
           color: 'brand.primary',
+          _light: { bg: 'gray.200' },
+          _dark: { bg: 'whiteAlpha.200' },
           _hover: {
             bg: 'bg-emphasized',
             color: 'bg-inverted',
             _focus: { shadow: ui.outline('bg-inverted') }
-          },
-          _light: { bg: 'gray.200' },
-          _dark: { bg: 'whiteAlpha.200' }
+          }
         },
         toggle: {
           _light: { bg: '#e2e8f0', _hover: { bg: '#cbd5e0' } },
@@ -300,13 +355,10 @@ export default extendTheme({
         borderWidth: '1px',
         bg: 'bg-emphasized',
         pt: '2px',
-        fontFamily: 'body',
         _light: { borderColor: 'accent.secondary', color: 'accent.secondary' },
         _dark: { borderColor: 'whiteAlpha.600', color: 'whiteAlpha.600' }
       }
-    },
-    Tooltip: { baseStyle: { fontFamily: 'display' } },
-    Alert: { baseStyle: { container: { fontFamily: 'display' } } }
+    }
   },
   styles: {
     global: {

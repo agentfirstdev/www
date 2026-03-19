@@ -24,6 +24,7 @@ import rough from 'roughjs/bin/rough';
 import * as supabase from './config/supabase';
 import * as ui from './config/ui';
 import Home from './pages/Home';
+import AltHome from './pages/AltHome';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout';
@@ -364,7 +365,7 @@ export default function App() {
             aria-label={ui.logoLabel}
           />
         </Box>
-        <Flex pos='absolute' top={0} right={ui.itemMargin} bottom={0} align='center'>
+        <Flex pos='absolute' right={ui.itemMargin} top={0} bottom={0} align='center'>
           <Flex display={{ base: 'none', lg: 'flex' }} align='center'>
             <Link variant='nav' ml={ui.itemMargin} href={ui.servicesPath}>
               {ui.servicesLabel}
@@ -388,6 +389,7 @@ export default function App() {
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={modeLabel} hasArrow>
             <IconButton
               variant='monochrome'
+              display={{ base: 'none', sm: 'inline-flex' }}
               ml={ui.itemMargin}
               icon={
                 isLightMode ? <MoonIcon /> : <SunIcon sx={{ g: { strokeWidth: ui.sunStroke } }} />
@@ -423,12 +425,12 @@ export default function App() {
                   fontSize='xl'
                   icon={<HamburgerIcon />}
                   aria-label={ui.menuLabel}
+                  _light={{ color: 'white' }}
+                  _dark={{ color: 'whiteAlpha.800' }}
                   _hover={{
                     bg: 'bg-inverted',
                     _focus: { shadow: ui.outlineInset('chakra-body-bg', 'bg-inverted') }
                   }}
-                  _light={{ color: 'white' }}
-                  _dark={{ color: 'whiteAlpha.800' }}
                 />
               </Tooltip>
               <MenuList overflow='hidden'>
@@ -493,6 +495,19 @@ export default function App() {
             }
           />
           <Route
+            path={ui.altPath}
+            element={
+              <AltHome
+                supabaseClient={supabase.client}
+                session={session}
+                blueprintStroke={blueprintStroke}
+                blueprintFill={blueprintFill}
+                generateFrame={generateFrame}
+                handleKeyPress={handleKeyPress}
+              />
+            }
+          />
+          <Route
             path={ui.dashboardPath}
             element={
               <Dashboard
@@ -527,12 +542,7 @@ export default function App() {
           />
         </Routes>
       </Flex>
-      <Box
-        id='contact'
-        mx={{ base: ui.smMargin, lg: ui.xlMargin }}
-        mt={ui.smMargin}
-        mb={ui.xsMargin}
-      >
+      <Box id='contact' mx={{ base: ui.xsMargin, lg: ui.xxlMargin }} mb={ui.iconVerticalMargin}>
         <Divider />
         <Flex mt={ui.iconVerticalMargin} direction='row' justify='space-between' align='center'>
           <Box lineHeight={0}>
