@@ -1514,7 +1514,7 @@ export default function Home({
         mt={ui.smMargin}
         mb={3}
       >
-        <ListItem>
+        <ListItem display={{ base: 'none', md: 'list-item' }}>
           <Link
             variant='citation'
             href='https://medium.com/samsung-internet-dev/introducing-our-new-tracking-blocker-powered-by-disconnect-c00f118c1151'

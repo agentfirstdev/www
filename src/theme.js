@@ -78,7 +78,7 @@ export default extendTheme({
         citations: {
           container: { textAlign: 'left' },
           item: {
-            fontSize: 'xs',
+            fontSize: { base: '9px', sm: '2xs !important', lg: 'xs !important' },
             color: 'bg-button',
             '::marker': { fontSize: 'inherit', color: 'bg-button' }
           }
@@ -114,19 +114,19 @@ export default extendTheme({
         pill: {
           verticalAlign: 'middle',
           fontFamily: 'body',
-          fontSize: 'xs',
+          fontSize: { base: '9px', sm: '2xs !important', lg: 'xs !important' },
           fontWeight: 'medium',
           color: 'bg-button'
         },
         audience: {
           fontFamily: 'code',
-          fontSize: '11px',
+          fontSize: { base: '9px', sm: '2xs', md: '11px !important' },
           fontWeight: 'semibold',
           textTransform: 'uppercase',
-          letterSpacing: '.2em',
+          letterSpacing: { base: '.1em', md: '.2em' },
           color: 'fg-muted'
         },
-        cta: { fontSize: ui.ctaFontSize, fontWeight: 'light', color: 'fg-muted' },
+        subheading: { fontSize: ui.subheadingFontSize, fontWeight: 'light', color: 'fg-muted' },
         'post-it': {
           my: 6,
           textAlign: 'left',

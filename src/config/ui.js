@@ -18,7 +18,15 @@ export const homeLabel = 'Home';
 export const profileLabel = 'Settings';
 export const supportLabel = 'Help';
 export const logoutLabel = 'Logout';
+export const subheadingLabel =
+  'Search & browse with automatic captcha solving & geo-targeting to 190+ countries — pay only ' +
+  'for successful requests';
+export const shortSubheadingLabel =
+  'Search & browse with automatic captcha solving & geotargeting to 190+ countries';
+export const audienceLabel = 'For data teams · For agent builders · For proxy providers';
+export const shortAudienceLabel = 'Data teams · Agent builders · Proxy providers';
 export const ctaLabel = 'Try any URL & get 1,000 free credits →';
+export const shortCtaLabel = 'Try any URL →';
 export const secondaryCtaLabel = 'Read API doc';
 export const codeLabel = 'Copy code';
 export const runLabel = 'Run code';
@@ -369,13 +377,13 @@ export const tickLength = 16;
 export const tickDistanceUnit = 420;
 export const tickOffset = 48;
 // export const taglineWidth = { base: '100%', md: '50%' };
-export const taglineFontSize = { base: '26px', lg: '60px' };
+export const taglineFontSize = { base: '30px', sm: '42px', lg: '60px' };
 export const altTaglineFontSize = { base: '24px', lg: '54px' };
-export const ctaFontSize = { base: '20px', lg: '24px' };
+export const subheadingFontSize = { base: '16px', sm: '22px', lg: '24px' };
 /* export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth }; */
 export const postItFontSize = { base: '22px', md: '28px' };
-export const ctaHeight = { base: controlDimension, md: '64px' };
+export const ctaHeight = { base: '56px !important', md: '64px !important' };
 
 // Services
 export const servicesNewWidth = '20%';

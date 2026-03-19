@@ -389,6 +389,7 @@ export default function App() {
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={modeLabel} hasArrow>
             <IconButton
               variant='monochrome'
+              display={{ base: 'none', sm: 'inline-flex' }}
               ml={ui.itemMargin}
               icon={
                 isLightMode ? <MoonIcon /> : <SunIcon sx={{ g: { strokeWidth: ui.sunStroke } }} />
