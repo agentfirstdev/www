@@ -780,10 +780,9 @@ export default function Home({
             }}
           >
             <Text variant='description' mt={-2} color='chakra-placeholder-color'>
-              <Text as='strong' variant='lede'>
+              <Text as='strong' variant='lede' display='block' mb={2}>
                 You didn’t create your product to battle web gatekeepers
               </Text>
-              <br />
               Deploy to production in minutes while we handle the browser management & challenge
               mitigations for you
             </Text>
@@ -791,7 +790,7 @@ export default function Home({
               as='h2'
               variant='service'
               mt={ui.mdMargin}
-              fontSize={{ base: '22px', md: '3xl' }}
+              fontSize={{ base: '2xl', md: '3xl' }}
             >
               1. Live search results
             </Heading>
@@ -837,7 +836,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '22px', md: '3xl' }}>
+            <Heading as='h2' variant='service' fontSize={{ base: '2xl', md: '3xl' }}>
               2. Uncaptcha’d browsing
             </Heading>
             <Text variant='service'>
@@ -881,7 +880,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '22px', md: '3xl' }}>
+            <Heading as='h2' variant='service' fontSize={{ base: '2xl', md: '3xl' }}>
               {'3. Webpage interaction '}
               <Text
                 as='span'
@@ -891,6 +890,7 @@ export default function Home({
                 px={3.5}
                 py={1.5}
                 textTransform='uppercase'
+                whiteSpace='nowrap'
                 _light={{ borderColor: ui.blueAlpha, bg: ui.lightBlueAlpha }}
                 _dark={{ borderColor: ui.grayAlpha, bg: ui.lightGrayAlpha }}
               >
@@ -958,7 +958,7 @@ export default function Home({
               content: '""'
             }}
           >
-            <Heading as='h2' variant='service' fontSize={{ base: '22px', md: '3xl' }}>
+            <Heading as='h2' variant='service' fontSize={{ base: '2xl', md: '3xl' }}>
               … From anywhere
             </Heading>
             <Text variant='service'>

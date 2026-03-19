@@ -151,7 +151,7 @@ export default extendTheme({
         },
         description: { fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
         bold: { fontSize: 'inherit' },
-        lede: { fontSize: '1.5em', color: 'chakra-body-text' },
+        lede: { fontSize: { base: '1.25em', md: '1.5em' }, color: 'chakra-body-text' },
         name: { lineHeight: 1.25, fontFamily: 'subheading', fontSize: 'larger' },
         co: { mx: '.2em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },
         footerCo: { mx: '.1em', fontFamily: 'heading', fontSize: 'inherit', fontWeight: 'normal' },

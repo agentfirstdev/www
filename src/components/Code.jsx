@@ -78,7 +78,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
           justify='space-between'
         >
           <Flex gap={ui.chromeButtonMargin}>
-            {Object.keys(markdown).map((language) => {
+            {Object.keys(markdown).map((language, i, languages) => {
               const Icon = languageIcons[language];
               const isActive = language == activeLanguage;
 
@@ -86,7 +86,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
                 <Box
                   as='button'
                   key={language}
-                  display='flex'
+                  display={i == languages.length - 1 ? { base: 'none', sm: 'flex' } : 'flex'}
                   rounded='md'
                   bg={isActive ? 'chakra-border-color' : 'transparent'}
                   px={ui.chromeButtonPadding}
@@ -156,7 +156,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
             >
               <Box
                 as='button'
-                display={{ base: 'none', md: 'flex' }}
+                display='flex'
                 rounded='md'
                 w={ui.chromeButtonDimension}
                 h={ui.chromeButtonDimension}
