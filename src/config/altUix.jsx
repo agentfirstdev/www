@@ -57,7 +57,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='audience' display={{ base: 'block', sm: 'none' }} mt={6}>
         {ui.shortAudienceLabel}
       </Text>
-      <Heading as='h1' variant='tagline' mt={ui.smMargin} fontSize={ui.taglineFontSize}>
+      <Heading as='h1' variant='tagline' mt={ui.xsMargin} fontSize={ui.taglineFontSize}>
         <Box as='span' display='inline-block' position='relative' textAlign='left'>
           <Text fontSize={ui.taglineFontSize} visibility='hidden' pointerEvents='none'>
             Reliable access
@@ -84,7 +84,16 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='subheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
         {ui.shortSubheadingLabel}
       </Text>
-      <Flex mt={ui.smMargin} gap={ui.xxsMargin}>
+      <Box mt={ui.xxsMargin}>
+        <Code
+          markdown={{ sh }}
+          apiUrl='https://api.agentfirst.dev/browser?url=https://example.com/'
+          apiToken={props.apiToken}
+          moreUrl={ui.browsingUrl}
+          openLogin={props.openLogin}
+        />
+      </Box>
+      <Flex mt={ui.lgMargin} gap={ui.xxsMargin}>
         <Button
           size={{ base: 'md', sm: 'lg' }}
           h={ui.ctaHeight}
@@ -109,7 +118,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           {ui.secondaryCtaLabel}
         </Button>
       </Flex>
-      <OrderedList id={ui.citationsId} variant='citations' mt={ui.lgMargin}>
+      <OrderedList id={ui.citationsId} variant='citations' mt={ui.mdMargin}>
         <ListItem display={{ base: 'none', md: 'list-item' }}>
           <Link
             variant='citation'
@@ -131,15 +140,6 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           </Link>
         </ListItem>
       </OrderedList>
-      <Box mt={6}>
-        <Code
-          markdown={{ sh }}
-          apiUrl='https://api.agentfirst.dev/browser?url=https://example.com/'
-          apiToken={props.apiToken}
-          moreUrl={ui.browsingUrl}
-          openLogin={props.openLogin}
-        />
-      </Box>
     </>
   );
 });
