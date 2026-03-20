@@ -391,7 +391,7 @@ export const altSubheadingFontSize = { base: '15px', sm: '22px !important', lg: 
 /* export const postItWidth = { base: '100%', md: postItMaxWidth };
 export const postItMinWidth = { base: '3.5in', md: postItMaxWidth }; */
 export const postItFontSize = { base: '22px', md: '28px' };
-export const ctaHeight = { base: '56px !important', md: '64px !important' };
+export const ctaHeight = { base: '48px !important', md: '56px !important' };
 
 // Services
 export const servicesNewWidth = '20%';
