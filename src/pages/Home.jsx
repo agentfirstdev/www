@@ -43,9 +43,9 @@ import searchJs from '../markdown/search-js.md?raw';
 import browsingSh from '../markdown/browsing-sh.md?raw';
 import browsingPy from '../markdown/browsing-py.md?raw';
 import browsingJs from '../markdown/browsing-js.md?raw';
-import geotargetedSearchSh from '../markdown/search-geotargeted-sh.md?raw';
+/* import geotargetedSearchSh from '../markdown/search-geotargeted-sh.md?raw';
 import geotargetedSearchPy from '../markdown/search-geotargeted-py.md?raw';
-import geotargetedSearchJs from '../markdown/search-geotargeted-js.md?raw';
+import geotargetedSearchJs from '../markdown/search-geotargeted-js.md?raw'; */
 import geotargetedBrowsingSh from '../markdown/browsing-geotargeted-sh.md?raw';
 import geotargetedBrowsingPy from '../markdown/browsing-geotargeted-py.md?raw';
 import geotargetedBrowsingJs from '../markdown/browsing-geotargeted-js.md?raw';
