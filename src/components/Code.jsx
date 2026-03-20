@@ -77,7 +77,7 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
           bg='bg-chrome'
           px={ui.chromePadding}
           py={2}
-          minH={ui.editorHeight}
+          minH={ui.chromeButtonDimension}
           justify='space-between'
         >
           {shouldShowChrome && (

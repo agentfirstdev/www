@@ -402,7 +402,6 @@ export const servicesOldHeight = 320;
 // Code
 export const cursorChar = '█';
 export const maskChar = '*';
-export const editorHeight = '53px';
 export const chromeButtonMargin = '0.5em';
 export const chromeButtonPadding = '0.75em';
 export const chromeIconDimension = '16px';
