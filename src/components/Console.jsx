@@ -135,15 +135,15 @@ export default function Console({
     if (userUrl) {
       output =
         numberLines(hljs.highlight(inputPrompt + rawUserUrl, { language: 'bash' }).value) +
+        blankLine +
         numberLines(
           hljs.highlight(
-            ui.prompt +
-              apiRequest.code
-                .replaceAll("'\\\n'", '')
-                .replaceAll('\\\n', '')
-                .replaceAll('"', "'")
-                .replace(ui.shTokenPlaceholder, maskedToken)
-                .replace(ui.urlPlaceholder, encodedUserUrl),
+            apiRequest.code
+              .replaceAll("'\\\n'", '')
+              .replaceAll('\\\n', '')
+              .replaceAll('"', "'")
+              .replace(ui.shTokenPlaceholder, maskedToken)
+              .replace(ui.urlPlaceholder, encodedUserUrl),
             { language: 'bash' }
           ).value
         ) +
