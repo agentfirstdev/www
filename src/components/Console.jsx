@@ -111,7 +111,9 @@ export default function Console({
     setRawUserUrl(rawUrl);
     setUserUrl(url);
     setEncodedUserUrl(encodedUrl);
-    setInteractiveResponse(await ui.apiCall(apiUrl + encodedUrl, apiToken));
+    setInteractiveResponse(
+      await ui.apiCall(apiUrl.replace(ui.urlPlaceholder, encodedUrl), apiToken)
+    );
   };
   let output = '';
 
@@ -143,7 +145,8 @@ export default function Console({
               .replaceAll('\\\n', '')
               .replaceAll('"', "'")
               .replace(ui.shTokenPlaceholder, maskedToken)
-              .replace(ui.urlPlaceholder, encodedUserUrl),
+              .replace(ui.urlPlaceholder, encodedUserUrl)
+              .replace(ui.examplePlaceholder, encodedUserUrl),
             { language: 'bash' }
           ).value
         ) +

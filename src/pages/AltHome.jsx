@@ -37,6 +37,7 @@ import WaitlistDropdown from '../components/WaitlistDropdown';
 import WaitlistModal from '../components/WaitlistModal';
 import LoginModal from '../components/LoginModal';
 import Console from '../components/Console';
+import heroSh from '../markdown/hero-sh.md?raw';
 import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
@@ -1566,9 +1567,9 @@ export default function Home({
         close={closeLogin}
       />
       <Console
-        apiUrl='https://api.agentfirst.dev/browser?url='
+        apiUrl='https://api.agentfirst.dev/browser?url=$TARGET_URL&format=markdown'
         apiToken={apiToken}
-        apiRequest={{ code: ui.stripFences(browsingSh), language: 'bash' }}
+        apiRequest={{ code: ui.stripFences(heroSh), language: 'bash' }}
         isOpen={isConsoleOpen}
         isInteractive
         close={closeConsole}
