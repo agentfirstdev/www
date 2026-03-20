@@ -9,6 +9,7 @@ export const docLabel = 'Documentation';
 export const demoLabel = 'Live demo';
 export const aboutLabel = 'About us';
 export const llmsTxtLabel = 'llms.txt';
+export const callLabel = 'Book a call';
 export const menuLabel = 'View site contents';
 export const dashboardLabel = 'Dashboard';
 export const loginLabel = 'Log in or sign up';

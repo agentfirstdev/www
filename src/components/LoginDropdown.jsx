@@ -129,6 +129,9 @@ export default function LoginDropdown({
             {/* <MenuItem as='a' href={ui.llmsTxtPath}>
               {ui.llmsTxtLabel}
             </MenuItem> */}
+            <MenuItem as='a' href={ui.supportUrl}>
+              {ui.callLabel}
+            </MenuItem>
           </>
         )}
         <MenuItem as='a' href={ui.supportUrl}>

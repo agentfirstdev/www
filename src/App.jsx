@@ -385,6 +385,9 @@ export default function App() {
             {/* <Link variant='nav' ml={ui.itemMargin} href={ui.llmsTxtPath}>
               {ui.llmsTxtLabel}
             </Link> */}
+            <Link variant='nav' ml={ui.itemMargin} href={ui.supportUrl}>
+              {ui.callLabel}
+            </Link>
           </Flex>
           <Tooltip mx={ui.tooltipMargin} p={ui.tooltipPadding} label={modeLabel} hasArrow>
             <IconButton
