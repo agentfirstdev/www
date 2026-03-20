@@ -1291,6 +1291,7 @@ export default function Home({
       </Box>
       <Box
         id={ui.aboutId}
+        mb={ui.smMargin}
         px={{ base: ui.xsMargin, md: ui.xxlMargin }}
         pt={ui.smMargin}
         align='center'
@@ -1516,7 +1517,7 @@ export default function Home({
           </Flex>
         </Flex>
       </Box>
-      <OrderedList
+      {/* <OrderedList
         id={ui.citationsId}
         variant='citations'
         px={{ base: ui.xsMargin, md: ui.xxlMargin }}
@@ -1543,7 +1544,7 @@ export default function Home({
             Proxyway
           </Link>
         </ListItem>
-      </OrderedList>
+      </OrderedList> */}
       {!isInMdView && (
         <WaitlistModal
           supabaseClient={supabaseClient}

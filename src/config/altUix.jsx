@@ -1,5 +1,15 @@
 import { forwardRef } from 'react';
-import { Box, Flex, HStack, Heading, Text, Link, Button } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  HStack,
+  OrderedList,
+  ListItem,
+  Heading,
+  Text,
+  Link,
+  Button
+} from '@chakra-ui/react';
 
 import * as ui from './ui';
 import Code from '../components/Code';
@@ -99,7 +109,29 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           {ui.secondaryCtaLabel}
         </Button>
       </Flex>
-      <Box mt={ui.mdMargin}>
+      <OrderedList id={ui.citationsId} variant='citations' mt={ui.lgMargin}>
+        <ListItem display={{ base: 'none', md: 'list-item' }}>
+          <Link
+            variant='citation'
+            href='https://medium.com/samsung-internet-dev/introducing-our-new-tracking-blocker-powered-by-disconnect-c00f118c1151'
+            isExternal
+          >
+            “The [Tracking Blocker filter] is provided by Disconnect, the industry-leading privacy
+            protection company”, Samsung
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link
+            variant='citation'
+            href='https://proxyway.com/research/proxy-service-awards-2025'
+            isExternal
+          >
+            “[Massive] topped our benchmarks multiple times and handled everything we threw at it”,
+            Proxyway
+          </Link>
+        </ListItem>
+      </OrderedList>
+      <Box mt={6}>
         <Code
           markdown={{ sh }}
           apiUrl='https://api.agentfirst.dev/browser?url=https://example.com/'

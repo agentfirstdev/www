@@ -85,6 +85,7 @@ export default extendTheme({
           container: { textAlign: 'left' },
           item: {
             fontSize: { base: '9px', sm: '2xs !important', lg: 'xs !important' },
+            fontWeight: 'medium',
             color: 'bg-button',
             '::marker': { fontSize: 'inherit', color: 'bg-button' }
           }
@@ -224,7 +225,7 @@ export default extendTheme({
           _focus: { shadow: ui.outline('brand-primary') }
         },
         citation: {
-          fontWeight: 'light',
+          fontWeight: 'medium',
           _focus: { shadow: `${ui.smOutlineStyle} var(--chakra-colors-brand-primary)` }
         }
       }
