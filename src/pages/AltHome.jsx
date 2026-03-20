@@ -859,7 +859,7 @@ export default function Home({
             </Text>
             <Code
               markdown={{ sh: browsingSh, py: browsingPy, js: browsingJs }}
-              apiUrl='https://api.agentfirst.dev/browser?url=https://example.com/'
+              apiUrl='https://api.agentfirst.dev/browser?url=https://example.com/&format=markdown'
               apiToken={apiToken}
               moreUrl={ui.browsingUrl}
               openLogin={openLogin}
@@ -1001,7 +1001,7 @@ export default function Home({
               }}
               apiUrl={
                 'https://api.agentfirst.dev/browser' +
-                '?url=https://guitars.com/&country=us&city=Nashville'
+                '?url=https://guitars.com/&country=us&city=Nashville&format=markdown'
               }
               apiToken={apiToken}
               moreUrl={ui.geotargetingUrl}

@@ -7,7 +7,8 @@ response = requests.get(
   params={
     'url': 'https://guitars.com/',
     'country': 'us',
-    'city': 'Nashville'
+    'city': 'Nashville',
+    'format': 'markdown'
   }
 )
 ```
