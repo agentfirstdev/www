@@ -2,6 +2,8 @@ import { forwardRef } from 'react';
 import { Box, Flex, HStack, Heading, Text, Link, Button } from '@chakra-ui/react';
 
 import * as ui from './ui';
+import Code from '../components/Code';
+import sh from '../markdown/hero-sh.md?raw';
 
 // Strings
 export const Tagline = forwardRef(function Tagline(props, ref) {
@@ -97,6 +99,13 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           {ui.secondaryCtaLabel}
         </Button>
       </Flex>
+      <Code
+        markdown={{ sh }}
+        apiUrl='https://api.agentfirst.dev/browser?url=https://example.com/'
+        apiToken={props.apiToken}
+        moreUrl={ui.browsingUrl}
+        openLogin={props.openLogin}
+      />
     </>
   );
 });

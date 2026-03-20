@@ -694,7 +694,12 @@ export default function Home({
           justify='center'
           align='center'
         >
-          <uix.Tagline ref={completion} onCtaPress={handleCtaPress} />
+          <uix.Tagline
+            ref={completion}
+            apiToken={apiToken}
+            openLogin={openLogin}
+            onCtaPress={handleCtaPress}
+          />
         </VStack>
         {/* <Flex w={{ base: '100%', md: '50%' }} justify='center' align='center'>
           <Textarea
