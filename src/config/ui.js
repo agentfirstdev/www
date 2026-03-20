@@ -331,6 +331,7 @@ export const verticalDividerOverflow = '-24px';
 export const dividerBaseOverflow = '-16px';
 export const linkPadding = '2px';
 export const gradientAngle = 140;
+export const headingOpacity = 0.6;
 export const dividerMargin = { base: xxsMargin, md: xsMargin };
 export const descriptionMargin = { base: 0, lg: xsMargin };
 export const outline = (color) => {
@@ -422,7 +423,6 @@ export const lightPopularShadow = `0 0 48px ${blueAlpha}, inset 0 1px 0 ${darkBl
 export const darkPopularShadow = `0 0 48px ${grayAlpha}, inset 0 1px 0 ${darkGrayAlpha}`;
 export const pricingOldWidth = 1284;
 export const pricingOldHeight = 320;
-export const pricingOpacity = 0.75;
 
 // Team
 export const hedMaxWidth = '240px';

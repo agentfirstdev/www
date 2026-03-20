@@ -39,13 +39,13 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           </Link>
         </Text>
       </HStack>
-      <Text variant='audience' display={{ base: 'none', sm: 'block' }} mt={ui.xxsMargin}>
+      <Text variant='audience' display={{ base: 'none', sm: 'block' }} mt={6}>
         {ui.audienceLabel}
       </Text>
-      <Text variant='audience' display={{ base: 'block', sm: 'none' }} mt={ui.xxsMargin}>
+      <Text variant='audience' display={{ base: 'block', sm: 'none' }} mt={6}>
         {ui.shortAudienceLabel}
       </Text>
-      <Heading as='h1' variant='tagline' mt={6} fontSize={ui.taglineFontSize}>
+      <Heading as='h1' variant='tagline' mt={ui.mdMargin} fontSize={ui.taglineFontSize}>
         <Box as='span' display='inline-block' position='relative' textAlign='left'>
           <Text fontSize={ui.taglineFontSize} visibility='hidden' pointerEvents='none'>
             Reliable access

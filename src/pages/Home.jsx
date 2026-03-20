@@ -420,9 +420,9 @@ export default function Home({
           frame = servicesFrames.current[frameIndex.current];
         } else {
           frame = generateFrame(servicesCanvas, servicesPath, {
-            stroke: invertedColor,
+            stroke: textColor,
             strokeWidth: ui.blueprintStrokeWidth,
-            fill: headingColor,
+            fill: invertedColor,
             fillStyle: ui.headingFillStyle,
             hachureAngle: ui.blueprintAngle,
             roughness: ui.headingRoughness
@@ -466,9 +466,9 @@ export default function Home({
             frame = pricingFrames.current[limitedIndex];
           } else {
             frame = generateFrame(pricingCanvas, pricingPath, {
-              stroke: textColor,
+              stroke: invertedColor,
               strokeWidth: ui.blueprintStrokeWidth,
-              fill: invertedColor,
+              fill: headingColor,
               fillStyle: ui.headingFillStyle,
               hachureAngle: ui.blueprintAngle,
               roughness: ui.headingRoughness
@@ -730,19 +730,21 @@ export default function Home({
         pb={ui.mdMargin}
         textAlign='left'
       >
-        <canvas
-          ref={services}
-          width={ui.servicesOldWidth}
-          height={ui.servicesOldHeight}
-          style={{
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            width: ui.servicesNewWidth,
-            minWidth: ui.servicesMinWidth
-          }}
-          role='img'
-          aria-label={ui.servicesLabel}
-        />
+        <Box opacity={ui.headingOpacity}>
+          <canvas
+            ref={services}
+            width={ui.servicesOldWidth}
+            height={ui.servicesOldHeight}
+            style={{
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              width: ui.servicesNewWidth,
+              minWidth: ui.servicesMinWidth
+            }}
+            role='img'
+            aria-label={ui.servicesLabel}
+          />
+        </Box>
         <Box
           pos='relative'
           mt={ui.xsMargin}
@@ -972,7 +974,7 @@ export default function Home({
               </Text>
               {' within our proxy network for local results or content:'}
             </Text>
-            <Code
+            {/* <Code
               markdown={{
                 sh: geotargetedSearchSh,
                 py: geotargetedSearchPy,
@@ -984,7 +986,7 @@ export default function Home({
               }
               apiToken={apiToken}
               openLogin={openLogin}
-            />
+            /> */}
             <Code
               markdown={{
                 sh: geotargetedBrowsingSh,
@@ -1014,7 +1016,7 @@ export default function Home({
         pb={ui.mdMargin}
         align='center'
       >
-        <Box opacity={ui.pricingOpacity}>
+        <Box opacity={ui.headingOpacity}>
           <canvas
             ref={pricing}
             className='lazy'
