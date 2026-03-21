@@ -584,3 +584,12 @@ export const embedCal = () => {
     Cal('init', { origin: calUrl });
   }
 };
+export const removeCal = () => {
+  document.querySelector('cal-modal-box')?.remove();
+
+  if (window.Cal?.instance) {
+    window.Cal.instance.iframe = null;
+    window.Cal.instance.iframeReady = false;
+    window.Cal.instance.iframeDoQueue = [];
+  }
+};
