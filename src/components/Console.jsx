@@ -142,6 +142,7 @@ export default function Console({
           hljs.highlight(
             apiRequest.code
               .replaceAll("'\\\n'", '')
+              .replaceAll('"\\\n"', '')
               .replaceAll('\\\n', '')
               .replaceAll('"', "'")
               .replace(ui.shTokenPlaceholder, maskedToken)
