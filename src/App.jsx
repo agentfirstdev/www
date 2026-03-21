@@ -202,7 +202,7 @@ export default function App() {
     link.href = `atom-one-${colorMode}${import.meta.env.PROD ? '.min' : ''}.css`;
     document.body.style.colorScheme = colorMode;
 
-    ui.removeEmbed();
+    ui.removeCal();
   }, [colorMode]);
 
   useEffect(() => {
