@@ -512,7 +512,7 @@ export const apiCall = async (url, token) => {
         type = 'json';
       } catch {
         content = text;
-        type = 'html';
+        type = url.includes('format=markdown') ? 'markdown' : 'html';
       }
 
       if (response.status >= 200 && response.status < 500) {

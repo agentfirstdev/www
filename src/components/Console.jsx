@@ -14,6 +14,7 @@ import hljs from 'highlight.js/lib/core';
 import sh from 'highlight.js/lib/languages/bash';
 import xml from 'highlight.js/lib/languages/xml';
 import json from 'highlight.js/lib/languages/json';
+import md from 'highlight.js/lib/languages/markdown';
 
 import * as ui from '../config/ui';
 
@@ -40,6 +41,7 @@ const print = (apiResponse, isCodeRunning) => {
 hljs.registerLanguage('bash', sh);
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('json', json);
+hljs.registerLanguage('markdown', md);
 
 export default function Console({
   apiUrl,
