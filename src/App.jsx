@@ -387,15 +387,15 @@ export default function App() {
             <Link variant='nav' ml={ui.itemMargin} href={ui.servicesPath}>
               {ui.servicesLabel}
             </Link>
-            <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
-              {ui.docLabel}
-            </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.pricingPath}>
               {ui.pricingLabel}
             </Link>
             {/* <Link variant='nav' ml={ui.itemMargin} href={ui.demoUrl} isExternal>
               {ui.demoLabel}
             </Link> */}
+            <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
+              {ui.docLabel}
+            </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.aboutPath}>
               {ui.aboutLabel}
             </Link>
@@ -469,12 +469,12 @@ export default function App() {
                 <MenuItem as='a' href={ui.pricingPath}>
                   {ui.pricingLabel}
                 </MenuItem>
-                <MenuItem as='a' href={ui.docUrl}>
-                  {ui.docLabel}
-                </MenuItem>
                 {/* <MenuItem as='a' href={ui.demoUrl} target='_blank' rel='noopener'>
                   {ui.demoLabel}
                 </MenuItem> */}
+                <MenuItem as='a' href={ui.docUrl}>
+                  {ui.docLabel}
+                </MenuItem>
                 <MenuItem as='a' href={ui.aboutPath}>
                   {ui.aboutLabel}
                 </MenuItem>

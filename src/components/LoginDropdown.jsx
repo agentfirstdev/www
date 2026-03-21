@@ -111,22 +111,22 @@ export default function LoginDropdown({
         )}
         {!isInLgView && (
           <>
-            <MenuItem as='a' href={ui.servicesPath}>
+            {/* <MenuItem as='a' href={ui.servicesPath}>
               {ui.servicesLabel}
-            </MenuItem>
-            <MenuItem as='a' href={ui.docUrl}>
-              {ui.docLabel}
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem as='a' href={ui.pricingPath}>
               {ui.pricingLabel}
             </MenuItem>
             {/* <MenuItem as='a' href={ui.demoUrl} target='_blank' rel='noopener'>
               {ui.demoLabel}
             </MenuItem> */}
-            <MenuItem as='a' href={ui.aboutPath}>
+            <MenuItem as='a' href={ui.docUrl}>
+              {ui.docLabel}
+            </MenuItem>
+            {/* <MenuItem as='a' href={ui.aboutPath}>
               {ui.aboutLabel}
             </MenuItem>
-            {/* <MenuItem as='a' href={ui.llmsTxtPath}>
+            <MenuItem as='a' href={ui.llmsTxtPath}>
               {ui.llmsTxtLabel}
             </MenuItem> */}
           </>
