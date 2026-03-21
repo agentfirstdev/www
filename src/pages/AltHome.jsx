@@ -1535,8 +1535,8 @@ export default function Home({
             href='https://medium.com/samsung-internet-dev/introducing-our-new-tracking-blocker-powered-by-disconnect-c00f118c1151'
             isExternal
           >
-            “The filter used by the Tracking Blocker is provided by Disconnect, the industry-leading
-            privacy protection company”, Samsung
+            “The [Tracking Blocker filter] is provided by Disconnect, the industry-leading privacy
+            protection company”, Samsung
           </Link>
         </ListItem>
         <ListItem>
