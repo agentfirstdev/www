@@ -1,3 +1,5 @@
+/* global Cal */
+
 // import markdown from 'markdown-it';
 // import highlights from 'markdown-it-highlightjs';
 
@@ -108,6 +110,7 @@ export const dashboardUrl = location.origin + dashboardPath;
 export const profileUrl = location.origin + profilePath;
 export const checkoutUrl = location.origin + checkoutPath;
 export const supportUrl = 'mailto:brain@agentfirst.dev';
+export const calUrl = 'https://cal.com';
 export const searchUrl = 'https://doc.agentfirst.dev/endpoints/search';
 export const browsingUrl = 'https://doc.agentfirst.dev/endpoints/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargeting';
@@ -536,4 +539,48 @@ export const apiCall = async (url, token) => {
   }
 
   return apiResponse;
+};
+export const embedCal = () => {
+  if (!window.Cal) {
+    ((C, A, L) => {
+      let p = (a, ar) => {
+        a.q.push(ar);
+      };
+      let d = C.document;
+      C.Cal =
+        C.Cal ??
+        function () {
+          let cal = C.Cal;
+          let ar = arguments;
+
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q ?? [];
+            d.head.appendChild(d.createElement('script')).src = A;
+            cal.loaded = true;
+          }
+
+          if (ar[0] == L) {
+            const api = function () {
+              p(api, arguments);
+            };
+            const namespace = ar[1];
+            api.q = api.q ?? [];
+
+            if (typeof namespace == 'string') {
+              cal.ns[namespace] = cal.ns[namespace] ?? api;
+
+              p(cal.ns[namespace], ar);
+              p(cal, ['initNamespace', namespace]);
+            } else {
+              p(cal, ar);
+            }
+          } else {
+            p(cal, ar);
+          }
+        };
+    })(window, `${calUrl}/embed.js`, 'init');
+
+    Cal('init', { origin: calUrl });
+  }
 };

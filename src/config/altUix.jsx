@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 import {
   Box,
   Flex,
@@ -17,6 +17,10 @@ import sh from '../markdown/hero-sh.md?raw';
 
 // Strings
 export const Tagline = forwardRef(function Tagline(props, ref) {
+  useEffect(() => {
+    ui.embedCal();
+  }, []);
+
   return (
     <>
       <HStack
@@ -108,13 +112,12 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           </Text>
         </Button>
         <Button
-          as='a'
           variant='outline'
-          px={6}
+          size={{ base: 'md', sm: 'lg' }}
           w='auto'
           h={ui.ctaHeight}
-          fontSize={{ base: 'md', sm: 'lg' }}
-          href={ui.docUrl}
+          tabIndex={2}
+          data-cal-link={ui.calPath}
         >
           {ui.secondaryCtaLabel}
         </Button>
