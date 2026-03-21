@@ -33,8 +33,9 @@ import LoginModal from './components/LoginModal';
 // import Sidebar from './components/Sidebar';
 import './App.css';
 
-const successId = crypto.randomUUID();
-const failureId = crypto.randomUUID();
+const cdpId = crypto.randomUUID();
+const loadId = crypto.randomUUID();
+const unknownId = crypto.randomUUID();
 
 export default function App() {
   const navbar = useRef();
@@ -106,51 +107,64 @@ export default function App() {
     });
 
     const { data } = supabase.client.auth.onAuthStateChange(async (event, session) => {
-      const service = localStorage.getItem(ui.pendingWaitlistKey);
+      try {
+        const service = localStorage.getItem(ui.pendingWaitlistKey);
 
-      if (event == 'SIGNED_IN' && service) {
-        localStorage.removeItem(ui.pendingWaitlistKey);
+        if (event == 'SIGNED_IN' && service) {
+          localStorage.removeItem(ui.pendingWaitlistKey);
 
-        const { error } = await supabase.client.rpc('confirm_email', { waitlist_service: service });
-
-        if (error) {
-          toast({
-            id: failureId,
-            position: 'top',
-            status: 'error',
-            description: ui.errorMessage,
-            duration: null,
-            isClosable: true
+          const { error } = await supabase.client.rpc('confirm_email', {
+            waitlist_service: service
           });
+
+          if (error) {
+            toast({
+              id: unknownId,
+              position: 'top',
+              status: 'error',
+              description: ui.errorMessage,
+              duration: null,
+              isClosable: true
+            });
+          } else {
+            toast({
+              id: cdpId,
+              position: 'top',
+              status: 'success',
+              description: ui.cdpMessage,
+              duration: null,
+              isClosable: true
+            });
+          }
+
+          try {
+            await supabase.client.auth.signOut();
+          } finally {
+            setSession(null);
+          }
         } else {
-          toast({
-            id: successId,
-            position: 'top',
-            status: 'success',
-            description: ui.cdpMessage,
-            duration: null,
-            isClosable: true
-          });
-        }
+          setSession(session);
 
-        try {
-          await supabase.client.auth.signOut();
-        } finally {
-          setSession(null);
-          setIsSessionLoading(false);
-        }
-      } else {
-        setSession(session);
-        setIsSessionLoading(false);
+          if (event == 'SIGNED_IN') {
+            const pendingAmount = localStorage.getItem(ui.pendingPurchaseKey);
 
-        if (event == 'SIGNED_IN') {
-          const pendingAmount = localStorage.getItem(ui.pendingPurchaseKey);
-
-          if (pendingAmount != null) {
-            localStorage.removeItem(ui.pendingPurchaseKey);
-            navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${pendingAmount}`);
+            if (pendingAmount != null) {
+              localStorage.removeItem(ui.pendingPurchaseKey);
+              navigate(`${ui.checkoutPath}?${ui.purchaseParam}=${pendingAmount}`);
+            }
           }
         }
+      } catch {
+        toast({
+          id: loadId,
+          position: 'top',
+          status: 'error',
+          description: ui.loadMessage,
+          duration: null,
+          isClosable: true
+        });
+      } finally {
+        setIsSessionLoading(false);
       }
     });
     const handleScroll = () => {
