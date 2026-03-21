@@ -59,7 +59,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='audience' display={{ base: 'block', sm: 'none' }} mt={6}>
         {ui.shortAudienceLabel}
       </Text>
-      <Heading as='h1' variant='tagline' mt={ui.mdMargin} fontSize={ui.taglineFontSize}>
+      <Heading as='h1' variant='tagline' mt={'4.5rem'} fontSize={ui.taglineFontSize}>
         <Box as='span' display='inline-block' position='relative' textAlign='left'>
           <Text fontSize={ui.taglineFontSize} visibility='hidden' pointerEvents='none'>
             Reliable access
@@ -86,7 +86,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='subheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
         {ui.shortSubheadingLabel}
       </Text>
-      <Flex mt={ui.lgMargin} gap={ui.xxsMargin}>
+      <Flex mt={ui.xlMargin} gap={ui.xxsMargin}>
         <Button
           size={{ base: 'md', sm: 'lg' }}
           h={ui.ctaHeight}
@@ -111,7 +111,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           {ui.secondaryCtaLabel}
         </Button>
       </Flex>
-      <OrderedList id={ui.citationsId} variant='citations' mt={6} pt={ui.mdMargin}>
+      <OrderedList id={ui.citationsId} variant='citations' mt={ui.mdMargin} pt={ui.mdMargin}>
         <ListItem display={{ base: 'none', md: 'list-item' }}>
           <Link
             variant='citation'
