@@ -683,7 +683,7 @@ export default function Home({
       <VStack
         id='hero'
         px={{ base: ui.xsMargin, md: ui.xxlMargin }}
-        pt={ui.xsMargin}
+        pt={ui.xxsMargin}
         w='100%'
         justify='center'
         align='center'

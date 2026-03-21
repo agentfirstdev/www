@@ -84,7 +84,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='subheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
         {ui.shortSubheadingLabel}
       </Text>
-      <Box mt={ui.xxsMargin}>
+      <Box mt={ui.xsMargin} w='100%'>
         <Code
           markdown={{ sh }}
           apiUrl='https://api.agentfirst.dev/browser?url=https://example.com/'
@@ -93,7 +93,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           openLogin={props.openLogin}
         />
       </Box>
-      <Flex mt={ui.lgMargin} gap={ui.xxsMargin}>
+      <Flex mt={ui.xlMargin} gap={ui.xxsMargin}>
         <Button
           size={{ base: 'md', sm: 'lg' }}
           h={ui.ctaHeight}

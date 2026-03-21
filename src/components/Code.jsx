@@ -71,120 +71,118 @@ export default function Code({ markdown, apiUrl, apiToken, openLogin, moreUrl })
         overflow='hidden'
         shadow='sm'
       >
-        <Flex
-          borderBottomWidth='1px'
-          borderColor='chakra-border-color'
-          bg='bg-chrome'
-          px={ui.chromePadding}
-          py={2}
-          minH={ui.chromeButtonDimension}
-          justify='space-between'
-        >
-          {shouldShowChrome && (
-            <>
-              <Flex gap={ui.chromeButtonMargin}>
-                {languages.map((language, i) => {
-                  const Icon = languageIcons[language];
-                  const isActive = language == activeLanguage;
+        {shouldShowChrome && (
+          <Flex
+            borderBottomWidth='1px'
+            borderColor='chakra-border-color'
+            bg='bg-chrome'
+            px={ui.chromePadding}
+            py={2}
+            minH={ui.chromeButtonDimension}
+            justify='space-between'
+          >
+            <Flex gap={ui.chromeButtonMargin}>
+              {languages.map((language, i) => {
+                const Icon = languageIcons[language];
+                const isActive = language == activeLanguage;
 
-                  return (
-                    <Box
-                      as='button'
-                      key={language}
-                      display={i == languages.length - 1 ? { base: 'none', sm: 'flex' } : 'flex'}
-                      rounded='md'
-                      bg={isActive ? 'chakra-border-color' : 'transparent'}
-                      px={ui.chromeButtonPadding}
-                      h={ui.chromeButtonDimension}
-                      alignItems='center'
-                      fontSize={ui.codeFontSize}
-                      color={isActive ? 'accent.primary' : 'fg-muted'}
-                      gap={ui.chromeButtonMargin}
-                      pointerEvents={isActive ? 'not-allowed' : 'auto'}
-                      onClick={() => {
-                        setActiveLanguage(language);
-                      }}
-                      _hover={{
-                        bg: isActive ? 'chakra-border-color' : 'chakra-subtle-bg',
-                        color: isActive ? 'accent.primary' : 'fg-tab'
-                      }}
-                      _focus={{ outline: 'none', shadow: ui.outline('accent-primary') }}
-                    >
-                      {Icon ? <Icon dimension={ui.chromeIconDimension} /> : null}
-                      {ui.codeLabels[language]}
-                    </Box>
-                  );
-                })}
-              </Flex>
-              <Flex gap={ui.chromeButtonMargin}>
-                <Tooltip
-                  mx={ui.tooltipMargin}
-                  p={ui.tooltipPadding}
-                  label={hasCopied ? null : ui.codeLabel}
-                  hasArrow
-                >
+                return (
                   <Box
                     as='button'
-                    display={{ base: 'none', md: 'flex' }}
+                    key={language}
+                    display={i == languages.length - 1 ? { base: 'none', sm: 'flex' } : 'flex'}
                     rounded='md'
-                    w={ui.chromeButtonDimension}
+                    bg={isActive ? 'chakra-border-color' : 'transparent'}
+                    px={ui.chromeButtonPadding}
                     h={ui.chromeButtonDimension}
-                    justifyContent='center'
                     alignItems='center'
-                    color='fg-muted'
-                    aria-label={ui.codeLabel}
-                    pointerEvents={hasCopied ? 'not-allowed' : 'auto'}
+                    fontSize={ui.codeFontSize}
+                    color={isActive ? 'accent.primary' : 'fg-muted'}
+                    gap={ui.chromeButtonMargin}
+                    pointerEvents={isActive ? 'not-allowed' : 'auto'}
                     onClick={() => {
-                      onCopy();
-
-                      if (!toast.isActive(toastId)) {
-                        toast({
-                          id: toastId,
-                          position: 'top',
-                          status: 'success',
-                          description: ui.codeMessage,
-                          duration: ui.toastTimeoutMs
-                        });
-                      }
+                      setActiveLanguage(language);
                     }}
-                    _hover={{ bg: 'chakra-subtle-bg', color: 'fg-tab' }}
+                    _hover={{
+                      bg: isActive ? 'chakra-border-color' : 'chakra-subtle-bg',
+                      color: isActive ? 'accent.primary' : 'fg-tab'
+                    }}
                     _focus={{ outline: 'none', shadow: ui.outline('accent-primary') }}
                   >
-                    {hasCopied ? <CheckIcon /> : <CopyIcon />}
+                    {Icon ? <Icon dimension={ui.chromeIconDimension} /> : null}
+                    {ui.codeLabels[language]}
                   </Box>
-                </Tooltip>
-                <Tooltip
-                  mx={ui.tooltipMargin}
-                  p={ui.tooltipPadding}
-                  label={isRunning ? null : ui.runLabel}
-                  hasArrow
+                );
+              })}
+            </Flex>
+            <Flex gap={ui.chromeButtonMargin}>
+              <Tooltip
+                mx={ui.tooltipMargin}
+                p={ui.tooltipPadding}
+                label={hasCopied ? null : ui.codeLabel}
+                hasArrow
+              >
+                <Box
+                  as='button'
+                  display={{ base: 'none', md: 'flex' }}
+                  rounded='md'
+                  w={ui.chromeButtonDimension}
+                  h={ui.chromeButtonDimension}
+                  justifyContent='center'
+                  alignItems='center'
+                  color='fg-muted'
+                  aria-label={ui.codeLabel}
+                  pointerEvents={hasCopied ? 'not-allowed' : 'auto'}
+                  onClick={() => {
+                    onCopy();
+
+                    if (!toast.isActive(toastId)) {
+                      toast({
+                        id: toastId,
+                        position: 'top',
+                        status: 'success',
+                        description: ui.codeMessage,
+                        duration: ui.toastTimeoutMs
+                      });
+                    }
+                  }}
+                  _hover={{ bg: 'chakra-subtle-bg', color: 'fg-tab' }}
+                  _focus={{ outline: 'none', shadow: ui.outline('accent-primary') }}
                 >
-                  <Box
-                    as='button'
-                    display='flex'
-                    rounded='md'
-                    w={ui.chromeButtonDimension}
-                    h={ui.chromeButtonDimension}
-                    justifyContent='center'
-                    alignItems='center'
-                    color='fg-muted'
-                    aria-label={ui.runLabel}
-                    pointerEvents={isRunning ? 'not-allowed' : 'auto'}
-                    onClick={runCode}
-                    _hover={{ bg: 'chakra-subtle-bg', color: 'fg-tab' }}
-                    _focus={{ outline: 'none', shadow: ui.outline('accent-primary') }}
-                  >
-                    {isRunning ? (
-                      <Spinner size='xs' />
-                    ) : (
-                      <PlayIcon dimension={ui.chromeIconDimension} />
-                    )}
-                  </Box>
-                </Tooltip>
-              </Flex>
-            </>
-          )}
-        </Flex>
+                  {hasCopied ? <CheckIcon /> : <CopyIcon />}
+                </Box>
+              </Tooltip>
+              <Tooltip
+                mx={ui.tooltipMargin}
+                p={ui.tooltipPadding}
+                label={isRunning ? null : ui.runLabel}
+                hasArrow
+              >
+                <Box
+                  as='button'
+                  display='flex'
+                  rounded='md'
+                  w={ui.chromeButtonDimension}
+                  h={ui.chromeButtonDimension}
+                  justifyContent='center'
+                  alignItems='center'
+                  color='fg-muted'
+                  aria-label={ui.runLabel}
+                  pointerEvents={isRunning ? 'not-allowed' : 'auto'}
+                  onClick={runCode}
+                  _hover={{ bg: 'chakra-subtle-bg', color: 'fg-tab' }}
+                  _focus={{ outline: 'none', shadow: ui.outline('accent-primary') }}
+                >
+                  {isRunning ? (
+                    <Spinner size='xs' />
+                  ) : (
+                    <PlayIcon dimension={ui.chromeIconDimension} />
+                  )}
+                </Box>
+              </Tooltip>
+            </Flex>
+          </Flex>
+        )}
         <Box position='relative' align='left'>
           <Flex>
             <Box
