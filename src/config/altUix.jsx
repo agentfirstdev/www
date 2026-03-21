@@ -118,7 +118,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           {ui.secondaryCtaLabel}
         </Button>
       </Flex>
-      <OrderedList id={ui.citationsId} variant='citations' mt={ui.mdMargin}>
+      <OrderedList id={ui.citationsId} variant='citations' pt={ui.mdMargin}>
         <ListItem display={{ base: 'none', md: 'list-item' }}>
           <Link
             variant='citation'

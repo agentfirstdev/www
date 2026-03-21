@@ -376,7 +376,6 @@ export const promptMinHeight = '108px';
 export const promptMaxHeight = '180px';
 export const promptFontSize = 'lg';
 export const gradientWidth = '12.5%';
-export const citationsMargin = '72px';
 export const logoOldWidth = 1760;
 export const logoOldHeight = 352;
 // export const postItPadding = 4;
