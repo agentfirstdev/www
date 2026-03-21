@@ -110,6 +110,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         <Button
           as='a'
           variant='outline'
+          px={6}
           w='auto'
           h={ui.ctaHeight}
           fontSize={{ base: 'md', sm: 'lg' }}
