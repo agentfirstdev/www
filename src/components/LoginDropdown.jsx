@@ -114,11 +114,11 @@ export default function LoginDropdown({
             <MenuItem as='a' href={ui.servicesPath}>
               {ui.servicesLabel}
             </MenuItem>
-            <MenuItem as='a' href={ui.pricingPath}>
-              {ui.pricingLabel}
-            </MenuItem>
             <MenuItem as='a' href={ui.docUrl}>
               {ui.docLabel}
+            </MenuItem>
+            <MenuItem as='a' href={ui.pricingPath}>
+              {ui.pricingLabel}
             </MenuItem>
             {/* <MenuItem as='a' href={ui.demoUrl} target='_blank' rel='noopener'>
               {ui.demoLabel}
@@ -129,9 +129,6 @@ export default function LoginDropdown({
             {/* <MenuItem as='a' href={ui.llmsTxtPath}>
               {ui.llmsTxtLabel}
             </MenuItem> */}
-            <MenuItem as='a' href={ui.supportUrl}>
-              {ui.callLabel}
-            </MenuItem>
           </>
         )}
         <MenuItem as='a' href={ui.supportUrl}>

@@ -1,4 +1,6 @@
-import { forwardRef } from 'react';
+/* global Cal */
+
+import { forwardRef, useEffect } from 'react';
 import {
   Box,
   Flex,
@@ -15,6 +17,51 @@ import * as ui from './ui';
 
 // Strings
 export const Tagline = forwardRef(function Tagline(props, ref) {
+  useEffect(() => {
+    if (!window.Cal) {
+      ((C, A, L) => {
+        let p = (a, ar) => {
+          a.q.push(ar);
+        };
+        let d = C.document;
+        C.Cal =
+          C.Cal ??
+          function () {
+            let cal = C.Cal;
+            let ar = arguments;
+
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q ?? [];
+              d.head.appendChild(d.createElement('script')).src = A;
+              cal.loaded = true;
+            }
+
+            if (ar[0] == L) {
+              const api = function () {
+                p(api, arguments);
+              };
+              const namespace = ar[1];
+              api.q = api.q ?? [];
+
+              if (typeof namespace == 'string') {
+                cal.ns[namespace] = cal.ns[namespace] ?? api;
+
+                p(cal.ns[namespace], ar);
+                p(cal, ['initNamespace', namespace]);
+              } else {
+                p(cal, ar);
+              }
+            } else {
+              p(cal, ar);
+            }
+          };
+      })(window, 'https://cal.com/embed.js', 'init');
+
+      Cal('init', { origin: 'https://cal.com' });
+    }
+  }, []);
+
   return (
     <>
       <HStack
@@ -97,13 +144,12 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           </Text>
         </Button>
         <Button
-          as='a'
           variant='outline'
-          px={6}
+          size={{ base: 'md', sm: 'lg' }}
           w='auto'
           h={ui.ctaHeight}
-          fontSize={{ base: 'md', sm: 'lg' }}
-          href={ui.docUrl}
+          tabIndex={2}
+          data-cal-link={ui.calPath}
         >
           {ui.secondaryCtaLabel}
         </Button>
