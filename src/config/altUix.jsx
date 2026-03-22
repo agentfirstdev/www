@@ -35,8 +35,8 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           rounded='full'
           w={1.5}
           h={1.5}
-          _light={{ bg: ui.royalBlue, boxShadow: `0 0 8px ${ui.royalBlue}` }}
-          _dark={{ bg: ui.cornflowerBlue, boxShadow: `0 0 8px ${ui.cornflowerBlue}` }}
+          _light={{ bg: ui.royalBlue, shadow: `0 0 8px ${ui.royalBlue}` }}
+          _dark={{ bg: ui.cornflowerBlue, shadow: `0 0 8px ${ui.cornflowerBlue}` }}
         />
         <Text variant='pill' display={{ base: 'none', md: 'inline' }}>
           From the developer of the world’s most-used privacy tools

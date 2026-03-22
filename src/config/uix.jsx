@@ -33,8 +33,8 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           rounded='full'
           w={1.5}
           h={1.5}
-          _light={{ bg: ui.royalBlue, boxShadow: `0 0 8px ${ui.royalBlue}` }}
-          _dark={{ bg: ui.cornflowerBlue, boxShadow: `0 0 8px ${ui.cornflowerBlue}` }}
+          _light={{ bg: ui.royalBlue, shadow: `0 0 8px ${ui.royalBlue}` }}
+          _dark={{ bg: ui.cornflowerBlue, shadow: `0 0 8px ${ui.cornflowerBlue}` }}
         />
         <Text variant='pill' display={{ base: 'none', md: 'inline' }}>
           From the developer of the world’s most-used privacy tools
@@ -81,10 +81,32 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         {' to every public website'}
       </Heading>
       <Text variant='subheading' display={{ base: 'none', lg: 'inline' }} my={ui.xxsMargin}>
-        {ui.subheadingLabel}
+        {'Search & browse with automatic captcha solving & geo-targeting to 190+ countries — '}
+        <Box as='span' display='inline-block' position='relative' whiteSpace='nowrap'>
+          {'pay only for successful requests'}
+          <Box
+            as='svg'
+            position='absolute'
+            left={-0.5}
+            right={-0.5}
+            bottom={-1}
+            viewBox='0 0 300 8'
+            preserveAspectRatio='none'
+            fill='none'
+          >
+            <Box
+              as='path'
+              d='M2 4.5C75 3 150 5.5 225 3.5S280 4.5 298 4'
+              strokeWidth='2.5'
+              strokeLinecap='round'
+              _light={{ stroke: ui.creativeBlue }}
+              _dark={{ stroke: ui.cornflowerBlue }}
+            />
+          </Box>
+        </Box>
       </Text>
       <Text variant='subheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
-        {ui.shortSubheadingLabel}
+        Search & browse with automatic captcha solving & geotargeting to 190+ countries
       </Text>
       <Flex mt={ui.xlMargin} alignSelf={{ base: 'stretch', sm: 'center' }} gap={ui.xxsMargin}>
         <Button
