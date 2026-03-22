@@ -24,7 +24,7 @@ import rough from 'roughjs/bin/rough';
 import * as supabase from './config/supabase';
 import * as ui from './config/ui';
 import Home from './pages/Home';
-import AltHome from './pages/AltHome';
+// import AltHome from './pages/AltHome';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout';
@@ -520,7 +520,7 @@ export default function App() {
               />
             }
           />
-          <Route
+          {/* <Route
             path={ui.altPath}
             element={
               <AltHome
@@ -532,7 +532,7 @@ export default function App() {
                 handleKeyPress={handleKeyPress}
               />
             }
-          />
+          /> */}
           <Route
             path={ui.dashboardPath}
             element={
