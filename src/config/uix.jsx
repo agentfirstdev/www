@@ -56,7 +56,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='audience' display={{ base: 'none', sm: 'block' }} mt={6}>
         {ui.audienceLabel}
       </Text>
-      <Text variant='audience' display={{ base: 'block', sm: 'none' }} mt={6}>
+      <Text variant='audience' display={{ base: 'block', sm: 'none' }} mt={ui.xxsMargin}>
         {ui.shortAudienceLabel}
       </Text>
       <Heading as='h1' variant='tagline' mt={'4.5rem'} fontSize={ui.taglineFontSize}>
@@ -86,9 +86,10 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='subheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
         {ui.shortSubheadingLabel}
       </Text>
-      <Flex mt={ui.xlMargin} gap={ui.xxsMargin}>
+      <Flex mt={ui.xlMargin} alignSelf={{ base: 'stretch', sm: 'center' }} gap={ui.xxsMargin}>
         <Button
           size={{ base: 'md', sm: 'lg' }}
+          w={{ base: '100%', sm: 'auto' }}
           h={ui.ctaHeight}
           tabIndex={1}
           onClick={props.onCtaPress}
@@ -103,7 +104,7 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
         <Button
           variant='outline'
           size={{ base: 'md', sm: 'lg' }}
-          w='auto'
+          w={{ base: '100%', sm: 'auto' }}
           h={ui.ctaHeight}
           tabIndex={2}
           data-cal-link={ui.calPath}
