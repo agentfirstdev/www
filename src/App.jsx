@@ -91,6 +91,16 @@ export default function App() {
     setShouldShowLogin(false);
     openMenu();
   };
+  const handleError = () => {
+    toast({
+      id: loadId,
+      position: 'top',
+      status: 'error',
+      description: ui.loadMessage,
+      duration: null,
+      isClosable: true
+    });
+  };
 
   useEffect(() => {
     import('./paths/logotype.txt?raw').then((module) => {
@@ -155,21 +165,20 @@ export default function App() {
           }
         }
       } catch {
-        toast({
-          id: loadId,
-          position: 'top',
-          status: 'error',
-          description: ui.loadMessage,
-          duration: null,
-          isClosable: true
-        });
-      } finally {
-        setIsSessionLoading(false);
+        handleError();
       }
     });
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
+
+    supabase.client.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setIsSessionLoading(false);
+    }).catch(() => {
+      setIsSessionLoading(false);
+      handleError();
+    });
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
