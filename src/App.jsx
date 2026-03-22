@@ -92,14 +92,16 @@ export default function App() {
     openMenu();
   };
   const handleError = () => {
-    toast({
-      id: loadId,
-      position: 'top',
-      status: 'error',
-      description: ui.loadMessage,
-      duration: null,
-      isClosable: true
-    });
+    if (!toast.isActive(loadId)) {
+      toast({
+        id: loadId,
+        position: 'top',
+        status: 'error',
+        description: ui.loadMessage,
+        duration: null,
+        isClosable: true
+      });
+    }
   };
 
   useEffect(() => {
@@ -128,23 +130,27 @@ export default function App() {
           });
 
           if (error) {
-            toast({
-              id: unknownId,
-              position: 'top',
-              status: 'error',
-              description: ui.errorMessage,
-              duration: null,
-              isClosable: true
-            });
+            if (!toast.isActive(unknownId)) {
+              toast({
+                id: unknownId,
+                position: 'top',
+                status: 'error',
+                description: ui.errorMessage,
+                duration: null,
+                isClosable: true
+              });
+            }
           } else {
-            toast({
-              id: cdpId,
-              position: 'top',
-              status: 'success',
-              description: ui.cdpMessage,
-              duration: null,
-              isClosable: true
-            });
+            if (!toast.isActive(cdpId)) {
+              toast({
+                id: cdpId,
+                position: 'top',
+                status: 'success',
+                description: ui.cdpMessage,
+                duration: null,
+                isClosable: true
+              });
+            }
           }
 
           try {
