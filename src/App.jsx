@@ -172,13 +172,16 @@ export default function App() {
       setIsScrolled(window.scrollY > 0);
     };
 
-    supabase.client.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setIsSessionLoading(false);
-    }).catch(() => {
-      setIsSessionLoading(false);
-      handleError();
-    });
+    supabase.client.auth
+      .getSession()
+      .then(({ data: { session } }) => {
+        setSession(session);
+        setIsSessionLoading(false);
+      })
+      .catch(() => {
+        setIsSessionLoading(false);
+        handleError();
+      });
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
