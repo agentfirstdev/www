@@ -127,14 +127,12 @@ export default function Home({
   const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
   const { isOpen: isConsoleOpen, onOpen: openConsole, onClose: closeConsole } = useDisclosure();
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
-  const handleCtaPress = () => {
-    if (apiToken) {
-      openConsole();
-    } else {
-      isConsoleOpenPending.current = true;
+  const round = (element, attribute) => {
+    element.querySelectorAll('path').forEach((path) => {
+      path.setAttribute(attribute, 'round');
+    });
 
-      openLogin();
-    }
+    return element;
   };
   /* const animatePrompt = (index) => {
     promptTimeouts.current?.forEach(clearTimeout);
@@ -197,6 +195,15 @@ export default function Home({
     // setConversation(conversationBuffer.current);
     // setError('');
   }; */
+  const handleCtaPress = () => {
+    if (apiToken) {
+      openConsole();
+    } else {
+      isConsoleOpenPending.current = true;
+
+      openLogin();
+    }
+  };
 
   useEffect(() => {
     const timeouts = [];
@@ -315,39 +322,51 @@ export default function Home({
       timeline.current.setAttribute('height', `${paradigmOrigin}px`);
       timelineParts.current.replaceChildren();
       timelineParts.current.appendChild(
-        roughTimeline.line(
-          ui.tickOffset,
-          timelineVerticalAxis,
-          timelineDestination,
-          timelineVerticalAxis,
-          { stroke: timelineColor, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+        round(
+          roughTimeline.line(
+            ui.tickOffset,
+            timelineVerticalAxis,
+            timelineDestination,
+            timelineVerticalAxis,
+            { stroke: timelineColor, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          ),
+          'stroke-linecap'
         )
       );
       timelineParts.current.appendChild(
-        roughTimeline.circle(ui.tickOffset, timelineVerticalAxis, pointDiameter, {
-          stroke: timelineColor,
-          strokeWidth: ui.timelineStrokeWidth,
-          fill: timelineColor,
-          fillStyle: 'solid',
-          disableMultiStroke: true
-        })
-      );
-      timelineParts.current.appendChild(
-        roughTimeline.line(
-          arrowOrigin,
-          timelineVerticalAxis - arrowLength,
-          timelineDestination,
-          timelineVerticalAxis,
-          { stroke: timelineColor, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+        round(
+          roughTimeline.circle(ui.tickOffset, timelineVerticalAxis, pointDiameter, {
+            stroke: timelineColor,
+            strokeWidth: ui.timelineStrokeWidth,
+            fill: timelineColor,
+            fillStyle: 'solid',
+            disableMultiStroke: true
+          }),
+          'stroke-linejoin'
         )
       );
       timelineParts.current.appendChild(
-        roughTimeline.line(
-          arrowOrigin,
-          timelineVerticalAxis + arrowLength,
-          timelineDestination,
-          timelineVerticalAxis,
-          { stroke: timelineColor, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+        round(
+          roughTimeline.line(
+            arrowOrigin,
+            timelineVerticalAxis - arrowLength,
+            timelineDestination,
+            timelineVerticalAxis,
+            { stroke: timelineColor, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          ),
+          'stroke-linecap'
+        )
+      );
+      timelineParts.current.appendChild(
+        round(
+          roughTimeline.line(
+            arrowOrigin,
+            timelineVerticalAxis + arrowLength,
+            timelineDestination,
+            timelineVerticalAxis,
+            { stroke: timelineColor, strokeWidth: ui.timelineStrokeWidth, disableMultiStroke: true }
+          ),
+          'stroke-linecap'
         )
       );
 
@@ -356,11 +375,14 @@ export default function Home({
         const year = document.createElementNS('http://www.w3.org/2000/svg', 'text');
 
         timelineParts.current.appendChild(
-          roughTimeline.line(currentDistance, tickOrigin, currentDistance, tickDestination, {
-            stroke: timelineColor,
-            strokeWidth: ui.timelineStrokeWidth,
-            disableMultiStroke: true
-          })
+          round(
+            roughTimeline.line(currentDistance, tickOrigin, currentDistance, tickDestination, {
+              stroke: timelineColor,
+              strokeWidth: ui.timelineStrokeWidth,
+              disableMultiStroke: true
+            }),
+            'stroke-linecap'
+          )
         );
         year.setAttribute('text-anchor', 'middle');
         year.setAttribute(
