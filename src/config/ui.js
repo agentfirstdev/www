@@ -201,11 +201,11 @@ export const altCompletion = [
   ]
 ]; */
 export const comparisonTable = [
-  { feature: 'Entry price / 1,000 pages', bd: '$1.50', fc: '$5.33', a1: '$1.00' },
+  { feature: 'Entry price / 1k pages', bd: '$1.50–$3.00', fc: '$5.33–$9.00', a1: '$1.00–$2.00' },
   { feature: 'Real Google SERPs', bd: 'Separate product', fc: 'No', a1: 'Yes' },
   { feature: 'Automated captcha solving', bd: 'Yes', fc: 'No', a1: 'Yes' },
   { feature: 'Country targeting', bd: '190+ countries', fc: '28 countries', a1: '190+ countries' },
-  { feature: 'Whitelabel API', bd: 'No', fc: 'No', a1: 'Yes' }
+  { feature: 'Whitelabel services', bd: 'No', fc: 'No', a1: 'Yes' }
 ];
 export const timelineLabels = [
   { year: 1984, paradigm: 'Desktop first', log: 1.2 },
