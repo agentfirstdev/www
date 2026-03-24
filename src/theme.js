@@ -43,6 +43,20 @@ export default extendTheme({
     code: ui.codeFont
   },
   components: {
+    Table: {
+      sizes: {
+        md: {
+          thead: { bg: ui.lightGrayAlpha },
+          th: { py: 4, fontSize: { base: '2xs', lg: '13px' }, color: 'fg-muted' },
+          tbody: {
+            bg: 'bg-muted',
+            lineHeight: 4,
+            fontFamily: 'code',
+            fontSize: { base: '2xs', lg: '13px' }
+          }
+        }
+      }
+    },
     Card: {
       baseStyle: {
         container: { shadow: 'none' },

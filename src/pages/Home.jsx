@@ -6,6 +6,13 @@ import {
   Flex,
   VStack,
   SimpleGrid,
+  TableContainer,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
   Card,
   CardHeader,
   CardBody,
@@ -25,7 +32,7 @@ import {
   useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react';
-import { AddIcon, CheckIcon } from '@chakra-ui/icons'; // eslint-disable-line no-unused-vars
+import { AddIcon, CheckIcon } from '@chakra-ui/icons';
 import rough from 'roughjs/bin/rough';
 import { createTimeline } from 'animejs';
 
@@ -127,6 +134,17 @@ export default function Home({
   const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
   const { isOpen: isConsoleOpen, onOpen: openConsole, onClose: closeConsole } = useDisclosure();
   // const postItColors = ui.postItColors[Math.floor(ui.postItColors.length * Math.random())];
+  const renderCell = (value) => {
+    if (value == 'Yes') {
+      value = <CheckIcon />;
+    } else if (value == 'No') {
+      value = (
+        <AddIcon boxSize={{ base: 3, lg: 3.5 }} transform={`rotate(${ui.openRotation}deg)`} />
+      );
+    }
+
+    return value;
+  };
   const round = (element, attribute) => {
     element.querySelectorAll('path').forEach((path) => {
       path.setAttribute(attribute, 'round');
@@ -1031,6 +1049,66 @@ export default function Home({
             </Flex>
           </Box>
         </Box>
+      </Box>
+      <Box
+        id={ui.comparisonId}
+        px={{ base: ui.xsMargin, md: ui.xxlMargin }}
+        pt={ui.smMargin}
+        pb={ui.mdMargin}
+        align='center'
+      >
+        <Text variant='description' mt={-2} align={{ base: 'left', sm: 'center' }}>
+          <Text as='strong' variant='lede'>
+            How we compare:
+          </Text>
+          {' Agent First is designed to be the most cost-effective & flexible scraping solution'}
+        </Text>
+        <TableContainer
+          mt={ui.xsMargin}
+          borderWidth='1px'
+          rounded='md'
+          borderColor='chakra-border-color'
+          maxW={ui.tableWidth}
+        >
+          <Table size='md'>
+            <Thead>
+              <Tr>
+                <Th fontFamily='body'>Feature</Th>
+                <Th fontFamily='body'>Bright Data</Th>
+                <Th fontFamily='body'>Firecrawl</Th>
+                <Th color='bg-button'>Agent First</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {ui.comparisonTable.map((row, index) => {
+                const isLastRow = index == ui.comparisonTable.length - 1;
+
+                return (
+                  <Tr key={row.feature}>
+                    <Td borderBottom={isLastRow ? 'none' : undefined} color='fg-muted'>
+                      {row.feature}
+                    </Td>
+                    <Td
+                      borderBottom={isLastRow ? 'none' : undefined}
+                      color='chakra-placeholder-color'
+                    >
+                      {renderCell(row.bd)}
+                    </Td>
+                    <Td
+                      borderBottom={isLastRow ? 'none' : undefined}
+                      color='chakra-placeholder-color'
+                    >
+                      {renderCell(row.fc)}
+                    </Td>
+                    <Td borderBottom={isLastRow ? 'none' : undefined} color='bg-button'>
+                      {renderCell(row.a1)}
+                    </Td>
+                  </Tr>
+                );
+              })}
+            </Tbody>
+          </Table>
+        </TableContainer>
       </Box>
       <Box
         id={ui.pricingId}

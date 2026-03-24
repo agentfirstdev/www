@@ -90,6 +90,7 @@ export const cdpMessage = 'We’ll let you know as soon as webpage interaction i
 export const loadMessage = 'Oops, something went wrong; please reload the page';
 export const errorMessage = 'Oops, something went wrong; please try again later';
 export const servicesId = 'services';
+export const comparisonId = 'features';
 export const pricingId = 'pricing';
 export const aboutId = 'about';
 export const teamId = 'team';
@@ -199,6 +200,13 @@ export const altCompletion = [
     { delay: 221, token: ' ...' }
   ]
 ]; */
+export const comparisonTable = [
+  { feature: 'Entry price / 1,000 pages', bd: '$1.50', fc: '$5.33', a1: '$1.00' },
+  { feature: 'Real Google SERPs', bd: 'Separate product', fc: 'No', a1: 'Yes' },
+  { feature: 'Automated captcha solving', bd: 'Yes', fc: 'No', a1: 'Yes' },
+  { feature: 'Country targeting', bd: '190+ countries', fc: '28 countries', a1: '190+ countries' },
+  { feature: 'Whitelabel API', bd: 'No', fc: 'No', a1: 'Yes' }
+];
 export const timelineLabels = [
   { year: 1984, paradigm: 'Desktop first', log: 1.2 },
   { year: 2000, paradigm: 'Web first', log: 0.9 },
@@ -423,6 +431,9 @@ export const codeHorizontalMargin = { base: '1.5em', md: '2em' };
 export const codeVerticalMargin = { base: '0.75em', md: '1em' };
 export const codeFontSize = { base: 'sm', md: 'md' };
 export const chromePadding = { base: '0.75em', md: '1em' };
+
+// Comparison
+export const tableWidth = { base: '100%', lg: '960px' };
 
 // Pricing
 export const pricingNewWidth = '20%';
