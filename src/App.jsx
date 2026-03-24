@@ -103,7 +103,6 @@ export default function App() {
       });
     }
   };
-
   useEffect(() => {
     import('./paths/logotype.txt?raw').then((module) => {
       setLogoPath(module.default);
@@ -118,6 +117,30 @@ export default function App() {
       setXPath(module.default);
     });
 
+    let sessionTries = 0;
+    const shouldRetrySession = (error) => {
+      return (
+        (error?.name == 'AuthRetryableFetchError' || error?.name == 'AbortError') &&
+        sessionTries < ui.maxSessionTries
+      );
+    };
+    const getSession = () => {
+      sessionTries++;
+      supabase.client.auth
+        .getSession()
+        .then(({ data: { session } }) => {
+          setSession(session);
+          setIsSessionLoading(false);
+        })
+        .catch((error) => {
+          if (shouldRetrySession(error)) {
+            setTimeout(getSession, ui.sessionRetryDelayMs);
+          } else {
+            setIsSessionLoading(false);
+            handleError();
+          }
+        });
+    };
     const { data } = supabase.client.auth.onAuthStateChange(async (event, session) => {
       try {
         const service = localStorage.getItem(ui.pendingWaitlistKey);
@@ -170,25 +193,19 @@ export default function App() {
             }
           }
         }
-      } catch {
-        handleError();
+      } catch (error) {
+        if (shouldRetrySession(error)) {
+          getSession();
+        } else {
+          handleError();
+        }
       }
     });
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
 
-    supabase.client.auth
-      .getSession()
-      .then(({ data: { session } }) => {
-        setSession(session);
-        setIsSessionLoading(false);
-      })
-      .catch(() => {
-        setIsSessionLoading(false);
-        handleError();
-      });
-
+    getSession();
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {

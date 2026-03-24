@@ -214,7 +214,9 @@ export const cpm = 1;
 export const discountedCpm = 0.9;
 export const discountedPurchaseThreshold = 100;
 export const minPurchaseAmount = 10;
+export const maxSessionTries = 2;
 export const accountAgeThreshold = 24 * 60 * 60 * 1000;
+export const sessionRetryDelayMs = 2 * 1000;
 
 // Margins
 export const xxsMargin = 4;
