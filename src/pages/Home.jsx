@@ -1151,6 +1151,10 @@ export default function Home({
                     </ListItem>
                     <ListItem>
                       <ListIcon as={CheckIcon} />
+                      Only successful requests consume credits
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
                       Credits can be used for 30 days
                     </ListItem>
                     <ListItem>
@@ -1222,6 +1226,10 @@ export default function Home({
                     </ListItem>
                     <ListItem>
                       <ListIcon as={CheckIcon} />
+                      Only successful requests consume credits
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
                       Credits can be used for 30 days
                     </ListItem>
                     <ListItem>
@@ -1278,6 +1286,10 @@ export default function Home({
                     <ListItem>
                       <ListIcon as={CheckIcon} />
                       1,000 free credits
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={CheckIcon} />
+                      Only successful requests consume credits
                     </ListItem>
                     <ListItem>
                       <ListIcon as={CheckIcon} />
