@@ -10,6 +10,7 @@ import {
   Link,
   Button
 } from '@chakra-ui/react';
+import { CheckIcon } from '@chakra-ui/icons';
 
 import * as ui from './ui';
 
@@ -134,6 +135,28 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
           {ui.secondaryCtaLabel}
         </Button>
       </Flex>
+      <HStack
+        display={{ base: 'flex', lg: 'none' }}
+        mt={ui.xsMargin}
+        spacing={{ base: ui.xxsMargin, md: ui.xsMargin }}
+        fontSize={{ base: 'xs', md: 'sm' }}
+        color='fg-muted'
+      >
+        {ui.supplementalBullets.map((bullet, index) => {
+          const isLastBullet = index == ui.supplementalBullets.length - 1;
+
+          return (
+            <HStack
+              key={bullet}
+              display={isLastBullet ? 'flex' : { base: 'none', sm: 'flex' }}
+              spacing={2}
+            >
+              <CheckIcon color='bg-button' />
+              <Text fontSize='inherit'>{bullet}</Text>
+            </HStack>
+          );
+        })}
+      </HStack>
       <OrderedList id={ui.citationsId} variant='citations' mt={ui.mdMargin} pt={ui.mdMargin}>
         <ListItem display={{ base: 'none', md: 'list-item' }}>
           <Link

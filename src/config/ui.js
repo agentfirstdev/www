@@ -200,6 +200,10 @@ export const altCompletion = [
     { delay: 221, token: ' ...' }
   ]
 ]; */
+export const supplementalBullets = [
+  'No credit card is required',
+  'Only successful requests are charged'
+];
 export const comparisonTable = [
   { feature: 'Entry price / 1k pages', bd: '$1.50–$3.00', fc: '$5.33–$9.00', a1: '$1.00–$2.00' },
   { feature: 'Real Google SERPs', bd: 'Separate service', fc: 'No', a1: 'Yes' },
