@@ -1061,7 +1061,7 @@ export default function Home({
           <Text as='strong' variant='lede'>
             How we compare:
           </Text>
-          {' Agent First is designed to be the most cost-effective & flexible scraping solution'}
+          {' Agent First is designed to be the most cost-effective & flexible crawling platform'}
         </Text>
         <TableContainer
           mt={ui.xsMargin}

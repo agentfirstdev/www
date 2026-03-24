@@ -38,7 +38,7 @@ export const secondaryCtaLabel = 'Book a call';
 export const codeLabel = 'Copy code';
 export const runLabel = 'Run code';
 export const moreLabel = 'See more';
-export const startLabel = 'Get started →';
+export const startLabel = 'Start scraping →';
 export const waitLabel = 'Join waitlist →';
 export const waitingLabel = 'Waitlist joined';
 export const firstLabel = 'Get notified first';
@@ -206,9 +206,11 @@ export const supplementalBullets = [
 ];
 export const comparisonTable = [
   { feature: 'Entry price / 1k pages', bd: '$1.50–$3.00', fc: '$5.33–$9.00', a1: '$1.00–$2.00' },
+  { feature: 'Usable without subscription', bd: 'No', fc: 'No', a1: 'Yes' },
   { feature: 'Real Google SERPs', bd: 'Separate service', fc: 'No', a1: 'Yes' },
   { feature: 'Automated captcha solving', bd: 'Yes', fc: 'No', a1: 'Yes' },
   { feature: 'Country targeting', bd: '190+ countries', fc: '28 countries', a1: '190+ countries' },
+  { feature: 'Region targeting', bd: 'Yes', fc: 'No', a1: 'Yes' },
   { feature: 'Whitelabel API', bd: 'No', fc: 'No', a1: 'Yes' }
 ];
 export const timelineLabels = [
