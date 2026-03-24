@@ -1151,7 +1151,7 @@ export default function Home({
                     </ListItem>
                     <ListItem>
                       <ListIcon as={CheckIcon} />
-                      Only successful requests consume credits
+                      Only successful requests use credits
                     </ListItem>
                     <ListItem>
                       <ListIcon as={CheckIcon} />
@@ -1226,7 +1226,7 @@ export default function Home({
                     </ListItem>
                     <ListItem>
                       <ListIcon as={CheckIcon} />
-                      Only successful requests consume credits
+                      Only successful requests use credits
                     </ListItem>
                     <ListItem>
                       <ListIcon as={CheckIcon} />
@@ -1289,7 +1289,7 @@ export default function Home({
                     </ListItem>
                     <ListItem>
                       <ListIcon as={CheckIcon} />
-                      Only successful requests consume credits
+                      Only successful requests use credits
                     </ListItem>
                     <ListItem>
                       <ListIcon as={CheckIcon} />
