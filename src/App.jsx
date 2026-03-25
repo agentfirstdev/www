@@ -431,6 +431,9 @@ export default function App() {
             <Link variant='nav' ml={ui.itemMargin} href={ui.docUrl}>
               {ui.docLabel}
             </Link>
+            <Link variant='nav' ml={ui.itemMargin} href={ui.changelogPath}>
+              {ui.changelogLabel}
+            </Link>
             <Link variant='nav' ml={ui.itemMargin} href={ui.aboutPath}>
               {ui.aboutLabel}
             </Link>
@@ -509,6 +512,9 @@ export default function App() {
                 </MenuItem> */}
                 <MenuItem as='a' href={ui.docUrl}>
                   {ui.docLabel}
+                </MenuItem>
+                <MenuItem as='a' href={ui.changelogPath}>
+                  {ui.changelogLabel}
                 </MenuItem>
                 <MenuItem as='a' href={ui.aboutPath}>
                   {ui.aboutLabel}
