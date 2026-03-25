@@ -210,7 +210,7 @@ export const supplementalBullets = [
 ];
 export const comparisonTable = [
   { feature: 'Entry price / 1k pages', bd: '$1.50–$3.00', fc: '$5.33–$9.00', a1: '$1.00–$2.00' },
-  { feature: 'Usage without subscription', bd: 'No', fc: 'No', a1: 'Yes' },
+  { feature: 'Use without subscription', bd: 'No', fc: 'No', a1: 'Yes' },
   { feature: 'Real Google SERPs', bd: 'Separate service', fc: 'No', a1: 'Yes' },
   { feature: 'Automated captcha solving', bd: 'Yes', fc: 'No', a1: 'Yes' },
   { feature: 'Country targeting', bd: '190+ countries', fc: '28 countries', a1: '190+ countries' },
