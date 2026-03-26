@@ -167,15 +167,11 @@ small {
 }
 
 #changelog hr, #changelog li {
-  margin-top: 0.5rem;
+  margin-top: 0.5em;
 }
 
 #changelog hr {
   color: var(--chakra-colors-fg-grid);
-}
-
-#changelog li {
-  margin-left: 1rem;
 }
 
 #changelog h3, #changelog a {
@@ -183,12 +179,16 @@ small {
 }
 
 #changelog h3 {
-  margin-top: 1.5rem;
+  margin-top: 1.5em;
   font-weight: bold;
 }
 
+#changelog li {
+  margin-left: 1em;
+}
+
 #changelog code {
-  margin-left: 0.25rem;
+  margin-left: 0.25em;
   font-size: var(--chakra-fontSizes-sm);
   color: var(--chakra-colors-fg-gutter);
 }
@@ -205,6 +205,141 @@ small {
 }
 
 #changelog a:focus {
+  outline: none;
+  box-shadow: var(--chakra-shadows-outline);
+}
+
+#privacy *::before {
+  display: none !important;
+}
+
+#privacy div, #privacy header p, #privacy h4 {
+  font-size: var(--chakra-fontSizes-md) !important;
+}
+
+#privacy div, #privacy h1, #privacy h2, #privacy h3, #privacy h4, #privacy p, #privacy li {
+  color: var(--chakra-colors-chakra-body-text) !important;
+}
+
+#privacy div, #privacy li {
+  font-family: var(--chakra-fonts-body) !important;
+}
+
+#privacy div {
+  border: none;
+  background: none;
+  padding: 0 !important;
+  font-weight: 300;
+}
+
+#privacy header, #privacy ul, #privacy .summary__card-section {
+  border-color: var(--chakra-colors-fg-grid) !important;
+}
+
+#privacy header {
+  padding: 0 !important;
+}
+
+#privacy header p {
+  text-align: left;
+}
+
+#privacy article, #privacy details, #privacy figure, #privacy .third-parties-item {
+  border-color: var(--chakra-colors-chakra-border-color) !important;
+}
+
+#privacy article, #privacy details {
+  border-radius: var(--chakra-radii-md) !important;
+  background: var(--chakra-colors-bg-muted) !important;
+}
+
+#privacy article {
+  padding: 1.5em;
+}
+
+#privacy .summary__card-section:not(:last-of-type) {
+  padding-bottom: 1em !important;
+}
+
+#privacy h1, #privacy h2, #privacy h3, #privacy h4, #privacy p, #privacy .table-of-content-list li {
+  margin-bottom: 1em !important;
+}
+
+#privacy h1, #privacy h2, #privacy h3, #privacy h4 {
+  font-weight: bold;
+}
+
+#privacy h1, #privacy h3 {
+  margin-top: 0 !important;
+}
+
+#privacy h1 {
+  font-size: var(--chakra-fontSizes-2xl) !important;
+}
+
+#privacy h2, #privacy h4, #privacy ul {
+  margin-top: 1em !important;
+}
+
+#privacy h2 {
+  font-size: var(--chakra-fontSizes-xl) !important;
+}
+
+#privacy h3 {
+  font-size: var(--chakra-fontSizes-lg) !important;
+}
+
+#privacy .pill, #privacy a {
+  color: var(--chakra-colors-bg-button) !important;
+}
+
+#privacy .pill {
+  font-size: var(--chakra-fontSizes-xs) !important;
+}
+
+.chakra-ui-light #privacy .pill {
+  border-color: rgba(48, 87, 225, 0.16);
+  background: rgba(48, 87, 225, 0.08);
+}
+
+.chakra-ui-dark #privacy .pill {
+  border-color: rgba(121, 153, 247, 0.16);
+  background: rgba(121, 153, 247, 0.08);
+}
+
+#privacy .third-parties-item {
+  flex: none !important;
+  width: 48px !important;
+  height: 48px !important;
+}
+
+#privacy .third-parties-item img {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+#privacy .check-style-list li {
+  margin-bottom: 0 !important;
+}
+
+#privacy [class*="section__further-info-"] li {
+  margin-left: 1em !important;
+}
+
+#privacy a {
+  margin-left: -1px;
+  margin-right: -1px;
+  border-radius: 2px;
+  padding: 1px;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+#privacy a:hover {
+  color: var(--chakra-colors-bg-inverted) !important;
+}
+
+#privacy a:focus {
   outline: none;
   box-shadow: var(--chakra-shadows-outline);
 }

@@ -29,6 +29,7 @@ import Changelog from './pages/Changelog';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout';
+import Privacy from './pages/Privacy';
 import LoginDropdown from './components/LoginDropdown';
 import LoginModal from './components/LoginModal';
 // import Sidebar from './components/Sidebar';
@@ -600,6 +601,7 @@ export default function App() {
               />
             }
           />
+          <Route path={ui.privacyPath} element={<Privacy />} />
         </Routes>
       </Flex>
       <Box id='contact' mx={{ base: ui.xsMargin, lg: ui.xxlMargin }} mb={ui.iconVerticalMargin}>
