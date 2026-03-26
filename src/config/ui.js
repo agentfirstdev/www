@@ -359,7 +359,7 @@ export const verticalDividerOverflow = '-24px';
 export const dividerBaseOverflow = '-16px';
 export const linkPadding = '2px';
 export const gradientAngle = 140;
-export const headingOpacity = 0.6;
+export const headingOpacity = 0.7;
 export const dividerMargin = { base: xxsMargin, md: xsMargin };
 export const descriptionMargin = { base: 0, lg: xsMargin };
 export const outline = (color) => {

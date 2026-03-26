@@ -94,7 +94,10 @@ export default extendTheme({
         }
       },
       variants: {
-        pricing: { item: { listStyleType: 'none', fontSize: 'sm' }, icon: { color: 'bg-button' } },
+        pricing: {
+          item: { listStyleType: 'none', fontSize: 'sm', fontWeight: 'normal' },
+          icon: { color: 'bg-button' }
+        },
         citations: {
           container: { textAlign: 'left' },
           item: {
@@ -157,14 +160,8 @@ export default extendTheme({
           color: 'gray.800'
         },
         service: { mt: ui.xxsMargin, fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
-        pricing: { fontSize: 'sm', fontWeight: 'light', color: 'chakra-placeholder-color' },
-        teammate: {
-          mt: 2,
-          fontSize: 'md',
-          fontWeight: 'light',
-          _light: { color: 'accent.secondary' },
-          _dark: { color: 'brand.primary' }
-        },
+        pricing: { fontSize: 'sm', fontWeight: 'normal', color: 'chakra-placeholder-color' },
+        teammate: { mt: 2, fontSize: 'md', fontWeight: 'light', color: 'bg-button' },
         attribution: {
           fontSize: { base: 'xs', md: 'sm' },
           fontWeight: 'light',

@@ -932,6 +932,7 @@ export default function Home({
                 rounded='full'
                 px={3.5}
                 py={1.5}
+                fontWeight='bold'
                 textTransform='uppercase'
                 whiteSpace='nowrap'
                 _light={{ borderColor: ui.blueAlpha, bg: ui.lightBlueAlpha }}
