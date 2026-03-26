@@ -165,3 +165,46 @@ small {
 [data-popper-placement="right-end" i] .verbose .chakra-tooltip__arrow-wrapper {
   top: 14px !important;
 }
+
+#changelog hr, #changelog li {
+  margin-top: 0.5rem;
+}
+
+#changelog hr {
+  color: var(--chakra-colors-fg-grid);
+}
+
+#changelog li {
+  margin-left: 1rem;
+}
+
+#changelog h3, #changelog a {
+  color: var(--chakra-colors-bg-button);
+}
+
+#changelog h3 {
+  margin-top: 1.5rem;
+  font-weight: bold;
+}
+
+#changelog code {
+  margin-left: 0.25rem;
+  font-size: var(--chakra-fontSizes-sm);
+  color: var(--chakra-colors-fg-gutter);
+}
+
+#changelog a {
+  margin-left: -1px;
+  margin-right: -1px;
+  border-radius: 2px;
+  padding: 1px;
+}
+
+#changelog a:hover {
+  color: var(--chakra-colors-bg-inverted);
+}
+
+#changelog a:focus {
+  outline: none;
+  box-shadow: var(--chakra-shadows-outline);
+}

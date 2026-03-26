@@ -1,7 +1,8 @@
 /* global Cal */
 
-// import markdown from 'markdown-it';
-// import highlights from 'markdown-it-highlightjs';
+import markdown from 'markdown-it';
+import highlights from 'markdown-it-highlightjs';
+import footnotes from 'markdown-it-footnote';
 
 // Strings
 export const logoLabel = 'Agent First';
@@ -94,6 +95,7 @@ export const errorMessage = 'Oops, something went wrong; please try again later'
 export const servicesId = 'services';
 export const comparisonId = 'features';
 export const pricingId = 'pricing';
+export const changelogId = 'changelog';
 export const aboutId = 'about';
 export const teamId = 'team';
 export const citationsId = 'citations';
@@ -513,9 +515,9 @@ export const purchaseAmountPadding = 7;
 export const purchaseDecimalPlaces = 0;
 
 // Utils
-/* export const renderer = markdown({ html: true, linkify: true, typographer: true }).use(
-  highlights
-); */
+export const renderer = markdown({ html: true, linkify: true, typographer: true })
+  .use(highlights)
+  .use(footnotes);
 export const stripFences = (markdown) => {
   return markdown.replace(/^```[^\n]*\n/, '').replace(/\n```\s*$/, '');
 };

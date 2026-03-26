@@ -25,6 +25,7 @@ import * as supabase from './config/supabase';
 import * as ui from './config/ui';
 import Home from './pages/Home';
 // import AltHome from './pages/AltHome';
+import Changelog from './pages/Changelog';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout';
@@ -565,6 +566,7 @@ export default function App() {
               />
             }
           /> */}
+          <Route path={ui.changelogPath} element={<Changelog />} />
           <Route
             path={ui.dashboardPath}
             element={

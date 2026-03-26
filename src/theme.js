@@ -22,7 +22,7 @@ export default extendTheme({
       'fg-muted': { _light: 'gray.600', _dark: 'whiteAlpha.600' },
       'fg-grid': { _light: 'gray.200', _dark: 'whiteAlpha.200' },
       'fg-button': { _light: 'white', _dark: 'whiteAlpha.800' },
-      'fg-gutter': { _light: 'gray.400', _dark: 'whiteAlpha.300' },
+      'fg-gutter': { _light: 'gray.400', _dark: 'whiteAlpha.400' },
       'fg-tab': { _light: 'gray.700', _dark: 'whiteAlpha.700' },
       'fg-success': { _light: 'green.600', _dark: 'green.200' },
       'fg-failure': { _light: 'red.600', _dark: 'red.200' },
