@@ -167,7 +167,7 @@ small {
 }
 
 #changelog hr, #changelog li {
-  margin-top: 0.5em;
+  margin-top: 0.33lh;
 }
 
 #changelog hr {
@@ -179,7 +179,7 @@ small {
 }
 
 #changelog h3 {
-  margin-top: 1.5em;
+  margin-top: 1lh;
   font-weight: bold;
 }
 
@@ -225,11 +225,18 @@ small {
   font-family: var(--chakra-fonts-body) !important;
 }
 
+#privacy div, #privacy .section__further-info-eu-users strong:not(ul strong) {
+  font-weight: 300;
+}
+
 #privacy div {
   border: none;
   background: none;
   padding: 0 !important;
-  font-weight: 300;
+}
+
+#privacy .summary__card-section:not(:last-of-type) {
+  padding-bottom: 0.67lh !important;
 }
 
 #privacy header, #privacy ul, #privacy .summary__card-section {
@@ -244,6 +251,12 @@ small {
   text-align: left;
 }
 
+#privacy section:after {
+  margin-block: 1.375lh 1lh !important;
+  background: var(--chakra-colors-chakra-border-color) !important;
+  height: 1px !important;
+}
+
 #privacy article, #privacy details, #privacy figure, #privacy .third-parties-item {
   border-color: var(--chakra-colors-chakra-border-color) !important;
 }
@@ -253,23 +266,34 @@ small {
   background: var(--chakra-colors-bg-muted) !important;
 }
 
+#privacy article, #privacy summary p, #privacy .check-style-list li {
+  margin-bottom: 0 !important;
+}
+
 #privacy article {
-  padding: 1.5em;
+  padding: 1lh 1.5em;
 }
 
-#privacy .summary__card-section:not(:last-of-type) {
-  padding-bottom: 1em !important;
+#privacy details {
+  margin-top: 1lh !important;
+  margin-bottom: 1lh !important;
 }
 
-#privacy h1, #privacy h2, #privacy h3, #privacy h4, #privacy p, #privacy .table-of-content-list li {
-  margin-bottom: 1em !important;
+#privacy h1,
+#privacy h2,
+#privacy h3,
+#privacy h4,
+#privacy p,
+#privacy [class*="section__further-info-"] ul,
+#privacy .table-of-content-list li {
+  margin-bottom: 0.67lh !important;
 }
 
-#privacy h1, #privacy h2, #privacy h3, #privacy h4 {
+#privacy h1, #privacy h2, #privacy h3, #privacy h4, #privacy a {
   font-weight: bold;
 }
 
-#privacy h1, #privacy h3 {
+#privacy h1, #privacy h3, #privacy summary h4 {
   margin-top: 0 !important;
 }
 
@@ -277,8 +301,8 @@ small {
   font-size: var(--chakra-fontSizes-2xl) !important;
 }
 
-#privacy h2, #privacy h4, #privacy ul {
-  margin-top: 1em !important;
+#privacy h2, #privacy h4, #privacy h5, #privacy ul {
+  margin-top: 0.67lh !important;
 }
 
 #privacy h2 {
@@ -287,6 +311,14 @@ small {
 
 #privacy h3 {
   font-size: var(--chakra-fontSizes-lg) !important;
+}
+
+#privacy .main-header__meta, #privacy .section__further-info-eu-users strong:not(ul strong) {
+  font-style: italic;
+}
+
+#privacy .main__section p {
+  margin-block: 0.5lh !important;
 }
 
 #privacy .pill, #privacy a {
@@ -318,10 +350,6 @@ small {
   height: 24px !important;
 }
 
-#privacy .check-style-list li {
-  margin-bottom: 0 !important;
-}
-
 #privacy [class*="section__further-info-"] li {
   margin-left: 1em !important;
 }
@@ -331,7 +359,6 @@ small {
   margin-right: -1px;
   border-radius: 2px;
   padding: 1px;
-  font-weight: bold;
   text-decoration: none !important;
 }
 
