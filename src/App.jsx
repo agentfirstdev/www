@@ -383,7 +383,7 @@ export default function App() {
     <Flex w='100%' minH='100vh' direction='column'>
       <Box
         ref={navbar}
-        position='sticky'
+        position={pathname == ui.privacyPath ? { base: 'relative', lg: 'sticky' } : 'sticky'}
         top={0}
         zIndex='sticky'
         borderBottom='1px'

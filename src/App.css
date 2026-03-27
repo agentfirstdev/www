@@ -209,186 +209,213 @@ small {
   box-shadow: var(--chakra-shadows-outline);
 }
 
-#privacy *::before, #privacy header h1, #privacy .iub-manage-preferences-container {
+#legal *:not(.close-dialog)::before, #legal header h1, #legal .iub-manage-preferences-container {
   display: none !important;
 }
 
-#privacy div, #privacy #in-case-of-issues-card .summary__card-section {
-  border: none;
-}
-
-#privacy div, #privacy header p, #privacy h4 {
-  font-size: var(--chakra-fontSizes-md) !important;
-}
-
-#privacy div, #privacy h1, #privacy h2, #privacy h3, #privacy h4, #privacy p, #privacy li {
-  color: var(--chakra-colors-chakra-body-text) !important;
-}
-
-#privacy div, #privacy li {
-  font-family: var(--chakra-fonts-body) !important;
-}
-
-#privacy div, #privacy .section__further-info-eu-users strong:not(ul strong) {
-  font-weight: 300;
-}
-
-#privacy div, #privacy .btn:hover {
+#legal div, #legal .footer__first-row:after, #legal .btn:hover {
   background: none !important;
 }
 
-#privacy div {
+#legal div, #legal h1, #legal h2, #legal h3, #legal h4, #legal p, #legal li, #legal button {
+  color: var(--chakra-colors-chakra-body-text) !important;
+}
+
+#legal div, #legal h4, #legal header p {
+  font-size: var(--chakra-fontSizes-md) !important;
+}
+
+#legal div, #legal li {
+  font-family: var(--chakra-fonts-body) !important;
+}
+
+#legal div, #legal .section__further-info-eu-users strong:not(ul strong) {
+  font-weight: 300;
+}
+
+#legal div {
   padding: 0 !important;
 }
 
-#privacy .aside-main-wrapper,
-#privacy .summary__card-section,
-#privacy .pre-footer,
-#privacy .footer__first-row,
-#privacy header.main-header,
-#privacy article header,
-#privacy #table-of-content-wrapper ul {
+#legal #iub-legalDoc,
+#legal #in-case-of-issues-card .summary__card-section,
+#legal .footer__first-row div,
+#legal .footer__credits {
+  border: none !important;
+}
+
+#legal .aside-main-wrapper,
+#legal .summary__card-section,
+#legal .pre-footer,
+#legal footer .footer__first-row,
+#legal header.main-header,
+#legal article header,
+#legal #table-of-content-wrapper ul {
   border-color: var(--chakra-colors-fg-grid) !important;
 }
 
-#privacy .summary__card-section:not(:last-of-type) {
+#legal .summary__card-section:not(:last-of-type) {
   padding-bottom: 0.67lh !important;
 }
 
-#privacy #in-case-of-issues-card .summary__card-section,
-#privacy footer p,
-#privacy .arrow-style-list li {
-  margin-top: 0.5lh;
-}
-
-#privacy #in-case-of-issues-card .summary__card-section {
+#legal #in-case-of-issues-card .summary__card-section, #legal footer {
   padding-bottom: 0 !important;
 }
 
-#privacy .pre-footer {
+#legal #in-case-of-issues-card .summary__card-section,
+#legal footer p,
+#legal .arrow-style-list li {
+  margin-top: 0.5lh;
+}
+
+#legal .pre-footer, #legal .table-of-content-btn-wrapper {
   padding-bottom: 1lh !important;
 }
 
-#privacy header {
+#legal .footer__first-row div,
+#legal article,
+#legal summary p,
+#legal .footer__credits p,
+#legal .check-style-list li,
+#legal .arrow-style-list li {
+  margin-bottom: 0 !important;
+}
+
+#legal .table-of-content-btn-wrapper,
+#legal article,
+#legal details,
+#legal figure,
+#legal .third-parties-item,
+#legal button {
+  border-color: var(--chakra-colors-chakra-border-color) !important;
+}
+
+#legal .table-of-content-btn-wrapper {
+  position: sticky;
+  top: 0;
+  background: var(--chakra-colors-chakra-body-bg) !important;
+  padding-top: 1lh !important;
+}
+
+@media screen and (max-width: 960px) {
+  #legal #table-of-content-wrapper {
+    z-index: 2147483647;
+  }
+}
+
+#legal header {
   padding: 0 !important;
 }
 
-#privacy header p {
+#legal header p {
   text-align: left;
+  text-wrap: auto !important;
 }
 
-#privacy main {
+#legal main {
   padding-bottom: 0.5lh;
 }
 
-#privacy footer, #privacy h2, #privacy h4, #privacy h5, #privacy ul {
+#legal footer, #legal h2, #legal h4, #legal h5, #legal ul {
   margin-top: 0.67lh !important;
 }
 
-#privacy section:after {
+#legal section:after {
   margin-block: 1.375lh 1lh !important;
   background: var(--chakra-colors-fg-grid) !important;
   height: 1px !important;
 }
 
-#privacy article, #privacy details, #privacy figure, #privacy .third-parties-item {
-  border-color: var(--chakra-colors-chakra-border-color) !important;
-}
-
-#privacy article, #privacy details {
+#legal article, #legal details {
   border-radius: var(--chakra-radii-md) !important;
   background: var(--chakra-colors-bg-muted) !important;
 }
 
-#privacy article,
-#privacy summary p,
-#privacy .footer__credits p,
-#privacy .check-style-list li,
-#privacy .arrow-style-list li {
-  margin-bottom: 0 !important;
-}
-
-#privacy article {
+#legal article {
   padding: 1lh 1.5em;
 }
 
-#privacy details {
+#legal [role="dialog"] {
+  z-index: 2147483647 !important;
+}
+
+#legal details {
   margin-top: 1lh !important;
   margin-bottom: 1lh !important;
 }
 
-#privacy h1,
-#privacy h2,
-#privacy h3,
-#privacy h4,
-#privacy p,
-#privacy [class*="section__further-info-"] ul,
-#privacy .table-of-content-list li {
+#legal h1,
+#legal h2,
+#legal h3,
+#legal h4,
+#legal p,
+#legal [class*="section__further-info-"] ul,
+#legal .table-of-content-list li {
   margin-bottom: 0.67lh !important;
 }
 
-#privacy h1, #privacy h2, #privacy h3, #privacy h4, #privacy a {
+#legal h1, #legal h2, #legal h3, #legal h4, #legal a {
   font-weight: bold;
 }
 
-#privacy h1, #privacy h3, #privacy summary h4 {
+#legal h1, #legal h3, #legal summary h4 {
   margin-top: 0 !important;
 }
 
-#privacy h1 {
+#legal h1 {
   font-size: var(--chakra-fontSizes-2xl) !important;
 }
 
-#privacy h2 {
+#legal h2 {
   font-size: var(--chakra-fontSizes-xl) !important;
 }
 
-#privacy h3 {
+#legal h3 {
   font-size: var(--chakra-fontSizes-lg) !important;
 }
 
-#privacy .main-header__meta, #privacy .section__further-info-eu-users strong:not(ul strong) {
+#legal .main-header__meta, #legal .section__further-info-eu-users strong:not(ul strong) {
   font-style: italic;
 }
 
-#privacy .main__section p {
+#legal .main__section p {
   margin-block: 0.5lh !important;
 }
 
-#privacy .pill, #privacy a {
+#legal .pill, #legal a {
   color: var(--chakra-colors-bg-button) !important;
 }
 
-#privacy .pill {
+#legal .pill {
   font-size: var(--chakra-fontSizes-xs) !important;
 }
 
-.chakra-ui-light #privacy .pill {
+.chakra-ui-light #legal .pill {
   border-color: rgba(48, 87, 225, 0.16);
   background: rgba(48, 87, 225, 0.08);
 }
 
-.chakra-ui-dark #privacy .pill {
+.chakra-ui-dark #legal .pill {
   border-color: rgba(121, 153, 247, 0.16);
   background: rgba(121, 153, 247, 0.08);
 }
 
-#privacy .third-parties-item {
+#legal .third-parties-item {
   flex: none !important;
   width: 48px !important;
   height: 48px !important;
 }
 
-#privacy [class*="section__further-info-"] li {
+#legal [class*="section__further-info-"] li {
   margin-left: 1em !important;
 }
 
-#privacy .third-parties-item img {
+#legal .third-parties-item img {
   width: 24px !important;
   height: 24px !important;
 }
 
-#privacy a {
+#legal a {
   margin-left: -1px;
   margin-right: -1px;
   border-radius: 2px;
@@ -396,28 +423,47 @@ small {
   text-decoration: none !important;
 }
 
-#privacy a:hover {
+#legal a:hover {
   color: var(--chakra-colors-bg-inverted) !important;
 }
 
-#privacy a:focus {
+#legal a:focus {
   outline: none;
   box-shadow: var(--chakra-shadows-outline);
 }
 
-#privacy .btn {
+#legal .btn {
   border-width: 2px !important;
   border-color: var(--chakra-colors-bg-button) !important;
 }
 
-#privacy .btn:hover {
+#legal .btn:hover {
   border-color: var(--chakra-colors-bg-inverted) !important;
 }
 
-#privacy .btn:focus {
+#legal .btn:focus {
   box-shadow: 0 0 0 2px var(--chakra-colors-bg-button);
 }
 
-#privacy .btn:hover:focus {
+#legal .btn:hover:focus {
   box-shadow: 0 0 0 2px var(--chakra-colors-bg-inverted);
+}
+
+#legal button {
+  background: var(--chakra-colors-bg-muted) !important;
+}
+
+.chakra-ui-light #legal button:hover {
+  background: var(--chakra-colors-gray-100) !important;
+}
+
+.chakra-ui-dark #legal button:hover {
+  background: var(--chakra-colors-whiteAlpha-100) !important;
+}
+
+@media screen and (max-width: 960px) {
+  #legal button:not(.close-dialog) {
+    padding-block: 1em !important;
+    font-size: var(--chakra-fontSizes-lg) !important;
+  }
 }

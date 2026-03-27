@@ -5,7 +5,7 @@ import * as ui from '../config/ui';
 
 export default function Privacy() {
   useEffect(() => {
-    const container = document.getElementById(ui.privacyId);
+    const container = document.getElementById(ui.legalId);
     const script = document.createElement('script');
     script.src = 'https://cdn.iubenda.com/iubenda.js';
     const observer = new MutationObserver(() => {
@@ -28,7 +28,7 @@ export default function Privacy() {
 
   return (
     <Box
-      id={ui.privacyId}
+      id={ui.legalId}
       my={ui.xsMargin}
       px={{ base: ui.xsMargin, md: ui.xxlMargin }}
       textAlign='left'
