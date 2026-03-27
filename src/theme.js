@@ -109,12 +109,7 @@ export default extendTheme({
         }
       }
     },
-    Divider: {
-      baseStyle: {
-        _light: { borderColor: 'accent.secondary' },
-        _dark: { borderColor: 'brand.primary' }
-      }
-    },
+    Divider: { baseStyle: { borderColor: 'bg-button' } },
     Heading: {
       baseStyle: { fontSize: { base: '26px', md: '4xl' }, color: 'bg-button' },
       variants: {
@@ -198,8 +193,8 @@ export default extendTheme({
         nav: {
           fontFamily: 'heading',
           fontWeight: 'normal',
-          _light: { color: 'brand.primary', _hover: { color: 'brand.secondary' } },
-          _dark: { color: 'brand.primary', _hover: { color: 'accent.primary' } }
+          color: 'brand.primary',
+          _hover: { color: 'bg-inverted' }
         },
         marker: {
           fontWeight: 'medium',
@@ -248,12 +243,7 @@ export default extendTheme({
     },
     FormLabel: { baseStyle: { mr: 0, mb: 0, fontWeight: 'bold', whiteSpace: 'nowrap' } },
     Input: {
-      baseStyle: {
-        field: {
-          _light: { borderColor: 'chakra-border-color', bg: 'white' },
-          _dark: { borderColor: 'chakra-border-color', bg: 'whiteAlpha.50' }
-        }
-      },
+      baseStyle: { field: { borderColor: 'chakra-border-color', bg: 'bg-muted' } },
       variants: {
         outline: {
           field: { _focus: { borderColor: 'bg-button', boxShadow: ui.outline('bg-button') } }
@@ -303,10 +293,7 @@ export default extendTheme({
           h: ui.controlDimension,
           fontSize: { base: 'md', md: 'lg' },
           color: 'bg-button',
-          _disabled: {
-            _light: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } },
-            _dark: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } }
-          },
+          _disabled: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } },
           _hover: {
             borderColor: 'bg-inverted',
             bg: 'transparent',
