@@ -209,8 +209,12 @@ small {
   box-shadow: var(--chakra-shadows-outline);
 }
 
-#privacy *::before {
+#privacy *::before, #privacy header h1, #privacy .iub-manage-preferences-container {
   display: none !important;
+}
+
+#privacy div, #privacy #in-case-of-issues-card .summary__card-section {
+  border: none;
 }
 
 #privacy div, #privacy header p, #privacy h4 {
@@ -229,18 +233,40 @@ small {
   font-weight: 300;
 }
 
+#privacy div, #privacy .btn:hover {
+  background: none !important;
+}
+
 #privacy div {
-  border: none;
-  background: none;
   padding: 0 !important;
+}
+
+#privacy .aside-main-wrapper,
+#privacy .summary__card-section,
+#privacy .pre-footer,
+#privacy .footer__first-row,
+#privacy header.main-header,
+#privacy article header,
+#privacy #table-of-content-wrapper ul {
+  border-color: var(--chakra-colors-fg-grid) !important;
 }
 
 #privacy .summary__card-section:not(:last-of-type) {
   padding-bottom: 0.67lh !important;
 }
 
-#privacy header, #privacy ul, #privacy .summary__card-section {
-  border-color: var(--chakra-colors-fg-grid) !important;
+#privacy #in-case-of-issues-card .summary__card-section,
+#privacy footer p,
+#privacy .arrow-style-list li {
+  margin-top: 0.5lh;
+}
+
+#privacy #in-case-of-issues-card .summary__card-section {
+  padding-bottom: 0 !important;
+}
+
+#privacy .pre-footer {
+  padding-bottom: 1lh !important;
 }
 
 #privacy header {
@@ -251,9 +277,17 @@ small {
   text-align: left;
 }
 
+#privacy main {
+  padding-bottom: 0.5lh;
+}
+
+#privacy footer, #privacy h2, #privacy h4, #privacy h5, #privacy ul {
+  margin-top: 0.67lh !important;
+}
+
 #privacy section:after {
   margin-block: 1.375lh 1lh !important;
-  background: var(--chakra-colors-chakra-border-color) !important;
+  background: var(--chakra-colors-fg-grid) !important;
   height: 1px !important;
 }
 
@@ -266,7 +300,11 @@ small {
   background: var(--chakra-colors-bg-muted) !important;
 }
 
-#privacy article, #privacy summary p, #privacy .check-style-list li {
+#privacy article,
+#privacy summary p,
+#privacy .footer__credits p,
+#privacy .check-style-list li,
+#privacy .arrow-style-list li {
   margin-bottom: 0 !important;
 }
 
@@ -299,10 +337,6 @@ small {
 
 #privacy h1 {
   font-size: var(--chakra-fontSizes-2xl) !important;
-}
-
-#privacy h2, #privacy h4, #privacy h5, #privacy ul {
-  margin-top: 0.67lh !important;
 }
 
 #privacy h2 {
@@ -345,13 +379,13 @@ small {
   height: 48px !important;
 }
 
+#privacy [class*="section__further-info-"] li {
+  margin-left: 1em !important;
+}
+
 #privacy .third-parties-item img {
   width: 24px !important;
   height: 24px !important;
-}
-
-#privacy [class*="section__further-info-"] li {
-  margin-left: 1em !important;
 }
 
 #privacy a {
@@ -369,4 +403,21 @@ small {
 #privacy a:focus {
   outline: none;
   box-shadow: var(--chakra-shadows-outline);
+}
+
+#privacy .btn {
+  border-width: 2px !important;
+  border-color: var(--chakra-colors-bg-button) !important;
+}
+
+#privacy .btn:hover {
+  border-color: var(--chakra-colors-bg-inverted) !important;
+}
+
+#privacy .btn:focus {
+  box-shadow: 0 0 0 2px var(--chakra-colors-bg-button);
+}
+
+#privacy .btn:hover:focus {
+  box-shadow: 0 0 0 2px var(--chakra-colors-bg-inverted);
 }
