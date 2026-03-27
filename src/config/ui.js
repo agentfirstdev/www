@@ -1,9 +1,5 @@
 /* global Cal */
 
-import markdown from 'markdown-it';
-import highlights from 'markdown-it-highlightjs';
-import footnotes from 'markdown-it-footnote';
-
 // Strings
 export const logoLabel = 'Agent First';
 export const servicesLabel = 'Services';
@@ -522,9 +518,6 @@ export const purchaseAmountPadding = 7;
 export const purchaseDecimalPlaces = 0;
 
 // Utils
-export const renderer = markdown({ html: true, linkify: true, typographer: true })
-  .use(highlights)
-  .use(footnotes);
 export const stripFences = (markdown) => {
   return markdown.replace(/^```[^\n]*\n/, '').replace(/\n```\s*$/, '');
 };

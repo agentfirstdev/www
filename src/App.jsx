@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -25,7 +25,9 @@ import * as supabase from './config/supabase';
 import * as ui from './config/ui';
 import Home from './pages/Home';
 // import AltHome from './pages/AltHome';
-import Changelog from './pages/Changelog';
+const Changelog = lazy(() => {
+  return import('./pages/Changelog');
+});
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout';
@@ -568,7 +570,14 @@ export default function App() {
               />
             }
           /> */}
-          <Route path={ui.changelogPath} element={<Changelog />} />
+          <Route
+            path={ui.changelogPath}
+            element={
+              <Suspense>
+                <Changelog />
+              </Suspense>
+            }
+          />
           <Route
             path={ui.dashboardPath}
             element={
