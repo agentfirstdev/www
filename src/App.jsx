@@ -61,6 +61,7 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { hash, pathname } = useLocation();
   const navigate = useNavigate();
+  const iconDimension = useBreakpointValue({ base: ui.smIconDimension, sm: ui.iconDimension });
   const isInMdView = useBreakpointValue({ base: false, md: true });
   const { colorMode, toggleColorMode } = useColorMode();
   const blueprintStroke = useColorModeValue(ui.creativeBlue, ui.royalBlue);
@@ -615,7 +616,7 @@ export default function App() {
                   className='lazy'
                   width={ui.githubOldDimension}
                   height={ui.githubOldDimension}
-                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                  style={{ width: iconDimension, minWidth: iconDimension }}
                   role='img'
                   aria-label={ui.githubLabel}
                 />
@@ -633,7 +634,7 @@ export default function App() {
                   className='lazy'
                   width={ui.linkedinOldDimension}
                   height={ui.linkedinOldDimension}
-                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                  style={{ width: iconDimension, minWidth: iconDimension }}
                   role='img'
                   aria-label={ui.linkedinLabel}
                 />
@@ -651,14 +652,25 @@ export default function App() {
                   className='lazy'
                   width={ui.xOldDimension}
                   height={ui.xOldDimension}
-                  style={{ width: ui.iconDimension, minWidth: ui.iconDimension }}
+                  style={{ width: iconDimension, minWidth: iconDimension }}
                   role='img'
                   aria-label={ui.xLabel}
                 />
               </Link>
             </Tooltip>
           </Box>
-          <Text variant='attribution'>{ui.attributionLabel}</Text>
+          <Text variant='attribution' display={{ base: 'none', sm: 'block' }}>
+            {ui.attributionLabel}
+          </Text>
+          <Text variant='attribution' display={{ base: 'block', sm: 'none' }}>
+            {ui.shortAttributionLabel}
+          </Text>
+          <Link variant='footer' display={{ base: 'none', sm: 'block' }} href={ui.privacyPath}>
+            {ui.privacyLabel}
+          </Link>
+          <Link variant='footer' display={{ base: 'block', sm: 'none' }} href={ui.privacyPath}>
+            {ui.shortPrivacyLabel}
+          </Link>
         </Flex>
       </Box>
       {shouldShowLogin && !isInMdView && (

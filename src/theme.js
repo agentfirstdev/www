@@ -163,10 +163,12 @@ export default extendTheme({
         pricing: { fontSize: 'sm', fontWeight: 'normal', color: 'chakra-placeholder-color' },
         teammate: { mt: 2, fontSize: 'md', fontWeight: 'light', color: 'bg-button' },
         attribution: {
+          pos: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
           fontSize: { base: 'xs', md: 'sm' },
           fontWeight: 'light',
-          _light: { color: 'accent.secondary' },
-          _dark: { color: 'brand.primary' }
+          color: 'bg-button'
         },
         description: { fontWeight: 'light', _dark: { color: 'whiteAlpha.700' } },
         bold: { fontSize: 'inherit' },
@@ -179,8 +181,10 @@ export default extendTheme({
     },
     Link: {
       baseStyle: {
+        position: 'relative',
+        top: '-1px',
         rounded: ui.outlineRadius,
-        p: ui.linkPadding,
+        p: '2px',
         fontWeight: 'bold',
         color: 'bg-button',
         _hover: {
@@ -238,7 +242,8 @@ export default extendTheme({
         citation: {
           fontWeight: 'medium',
           _focus: { shadow: `${ui.smOutlineStyle} var(--chakra-colors-brand-primary)` }
-        }
+        },
+        footer: { fontSize: { base: 'xs', md: 'sm' }, fontWeight: 'light' }
       }
     },
     FormLabel: { baseStyle: { mr: 0, mb: 0, fontWeight: 'bold', whiteSpace: 'nowrap' } },

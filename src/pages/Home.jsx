@@ -1493,7 +1493,7 @@ export default function Home({
                       className='lazy'
                       width={ui.siteOldDimension}
                       height={ui.siteOldDimension}
-                      style={{ width: ui.socialDimension, height: ui.socialDimension }}
+                      style={{ width: ui.smIconDimension, height: ui.smIconDimension }}
                       role='img'
                       aria-label={ui.siteLabel}
                     />
@@ -1516,7 +1516,7 @@ export default function Home({
                       className='lazy'
                       width={ui.githubOldDimension}
                       height={ui.githubOldDimension}
-                      style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                      style={{ width: ui.smIconDimension, minWidth: ui.smIconDimension }}
                       role='img'
                       aria-label={ui.brianGithubLabel}
                     />
@@ -1539,7 +1539,7 @@ export default function Home({
                       className='lazy'
                       width={ui.linkedinOldDimension}
                       height={ui.linkedinOldDimension}
-                      style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                      style={{ width: ui.smIconDimension, minWidth: ui.smIconDimension }}
                       role='img'
                       aria-label={ui.brianLinkedinLabel}
                     />
@@ -1562,7 +1562,7 @@ export default function Home({
                       className='lazy'
                       width={ui.xOldDimension}
                       height={ui.xOldDimension}
-                      style={{ width: ui.socialDimension, minWidth: ui.socialDimension }}
+                      style={{ width: ui.smIconDimension, minWidth: ui.smIconDimension }}
                       role='img'
                       aria-label={ui.brianXLabel}
                     />
