@@ -209,7 +209,10 @@ small {
   box-shadow: var(--chakra-shadows-outline);
 }
 
-#legal *:not(.close-dialog)::before, #legal header h1, #legal .iub-manage-preferences-container {
+#legal *:not(.close-dialog)::before,
+#legal header h1,
+#legal .iub-manage-preferences-container,
+#legal .iubenda-embed {
   display: none !important;
 }
 
@@ -233,7 +236,7 @@ small {
   font-weight: 300;
 }
 
-#legal div {
+#legal div, #legal header, #legal details {
   padding: 0 !important;
 }
 
@@ -272,6 +275,10 @@ small {
   padding-bottom: 1.5em !important;
 }
 
+#legal .accordion__body {
+  padding: 0.5em 1.5em 1.5em !important;
+}
+
 #legal .footer__first-row div,
 #legal article,
 #legal summary p,
@@ -303,10 +310,6 @@ small {
   }
 }
 
-#legal header {
-  padding: 0 !important;
-}
-
 #legal header p {
   text-align: left;
   text-wrap: auto !important;
@@ -326,8 +329,14 @@ small {
   height: 1px !important;
 }
 
-#legal article, #legal details {
+#legal article,
+#legal summary:not([open] summary),
+#legal details,
+#legal button:not(.card-buttons-group button):not(.close-dialog) {
   border-radius: var(--chakra-radii-md) !important;
+}
+
+#legal article, #legal details {
   background: var(--chakra-colors-bg-muted) !important;
 }
 
@@ -342,6 +351,16 @@ small {
 #legal details {
   margin-top: 1.5em !important;
   margin-bottom: 1.5em !important;
+}
+
+#legal summary {
+  background-position: right 0.5em top 0.5em !important;
+  padding: 1.5em 1.5em 1em !important;
+}
+
+#legal [open] summary, #legal .card-buttons-group button:first-child {
+  border-top-left-radius: var(--chakra-radii-md) !important;
+  border-top-right-radius: var(--chakra-radii-md) !important;
 }
 
 #legal h1,
@@ -427,7 +446,7 @@ small {
   color: var(--chakra-colors-bg-inverted) !important;
 }
 
-#legal a:focus {
+#legal summary:focus, #legal a:focus, #legal button:focus {
   outline: none;
   box-shadow: var(--chakra-shadows-outline);
 }
@@ -466,4 +485,13 @@ small {
     padding-block: 1em !important;
     font-size: var(--chakra-fontSizes-lg) !important;
   }
+}
+
+#legal .card-buttons-group button:last-child {
+  border-bottom-left-radius: var(--chakra-radii-md) !important;
+  border-bottom-right-radius: var(--chakra-radii-md) !important;
+}
+
+#legal .card-buttons-group button:focus {
+  z-index: 1;
 }
