@@ -809,6 +809,7 @@ export default function Home({
           }}
         >
           <Box
+            id={ui.searchId}
             pos='relative'
             px={ui.dividerMargin}
             py={ui.xsMargin}
@@ -866,6 +867,7 @@ export default function Home({
             </Button> */}
           </Box>
           <Box
+            id={ui.browsingId}
             pos='relative'
             px={ui.dividerMargin}
             py={ui.xsMargin}
@@ -910,6 +912,7 @@ export default function Home({
             </Button> */}
           </Box>
           <Box
+            id={ui.cdpId}
             pos='relative'
             px={ui.dividerMargin}
             py={ui.xsMargin}
@@ -980,6 +983,7 @@ export default function Home({
             </Box>
           </Box>
           <Box
+            id={ui.geotargetingId}
             pos='relative'
             px={ui.dividerMargin}
             py={ui.xsMargin}

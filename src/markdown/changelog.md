@@ -1,3 +1,22 @@
+### 2026
+
+* Improved search success rate to 97.4%. `March 29`
+* Added [new privacy policy](privacy). `March 27`
+* Made [CDP endpoint](https://doc.agentfirst.dev/endpoints/browser) compatibile with Playwright.
+  `March 25`
+* Increased search and browsing autoscaling speed; made browsing and CDP sessions shareable; started
+  [feature comparison](/#features). `March 24`
+* Improved Akamai Edgesuite bypassing. `March 23`
+* Integrated [call booking](/#hero). `March 21`
+* Denoised [Markdown conversion](https://doc.agentfirst.dev/endpoints/browser#response-format).
+  `March 20`
+* Reskinned [site](/); made [code samples](/#services) runnable inline. `March 19`
+* Launched
+  [experimental Chrome DevTools Protocol (CDP) endpoint](https://doc.agentfirst.dev/endpoints/browser).
+  `March 8`
+* Improved reCAPTCHA v3 bypassing. `March 2`
+* Implemented Reddit access. `March 1`
+
 ### 2025
 
 * Integrated chat history. `July 29`
