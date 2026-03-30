@@ -721,7 +721,6 @@ export default function Home({
   return (
     <>
       <VStack
-        id='hero'
         px={{ base: ui.xsMargin, md: ui.xxlMargin }}
         pt={ui.xsMargin}
         w='100%'

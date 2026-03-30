@@ -93,6 +93,7 @@ export const confirmationMessage = 'Check your email for a confirmation link';
 export const cdpMessage = 'We’ll let you know as soon as webpage interaction is available';
 export const loadMessage = 'Oops, something went wrong; please reload the page';
 export const errorMessage = 'Oops, something went wrong; please try again later';
+export const ctaId = 'cta';
 export const servicesId = 'services';
 export const searchId = 'search';
 export const browsingId = 'browser';

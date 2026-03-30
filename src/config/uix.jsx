@@ -109,7 +109,12 @@ export const Tagline = forwardRef(function Tagline(props, ref) {
       <Text variant='subheading' display={{ base: 'inline', lg: 'none' }} my={ui.xxsMargin}>
         Search & browse with automatic captcha solving & geotargeting to 190+ countries
       </Text>
-      <Flex mt={ui.xlMargin} alignSelf={{ base: 'stretch', sm: 'center' }} gap={ui.xxsMargin}>
+      <Flex
+        id={ui.ctaId}
+        pt={ui.xlMargin}
+        alignSelf={{ base: 'stretch', sm: 'center' }}
+        gap={ui.xxsMargin}
+      >
         <Button
           size={{ base: 'md', sm: 'lg' }}
           w={{ base: '100%', sm: 'auto' }}
