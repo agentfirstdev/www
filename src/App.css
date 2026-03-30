@@ -166,6 +166,10 @@ small {
   top: 14px !important;
 }
 
+#changelog {
+  font-size: 15px;
+}
+
 #changelog hr, #changelog li {
   margin-top: 0.5em;
 }
@@ -180,6 +184,7 @@ small {
 
 #changelog h3 {
   margin-top: 1.5em;
+  font-size: 17px;
   font-weight: bold;
 }
 
@@ -189,7 +194,7 @@ small {
 
 #changelog code {
   margin-left: 0.25em;
-  font-size: var(--chakra-fontSizes-sm);
+  font-size: 13px;
   color: var(--chakra-colors-fg-gutter);
 }
 
