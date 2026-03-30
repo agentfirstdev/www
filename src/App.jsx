@@ -235,10 +235,19 @@ export default function App() {
 
   useEffect(() => {
     if (hash) {
-      requestAnimationFrame(() => {
-        const element = document.getElementById(hash.replace('#', ''));
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      let innerFrameId;
+      const outerFrameId = requestAnimationFrame(() => {
+        innerFrameId = requestAnimationFrame(() => {
+          const element = document.getElementById(hash.replace('#', ''));
+
+          if (element) element.scrollIntoView({ behavior: 'smooth' });
+        });
       });
+
+      return () => {
+        cancelAnimationFrame(innerFrameId);
+        cancelAnimationFrame(outerFrameId);
+      };
     }
   }, [hash, pathname]);
 
