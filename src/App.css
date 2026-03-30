@@ -175,7 +175,7 @@ small {
 }
 
 #changelog hr {
-  color: var(--chakra-colors-fg-grid);
+  border-color: var(--chakra-colors-fg-grid);
 }
 
 #changelog h3, #changelog a {
@@ -193,9 +193,16 @@ small {
 }
 
 #changelog code {
-  margin-left: 0.25em;
   font-size: 13px;
+}
+
+#changelog code:last-child {
+  margin-left: 0.25em;
   color: var(--chakra-colors-fg-gutter);
+}
+
+#changelog code:not(:last-child) {
+  color: #50a14f;
 }
 
 #changelog a {
