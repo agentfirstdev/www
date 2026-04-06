@@ -1,5 +1,11 @@
 ### 2026
 
+* Launched [experimental AI endpoint](/#ai) to provide chat completions for generative engine
+  optimization (AKA language engine optimization). `April 7`
+* Unblocked YouTube, Facebook, TikTok browsing;  
+  improved **DataDome bypassing**.  
+  `April 5`
+----------------------------------------------------------------------------------------------------
 * Restored [search success rate](/#search) to **95%+**. `March 29`
 * Published [new privacy policy](privacy). `March 27`
 * Added **Playwright compatibility** to CDP service. `March 25`
