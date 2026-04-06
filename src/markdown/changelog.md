@@ -1,19 +1,23 @@
 ### 2026
 
-* Launched [experimental AI endpoint](/#ai) to provide chat completions for generative engine
-  optimization (AKA language engine optimization). `April 7`
-* Unblocked YouTube, Facebook, TikTok browsing;  
+* Launched [experimental AI endpoint](/#ai) to provide chat completions for generative or language
+  engine optimization. `April 7`
+* Unblocked **YouTube browsing**;  
+  unblocked **Facebook browsing**;  
+  unblocked **TikTok browsing**;  
   improved **DataDome bypassing**.  
   `April 5`
 ----------------------------------------------------------------------------------------------------
-* Restored [search success rate](/#search) to **95%+**. `March 29`
+* Restored search success rate to **95%+**. `March 29`
 * Published [new privacy policy](privacy). `March 27`
 * Added **Playwright compatibility** to CDP service. `March 25`
 * Sped autoscaling of search, browsing up;  
   made browsing, CDP sessions shareable;  
   started [feature comparison](/#features).  
   `March 24`
-* Improved reCAPTCHA v3, Akamai Edgesuite bypassing. `March 23`
+* Improved **reCAPTCHA v3 bypassing**;  
+  improved **Akamai Edgesuite bypassing**.  
+  `March 23`
 * Integrated [optional onboarding calls](/#cta) into site. `March 21`
 * Denoised
   [HTML-to-Markdown conversion](https://doc.agentfirst.dev/endpoints/browser#response-format) to
