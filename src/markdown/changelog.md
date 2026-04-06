@@ -2,7 +2,6 @@
 
 * Launched [experimental AI endpoint](/#ai) for GEO/AEO. `April 7`
 * Unblocked browsing for:
-
   * YouTube,
   * Facebook,
   * TikTok;
@@ -18,7 +17,6 @@
   started [feature comparison](/#features).  
   `March 24`
 * Improved bypassing for:
-
   * reCAPTCHA v3,
   * Akamai Edgesuite.
 
