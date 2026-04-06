@@ -96,6 +96,7 @@ export const errorMessage = 'Oops, something went wrong; please try again later'
 export const ctaId = 'cta';
 export const servicesId = 'services';
 export const searchId = 'search';
+export const aiId = 'ai';
 export const browsingId = 'browser';
 export const cdpId = 'cdp';
 export const geotargetingId = 'geotargeting';
@@ -139,7 +140,8 @@ export const checkoutParam = 'session';
 export const waitlistKey = 'waitlistServices';
 export const pendingWaitlistKey = 'pendingWaitlistService';
 export const profileKey = 'wasProfilePresented';
-export const waitlistService = 'cdp';
+export const aiService = 'ai';
+export const cdpService = 'cdp';
 export const prompt = '$ ';
 export const urlPrompt = 'Your URL';
 export const completion = [
@@ -223,6 +225,7 @@ export const comparisonTable = [
   { feature: 'Entry price / 1k pages', bd: '$1.50–$3.00', fc: '$5.33–$9.00', a1: '$1.00–$2.00' },
   { feature: 'Use without subscription', bd: 'No', fc: 'No', a1: 'Yes' },
   { feature: 'Real Google SERPs', bd: 'Separate service', fc: 'No', a1: 'Yes' },
+  { feature: 'AI search optimization', bd: 'No', fc: 'No', a1: 'Yes' },
   { feature: 'Automated captcha solving', bd: 'Yes', fc: 'No', a1: 'Yes' },
   { feature: 'Country targeting', bd: '190+ countries', fc: '28 countries', a1: '190+ countries' },
   { feature: 'Region targeting', bd: 'Yes', fc: 'No', a1: 'Yes' },

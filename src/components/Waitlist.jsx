@@ -6,6 +6,7 @@ import * as ui from '../config/ui';
 const toastId = crypto.randomUUID();
 
 export default function Waitlist({
+  service,
   supabaseClient,
   session,
   fontSize,
@@ -21,10 +22,7 @@ export default function Waitlist({
   const handleSuccess = () => {
     localStorage.setItem(
       ui.waitlistKey,
-      JSON.stringify([
-        ...(JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? []),
-        ui.waitlistService
-      ])
+      JSON.stringify([...(JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? []), service])
     );
     setIsJoining(true);
     join();
@@ -48,7 +46,7 @@ export default function Waitlist({
 
         const { error: waitlistError } = await supabaseClient.rpc('join_waitlist', {
           waitlist_email: emailAddress,
-          waitlist_service: ui.waitlistService
+          waitlist_service: service
         });
 
         if (waitlistError) {
@@ -56,7 +54,7 @@ export default function Waitlist({
           handleFailure();
         } else {
           const { error: confirmationError } = await supabaseClient.rpc('confirm_email', {
-            waitlist_service: ui.waitlistService
+            waitlist_service: service
           });
 
           setIsLoading(false);
@@ -79,11 +77,11 @@ export default function Waitlist({
           setIsLoading(false);
           handleFailure();
         } else {
-          localStorage.setItem(ui.pendingWaitlistKey, ui.waitlistService);
+          localStorage.setItem(ui.pendingWaitlistKey, service);
 
           const { error: waitlistError } = await supabaseClient.rpc('join_waitlist', {
             waitlist_email: emailAddress,
-            waitlist_service: ui.waitlistService
+            waitlist_service: service
           });
 
           setIsLoading(false);

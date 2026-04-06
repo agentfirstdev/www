@@ -111,9 +111,9 @@ export default function Home({
   const [apiToken, setApiToken] = useState(null);
   const [pendingCheckoutUrl, setPendingCheckoutUrl] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
-  const [isWaitlisted, setIsWaitlisted] = useState(() => {
-    return (JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? []).includes(ui.waitlistService);
-  });
+  const waitlist = JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? [];
+  const [isAiWaitlisted, setIsAiWaitlisted] = useState(waitlist.includes(ui.aiService));
+  const [isCdpWaitlisted, setIsCdpWaitlisted] = useState(waitlist.includes(ui.cdpService));
   const navigate = useNavigate();
   const horizontalDividerOverflow = useBreakpointValue({
     base: ui.dividerBaseOverflow,
@@ -126,10 +126,16 @@ export default function Home({
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
   // const postItColorIndex = useColorModeValue(0, 1);
   const {
-    isOpen: isWaitlistOpen,
-    onOpen: openWaitlist,
-    onClose: closeWaitlist,
-    onToggle: toggleWaitlist
+    isOpen: isAiWaitlistOpen,
+    onOpen: openAiWaitlist,
+    onClose: closeAiWaitlist,
+    onToggle: toggleAiWaitlist
+  } = useDisclosure();
+  const {
+    isOpen: isCdpWaitlistOpen,
+    onOpen: openCdpWaitlist,
+    onClose: closeCdpWaitlist,
+    onToggle: toggleCdpWaitlist
   } = useDisclosure();
   const { isOpen: isLoginOpen, onOpen: openLogin, onClose: closeLogin } = useDisclosure();
   const { isOpen: isConsoleOpen, onOpen: openConsole, onClose: closeConsole } = useDisclosure();
@@ -866,6 +872,77 @@ export default function Home({
             </Button> */}
           </Box>
           <Box
+            id={ui.aiId}
+            pos='relative'
+            px={ui.dividerMargin}
+            py={ui.xsMargin}
+            _before={{
+              pos: 'absolute',
+              left: horizontalDividerOverflow,
+              right: horizontalDividerOverflow,
+              top: 0,
+              bg: 'fg-grid',
+              h: '1px',
+              content: '""'
+            }}
+          >
+            <Heading as='h2' variant='service' fontSize={{ base: '2xl', md: '3xl' }}>
+              {'2. GEO/AEO data '}
+              <Text
+                as='span'
+                variant='pill'
+                borderWidth='1px'
+                rounded='full'
+                px={3.5}
+                py={1.5}
+                fontWeight='bold'
+                textTransform='uppercase'
+                whiteSpace='nowrap'
+                _light={{ borderColor: ui.blueAlpha, bg: ui.lightBlueAlpha }}
+                _dark={{ borderColor: ui.grayAlpha, bg: ui.lightGrayAlpha }}
+              >
+                Coming soon
+              </Text>
+            </Heading>
+            <Text variant='service'>
+              <Text as='strong' variant='co'>
+                Agent First
+              </Text>
+              {' will soon provide '}
+              <Text as='strong' variant='bold'>
+                completion content & grounding sources
+              </Text>
+              {' from frontier AI labs for generative or answer engine optimization.'}
+            </Text>
+            <Box pos='relative'>
+              <Button
+                mt={ui.xxsMargin}
+                w={ui.buttonWidth}
+                h={ui.buttonHeight}
+                isDisabled={isAiWaitlisted}
+                onMouseDown={(event) => {
+                  event.stopPropagation();
+                }}
+                onClick={isInMdView ? toggleAiWaitlist : openAiWaitlist}
+              >
+                {isAiWaitlisted ? ui.waitingLabel : ui.waitLabel}
+              </Button>
+              {isInMdView && (
+                <WaitlistDropdown
+                  service={ui.aiService}
+                  supabaseClient={supabaseClient}
+                  session={session}
+                  isOpen={isAiWaitlistOpen}
+                  join={() => {
+                    setIsAiWaitlisted(true);
+                  }}
+                  close={closeAiWaitlist}
+                  handleKeyPress={handleKeyPress}
+                />
+              )}
+            </Box>
+          </Box>
+          <Box
             id={ui.browsingId}
             pos='relative'
             px={ui.dividerMargin}
@@ -881,7 +958,7 @@ export default function Home({
             }}
           >
             <Heading as='h2' variant='service' fontSize={{ base: '2xl', md: '3xl' }}>
-              2. Uncaptcha’d browsing
+              3. Uncaptcha’d browsing
             </Heading>
             <Text variant='service'>
               <Text as='strong' variant='co'>
@@ -926,7 +1003,7 @@ export default function Home({
             }}
           >
             <Heading as='h2' variant='service' fontSize={{ base: '2xl', md: '3xl' }}>
-              {'3. Webpage interaction '}
+              {'4. Webpage interaction '}
               <Text
                 as='span'
                 variant='pill'
@@ -947,7 +1024,7 @@ export default function Home({
               <Text as='strong' variant='co'>
                 Agent First
               </Text>
-              {' will soon accept '}
+              {' will accept '}
               <Text as='strong' variant='bold'>
                 CDP commands
               </Text>
@@ -959,23 +1036,24 @@ export default function Home({
                 mt={ui.xxsMargin}
                 w={ui.buttonWidth}
                 h={ui.buttonHeight}
-                isDisabled={isWaitlisted}
+                isDisabled={isCdpWaitlisted}
                 onMouseDown={(event) => {
                   event.stopPropagation();
                 }}
-                onClick={isInMdView ? toggleWaitlist : openWaitlist}
+                onClick={isInMdView ? toggleCdpWaitlist : openCdpWaitlist}
               >
-                {isWaitlisted ? ui.waitingLabel : ui.waitLabel}
+                {isCdpWaitlisted ? ui.waitingLabel : ui.waitLabel}
               </Button>
               {isInMdView && (
                 <WaitlistDropdown
+                  service={ui.cdpService}
                   supabaseClient={supabaseClient}
                   session={session}
-                  isOpen={isWaitlistOpen}
+                  isOpen={isCdpWaitlistOpen}
                   join={() => {
-                    setIsWaitlisted(true);
+                    setIsCdpWaitlisted(true);
                   }}
-                  close={closeWaitlist}
+                  close={closeCdpWaitlist}
                   handleKeyPress={handleKeyPress}
                 />
               )}
@@ -1662,15 +1740,28 @@ export default function Home({
         </ListItem>
       </OrderedList> */}
       {!isInMdView && (
-        <WaitlistModal
-          supabaseClient={supabaseClient}
-          session={session}
-          isOpen={isWaitlistOpen}
-          join={() => {
-            setIsWaitlisted(true);
-          }}
-          close={closeWaitlist}
-        />
+        <>
+          <WaitlistModal
+            service={ui.aiService}
+            supabaseClient={supabaseClient}
+            session={session}
+            isOpen={isAiWaitlistOpen}
+            join={() => {
+              setIsAiWaitlisted(true);
+            }}
+            close={closeAiWaitlist}
+          />
+          <WaitlistModal
+            service={ui.cdpService}
+            supabaseClient={supabaseClient}
+            session={session}
+            isOpen={isCdpWaitlistOpen}
+            join={() => {
+              setIsCdpWaitlisted(true);
+            }}
+            close={closeCdpWaitlist}
+          />
+        </>
       )}
       <LoginModal
         supabaseClient={supabaseClient}

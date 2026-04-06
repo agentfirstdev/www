@@ -6,6 +6,7 @@ import Waitlist from './Waitlist';
 import * as ui from '../config/ui';
 
 export default function WaitlistDropdown({
+  service,
   supabaseClient,
   session,
   isOpen,
@@ -67,6 +68,7 @@ export default function WaitlistDropdown({
       </Button>
       <Divider mt={2} />
       <Waitlist
+        service={service}
         supabaseClient={supabaseClient}
         session={session}
         fontSize='md'

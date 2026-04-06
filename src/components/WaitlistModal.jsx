@@ -12,7 +12,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import * as ui from '../config/ui';
 import Waitlist from './Waitlist';
 
-export default function WaitlistModal({ supabaseClient, session, isOpen, join, close }) {
+export default function WaitlistModal({ service, supabaseClient, session, isOpen, join, close }) {
   return (
     <Modal isOpen={isOpen} isCentered returnFocusOnClose={false} onClose={close}>
       <ModalOverlay />
@@ -42,6 +42,7 @@ export default function WaitlistModal({ supabaseClient, session, isOpen, join, c
         <Divider mt={2} />
         <ModalBody p={0}>
           <Waitlist
+            service={service}
             supabaseClient={supabaseClient}
             session={session}
             fontSize='lg'

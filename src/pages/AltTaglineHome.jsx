@@ -104,7 +104,7 @@ export default function Home({
   const [pendingCheckoutUrl, setPendingCheckoutUrl] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
   const [isWaitlisted, setIsWaitlisted] = useState(() => {
-    return (JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? []).includes(ui.waitlistService);
+    return (JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? []).includes(ui.cdpService);
   });
   const navigate = useNavigate();
   const horizontalDividerOverflow = useBreakpointValue({
@@ -923,6 +923,7 @@ export default function Home({
               </Button>
               {isInMdView && (
                 <WaitlistDropdown
+                  service={ui.cdpService}
                   supabaseClient={supabaseClient}
                   session={session}
                   isOpen={isWaitlistOpen}
@@ -1543,6 +1544,7 @@ export default function Home({
       </OrderedList>
       {!isInMdView && (
         <WaitlistModal
+          service={ui.cdpService}
           supabaseClient={supabaseClient}
           session={session}
           isOpen={isWaitlistOpen}
