@@ -1024,7 +1024,7 @@ export default function Home({
               <Text as='strong' variant='co'>
                 Agent First
               </Text>
-              {' will accept '}
+              {' will be accepting '}
               <Text as='strong' variant='bold'>
                 CDP commands
               </Text>
