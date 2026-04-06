@@ -170,11 +170,9 @@ small {
   font-size: 15px;
 }
 
-#changelog hr, #changelog li {
-  margin-top: 0.5em;
-}
-
 #changelog hr {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
   border-color: var(--chakra-colors-fg-grid);
 }
 
@@ -184,8 +182,13 @@ small {
 
 #changelog h3 {
   margin-top: 1.5em;
+  margin-bottom: 0.5em;
   font-size: 17px;
   font-weight: bold;
+}
+
+#changelog li, #changelog code {
+  line-height: 2.25;
 }
 
 #changelog li {
@@ -196,13 +199,17 @@ small {
   font-size: 13px;
 }
 
-#changelog code:last-child {
+#changelog code:not(:last-of-type) {
+  color: #50a14f;
+}
+
+#changelog code:last-of-type {
   margin-left: 0.25em;
   color: var(--chakra-colors-fg-gutter);
 }
 
-#changelog code:not(:last-child) {
-  color: #50a14f;
+#changelog br + code:last-of-type {
+  margin-left: 0;
 }
 
 #changelog a {
