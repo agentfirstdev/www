@@ -1,7 +1,6 @@
 ### 2026
 
-* Launched [experimental AI endpoint](/#ai) for generative or language engine optimization.
-  `April 8`
+* Launched [experimental AI endpoint](/#ai) for GEO/AEO. `April 7`
 * Unblocked **YouTube browsing**;  
   unblocked **Facebook browsing**;  
   unblocked **TikTok browsing**;  
