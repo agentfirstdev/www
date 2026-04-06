@@ -1,9 +1,11 @@
 ### 2026
 
 * Launched [experimental AI endpoint](/#ai) for GEO/AEO. `April 7`
-* Unblocked **YouTube browsing**;  
-  unblocked **Facebook browsing**;  
-  unblocked **TikTok browsing**;  
+* Unblocked browsing of:
+  * **YouTube**,
+  * **Facebook**,
+  * **TikTok**;
+
   improved **DataDome bypassing**.  
   `April 5`
 ----------------------------------------------------------------------------------------------------
@@ -14,8 +16,10 @@
   made browsing, CDP sessions shareable;  
   started [feature comparison](/#features).  
   `March 24`
-* Improved **reCAPTCHA v3 bypassing**;  
-  improved **Akamai Edgesuite bypassing**.  
+* Improved bypassing of:
+  * **reCAPTCHA v3**,
+  * **Akamai Edgesuite**.
+
   `March 23`
 * Integrated [optional onboarding calls](/#cta) into site. `March 21`
 * Denoised

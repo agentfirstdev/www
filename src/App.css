@@ -195,6 +195,10 @@ small {
   margin-left: 1em;
 }
 
+#changelog li li {
+  line-height: 1.5;
+}
+
 #changelog code {
   font-size: 13px;
 }
@@ -208,8 +212,12 @@ small {
   color: var(--chakra-colors-fg-gutter);
 }
 
-#changelog br + code:last-of-type {
+#changelog br + code:last-of-type, #changelog code:only-child {
   margin-left: 0;
+}
+
+#changelog strong {
+  font-weight: 500;
 }
 
 #changelog a {
