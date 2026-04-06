@@ -1,7 +1,7 @@
 ### 2026
 
-* Launched [experimental AI endpoint](/#ai) to provide chat completions for generative or language
-  engine optimization. `April 7`
+* Launched [experimental AI endpoint](/#ai) for generative or language engine optimization.
+  `April 8`
 * Unblocked **YouTube browsing**;  
   unblocked **Facebook browsing**;  
   unblocked **TikTok browsing**;  
