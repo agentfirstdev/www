@@ -204,6 +204,7 @@ export default extendTheme({
           display: { base: 'none', lg: 'inline' },
           position: 'absolute',
           right: ui.codeHorizontalMargin,
+          top: 'auto',
           bottom: ui.codeVerticalMargin,
           fontSize: ui.codeFontSize,
           fontWeight: 'normal',
