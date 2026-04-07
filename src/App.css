@@ -208,12 +208,8 @@ small {
 }
 
 #changelog code:last-of-type {
-  margin-left: 0.25em;
   color: var(--chakra-colors-fg-gutter);
-}
-
-#changelog br + code:last-of-type, #changelog code:only-child {
-  margin-left: 0;
+  text-wrap: nowrap;
 }
 
 #changelog a {
