@@ -33,11 +33,11 @@
 ----------------------------------------------------------------------------------------------------
 * Improved **reCAPTCHA v2 solving**. `February 26`
 * Added [browsing param](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters) to
-  disable captcha-solving. `February 21`
-* Offered [opt-in waitlist](/#cdp) for upcoming CDP service. `February 18`
+  prevent solving captchas. `February 21`
+* Opened [opt-in waitlist](/#cdp) for upcoming CDP service. `February 18`
 * Implemented
   [HTML-to-Markdown conversion](https://doc.agentfirst.dev/endpoints/browser#response-format) for
-  RAG pipelines. `February 16`
+  RAG use cases. `February 16`
 * Included **free trial** with account signup. `February 9`
 * Launched [self-service checkout](/#pricing). `February 7`
 * Extended bypassing to **new Cloudflare Turnstile variant**. `February 6`
