@@ -1,6 +1,6 @@
 ### 2026
 
-* Launched [experimental AI endpoint](/#ai) for GEO/AEO.&nbsp; `April 7`
+* Launched [experimental AI endpoint](/#ai) for GEO/AEO.&nbsp; `April 8`
 * Unblocked browsing for:
   * YouTube,
   * Facebook,
@@ -41,7 +41,7 @@
 * Included **free trial** with account signup.&nbsp; `February 9`
 * Launched [self-service checkout](/#pricing).&nbsp; `February 7`
 * Extended bypassing to **new Cloudflare Turnstile variant**.&nbsp; `February 6`
-* Created [web dashboard](/dashboard) for API usage and performance data.&nbsp; `February 1`
+* Created [web dashboard](/dashboard) for API usage and performance data.&nbsp; `February 2`
 ----------------------------------------------------------------------------------------------------
 * Granted site access to legacy API accounts.&nbsp; `January 28`
 * Improved site responsiveness.&nbsp; `January 26`
