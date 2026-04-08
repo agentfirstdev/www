@@ -14,7 +14,8 @@ export default function Changelog() {
   return (
     <Box
       id={ui.changelogId}
-      my={ui.xsMargin}
+      mt={2}
+      mb={ui.xsMargin}
       px={{ base: ui.xsMargin, md: ui.xxlMargin }}
       textAlign='left'
       dangerouslySetInnerHTML={{ __html: renderer.render(changelog) }}
