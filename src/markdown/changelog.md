@@ -43,7 +43,7 @@
 * Extended bypassing to **new Cloudflare Turnstile variant**.&nbsp; `February 6`
 * Created [web dashboard](/dashboard) for API usage and performance data.&nbsp; `February 2`
 ----------------------------------------------------------------------------------------------------
-* Granted site access to legacy API accounts.&nbsp; `January 28`
+* Granted site access to **legacy API accounts**.&nbsp; `January 28`
 * Improved site responsiveness.&nbsp; `January 26`
 * Exposed [account management](/settings) via site.&nbsp; `January 25`
 * Implemented
