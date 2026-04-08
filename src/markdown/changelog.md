@@ -23,12 +23,12 @@
   `March 23`
 * Integrated [optional onboarding calls](/#cta) into site.&nbsp; `March 21`
 * Denoised
-  [HTML-to-Markdown conversion](https://doc.agentfirst.dev/endpoints/browser#response-format) to
-  optimize output for LLMs.&nbsp; `March 20`
+  [Markdown conversion](https://doc.agentfirst.dev/endpoints/browser#response-format) to optimize
+  output for LLMs.&nbsp; `March 20`
 * Updated [site design](https://github.com/agentfirstdev/www/pull/3);  
   implemented [runnable code samples](/#services).  
   `March 19`
-* Launched [experimental CDP endpoint](/#cdp) for custom browser automation.&nbsp; `March 8`
+* Launched [experimental CDP endpoint](/#cdp) for custom automation.&nbsp; `March 8`
 * Unblocked **Reddit browsing**.&nbsp; `March 1`
 ----------------------------------------------------------------------------------------------------
 * Improved **reCAPTCHA v2 solving**.&nbsp; `February 26`
@@ -37,11 +37,11 @@
 * Opened [opt-in waitlist](/#cdp) for upcoming CDP service.&nbsp; `February 18`
 * Implemented
   [HTML-to-Markdown conversion](https://doc.agentfirst.dev/endpoints/browser#response-format) for
-  RAG use cases.&nbsp; `February 16`
+  RAG.&nbsp; `February 16`
 * Included **free trial** with account signup.&nbsp; `February 9`
 * Launched [self-service checkout](/#pricing).&nbsp; `February 7`
-* Extended bypassing to **new Cloudflare Turnstile variant**.&nbsp; `February 6`
-* Created [web dashboard](/dashboard) for API usage and performance data.&nbsp; `February 2`
+* Extended **Cloudflare Turnstile bypassing** to new variant.&nbsp; `February 6`
+* Created [web dashboard](/dashboard) for API usage, performance data.&nbsp; `February 2`
 ----------------------------------------------------------------------------------------------------
 * Granted site access to legacy API accounts.&nbsp; `January 28`
 * Exposed [account management](/settings) via site.&nbsp; `January 25`
