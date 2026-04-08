@@ -28,7 +28,7 @@
 * Updated [site design](https://github.com/agentfirstdev/www/pull/3);  
   implemented [runnable code samples](/#services).  
   `March 19`
-* Launched [experimental CDP endpoint](/#cdp) for custom automation.&nbsp; `March 8`
+* Launched [experimental CDP endpoint](/#cdp) for browser automation.&nbsp; `March 8`
 * Unblocked **Reddit browsing**.&nbsp; `March 1`
 ----------------------------------------------------------------------------------------------------
 * Improved **reCAPTCHA v2 solving**.&nbsp; `February 26`
