@@ -41,6 +41,19 @@
 * Included **free trial** with account signup.&nbsp; `February 9`
 * Launched [self-service checkout](/#pricing).&nbsp; `February 7`
 * Extended bypassing to **new Cloudflare Turnstile variant**.&nbsp; `February 6`
+* Added [web dashboard](/dashboard) to present API usage and performance.&nbsp; `February 1`
+----------------------------------------------------------------------------------------------------
+* Created web accounts for legacy API accounts.&nbsp; `January 28`
+* Made site responsive.&nbsp; `January 26`
+* Exposed [account settings](/settings) on site.&nbsp; `January 25`
+* Implemented
+  [browsing speed upgrades](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
+  `January 11`
+* Added accommodations for **browsing slow pages**.&nbsp; `January 8`
+* Launched [this site](/);  
+  added [hourly granularity](https://doc.agentfirst.dev/endpoints/usage#report-parameters) to
+  reporting options.  
+  `January 5`
 
 ### 2025
 
