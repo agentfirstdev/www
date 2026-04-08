@@ -174,7 +174,7 @@ export default function App() {
                 id: cdpId,
                 position: 'top',
                 status: 'success',
-                description: ui.cdpMessage,
+                description: ui.waitlistMessages[service],
                 duration: null,
                 isClosable: true
               });

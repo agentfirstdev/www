@@ -90,7 +90,6 @@ export const codeMessage = 'Code copied to clipboard';
 export const copiedMessage = 'Token copied to clipboard';
 // export const checkoutMessage = 'Credits added to your account';
 export const confirmationMessage = 'Check your email for a confirmation link';
-export const cdpMessage = 'We’ll let you know as soon as webpage interaction is available';
 export const loadMessage = 'Oops, something went wrong; please reload the page';
 export const errorMessage = 'Oops, something went wrong; please try again later';
 export const ctaId = 'cta';
@@ -240,6 +239,10 @@ export const timelineLabels = [
   { year: 2026, paradigm: 'Agent first', log: 0.9 }
 ];
 export const codeLabels = { sh: 'cURL', py: 'Python', js: 'Node.js' };
+export const waitlistMessages = {
+  ai: 'We’ll let you know as soon as GEO/AEO data is available',
+  cdp: 'We’ll let you know as soon as webpage interaction is available'
+};
 
 // Numbers
 export const cpm = 1;

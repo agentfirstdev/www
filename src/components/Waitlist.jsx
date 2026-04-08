@@ -147,7 +147,7 @@ export default function Waitlist({
           fontSize={fontSize}
           color='fg-success'
         >
-          {isUsingSessionEmail ? ui.cdpMessage : ui.confirmationMessage}
+          {isUsingSessionEmail ? ui.waitlistMessages[service] : ui.confirmationMessage}
         </Text>
       )}
     </Box>
