@@ -196,7 +196,14 @@ export default function Dashboard({
   return session && !isSessionLoading ? (
     hasChartLoaded.current ? (
       <>
-        <Flex my={ui.xsMargin} justify='center' gap={3}>
+        <Flex
+          mx={ui.xsMargin}
+          mt={ui.smMargin}
+          mb={6}
+          justify={{ base: 'left', md: 'center' }}
+          gap={3}
+          wrap='wrap'
+        >
           <DateRangePicker
             startDate={startDate}
             startDateId='start-date'
