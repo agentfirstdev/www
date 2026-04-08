@@ -123,6 +123,9 @@ export default function LoginDropdown({
             <MenuItem as='a' href={ui.docUrl}>
               {ui.docLabel}
             </MenuItem>
+            <MenuItem as='a' href={ui.changelogPath}>
+              {ui.changelogLabel}
+            </MenuItem>
             {/* <MenuItem as='a' href={ui.aboutPath}>
               {ui.aboutLabel}
             </MenuItem>
