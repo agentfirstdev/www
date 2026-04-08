@@ -247,7 +247,10 @@ export default extendTheme({
       baseStyle: { field: { borderColor: 'chakra-border-color', bg: 'bg-muted' } },
       variants: {
         outline: {
-          field: { _focus: { borderColor: 'bg-button', boxShadow: ui.outline('bg-button') } }
+          field: {
+            borderColor: 'chakra-border-color !important',
+            _focus: { borderColor: 'bg-button', boxShadow: ui.outline('bg-button') }
+          }
         },
         sidebar: {
           field: { borderWidth: '1px', _light: { bg: 'whiteAlpha.700' }, _dark: { bg: 'gray.700' } }
