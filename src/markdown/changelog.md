@@ -45,7 +45,9 @@
 * Extended **Cloudflare Turnstile bypassing** to new variant.&nbsp; `February 6`
 * Created [web dashboard](/dashboard) for API usage, performance data.&nbsp; `February 2`
 ----------------------------------------------------------------------------------------------------
-* Granted site access to legacy API accounts.&nbsp; `January 28`
+* Started **caching search results**;  
+  granted site access to legacy API accounts.  
+  `January 28`
 * Exposed [account management](/settings) via site.&nbsp; `January 25`
 * Implemented
   [browsing speed upgrades](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
