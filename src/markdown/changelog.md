@@ -61,7 +61,7 @@
 * Introduced
   [browsing difficulty pools](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
   `October 27`
-* Launched [search endpoint](/#search) to expose popular search results;  
+* Launched [search endpoint](/#search) to unblock popular search results;  
   unblocked **Amazon browsing**.  
   `October 24`
 * Implemented **Cloudflare Turnstile bypassing**. `October 17`
