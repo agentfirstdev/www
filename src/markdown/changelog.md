@@ -1,5 +1,6 @@
 ### 2026
 
+* Retired `format=json` for search.&nbsp; `April 10`
 * Launched [experimental AI endpoint](/#ai) for GEO/AEO.&nbsp; `April 8`
 * Unblocked browsing for:
   * YouTube,
