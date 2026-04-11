@@ -1,6 +1,7 @@
 ### 2026
 
-* Retired search `format=json`.&nbsp; `April 10`
+* Improved DataDome bypassing more.&nbsp; `April 12`
+* Retired search `format=json`.&nbsp; `April 11`
 * Launched [experimental AI endpoint](/#ai) for GEO/AEO.&nbsp; `April 8`
 * Unblocked browsing for:
   * YouTube,
