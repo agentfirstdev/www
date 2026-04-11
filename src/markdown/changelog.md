@@ -55,3 +55,16 @@
   included [hourly granularity](https://doc.agentfirst.dev/endpoints/usage#report-parameters) in
   reporting options.  
   `January 5`
+
+### 2025
+
+* Introduced
+  [browsing difficulty pools](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
+  `October 27`
+* Launched [search endpoint](/#search) to expose popular search results;  
+  unblocked **Amazon browsing**.  
+  `October 24`
+* Implemented **Cloudflare Turnstile bypassing**. `October 17`
+* Launched [browsing endpoint](/#browser) to unblock hardened public sites;  
+  started [this changelog](changelog).  
+  `October 14`
