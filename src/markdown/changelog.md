@@ -61,9 +61,9 @@
 ### 2025
 
 * Unblocked **Expedia browsing**.&nbsp; `December 31`
-* Reduced server-side errors.&nbsp; `December 28`
-* Launched [usage endpoint](https://doc.agentfirst.dev/endpoints/usage) for generating
-  reports.&nbsp; `December 26`
+* Decreased server-side errors.&nbsp; `December 28`
+* Launched [reporting endpoint](https://doc.agentfirst.dev/endpoints/usage) to share usage
+  data.&nbsp; `December 26`
 * Unblocked **Mercado Libre browsing**.&nbsp; `December 23`
 * Made [search params](https://doc.agentfirst.dev/endpoints/search#search-parameters)
   SerpApi-compatible.&nbsp; `December 19`
