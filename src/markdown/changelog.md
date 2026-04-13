@@ -13,7 +13,7 @@
 ----------------------------------------------------------------------------------------------------
 * Restored search success rate to **95%+**.&nbsp; `March 29`
 * Published [new privacy policy](privacy).&nbsp; `March 27`
-* Implemented **Playwright compatibility** for CDP service.&nbsp; `March 25`
+* Added **Playwright compatibility** to CDP service.&nbsp; `March 25`
 * Sped autoscaling of search, browsing up;  
   made browsing, CDP sessions shareable;  
   started [feature comparison](/#features).  
@@ -40,7 +40,7 @@
 * Introduced
   [HTML-to-Markdown conversion](https://doc.agentfirst.dev/endpoints/browser#response-format) for
   RAG;  
-  supported `ip=residential|isp|datacenter` for choosing type of IP address.  
+  supported `ip=residential|isp|datacenter` for choosing IP type.  
   `February 16`
 * Included **free trial** with account signup.&nbsp; `February 9`
 * Launched [self-service checkout](/#pricing).&nbsp; `February 7`
@@ -81,7 +81,7 @@
 * Launched [whitelabel services](https://doc.agentfirst.dev/whitelabeling) for resellers.&nbsp;
   `November 12`
 * Implemented **search, browsing autoscaling**;  
-  supported `filter=0` for including duplicate Google results.  
+  supported `filter=0` for including duplicate Google search results.  
   `November 11`
 * Introduced
   [browsing difficulty pools](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
