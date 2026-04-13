@@ -40,7 +40,7 @@
 * Introduced
   [HTML-to-Markdown conversion](https://doc.agentfirst.dev/endpoints/browser#response-format) for
   RAG;  
-  added `ip=residential|isp|datacenter` support for picking type of IP address.  
+  supported `ip=residential|isp|datacenter` for choosing type of IP address.  
   `February 16`
 * Included **free trial** with account signup.&nbsp; `February 9`
 * Launched [self-service checkout](/#pricing).&nbsp; `February 7`
@@ -81,7 +81,7 @@
 * Launched [whitelabel services](https://doc.agentfirst.dev/whitelabeling) for resellers.&nbsp;
   `November 12`
 * Implemented **search, browsing autoscaling**;  
-  added `filter=0` support for including duplicate Google search results.  
+  supported `filter=0` for including duplicate Google results.  
   `November 11`
 * Introduced
   [browsing difficulty pools](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
