@@ -60,13 +60,30 @@
 
 ### 2025
 
+* Unblocked **Expedia browsing**.&nbsp; `December 31`
+* Reduced server-side errors.&nbsp; `December 28`
+* Launched [usage endpoint](https://doc.agentfirst.dev/endpoints/usage) for generating
+  reports.&nbsp; `December 26`
+* Unblocked **Mercado Libre browsing**.&nbsp; `December 23`
+* Made [search params](https://doc.agentfirst.dev/endpoints/search#search-parameters)
+  SerpApi-compatible.&nbsp; `December 19`
+* Implemented **Akamai Edgesuite bypassing**.&nbsp; `December 17`
+* Accelerated country-targeted requests.&nbsp; `December 12`
+----------------------------------------------------------------------------------------------------
+* Implemented **DataDome bypassing**;  
+  improved **Cloudflare Turnstile bypassing**.  
+  `November 24`
+* Launched [whitelabel services](https://doc.agentfirst.dev/whitelabeling) for resellers.&nbsp;
+  `November 12`
+* Implemented **search, browsing autoscaling**.&nbsp; `November 11`
 * Introduced
   [browsing difficulty pools](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
-  `October 27`
+  `November 3`
+----------------------------------------------------------------------------------------------------
 * Launched [search endpoint](/#search) to unblock popular search results;  
   unblocked **Amazon browsing**.  
   `October 24`
-* Implemented **Cloudflare Turnstile bypassing**. `October 17`
+* Implemented **Cloudflare Turnstile bypassing**.&nbsp; `October 17`
 * Launched [browsing endpoint](/#browser) to unblock hardened public sites;  
   started [this changelog](changelog).  
   `October 14`
