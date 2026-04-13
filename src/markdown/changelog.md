@@ -13,7 +13,7 @@
 ----------------------------------------------------------------------------------------------------
 * Restored search success rate to **95%+**.&nbsp; `March 29`
 * Published [new privacy policy](privacy).&nbsp; `March 27`
-* Added **Playwright compatibility** to CDP service.&nbsp; `March 25`
+* Implemented **Playwright compatibility** for CDP service.&nbsp; `March 25`
 * Sped autoscaling of search, browsing up;  
   made browsing, CDP sessions shareable;  
   started [feature comparison](/#features).  
@@ -34,12 +34,14 @@
 * Unblocked **Reddit browsing**.&nbsp; `March 1`
 ----------------------------------------------------------------------------------------------------
 * Improved **reCAPTCHA v2 solving**.&nbsp; `February 26`
-* Added [browsing param](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters) to opt
-  out of solving captchas.&nbsp; `February 21`
+* Added [browsing param](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters) for
+  opting out of solving captchas.&nbsp; `February 21`
 * Opened [opt-in waitlist](/#cdp) for upcoming CDP service.&nbsp; `February 18`
-* Implemented
+* Introduced
   [HTML-to-Markdown conversion](https://doc.agentfirst.dev/endpoints/browser#response-format) for
-  RAG.&nbsp; `February 16`
+  RAG;  
+  added `ip=residential|isp|datacenter` support for picking type of IP address.  
+  `February 16`
 * Included **free trial** with account signup.&nbsp; `February 9`
 * Launched [self-service checkout](/#pricing).&nbsp; `February 7`
 * Extended **Cloudflare Turnstile bypassing** to new variant.&nbsp; `February 6`
@@ -49,9 +51,12 @@
   granted site access to legacy API accounts.  
   `January 28`
 * Exposed [account management](/settings) via site.&nbsp; `January 25`
+* Added `format=raw` for fetching unrendered browser HTML.&nbsp; `January 22`
 * Introduced
   [browsing speed upgrades](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
   `January 11`
+* Added [search param](https://doc.agentfirst.dev/endpoints/search#search-parameters) for
+  controlling display language.&nbsp; `January 9`
 * Added accommodations for browsing slow pages.&nbsp; `January 8`
 * Launched [this site](/);  
   included [hourly granularity](https://doc.agentfirst.dev/endpoints/usage#report-parameters) in
@@ -75,7 +80,9 @@
   `November 24`
 * Launched [whitelabel services](https://doc.agentfirst.dev/whitelabeling) for resellers.&nbsp;
   `November 12`
-* Implemented **search, browsing autoscaling**.&nbsp; `November 11`
+* Implemented **search, browsing autoscaling**;  
+  added `filter=0` support for including duplicate Google search results.  
+  `November 11`
 * Introduced
   [browsing difficulty pools](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
   `November 3`
