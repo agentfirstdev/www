@@ -61,7 +61,7 @@
 ### 2025
 
 * Unblocked **Expedia browsing**.&nbsp; `December 31`
-* Decreased server-side errors.&nbsp; `December 28`
+* Resolved excess server-side errors.&nbsp; `December 28`
 * Launched [reporting endpoint](https://doc.agentfirst.dev/endpoints/usage) to share usage
   data.&nbsp; `December 26`
 * Unblocked **Mercado Libre browsing**.&nbsp; `December 23`
