@@ -272,8 +272,8 @@ export default extendTheme({
       baseStyle: {
         fontWeight: 'bold',
         _disabled: {
-          _light: { _hover: { bg: 'accent.secondary !important' } },
-          _dark: { _hover: { bg: 'brand.primary !important' } }
+          _light: { _hover: { bg: 'accent.secondary' } },
+          _dark: { _hover: { bg: 'brand.primary' } }
         },
         _hover: { borderColor: 'transparent' },
         _focus: { shadow: ui.shadowStyle }
@@ -297,7 +297,9 @@ export default extendTheme({
           h: ui.controlDimension,
           fontSize: { base: 'md', md: 'lg' },
           color: 'bg-button',
-          _disabled: { _hover: { borderColor: 'bg-button', bg: 'inherit', color: 'bg-button' } },
+          _disabled: {
+            _hover: { borderColor: 'bg-button', bg: 'inherit !important', color: 'bg-button' }
+          },
           _hover: {
             borderColor: 'bg-inverted',
             bg: 'transparent',
