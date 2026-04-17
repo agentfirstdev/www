@@ -1,5 +1,7 @@
 ### 2026
 
+* Added [awaiting param](https://doc.agentfirst.dev/endpoints/search#search-parameters) for loading
+  lazy search result types.&nbsp; `April 16`
 * Improved DataDome bypassing more.&nbsp; `April 12`
 * Retired search `format=json`.&nbsp; `April 11`
 * Launched [experimental AI endpoint](/#ai) for GEO/AEO.&nbsp; `April 8`
