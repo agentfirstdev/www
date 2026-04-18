@@ -1,7 +1,7 @@
 ### 2026
 
-* Added [Perplexity, Copilot support](https://doc.agentfirst.dev/endpoints/ai#chat-parameters) to AI
-  endpoint.&nbsp; `April 17`
+* Integrated [Perplexity, Copilot support](https://doc.agentfirst.dev/endpoints/ai#chat-parameters)
+  into AI service.&nbsp; `April 17`
 * Improved DataDome bypassing more.&nbsp; `April 12`
 * Retired search `format=json`.&nbsp; `April 11`
 * Launched [experimental AI endpoint](/#ai) for GEO/AEO.&nbsp; `April 8`
