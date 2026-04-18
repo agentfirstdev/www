@@ -1563,7 +1563,7 @@ export default function Home({
                   <Text as='strong' variant='bold'>
                     Massive
                   </Text>
-                  {' that’s focused on serving AI agents.'}
+                  {' focused on serving AI agents.'}
                 </Text>
               </CardBody>
               <CardFooter>
@@ -1671,18 +1671,15 @@ export default function Home({
                   <Text as='strong' variant='name'>
                     Brain
                   </Text>
-                  {' is a cofounder agent we’re creating to run the boring parts of '}
+                  {' is a cofounder agent we’re training to run the boring parts of '}
                   <Text as='strong' variant='footerCo'>
                     Agent First
                   </Text>
-                  {' and to dogfood our services. Although '}
-                  <Text as='strong' variant='name'>
-                    Brain
-                  </Text>
-                  {' isn’t publicly available yet, the search, AI, and browsing services that '}
-                  {'augment decision-making context are and '}
+                  {' and dogfood our services. Although the agent itself isn’t publicly available '}
+                  yet, the search and browsing services that augment its decision context with
+                  {' online data are and you can '}
                   <Link variant='team' href={ui.ctaPath}>
-                    you can try them for free
+                    try them for free
                   </Link>
                   {'. '}
                   <Text as='strong' variant='name'>
@@ -1696,7 +1693,7 @@ export default function Home({
                   >
                     Franck
                   </Link>
-                  {', who cofounded the largest startup community in the world, '}
+                  {', who cofounded the largest startup community ever, '}
                   <Text as='strong' variant='bold'>
                     Startup Weekend
                   </Text>
