@@ -1671,23 +1671,7 @@ export default function Home({
                   <Text as='strong' variant='name'>
                     Brain
                   </Text>
-                  {' is a cofounder agent we’re collaborating on with '}
-                  <Link
-                    variant='team'
-                    href='https://www.linkedin.com/in/francknouyrigat/'
-                    isExternal
-                  >
-                    Franck
-                  </Link>
-                  {', who cofounded the startup community '}
-                  <Text as='strong' variant='bold'>
-                    Startup Weekend
-                  </Text>
-                  {' and AI investor '}
-                  <Text as='strong' variant='bold'>
-                    No Cap
-                  </Text>
-                  {', to run the boring parts of '}
+                  {' is a cofounder agent we’re creating to run the boring parts of '}
                   <Text as='strong' variant='footerCo'>
                     Agent First
                   </Text>
@@ -1695,15 +1679,31 @@ export default function Home({
                   <Text as='strong' variant='name'>
                     Brain
                   </Text>
-                  {' isn’t publicly available yet, you can try another agent we’re '}
-                  <Text as='span' textDecoration='line-through'>
-                    dog
-                  </Text>
-                  llamafooding that is, a “meta-LLM” that evaluates and combines responses from
-                  {' popular large language models, called '}
-                  <Link variant='team' href={ui.demoUrl} isExternal>
-                    Llamapile
+                  {' isn’t publicly available yet, the search, AI, and browsing services that '}
+                  {'augment decision-making context are and '}
+                  <Link variant='team' href={ui.ctaPath}>
+                    you can try them for free
                   </Link>
+                  {'. '}
+                  <Text as='strong' variant='name'>
+                    Brain
+                  </Text>
+                  {' is a collaboration with '}
+                  <Link
+                    variant='team'
+                    href='https://www.linkedin.com/in/francknouyrigat/'
+                    isExternal
+                  >
+                    Franck
+                  </Link>
+                  {', who cofounded the largest startup community in the world, '}
+                  <Text as='strong' variant='bold'>
+                    Startup Weekend
+                  </Text>
+                  {', and first AI investor, '}
+                  <Text as='strong' variant='bold'>
+                    No Cap
+                  </Text>
                   .
                 </Text>
               </CardBody>

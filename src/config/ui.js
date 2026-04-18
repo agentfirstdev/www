@@ -107,6 +107,7 @@ export const citationsId = 'citations';
 export const changelogId = 'changelog';
 export const legalId = 'legal';
 export const altPath = '/alt';
+export const ctaPath = `/#${ctaId}`;
 export const servicesPath = `/#${servicesId}`;
 export const comparisonPath = `/#${comparisonId}`;
 export const pricingPath = `/#${pricingId}`;
