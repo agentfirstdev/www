@@ -1,7 +1,7 @@
 ### 2026
 
 * Introduced
-  [high-difficulty browsing](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
+  [high-difficulty pool](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
   `April 20`
 * Integrated [Perplexity, Copilot support](https://doc.agentfirst.dev/endpoints/ai#chat-parameters)
   into AI service.&nbsp; `April 17`
