@@ -1,5 +1,6 @@
 ### 2026
 
+* Mapped decreasingly reliable Google UULEs to [real locations](/#geotargeting).&nbsp; `April 23`
 * Introduced
   [high-difficulty pool](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
   `April 20`
