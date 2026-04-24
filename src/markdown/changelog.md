@@ -1,6 +1,6 @@
 ### 2026
 
-* Started [automatically geotargeting](/#geotargeting) unreliable Google UULEs.&nbsp; `April 23`
+* Started augmenting Google UULEs with [automatic geotargeting](/#geotargeting).&nbsp; `April 23`
 * Introduced
   [high-difficulty pool](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
   `April 20`
