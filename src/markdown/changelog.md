@@ -1,9 +1,9 @@
 ### 2026
 
-* Started augmenting Google UULEs with [automatic geotargeting](/#geotargeting).&nbsp; `April 23`
 * Introduced
   [high-difficulty pool](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
-  `April 20`
+  `April 27`
+* Started augmenting Google UULEs with [automatic geotargeting](/#geotargeting).&nbsp; `April 23`
 * Integrated [Perplexity, Copilot support](https://doc.agentfirst.dev/endpoints/ai#chat-parameters)
   into AI service.&nbsp; `April 17`
 * Improved DataDome bypassing more.&nbsp; `April 12`
