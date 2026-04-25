@@ -896,7 +896,7 @@ export default function Home({
               <Text as='strong' variant='co'>
                 Agent First
               </Text>
-              {' will soon provide '}
+              {' provides '}
               <Text as='strong' variant='bold'>
                 completion content & grounding sources
               </Text>
@@ -1019,7 +1019,7 @@ export default function Home({
               <Text as='strong' variant='co'>
                 Agent First
               </Text>
-              {' will be accepting '}
+              {' will soon accept '}
               <Text as='strong' variant='bold'>
                 CDP commands
               </Text>
