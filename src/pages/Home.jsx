@@ -48,6 +48,9 @@ import heroSh from '../markdown/hero-sh.md?raw';
 import searchSh from '../markdown/search-sh.md?raw';
 import searchPy from '../markdown/search-py.md?raw';
 import searchJs from '../markdown/search-js.md?raw';
+import aiSh from '../markdown/ai-sh.md?raw';
+import aiPy from '../markdown/ai-py.md?raw';
+import aiJs from '../markdown/ai-js.md?raw';
 import browsingSh from '../markdown/browsing-sh.md?raw';
 import browsingPy from '../markdown/browsing-py.md?raw';
 import browsingJs from '../markdown/browsing-js.md?raw';
@@ -112,7 +115,7 @@ export default function Home({
   const [pendingCheckoutUrl, setPendingCheckoutUrl] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
   const waitlist = JSON.parse(localStorage.getItem(ui.waitlistKey)) ?? [];
-  const [isAiWaitlisted, setIsAiWaitlisted] = useState(waitlist.includes(ui.aiService));
+  // const [isAiWaitlisted, setIsAiWaitlisted] = useState(waitlist.includes(ui.aiService));
   const [isCdpWaitlisted, setIsCdpWaitlisted] = useState(waitlist.includes(ui.cdpService));
   const navigate = useNavigate();
   const horizontalDividerOverflow = useBreakpointValue({
@@ -124,13 +127,13 @@ export default function Home({
   const invertedColor = useColorModeValue(ui.resolutionBlue, ui.cornflowerBlue);
   const textColor = useColorModeValue(ui.charcoalBlue, ui.whiteAlpha);
   const timelineColor = useColorModeValue(ui.blackAlpha, ui.whiteAlpha);
-  // const postItColorIndex = useColorModeValue(0, 1);
+  /* const postItColorIndex = useColorModeValue(0, 1);
   const {
     isOpen: isAiWaitlistOpen,
     onOpen: openAiWaitlist,
     onClose: closeAiWaitlist,
     onToggle: toggleAiWaitlist
-  } = useDisclosure();
+  } = useDisclosure(); */
   const {
     isOpen: isCdpWaitlistOpen,
     onOpen: openCdpWaitlist,
@@ -887,22 +890,7 @@ export default function Home({
             }}
           >
             <Heading as='h2' variant='service' fontSize={{ base: '2xl', md: '3xl' }}>
-              {'2. GEO/AEO data '}
-              <Text
-                as='span'
-                variant='pill'
-                borderWidth='1px'
-                rounded='full'
-                px={3.5}
-                py={1.5}
-                fontWeight='bold'
-                textTransform='uppercase'
-                whiteSpace='nowrap'
-                _light={{ borderColor: ui.blueAlpha, bg: ui.lightBlueAlpha }}
-                _dark={{ borderColor: ui.grayAlpha, bg: ui.lightGrayAlpha }}
-              >
-                Coming soon
-              </Text>
+              2. GEO/AEO data
             </Heading>
             <Text variant='service'>
               <Text as='strong' variant='co'>
@@ -914,7 +902,14 @@ export default function Home({
               </Text>
               {' from frontier AI labs for generative or answer engine optimization.'}
             </Text>
-            <Box pos='relative'>
+            <Code
+              markdown={{ sh: aiSh, py: aiPy, js: aiJs }}
+              apiUrl='https://api.agentfirst.dev/ai?prompt=best+basketball+shoes+for+2026'
+              apiToken={apiToken}
+              moreUrl={ui.aiUrl}
+              openLogin={openLogin}
+            />
+            {/* <Box pos='relative'>
               <Button
                 mt={ui.xxsMargin}
                 w={ui.buttonWidth}
@@ -940,7 +935,7 @@ export default function Home({
                   handleKeyPress={handleKeyPress}
                 />
               )}
-            </Box>
+            </Box> */}
           </Box>
           <Box
             id={ui.browsingId}
@@ -1738,7 +1733,7 @@ export default function Home({
       </OrderedList> */}
       {!isInMdView && (
         <>
-          <WaitlistModal
+          {/* <WaitlistModal
             service={ui.aiService}
             supabaseClient={supabaseClient}
             session={session}
@@ -1747,7 +1742,7 @@ export default function Home({
               setIsAiWaitlisted(true);
             }}
             close={closeAiWaitlist}
-          />
+          /> */}
           <WaitlistModal
             service={ui.cdpService}
             supabaseClient={supabaseClient}

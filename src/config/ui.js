@@ -130,6 +130,7 @@ export const docUrl = 'https://doc.agentfirst.dev/';
 export const supportUrl = 'mailto:brain@agentfirst.dev';
 export const calUrl = 'https://cal.com';
 export const searchUrl = 'https://doc.agentfirst.dev/endpoints/search';
+export const aiUrl = 'https://doc.agentfirst.dev/endpoints/ai';
 export const browsingUrl = 'https://doc.agentfirst.dev/endpoints/browser';
 export const geotargetingUrl = 'https://doc.agentfirst.dev/endpoints/geotargeting';
 export const rateUrl = 'https://doc.agentfirst.dev/endpoints/pricing';

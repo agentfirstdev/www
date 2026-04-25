@@ -3,6 +3,7 @@
 * Introduced
   [high-difficulty pool](https://doc.agentfirst.dev/endpoints/browser#browsing-parameters).&nbsp;
   `April 27`
+* Unwaitlisted AI chat.&nbsp; `April 25`
 * Restored **Mercado Libre browsing**.&nbsp; `April 24`
 * Started augmenting Google UULEs with [automatic geotargeting](/#geotargeting).&nbsp; `April 23`
 * Integrated [Perplexity, Copilot support](https://doc.agentfirst.dev/endpoints/ai#chat-parameters)
