@@ -2,13 +2,13 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2?target=deno
 import Stripe from 'https://esm.sh/stripe@17?target=deno';
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL');
-const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+const supabaseKey = JSON.parse(Deno.env.get('SUPABASE_SECRET_KEYS') || '{}').brain;
 const stripeKey = Deno.env.get('STRIPE_PRIVATE_KEY');
 const stripeSecret = Deno.env.get('STRIPE_SIGNING_SECRET');
 
 if (!supabaseUrl) throw new Error('SUPABASE_URL is not set');
 
-if (!supabaseKey) throw new Error('SUPABASE_SERVICE_ROLE_KEY is not set');
+if (!supabaseKey) throw new Error('SUPABASE_SECRET_KEYS.brain is not set');
 
 if (!stripeKey) throw new Error('STRIPE_PRIVATE_KEY is not set');
 
